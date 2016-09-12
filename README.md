@@ -8,6 +8,7 @@ https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/u
 ##Compilation:
 ```
 autovala update
+mkdir install
 cd install
 cmake ..
 make
