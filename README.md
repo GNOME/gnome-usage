@@ -6,11 +6,13 @@ I started working on the new GNOME Usage for GNOME according to official design 
 https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage.svg
 
 ##Compilation:
+```
 autovala update
 cd install
 cmake ..
 make
 sudo make install
+```
 
 ##Version - WIP
 Actual version is 0.0.1
