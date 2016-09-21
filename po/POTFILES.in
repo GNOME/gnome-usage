@@ -1,1 +1,9 @@
+src/application.vala
+src/data-view.vala
 src/gnome-usage.vala
+src/performance-view.vala
+src/power-view.vala
+src/storage-view.vala
+src/system-monitor.vala
+src/view.vala
+src/window.vala

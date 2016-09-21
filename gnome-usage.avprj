@@ -4,8 +4,11 @@ project_name: gnome-usage
 *vala_version: 0.32
 
 
-*vala_binary: src/gnome-usage
+vala_binary: src/gnome-usage
 *version: 0.0.1
+*vala_vapi: vapis/glibtop.vapi
+c_check_package: libgtop
+*vala_package: posix
 *vala_check_package: atk
 *vala_check_package: cairo
 *vala_check_package: gdk-3.0
@@ -16,15 +19,29 @@ project_name: gnome-usage
 *vala_check_package: gtk+-3.0
 *vala_check_package: pango
 *vala_check_package: x11
+c_library: gtop-2.0
 *vala_source: application.vala
+*vala_source: data-view.vala
 *vala_source: gnome-usage.vala
+*vala_source: performance-view.vala
+*vala_source: power-view.vala
+*vala_source: storage-view.vala
+*vala_source: system-monitor.vala
+*vala_source: view.vala
 *vala_source: window.vala
+h_folder: /usr/include/libgtop-2.0
 
 *po: po
 
-*translate: vala src/gnome-usage.vala
-*translate: vala src/application.vala
+*translate: vala src/storage-view.vala
 *translate: vala src/window.vala
+*translate: vala src/performance-view.vala
+*translate: vala src/power-view.vala
+*translate: vala src/application.vala
+*translate: vala src/data-view.vala
+*translate: vala src/system-monitor.vala
+*translate: vala src/gnome-usage.vala
+*translate: vala src/view.vala
 
 *data: data/local
 
