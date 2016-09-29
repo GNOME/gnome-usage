@@ -24,17 +24,31 @@ namespace Usage {
         const int UPDATE_INTERVAL = 100;
         HashTable<uint, Process> process_table;
 
-        public List<unowned Process> get_processes () {
-            return process_table.get_values ();
-        }
+		private int processMode = GTop.KERN_PROC_ALL;
 
-        public SystemMonitor () {
-            GTop.init ();
+		public enum ProcessMode {
+			ALL,
+			USER,
+			ACTIVE
+		}
 
-            process_table = new HashTable<uint, Process> (direct_hash, direct_equal);
+		public void setProcessMode(ProcessMode mode) {
+			switch(mode)
+			{
+				case ProcessMode.ALL:
+				processMode = GTop.KERN_PROC_ALL;
+				break;
+				case ProcessMode.USER:
+				processMode = GTop.KERN_PROC_UID;
+				break;
+				case ProcessMode.ACTIVE:
+				processMode = GTop.EXCLUDE_IDLE;
+				break;
+			}
+		}
 
-            Timeout.add (UPDATE_INTERVAL, () => {
-                /* CPU */
+		public bool update() {
+			/* CPU */
                 GTop.Cpu cpu_data;
                 GTop.get_cpu (out cpu_data);
                 var used = cpu_data.user + cpu_data.nice + cpu_data.sys;
@@ -56,7 +70,7 @@ namespace Usage {
 
                 var uid = Posix.getuid ();
                 GTop.Proclist proclist;
-                var pids = GTop.get_proclist (out proclist, GTop.KERN_PROC_UID, uid);
+                var pids = GTop.get_proclist (out proclist, processMode, uid);
                 for (int i = 0; i < proclist.number; i++) {
                     GTop.ProcState proc_state;
                     GTop.ProcTime proc_time;
@@ -94,7 +108,18 @@ namespace Usage {
                 cpu_last_total = cpu_data.total;
 
                 return true;
-            });
+		}
+
+        public List<unowned Process> get_processes () {
+            return process_table.get_values ();
+        }
+
+        public SystemMonitor () {
+            GTop.init ();
+
+            process_table = new HashTable<uint, Process> (direct_hash, direct_equal);
+
+            Timeout.add (UPDATE_INTERVAL, update);
         }
     }
 }

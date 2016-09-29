@@ -3,6 +3,7 @@ src/data-view.vala
 src/gnome-usage.vala
 src/performance-view.vala
 src/power-view.vala
+src/process-list.vala
 src/storage-view.vala
 src/system-monitor.vala
 src/view.vala

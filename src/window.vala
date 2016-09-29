@@ -41,8 +41,12 @@ namespace Usage
             views[UIView.STORAGE]		= new StorageView ();
             views[UIView.POWER]			= new PowerView ();
 
+			var menuButton = new Gtk.MenuButton();
+			var popover = new Gtk.Popover (menuButton);
+
             foreach (var view in UIView.all ()) {
-                stack.add_titled  (views[view], views[view].name, views[view].title);
+                stack.add_titled (views[view], views[view].name, views[view].title);
+                popover.add (views[view].getMenuPopover()); //TODO fix it!!!
                 /*views[view].mode_changed.connect ((title) => {
                     if (title == null) {
                         header_bar.custom_title = stack_switcher;
@@ -55,31 +59,19 @@ namespace Usage
                 });*/
             };
 
-/*
-    		var label1 = new Gtk.Label("Page 1 Content.");
-    		var label5 = new Gtk.Label("Page 5 Content.");
-    		var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
-    		paned.add1(label1);
-    		paned.add2(label5);
-    		stack.add_titled(paned, "page-1", "Performance");
-    		var label2 = new Gtk.Label("Page 2 Content.");
-    		stack.add_titled(label2, "page-2", "Data");
-    		var label3 = new Gtk.Label("Page 3 Content.");
-    		stack.add_titled(label3, "page-3", "Storage");
-    		var label4 = new Gtk.Label("Page 4 Content.");
-    		stack.add_titled(label4, "page-4", "Power");
-*/
-
-			var stack_switcher = new Gtk.StackSwitcher();
-			stack_switcher.halign = Gtk.Align.CENTER;
-            stack_switcher.stack = stack;
-            stack_switcher.set_stack(stack);
+			var stackSwitcher = new Gtk.StackSwitcher();
+			stackSwitcher.halign = Gtk.Align.CENTER;
+            stackSwitcher.stack = stack;
+            stackSwitcher.set_stack(stack);
 
             var headerbar = new Gtk.HeaderBar();
             headerbar.show_close_button = true;
-			headerbar.set_custom_title(stack_switcher);
-            set_titlebar(headerbar);
+			headerbar.set_custom_title(stackSwitcher);
 
+            menuButton.popover = popover;
+            headerbar.pack_end(menuButton);
+
+			set_titlebar(headerbar);
             this.add(stack);
         }
     }

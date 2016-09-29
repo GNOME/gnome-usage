@@ -14,6 +14,8 @@ namespace Usage {
             monitor = (GLib.Application.get_default () as Application).monitor;
             visible = true;
         }
+
+		public abstract Gtk.Box? getMenuPopover();
     }
 }
 
