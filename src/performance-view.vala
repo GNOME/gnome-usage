@@ -6,7 +6,7 @@ namespace Usage
 		Gtk.Label CPULoadLabel;
 		List<ProcessRow> processRowList;
 
-		bool showActiveProcess = false;
+		bool showActiveProcess = true;
 
 		public PerformanceView()
 		{
@@ -119,6 +119,7 @@ namespace Usage
 			var active = new Gtk.RadioButton.with_label_from_widget(null, _("Active process"));
 			popoverBox.pack_start(active, false, false, 0);
 			active.toggled.connect(() => {
+				monitor.setProcessMode(SystemMonitor.ProcessMode.ALL);
 				showActiveProcess = true;
 				updateProcess();
 			});
