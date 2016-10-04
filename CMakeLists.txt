@@ -28,7 +28,6 @@ endif()
 
 find_package(PkgConfig)
 
-set(MODULES_TO_CHECK ${MODULES_TO_CHECK} libgtop)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} atk)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} cairo)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gdk-3.0)

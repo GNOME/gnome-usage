@@ -1,19 +1,21 @@
 using Gtk;
 
-namespace Usage {
-
-    public class Application : Gtk.Application {
-
+namespace Usage
+{
+    public class Application : Gtk.Application
+    {
         private Window window;
         public SystemMonitor monitor;
 
-        public Application () {
+        public Application ()
+        {
             application_id = "org.gnome.usage";
-            monitor = new SystemMonitor ();
+            monitor = new SystemMonitor();
         }
 
-        public override void activate () {
-            window = new Window (this);
+        public override void activate()
+        {
+            window = new Window(this);
             window.show_all();
         }
     }

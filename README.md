@@ -15,8 +15,8 @@ make
 sudo make install
 ```
 
-##Version - WIP
-Actual version is 0.0.1
+##Version
+Actual version is 0.0.2
 
 #License
 Code is under GNU GPLv3 license.

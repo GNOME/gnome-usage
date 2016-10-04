@@ -1,9 +1,9 @@
-[CCode (cheader_filename = "glibtop.h", lower_case_cprefix = "glibtop_")]
+[CCode(cheader_filename = "glibtop.h", lower_case_cprefix = "glibtop_")]
 namespace GTop {
 
-    public void init ();
+    public void init();
 
-    [CCode (cname = "glibtop_cpu", cheader_filename = "glibtop/cpu.h")]
+    [CCode(cname = "glibtop_cpu", cheader_filename = "glibtop/cpu.h")]
     public struct Cpu {
         uint64 flags;
         uint64 total;
@@ -25,26 +25,26 @@ namespace GTop {
         uint64 xcpu_softirq[32];
         uint64 xcpu_flags;
     }
-    public void get_cpu (out Cpu cpu);
+    public void get_cpu(out Cpu cpu);
 
-    [CCode (cname = "GLIBTOP_KERN_PROC_ALL")]
+    [CCode(cname = "GLIBTOP_KERN_PROC_ALL")]
     public const int KERN_PROC_ALL;
-    [CCode (cname = "GLIBTOP_KERN_PROC_UID")]
+    [CCode(cname = "GLIBTOP_KERN_PROC_UID")]
     public const int KERN_PROC_UID;
-    [CCode (cname = "GLIBTOP_EXCLUDE_IDLE")]
+    [CCode(cname = "GLIBTOP_EXCLUDE_IDLE")]
     public const int EXCLUDE_IDLE;
 
-    [CCode (cname = "glibtop_proclist", cheader_filename = "glibtop/proclist.h")]
+    [CCode(cname = "glibtop_proclist", cheader_filename = "glibtop/proclist.h")]
     public struct Proclist {
         uint64 flags;
         uint64 number;
         uint64 total;
         uint64 size;
     }
-    [CCode (array_length = false, array_null_terminated = false)]
-    public uint[] get_proclist (out Proclist proclist, uint64 which, uint64 arg);
+    [CCode(array_length = false, array_null_terminated = false)]
+    public uint[] get_proclist(out Proclist proclist, uint64 which, uint64 arg);
 
-    [CCode (cname = "glibtop_proc_state", cheader_filename = "glibtop/procstate.h")]
+    [CCode(cname = "glibtop_proc_state", cheader_filename = "glibtop/procstate.h")]
     public struct ProcState {
         uint64 flags;
         char cmd[40];
@@ -57,9 +57,9 @@ namespace GTop {
         int processor;
         int last_processor;
     }
-    public void get_proc_state (out ProcState proc_state, uint pid);
+    public void get_proc_state(out ProcState proc_state, uint pid);
 
-    [CCode (cname = "glibtop_proc_time", cheader_filename = "glibtop/proctime.h")]
+    [CCode(cname = "glibtop_proc_time", cheader_filename = "glibtop/proctime.h")]
     public struct ProcTime {
         uint64 flags;
         uint64 start_time;
@@ -74,9 +74,9 @@ namespace GTop {
         uint64 xcpu_utime[32];
         uint64 xcpu_stime[32];
     }
-    public void get_proc_time (out ProcTime proc_time, uint pid);
+    public void get_proc_time(out ProcTime proc_time, uint pid);
 
-    [CCode (cname = "glibtop_mem", cheader_filename = "glibtop/mem.h")]
+    [CCode(cname = "glibtop_mem", cheader_filename = "glibtop/mem.h")]
     public struct Mem {
         uint64 flags;
         uint64 total;
@@ -88,9 +88,9 @@ namespace GTop {
         uint64 user;
         uint64 locked;
     }
-    public void get_mem (out Mem mem);
+    public void get_mem(out Mem mem);
 
-    [CCode (cname = "glibtop_swap", cheader_filename = "glibtop/swap.h")]
+    [CCode(cname = "glibtop_swap", cheader_filename = "glibtop/swap.h")]
     public struct Swap {
         uint64 flags;
         uint64 total;
@@ -99,9 +99,9 @@ namespace GTop {
         uint64 pagein;
         uint64 pageout;
     }
-    public void get_swap (out Swap swap);
+    public void get_swap(out Swap swap);
 
-    [CCode (cname = "glibtop_proc_mem", cheader_filename = "glibtop/procmem.h")]
+    [CCode(cname = "glibtop_proc_mem", cheader_filename = "glibtop/procmem.h")]
     public struct ProcMem {
         uint64 flags;
         uint64 size;
@@ -111,14 +111,14 @@ namespace GTop {
         uint64 rss;
         uint64 rss_rlim;
     }
-    public void get_proc_mem (out ProcMem proc_mem, uint pid);
+    public void get_proc_mem(out ProcMem proc_mem, uint pid);
 
-    [CCode (cname = "glibtop_netlist", cheader_filename = "glibtop/netlist.h")]
+    [CCode(cname = "glibtop_netlist", cheader_filename = "glibtop/netlist.h")]
     public struct Netlist {
         uint64 flags;
         uint32 number;
     }
 
-    [CCode (array_length = false, array_null_terminated = false)]
-    public string[] get_netlist (out Netlist netlist);
+    [CCode(array_length = false, array_null_terminated = false)]
+    public string[] get_netlist(out Netlist netlist);
 }
