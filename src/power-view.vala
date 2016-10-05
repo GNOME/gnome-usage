@@ -2,8 +2,10 @@ namespace Usage
 {
     public class PowerView : View
     {
-        public PowerView()
+        public PowerView(Usage.HeaderBar headerBar)
         {
+            base(headerBar);
+
             name = "POWER";
             title = _("Power");
 
@@ -11,9 +13,10 @@ namespace Usage
             add(label1);
         }
 
-        public override Gtk.Box? getMenuPopover()
+        public override void updateHeaderBar()
         {
-            return null;
+            headerBar.clear();
+            headerBar.showStackSwitcher();
         }
     }
 }

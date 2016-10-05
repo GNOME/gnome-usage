@@ -8,9 +8,11 @@ namespace Usage
 
 		bool showActiveProcess = true;
 
-		public PerformanceView()
+		public PerformanceView(Usage.HeaderBar headerBar)
 		{
-			name = "performance";
+		    base(headerBar);
+
+            name = "PERFORMANCE";
 			title = _("Performance");
 
             CPULoadLabel = new Gtk.Label(null);
@@ -48,30 +50,37 @@ namespace Usage
 		    scrolledWindowCPU.add(CPUBox);
 		    scrolledWindowCPU.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
 
-		    var stack = new Gtk.Stack();
-		    stack.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN);
-    	    stack.set_transition_duration(700);
-    	    stack.add_named(scrolledWindowCPU, "CPU");
-    	    stack.add_named(new Gtk.Label("Memory"), "RAM");
-    	    stack.add_named(new Gtk.Label("Disk I/O"), "DISK");
-    	    stack.add_named(new Gtk.Label("Network"), "NETWORK");
+		    var performanceStack = new Gtk.Stack();
+		    performanceStack.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN);
+    	    performanceStack.set_transition_duration(700);
+    	    performanceStack.add_named(scrolledWindowCPU, "CPU");
+    	    performanceStack.add_named(new Gtk.Label("Memory"), "RAM");
+    	    performanceStack.add_named(new Gtk.Label("Disk I/O"), "DISK");
+    	    performanceStack.add_named(new Gtk.Label("Network"), "NETWORK");
 
     	    CPUButton.clicked.connect(() => {
-		    	stack.set_visible_child_name("CPU");
+		    	performanceStack.set_visible_child_name("CPU");
+                constructMenuButtonForCPU();
+                headerBar.showMenuButton();
 		    });
 		    memoryButton.clicked.connect(() => {
-		    	stack.set_visible_child_name("RAM");
+		    	performanceStack.set_visible_child_name("RAM");
+		    	headerBar.hideMenuButton();
 		    });
 		    diskButton.clicked.connect(() => {
-		    	stack.set_visible_child_name("DISK");
+		    	performanceStack.set_visible_child_name("DISK");
+		    	headerBar.hideMenuButton();
 		    });
 		    networkButton.clicked.connect(() => {
-		    	stack.set_visible_child_name("NETWORK");
+		    	performanceStack.set_visible_child_name("NETWORK");
+		    	headerBar.hideMenuButton();
 		    });
+
+		    constructMenuButtonForCPU();
 
     	    var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
     	    paned.add1(panelBox);
-    	    paned.add2(stack);
+    	    paned.add2(performanceStack);
 		    add(paned);
 
 		    Timeout.add(1000, updateProcess);
@@ -111,41 +120,46 @@ namespace Usage
             });
         }
 
-        public override Gtk.Box? getMenuPopover()
+        private void constructMenuButtonForCPU()
         {
-			var popoverBox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-			popoverBox.margin = 5;
+        	var popoverBox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            popoverBox.margin = 5;
 
-			var active = new Gtk.RadioButton.with_label_from_widget(null, _("Active process"));
-			popoverBox.pack_start(active, false, false, 0);
-			active.toggled.connect(() => {
-				monitor.setProcessMode(SystemMonitor.ProcessMode.ALL);
-				showActiveProcess = true;
-				updateProcess();
-			});
+            var active = new Gtk.RadioButton.with_label_from_widget(null, _("Active process"));
+            popoverBox.pack_start(active, false, false, 0);
+            active.toggled.connect(() => {
+            	monitor.setProcessMode(SystemMonitor.ProcessMode.ALL);
+            	showActiveProcess = true;
+            	updateProcess();
+            });
 
-			var all = new Gtk.RadioButton.with_label_from_widget(active, _("All process"));
-			popoverBox.pack_start(all, false, false, 0);
-			all.toggled.connect(() => {
-				showActiveProcess = false;
-				monitor.setProcessMode(SystemMonitor.ProcessMode.ALL);
-				monitor.update();
-				updateProcess();
-			});
-			all.set_active(true);
+            var all = new Gtk.RadioButton.with_label_from_widget(active, _("All process"));
+            popoverBox.pack_start(all, false, false, 0);
+            all.toggled.connect(() => {
+            	showActiveProcess = false;
+            	monitor.setProcessMode(SystemMonitor.ProcessMode.ALL);
+            	monitor.update();
+            	updateProcess();
+            });
 
-			var my = new Gtk.RadioButton.with_label_from_widget(active, _("My process"));
-			popoverBox.pack_start(my, false, false, 0);
-			my.toggled.connect(() => {
-				showActiveProcess = false;
-				monitor.setProcessMode(SystemMonitor.ProcessMode.USER);
-				monitor.update();
-				updateProcess();
-			});
+            var my = new Gtk.RadioButton.with_label_from_widget(active, _("My process"));
+            popoverBox.pack_start(my, false, false, 0);
+            my.toggled.connect(() => {
+            	showActiveProcess = false;
+            	monitor.setProcessMode(SystemMonitor.ProcessMode.USER);
+            	monitor.update();
+            	updateProcess();
+            });
 
-			popoverBox.show_all();
+            popoverBox.show_all();
+            headerBar.setMenuButton(popoverBox);
+        }
 
-			return popoverBox;
+        public override void updateHeaderBar()
+        {
+            headerBar.clear();
+            headerBar.showMenuButton();
+            headerBar.showStackSwitcher();
         }
     }
 }

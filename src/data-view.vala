@@ -2,18 +2,21 @@ namespace Usage
 {
     public class DataView : View
     {
-        public DataView ()
+        public DataView (Usage.HeaderBar headerBar)
         {
-            name = "DATA";
+            base(headerBar);
+
+            name = ("DATA");
             title = _("Data");
 
             var label1 = new Gtk.Label("Page Data Content.");
       		add(label1);
         }
 
-        public override Gtk.Box? getMenuPopover()
+        public override void updateHeaderBar()
         {
-			return null;
+             headerBar.clear();
+             headerBar.showStackSwitcher();
         }
     }
 }

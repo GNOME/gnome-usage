@@ -1,6 +1,7 @@
 src/application.vala
 src/data-view.vala
 src/gnome-usage.vala
+src/headerbar.vala
 src/performance-view.vala
 src/power-view.vala
 src/process-list.vala

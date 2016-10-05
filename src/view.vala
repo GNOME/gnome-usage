@@ -4,13 +4,15 @@ namespace Usage
     {
         protected SystemMonitor monitor;
         public string title;
+        protected Usage.HeaderBar headerBar;
 
-        public View ()
+        public View (Usage.HeaderBar headerBar)
         {
             monitor = (GLib.Application.get_default() as Application).monitor;
             visible = true;
+            this.headerBar = headerBar;
         }
 
-		public abstract Gtk.Box? getMenuPopover();
+		public abstract void updateHeaderBar();
     }
 }

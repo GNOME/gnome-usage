@@ -2,8 +2,10 @@ namespace Usage
 {
     public class StorageView : View
     {
-        public StorageView ()
+        public StorageView (Usage.HeaderBar headerBar)
         {
+            base(headerBar);
+
             name = "STORAGE";
             title = _("Storage");
 
@@ -11,9 +13,10 @@ namespace Usage
 			add(label1);
         }
 
-        public override Gtk.Box? getMenuPopover()
+        public override void updateHeaderBar()
         {
-            return null;
+            headerBar.clear();
+            headerBar.showStackSwitcher();
         }
     }
 }
