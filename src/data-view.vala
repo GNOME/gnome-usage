@@ -2,10 +2,8 @@ namespace Usage
 {
     public class DataView : View
     {
-        public DataView (Usage.HeaderBar headerBar)
+        public DataView ()
         {
-            base(headerBar);
-
             name = ("DATA");
             title = _("Data");
 

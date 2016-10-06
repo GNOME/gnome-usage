@@ -4,7 +4,7 @@ namespace Usage
 {
     public class Application : Gtk.Application
     {
-        private Window window;
+        public Window window;
         public SystemMonitor monitor;
 
         public Application ()

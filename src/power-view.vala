@@ -2,10 +2,8 @@ namespace Usage
 {
     public class PowerView : View
     {
-        public PowerView(Usage.HeaderBar headerBar)
+        public PowerView()
         {
-            base(headerBar);
-
             name = "POWER";
             title = _("Power");
 

@@ -2,10 +2,8 @@ namespace Usage
 {
     public class StorageView : View
     {
-        public StorageView (Usage.HeaderBar headerBar)
+        public StorageView ()
         {
-            base(headerBar);
-
             name = "STORAGE";
             title = _("Storage");
 

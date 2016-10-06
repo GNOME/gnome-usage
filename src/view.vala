@@ -6,13 +6,14 @@ namespace Usage
         public string title;
         protected Usage.HeaderBar headerBar;
 
-        public View (Usage.HeaderBar headerBar)
+        public View ()
         {
             monitor = (GLib.Application.get_default() as Application).monitor;
+            headerBar = (GLib.Application.get_default() as Application).window.headerBar;
             visible = true;
-            this.headerBar = headerBar;
         }
 
 		public abstract void updateHeaderBar();
+
     }
 }
