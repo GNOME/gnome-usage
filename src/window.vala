@@ -8,7 +8,6 @@ namespace Usage
 		public Window(Gtk.Application application)
         {
             GLib.Object(application : application);
-            this.destroy.connect(Gtk.main_quit);
 
             this.set_default_size(800, 500);
             this.window_position = Gtk.WindowPosition.CENTER;
