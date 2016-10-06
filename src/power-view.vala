@@ -7,14 +7,14 @@ namespace Usage
             name = "POWER";
             title = _("Power");
 
-            var label1 = new Gtk.Label("Page Power Content.");
-            add(label1);
+            var label = new Gtk.Label("Page Power Content.");
+            add(label);
         }
 
-        public override void updateHeaderBar()
+        public override void update_header_bar()
         {
-            headerBar.clear();
-            headerBar.showStackSwitcher();
+            header_bar.clear();
+            header_bar.show_stack_switcher();
         }
     }
 }

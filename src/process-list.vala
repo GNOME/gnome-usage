@@ -3,10 +3,10 @@ namespace Usage
     public class ProcessRow : Gtk.ListBoxRow
     {
 		private Gtk.Image icon;
-        private Gtk.Label titleLabel;
-        private Gtk.Label loadLabel;
+        private Gtk.Label title_label;
+        private Gtk.Label load_label;
 
-        public int sortId;
+        public int sort_id;
 
         public bool is_headline { get; private set; }
 
@@ -14,17 +14,17 @@ namespace Usage
         {
 			var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 			box.margin = 5;
-        	titleLabel = new Gtk.Label(title);
-        	loadLabel = new Gtk.Label(load.to_string() + " %");
+        	title_label = new Gtk.Label(title);
+        	load_label = new Gtk.Label(load.to_string() + " %");
         	icon = new Gtk.Image.from_icon_name("dialog-error", Gtk.IconSize.BUTTON);
 
             box.pack_start(icon, false, false, 10);
-            box.pack_start(titleLabel, false, true, 5);
-            box.pack_end(loadLabel, false, true, 10);
+            box.pack_start(title_label, false, true, 5);
+            box.pack_end(load_label, false, true, 10);
             add(box);
 
-            titleLabel.show();
-            loadLabel.show();
+            title_label.show();
+            load_label.show();
             icon.show();
             box.show();
             show();

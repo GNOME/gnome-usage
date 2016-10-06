@@ -2,64 +2,64 @@ namespace Usage
 {
     public class PerformanceView : View
     {
-        Gtk.Stack performanceStack;
+        Gtk.Stack performance_stack;
 
 		public PerformanceView()
 		{
             name = "PERFORMANCE";
 			title = _("Performance");
 
-    	    var CPUButton = new Gtk.Button.with_label("Processor");
-      	    var memoryButton = new Gtk.Button.with_label("Memory");
-    	    var diskButton = new Gtk.Button.with_label("Disk I/O");
-    	    var networkButton = new Gtk.Button.with_label("Network");
-    	    var panelBox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+    	    var cpu_button = new Gtk.Button.with_label("Processor");
+      	    var memory_button = new Gtk.Button.with_label("Memory");
+    	    var disk_button = new Gtk.Button.with_label("Disk I/O");
+    	    var network_button = new Gtk.Button.with_label("Network");
+    	    var panel_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 
-    	    panelBox.pack_start(CPUButton, false, true, 0);
-    	    panelBox.pack_start(memoryButton, false, true, 0);
-    	    panelBox.pack_start(diskButton, false, true, 0);
-    	    panelBox.pack_start(networkButton, false, true, 0);
+    	    panel_box.pack_start(cpu_button, false, true, 0);
+    	    panel_box.pack_start(memory_button, false, true, 0);
+    	    panel_box.pack_start(disk_button, false, true, 0);
+    	    panel_box.pack_start(network_button, false, true, 0);
 
-		    performanceStack = new Gtk.Stack();
-		    performanceStack.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN);
-    	    performanceStack.set_transition_duration(700);
+		    performance_stack = new Gtk.Stack();
+		    performance_stack.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN);
+    	    performance_stack.set_transition_duration(700);
 
-    	    var subViews =  new View[]
+    	    var sub_views =  new View[]
             {
-                new CPUsubView(),
-                new RAMsubView()
+                new CPUSubView(),
+                new RAMSubView()
             };
 
-            foreach(var subView in subViews)
-                performanceStack.add_named(subView, subView.name);
+            foreach(var sub_view in sub_views)
+                performance_stack.add_named(sub_view, sub_view.name);
 
-    	    CPUButton.clicked.connect(() => {
-		    	performanceStack.set_visible_child_name(subViews[0].name);
-                ((View) performanceStack.get_visible_child()).updateHeaderBar();
+    	    cpu_button.clicked.connect(() => {
+		    	performance_stack.set_visible_child_name(sub_views[0].name);
+                ((View) performance_stack.get_visible_child()).update_header_bar();
 		    });
-		    memoryButton.clicked.connect(() => {
-		    	performanceStack.set_visible_child_name(subViews[1].name);
-		    	((View) performanceStack.get_visible_child()).updateHeaderBar();
+		    memory_button.clicked.connect(() => {
+		    	performance_stack.set_visible_child_name(sub_views[1].name);
+		    	((View) performance_stack.get_visible_child()).update_header_bar();
 		    });
-		    diskButton.clicked.connect(() => {
-		    	performanceStack.set_visible_child_name("DISK");
-		    	headerBar.hideMenuButton();
+		    disk_button.clicked.connect(() => {
+		    	performance_stack.set_visible_child_name("DISK");
+		    	header_bar.hide_menu_button();
 		    });
-		    networkButton.clicked.connect(() => {
-		    	performanceStack.set_visible_child_name("NETWORK");
-		    	headerBar.hideMenuButton();
+		    network_button.clicked.connect(() => {
+		    	performance_stack.set_visible_child_name("NETWORK");
+		    	header_bar.hide_menu_button();
 		    });
 
     	    var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
-    	    paned.add1(panelBox);
-    	    paned.add2(performanceStack);
+    	    paned.add1(panel_box);
+    	    paned.add2(performance_stack);
 		    add(paned);
         }
 
-        public override void updateHeaderBar()
+        public override void update_header_bar()
         {
-            var visibleSubView = (View) performanceStack.get_visible_child();
-            visibleSubView.updateHeaderBar();
+            var visible_sub_view = (View) performance_stack.get_visible_child();
+            visible_sub_view.update_header_bar();
         }
     }
 }

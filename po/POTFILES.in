@@ -1,12 +1,12 @@
 src/application.vala
-src/cpu-subview.vala
+src/cpu-sub-view.vala
 src/data-view.vala
 src/gnome-usage.vala
-src/headerbar.vala
+src/header-bar.vala
 src/performance-view.vala
 src/power-view.vala
 src/process-list.vala
-src/ram-subview.vala
+src/ram-sub-view.vala
 src/storage-view.vala
 src/system-monitor.vala
 src/view.vala

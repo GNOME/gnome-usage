@@ -26,7 +26,7 @@ namespace Usage
         const int UPDATE_INTERVAL = 1000;
         HashTable<uint, Process> process_table;
 
-		private int processMode = GTop.KERN_PROC_ALL;
+		private int process_mode = GTop.KERN_PROC_ALL;
 
 		public enum ProcessMode
         {
@@ -35,18 +35,18 @@ namespace Usage
   			EXCLUDE_IDLE
 		}
 
-		public void setProcessMode(ProcessMode mode)
+		public void set_process_mode(ProcessMode mode)
         {
 		    switch(mode)
   			{
         		case ProcessMode.ALL:
-					processMode = GTop.KERN_PROC_ALL;
+					process_mode = GTop.KERN_PROC_ALL;
 					break;
 				case ProcessMode.USER:
-					processMode = GTop.KERN_PROC_UID;
+					process_mode = GTop.KERN_PROC_UID;
 					break;
 				case ProcessMode.EXCLUDE_IDLE:
-					processMode = GTop.EXCLUDE_IDLE;
+					process_mode = GTop.EXCLUDE_IDLE;
 					break;
 			  }
 		}
@@ -74,7 +74,7 @@ namespace Usage
 
             var uid = Posix.getuid();
             GTop.Proclist proclist;
-            var pids = GTop.get_proclist (out proclist, processMode, uid);
+            var pids = GTop.get_proclist (out proclist, process_mode, uid);
 
             for(int i = 0; i < proclist.number; i++)
             {

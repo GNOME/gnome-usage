@@ -4,16 +4,16 @@ namespace Usage
     {
         protected SystemMonitor monitor;
         public string title;
-        protected Usage.HeaderBar headerBar;
+        protected Usage.HeaderBar header_bar;
 
         public View ()
         {
             monitor = (GLib.Application.get_default() as Application).monitor;
-            headerBar = (GLib.Application.get_default() as Application).window.headerBar;
+            header_bar = (GLib.Application.get_default() as Application).window.header_bar;
             visible = true;
         }
 
-		public abstract void updateHeaderBar();
+		public abstract void update_header_bar();
 
     }
 }

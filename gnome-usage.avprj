@@ -20,14 +20,14 @@ vala_binary: src/gnome-usage
 *vala_check_package: x11
 c_library: gtop-2.0
 *vala_source: application.vala
-*vala_source: cpu-subview.vala
+*vala_source: cpu-sub-view.vala
 *vala_source: data-view.vala
 *vala_source: gnome-usage.vala
-*vala_source: headerbar.vala
+*vala_source: header-bar.vala
 *vala_source: performance-view.vala
 *vala_source: power-view.vala
 *vala_source: process-list.vala
-*vala_source: ram-subview.vala
+*vala_source: ram-sub-view.vala
 *vala_source: storage-view.vala
 *vala_source: system-monitor.vala
 *vala_source: view.vala
@@ -36,19 +36,19 @@ h_folder: /usr/include/libgtop-2.0
 
 *po: po
 
+*translate: vala src/header-bar.vala
+*translate: vala src/performance-view.vala
 *translate: vala src/view.vala
 *translate: vala src/gnome-usage.vala
-*translate: vala src/process-list.vala
 *translate: vala src/storage-view.vala
-*translate: vala src/cpu-subview.vala
-*translate: vala src/data-view.vala
-*translate: vala src/power-view.vala
 *translate: vala src/system-monitor.vala
-*translate: vala src/headerbar.vala
+*translate: vala src/power-view.vala
+*translate: vala src/cpu-sub-view.vala
+*translate: vala src/process-list.vala
+*translate: vala src/ram-sub-view.vala
+*translate: vala src/data-view.vala
 *translate: vala src/application.vala
 *translate: vala src/window.vala
-*translate: vala src/performance-view.vala
-*translate: vala src/ram-subview.vala
 
 *data: data/local
 

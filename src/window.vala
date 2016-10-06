@@ -3,7 +3,7 @@ namespace Usage
     public class Window : Gtk.ApplicationWindow
     {
         public static Gtk.Stack stack;
-        public static Usage.HeaderBar headerBar;
+        public static Usage.HeaderBar header_bar;
 
 		public Window(Gtk.Application application)
         {
@@ -13,8 +13,8 @@ namespace Usage
             this.window_position = Gtk.WindowPosition.CENTER;
 
 			stack = new Gtk.Stack();
-			headerBar = new Usage.HeaderBar(stack);
-			headerBar.show_close_button = true;
+			header_bar = new Usage.HeaderBar(stack);
+			header_bar.show_close_button = true;
 
             var views =  new View[]
             {
@@ -29,11 +29,11 @@ namespace Usage
 
             stack.notify["visible-child"].connect (() => {
                 var visibleView = (View) stack.get_visible_child();
-                visibleView.updateHeaderBar();
+                visibleView.update_header_bar();
             });
 
-            views[0].updateHeaderBar();
-            set_titlebar(headerBar);
+            views[0].update_header_bar();
+            set_titlebar(header_bar);
             this.add(stack);
         }
     }
