@@ -3,7 +3,9 @@
 I started working on the new GNOME Usage for GNOME according to official design from Allan.<br>
 
 ##Design:
-https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage.svg
+![Screenshot](https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage.svg )
+<img src="https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage.svg">
+<img src="https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage.svg" width="100%" height="144">
 
 ##Current status:
 ![Screenshot](screenshot.png?raw=true )
