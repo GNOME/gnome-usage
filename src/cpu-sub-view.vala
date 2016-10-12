@@ -12,27 +12,36 @@ namespace Usage
         public CPUSubView()
         {
             name = "CPU";
+            const int margin_side = 50;
 
             cpu_load_label = new Gtk.Label(null);
-            cpu_load_label.margin_right = 100;
+            cpu_load_label.margin_right = margin_side;
             var processor_label = new Gtk.Label("<b>" + _("Processor") + "</b>");
             processor_label.set_use_markup(true);
             var processor_text_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             processor_text_box.set_center_widget(processor_label);
             processor_text_box.pack_end(cpu_load_label, false, true, 0);
-            processor_text_box.margin_top = 20;
+            processor_text_box.margin_top = 10;
+            processor_text_box.margin_bottom = 10;
 
             process_list_box = new ProcessList();
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             var cpu_graph = (Rg.CpuGraph) GLib.Object.new(typeof(Rg.CpuGraph), timespan: 30000000, max_samples: 60);
+            var cpu_graph_frame = new Gtk.Frame(null);
+            cpu_graph_frame.height_request = 200;
+            cpu_graph_frame.margin_start = margin_side;
+            cpu_graph_frame.margin_end = margin_side;
+            cpu_graph_frame.margin_bottom = 10;
+            cpu_graph_frame.add(cpu_graph);
+
             var process_list_box_frame = new Gtk.Frame(null);
-            process_list_box_frame.margin_start = 100;
-            process_list_box_frame.margin_end = 100;
+            process_list_box_frame.margin_start = margin_side;
+            process_list_box_frame.margin_end = margin_side;
             process_list_box_frame.margin_bottom = 20;
             process_list_box_frame.add(process_list_box);
             cpu_box.pack_start(processor_text_box, false, false, 0);
-            cpu_box.pack_start(cpu_graph, true, true, 0);
+            cpu_box.pack_start(cpu_graph_frame, true, true, 0);
             cpu_box.pack_start(process_list_box_frame, true, false, 0);
 
             var scrolled_window = new Gtk.ScrolledWindow(null, null);
