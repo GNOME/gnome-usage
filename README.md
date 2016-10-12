@@ -5,6 +5,9 @@ I started working on the new GNOME Usage for GNOME according to official design 
 ##Design:
 https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage.svg
 
+##Current status:
+![Screenshot](screenshot.png?raw=true )
+
 ##Compilation:
 ```
 autovala update
@@ -16,7 +19,7 @@ sudo make install
 ```
 
 ##Version
-Actual version is 0.0.2
+Actual version is 0.0.3
 
 #License
 Code is under GNU GPLv3 license.
