@@ -1,3 +1,5 @@
+using Rg;
+
 namespace Usage
 {
     public class CPUSubView : View
@@ -23,12 +25,14 @@ namespace Usage
             process_list_box = new ProcessList();
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            var cpu_graph = (Rg.CpuGraph) GLib.Object.new(typeof(Rg.CpuGraph), timespan: 30000000, max_samples: 60);
             var process_list_box_frame = new Gtk.Frame(null);
             process_list_box_frame.margin_start = 100;
             process_list_box_frame.margin_end = 100;
             process_list_box_frame.margin_bottom = 20;
             process_list_box_frame.add(process_list_box);
             cpu_box.pack_start(processor_text_box, false, false, 0);
+            cpu_box.pack_start(cpu_graph, true, true, 0);
             cpu_box.pack_start(process_list_box_frame, true, false, 0);
 
             var scrolled_window = new Gtk.ScrolledWindow(null, null);

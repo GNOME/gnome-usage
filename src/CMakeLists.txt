@@ -49,8 +49,12 @@ set (APP_SOURCES ${APP_SOURCES} system-monitor.vala)
 set (APP_SOURCES ${APP_SOURCES} view.vala)
 set (APP_SOURCES ${APP_SOURCES} window.vala)
 
+set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/egg-private.vapi)
 set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/glibtop.vapi)
+set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/rg.vapi)
 
+include_directories (AFTER ../external/egg )
+include_directories (AFTER ../external/rg )
 include_directories (AFTER /usr/include/libgtop-2.0 )
 
 vala_precompile(VALA_C gnome-usage
@@ -62,7 +66,7 @@ CUSTOM_VAPIS
 )
 
 add_executable(gnome-usage ${VALA_C})
-target_link_libraries( gnome-usage gtop-2.0 )
+target_link_libraries( gnome-usage gtop-2.0 ${CMAKE_SOURCE_DIR}/external/rg/librg.a ${CMAKE_SOURCE_DIR}/external/egg/libegg-private.a )
 
 
 install(TARGETS

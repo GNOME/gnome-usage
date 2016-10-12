@@ -6,7 +6,9 @@ project_name: gnome-usage
 
 vala_binary: src/gnome-usage
 *version: 0.0.2
+*vala_vapi: vapis/egg-private.vapi
 *vala_vapi: vapis/glibtop.vapi
+*vala_vapi: vapis/rg.vapi
 *vala_package: posix
 *vala_check_package: atk
 *vala_check_package: cairo
@@ -18,7 +20,7 @@ vala_binary: src/gnome-usage
 *vala_check_package: gtk+-3.0
 *vala_check_package: pango
 *vala_check_package: x11
-c_library: gtop-2.0
+c_library: gtop-2.0 ${CMAKE_SOURCE_DIR}/external/rg/librg.a ${CMAKE_SOURCE_DIR}/external/egg/libegg-private.a
 *vala_source: application.vala
 *vala_source: cpu-sub-view.vala
 *vala_source: data-view.vala
@@ -32,23 +34,25 @@ c_library: gtop-2.0
 *vala_source: system-monitor.vala
 *vala_source: view.vala
 *vala_source: window.vala
+h_folder: ../external/egg
+h_folder: ../external/rg
 h_folder: /usr/include/libgtop-2.0
 
 *po: po
 
 *translate: vala src/header-bar.vala
-*translate: vala src/performance-view.vala
 *translate: vala src/view.vala
 *translate: vala src/gnome-usage.vala
 *translate: vala src/storage-view.vala
 *translate: vala src/system-monitor.vala
 *translate: vala src/power-view.vala
-*translate: vala src/cpu-sub-view.vala
 *translate: vala src/process-list.vala
+*translate: vala src/cpu-sub-view.vala
 *translate: vala src/ram-sub-view.vala
 *translate: vala src/data-view.vala
 *translate: vala src/application.vala
 *translate: vala src/window.vala
+*translate: vala src/performance-view.vala
 
 *data: data/local
 
