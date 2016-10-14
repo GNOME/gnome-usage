@@ -10,7 +10,7 @@ namespace Usage
         public Application ()
         {
             application_id = "org.gnome.usage";
-            monitor = new SystemMonitor();
+            monitor = new SystemMonitor(1000);
         }
 
         public override void activate()

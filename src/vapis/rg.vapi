@@ -94,6 +94,8 @@ namespace Rg {
 		public weak void*[] data;
 		public int64 get_timestamp ();
 		public void get_value (uint column, GLib.Value value);
+		public void get (int first_column, ...);
+		public void set (int first_column, ...);
 		public bool next ();
 	}
 	[CCode (cheader_filename = "realtime-graphs.h", cname = "_RgColumnClass", has_type_id = false)]

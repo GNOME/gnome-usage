@@ -27,7 +27,7 @@ namespace Usage
             process_list_box = new ProcessList();
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            var cpu_graph = (Rg.CpuGraph) GLib.Object.new(typeof(Rg.CpuGraph), timespan: 30000000, max_samples: 60);
+            var cpu_graph = new CpuGraph(30000000, 60);
             var cpu_graph_frame = new Gtk.Frame(null);
             cpu_graph_frame.height_request = 200;
             cpu_graph_frame.margin_start = margin_side;
@@ -107,7 +107,7 @@ namespace Usage
             all.toggled.connect(() => {
             	show_active_process = false;
             	monitor.set_process_mode(SystemMonitor.ProcessMode.ALL);
-            	monitor.update();
+            	monitor.update_data();
             	update_process();
             });
 
@@ -116,7 +116,7 @@ namespace Usage
             my.toggled.connect(() => {
             	show_active_process = false;
             	monitor.set_process_mode(SystemMonitor.ProcessMode.USER);
-            	monitor.update();
+            	monitor.update_data();
             	update_process();
             });
 

@@ -36,6 +36,8 @@ set (VALA_PACKAGES ${VALA_PACKAGES} x11)
 
 set (APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/Config.vala)
 set (APP_SOURCES ${APP_SOURCES} application.vala)
+set (APP_SOURCES ${APP_SOURCES} cpu-graph-table.vala)
+set (APP_SOURCES ${APP_SOURCES} cpu-graph.vala)
 set (APP_SOURCES ${APP_SOURCES} cpu-sub-view.vala)
 set (APP_SOURCES ${APP_SOURCES} data-view.vala)
 set (APP_SOURCES ${APP_SOURCES} gnome-usage.vala)

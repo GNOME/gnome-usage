@@ -17,13 +17,29 @@ namespace Usage
     public class SystemMonitor
     {
         public double cpu_load { get; private set; }
+        public double cpu_load_graph { get; private set; }
+        public double[] x_cpu_load { get; private set; }
+        public double[] x_cpu_load_graph { get; private set; }
         public double mem_usage { get; private set; }
+        public double mem_usage_graph { get; private set; }
         public double swap_usage { get; private set; }
+        public double swap_usage_graph { get; private set; }
+
+        //TODO update interval setter and getter for non graph
+        uint update_graph_interval = 0;
 
         uint64 cpu_last_used = 0;
+        uint64 cpu_last_used_graph = 0;
         uint64 cpu_last_total = 0;
+        uint64 cpu_last_total_graph = 0;
 
-        const int UPDATE_INTERVAL = 1000;
+        uint64[] x_cpu_last_used;
+        uint64[] x_cpu_last_used_graph;
+        uint64[] x_cpu_last_total;
+        uint64[] x_cpu_last_total_graph;
+
+        bool continue_graph_timeout = true;
+
         HashTable<uint, Process> process_table;
 
 		private int process_mode = GTop.KERN_PROC_ALL;
@@ -51,13 +67,22 @@ namespace Usage
 			  }
 		}
 
-		public bool update()
+		public bool update_data()
         {
 		    /* CPU */
             GTop.Cpu cpu_data;
             GTop.get_cpu (out cpu_data);
             var used = cpu_data.user + cpu_data.nice + cpu_data.sys;
             cpu_load = (((double) (used - cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100;
+
+            var x_cpu_used = new uint64[get_num_processors()];
+            for (int i = 0; i < x_cpu_load.length; i++)
+            {
+                x_cpu_used[i] = cpu_data.xcpu_user[i] + cpu_data.xcpu_nice[i] + cpu_data.xcpu_sys[i];
+                x_cpu_load[i] = (((double) (x_cpu_used[i] - x_cpu_last_used[i])) / (cpu_data.xcpu_total[i] - x_cpu_last_total[i])) * 100;
+                GLib.stdout.printf("cpu[" + i.to_string() + "]" + ((int) x_cpu_load[i]).to_string() + "\t");
+            }
+            GLib.stdout.printf("\n");
 
             /* Memory */
             GTop.Mem mem;
@@ -116,7 +141,58 @@ namespace Usage
             cpu_last_used = used;
             cpu_last_total = cpu_data.total;
 
+            x_cpu_last_used = x_cpu_used;
+            x_cpu_last_total = cpu_data.xcpu_total;
+
             return true;
+        }
+
+        public bool update_graph_data()
+        {
+            /* CPU */
+            GTop.Cpu cpu_data;
+            GTop.get_cpu (out cpu_data);
+            var used = cpu_data.user + cpu_data.nice + cpu_data.sys;
+            cpu_load_graph = (((double) (used - cpu_last_used_graph)) / (cpu_data.total - cpu_last_total_graph)) * 100;
+
+            var x_cpu_used = new uint64[get_num_processors()];
+            for (int i = 0; i < x_cpu_load_graph.length; i++)
+            {
+                x_cpu_used[i] = cpu_data.xcpu_user[i] + cpu_data.xcpu_nice[i] + cpu_data.xcpu_sys[i];
+                x_cpu_load_graph[i] = (((double) (x_cpu_used[i] - x_cpu_last_used_graph[i])) / (cpu_data.xcpu_total[i] - x_cpu_last_total_graph[i])) * 100;
+            }
+
+            /* Memory */
+            GTop.Mem mem;
+            GTop.get_mem (out mem);
+            mem_usage_graph = (((double) (mem.used - mem.buffer - mem.cached)) / mem.total) * 100;
+
+            /* Swap */
+            GTop.Swap swap;
+            GTop.get_swap (out swap);
+            swap_usage_graph = (double) swap.used / swap.total;
+
+            cpu_last_used_graph = used;
+            cpu_last_total_graph = cpu_data.total;
+
+            x_cpu_last_used_graph = x_cpu_used;
+            x_cpu_last_total_graph = cpu_data.xcpu_total;
+
+            if(continue_graph_timeout == false)
+                Timeout.add(update_graph_interval, update_graph_data);
+
+            return continue_graph_timeout;
+        }
+
+        public void set_update_graph_interval(uint miliseconds)
+        {
+            update_graph_interval = miliseconds;
+            Timeout.add(update_graph_interval, update_graph_data);
+        }
+
+        public uint get_update_graph_interval()
+        {
+            return update_graph_interval;
         }
 
         public List<unowned Process> get_processes()
@@ -124,11 +200,19 @@ namespace Usage
             return process_table.get_values();
         }
 
-        public SystemMonitor()
+        public SystemMonitor(int update_interval/*, int update_graph_interval*/)
         {
             GTop.init();
+            //this.update_interval = update_interval;
+            //this.update_graph_interval = update_graph_interval;
+            x_cpu_load = new double[get_num_processors()];
+            x_cpu_load_graph = new double[get_num_processors()];
+            x_cpu_last_used = new uint64[get_num_processors()];
+            x_cpu_last_used_graph = new uint64[get_num_processors()];
+            x_cpu_last_total = new uint64[get_num_processors()];
+            x_cpu_last_total_graph = new uint64[get_num_processors()];
             process_table = new HashTable<uint, Process>(direct_hash, direct_equal);
-            Timeout.add(UPDATE_INTERVAL, update);
+            Timeout.add(update_interval, update_data);
         }
     }
 }

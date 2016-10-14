@@ -1,4 +1,6 @@
 src/application.vala
+src/cpu-graph-table.vala
+src/cpu-graph.vala
 src/cpu-sub-view.vala
 src/data-view.vala
 src/gnome-usage.vala

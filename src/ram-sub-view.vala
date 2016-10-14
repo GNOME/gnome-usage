@@ -94,7 +94,7 @@ namespace Usage
             all.toggled.connect(() => {
             	show_active_process = false;
             	monitor.set_process_mode(SystemMonitor.ProcessMode.ALL);
-            	monitor.update();
+            	monitor.update_data();
             	update_process();
             });
 
@@ -103,7 +103,7 @@ namespace Usage
             my.toggled.connect(() => {
             	show_active_process = false;
             	monitor.set_process_mode(SystemMonitor.ProcessMode.USER);
-            	monitor.update();
+            	monitor.update_data();
             	update_process();
             });
 
