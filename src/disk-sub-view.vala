@@ -1,19 +1,19 @@
 namespace Usage
 {
-    public class RAMSubView : View
+    public class DiskSubView : View
     {
         ProcessList process_list_box;
         Gtk.Label cpu_load_label;
         List<ProcessRow> process_row_list;
         bool show_active_process = true;
 
-        public RAMSubView()
+        public DiskSubView()
         {
-            name = "RAM";
+            name = "DISK";
 
             cpu_load_label = new Gtk.Label(null);
             cpu_load_label.margin_right = 100;
-            var processor_label = new Gtk.Label("<b>" + _("Processor") + "</b>");
+            var processor_label = new Gtk.Label("<b>" + _("Disk I/O") + "</b>");
             processor_label.set_use_markup(true);
             var processor_text_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             processor_text_box.set_center_widget(processor_label);

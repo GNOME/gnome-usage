@@ -80,9 +80,7 @@ namespace Usage
             {
                 x_cpu_used[i] = cpu_data.xcpu_user[i] + cpu_data.xcpu_nice[i] + cpu_data.xcpu_sys[i];
                 x_cpu_load[i] = (((double) (x_cpu_used[i] - x_cpu_last_used[i])) / (cpu_data.xcpu_total[i] - x_cpu_last_total[i])) * 100;
-                GLib.stdout.printf("cpu[" + i.to_string() + "]" + ((int) x_cpu_load[i]).to_string() + "\t");
             }
-            GLib.stdout.printf("\n");
 
             /* Memory */
             GTop.Mem mem;
@@ -200,11 +198,10 @@ namespace Usage
             return process_table.get_values();
         }
 
-        public SystemMonitor(int update_interval/*, int update_graph_interval*/)
+        public SystemMonitor(int update_interval)
         {
             GTop.init();
-            //this.update_interval = update_interval;
-            //this.update_graph_interval = update_graph_interval;
+
             x_cpu_load = new double[get_num_processors()];
             x_cpu_load_graph = new double[get_num_processors()];
             x_cpu_last_used = new uint64[get_num_processors()];

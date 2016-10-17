@@ -3,12 +3,15 @@ src/cpu-graph-table.vala
 src/cpu-graph.vala
 src/cpu-sub-view.vala
 src/data-view.vala
+src/disk-sub-view.vala
 src/gnome-usage.vala
+src/graph-stack-switcher.vala
 src/header-bar.vala
+src/memory-sub-view.vala
+src/network-sub-view.vala
 src/performance-view.vala
 src/power-view.vala
 src/process-list.vala
-src/ram-sub-view.vala
 src/storage-view.vala
 src/system-monitor.vala
 src/view.vala
