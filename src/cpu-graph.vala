@@ -1,10 +1,32 @@
 using Rg;
 
-namespace Usage {
+namespace Usage
+{
+    public class CpuGraphSingle : Rg.Graph
+    {
+		private static CpuGraphTableSingle table;
 
-    public class CpuGraph : Rg.Graph {
+        public CpuGraphSingle (uint timespan, uint max_samples)
+        {
+            if(table == null)
+            {
+                table = new CpuGraphTableSingle(timespan, max_samples);
+                set_table(table);
+            }
+            else
+                set_table(table);
 
-        static string[] colors = {
+            LineRenderer renderer = new LineRenderer();
+            renderer.stroke_color = "#ef2929";
+            renderer.line_width = 2;
+            add_renderer(renderer);
+        }
+    }
+
+    public class CpuGraphMulti : Rg.Graph
+    {
+        static string[] colors =
+        {
           "#73d216",
           "#ef2929",
           "#3465a4",
@@ -15,34 +37,17 @@ namespace Usage {
           "#ce5c00",
         };
 
-		private static CpuGraphTable table;
-		private static CpuGraphTable table_multi;
+    	private static CpuGraphTableMulti table;
 
-        public CpuGraph (uint timespan, uint max_samples)
+        public CpuGraphMulti (uint timespan, uint max_samples)
         {
             if(table == null)
             {
-                table = new CpuGraphTable(timespan, max_samples);
+                table = new CpuGraphTableMulti(timespan, max_samples);
                 set_table(table);
             }
             else
                 set_table(table);
-
-            LineRenderer renderer = new LineRenderer();
-            renderer.stroke_color = colors [1];
-            renderer.line_width = 2;
-            add_renderer(renderer);
-        }
-
-        public CpuGraph.multi (uint timespan, uint max_samples)
-        {
-            if(table_multi == null)
-            {
-                table_multi = new CpuGraphTable.multi(timespan, max_samples);
-                set_table(table_multi);
-            }
-            else
-                set_table(table_multi);
 
             for(int i = 0; i < get_num_processors(); i++)
             {

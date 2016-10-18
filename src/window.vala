@@ -9,7 +9,7 @@ namespace Usage
         {
             GLib.Object(application : application);
 
-            this.set_default_size(950, 600);
+            this.set_default_size(950, 520);
             this.window_position = Gtk.WindowPosition.CENTER;
 
 			stack = new Gtk.Stack();

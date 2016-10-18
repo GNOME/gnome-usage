@@ -4,28 +4,28 @@ namespace Usage
     {
         public GraphSwitcherButton.processor(string label)
         {
-            Rg.Graph processor_graph = new CpuGraph(30000, 60);
+            Rg.Graph processor_graph = new CpuGraphSingle(30000, 30);
             child = createContent(processor_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }
 
         public GraphSwitcherButton.memory(string label)
         {
-            Rg.Graph memory_graph = new CpuGraph(30000, 10);
+            Rg.Graph memory_graph = new CpuGraphSingle(30000, 30);
             child = createContent(memory_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }
 
         public GraphSwitcherButton.disk(string label)
         {
-            Rg.Graph disk_graph = new CpuGraph(30000, 5);
+            Rg.Graph disk_graph = new CpuGraphSingle(30000, 30);
             child = createContent(disk_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }
 
         public GraphSwitcherButton.network(string label)
         {
-            Rg.Graph network_graph = new CpuGraph(30000, 1);
+            Rg.Graph network_graph = new CpuGraphSingle(30000, 30);
             child = createContent(network_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }
@@ -34,9 +34,9 @@ namespace Usage
         {
             var graph_frame = new Gtk.Frame(null);
             graph_frame.height_request = 80;
-            graph_frame.margin_top = 14;
-            graph_frame.margin_start = 9;
-            graph_frame.margin_end = 9;
+            graph_frame.margin_top = 12;
+            graph_frame.margin_start = 8;
+            graph_frame.margin_end = 8;
             graph_frame.add(graph);
 
             var label = new Gtk.Label(label_text);
