@@ -19,14 +19,10 @@ namespace Usage
             this.stack = stack;
             this.sub_views = sub_views;
 
-            cpu_button = new Gtk.ToggleButton.with_label("Processor");
-            cpu_button.relief = Gtk.ReliefStyle.NONE;
-            memory_button = new Gtk.ToggleButton.with_label("Memory");
-            memory_button.relief = Gtk.ReliefStyle.NONE;
-            disk_button = new Gtk.ToggleButton.with_label("Disk I/O");
-            disk_button.relief = Gtk.ReliefStyle.NONE;
-            network_button = new Gtk.ToggleButton.with_label("Network");
-            network_button.relief = Gtk.ReliefStyle.NONE;
+            cpu_button = new GraphSwitcherButton.processor("Processor");
+            memory_button = new GraphSwitcherButton.memory("Memory");
+            disk_button = new GraphSwitcherButton.disk("Disk I/O");
+            network_button = new GraphSwitcherButton.network("Network");
 
     	    this.pack_start(cpu_button, false, true, 0);
     	    this.pack_start(memory_button, false, true, 0);

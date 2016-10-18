@@ -9,6 +9,17 @@ namespace Usage {
             set_timespan (timespan * 1000);
             set_max_samples (max_samples);
 
+            var column = new Rg.Column("TOTAL CPU", Type.from_name("gdouble"));
+            add_column(column);
+
+            (GLib.Application.get_default() as Application).monitor.set_update_graph_interval(timespan / (max_samples - 1)); //TODO move to settings!! Here is problem, that this will set all table ant it is problem.
+            Timeout.add(timespan / (max_samples - 1), update_data);
+        }
+
+        public CpuGraphTable.multi (uint timespan, uint max_samples)
+        {
+            set_timespan (timespan * 1000);
+            set_max_samples (max_samples);
 
             for (int i = 0; i < get_num_processors(); i++)
             {
@@ -17,11 +28,19 @@ namespace Usage {
             }
 
             (GLib.Application.get_default() as Application).monitor.set_update_graph_interval(timespan / (max_samples - 1)); //TODO move to settings!! Here is problem, that this will set all table ant it is problem.
-            Timeout.add(timespan / (max_samples - 1), update_data);
-
+            Timeout.add(timespan / (max_samples - 1), update_data_multi);
         }
 
         bool update_data()
+        {
+            Rg.TableIter iter;
+            push (out iter, get_monotonic_time ());
+            iter.set (0, (GLib.Application.get_default() as Application).monitor.cpu_load_graph, -1);
+
+            return true;
+        }
+
+        bool update_data_multi()
         {
             Rg.TableIter iter;
             push (out iter, get_monotonic_time ());

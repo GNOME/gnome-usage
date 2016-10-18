@@ -25,6 +25,7 @@ namespace Usage
                 performance_stack.add_titled(sub_view, sub_view.name, sub_view.name);
 
 		    var stackSwitcher = new GraphStackSwitcher(performance_stack, sub_views);
+		    stackSwitcher.set_size_request(200, -1);
 
     	    var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
     	    paned.add1(stackSwitcher);

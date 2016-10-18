@@ -6,6 +6,7 @@ src/data-view.vala
 src/disk-sub-view.vala
 src/gnome-usage.vala
 src/graph-stack-switcher.vala
+src/graph-switcher-button.vala
 src/header-bar.vala
 src/memory-sub-view.vala
 src/network-sub-view.vala

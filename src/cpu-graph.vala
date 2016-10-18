@@ -16,6 +16,7 @@ namespace Usage {
         };
 
 		private static CpuGraphTable table;
+		private static CpuGraphTable table_multi;
 
         public CpuGraph (int64 timespan, int64 max_samples)
         {
@@ -26,6 +27,21 @@ namespace Usage {
             }
             else
                 set_table(table);
+
+            LineRenderer renderer = new LineRenderer();
+            renderer.stroke_color = colors [0];
+            add_renderer(renderer);
+        }
+
+        public CpuGraph.multi (int64 timespan, int64 max_samples)
+        {
+            if(table_multi == null)
+            {
+                table_multi = new CpuGraphTable.multi(30000, 60);
+                set_table(table_multi);
+            }
+            else
+                set_table(table_multi);
 
             for(int i = 0; i < get_num_processors(); i++)
             {
