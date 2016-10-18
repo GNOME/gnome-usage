@@ -25,8 +25,8 @@ namespace Usage
         public double swap_usage { get; private set; }
         public double swap_usage_graph { get; private set; }
 
-        //TODO update interval setter and getter for non graph
         uint update_graph_interval = 0;
+        uint update_interval = 0;
 
         uint64 cpu_last_used = 0;
         uint64 cpu_last_used_graph = 0;
@@ -38,7 +38,8 @@ namespace Usage
         uint64[] x_cpu_last_total;
         uint64[] x_cpu_last_total_graph;
 
-        bool continue_graph_timeout = true;
+        bool change_graph_timeout = false;
+        bool change_timeout = false;
 
         HashTable<uint, Process> process_table;
 
@@ -142,10 +143,16 @@ namespace Usage
             x_cpu_last_used = x_cpu_used;
             x_cpu_last_total = cpu_data.xcpu_total;
 
+            if(change_graph_timeout)
+            {
+                Timeout.add(update_interval, update_data);
+                return false;
+            }
+
             return true;
         }
 
-        public bool update_graph_data()
+        private bool update_graph_data()
         {
             /* CPU */
             GTop.Cpu cpu_data;
@@ -176,21 +183,36 @@ namespace Usage
             x_cpu_last_used_graph = x_cpu_used;
             x_cpu_last_total_graph = cpu_data.xcpu_total;
 
-            if(continue_graph_timeout == false)
-                Timeout.add(update_graph_interval, update_graph_data);
 
-            return continue_graph_timeout;
+            if(change_graph_timeout)
+            {
+                Timeout.add(update_graph_interval, update_graph_data);
+                return false;
+            }
+
+            return true;
         }
 
         public void set_update_graph_interval(uint miliseconds)
         {
+            change_graph_timeout = true;
             update_graph_interval = miliseconds;
-            Timeout.add(update_graph_interval, update_graph_data);
         }
 
         public uint get_update_graph_interval()
         {
             return update_graph_interval;
+        }
+
+        public void set_update_interval(uint miliseconds)
+        {
+            change_timeout = true;
+            update_interval = miliseconds;
+        }
+
+        public uint get_update_interval()
+        {
+            return update_interval;
         }
 
         public List<unowned Process> get_processes()
@@ -209,7 +231,9 @@ namespace Usage
             x_cpu_last_total = new uint64[get_num_processors()];
             x_cpu_last_total_graph = new uint64[get_num_processors()];
             process_table = new HashTable<uint, Process>(direct_hash, direct_equal);
+            this.update_interval = update_interval;
             Timeout.add(update_interval, update_data);
+            Timeout.add(100, update_graph_data);
         }
     }
 }

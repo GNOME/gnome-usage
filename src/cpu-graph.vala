@@ -6,9 +6,9 @@ namespace Usage {
 
         static string[] colors = {
           "#73d216",
-          "#f57900",
-          "#3465a4",
           "#ef2929",
+          "#3465a4",
+          "#f57900",
           "#75507b",
           "#ce5c00",
           "#c17d11",
@@ -29,7 +29,8 @@ namespace Usage {
                 set_table(table);
 
             LineRenderer renderer = new LineRenderer();
-            renderer.stroke_color = colors [0];
+            renderer.stroke_color = colors [1];
+            renderer.line_width = 2;
             add_renderer(renderer);
         }
 
@@ -48,6 +49,7 @@ namespace Usage {
                 LineRenderer renderer = new LineRenderer();
                 renderer.column = i;
                 renderer.stroke_color = colors [i % colors.length];
+                renderer.line_width = 2;
                 add_renderer(renderer);
             }
         }

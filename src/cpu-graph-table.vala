@@ -12,7 +12,7 @@ namespace Usage {
             var column = new Rg.Column("TOTAL CPU", Type.from_name("gdouble"));
             add_column(column);
 
-            (GLib.Application.get_default() as Application).monitor.set_update_graph_interval(timespan / (max_samples - 1)); //TODO move to settings!! Here is problem, that this will set all table ant it is problem.
+            (GLib.Application.get_default() as Application).monitor.set_update_graph_interval(timespan / (max_samples - 1));
             Timeout.add(timespan / (max_samples - 1), update_data);
         }
 
@@ -27,7 +27,7 @@ namespace Usage {
               add_column(column);
             }
 
-            (GLib.Application.get_default() as Application).monitor.set_update_graph_interval(timespan / (max_samples - 1)); //TODO move to settings!! Here is problem, that this will set all table ant it is problem.
+            (GLib.Application.get_default() as Application).monitor.set_update_graph_interval(timespan / (max_samples - 1));
             Timeout.add(timespan / (max_samples - 1), update_data_multi);
         }
 

@@ -16,7 +16,7 @@ sudo make install
 ```
 
 ##Version
-Actual version is 0.0.3
+Actual version is 0.0.4
 
 ##License
 Code is under GNU GPLv3 license.

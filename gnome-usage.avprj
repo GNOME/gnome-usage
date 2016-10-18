@@ -5,7 +5,7 @@ project_name: gnome-usage
 
 
 vala_binary: src/gnome-usage
-*version: 0.0.3
+*version: 0.0.4
 *vala_vapi: vapis/egg-private.vapi
 *vala_vapi: vapis/glibtop.vapi
 *vala_vapi: vapis/rg.vapi
@@ -46,25 +46,25 @@ h_folder: /usr/include/libgtop-2.0
 
 *po: po
 
-*translate: vala src/cpu-graph.vala
+*translate: vala src/cpu-graph-table.vala
 *translate: vala src/system-monitor.vala
 *translate: vala src/memory-sub-view.vala
 *translate: vala src/network-sub-view.vala
 *translate: vala src/header-bar.vala
 *translate: vala src/disk-sub-view.vala
-*translate: vala src/graph-stack-switcher.vala
-*translate: vala src/performance-view.vala
-*translate: vala src/cpu-sub-view.vala
-*translate: vala src/view.vala
 *translate: vala src/graph-switcher-button.vala
+*translate: vala src/performance-view.vala
+*translate: vala src/graph-stack-switcher.vala
+*translate: vala src/gnome-usage.vala
+*translate: vala src/view.vala
+*translate: vala src/cpu-sub-view.vala
+*translate: vala src/window.vala
+*translate: vala src/cpu-graph.vala
 *translate: vala src/storage-view.vala
 *translate: vala src/power-view.vala
 *translate: vala src/process-list.vala
 *translate: vala src/application.vala
 *translate: vala src/data-view.vala
-*translate: vala src/cpu-graph-table.vala
-*translate: vala src/window.vala
-*translate: vala src/gnome-usage.vala
 
 *data: data/local
 
