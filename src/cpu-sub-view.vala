@@ -27,7 +27,7 @@ namespace Usage
             process_list_box = new ProcessList();
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            var cpu_graph = new CpuGraph.multi(30000000, 60);
+            var cpu_graph = new CpuGraph.multi(30000, 60);
             var cpu_graph_frame = new Gtk.Frame(null);
             cpu_graph_frame.height_request = 200;
             cpu_graph_frame.margin_start = margin_side;

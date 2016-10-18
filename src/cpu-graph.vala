@@ -18,11 +18,11 @@ namespace Usage {
 		private static CpuGraphTable table;
 		private static CpuGraphTable table_multi;
 
-        public CpuGraph (int64 timespan, int64 max_samples)
+        public CpuGraph (uint timespan, uint max_samples)
         {
             if(table == null)
             {
-                table = new CpuGraphTable(30000, 60);
+                table = new CpuGraphTable(timespan, max_samples);
                 set_table(table);
             }
             else
@@ -34,11 +34,11 @@ namespace Usage {
             add_renderer(renderer);
         }
 
-        public CpuGraph.multi (int64 timespan, int64 max_samples)
+        public CpuGraph.multi (uint timespan, uint max_samples)
         {
             if(table_multi == null)
             {
-                table_multi = new CpuGraphTable.multi(30000, 60);
+                table_multi = new CpuGraphTable.multi(timespan, max_samples);
                 set_table(table_multi);
             }
             else
