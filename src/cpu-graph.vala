@@ -4,13 +4,13 @@ namespace Usage
 {
     public class CpuGraphSingle : Rg.Graph
     {
-		private static CpuGraphTableSingle table;
+		private static CpuGraphTable table;
 
         public CpuGraphSingle (uint timespan, uint max_samples)
         {
             if(table == null)
             {
-                table = new CpuGraphTableSingle(timespan, max_samples);
+                table = new CpuGraphTable(timespan, max_samples, false);
                 set_table(table);
             }
             else
@@ -37,13 +37,13 @@ namespace Usage
           "#ce5c00",
         };
 
-    	private static CpuGraphTableMulti table;
+    	private static CpuGraphTable table;
 
         public CpuGraphMulti (uint timespan, uint max_samples)
         {
             if(table == null)
             {
-                table = new CpuGraphTableMulti(timespan, max_samples);
+                table = new CpuGraphTable(timespan, max_samples, true);
                 set_table(table);
             }
             else

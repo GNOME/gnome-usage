@@ -27,7 +27,7 @@ namespace Usage
             process_list_box = new ProcessList();
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            var cpu_graph = new CpuGraphMulti(30000, 60);
+            var cpu_graph = new CpuGraphMulti(60000, 60);
             var cpu_graph_frame = new Gtk.Frame(null);
             cpu_graph_frame.height_request = 200;
             cpu_graph_frame.margin_start = margin_side;
@@ -61,21 +61,19 @@ namespace Usage
             cpu_load_label.set_text(((int) monitor.cpu_load).to_string() + " %");
 
         	process_row_list = new List<ProcessRow>();
-            foreach(unowned Process process in monitor.get_processes()) {
-
-        	if(show_active_process)
-        	{
-        		if((int) process.cpu_load > 0)
-        			insert_process_row(process);
-        	} else
-        		insert_process_row(process);
+            foreach(unowned Process process in monitor.get_processes())
+            {
+        	    if(show_active_process)
+        	    {
+        	    	if((int) process.cpu_load > 0)
+        	    		insert_process_row(process);
+        	    }
+        	    else
+        	    	insert_process_row(process);
             }
 
             for(int i = 0; i < process_row_list.length(); i++)
-            {
-                process_list_box.add(process_row_list.data);
-        		process_row_list =(owned) process_row_list.next;
-        	}
+                process_list_box.add(process_row_list.nth_data (i));
 
             return true;
         }
