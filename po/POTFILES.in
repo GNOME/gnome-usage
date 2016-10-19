@@ -8,6 +8,8 @@ src/gnome-usage.vala
 src/graph-stack-switcher.vala
 src/graph-switcher-button.vala
 src/header-bar.vala
+src/memory-graph-table.vala
+src/memory-graph.vala
 src/memory-sub-view.vala
 src/network-sub-view.vala
 src/performance-view.vala

@@ -183,7 +183,6 @@ namespace Usage
             x_cpu_last_used_graph = x_cpu_used;
             x_cpu_last_total_graph = cpu_data.xcpu_total;
 
-
             if(change_graph_timeout)
             {
                 Timeout.add(update_graph_interval, update_graph_data);

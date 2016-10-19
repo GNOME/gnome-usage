@@ -23,11 +23,7 @@ namespace Usage
             box.pack_end(load_label, false, true, 10);
             add(box);
 
-            title_label.show();
-            load_label.show();
-            icon.show();
-            box.show();
-            show();
+            show_all();
         }
     }
 

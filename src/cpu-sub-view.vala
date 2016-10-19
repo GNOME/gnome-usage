@@ -1,5 +1,3 @@
-using Rg;
-
 namespace Usage
 {
     public class ProcessorSubView : View
@@ -55,7 +53,8 @@ namespace Usage
             Timeout.add(1000, update_process);
         }
 
-        public bool update_process()
+        //TODO better management
+        private bool update_process()
         {
         	process_list_box.foreach((widget) => { widget.destroy(); });
             cpu_load_label.set_text(((int) monitor.cpu_load).to_string() + " %");
@@ -78,7 +77,7 @@ namespace Usage
             return true;
         }
 
-        public void insert_process_row(Process process)
+        private void insert_process_row(Process process)
         {
             var process_row = new ProcessRow(process.cmdline,(int) process.cpu_load);
             process_row.sort_id =(int)(10 * process.cpu_load);
@@ -90,7 +89,7 @@ namespace Usage
         private void construct_menu_button()
         {
         	var popover_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            popover_box.margin = 5;
+            popover_box.margin = 7;
 
             var active = new Gtk.RadioButton.with_label_from_widget(null, _("Active process"));
             popover_box.pack_start(active, false, false, 0);

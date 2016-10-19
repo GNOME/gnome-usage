@@ -11,7 +11,7 @@ namespace Usage
 
         public GraphSwitcherButton.memory(string label)
         {
-            Rg.Graph memory_graph = new CpuGraphSingle(60000, 60);
+            Rg.Graph memory_graph = new MemoryGraph(60000, 60);
             child = createContent(memory_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }
