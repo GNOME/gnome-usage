@@ -52,6 +52,7 @@ h_folder: /usr/include/libgtop-2.0
 *translate: vala src/system-monitor.vala
 *translate: vala src/process-list.vala
 *translate: vala src/header-bar.vala
+*translate: vala src/memory-graph-table.vala
 *translate: vala src/network-sub-view.vala
 *translate: vala src/cpu-graph.vala
 *translate: vala src/performance-view.vala
@@ -59,9 +60,8 @@ h_folder: /usr/include/libgtop-2.0
 *translate: vala src/gnome-usage.vala
 *translate: vala src/window.vala
 *translate: vala src/view.vala
-*translate: vala src/memory-graph-table.vala
-*translate: vala src/disk-sub-view.vala
 *translate: vala src/graph-switcher-button.vala
+*translate: vala src/disk-sub-view.vala
 *translate: vala src/memory-sub-view.vala
 *translate: vala src/cpu-graph-table.vala
 *translate: vala src/memory-graph.vala
