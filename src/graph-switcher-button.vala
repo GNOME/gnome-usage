@@ -4,28 +4,28 @@ namespace Usage
     {
         public GraphSwitcherButton.processor(string label)
         {
-            Rg.Graph processor_graph = new CpuGraphSingle(60000, 60);
+            Rg.Graph processor_graph = new CpuGraphSingle();
             child = createContent(processor_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }
 
         public GraphSwitcherButton.memory(string label)
         {
-            Rg.Graph memory_graph = new MemoryGraph(60000, 60);
+            Rg.Graph memory_graph = new MemoryGraph();
             child = createContent(memory_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }
 
         public GraphSwitcherButton.disk(string label)
         {
-            Rg.Graph disk_graph = new CpuGraphSingle(60000, 60);
+            Rg.Graph disk_graph = new CpuGraphSingle();
             child = createContent(disk_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }
 
         public GraphSwitcherButton.network(string label)
         {
-            Rg.Graph network_graph = new CpuGraphSingle(60000, 60);
+            Rg.Graph network_graph = new CpuGraphSingle();
             child = createContent(network_graph, label);
             relief = Gtk.ReliefStyle.NONE;
         }

@@ -24,7 +24,7 @@ namespace Usage
             process_list_box = new ProcessList();
 
             var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            var memory_graph = new MemoryGraph(60000, 60);
+            var memory_graph = new MemoryGraph();
             var memory_graph_frame = new Gtk.Frame(null);
             memory_graph_frame.height_request = 200;
             memory_graph_frame.margin_start = margin_side;

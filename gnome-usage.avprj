@@ -38,6 +38,7 @@ c_library: gtop-2.0 ${CMAKE_SOURCE_DIR}/external/rg/librg.a ${CMAKE_SOURCE_DIR}/
 *vala_source: performance-view.vala
 *vala_source: power-view.vala
 *vala_source: process-list.vala
+*vala_source: settings.vala
 *vala_source: storage-view.vala
 *vala_source: system-monitor.vala
 *vala_source: view.vala
@@ -48,26 +49,27 @@ h_folder: /usr/include/libgtop-2.0
 
 *po: po
 
-*translate: vala src/cpu-sub-view.vala
-*translate: vala src/system-monitor.vala
+*translate: vala src/performance-view.vala
 *translate: vala src/process-list.vala
 *translate: vala src/header-bar.vala
-*translate: vala src/memory-graph-table.vala
+*translate: vala src/cpu-sub-view.vala
 *translate: vala src/network-sub-view.vala
 *translate: vala src/cpu-graph.vala
-*translate: vala src/performance-view.vala
-*translate: vala src/graph-stack-switcher.vala
+*translate: vala src/memory-graph-table.vala
 *translate: vala src/gnome-usage.vala
 *translate: vala src/window.vala
 *translate: vala src/view.vala
-*translate: vala src/graph-switcher-button.vala
-*translate: vala src/disk-sub-view.vala
 *translate: vala src/memory-sub-view.vala
+*translate: vala src/disk-sub-view.vala
+*translate: vala src/system-monitor.vala
+*translate: vala src/graph-stack-switcher.vala
 *translate: vala src/cpu-graph-table.vala
+*translate: vala src/settings.vala
+*translate: vala src/graph-switcher-button.vala
+*translate: vala src/application.vala
 *translate: vala src/memory-graph.vala
 *translate: vala src/storage-view.vala
 *translate: vala src/power-view.vala
-*translate: vala src/application.vala
 *translate: vala src/data-view.vala
 
 *data: data/local

@@ -6,11 +6,11 @@ namespace Usage
     {
 		private static MemoryGraphTable table;
 
-        public MemoryGraph (uint timespan, uint max_samples)
+        public MemoryGraph ()
         {
             if(table == null)
             {
-                table = new MemoryGraphTable(timespan, max_samples);
+                table = new MemoryGraphTable();
                 set_table(table);
             }
             else

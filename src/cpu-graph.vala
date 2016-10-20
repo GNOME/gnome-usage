@@ -6,11 +6,11 @@ namespace Usage
     {
 		private static CpuGraphTable table;
 
-        public CpuGraphSingle (uint timespan, uint max_samples)
+        public CpuGraphSingle ()
         {
             if(table == null)
             {
-                table = new CpuGraphTable(timespan, max_samples, false);
+                table = new CpuGraphTable(false);
                 set_table(table);
             }
             else
@@ -39,11 +39,11 @@ namespace Usage
 
     	private static CpuGraphTable table;
 
-        public CpuGraphMulti (uint timespan, uint max_samples)
+        public CpuGraphMulti ()
         {
             if(table == null)
             {
-                table = new CpuGraphTable(timespan, max_samples, true);
+                table = new CpuGraphTable(true);
                 set_table(table);
             }
             else

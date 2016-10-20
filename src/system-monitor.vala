@@ -25,9 +25,6 @@ namespace Usage
         public double swap_usage { get; private set; }
         public double swap_usage_graph { get; private set; }
 
-        uint update_graph_interval = 0;
-        uint update_interval = 0;
-
         uint64 cpu_last_used = 0;
         uint64 cpu_last_used_graph = 0;
         uint64 cpu_last_total = 0;
@@ -38,7 +35,6 @@ namespace Usage
         uint64[] x_cpu_last_total;
         uint64[] x_cpu_last_total_graph;
 
-        bool change_graph_timeout = false;
         bool change_timeout = false;
 
         HashTable<uint, Process> process_table;
@@ -143,9 +139,10 @@ namespace Usage
             x_cpu_last_used = x_cpu_used;
             x_cpu_last_total = cpu_data.xcpu_total;
 
-            if(change_graph_timeout)
+            if(change_timeout)
             {
-                Timeout.add(update_interval, update_data);
+                change_timeout = false;
+                Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval, update_data);
                 return false;
             }
 
@@ -183,16 +180,18 @@ namespace Usage
             x_cpu_last_used_graph = x_cpu_used;
             x_cpu_last_total_graph = cpu_data.xcpu_total;
 
-            if(change_graph_timeout)
+
+            if(change_timeout)
             {
-                Timeout.add(update_graph_interval, update_graph_data);
+                change_timeout = false;
+                Timeout.add((GLib.Application.get_default() as Application).settings.graph_update_interval, update_graph_data);
                 return false;
             }
 
             return true;
         }
 
-        public void set_update_graph_interval(uint miliseconds)
+        /*public void set_update_graph_interval(uint miliseconds)
         {
             change_graph_timeout = true;
             update_graph_interval = miliseconds;
@@ -212,14 +211,14 @@ namespace Usage
         public uint get_update_interval()
         {
             return update_interval;
-        }
+        }*/
 
         public List<unowned Process> get_processes()
         {
             return process_table.get_values();
         }
 
-        public SystemMonitor(int update_interval)
+        public SystemMonitor()
         {
             GTop.init();
 
@@ -230,9 +229,15 @@ namespace Usage
             x_cpu_last_total = new uint64[get_num_processors()];
             x_cpu_last_total_graph = new uint64[get_num_processors()];
             process_table = new HashTable<uint, Process>(direct_hash, direct_equal);
-            this.update_interval = update_interval;
-            Timeout.add(update_interval, update_data);
-            Timeout.add(100, update_graph_data);
+
+            var settings = (GLib.Application.get_default() as Application).settings;
+
+            settings.notify.connect(() => {
+                change_timeout = true;
+            });
+
+            Timeout.add(settings.list_update_interval, update_data);
+            Timeout.add(settings.graph_update_interval, update_graph_data);
         }
     }
 }
