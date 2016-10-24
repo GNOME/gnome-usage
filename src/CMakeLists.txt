@@ -7,13 +7,13 @@ set (GETTEXT_PACKAGE "gnome-usage")
 set (RELEASE_NAME "gnome-usage")
 set (CMAKE_C_FLAGS "")
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (VERSION "0.0.4")
+set (VERSION "0.0.5")
 set (TESTSRCDIR "${CMAKE_SOURCE_DIR}")
 set (DOLLAR "$")
 
 configure_file (${CMAKE_SOURCE_DIR}/src/Config.vala.cmake ${CMAKE_BINARY_DIR}/src/Config.vala)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
-set (VERSION "0.0.4")
+set (VERSION "0.0.5")
 add_definitions (${DEPS_CFLAGS})
 link_libraries ( ${DEPS_LIBRARIES} )
 link_directories ( ${DEPS_LIBRARY_DIRS} )
@@ -58,6 +58,7 @@ set (APP_SOURCES ${APP_SOURCES} system-monitor.vala)
 set (APP_SOURCES ${APP_SOURCES} view.vala)
 set (APP_SOURCES ${APP_SOURCES} window.vala)
 
+set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/better.vapi)
 set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/egg-private.vapi)
 set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/glibtop.vapi)
 set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/rg.vapi)
@@ -67,9 +68,11 @@ if ((${CMAKE_BUILD_TYPE} STREQUAL "Debug") OR (${CMAKE_BUILD_TYPE} STREQUAL "Rel
 	set(COMPILE_OPTIONS ${COMPILE_OPTIONS} "-g")
 endif()
 
+include_directories (AFTER ../external/better )
 include_directories (AFTER ../external/egg )
 include_directories (AFTER ../external/rg )
 include_directories (AFTER /usr/include/libgtop-2.0 )
+include_directories (AFTER . )
 
 vala_precompile(VALA_C gnome-usage
 	${APP_SOURCES}
@@ -78,6 +81,8 @@ PACKAGES
 CUSTOM_VAPIS
 	${CUSTOM_VAPIS_LIST}
 )
+
+set (VALA_C ${VALA_C} better-box.c)
 
 add_executable(gnome-usage ${VALA_C})
 target_link_libraries( gnome-usage gtop-2.0 ${CMAKE_SOURCE_DIR}/external/rg/librg.a ${CMAKE_SOURCE_DIR}/external/egg/libegg-private.a )

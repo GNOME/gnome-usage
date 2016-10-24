@@ -20,3 +20,4 @@ src/storage-view.vala
 src/system-monitor.vala
 src/view.vala
 src/window.vala
+src/better-box.c

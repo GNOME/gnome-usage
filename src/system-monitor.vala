@@ -191,28 +191,6 @@ namespace Usage
             return true;
         }
 
-        /*public void set_update_graph_interval(uint miliseconds)
-        {
-            change_graph_timeout = true;
-            update_graph_interval = miliseconds;
-        }
-
-        public uint get_update_graph_interval()
-        {
-            return update_graph_interval;
-        }
-
-        public void set_update_interval(uint miliseconds)
-        {
-            change_timeout = true;
-            update_interval = miliseconds;
-        }
-
-        public uint get_update_interval()
-        {
-            return update_interval;
-        }*/
-
         public List<unowned Process> get_processes()
         {
             return process_table.get_values();

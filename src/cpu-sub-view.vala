@@ -10,40 +10,39 @@ namespace Usage
         public ProcessorSubView()
         {
             name = "PROCESSOR";
-            const int margin_side = 50;
 
             cpu_load_label = new Gtk.Label(null);
-            cpu_load_label.margin_right = margin_side;
-            var processor_label = new Gtk.Label("<b>" + _("Processor") + "</b>");
-            processor_label.set_use_markup(true);
-            var processor_text_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            processor_text_box.set_center_widget(processor_label);
-            processor_text_box.pack_end(cpu_load_label, false, true, 0);
-            processor_text_box.margin_top = 10;
-            processor_text_box.margin_bottom = 10;
+            var label =  new Gtk.Label("<span font_desc=\"14.0\">" + _("Processor") + "</span>");
+            label.set_use_markup(true);
+            label.margin_top = 20;
+            label.margin_bottom = 15;
 
             process_list_box = new ProcessList();
 
-            var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             var cpu_graph = new CpuGraphMulti();
             var cpu_graph_frame = new Gtk.Frame(null);
-            cpu_graph_frame.height_request = 200;
-            cpu_graph_frame.margin_start = margin_side;
-            cpu_graph_frame.margin_end = margin_side;
-            cpu_graph_frame.margin_bottom = 10;
+            cpu_graph_frame.height_request = 225;
+            cpu_graph_frame.width_request = 600;
+            cpu_graph_frame.valign = Gtk.Align.START;
             cpu_graph_frame.add(cpu_graph);
 
             var process_list_box_frame = new Gtk.Frame(null);
-            process_list_box_frame.margin_start = margin_side;
-            process_list_box_frame.margin_end = margin_side;
-            process_list_box_frame.margin_bottom = 20;
+            process_list_box_frame.margin_top = 30;
             process_list_box_frame.add(process_list_box);
-            cpu_box.pack_start(processor_text_box, false, false, 0);
-            cpu_box.pack_start(cpu_graph_frame, true, true, 0);
-            cpu_box.pack_start(process_list_box_frame, true, false, 0);
+
+            var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            cpu_box.pack_start(label, false, false, 0);
+            cpu_box.pack_start(cpu_graph_frame, false, false, 0);
+            cpu_box.pack_start(process_list_box_frame, false, false, 0);
+
+            var better_box = new Better.Box();
+            better_box.max_width_request = 600;
+            better_box.halign = Gtk.Align.CENTER;
+            better_box.orientation = Gtk.Orientation.HORIZONTAL;
+            better_box.add(cpu_box);
 
             var scrolled_window = new Gtk.ScrolledWindow(null, null);
-            scrolled_window.add(cpu_box);
+            scrolled_window.add(better_box);
             scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
 
             construct_menu_button();

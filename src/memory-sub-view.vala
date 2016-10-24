@@ -1,3 +1,4 @@
+using Better;
 namespace Usage
 {
     public class MemorySubView : View
@@ -5,51 +6,52 @@ namespace Usage
         ProcessList process_list_box;
         Gtk.Label memory_load_label;
         List<ProcessRow> process_row_list;
+        bool show_active_process = true;
 
         public MemorySubView()
         {
             name = "MEMORY";
-            const int margin_side = 50;
 
             memory_load_label = new Gtk.Label(null);
-            memory_load_label.margin_right = margin_side;
-            var processor_label = new Gtk.Label("<b>" + _("Memory") + "</b>");
-            processor_label.set_use_markup(true);
-            var processor_text_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            processor_text_box.set_center_widget(processor_label);
-            processor_text_box.pack_end(memory_load_label, false, true, 0);
-            processor_text_box.margin_top = 10;
-            processor_text_box.margin_bottom = 10;
+            var label = new Gtk.Label("<span font_desc=\"14.0\">" + _("Memory") + "</span>");
+            label.set_use_markup(true);
+            label.margin_top = 20;
+            label.margin_bottom = 15;
 
             process_list_box = new ProcessList();
 
-            var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             var memory_graph = new MemoryGraph();
             var memory_graph_frame = new Gtk.Frame(null);
-            memory_graph_frame.height_request = 200;
-            memory_graph_frame.margin_start = margin_side;
-            memory_graph_frame.margin_end = margin_side;
-            memory_graph_frame.margin_bottom = 10;
+            memory_graph_frame.height_request = 225;
+            memory_graph_frame.width_request = 600;
+            memory_graph_frame.valign = Gtk.Align.START;
             memory_graph_frame.add(memory_graph);
 
             var process_list_box_frame = new Gtk.Frame(null);
-            process_list_box_frame.margin_start = margin_side;
-            process_list_box_frame.margin_end = margin_side;
-            process_list_box_frame.margin_bottom = 20;
+            process_list_box_frame.margin_top = 30;
             process_list_box_frame.add(process_list_box);
-            memory_box.pack_start(processor_text_box, false, false, 0);
-            memory_box.pack_start(memory_graph_frame, true, true, 0);
-            memory_box.pack_start(process_list_box_frame, true, false, 0);
+            
+            var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            memory_box.pack_start(label, false, false, 0);
+            memory_box.pack_start(memory_graph_frame, false, false, 0);
+            memory_box.pack_start(process_list_box_frame, false, false, 0);
+
+            var better_box = new Better.Box();
+            better_box.max_width_request = 600;
+            better_box.halign = Gtk.Align.CENTER;
+            better_box.orientation = Gtk.Orientation.HORIZONTAL;
+            better_box.add(memory_box);
 
             var scrolled_window = new Gtk.ScrolledWindow(null, null);
-            scrolled_window.add(memory_box);
+            scrolled_window.add(better_box);
             scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
 
             add(scrolled_window);
 
-          //  Timeout.add(1000, update_process);
+            Timeout.add(1000, update_process);
         }
 
+        //TODO better management
         private bool update_process()
         {
         	process_list_box.foreach((widget) => { widget.destroy(); });
@@ -58,7 +60,13 @@ namespace Usage
         	process_row_list = new List<ProcessRow>();
             foreach(unowned Process process in monitor.get_processes())
             {
-        	  	insert_process_row(process);
+        	  	if(show_active_process)
+                {
+                	if((int) process.cpu_load > 0)
+                		insert_process_row(process);
+                }
+                else
+                	insert_process_row(process);
             }
 
             for(int i = 0; i < process_row_list.length(); i++)
