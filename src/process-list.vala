@@ -13,7 +13,7 @@ namespace Usage
         public ProcessRow(string title, int load)
         {
 			var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-			box.margin = 5;
+			box.margin = 10;
         	title_label = new Gtk.Label(title);
         	load_label = new Gtk.Label(load.to_string() + " %");
         	icon = new Gtk.Image.from_icon_name("dialog-error", Gtk.IconSize.BUTTON);
