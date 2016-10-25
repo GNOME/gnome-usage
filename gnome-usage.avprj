@@ -54,13 +54,14 @@ h_folder: /usr/include/libgtop-2.0
 *po: po
 
 translate: c src/better-box.c
-*translate: vala src/performance-view.vala
+*translate: vala src/graph-switcher-button.vala
 *translate: vala src/settings.vala
 *translate: vala src/process-list.vala
 *translate: vala src/header-bar.vala
 *translate: vala src/memory-sub-view.vala
 *translate: vala src/network-sub-view.vala
 *translate: vala src/cpu-graph.vala
+*translate: vala src/performance-view.vala
 *translate: vala src/memory-graph-table.vala
 *translate: vala src/system-monitor.vala
 *translate: vala src/view.vala
@@ -70,7 +71,6 @@ translate: c src/better-box.c
 *translate: vala src/graph-stack-switcher.vala
 *translate: vala src/cpu-sub-view.vala
 *translate: vala src/cpu-graph-table.vala
-*translate: vala src/graph-switcher-button.vala
 *translate: vala src/application.vala
 *translate: vala src/memory-graph.vala
 *translate: vala src/storage-view.vala

@@ -22,4 +22,4 @@ Actual version is 0.0.5
 Code is under GNU GPLv3 license.
 
 ##Design:
-<img src="https://rawgit.com/gnome-design-team/gnome-mockups/master/usage/usage.svg">
+<img src="https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage-wires.png">

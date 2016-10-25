@@ -26,6 +26,7 @@ namespace Usage
 
 		    var stackSwitcher = new GraphStackSwitcher(performance_stack, sub_views);
 		    stackSwitcher.set_size_request(200, -1);
+		    stackSwitcher.get_style_context().add_class("sidebar");
 
     	    var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
     	    paned.add1(stackSwitcher);
