@@ -26,7 +26,7 @@ namespace Usage {
                 var column_x_cpu = new Rg.Column("CPU: " + i.to_string(), Type.from_name("gdouble"));
                 add_column(column_x_cpu);
 
-                change_big_process_usage[i] = false;
+                change_big_process_usage[i] = true;
                 change_small_process_usage[i] = true;
             }
 
@@ -72,7 +72,7 @@ namespace Usage {
     {
         public signal void big_process_usage ();
         public signal void small_process_usage ();
-        private bool change_big_process_usage = false;
+        private bool change_big_process_usage = true;
         private bool change_small_process_usage = true;
 
         public CpuGraphTableMostUsedCore ()
