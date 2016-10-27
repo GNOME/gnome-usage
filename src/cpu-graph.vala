@@ -2,16 +2,15 @@ using Rg;
 
 namespace Usage
 {
-    private const string red_color = "#ee2222";
-    private const string blue_color = "#4a90d9";
-
     /**
      *  Graph showing most used core
     **/
     public class CpuGraphMostUsed : Rg.Graph
     {
 		private static CpuGraphTableMostUsedCore table;
-		LineRenderer renderer;
+		private LineRenderer renderer;
+		private const string red_color = "#ee2222";
+        private const string blue_color = "#4a90d9";
 
         public CpuGraphMostUsed ()
         {
@@ -45,6 +44,8 @@ namespace Usage
     {
     	private static CpuGraphTableComplex table;
         private LineRenderer[] renderers;
+        private const string red_color = "#ee2222";
+        private const string blue_color = "#a8c9ed";
 
         public CpuGraphAllCores ()
         {
@@ -62,7 +63,7 @@ namespace Usage
                 renderers[i] = new LineRenderer();
                 renderers[i].column = i;
                 renderers[i].stroke_color = blue_color;
-                renderers[i].line_width = 2;
+                renderers[i].line_width = 2.5;
                 add_renderer(renderers[i]);
             }
 
