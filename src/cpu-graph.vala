@@ -2,61 +2,77 @@ using Rg;
 
 namespace Usage
 {
-    public class CpuGraphSingle : Rg.Graph
-    {
-		private static CpuGraphTable table;
+    private const string red_color = "#ee2222";
+    private const string blue_color = "#4a90d9";
 
-        public CpuGraphSingle ()
+    /**
+     *  Graph showing most used core
+    **/
+    public class CpuGraphMostUsed : Rg.Graph
+    {
+		private static CpuGraphTableMostUsedCore table;
+		LineRenderer renderer;
+
+        public CpuGraphMostUsed ()
         {
             if(table == null)
             {
-                table = new CpuGraphTable(false);
+                table = new CpuGraphTableMostUsedCore();
                 set_table(table);
             }
             else
                 set_table(table);
 
-            LineRenderer renderer = new LineRenderer();
-            renderer.stroke_color = "#ef2929";
-            renderer.line_width = 2;
+            renderer = new LineRenderer();
+            renderer.stroke_color = blue_color;
+            renderer.line_width = 1.2;
             add_renderer(renderer);
+
+            table.big_process_usage.connect (() => {
+                renderer.stroke_color = red_color;
+            });
+
+            table.small_process_usage.connect (() => {
+                renderer.stroke_color = blue_color;
+            });
         }
     }
 
-    public class CpuGraphMulti : Rg.Graph
+    /**
+     *  Graph showing all processor cores.
+    **/
+    public class CpuGraphAllCores : Rg.Graph
     {
-        static string[] colors =
-        {
-          "#73d216",
-          "#ef2929",
-          "#3465a4",
-          "#f57900",
-          "#75507b",
-          "#ce5c00",
-          "#c17d11",
-          "#ce5c00",
-        };
+    	private static CpuGraphTableComplex table;
+        private LineRenderer[] renderers;
 
-    	private static CpuGraphTable table;
-
-        public CpuGraphMulti ()
+        public CpuGraphAllCores ()
         {
             if(table == null)
             {
-                table = new CpuGraphTable(true);
+                table = new CpuGraphTableComplex();
                 set_table(table);
             }
             else
                 set_table(table);
 
+            renderers = new LineRenderer[get_num_processors()];
             for(int i = 0; i < get_num_processors(); i++)
             {
-                LineRenderer renderer = new LineRenderer();
-                renderer.column = i;
-                renderer.stroke_color = colors [i % colors.length];
-                renderer.line_width = 2;
-                add_renderer(renderer);
+                renderers[i] = new LineRenderer();
+                renderers[i].column = i;
+                renderers[i].stroke_color = blue_color;
+                renderers[i].line_width = 2;
+                add_renderer(renderers[i]);
             }
+
+            table.big_process_usage.connect ((column) => {
+                renderers[column].stroke_color = red_color;
+            });
+
+            table.small_process_usage.connect ((column) => {
+                renderers[column].stroke_color = blue_color;
+            });
         }
     }
 }

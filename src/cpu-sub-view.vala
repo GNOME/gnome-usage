@@ -3,7 +3,6 @@ namespace Usage
     public class ProcessorSubView : View
     {
         ProcessList process_list_box;
-        Gtk.Label cpu_load_label;
         List<ProcessRow> process_row_list;
         bool show_active_process = true;
 
@@ -11,7 +10,6 @@ namespace Usage
         {
             name = "PROCESSOR";
 
-            cpu_load_label = new Gtk.Label(null);
             var label =  new Gtk.Label("<span font_desc=\"14.0\">" + _("Processor") + "</span>");
             label.set_use_markup(true);
             label.margin_top = 20;
@@ -19,7 +17,7 @@ namespace Usage
 
             process_list_box = new ProcessList();
 
-            var cpu_graph = new CpuGraphMulti();
+            var cpu_graph = new CpuGraphAllCores();
             var cpu_graph_frame = new Gtk.Frame(null);
             cpu_graph_frame.height_request = 225;
             cpu_graph_frame.width_request = 600;
@@ -56,7 +54,6 @@ namespace Usage
         private bool update_process()
         {
         	process_list_box.foreach((widget) => { widget.destroy(); });
-            cpu_load_label.set_text(((int) monitor.cpu_load).to_string() + " %");
 
         	process_row_list = new List<ProcessRow>();
             foreach(unowned Process process in monitor.get_processes())
@@ -123,7 +120,7 @@ namespace Usage
         public override void update_header_bar()
         {
             header_bar.clear();
-            header_bar.show_menu_button();
+            //header_bar.show_menu_button();
             header_bar.show_stack_switcher();
         }
     }

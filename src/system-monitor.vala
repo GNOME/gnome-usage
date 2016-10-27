@@ -117,7 +117,7 @@ namespace Usage
                 else
                 {
                     unowned Process process = process_table[pids[i]];
-                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100;
+                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors();
                     process.alive = true;
                     process.cpu_last_used = proc_time.rtime;
 

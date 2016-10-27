@@ -4,7 +4,7 @@ namespace Usage
     {
         public GraphSwitcherButton.processor(string label)
         {
-            Rg.Graph processor_graph = new CpuGraphSingle();
+            Rg.Graph processor_graph = new CpuGraphMostUsed();
             child = createContent(processor_graph, label);
             style_button();
         }
@@ -18,14 +18,14 @@ namespace Usage
 
         public GraphSwitcherButton.disk(string label)
         {
-            Rg.Graph disk_graph = new CpuGraphSingle();
+            Rg.Graph disk_graph = new MemoryGraph();
             child = createContent(disk_graph, label);
             style_button();
         }
 
         public GraphSwitcherButton.network(string label)
         {
-            Rg.Graph network_graph = new CpuGraphSingle();
+            Rg.Graph network_graph = new MemoryGraph();
             child = createContent(network_graph, label);
             style_button();
         }
