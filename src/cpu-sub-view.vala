@@ -2,8 +2,8 @@ namespace Usage
 {
     public class ProcessorSubView : View
     {
-        ProcessList process_list_box;
-        List<ProcessRow> process_row_list;
+        ProcessListBox process_list_box;
+        List<ProcessListBoxRow> process_row_list;
         bool show_active_process = true;
 
         public ProcessorSubView()
@@ -15,7 +15,7 @@ namespace Usage
             label.margin_top = 20;
             label.margin_bottom = 15;
 
-            process_list_box = new ProcessList();
+            process_list_box = new ProcessListBox();
 
             var cpu_graph = new CpuGraphAllCores();
             var cpu_graph_frame = new Gtk.Frame(null);
@@ -47,7 +47,7 @@ namespace Usage
 
             add(scrolled_window);
 
-            Timeout.add(1000, update_process);
+            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval, update_process);
         }
 
         //TODO better management
@@ -55,7 +55,7 @@ namespace Usage
         {
         	process_list_box.foreach((widget) => { widget.destroy(); });
 
-        	process_row_list = new List<ProcessRow>();
+        	process_row_list = new List<ProcessListBoxRow>();
             foreach(unowned Process process in monitor.get_processes())
             {
         	    if(show_active_process)
@@ -75,10 +75,10 @@ namespace Usage
 
         private void insert_process_row(Process process)
         {
-            var process_row = new ProcessRow(process.cmdline,(int) process.cpu_load);
+            var process_row = new ProcessListBoxRow(process.cmdline,(int) process.cpu_load);
             process_row.sort_id =(int)(10 * process.cpu_load);
             process_row_list.insert_sorted(process_row,(a, b) => {
-            	return(b as ProcessRow).sort_id -(a as ProcessRow).sort_id;
+            	return(b as ProcessListBoxRow).sort_id -(a as ProcessListBoxRow).sort_id;
             });
         }
 

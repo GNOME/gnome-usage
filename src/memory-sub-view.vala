@@ -3,9 +3,9 @@ namespace Usage
 {
     public class MemorySubView : View
     {
-        ProcessList process_list_box;
+        ProcessListBox process_list_box;
         Gtk.Label memory_load_label;
-        List<ProcessRow> process_row_list;
+        List<ProcessListBoxRow> process_row_list;
         bool show_active_process = true;
 
         public MemorySubView()
@@ -18,7 +18,7 @@ namespace Usage
             label.margin_top = 20;
             label.margin_bottom = 15;
 
-            process_list_box = new ProcessList();
+            process_list_box = new ProcessListBox();
 
             var memory_graph = new MemoryGraph();
             var memory_graph_frame = new Gtk.Frame(null);
@@ -57,7 +57,7 @@ namespace Usage
         	process_list_box.foreach((widget) => { widget.destroy(); });
             memory_load_label.set_text(((int) monitor.mem_usage).to_string() + " %");
 
-        	process_row_list = new List<ProcessRow>();
+        	process_row_list = new List<ProcessListBoxRow>();
             foreach(unowned Process process in monitor.get_processes())
             {
         	  	if(show_active_process)
@@ -77,10 +77,10 @@ namespace Usage
 
         private void insert_process_row(Process process)
         {
-            var process_row = new ProcessRow(process.cmdline,(int) process.mem_usage);
+            var process_row = new ProcessListBoxRow(process.cmdline,(int) process.mem_usage);
             process_row.sort_id =(int)(10 * process.mem_usage);
             process_row_list.insert_sorted(process_row,(a, b) => {
-            	return(b as ProcessRow).sort_id -(a as ProcessRow).sort_id;
+            	return(b as ProcessListBoxRow).sort_id -(a as ProcessListBoxRow).sort_id;
             });
         }
 
