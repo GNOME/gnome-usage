@@ -7,3 +7,9 @@
 .processDetailListBoxRow:hover { background: #e2e2e2; }
 
 row { padding: 0 }
+
+.sidebar-buttons {
+    border-style: none;
+    background-color: #f4f4f3;
+    border-radius: 0;
+}

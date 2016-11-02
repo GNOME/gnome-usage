@@ -53,7 +53,7 @@ namespace Usage
         private void style_button()
         {
             relief = Gtk.ReliefStyle.NONE;
-            get_style_context().add_class("sidebar");
+            get_style_context().add_class("sidebar-buttons");
             set_can_focus(false);
         }
     }
