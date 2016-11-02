@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=GNOME Usage
-Comment=View current processes and monitor system state
-Categories=GNOME;GTK;System;Monitor;
-Exec=hello-again
+Comment=View current application and monitor system state
+Categories=GNOME;GTK;
+Exec=gnome-usage
 Icon=application-default-icon
 Terminal=false
 Type=Application

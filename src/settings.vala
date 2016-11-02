@@ -2,7 +2,7 @@ using Gtk;
 
 namespace Usage {
 
-    public class Settings : Object{
+    public class Settings : Object {
 
         public uint graph_timespan { get; set; default = 30000;}
         public uint graph_max_samples { get; set; default = 30; }

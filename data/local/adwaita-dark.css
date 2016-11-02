@@ -1,0 +1,9 @@
+.processListBoxRow-opened { background: #3b4043; }
+.processListBoxRow:hover { background: #4d5356; }
+.processListBoxRow-max { background: #8E0000; }
+.processListBoxRow-max-opened { background: #b40000; }
+.processListBoxRow-max:hover { background: #b40000; }
+.processDetailListBoxRow { background: #2c3032; }
+.processDetailListBoxRow:hover { background: #4d5356; }
+
+row { padding: 0 }

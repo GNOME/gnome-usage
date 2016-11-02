@@ -36,6 +36,31 @@ namespace Usage
             views[0].update_header_bar();
             set_titlebar(header_bar);
             this.add(stack);
+
+            load_css();
+            Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect((s, p) =>
+            {
+                load_css();
+            });
+        }
+
+        private void load_css()
+        {
+            string name_css = "adwaita.css";
+            var settings = Gtk.Settings.get_for_screen(get_screen());
+
+            if(settings.gtk_application_prefer_dark_theme)
+                name_css = "adwaita-dark.css";
+
+            var provider = new Gtk.CssProvider();
+            try {
+                Gtk.StyleContext.reset_widgets(get_screen());
+                provider.load_from_path(GLib.Path.build_filename(Constants.PKGDATADIR, name_css));
+                Gtk.StyleContext.add_provider_for_screen(get_screen(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            }
+            catch (Error e) {
+                stdout.printf("Could not load CSS. %s\n", e.message);
+            }
         }
     }
 }

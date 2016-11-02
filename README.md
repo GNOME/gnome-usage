@@ -1,6 +1,6 @@
 #GNOME Usage
 
-I started working on the new GNOME Usage for GNOME according to official design from Allan.<br>
+New GNOME Usage for GNOME according to official design from Allan.
 
 ##Current status:
 ![Screenshot](screenshot.png?raw=true )
@@ -14,6 +14,8 @@ cmake ..
 make
 sudo make install
 ```
+##Run
+In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
 Actual version is 0.0.5
