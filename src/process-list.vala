@@ -91,6 +91,7 @@ namespace Usage
         {
             showing_details = false;
             revealer.set_reveal_child(false);
+            load_label.visible = true;
             style(false);
         }
 
@@ -98,6 +99,7 @@ namespace Usage
         {
             showing_details = true;
             revealer.set_reveal_child(true);
+            load_label.visible = false;
             style(true);
         }
 
