@@ -1,117 +1,7 @@
+using Gee;
+
 namespace Usage
 {
-    public class ProcessListBoxRow : Gtk.ListBoxRow
-    {
-		Gtk.Image icon;
-        Gtk.Label title_label;
-        Gtk.Label load_label;
-        Gtk.Revealer revealer;
-        Gtk.EventBox event_box;
-        ProcessListBox sub_process_list_box;
-
-        public int sort_id;
-        public bool is_headline { get; private set; }
-        public bool showing_details { get; private set; }
-        public bool max_usage { get; private set; }
-
-        public ProcessListBoxRow(string title, int load)
-        {
-            if(load >= 90)
-                max_usage = true;
-            this.margin = 0;
-			var main_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-			var box_vertical = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-			box_vertical.margin = 0;
-			main_box.margin = 12;
-        	title_label = new Gtk.Label(title);
-        	load_label = new Gtk.Label(load.to_string() + " %");
-        	icon = new Gtk.Image.from_icon_name("dialog-error", Gtk.IconSize.BUTTON); //TODO implement give icon
-
-            main_box.pack_start(icon, false, false, 10);
-            main_box.pack_start(title_label, false, true, 5);
-            main_box.pack_end(load_label, false, true, 10);
-
-            sub_process_list_box = new ProcessListBox();
-            for(int i = 4; i > 0; i--)
-            {
-                var row = new ProcessDetailListBoxRow("Title " + i.to_string(), 50); //TODO realy values
-                sub_process_list_box.insert(row, 0);
-            }
-
-            revealer = new Gtk.Revealer();
-            revealer.add(sub_process_list_box);
-
-            event_box = new Gtk.EventBox();
-            event_box.add(main_box);
-
-            event_box.button_press_event.connect ((event) => {
-                switch_details();
-                return false;
-            });
-
-            box_vertical.pack_start(event_box, false, true, 0);
-            box_vertical.pack_end(revealer, false, true, 0);
-
-            add(box_vertical);
-            style(false);
-            show_all();
-        }
-
-        private void style(bool opened)
-        {
-            if(max_usage)
-            {
-                if(opened)
-                {
-                    this.get_style_context().remove_class("processListBoxRow-max");
-                    this.get_style_context().add_class("processListBoxRow-max-opened");
-                }
-                else
-                {
-                    this.get_style_context().remove_class("processListBoxRow-max-opened");
-                    this.get_style_context().add_class("processListBoxRow-max");
-                }
-            }
-            else
-            {
-                if(opened)
-                {
-                    this.get_style_context().remove_class("processListBoxRow");
-                    this.get_style_context().add_class("processListBoxRow-opened");
-                }
-                else
-                {
-                    this.get_style_context().remove_class("processListBoxRow-opened");
-                    this.get_style_context().add_class("processListBoxRow");
-                }
-            }
-        }
-
-        private void hide_details()
-        {
-            showing_details = false;
-            revealer.set_reveal_child(false);
-            load_label.visible = true;
-            style(false);
-        }
-
-        private void show_details()
-        {
-            showing_details = true;
-            revealer.set_reveal_child(true);
-            load_label.visible = false;
-            style(true);
-        }
-
-        private void switch_details()
-        {
-            if(showing_details)
-                hide_details();
-            else
-                show_details();
-        }
-    }
-
     public class ProcessListBox : Gtk.ListBox
     {
         public ProcessListBox()
@@ -130,6 +20,84 @@ namespace Usage
 				separator.show();
 				row.set_header(separator);
 			}
+        }
+    }
+
+    public class ProcessBox : Gtk.Box
+    {
+        private Gee.ArrayList<ProcessRow> rows;
+
+        HashTable<uint, ProcessRow> process_rows_table;
+
+        public ProcessBox()
+        {
+            orientation = Gtk.Orientation.VERTICAL;
+            rows = new Gee.ArrayList<ProcessRow>();
+            process_rows_table = new HashTable<uint, ProcessRow>(direct_hash, direct_equal);
+
+            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval, () =>
+            {
+                update();
+                return true;
+            });
+
+        }
+
+        public void update()
+        {
+            foreach(ProcessRow row in rows)
+                row.alive = false;
+
+            foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes())
+            {
+                if(!(process.pid in process_rows_table))
+                {
+                    if((int) process.cpu_load > 0)
+                    {
+                        ProcessRow row = new ProcessRow(process.pid, (int) process.cpu_load, process.cmdline);
+                        rows.add(row);
+                        process_rows_table.insert (process.pid, row);
+                    }
+                }
+                else
+                {
+                    if((int) process.cpu_load > 0)
+                    {
+                        unowned ProcessRow row = process_rows_table[process.pid];
+                        row.alive = true;
+                        row.set_value((int) process.cpu_load);
+                    }
+                    else
+                    {
+                        unowned ProcessRow row = process_rows_table[process.pid];
+                        rows.remove(row);
+                        process_rows_table.remove(process.pid);
+                    }
+                }
+            }
+
+            sort();
+
+            this.forall ((element) => this.remove (element)); //clear box
+            for(int i = 0; i < rows.size; i++)
+            {
+                if(rows[i].alive)
+                {
+                    this.add(rows[i]);
+                }
+                else
+                {
+                    process_rows_table.remove(rows[i].get_pid());
+                    rows.remove(rows[i]);
+                }
+            }
+        }
+
+        public void sort()
+        {
+            rows.sort((a, b) => {
+                return(b as ProcessRow).get_value() - ( a as ProcessRow).get_value();
+            });
         }
     }
 

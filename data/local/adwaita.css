@@ -1,8 +1,9 @@
 .processListBoxRow-opened { background: #9c9c9c; }
-.processListBoxRow:hover { background: #e2e2e2; }
+.processListBoxRow { background: #ffffff; }
+.processListBoxRow-hover { background: #e2e2e2; }
 .processListBoxRow-max { background: #fabbbb; }
 .processListBoxRow-max-opened { background: #faa5a2; }
-.processListBoxRow-max:hover { background: #faa5a2; }
+.processListBoxRow-max-hover { background: #faa5a2; }
 .processDetailListBoxRow { background: #f2f2f2; }
 .processDetailListBoxRow:hover { background: #e2e2e2; }
 
