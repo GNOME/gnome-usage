@@ -23,17 +23,17 @@ namespace Usage
         }
     }
 
-    public class ProcessBox : Gtk.Box
+    public class ListBox : Gtk.Box
     {
-        private Gee.ArrayList<ProcessRow> rows;
+        private Gee.ArrayList<Row> rows;
 
-        HashTable<uint, ProcessRow> process_rows_table;
+        HashTable<uint, Row> process_rows_table;
 
-        public ProcessBox()
+        public ListBox()
         {
             orientation = Gtk.Orientation.VERTICAL;
-            rows = new Gee.ArrayList<ProcessRow>();
-            process_rows_table = new HashTable<uint, ProcessRow>(direct_hash, direct_equal);
+            rows = new Gee.ArrayList<Row>();
+            process_rows_table = new HashTable<uint, Row>(direct_hash, direct_equal);
 
             Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval, () =>
             {
@@ -45,7 +45,7 @@ namespace Usage
 
         public void update()
         {
-            foreach(ProcessRow row in rows)
+            foreach(Row row in rows)
                 row.alive = false;
 
             foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes())
@@ -54,7 +54,7 @@ namespace Usage
                 {
                     if((int) process.cpu_load > 0)
                     {
-                        ProcessRow row = new ProcessRow(process.pid, (int) process.cpu_load, process.cmdline);
+                        Row row = new Row(process.pid, (int) process.cpu_load, process.cmdline);
                         rows.add(row);
                         process_rows_table.insert (process.pid, row);
                     }
@@ -63,13 +63,13 @@ namespace Usage
                 {
                     if((int) process.cpu_load > 0)
                     {
-                        unowned ProcessRow row = process_rows_table[process.pid];
+                        unowned Row row = process_rows_table[process.pid];
                         row.alive = true;
                         row.set_value((int) process.cpu_load);
                     }
                     else
                     {
-                        unowned ProcessRow row = process_rows_table[process.pid];
+                        unowned Row row = process_rows_table[process.pid];
                         rows.remove(row);
                         process_rows_table.remove(process.pid);
                     }
@@ -96,7 +96,7 @@ namespace Usage
         public void sort()
         {
             rows.sort((a, b) => {
-                return(b as ProcessRow).get_value() - ( a as ProcessRow).get_value();
+                return(b as Row).get_value() - ( a as Row).get_value();
             });
         }
     }

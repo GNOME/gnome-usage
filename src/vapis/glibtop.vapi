@@ -121,4 +121,35 @@ namespace GTop {
 
     [CCode(array_length = false, array_null_terminated = false)]
     public string[] get_netlist(out Netlist netlist);
+
+    [CCode(cname = "glibtop_proc_uid", cheader_filename = "glibtop/procuid.h")]
+    public struct ProcUid {
+        uint64 flags;
+        int32 uid;
+        int32 euid;
+        int32 gid;
+        int32 egid;
+        int32 suid;
+        int32 sgid;
+        int32 fsuid;
+        int32 fsgid;
+        int32 pid;
+        int32 ppid;
+        int32 pgrp;
+        int32 session;
+        int32 tty;
+        int32 tpgid;
+        int32 priority;
+        int32 nice;
+        int32 ngroups;
+        int32 groups[64];
+    }
+    public void get_proc_uid(out ProcUid proc_uid, uint pid);
+
+    [CCode(cname = "glibtop_proc_args", cheader_filename = "glibtop/procargs.h")]
+    public struct ProcArgs {
+        uint64 flags;
+        uint64 size;
+    }
+    public string[] get_proc_argv(out ProcArgs proc_args, uint pid);
 }

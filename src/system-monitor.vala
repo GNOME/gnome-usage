@@ -64,6 +64,44 @@ namespace Usage
 			  }
 		}
 
+		private string get_full_process_cmd (string cmd, string[] args)
+        {
+            var secure_arguments = new string[2];
+
+            for(int i = 0; i < 2; i++)
+            {
+                if(args[i] != null)
+                {
+                    secure_arguments[i] = args[i];
+                    for (int j = 0; j < args[i].length; j++)
+                    {
+                        if(args[i][j] == ' ')
+                            secure_arguments[i] = args[i].substring(0, j);
+                    }
+                }
+                else
+                    secure_arguments[i] = "";
+            }
+
+            for (int i = 0; i < secure_arguments.length; i++)
+            {
+                var name = Path.get_basename(secure_arguments[i]);
+
+                if (name.has_prefix(cmd))
+                {
+                    for (int j = 0; j < name.length; j++)
+                    {
+                        if(name[j] == ' ')
+                            name = name.substring(0, j);
+                    }
+
+                    return name;
+                }
+            }
+
+            return cmd;
+        }
+
 		public bool update_data()
         {
 		    /* CPU */
@@ -100,15 +138,18 @@ namespace Usage
             {
                 GTop.ProcState proc_state;
                 GTop.ProcTime proc_time;
+                GTop.ProcArgs proc_args;
                 GTop.get_proc_state (out proc_state, pids[i]);
                 GTop.get_proc_time (out proc_time, pids[i]);
+                var arguments = GTop.get_proc_argv (out proc_args, pids[i]);
 
                 if (!(pids[i] in process_table))
                 {
                     var process = new Process();
                     process.pid = pids[i];
                     process.alive = true;
-                    process.cmdline = (string) proc_state.cmd;
+                    process.cmdline = get_full_process_cmd ((string) proc_state.cmd, arguments);
+
                     process.cpu_load = 0;
                     process.cpu_last_used = proc_time.rtime;
                     process.mem_usage = 0;

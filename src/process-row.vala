@@ -1,6 +1,6 @@
 namespace Usage
 {
-    public class ProcessRow : Gtk.Box
+    public class Row : Gtk.Box
     {
 		Gtk.Image icon;
         Gtk.Label title_label;
@@ -22,7 +22,7 @@ namespace Usage
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
 
-        public ProcessRow(/*Gee.ArrayList<uint> pids, Gee.ArrayList<int> values, Gee.ArrayList<int> values*/uint pid, int value, string name)
+        public Row(/*Gee.ArrayList<uint> pids, Gee.ArrayList<int> values, Gee.ArrayList<int> values*/uint pid, int value, string name)
         {
             /*this.pids = pids;
             this.names = names;

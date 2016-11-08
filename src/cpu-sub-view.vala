@@ -23,7 +23,7 @@ namespace Usage
             var process_list_box_frame = new Gtk.Frame(null);
             process_list_box_frame.margin_top = 30;
             process_list_box_frame.margin_bottom = 20;
-            process_list_box_frame.add(new ProcessBox());
+            process_list_box_frame.add(new ListBox());
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             cpu_box.pack_start(label, false, false, 0);
