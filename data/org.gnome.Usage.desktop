@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=GNOME Usage
+Name=Usage
 Comment=View current application and monitor system state
 Categories=GNOME;GTK;
 Exec=gnome-usage
 Icon=application-default-icon
 Terminal=false
+StartupNotify=true
 Type=Application
-X-GNOME-Gettext-Domain=gnome-usage
 Keywords=Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;

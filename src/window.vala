@@ -12,6 +12,7 @@ namespace Usage
             this.set_default_size(950, 600);
             this.set_size_request(855, 300);
             this.window_position = Gtk.WindowPosition.CENTER;
+            this.set_title(_("Usage"));
 
 			stack = new Gtk.Stack();
 			header_bar = new Usage.HeaderBar(stack);

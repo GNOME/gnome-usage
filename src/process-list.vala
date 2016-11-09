@@ -48,6 +48,19 @@ namespace Usage
             foreach(Row row in rows)
                 row.alive = false;
 
+            /*GLib.List<unowned Process> processes = (GLib.Application.get_default() as Application).monitor.get_processes();
+
+            for(int i = 0; i < processes.length(); i++)
+            {
+                for(int j = i + 1; j < processes.length(); j++)
+                {
+                    if(processes.nth_data(i).cmdline == processes.nth_data(j).cmdline)
+                        stdout.printf(processes.nth_data(i).pid.to_string() + "   " + processes.nth_data(j).pid.to_string() + "   " + processes.nth_data(i).cmdline + "   " + processes.nth_data(j).cmdline + "\n");
+                }
+            }
+
+            stdout.printf("\n\n\n");*/
+
             foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes())
             {
                 if(!(process.pid in process_rows_table))
