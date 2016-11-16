@@ -174,7 +174,7 @@ namespace Usage
             else
                 max_usage = false;
 
-            load_label.set_label(value.to_string() + "%");
+            load_label.set_label(value.to_string() + " %");
             style();
         }
 

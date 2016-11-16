@@ -164,7 +164,7 @@ namespace Usage
                 string values = "";
                 foreach(int sub_value in sub_process_list_box.get_values())
                 {
-                    values += "   " + sub_value.to_string() + "%";
+                    values += "   " + sub_value.to_string() + " %";
                     
                     if(sub_value > max_value)
                         max_value = sub_value;
@@ -174,7 +174,7 @@ namespace Usage
                 load_label.set_label(values);
             }
             else
-                load_label.set_label(value.to_string() + "%");
+                load_label.set_label(value.to_string() + " %");
 
              if(value >= 90)
                  max_usage = true;
