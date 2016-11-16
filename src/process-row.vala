@@ -9,12 +9,11 @@ namespace Usage
         Gtk.EventBox event_box;
         SubProcessListBox sub_process_list_box;
         bool in_box = false;
-
-        private uint pid;
-        private int value;
+        uint pid;
+        int value;
         string name;
-        public bool alive = true;
-        public bool group = false;
+        bool alive = true;
+        bool group = false;
 
         //public bool is_headline { get; private set; }
         public bool showing_details { get; private set; }
@@ -71,7 +70,7 @@ namespace Usage
             this.pack_end(revealer, false, true, 0);
             this.pack_end(separator, false, true, 0); //TODO Fix for last element
 
-            update_row(pid, value);
+            set_value(pid, value);
 
             show_all();
         }
@@ -91,7 +90,7 @@ namespace Usage
                 group = false;
                 name = sub_process_list_box.get_first_name();
                 pid = sub_process_list_box.get_first_pid();
-                update_row(pid, sub_process_list_box.get_first_value());
+                set_value(pid, sub_process_list_box.get_first_value());
                 sub_process_list_box.remove_all();
                 if(showing_details)
                     hide_details();
@@ -128,6 +127,11 @@ namespace Usage
             return name;
         }
 
+        public bool get_alive()
+        {
+            return alive;
+        }
+
         public uint get_pid()
         {
             return pid;
@@ -138,13 +142,11 @@ namespace Usage
             return value;
         }
 
-        public void update_row(uint pid, int value)
+        public void set_value(uint pid, int value)//TODO rename to set_value?
         {
             alive = true;
             if(!group)
-            {
                 this.value = int.min(value, 100);
-            }
             else
             {
                 if(sub_process_list_box.is_in_table(pid))
@@ -184,56 +186,29 @@ namespace Usage
 
         private void style()
         {
-            if(max_usage)
-            {
-                 event_box.get_style_context().remove_class("processListBoxRow");
-                 event_box.get_style_context().remove_class("processListBoxRow-hover");
-                 event_box.get_style_context().remove_class("processListBoxRow-opened");
+            event_box.get_style_context().remove_class("processRow-max");
+            event_box.get_style_context().remove_class("processRow-max-hover");
+            event_box.get_style_context().remove_class("processRow");
+            event_box.get_style_context().remove_class("processRow-hover");
+            event_box.get_style_context().remove_class("processRow-opened");
 
-                if(showing_details)
-                {
-                    event_box.get_style_context().remove_class("processListBoxRow-max");
-                    event_box.get_style_context().remove_class("processListBoxRow-max-hover");
-                    event_box.get_style_context().add_class("processListBoxRow-max-opened");
-                }
-                else
-                {
-                    if(in_box)
-                    {
-                        event_box.get_style_context().remove_class("processListBoxRow-max-opened");
-                        event_box.get_style_context().add_class("processListBoxRow-max-hover");
-                    }
-                    else
-                    {
-                        event_box.get_style_context().remove_class("processListBoxRow-max-hover");
-                        event_box.get_style_context().add_class("processListBoxRow-max");
-                    }
-                }
-            }
+            if(showing_details)
+                event_box.get_style_context().add_class("processRow-opened");
             else
             {
-                event_box.get_style_context().remove_class("processListBoxRow-max");
-                event_box.get_style_context().remove_class("processListBoxRow-max-hover");
-                event_box.get_style_context().remove_class("processListBoxRow-max-opened");
-
-                if(showing_details)
+                if(max_usage)
                 {
-                    event_box.get_style_context().remove_class("processListBoxRow");
-                    event_box.get_style_context().remove_class("processListBoxRow-hover");
-                    event_box.get_style_context().add_class("processListBoxRow-opened");
+                    if(in_box)
+                        event_box.get_style_context().add_class("processRow-max-hover");
+                    else
+                        event_box.get_style_context().add_class("processRow-max");
                 }
                 else
                 {
                     if(in_box)
-                    {
-                        event_box.get_style_context().remove_class("processListBoxRow-opened");
-                        event_box.get_style_context().add_class("processListBoxRow-hover");
-                    }
+                        event_box.get_style_context().add_class("processRow-hover");
                     else
-                    {
-                        event_box.get_style_context().remove_class("processListBoxRow-hover");
-                        event_box.get_style_context().add_class("processListBoxRow");
-                    }
+                        event_box.get_style_context().add_class("processRow");
                 }
             }
         }

@@ -64,7 +64,7 @@ namespace Usage
                         if((int) process.cpu_load > 0)
                         {
                             unowned ProcessRow row = process_rows_table[process.cmdline];
-                            row.update_row(process.pid, (int) process.cpu_load);
+                            row.set_value(process.pid, (int) process.cpu_load);
                             duplicates.add(process.cmdline);
                         }
                     }
@@ -78,7 +78,7 @@ namespace Usage
             foreach(unowned ProcessRow row in process_rows_table.get_values())
             {
                 row.post_update();
-                if(row.alive == false)
+                if(row.get_alive() == false)
                 {
                     process_rows_table.remove(row.get_name());
                     rows.remove(row);
@@ -86,7 +86,7 @@ namespace Usage
             }
 
             for(int i = 0; i < rows.size; i++)
-                if(rows[i].alive)
+                if(rows[i].get_alive())
                     this.add(rows[i]);
         }
 

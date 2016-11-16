@@ -52,6 +52,7 @@ namespace Usage
 
                 foreach(unowned SubProcessSubRow sub_row in process_sub_rows_table.get_values())
                 {
+                    sub_row.update();
                     if(sub_row.get_alive() == false)
                     {
                         process_sub_rows_table.remove(sub_row.get_pid());

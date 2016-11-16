@@ -5,7 +5,7 @@ project_name: gnome-usage
 
 
 vala_binary: src/gnome-usage
-*version: 0.0.7
+*version: 0.0.8
 *vala_vapi: vapis/better.vapi
 *vala_vapi: vapis/egg-private.vapi
 *vala_vapi: vapis/glibtop.vapi
@@ -59,14 +59,15 @@ h_folder: /usr/include/libgtop-2.0
 
 translate: c src/better-box.c
 *translate: vala src/cpu-graph-table.vala
-*translate: vala src/sub-process-list-box.vala
+*translate: vala src/process-row.vala
 *translate: vala src/application.vala
+*translate: vala src/gnome-usage.vala
 *translate: vala src/header-bar.vala
 *translate: vala src/network-sub-view.vala
 *translate: vala src/cpu-graph.vala
 *translate: vala src/performance-view.vala
 *translate: vala src/memory-graph-table.vala
-*translate: vala src/sub-process-sub-row.vala
+*translate: vala src/cpu-sub-view.vala
 *translate: vala src/view.vala
 *translate: vala src/graph-switcher-button.vala
 *translate: vala src/disk-sub-view.vala
@@ -74,13 +75,12 @@ translate: c src/better-box.c
 *translate: vala src/graph-stack-switcher.vala
 *translate: vala src/system-monitor.vala
 *translate: vala src/window.vala
-*translate: vala src/process-row.vala
+*translate: vala src/sub-process-list-box.vala
 *translate: vala src/memory-graph.vala
-*translate: vala src/cpu-sub-view.vala
 *translate: vala src/process-list-box.vala
+*translate: vala src/sub-process-sub-row.vala
 *translate: vala src/settings.vala
 *translate: vala src/storage-view.vala
-*translate: vala src/gnome-usage.vala
 *translate: vala src/power-view.vala
 *translate: vala src/data-view.vala
 

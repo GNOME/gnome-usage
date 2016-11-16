@@ -1,13 +1,12 @@
-.processListBoxRow-opened { background: #9c9c9c; }
-.processListBoxRow { background: #ffffff; }
-.processListBoxRow-hover { background: #e2e2e2; }
-.processListBoxRow-max { background: #fabbbb; }
-.processListBoxRow-max-opened { background: #faa5a2; }
-.processListBoxRow-max-hover { background: #faa5a2; }
-.processDetailListBoxRow { background: #f2f2f2; }
-.processDetailListBoxRow:hover { background: #e2e2e2; }
-
-row { padding: 0 }
+.processRow-opened { background: #9c9c9c; border: 1px solid #898989;}
+.processRow { background: #ffffff; }
+.processRow-hover { background: #e2e2e2; }
+.processRow-max { background: #fabbbb; border: 1px solid #faa5a2; }
+.processRow-max-hover { background: #faa5a2; border: 1px solid #faa5a2; }
+.subProcessSubRow { background: #f2f2f2; }
+.subProcessSubRow-hover { background: #e2e2e2; }
+.subProcessSubRow-max { background: #fabbbb;  border: 1px solid #faa5a2; }
+.subProcessSubRow-max-hover { background: #faa5a2; border: 1px solid #faa5a2; }
 
 .sidebar-buttons {
     border-style: none;
