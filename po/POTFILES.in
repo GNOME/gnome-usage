@@ -14,10 +14,12 @@ src/memory-sub-view.vala
 src/network-sub-view.vala
 src/performance-view.vala
 src/power-view.vala
-src/process-list.vala
+src/process-list-box.vala
 src/process-row.vala
 src/settings.vala
 src/storage-view.vala
+src/sub-process-list-box.vala
+src/sub-process-sub-row.vala
 src/system-monitor.vala
 src/view.vala
 src/window.vala

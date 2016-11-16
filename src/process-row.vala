@@ -1,32 +1,27 @@
 namespace Usage
 {
-    public class Row : Gtk.Box
+    public class ProcessRow : Gtk.Box
     {
 		Gtk.Image icon;
         Gtk.Label title_label;
         Gtk.Label load_label;
         Gtk.Revealer revealer;
         Gtk.EventBox event_box;
-        ProcessListBox sub_process_list_box; //TODO subprocess
+        SubProcessListBox sub_process_list_box;
         bool in_box = false;
 
-        /*private Gee.ArrayList<String> names;
-        private Gee.ArrayList<int> values;
-        public Gee.ArrayList<uint> pids;*/
         private uint pid;
         private int value;
         string name;
         public bool alive = true;
+        public bool group = false;
 
         //public bool is_headline { get; private set; }
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
 
-        public Row(/*Gee.ArrayList<uint> pids, Gee.ArrayList<int> values, Gee.ArrayList<int> values*/uint pid, int value, string name)
+        public ProcessRow(uint pid, int value, string name)
         {
-            /*this.pids = pids;
-            this.names = names;
-            this.values = values;*/
             this.pid = pid;
             this.name = name;
 
@@ -36,18 +31,15 @@ namespace Usage
 			main_box.margin = 12;
         	title_label = new Gtk.Label(name);  //TODO implement give name
         	load_label = new Gtk.Label(null);
+        	load_label.ellipsize = Pango.EllipsizeMode.END;
+        	load_label.max_width_chars = 30;
         	icon = new Gtk.Image.from_icon_name("dialog-error", Gtk.IconSize.BUTTON); //TODO implement give icon
 
             main_box.pack_start(icon, false, false, 10);
             main_box.pack_start(title_label, false, true, 5);
             main_box.pack_end(load_label, false, true, 10);
 
-            sub_process_list_box = new ProcessListBox();
-            for(int i = 4; i > 0; i--)
-            {
-                var row = new ProcessDetailListBoxRow("Title " + i.to_string(), 50); //TODO realy values
-                sub_process_list_box.insert(row, 0);
-            }
+            sub_process_list_box = new SubProcessListBox();
 
             revealer = new Gtk.Revealer();
             revealer.add(sub_process_list_box);
@@ -56,7 +48,8 @@ namespace Usage
             event_box.add(main_box);
 
             event_box.button_press_event.connect ((event) => {
-                switch_details();
+                if(group)
+                    switch_details();
                 return false;
             });
 
@@ -76,10 +69,63 @@ namespace Usage
 
             this.pack_start(event_box, false, true, 0);
             this.pack_end(revealer, false, true, 0);
-            this.pack_end(separator, false, true, 0);// TODO Fix for last element
+            this.pack_end(separator, false, true, 0); //TODO Fix for last element
 
-            set_value(value);
+            update_row(pid, value);
+
             show_all();
+        }
+
+        public void pre_update()
+        {
+            alive = false;
+            sub_process_list_box.pre_update();
+        }
+
+        public void post_update()
+        {
+            sub_process_list_box.post_update();
+
+            if(sub_process_list_box.get_sub_rows_count() == 1)
+            {
+                group = false;
+                name = sub_process_list_box.get_first_name();
+                pid = sub_process_list_box.get_first_pid();
+                update_row(pid, sub_process_list_box.get_first_value());
+                sub_process_list_box.remove_all();
+                if(showing_details)
+                    hide_details();
+            }
+
+            update();
+        }
+
+        public bool is_in_subrows(uint pid)
+        {
+            return sub_process_list_box.is_in_table(pid);
+        }
+
+        public void add_sub_row(uint pid, int value, string name)
+        {
+            alive = true;
+            if(sub_process_list_box.get_sub_rows_count() == 0)
+            {
+                sub_process_list_box.add_sub_row(this.pid, this.value, this.name);
+                group = true;
+            }
+
+            sub_process_list_box.add_sub_row(pid, value, name);
+        }
+
+        public void update_sub_row(uint pid, int value)
+        {
+            alive = true;
+            sub_process_list_box.update_sub_row(pid, value);
+        }
+
+        public string get_name()
+        {
+            return name;
         }
 
         public uint get_pid()
@@ -92,20 +138,46 @@ namespace Usage
             return value;
         }
 
-        public void set_value(int value)
+        public void update_row(uint pid, int value)
         {
-            this.value = int.min(value, 100);
-            update();
+            alive = true;
+            if(!group)
+            {
+                this.value = int.min(value, 100);
+            }
+            else
+            {
+                if(sub_process_list_box.is_in_table(pid))
+                    sub_process_list_box.update_sub_row(pid, value);
+                else
+                    sub_process_list_box.add_sub_row(pid, value, this.name);
+            }
         }
 
         private void update()
         {
-            if(value >= 90)
-                max_usage = true;
-            else
-                max_usage = false;
+            if(group)
+            {
+                int max_value = 0;
+                string values = "";
+                foreach(int sub_value in sub_process_list_box.get_values())
+                {
+                    values += "   " + sub_value.to_string() + "%";
+                    
+                    if(sub_value > max_value)
+                        max_value = sub_value;
+                }
+                this.value = max_value;
 
-            load_label.set_label(value.to_string() + "%");
+                load_label.set_label(values);
+            }
+            else
+                load_label.set_label(value.to_string() + "%");
+
+             if(value >= 90)
+                 max_usage = true;
+             else
+                 max_usage = false;
 
             style();
         }

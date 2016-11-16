@@ -39,7 +39,7 @@ namespace Usage
             this.add(stack);
 
             load_css();
-            Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect((s, p) =>
+            Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect(() =>
             {
                 load_css();
             });
