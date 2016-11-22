@@ -9,7 +9,7 @@ namespace Usage
         Gtk.EventBox event_box;
         SubProcessListBox sub_process_list_box;
         bool in_box = false;
-        uint pid;
+        uint pid;   //TODO pid should be type of pid_t no uint.
         int value;
         string name;
         bool alive = true;
