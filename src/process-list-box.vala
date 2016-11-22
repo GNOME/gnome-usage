@@ -5,7 +5,6 @@ namespace Usage
     public class ProcessListBox : Gtk.Box
     {
         private Gee.ArrayList<ProcessRow> rows;
-
         HashTable<string, ProcessRow> process_rows_table;
 
         public ProcessListBox()
@@ -28,7 +27,6 @@ namespace Usage
                 row.pre_update();
 
             var duplicates = new HashSet<string>();
-            int stress = 0;
 
             foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes())
             {

@@ -49,6 +49,12 @@ namespace Usage
             event_box.button_press_event.connect ((event) => {
                 if(group)
                     switch_details();
+                else
+                {
+                    var dialog = new ProcessDialog();
+                    dialog.show_all ();
+                }
+
                 return false;
             });
 
@@ -142,18 +148,25 @@ namespace Usage
             return value;
         }
 
-        public void set_value(uint pid, int value)//TODO rename to set_value?
+        public void set_value(uint pid, int value)
         {
             alive = true;
-            if(!group)
-                this.value = int.min(value, 100);
+            if(sub_process_list_box.is_in_table(pid))
+                sub_process_list_box.update_sub_row(pid, value);
             else
-            {
-                if(sub_process_list_box.is_in_table(pid))
-                    sub_process_list_box.update_sub_row(pid, value);
+                if(group)
+                   sub_process_list_box.add_sub_row(pid, value, name);
                 else
-                    sub_process_list_box.add_sub_row(pid, value, this.name);
-            }
+                {
+                    if(pid == this.pid)
+                        this.value = int.min(value, 100);
+                    else
+                    {
+                        this.pid = pid;
+                        this.value = int.min(value, 100);
+                    }
+
+                }
         }
 
         private void update()
