@@ -37,7 +37,7 @@ namespace Usage
             event_box.add(main_box);
 
             event_box.button_press_event.connect ((event) => {
-                var dialog = new ProcessDialog();
+                var dialog = new ProcessDialog(pid);
                 dialog.show_all ();
                 return false;
             });

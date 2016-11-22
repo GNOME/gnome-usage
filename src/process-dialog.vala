@@ -3,10 +3,12 @@ namespace Usage
 	public class ProcessDialog : Gtk.Dialog
 	{
     	private Gtk.Widget kill_button;
+    	private uint pid;
 
-    	public ProcessDialog()
+    	public ProcessDialog(uint pid)
     	{
     	    Object(use_header_bar: 1);
+    	    this.pid = pid;
     		this.title = "Process";
     		this.border_width = 5;
     		set_default_size (350, 100);
@@ -32,12 +34,18 @@ namespace Usage
     		switch(response_id)
     		{
     		    case Gtk.ResponseType.HELP:
+    		        kill_process(pid);
     		    	destroy();
     		    	break;
     		    case Gtk.ResponseType.CLOSE:
     		    	destroy();
     		    	break;
     		}
+    	}
+
+        private void kill_process(uint pid)
+    	{
+             Posix.kill ((Posix.pid_t) pid, Posix.SIGKILL);
     	}
     }
 }

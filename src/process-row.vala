@@ -51,7 +51,7 @@ namespace Usage
                     switch_details();
                 else
                 {
-                    var dialog = new ProcessDialog();
+                    var dialog = new ProcessDialog(pid);
                     dialog.show_all ();
                 }
 
