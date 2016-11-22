@@ -11,9 +11,9 @@ namespace Usage
         Gtk.EventBox event_box;
         SubProcessListBox sub_process_list_box;
         bool in_box = false;
-        pid_t pid;   //TODO pid should be type of pid_t no uint.
+        pid_t pid;
         int value;
-        string name;
+        string cmdline;
         bool alive = true;
         bool group = false;
 
@@ -21,16 +21,16 @@ namespace Usage
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
 
-        public ProcessRow(pid_t pid, int value, string name)
+        public ProcessRow(pid_t pid, int value, string cmdline)
         {
             this.pid = pid;
-            this.name = name;
+            this.cmdline = cmdline;
 
             this.margin = 0;
             this.orientation = Gtk.Orientation.VERTICAL;
 			var main_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 			main_box.margin = 12;
-        	title_label = new Gtk.Label(name);  //TODO implement give name
+        	title_label = new Gtk.Label(cmdline);  //TODO implement give name
         	load_label = new Gtk.Label(null);
         	load_label.ellipsize = Pango.EllipsizeMode.END;
         	load_label.max_width_chars = 30;
@@ -53,7 +53,7 @@ namespace Usage
                     switch_details();
                 else
                 {
-                    var dialog = new ProcessDialog(pid);
+                    var dialog = new ProcessDialog(pid, cmdline);
                     dialog.show_all ();
                 }
 
@@ -62,13 +62,13 @@ namespace Usage
 
             event_box.enter_notify_event.connect ((event) => {
                 in_box = true;
-                style();
+                style_css();
                 return false;
             });
 
             event_box.leave_notify_event.connect ((event) => {
                 in_box = false;
-                style();
+                style_css();
                 return false;
             });
 
@@ -96,7 +96,7 @@ namespace Usage
             if(sub_process_list_box.get_sub_rows_count() == 1)
             {
                 group = false;
-                name = sub_process_list_box.get_first_name();
+                cmdline = sub_process_list_box.get_first_cmdline();
                 pid = sub_process_list_box.get_first_pid();
                 set_value(pid, sub_process_list_box.get_first_value());
                 sub_process_list_box.remove_all();
@@ -112,16 +112,15 @@ namespace Usage
             return sub_process_list_box.is_in_table(pid);
         }
 
-        public void add_sub_row(pid_t pid, int value, string name)
+        public void add_sub_row(pid_t pid, int value, string cmdline)
         {
             alive = true;
             if(sub_process_list_box.get_sub_rows_count() == 0)
             {
-                sub_process_list_box.add_sub_row(this.pid, this.value, this.name);
+                sub_process_list_box.add_sub_row(this.pid, this.value, this.cmdline);
                 group = true;
             }
-
-            sub_process_list_box.add_sub_row(pid, value, name);
+            sub_process_list_box.add_sub_row(pid, value, cmdline);
         }
 
         public void update_sub_row(pid_t pid, int value)
@@ -130,9 +129,9 @@ namespace Usage
             sub_process_list_box.update_sub_row(pid, value);
         }
 
-        public string get_name()
+        public string get_cmdline()
         {
-            return name;
+            return cmdline;
         }
 
         public bool get_alive()
@@ -157,7 +156,7 @@ namespace Usage
                 sub_process_list_box.update_sub_row(pid, value);
             else
                 if(group)
-                   sub_process_list_box.add_sub_row(pid, value, name);
+                   sub_process_list_box.add_sub_row(pid, value, cmdline);
                 else
                 {
                     if(pid == this.pid)
@@ -196,10 +195,10 @@ namespace Usage
              else
                  max_usage = false;
 
-            style();
+            style_css();
         }
 
-        private void style()
+        private void style_css()
         {
             event_box.get_style_context().remove_class("processRow-max");
             event_box.get_style_context().remove_class("processRow-max-hover");
@@ -233,7 +232,7 @@ namespace Usage
             showing_details = false;
             revealer.set_reveal_child(false);
             load_label.visible = true;
-            style();
+            style_css();
         }
 
         private void show_details()
@@ -241,7 +240,7 @@ namespace Usage
             showing_details = true;
             revealer.set_reveal_child(true);
             load_label.visible = false;
-            style();
+            style_css();
         }
 
         private void switch_details()

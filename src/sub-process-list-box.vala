@@ -13,9 +13,9 @@ namespace Usage
              process_sub_rows_table = new HashTable<pid_t?, SubProcessSubRow>(int_hash, int_equal);
          }
 
-         public string get_first_name()
+         public string get_first_cmdline()
          {
-             return process_sub_rows_table.get_values().nth_data(0).get_name();
+            return process_sub_rows_table.get_values().nth_data(0).get_cmdline();
          }
 
          public pid_t get_first_pid()
@@ -64,9 +64,9 @@ namespace Usage
                  this.add(sub_row);
          }
 
-         public void add_sub_row(pid_t pid, int value, string name)
+         public void add_sub_row(pid_t pid, int value, string cmdline)
          {
-             SubProcessSubRow sub_row = new SubProcessSubRow((int) pid, value, name);
+             SubProcessSubRow sub_row = new SubProcessSubRow((int) pid, value, cmdline);
              process_sub_rows_table.insert ((int) pid, (owned) sub_row);
          }
 

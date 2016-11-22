@@ -11,22 +11,22 @@ namespace Usage
         bool in_box = false;
         pid_t pid;
         int value;
-        string name;
+        string cmdline;
         bool alive = true;
 
         //public bool is_headline { get; private set; }
         public bool max_usage { get; private set; }
 
-        public SubProcessSubRow(pid_t pid, int value, string name)
+        public SubProcessSubRow(pid_t pid, int value, string cmdline)
         {
-            this.name = name;
+            this.cmdline = cmdline;
             this.pid = pid;
 
             this.margin = 0;
             this.orientation = Gtk.Orientation.VERTICAL;
 			var main_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 			main_box.margin = 12;
-        	title_label = new Gtk.Label(name);
+        	title_label = new Gtk.Label(cmdline);
         	load_label = new Gtk.Label(null);
         	//load_label.ellipsize = Pango.EllipsizeMode.END;
         	icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
@@ -39,20 +39,20 @@ namespace Usage
             event_box.add(main_box);
 
             event_box.button_press_event.connect ((event) => {
-                var dialog = new ProcessDialog(pid);
+                var dialog = new ProcessDialog(pid, cmdline);
                 dialog.show_all ();
                 return false;
             });
 
             event_box.enter_notify_event.connect ((event) => {
                 in_box = true;
-                style();
+                style_css();
                 return false;
             });
 
             event_box.leave_notify_event.connect ((event) => {
                 in_box = false;
-                style();
+                style_css();
                 return false;
             });
 
@@ -66,9 +66,9 @@ namespace Usage
             show_all();
         }
 
-        public string get_name()
+        public string get_cmdline()
         {
-            return name;
+            return cmdline;
         }
 
         public pid_t get_pid()
@@ -105,10 +105,10 @@ namespace Usage
                 max_usage = false;
 
             load_label.set_label(value.to_string() + " %");
-            style();
+            style_css();
         }
 
-        private void style()
+        private void style_css()
         {
             event_box.get_style_context().remove_class("subProcessSubRow-max");
             event_box.get_style_context().remove_class("subProcessSubRow-max-hover");

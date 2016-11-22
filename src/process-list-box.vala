@@ -78,7 +78,7 @@ namespace Usage
                 row.post_update();
                 if(row.get_alive() == false)
                 {
-                    process_rows_table.remove(row.get_name());
+                    process_rows_table.remove(row.get_cmdline());
                     rows.remove(row);
                 }
             }

@@ -4,17 +4,17 @@ namespace Usage
 {
     public class MemoryGraph: Rg.Graph
     {
-		private static MemoryGraphTable table;
+		private static MemoryGraphTable rg_table;
 
         public MemoryGraph ()
         {
-            if(table == null)
+            if(rg_table == null)
             {
-                table = new MemoryGraphTable();
-                set_table(table);
+                rg_table = new MemoryGraphTable();
+                set_table(rg_table);
             }
             else
-                set_table(table);
+                set_table(rg_table);
 
             LineRenderer renderer_ram = new LineRenderer();
             renderer_ram.column = MemoryGraphTable.column_ram_id;

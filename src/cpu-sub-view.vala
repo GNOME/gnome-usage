@@ -2,8 +2,6 @@ namespace Usage
 {
     public class ProcessorSubView : View
     {
-        bool show_active_process = true;
-
         public ProcessorSubView()
         {
             name = "PROCESSOR";

@@ -4,7 +4,6 @@ namespace Usage
     public class MemorySubView : View
     {
         Gtk.Label memory_load_label;
-        bool show_active_process = true;
 
         public MemorySubView()
         {

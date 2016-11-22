@@ -149,7 +149,6 @@ namespace Usage
                     process.pid = pids[i];
                     process.alive = true;
                     process.cmdline = get_full_process_cmd ((string) proc_state.cmd, arguments);
-
                     process.cpu_load = 0;
                     process.cpu_last_used = proc_time.rtime;
                     process.mem_usage = 0;
