@@ -1,11 +1,13 @@
+using Posix;
+
 namespace Usage
 {
 	public class ProcessDialog : Gtk.Dialog
 	{
     	private Gtk.Widget kill_button;
-    	private uint pid;
+    	private pid_t pid;
 
-    	public ProcessDialog(uint pid)
+    	public ProcessDialog(pid_t pid)
     	{
     	    Object(use_header_bar: 1);
     	    this.pid = pid;
@@ -43,9 +45,9 @@ namespace Usage
     		}
     	}
 
-        private void kill_process(uint pid)
+        private void kill_process(pid_t pid)
     	{
-             Posix.kill ((Posix.pid_t) pid, Posix.SIGKILL);
+             Posix.kill (pid, Posix.SIGKILL);
     	}
     }
 }

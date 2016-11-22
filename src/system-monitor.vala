@@ -5,7 +5,7 @@ namespace Usage
     [Compact]
     public class Process
     {
-        internal uint pid;
+        internal pid_t pid;
         internal string cmdline;
         internal double cpu_load;
         internal uint64 cpu_last_used;
@@ -37,7 +37,7 @@ namespace Usage
 
         bool change_timeout = false;
 
-        HashTable<uint, Process> process_table;
+        HashTable<pid_t?, Process> process_table;
 
 		private int process_mode = GTop.KERN_PROC_ALL;
 
@@ -247,7 +247,7 @@ namespace Usage
             x_cpu_last_used_graph = new uint64[get_num_processors()];
             x_cpu_last_total = new uint64[get_num_processors()];
             x_cpu_last_total_graph = new uint64[get_num_processors()];
-            process_table = new HashTable<uint, Process>(direct_hash, direct_equal);
+            process_table = new HashTable<pid_t?, Process>(int_hash, int_equal);
 
             var settings = (GLib.Application.get_default() as Application).settings;
 

@@ -1,3 +1,5 @@
+using Posix;
+
 namespace Usage
 {
     public class SubProcessSubRow : Gtk.Box
@@ -7,7 +9,7 @@ namespace Usage
         Gtk.Label load_label;
         Gtk.EventBox event_box;
         bool in_box = false;
-        uint pid;
+        pid_t pid;
         int value;
         string name;
         bool alive = true;
@@ -15,7 +17,7 @@ namespace Usage
         //public bool is_headline { get; private set; }
         public bool max_usage { get; private set; }
 
-        public SubProcessSubRow(uint pid, int value, string name)
+        public SubProcessSubRow(pid_t pid, int value, string name)
         {
             this.name = name;
             this.pid = pid;
@@ -69,7 +71,7 @@ namespace Usage
             return name;
         }
 
-        public uint get_pid()
+        public pid_t get_pid()
         {
             return pid;
         }

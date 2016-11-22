@@ -42,7 +42,7 @@ namespace GTop {
         uint64 size;
     }
     [CCode(array_length = false, array_null_terminated = false)]
-    public uint[] get_proclist(out Proclist proclist, uint64 which, uint64 arg);
+    public Posix.pid_t[] get_proclist(out Proclist proclist, uint64 which, uint64 arg);
 
     [CCode(cname = "glibtop_proc_state", cheader_filename = "glibtop/procstate.h")]
     public struct ProcState {
@@ -57,7 +57,7 @@ namespace GTop {
         int processor;
         int last_processor;
     }
-    public void get_proc_state(out ProcState proc_state, uint pid);
+    public void get_proc_state(out ProcState proc_state, Posix.pid_t pid);
 
     [CCode(cname = "glibtop_proc_time", cheader_filename = "glibtop/proctime.h")]
     public struct ProcTime {
@@ -74,7 +74,7 @@ namespace GTop {
         uint64 xcpu_utime[32];
         uint64 xcpu_stime[32];
     }
-    public void get_proc_time(out ProcTime proc_time, uint pid);
+    public void get_proc_time(out ProcTime proc_time, Posix.pid_t pid);
 
     [CCode(cname = "glibtop_mem", cheader_filename = "glibtop/mem.h")]
     public struct Mem {
@@ -111,7 +111,7 @@ namespace GTop {
         uint64 rss;
         uint64 rss_rlim;
     }
-    public void get_proc_mem(out ProcMem proc_mem, uint pid);
+    public void get_proc_mem(out ProcMem proc_mem, Posix.pid_t pid);
 
     [CCode(cname = "glibtop_netlist", cheader_filename = "glibtop/netlist.h")]
     public struct Netlist {
@@ -144,12 +144,12 @@ namespace GTop {
         int32 ngroups;
         int32 groups[64];
     }
-    public void get_proc_uid(out ProcUid proc_uid, uint pid);
+    public void get_proc_uid(out ProcUid proc_uid, Posix.pid_t pid);
 
     [CCode(cname = "glibtop_proc_args", cheader_filename = "glibtop/procargs.h")]
     public struct ProcArgs {
         uint64 flags;
         uint64 size;
     }
-    public string[] get_proc_argv(out ProcArgs proc_args, uint pid);
+    public string[] get_proc_argv(out ProcArgs proc_args, Posix.pid_t pid);
 }

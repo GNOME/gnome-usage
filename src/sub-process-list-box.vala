@@ -1,15 +1,16 @@
 using Gee;
+using Posix;
 
 namespace Usage
 {
      public class SubProcessListBox : Gtk.Box
      {
-         HashTable<int?, SubProcessSubRow> process_sub_rows_table;
+         HashTable<pid_t?, SubProcessSubRow> process_sub_rows_table;
 
          public SubProcessListBox()
          {
              orientation = Gtk.Orientation.VERTICAL;
-             process_sub_rows_table = new HashTable<int?, SubProcessSubRow>(int_hash, int_equal);
+             process_sub_rows_table = new HashTable<pid_t?, SubProcessSubRow>(int_hash, int_equal);
          }
 
          public string get_first_name()
@@ -17,7 +18,7 @@ namespace Usage
              return process_sub_rows_table.get_values().nth_data(0).get_name();
          }
 
-         public uint get_first_pid()
+         public pid_t get_first_pid()
          {
              return process_sub_rows_table.get_values().nth_data(0).get_pid();
          }
@@ -32,7 +33,7 @@ namespace Usage
              return process_sub_rows_table.length;
          }
 
-         public bool is_in_table(uint pid)
+         public bool is_in_table(pid_t pid)
          {
              return ((int) pid in process_sub_rows_table);
          }
@@ -63,13 +64,13 @@ namespace Usage
                  this.add(sub_row);
          }
 
-         public void add_sub_row(uint pid, int value, string name)
+         public void add_sub_row(pid_t pid, int value, string name)
          {
              SubProcessSubRow sub_row = new SubProcessSubRow((int) pid, value, name);
              process_sub_rows_table.insert ((int) pid, (owned) sub_row);
          }
 
-         public void update_sub_row(uint pid, int value)
+         public void update_sub_row(pid_t pid, int value)
          {
              unowned SubProcessSubRow sub_row = process_sub_rows_table[(int) pid];
              sub_row.set_value(value);

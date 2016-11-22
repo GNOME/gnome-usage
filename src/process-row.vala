@@ -1,3 +1,5 @@
+using Posix;
+
 namespace Usage
 {
     public class ProcessRow : Gtk.Box
@@ -9,7 +11,7 @@ namespace Usage
         Gtk.EventBox event_box;
         SubProcessListBox sub_process_list_box;
         bool in_box = false;
-        uint pid;   //TODO pid should be type of pid_t no uint.
+        pid_t pid;   //TODO pid should be type of pid_t no uint.
         int value;
         string name;
         bool alive = true;
@@ -19,7 +21,7 @@ namespace Usage
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
 
-        public ProcessRow(uint pid, int value, string name)
+        public ProcessRow(pid_t pid, int value, string name)
         {
             this.pid = pid;
             this.name = name;
@@ -105,12 +107,12 @@ namespace Usage
             update();
         }
 
-        public bool is_in_subrows(uint pid)
+        public bool is_in_subrows(pid_t pid)
         {
             return sub_process_list_box.is_in_table(pid);
         }
 
-        public void add_sub_row(uint pid, int value, string name)
+        public void add_sub_row(pid_t pid, int value, string name)
         {
             alive = true;
             if(sub_process_list_box.get_sub_rows_count() == 0)
@@ -122,7 +124,7 @@ namespace Usage
             sub_process_list_box.add_sub_row(pid, value, name);
         }
 
-        public void update_sub_row(uint pid, int value)
+        public void update_sub_row(pid_t pid, int value)
         {
             alive = true;
             sub_process_list_box.update_sub_row(pid, value);
@@ -148,7 +150,7 @@ namespace Usage
             return value;
         }
 
-        public void set_value(uint pid, int value)
+        public void set_value(pid_t pid, int value)
         {
             alive = true;
             if(sub_process_list_box.is_in_table(pid))
