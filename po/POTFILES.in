@@ -15,6 +15,7 @@ src/network-sub-view.vala
 src/performance-view.vala
 src/power-view.vala
 src/process-dialog.vala
+src/process-list-box-new.vala
 src/process-list-box.vala
 src/process-row.vala
 src/settings.vala

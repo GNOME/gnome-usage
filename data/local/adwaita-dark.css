@@ -1,11 +1,12 @@
-.processListBoxRow-opened { background: #3b4043; }
-.processListBoxRow { background: #232729; }
-.processListBoxRow-hover { background: #4d5356; }
-.processListBoxRow-max { background: #8E0000; }
-.processListBoxRow-max-opened { background: #b40000; }
-.processListBoxRow-max-hover { background: #b40000; }
-.processDetailListBoxRow { background: #2c3032; }
-.processDetailListBoxRow:hover { background: #4d5356; }
+.processRow-opened { background: #3b4043; border: 1px solid #898989; }
+.processRow { background: #232729; }
+.processRow-hover { background: #4d5356; }
+.processRow-max { background: #8E0000; border: 1px solid #faa5a2; }
+.processRow-max-hover { background: #b40000; border: 1px solid #faa5a2; }
+.subProcessSubRow { background: #2c3032; }
+.subProcessSubRow-hover { background: #4d5356; }
+.subProcessSubRow-max { background: #fabbbb;  border: 1px solid #faa5a2; }
+.subProcessSubRow-max-hover { background: #faa5a2; border: 1px solid #faa5a2; }
 
 row { padding: 0 }
 
@@ -13,4 +14,10 @@ row { padding: 0 }
     border-style: none;
     background-color: #2b3032;
     border-radius: 0;
+}
+
+rggraph#CpuGraphAllCores {
+    background-color: #232729;
+    background-size: 57px 57px;
+    background-image: repeating-linear-gradient(0deg, #2e2e2e, #2e2e2e 2px, transparent 2px, transparent 57px);
 }

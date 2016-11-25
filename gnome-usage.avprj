@@ -40,6 +40,7 @@ c_library: gtop-2.0 ${CMAKE_SOURCE_DIR}/external/rg/librg.a ${CMAKE_SOURCE_DIR}/
 *vala_source: performance-view.vala
 *vala_source: power-view.vala
 *vala_source: process-dialog.vala
+*vala_source: process-list-box-new.vala
 *vala_source: process-list-box.vala
 *vala_source: process-row.vala
 *vala_source: settings.vala
@@ -60,6 +61,7 @@ h_folder: /usr/include/libgtop-2.0
 
 translate: c src/better-box.c
 *translate: vala src/cpu-graph-table.vala
+*translate: vala src/process-row.vala
 *translate: vala src/application.vala
 *translate: vala src/process-dialog.vala
 *translate: vala src/header-bar.vala
@@ -82,7 +84,7 @@ translate: c src/better-box.c
 *translate: vala src/storage-view.vala
 *translate: vala src/cpu-sub-view.vala
 *translate: vala src/sub-process-list-box.vala
-*translate: vala src/process-row.vala
+*translate: vala src/process-list-box-new.vala
 *translate: vala src/power-view.vala
 *translate: vala src/data-view.vala
 

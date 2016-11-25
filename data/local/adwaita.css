@@ -13,3 +13,9 @@
     background-color: #f4f4f3;
     border-radius: 0;
 }
+
+rggraph#CpuGraphAllCores {
+    background-color: #ffffff;
+    background-size: 57px 57px;
+    background-image: repeating-linear-gradient(0deg, #f0f1f2, #f0f1f2 2px, transparent 2px, transparent 57px);
+}

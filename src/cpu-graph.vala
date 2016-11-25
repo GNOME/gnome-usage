@@ -49,6 +49,7 @@ namespace Usage
 
         public CpuGraphAllCores ()
         {
+            name = "CpuGraphAllCores";
             if(rg_table == null)
             {
                 rg_table = new CpuGraphTableComplex();
