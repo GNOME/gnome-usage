@@ -39,7 +39,7 @@ namespace Usage
 
         HashTable<pid_t?, Process> process_table;
 
-		private int process_mode = GTop.KERN_PROC_ALL;
+		private int process_mode = GTop.KERN_PROC_UID;
 
 		public enum ProcessMode
         {
@@ -72,6 +72,8 @@ namespace Usage
             {
                 if(args[i] != null)
                 {
+                    //GLib.stdout.printf("Arguments: " + args[i] + "\n");
+
                     secure_arguments[i] = args[i];
                     for (int j = 0; j < args[i].length; j++)
                     {
@@ -256,6 +258,14 @@ namespace Usage
 
             Timeout.add(settings.list_update_interval, update_data);
             Timeout.add(settings.graph_update_interval, update_graph_data);
+            update_data();
+            update_graph_data();
+            Timeout.add(settings.first_update_interval, () => //First load
+            {
+                update_data();
+                update_graph_data();
+                return false;
+            });
         }
     }
 }

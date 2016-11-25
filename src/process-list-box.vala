@@ -13,15 +13,15 @@ namespace Usage
             rows = new Gee.ArrayList<ProcessRow>();
             process_rows_table = new HashTable<string, ProcessRow>(str_hash, str_equal);
 
-            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval, () =>
+            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval, update);
+            Timeout.add((GLib.Application.get_default() as Application).settings.first_update_interval, () => //on first load
             {
                 update();
-                return true;
+                return false;
             });
-
         }
 
-        public void update()
+        public bool update()
         {
             foreach(ProcessRow row in rows)
                 row.pre_update();
@@ -86,6 +86,8 @@ namespace Usage
             for(int i = 0; i < rows.size; i++)
                 if(rows[i].get_alive())
                     this.add(rows[i]);
+
+            return true;
         }
 
         public void sort()
