@@ -9,10 +9,12 @@ namespace Usage
     	public ProcessDialog(pid_t pid, string name)
     	{
     	    Object(use_header_bar: 1);
+    	    set_transient_for((GLib.Application.get_default() as Application).window);
+    	    set_position(Gtk.WindowPosition.CENTER);
     	    this.pid = pid;
     		this.title = name;
     		this.border_width = 5;
-    		set_default_size (350, 100);
+    		set_default_size (900, 350);
     		create_widgets();
     		connect_signals();
     	}

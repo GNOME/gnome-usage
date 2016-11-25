@@ -28,7 +28,6 @@ namespace Usage
 			main_box.margin = 12;
         	title_label = new Gtk.Label(cmdline);
         	load_label = new Gtk.Label(null);
-        	//load_label.ellipsize = Pango.EllipsizeMode.END;
         	icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
 
             main_box.pack_start(icon, false, false, 10);

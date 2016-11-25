@@ -14,6 +14,7 @@ namespace Usage
         pid_t pid;
         int value;
         string cmdline;
+        string display_name;
         bool alive = true;
         bool group = false;
 
@@ -30,13 +31,12 @@ namespace Usage
             this.orientation = Gtk.Orientation.VERTICAL;
 			var main_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 			main_box.margin = 12;
-        	title_label = new Gtk.Label(cmdline);  //TODO implement give name
         	load_label = new Gtk.Label(null);
         	load_label.ellipsize = Pango.EllipsizeMode.END;
         	load_label.max_width_chars = 30;
-        	icon = new Gtk.Image.from_icon_name("dialog-error", Gtk.IconSize.BUTTON); //TODO implement give icon
 
-            main_box.pack_start(icon, false, false, 10);
+            load_icon_and_name();
+            main_box.pack_start(icon, false, false, 0);
             main_box.pack_start(title_label, false, true, 5);
             main_box.pack_end(load_label, false, true, 10);
 
@@ -53,7 +53,7 @@ namespace Usage
                     switch_details();
                 else
                 {
-                    var dialog = new ProcessDialog(pid, cmdline);
+                    var dialog = new ProcessDialog(pid, display_name);
                     dialog.show_all ();
                 }
 
@@ -81,6 +81,44 @@ namespace Usage
             set_value(pid, value);
 
             show_all();
+        }
+
+        public void load_icon_and_name()
+        {
+            AppInfo app_info = null;
+        	var apps_info = AppInfo.get_all();
+        	foreach (AppInfo info in apps_info)
+        	{
+        	    string commandline = info.get_commandline();
+        	    for (int i = 0; i < commandline.length; i++)
+                {
+                    if(commandline[i] == ' ')
+                        commandline = commandline.substring(0, i);
+                }
+                commandline = Path.get_basename(commandline);
+
+        	    if(commandline == cmdline)
+        	        app_info = info;
+        	}
+
+            if(app_info != null)
+            {
+                display_name = app_info.get_display_name();
+        	    title_label = new Gtk.Label(display_name);
+        	    if(app_info.get_icon() == null)
+                    icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+                else
+        	        icon = new Gtk.Image.from_gicon(app_info.get_icon(), Gtk.IconSize.LARGE_TOOLBAR);
+        	}
+        	else
+        	{
+        	    display_name = cmdline;
+        	    title_label = new Gtk.Label(display_name);
+        	    icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        	}
+        	icon.margin_left = 10;
+        	icon.margin_right = 10;
+
         }
 
         public void pre_update()
