@@ -4,13 +4,11 @@ namespace Usage
 {
     public class ProcessListBox : Gtk.Box
     {
-        private Gee.ArrayList<ProcessRow> rows;
         HashTable<string, ProcessRow> process_rows_table;
 
         public ProcessListBox()
         {
             orientation = Gtk.Orientation.VERTICAL;
-            rows = new Gee.ArrayList<ProcessRow>();
             process_rows_table = new HashTable<string, ProcessRow>(str_hash, str_equal);
 
             Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval, update);
@@ -23,7 +21,7 @@ namespace Usage
 
         public bool update()
         {
-            foreach(ProcessRow row in rows)
+            foreach(unowned ProcessRow row in process_rows_table.get_values())
                 row.pre_update();
 
             var duplicates = new HashSet<string>();
@@ -52,7 +50,6 @@ namespace Usage
                         if((int) process.cpu_load > 0)
                         {
                             ProcessRow row = new ProcessRow(process.pid, (int) process.cpu_load, process.cmdline);
-                            rows.add(row);
                             process_rows_table.insert (process.cmdline, row);
                             duplicates.add(process.cmdline);
                         }
@@ -69,31 +66,30 @@ namespace Usage
                 }
             }
 
-            sort();
-
             this.forall ((element) => this.remove (element)); //clear box
 
-            foreach(unowned ProcessRow row in process_rows_table.get_values())
-            {
-                row.post_update();
-                if(row.get_alive() == false)
-                {
-                    process_rows_table.remove(row.get_cmdline());
-                    rows.remove(row);
-                }
-            }
+            var rows_sorted = new Gee.ArrayList<unowned ProcessRow>();
+             foreach(unowned ProcessRow row in process_rows_table.get_values())
+             {
+                 row.post_update();
+                 if(row.get_alive() == false)
+                     process_rows_table.remove(row.get_cmdline());
+                 else
+                     rows_sorted.add(row);
+             }
 
-            for(int i = 0; i < rows.size; i++)
-                if(rows[i].get_alive())
-                    this.add(rows[i]);
+             sort(rows_sorted);
+
+             foreach(unowned ProcessRow row in rows_sorted)
+                 this.add(row);
 
             return true;
         }
 
-        public void sort()
+        private void sort(Gee.ArrayList<unowned ProcessRow> rows)
         {
             rows.sort((a, b) => {
-                return(b as ProcessRow).get_value() - ( a as ProcessRow).get_value();
+                return b.get_value() - a.get_value();
             });
         }
     }
