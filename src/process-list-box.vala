@@ -2,7 +2,7 @@ using Gee;
 
 namespace Usage
 {
-    public class ProcessListBox : Gtk.Box
+    public class ProcessListBox : Gtk.Box //TODO rewrite it to ListBox
     {
         HashTable<string, ProcessRow> process_rows_table;
 

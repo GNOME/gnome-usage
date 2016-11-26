@@ -72,8 +72,6 @@ namespace Usage
             {
                 if(args[i] != null)
                 {
-                    //GLib.stdout.printf("Arguments: " + args[i] + "\n");
-
                     secure_arguments[i] = args[i];
                     for (int j = 0; j < args[i].length; j++)
                     {

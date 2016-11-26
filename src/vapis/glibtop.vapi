@@ -151,5 +151,6 @@ namespace GTop {
         uint64 flags;
         uint64 size;
     }
+    [CCode(array_null_terminated = "true")]
     public string[] get_proc_argv(out ProcArgs proc_args, Posix.pid_t pid);
 }

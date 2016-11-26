@@ -7,7 +7,6 @@ namespace Usage {
         public const int column_ram_id = 0;
         public const int column_swap_id = 1;
 
-
         public MemoryGraphTable ()
         {
             var settings = (GLib.Application.get_default() as Application).settings;

@@ -1,10 +1,12 @@
 src/application.vala
+src/cookie-graph.vala
 src/cpu-graph-table.vala
 src/cpu-graph.vala
 src/cpu-sub-view.vala
 src/data-view.vala
 src/disk-sub-view.vala
 src/gnome-usage.vala
+src/graph-block.vala
 src/graph-stack-switcher.vala
 src/graph-switcher-button.vala
 src/header-bar.vala
