@@ -25,8 +25,8 @@ namespace Usage {
         {
             Rg.TableIter iter;
             push (out iter, get_monotonic_time ());
-            iter.set (column_ram_id, (GLib.Application.get_default() as Application).monitor.mem_usage_graph, -1);
-            iter.set (column_swap_id, (GLib.Application.get_default() as Application).monitor.swap_usage_graph, -1);
+            iter.set (column_ram_id, (GLib.Application.get_default() as Application).monitor.mem_usage, -1);
+            iter.set (column_swap_id, (GLib.Application.get_default() as Application).monitor.swap_usage, -1);
 
             return true;
         }

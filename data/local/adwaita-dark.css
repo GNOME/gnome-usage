@@ -21,3 +21,15 @@ rggraph#CpuGraphAllCores {
     background-size: 57px 57px;
     background-image: repeating-linear-gradient(0deg, #2e2e2e, #2e2e2e 2px, transparent 2px, transparent 57px);
 }
+
+CookieGraph.used {
+    color: #4a90d9;
+}
+
+CookieGraph.others {
+    color: #4d5356;
+}
+
+CookieGraph.available {
+    color: #232729;
+}

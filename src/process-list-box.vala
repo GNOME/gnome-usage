@@ -2,7 +2,7 @@ using Gee;
 
 namespace Usage
 {
-    public class ProcessListBox : Gtk.Box //TODO rewrite it to ListBox
+    public class ProcessListBox : Gtk.Box //TODO rewrite it to ListBox and use model
     {
         HashTable<string, ProcessRow> process_rows_table;
 
@@ -11,7 +11,7 @@ namespace Usage
             orientation = Gtk.Orientation.VERTICAL;
             process_rows_table = new HashTable<string, ProcessRow>(str_hash, str_equal);
 
-            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval, update);
+            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval_UI, update);
             Timeout.add((GLib.Application.get_default() as Application).settings.first_update_interval, () => //on first load
             {
                 update();
@@ -26,6 +26,7 @@ namespace Usage
 
             var duplicates = new HashSet<string>();
 
+            //TODO move this logic to SystemMonitor!
             foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes())
             {
                 if(duplicates.contains(process.cmdline))

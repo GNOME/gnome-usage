@@ -15,14 +15,14 @@ namespace GTop {
         uint64 irq;
         uint64 softirq;
         uint64 frequency;
-        uint64 xcpu_total[32];
-        uint64 xcpu_user[32];
-        uint64 xcpu_nice[32];
-        uint64 xcpu_sys[32];
-        uint64 xcpu_idle[32];
-        uint64 xcpu_iowait[32];
-        uint64 xcpu_irq[32];
-        uint64 xcpu_softirq[32];
+        uint64 xcpu_total[1024];
+        uint64 xcpu_user[1024];
+        uint64 xcpu_nice[1024];
+        uint64 xcpu_sys[1024];
+        uint64 xcpu_idle[1024];
+        uint64 xcpu_iowait[1024];
+        uint64 xcpu_irq[1024];
+        uint64 xcpu_softirq[1024];
         uint64 xcpu_flags;
     }
     public void get_cpu(out Cpu cpu);
@@ -71,8 +71,8 @@ namespace GTop {
         uint64 timeout;
         uint64 it_real_value;
         uint64 frequency;
-        uint64 xcpu_utime[32];
-        uint64 xcpu_stime[32];
+        uint64 xcpu_utime[1024];
+        uint64 xcpu_stime[1024];
     }
     public void get_proc_time(out ProcTime proc_time, Posix.pid_t pid);
 

@@ -42,9 +42,9 @@ namespace Usage {
 
             for (int i = 0; i < get_num_processors(); i++)
             {
-                iter.set (i, monitor.x_cpu_load_graph[i], -1);
+                iter.set (i, monitor.x_cpu_load[i], -1);
 
-                if(monitor.x_cpu_load_graph[i] >= 90)
+                if(monitor.x_cpu_load[i] >= 90)
                 {
                     if(change_big_process_usage[i])
                     {
@@ -93,12 +93,12 @@ namespace Usage {
             push (out iter, get_monotonic_time ());
 
             SystemMonitor monitor = (GLib.Application.get_default() as Application).monitor;
-            double most_used_core = monitor.x_cpu_load_graph[0];
+            double most_used_core = monitor.x_cpu_load[0];
 
             for (int i = 1; i < get_num_processors(); i++)
             {
-                if(monitor.x_cpu_load_graph[i] > most_used_core)
-                    most_used_core = monitor.x_cpu_load_graph[i];
+                if(monitor.x_cpu_load[i] > most_used_core)
+                    most_used_core = monitor.x_cpu_load[i];
             }
 
             iter.set (0, most_used_core, -1);

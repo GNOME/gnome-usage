@@ -2,7 +2,7 @@ using Posix;
 
 namespace Usage
 {
-    public class ProcessRow : Gtk.Box
+    public class ProcessRow : Gtk.Box //TODO use Row
     {
 		Gtk.Image icon;
         Gtk.Label title_label;
@@ -30,7 +30,7 @@ namespace Usage
             this.margin = 0;
             this.orientation = Gtk.Orientation.VERTICAL;
 			var main_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-			main_box.margin = 12;
+			main_box.margin = 10;
         	load_label = new Gtk.Label(null);
         	load_label.ellipsize = Pango.EllipsizeMode.END;
         	load_label.max_width_chars = 30;
@@ -101,21 +101,41 @@ namespace Usage
         	        app_info = info;
         	}
 
+            bool not_have_icon = false;
             if(app_info != null)
             {
                 display_name = app_info.get_display_name();
         	    title_label = new Gtk.Label(display_name);
+
         	    if(app_info.get_icon() == null)
-                    icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+                    not_have_icon = true;
                 else
-        	        icon = new Gtk.Image.from_gicon(app_info.get_icon(), Gtk.IconSize.LARGE_TOOLBAR);
+                {
+                    var icon_theme = new Gtk.IconTheme();
+                    var icon_info = icon_theme.lookup_by_gicon_for_scale(app_info.get_icon(), 24, 1, Gtk.IconLookupFlags.FORCE_SIZE);
+                    if(icon_info != null)
+                    {
+                        var pixbuf = icon_info.load_icon();
+                        icon = new Gtk.Image.from_pixbuf(pixbuf);
+                    }
+                    else
+                        not_have_icon = true;
+                }
         	}
         	else
         	{
         	    display_name = cmdline;
         	    title_label = new Gtk.Label(display_name);
-        	    icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        	    not_have_icon = true;
         	}
+
+        	if(not_have_icon)
+        	{
+        	    icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
+        	    icon.width_request = 24;
+        	    icon.height_request = 24;
+        	}
+
         	icon.margin_left = 10;
         	icon.margin_right = 10;
 

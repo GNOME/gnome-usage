@@ -25,7 +25,7 @@ namespace Usage
             this.margin = 0;
             this.orientation = Gtk.Orientation.VERTICAL;
 			var main_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-			main_box.margin = 12;
+			main_box.margin = 10;
         	title_label = new Gtk.Label(cmdline);
         	load_label = new Gtk.Label(null);
         	icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);

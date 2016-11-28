@@ -5,6 +5,11 @@ namespace Usage
 	public class ProcessDialog : Gtk.Dialog
 	{
     	private pid_t pid;
+        GraphBlock processor_graph_block;
+        GraphBlock memory_graph_block;
+        GraphBlock disk_graph_block;
+        GraphBlock downloads_graph_block;
+        GraphBlock uploads_graph_block;
 
     	public ProcessDialog(pid_t pid, string name)
     	{
@@ -23,35 +28,46 @@ namespace Usage
     	private void create_widgets()
     	{
     		Gtk.Box content = get_content_area() as Gtk.Box;
-            Gtk.AttachOptions flags = Gtk.AttachOptions.EXPAND;
 
-            Gtk.Table table = new Gtk.Table (2, 3, true);
-            table.vexpand = true;
+            Gtk.Grid grid = new Gtk.Grid();
+            grid.margin_top = 20;
+            grid.margin_start = 20;
+            grid.margin_end = 20;
 
-            var processor_graph_block = new GraphBlock(_("Processor"), this.title);
-            var memory_graph_block = new GraphBlock(_("Memory"), this.title);
-            var disk_graph_block = new GraphBlock(_("Disk I/O"), this.title);
-            var downloads_graph_block = new GraphBlock(_("Downloads"), this.title);
-            var uploads_graph_block = new GraphBlock(_("Uploads"), this.title);
+            processor_graph_block = new GraphBlock(_("Processor"), this.title);
+            memory_graph_block = new GraphBlock(_("Memory"), this.title);
+            disk_graph_block = new GraphBlock(_("Disk I/O"), this.title);
+            downloads_graph_block = new GraphBlock(_("Downloads"), this.title);
+            uploads_graph_block = new GraphBlock(_("Uploads"), this.title);
 
-            table.attach(processor_graph_block, 0, 1, 0, 1, flags, flags, 0, 0);
-            table.attach(memory_graph_block, 1, 2, 0, 1, flags, flags, 0, 0);
-            table.attach(disk_graph_block, 2, 3, 0, 1, flags, flags, 0, 0);
-            table.attach(downloads_graph_block, 0, 1, 1, 2, flags, flags, 0, 0);
-            table.attach(uploads_graph_block, 1, 2, 1, 2, flags, flags, 0, 0);
-            content.add(table);
+            grid.attach(processor_graph_block, 0, 0, 1, 1);
+            grid.attach(memory_graph_block, 1, 0, 1, 1);
+            grid.attach(disk_graph_block, 2, 0, 1, 1);
+            grid.attach(downloads_graph_block, 0, 1, 1, 1);
+            grid.attach(uploads_graph_block, 1, 1, 1, 1);
+            content.add(grid);
             content.show_all();
 
-            int i = 1;
-
-            Timeout.add(1000, () => //testing
-            {
-                processor_graph_block.update(i, i*2);
-                i++;
-                return true;
-            });
+            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_cookie_graphs_UI, update);
+            update();
 
     		add_button (_("Stop"), Gtk.ResponseType.HELP).get_style_context().add_class ("destructive-action");
+    	}
+
+    	private bool update()
+    	{
+    	    unowned SystemMonitor monitor = (GLib.Application.get_default() as Application).monitor;
+    	    unowned Process data = monitor.get_data_for_pid(pid);
+    	    int app_cpu_load = 0;
+    	    int app_memory_usage = 0;
+    	    if(data != null)
+    	    {
+    	        app_cpu_load = (int) data.x_cpu_load;
+    	        app_memory_usage = (int) data.mem_usage;
+    	    }
+    	    processor_graph_block.update((int) data.last_processor, app_cpu_load, (int) monitor.x_cpu_load[data.last_processor]);
+    	    memory_graph_block.update(-1, app_memory_usage, (int) monitor.mem_usage);
+    	    return true;
     	}
 
     	private void connect_signals()

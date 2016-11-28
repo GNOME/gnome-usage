@@ -6,9 +6,19 @@ namespace Usage {
     {
         int used_percentages = 0;
         int other_percentages = 0;
+        Gdk.RGBA used_color;
+        Gdk.RGBA others_color;
+        Gdk.RGBA available;
 
-        public CookieGraph(Gdk.RGBA used_color, Gdk.RGBA others_color, Gdk.RGBA available)
+        class construct
         {
+            set_css_name("CookieGraph");
+        }
+
+        public CookieGraph()
+        {
+            set_styles();
+
             this.draw.connect ((context) =>
             {
             	int height = this.get_allocated_height ();
@@ -51,6 +61,17 @@ namespace Usage {
                 context.fill();
             	return true;
             });
+        }
+
+        private void set_styles()
+        {
+            var context = get_style_context();
+            context.add_class("used");
+            used_color = context.get_color(context.get_state());
+            context.add_class("others");
+            others_color = context.get_color(context.get_state());
+            context.add_class("available");
+            available = context.get_color(context.get_state());
         }
 
         public void update(int used_percentages, int other_percentages)

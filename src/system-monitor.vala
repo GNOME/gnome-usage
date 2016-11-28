@@ -8,7 +8,10 @@ namespace Usage
         internal pid_t pid;
         internal string cmdline;
         internal double cpu_load;
+        internal double x_cpu_load;
         internal uint64 cpu_last_used;
+        internal uint64 x_cpu_last_used;
+        internal uint last_processor;
         internal double mem_usage;
 
         internal bool alive;
@@ -17,23 +20,15 @@ namespace Usage
     public class SystemMonitor
     {
         public double cpu_load { get; private set; }
-        public double cpu_load_graph { get; private set; }
         public double[] x_cpu_load { get; private set; }
-        public double[] x_cpu_load_graph { get; private set; }
         public double mem_usage { get; private set; }
-        public double mem_usage_graph { get; private set; }
         public double swap_usage { get; private set; }
-        public double swap_usage_graph { get; private set; }
 
         uint64 cpu_last_used = 0;
-        uint64 cpu_last_used_graph = 0;
         uint64 cpu_last_total = 0;
-        uint64 cpu_last_total_graph = 0;
 
         uint64[] x_cpu_last_used;
-        uint64[] x_cpu_last_used_graph;
         uint64[] x_cpu_last_total;
-        uint64[] x_cpu_last_total_graph;
 
         bool change_timeout = false;
 
@@ -149,17 +144,25 @@ namespace Usage
                     process.pid = pids[i];
                     process.alive = true;
                     process.cmdline = get_full_process_cmd ((string) proc_state.cmd, arguments);
+                    process.last_processor = proc_state.last_processor;
                     process.cpu_load = 0;
+                    process.x_cpu_load = 0;
                     process.cpu_last_used = proc_time.rtime;
+                    process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);
                     process.mem_usage = 0;
                     process_table.insert (pids[i], (owned) process);
                 }
                 else
                 {
                     unowned Process process = process_table[pids[i]];
-                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors();
+                    process.last_processor = proc_state.last_processor;
+                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors(); //TODO After fix bug bellow remove: * get_num_processors()
+                    process.x_cpu_load = (((double) ((proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]) - process.x_cpu_last_used)) / (cpu_data.xcpu_total[process.last_processor] - x_cpu_last_total[process.last_processor])) * 100;
+                    //FIX ME: It is always 0, libGTop bug propably
+                    //GLib.stdout.printf("X_cpu: " + process.last_processor.to_string() + " " + (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]).to_string() + "\n");
                     process.alive = true;
                     process.cpu_last_used = proc_time.rtime;
+                    process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);
 
                     GTop.ProcMem proc_mem;
                     GTop.get_proc_mem (out proc_mem, process.pid);
@@ -189,51 +192,14 @@ namespace Usage
             return true;
         }
 
-        private bool update_graph_data()
-        {
-            /* CPU */
-            GTop.Cpu cpu_data;
-            GTop.get_cpu (out cpu_data);
-            var used = cpu_data.user + cpu_data.nice + cpu_data.sys;
-            cpu_load_graph = (((double) (used - cpu_last_used_graph)) / (cpu_data.total - cpu_last_total_graph)) * 100;
-
-            var x_cpu_used = new uint64[get_num_processors()];
-            for (int i = 0; i < x_cpu_load_graph.length; i++)
-            {
-                x_cpu_used[i] = cpu_data.xcpu_user[i] + cpu_data.xcpu_nice[i] + cpu_data.xcpu_sys[i];
-                x_cpu_load_graph[i] = (((double) (x_cpu_used[i] - x_cpu_last_used_graph[i])) / (cpu_data.xcpu_total[i] - x_cpu_last_total_graph[i])) * 100;
-            }
-
-            /* Memory */
-            GTop.Mem mem;
-            GTop.get_mem (out mem);
-            mem_usage_graph = (((double) (mem.used - mem.buffer - mem.cached)) / mem.total) * 100;
-
-            /* Swap */
-            GTop.Swap swap;
-            GTop.get_swap (out swap);
-            swap_usage_graph = (double) swap.used / swap.total;
-
-            cpu_last_used_graph = used;
-            cpu_last_total_graph = cpu_data.total;
-
-            x_cpu_last_used_graph = x_cpu_used;
-            x_cpu_last_total_graph = cpu_data.xcpu_total;
-
-
-            if(change_timeout)
-            {
-                change_timeout = false;
-                Timeout.add((GLib.Application.get_default() as Application).settings.graph_update_interval, update_graph_data);
-                return false;
-            }
-
-            return true;
-        }
-
         public List<unowned Process> get_processes()
         {
             return process_table.get_values();
+        }
+
+        public unowned Process get_data_for_pid(pid_t pid)
+        {
+            return process_table.get(pid);
         }
 
         public SystemMonitor()
@@ -241,11 +207,8 @@ namespace Usage
             GTop.init();
 
             x_cpu_load = new double[get_num_processors()];
-            x_cpu_load_graph = new double[get_num_processors()];
             x_cpu_last_used = new uint64[get_num_processors()];
-            x_cpu_last_used_graph = new uint64[get_num_processors()];
             x_cpu_last_total = new uint64[get_num_processors()];
-            x_cpu_last_total_graph = new uint64[get_num_processors()];
             process_table = new HashTable<pid_t?, Process>(int_hash, int_equal);
 
             var settings = (GLib.Application.get_default() as Application).settings;
@@ -255,13 +218,10 @@ namespace Usage
             });
 
             Timeout.add(settings.list_update_interval, update_data);
-            Timeout.add(settings.graph_update_interval, update_graph_data);
             update_data();
-            update_graph_data();
             Timeout.add(settings.first_update_interval, () => //First load
             {
                 update_data();
-                update_graph_data();
                 return false;
             });
         }
