@@ -2,17 +2,33 @@ using Gee;
 
 namespace Usage
 {
-    public class ProcessListBox : Gtk.Box //TODO rewrite it to ListBox and use model
+    public class ProcessListBoxNew : Gtk.ListBox
     {
-        HashTable<string, ProcessRow> process_rows_table;
+        ListStore model;
+        HashSet<string> rows;
+        string cmdline_opened_process;
 
-        public ProcessListBox()
+        public ProcessListBoxNew()
         {
-            orientation = Gtk.Orientation.VERTICAL;
-            process_rows_table = new HashTable<string, ProcessRow>(str_hash, str_equal);
+            set_selection_mode (Gtk.SelectionMode.NONE);
+            set_header_func (update_header);
+            row_activated.connect( (row) => {
+                var process_row = (ProcessRowNew) row;
+                process_row.activate();
+                if(cmdline_opened_process == null)
+                    cmdline_opened_process = process_row.process.cmdline;
+                else
+                    cmdline_opened_process = null;
+            });
 
-            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_interval_UI, update);
-            Timeout.add((GLib.Application.get_default() as Application).settings.first_update_interval, () => //on first load
+            rows = new HashSet<string>();
+            model = new ListStore(typeof(Process));
+            bind_model(model, on_row_created);
+
+            var settings = (GLib.Application.get_default() as Application).settings;
+
+            Timeout.add(settings.list_update_interval_UI, update);
+            Timeout.add(settings.first_list_update_interval_UI, () => //First load
             {
                 update();
                 return false;
@@ -21,77 +37,60 @@ namespace Usage
 
         public bool update()
         {
-            foreach(unowned ProcessRow row in process_rows_table.get_values())
-                row.pre_update();
-
-            var duplicates = new HashSet<string>();
-
-            //TODO move this logic to SystemMonitor!
-            foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes())
+            foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes_cmdline())
             {
-                if(duplicates.contains(process.cmdline))
+                if((process.cmdline in rows) == false)
                 {
-                    unowned ProcessRow row = process_rows_table[process.cmdline];
-
-                    if(!row.is_in_subrows(process.pid))
+                    if(process.cpu_load >= 1)
                     {
-                        if((int) process.cpu_load > 0)
-                            row.add_sub_row(process.pid, (int) process.cpu_load, process.cmdline);
-                    }
-                    else
-                    {
-                        if((int) process.cpu_load > 0)
-                            row.update_sub_row(process.pid, (int) process.cpu_load);
-                    }
-                }
-                else
-                {
-                    if(!(process.cmdline in process_rows_table))
-                    {
-                        if((int) process.cpu_load > 0)
-                        {
-                            ProcessRow row = new ProcessRow(process.pid, (int) process.cpu_load, process.cmdline);
-                            process_rows_table.insert (process.cmdline, row);
-                            duplicates.add(process.cmdline);
-                        }
-                    }
-                    else
-                    {
-                        if((int) process.cpu_load > 0)
-                        {
-                            unowned ProcessRow row = process_rows_table[process.cmdline];
-                            row.set_value(process.pid, (int) process.cpu_load);
-                            duplicates.add(process.cmdline);
-                        }
+                        rows.add(process.cmdline);
+                        model.append(process);
                     }
                 }
             }
 
-            this.forall ((element) => this.remove (element)); //clear box
+            model.sort(sort);
 
-            var rows_sorted = new Gee.ArrayList<unowned ProcessRow>();
-             foreach(unowned ProcessRow row in process_rows_table.get_values())
-             {
-                 row.post_update();
-                 if(row.get_alive() == false)
-                     process_rows_table.remove(row.get_cmdline());
-                 else
-                     rows_sorted.add(row);
-             }
-
-             sort(rows_sorted);
-
-             foreach(unowned ProcessRow row in rows_sorted)
-                 this.add(row);
+            for(uint i = 0; i < model.get_n_items(); i++)
+            {
+                Process row = (Process) model.get_item(i);
+                if(row.alive == false || row.cpu_load < 1)
+                {
+                    rows.remove(row.cmdline);
+                    model.remove(i);
+                }
+            }
 
             return true;
         }
 
-        private void sort(Gee.ArrayList<unowned ProcessRow> rows)
+        public Gtk.Widget on_row_created (Object item)
         {
-            rows.sort((a, b) => {
-                return b.get_value() - a.get_value();
-            });
+            Process process = (Process) item;
+            bool opened = false;
+            if(process.cmdline == cmdline_opened_process)
+                opened = true;
+
+            var row = new ProcessRowNew(process, opened);
+            return row;
+        }
+
+         void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row)
+         {
+         	if(before_row == null)
+        	    row.set_header(null);
+            else
+            {
+                var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
+                separator.get_style_context().add_class("list");
+            	separator.show();
+        	    row.set_header(separator);
+        	}
+         }
+
+        public int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
+        {
+            return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
         }
     }
 }

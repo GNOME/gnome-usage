@@ -1,23 +1,68 @@
-.processRow-opened { background: #9c9c9c; border: 1px solid #898989;}
-.processRow { background: #ffffff; }
-.processRow-hover { background: #e2e2e2; }
-.processRow-max { background: #fabbbb; border: 1px solid #faa5a2; }
-.processRow-max-hover { background: #faa5a2; border: 1px solid #faa5a2; }
-.subProcessSubRow { background: #f2f2f2; }
-.subProcessSubRow-hover { background: #e2e2e2; }
 .subProcessSubRow-max { background: #fabbbb;  border: 1px solid #faa5a2; }
 .subProcessSubRow-max-hover { background: #faa5a2; border: 1px solid #faa5a2; }
 
-.sidebar-buttons {
+list, graph-box {
+    border: 1px solid #d3d7cf;
+}
+
+list row {
+    padding: 0;
+}
+
+list separator {
+    background: #dadada;
+}
+
+list row.opened {
+    background: #919191;
+}
+
+list row.opened:hover {
+    background: #919191;
+}
+
+subprocess-list row {
+    padding: 0;
+    background: #f2f2f2;
+}
+
+subprocess-list row:hover {
+    padding: 0;
+    background: #e2e2e2;
+}
+
+graph-stack-switcher {
+    background: #fafafa;
+}
+
+graph-switcher-button {
+    padding: 6px 10px;
     border-style: none;
-    background-color: #f4f4f3;
+    background-color: #fafafa;
     border-radius: 0;
 }
 
-rggraph#CpuGraphAllCores {
+graph-switcher-button:hover {
+    background-color: #eaebea;
+}
+
+graph-switcher-button:checked {
+    background-color: #dbdbdb;
+}
+
+graph-switcher-button:active {
+    background-color: #dbdbdb;
+    box-shadow: inset 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+scrolledwindow {
+    background: #f1f2f1;
+}
+
+line-graph.big {
     background-color: #ffffff;
     background-size: 57px 57px;
-    background-image: repeating-linear-gradient(0deg, #f0f1f2, #f0f1f2 2px, transparent 2px, transparent 57px);
+    background-image: repeating-linear-gradient(0deg, #e6e6e6, #e6e6e6 1px, transparent 1px, transparent 57px);
 }
 
 CookieGraph.used {

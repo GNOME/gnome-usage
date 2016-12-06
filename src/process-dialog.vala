@@ -57,7 +57,7 @@ namespace Usage
     	private bool update()
     	{
     	    unowned SystemMonitor monitor = (GLib.Application.get_default() as Application).monitor;
-    	    unowned Process data = monitor.get_data_for_pid(pid);
+    	    unowned Process data = monitor.get_process_by_pid(pid);
     	    int app_cpu_load = 0;
     	    int app_memory_usage = 0;
     	    if(data != null)

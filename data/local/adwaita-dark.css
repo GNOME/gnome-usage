@@ -8,18 +8,48 @@
 .subProcessSubRow-max { background: #fabbbb;  border: 1px solid #faa5a2; }
 .subProcessSubRow-max-hover { background: #faa5a2; border: 1px solid #faa5a2; }
 
-row { padding: 0 }
+list, graph-box {
+    border: 1px solid #3f3f3f;
+}
 
-.sidebar-buttons {
+separator.list {
+    background-color: #3f3f3f;
+}
+
+
+row {
+    padding: 0;
+    /*background: #232729;*/
+}
+
+row:hover {
+    padding: 0;
+    background: #4d5356;
+}
+
+graph-switcher-button {
+    padding: 6px 10px;
     border-style: none;
     background-color: #2b3032;
     border-radius: 0;
 }
 
-rggraph#CpuGraphAllCores {
+graph-switcher-button:hover {
+    background-color: #484f51;
+}
+
+graph-switcher-button:checked {
+    background-color: #383D3F;
+}
+
+graph-switcher-button:active {
+    background-color: #383D3F;
+}
+
+line-graph.big {
     background-color: #232729;
     background-size: 57px 57px;
-    background-image: repeating-linear-gradient(0deg, #2e2e2e, #2e2e2e 2px, transparent 2px, transparent 57px);
+    background-image: repeating-linear-gradient(0deg, #3f3f3f, #3f3f3f 1px, transparent 1px, transparent 57px);
 }
 
 CookieGraph.used {

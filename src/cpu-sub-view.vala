@@ -12,21 +12,20 @@ namespace Usage
             label.margin_bottom = 15;
 
             var cpu_graph = new CpuGraphAllCores();
-            var cpu_graph_frame = new Gtk.Frame(null);
-            cpu_graph_frame.height_request = 225;
-            cpu_graph_frame.width_request = 600;
-            cpu_graph_frame.valign = Gtk.Align.START;
-            cpu_graph_frame.add(cpu_graph);
+            cpu_graph.hexpand = true;
+            var cpu_graph_box = new GraphBox(cpu_graph);
+            cpu_graph_box.height_request = 225;
+            cpu_graph_box.width_request = 600;
+            cpu_graph_box.valign = Gtk.Align.START;
 
-            var process_list_box_frame = new Gtk.Frame(null);
-            process_list_box_frame.margin_top = 30;
-            process_list_box_frame.margin_bottom = 20;
-            process_list_box_frame.add(new ProcessListBox());
+            var process_list_box = new ProcessListBoxNew();
+            process_list_box.margin_bottom = 20;
+            process_list_box.margin_top = 30;
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             cpu_box.pack_start(label, false, false, 0);
-            cpu_box.pack_start(cpu_graph_frame, false, false, 0);
-            cpu_box.pack_start(process_list_box_frame, false, false, 0);
+            cpu_box.pack_start(cpu_graph_box, false, false, 0);
+            cpu_box.pack_start(process_list_box, false, false, 0);
 
             var better_box = new Better.Box();
             better_box.max_width_request = 600;

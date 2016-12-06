@@ -9,18 +9,15 @@ namespace Usage
     {
 		private static CpuGraphTableMostUsedCore rg_table;
 		private LineRenderer renderer;
-		private const string red_color = "#ee2222";
+		private const string red_color = "#ee2222"; //TODO load from css
         private const string blue_color = "#4a90d9";
 
         public CpuGraphMostUsed ()
         {
             if(rg_table == null)
-            {
                 rg_table = new CpuGraphTableMostUsedCore();
-                set_table(rg_table);
-            }
-            else
-                set_table(rg_table);
+
+            set_table(rg_table);
 
             renderer = new LineRenderer();
             renderer.stroke_color = blue_color;
@@ -42,21 +39,23 @@ namespace Usage
     **/
     public class CpuGraphAllCores : Rg.Graph
     {
-    	private static CpuGraphTableComplex rg_table;
+    	private static CpuGraphTableComplex table;
         private LineRenderer[] renderers;
         private const string red_color = "#ee2222";
         private const string blue_color = "#a8c9ed";
 
+        class construct
+        {
+            set_css_name("line-graph");
+        }
+
         public CpuGraphAllCores ()
         {
-            name = "CpuGraphAllCores";
-            if(rg_table == null)
-            {
-                rg_table = new CpuGraphTableComplex();
-                set_table(rg_table);
-            }
-            else
-                set_table(rg_table);
+            get_style_context().add_class("big");
+            if(table == null)
+                table = new CpuGraphTableComplex();
+
+            set_table(table);
 
             renderers = new LineRenderer[get_num_processors()];
             for(int i = 0; i < get_num_processors(); i++)
@@ -68,11 +67,11 @@ namespace Usage
                 add_renderer(renderers[i]);
             }
 
-            rg_table.big_process_usage.connect ((column) => {
+            table.big_process_usage.connect ((column) => {
                 renderers[column].stroke_color = red_color;
             });
 
-            rg_table.small_process_usage.connect ((column) => {
+            table.small_process_usage.connect ((column) => {
                 renderers[column].stroke_color = blue_color;
             });
         }

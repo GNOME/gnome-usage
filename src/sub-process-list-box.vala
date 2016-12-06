@@ -3,108 +3,76 @@ using Posix;
 
 namespace Usage
 {
-     public class SubProcessListBox : Gtk.Box
-     {
-         HashTable<pid_t?, SubProcessSubRow> process_sub_rows_table;
+    public class SubProcessListBox : Gtk.ListBox
+    {
+        ListStore model;
+        Process parent_process;
 
-         public SubProcessListBox()
-         {
-             orientation = Gtk.Orientation.VERTICAL;
-             process_sub_rows_table = new HashTable<pid_t?, SubProcessSubRow>(int_hash, int_equal);
-         }
+        class construct
+        {
+            set_css_name("subprocess-list");
+        }
 
-         public string get_first_cmdline()
-         {
-            return process_sub_rows_table.get_values().nth_data(0).get_cmdline();
-         }
+        public SubProcessListBox(Process process)
+        {
+            parent_process = process;
+            set_selection_mode (Gtk.SelectionMode.NONE);
+            set_header_func (update_header);
 
-         public pid_t get_first_pid()
-         {
-             return process_sub_rows_table.get_values().nth_data(0).get_pid();
-         }
+            row_activated.connect( (row) => {
+                var sub_process_row = (SubProcessSubRow) row;
+                sub_process_row.activate();
+            });
 
-         public int get_first_value()
-         {
-             return process_sub_rows_table.get_values().nth_data(0).get_value();
-         }
+            model = new ListStore(typeof(Process));
+            bind_model(model, on_row_created);
 
-         public uint get_sub_rows_count()
-         {
-             return process_sub_rows_table.length;
-         }
+            update();
+        }
 
-         public bool is_in_table(pid_t pid)
-         {
-             return ((int) pid in process_sub_rows_table);
-         }
+        public void update()
+        {
+           if(parent_process.sub_processes != null)
+           {
+               foreach(unowned Process process in parent_process.sub_processes.get_values())
+               {
+                   if(process.cpu_load >= 1)
+                       model.append(process);
+               }
 
-         public void pre_update()
-         {
-             foreach(unowned SubProcessSubRow sub_row in process_sub_rows_table.get_values())
-                 sub_row.set_alive(false);
-         }
+               model.sort(sort);
+               for(uint i = 0; i < model.get_n_items(); i++)
+               {
+                   Process row = (Process) model.get_item(i);
+                   if(row.alive == false || row.cpu_load < 1)
+                       model.remove(i);
+               }
+           }
+        }
 
-         public void post_update()
-         {
-             this.forall ((element) => this.remove (element)); //clear box
+        public Gtk.Widget on_row_created (Object item)
+        {
+            Process process = (Process) item;
+            var row = new SubProcessSubRow(process);
+            return row;
+        }
 
-             var sub_rows_sorted = new Gee.ArrayList<unowned SubProcessSubRow>();
-             foreach(unowned SubProcessSubRow sub_row in process_sub_rows_table.get_values())
-             {
-                 sub_row.update();
-                 if(sub_row.get_alive() == false)
-                     process_sub_rows_table.remove((int) sub_row.get_pid());
-                 else
-                     sub_rows_sorted.add(sub_row);
-             }
+        void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row)
+        {
+            if(before_row == null)
+        	    row.set_header(null);
+            else
+            {
+                var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
+                separator.get_style_context().add_class("list");
+           	    separator.show();
+        	    row.set_header(separator);
+        	}
+        }
 
-             sort(sub_rows_sorted);
-
-             foreach(unowned SubProcessSubRow sub_row in sub_rows_sorted)
-                 this.add(sub_row);
-         }
-
-         public void add_sub_row(pid_t pid, int value, string cmdline)
-         {
-             SubProcessSubRow sub_row = new SubProcessSubRow((int) pid, value, cmdline);
-             process_sub_rows_table.insert ((int) pid, (owned) sub_row);
-         }
-
-         public void update_sub_row(pid_t pid, int value)
-         {
-             unowned SubProcessSubRow sub_row = process_sub_rows_table[(int) pid];
-             sub_row.set_value(value);
-         }
-
-         public void remove_all()
-         {
-             this.forall ((element) => this.remove (element)); //clear box
-             process_sub_rows_table.remove_all();
-         }
-
-         public Gee.ArrayList<int> get_values()
-         {
-             var list = new Gee.ArrayList<int>();
-             foreach(unowned SubProcessSubRow sub_row in process_sub_rows_table.get_values())
-                 list.add(sub_row.get_value());
-
-             return list;
-         }
-
-         public int get_values_sum()
-         {
-             int sum = 0;
-             foreach(unowned SubProcessSubRow sub_row in process_sub_rows_table.get_values())
-                 sum += sub_row.get_value();
-
-             return sum;
-         }
-
-         private void sort(Gee.ArrayList<unowned SubProcessSubRow> sub_rows)
-         {
-             sub_rows.sort((a, b) => {
-                 return a.get_value() - b.get_value();
-             });
-         }
-     }
+        public int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
+        {
+            return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
+        }
+    }
 }

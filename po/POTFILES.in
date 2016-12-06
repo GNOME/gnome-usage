@@ -9,6 +9,7 @@ src/disk-sub-view.vala
 src/gnome-usage.vala
 src/graph-block-row.vala
 src/graph-block.vala
+src/graph-box.vala
 src/graph-stack-switcher.vala
 src/graph-switcher-button.vala
 src/header-bar.vala
@@ -19,7 +20,6 @@ src/network-sub-view.vala
 src/performance-view.vala
 src/power-view.vala
 src/process-dialog.vala
-src/process-list-box-new.vala
 src/process-list-box.vala
 src/process-row.vala
 src/settings.vala
