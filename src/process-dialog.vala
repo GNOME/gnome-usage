@@ -64,8 +64,13 @@ namespace Usage
     	    {
     	        app_cpu_load = (int) data.x_cpu_load;
     	        app_memory_usage = (int) data.mem_usage;
+    	        processor_graph_block.update((int) data.last_processor, app_cpu_load, (int) monitor.x_cpu_load[data.last_processor]);
     	    }
-    	    processor_graph_block.update((int) data.last_processor, app_cpu_load, (int) monitor.x_cpu_load[data.last_processor]);
+    	    else
+    	    {
+    	        processor_graph_block.update(-1, app_cpu_load, (int) monitor.cpu_load);
+    	    }
+
     	    memory_graph_block.update(-1, app_memory_usage, (int) monitor.mem_usage);
     	    return true;
     	}

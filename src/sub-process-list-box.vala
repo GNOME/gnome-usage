@@ -36,16 +36,7 @@ namespace Usage
            {
                foreach(unowned Process process in parent_process.sub_processes.get_values())
                {
-                   if(process.cpu_load >= 1)
-                       model.append(process);
-               }
-
-               model.sort(sort);
-               for(uint i = 0; i < model.get_n_items(); i++)
-               {
-                   Process row = (Process) model.get_item(i);
-                   if(row.alive == false || row.cpu_load < 1)
-                       model.remove(i);
+                   model.insert_sorted(process, sort);
                }
            }
         }

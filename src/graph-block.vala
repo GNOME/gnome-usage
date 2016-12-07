@@ -50,6 +50,11 @@ namespace Usage
                 label.set_text("<span font_desc=\"11.0\"><b>" + block_name + " " + processor_core.to_string() + "</b></span>");
                 label.use_markup = true;
             }
+            else
+            {
+                label.set_text("<span font_desc=\"11.0\"><b>" + block_name + "</b></span>");
+                label.use_markup = true;
+            }
 
             graph.update(application_percentages, other_percentages);
             application_row.update(application_percentages);

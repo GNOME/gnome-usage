@@ -5,8 +5,8 @@ namespace Usage
     public class ProcessListBoxNew : Gtk.ListBox
     {
         ListStore model;
-        HashSet<string> rows;
         string cmdline_opened_process;
+        ProcessRowNew? opened_row = null;
 
         public ProcessListBoxNew()
         {
@@ -14,14 +14,22 @@ namespace Usage
             set_header_func (update_header);
             row_activated.connect( (row) => {
                 var process_row = (ProcessRowNew) row;
-                process_row.activate();
-                if(cmdline_opened_process == null)
-                    cmdline_opened_process = process_row.process.cmdline;
+
+                if(opened_row != null)
+                    opened_row.activate();
+
+                if(opened_row != process_row)
+                {
+                    process_row.activate();
+                    if(process_row.process.sub_processes != null)
+                        opened_row = process_row;
+                    else
+                        opened_row = null;
+                }
                 else
-                    cmdline_opened_process = null;
+                    opened_row = null;
             });
 
-            rows = new HashSet<string>();
             model = new ListStore(typeof(Process));
             bind_model(model, on_row_created);
 
@@ -37,29 +45,10 @@ namespace Usage
 
         public bool update()
         {
+            model.remove_all();
+
             foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes_cmdline())
-            {
-                if((process.cmdline in rows) == false)
-                {
-                    if(process.cpu_load >= 1) //TODO To backend!
-                    {
-                        rows.add(process.cmdline);
-                        model.append(process);
-                    }
-                }
-            }
-
-            model.sort(sort);
-
-            for(uint i = 0; i < model.get_n_items(); i++)
-            {
-                Process row = (Process) model.get_item(i);
-                if(row.alive == false || row.cpu_load < 1)
-                {
-                    rows.remove(row.cmdline);
-                    model.remove(i);
-                }
-            }
+                model.insert_sorted(process, sort);
 
             return true;
         }
@@ -68,10 +57,19 @@ namespace Usage
         {
             Process process = (Process) item;
             bool opened = false;
-            if(process.cmdline == cmdline_opened_process)
-                opened = true;
+
+            if(opened_row != null)
+            {
+                if(process.cmdline == opened_row.process.cmdline)
+                {
+                    opened = true;
+                }
+            }
 
             var row = new ProcessRowNew(process, opened);
+            if(opened)
+               opened_row = row;
+
             return row;
         }
 

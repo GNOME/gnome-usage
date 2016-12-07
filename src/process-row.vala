@@ -38,9 +38,6 @@ namespace Usage
             row_box.pack_end(load_label, false, true, 10);
             box.pack_start(row_box, false, true, 0);
 
-            notify["max-usage"].connect (() => {
-                set_styles();
-            });
             update();
 
             if(process.sub_processes != null)
@@ -128,20 +125,19 @@ namespace Usage
             {
                 string values = "";
                 foreach(Process sub_process in process.sub_processes.get_values())
-                {
-                    if(sub_process.cpu_load >= 1)
-                        values += "   " + ((int) sub_process.cpu_load).to_string() + " %";
-                }
+                    values += "   " + ((int) sub_process.cpu_load).to_string() + " %";
 
                 load_label.set_label(values);
             }
             else
                 load_label.set_label(((int) process.cpu_load).to_string() + " %");
 
-             if(process.cpu_load >= 90)
-                 max_usage = true;
-             else
-                 max_usage = false;
+            if(process.cpu_load >= 90)
+                max_usage = true;
+            else
+                max_usage = false;
+
+            set_styles();
         }
 
         private void hide_details()
@@ -158,7 +154,6 @@ namespace Usage
             revealer.set_reveal_child(true);
             load_label.visible = false;
             get_style_context().add_class("opened");
-
         }
 
         public void activate()
@@ -175,7 +170,7 @@ namespace Usage
             else
             {
                 var dialog = new ProcessDialog(process.pid, display_name);
-                dialog.show_all ();
+                dialog.show_all();
             }
         }
 

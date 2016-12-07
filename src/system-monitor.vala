@@ -32,6 +32,7 @@ namespace Usage
 
         HashTable<string, Process> process_table_cmdline;
         HashTable<pid_t?, Process> process_table_pid;
+        HashTable<pid_t?, Process> process_table_pid_condition;
 
 		private int process_mode = GTop.KERN_PROC_UID;
 
@@ -70,8 +71,8 @@ namespace Usage
             x_cpu_last_used = new uint64[get_num_processors()];
             x_cpu_last_total = new uint64[get_num_processors()];
             process_table_cmdline = new HashTable<string, Process>(str_hash, str_equal);
-            process_table_cmdline = new HashTable<string, Process>(str_hash, str_equal);
             process_table_pid = new HashTable<pid_t?, Process>(int_hash, int_equal);
+            process_table_pid_condition = new HashTable<pid_t?, Process>(int_hash, int_equal);
 
             var settings = (GLib.Application.get_default() as Application).settings;
 
@@ -163,6 +164,11 @@ namespace Usage
             GTop.get_swap (out swap);
             swap_usage = (double) swap.used / swap.total;
 
+            foreach(unowned Process process in process_table_pid.get_values())
+            {
+                process.alive = false;
+            }
+
             foreach(unowned Process process in process_table_cmdline.get_values())
             {
                 if(process.sub_processes == null)
@@ -208,7 +214,7 @@ namespace Usage
                 {
                     unowned Process process = process_table_pid[pids[i]];
                     process.last_processor = proc_state.last_processor;
-                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 *4; //TODO remove * 4 only me for test
+                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors();//FIX ME remove * get_num_processors()
                     process.x_cpu_load = (((double) ((proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]) - process.x_cpu_last_used)) / (cpu_data.xcpu_total[process.last_processor] - x_cpu_last_total[process.last_processor])) * 100;
                     //FIX ME: It is always 0, libGTop bug propably
                     //GLib.stdout.printf("X_cpu: " + process.last_processor.to_string() + " " + (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]).to_string() + "\n");
@@ -220,67 +226,72 @@ namespace Usage
                     GTop.get_proc_mem (out proc_mem, process.pid);
                     process.mem_usage = ((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100;
                 }
+            }
 
-                if(proc_cmd_full in process_table_cmdline) //subprocess or update process
+            process_table_pid_condition.remove_all();
+            foreach(unowned Process process in process_table_pid.get_values())
+            {
+                if (process.alive == false)
+                    process_table_pid.remove (process.pid);
+                else
                 {
-                    if(process_table_cmdline[proc_cmd_full].sub_processes != null) //subprocess
-                    {
-                        if(pids[i] in process_table_cmdline[proc_cmd_full].sub_processes) //update subprocess
-                        {
-                            unowned Process process = process_table_cmdline[proc_cmd_full].sub_processes[pids[i]];
-                            process.last_processor = proc_state.last_processor;
-                            process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors(); //TODO After fix bug bellow remove: * get_num_processors()
-                            process.x_cpu_load = (((double) ((proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]) - process.x_cpu_last_used)) / (cpu_data.xcpu_total[process.last_processor] - x_cpu_last_total[process.last_processor])) * 100;
-                            //FIX ME: It is always 0, libGTop bug propably
-                            //GLib.stdout.printf("X_cpu: " + process.last_processor.to_string() + " " + (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]).to_string() + "\n");
-                            process.alive = true;
-                            process.cpu_last_used = proc_time.rtime;
-                            process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);
+                    if(process.cpu_load >= 1)
+                        process_table_pid_condition.insert(process.pid, process);
+                }
+            }
 
-                            GTop.ProcMem proc_mem;
-                            GTop.get_proc_mem (out proc_mem, process.pid);
-                            process.mem_usage = ((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100;
+            foreach(unowned Process process_it in process_table_pid_condition.get_values())
+            {
+                if(process_it.cmdline in process_table_cmdline) //subprocess or update process
+                {
+                    if(process_table_cmdline[process_it.cmdline].sub_processes != null) //subprocess
+                    {
+                        if(process_it.pid in process_table_cmdline[process_it.cmdline].sub_processes) //update subprocess
+                        {
+                            unowned Process process = process_table_cmdline[process_it.cmdline].sub_processes[process_it.pid];
+                            process.last_processor = process_it.last_processor;
+                            process.cpu_load = process_it.cpu_load;
+                            process.x_cpu_load = process_it.x_cpu_load;
+                            process.alive = process_it.alive;
+                            process.cpu_last_used = process_it.cpu_last_used;
+                            process.x_cpu_last_used = process_it.x_cpu_last_used;
+                            process.mem_usage = process_it.mem_usage;
                         }
                         else //add subrow
                         {
                             var process = new Process();
-                            process.pid = pids[i];
-                            process.alive = true;
-                            process.cmdline = proc_cmd_full;
-                            process.last_processor = proc_state.last_processor;
-                            process.cpu_load = 0;
-                            process.x_cpu_load = 0;
-                            process.cpu_last_used = proc_time.rtime;
-                            process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);
-                            process.mem_usage = 0;
-                            process_table_cmdline[proc_cmd_full].sub_processes.insert(pids[i], (owned) process);
+                            process.pid = process_it.pid;
+                            process.alive = process_it.alive;
+                            process.cmdline = process_it.cmdline;
+                            process.last_processor = process_it.last_processor;
+                            process.cpu_load = process_it.cpu_load;
+                            process.x_cpu_load = process_it.x_cpu_load ;
+                            process.cpu_last_used = process_it.cpu_last_used;
+                            process.x_cpu_last_used = process_it.x_cpu_last_used;
+                            process.mem_usage = process_it.mem_usage;
+                            process_table_cmdline[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) process);
                         }
                     }
                     else //update process or transform to group and add subrow
                     {
-                        if(pids[i] == process_table_cmdline[proc_cmd_full].pid) //update process
+                        if(process_it.pid == process_table_cmdline[process_it.cmdline].pid) //update process
                         {
-                            unowned Process process = process_table_cmdline[proc_cmd_full];
-                            process.last_processor = proc_state.last_processor;
-                            process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors(); //TODO After fix bug bellow remove: * get_num_processors()
-                            process.x_cpu_load = (((double) ((proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]) - process.x_cpu_last_used)) / (cpu_data.xcpu_total[process.last_processor] - x_cpu_last_total[process.last_processor])) * 100;
-                            //FIX ME: It is always 0, libGTop bug propably
-                            //GLib.stdout.printf("X_cpu: " + process.last_processor.to_string() + " " + (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]).to_string() + "\n");
-                            process.alive = true;
-                            process.cpu_last_used = proc_time.rtime;
-                            process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);
-
-                            GTop.ProcMem proc_mem;
-                            GTop.get_proc_mem (out proc_mem, process.pid);
-                            process.mem_usage = ((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100;
+                            unowned Process process = process_table_cmdline[process_it.cmdline];
+                            process.last_processor = process_it.last_processor;
+                            process.cpu_load = process_it.cpu_load;
+                            process.x_cpu_load = process_it.x_cpu_load ;
+                            process.alive = process_it.alive;
+                            process.cpu_last_used = process_it.cpu_last_used;
+                            process.x_cpu_last_used = process_it.x_cpu_last_used;
+                            process.mem_usage = process_it.mem_usage;
                         }
                         else //add transform to group and add subrow
                         {
-                            process_table_cmdline[proc_cmd_full].sub_processes = new HashTable<pid_t?, Process>(int_hash, int_equal);
-                            unowned Process process = process_table_cmdline[proc_cmd_full];
+                            process_table_cmdline[process_it.cmdline].sub_processes = new HashTable<pid_t?, Process>(int_hash, int_equal);
+                            unowned Process process = process_table_cmdline[process_it.cmdline];
 
                             var sub_process_one = new Process();
-                            sub_process_one.pid = process.pid;
+                            sub_process_one.pid = process_it.pid;
                             sub_process_one.alive = process.alive;
                             sub_process_one.cmdline = process.cmdline;
                             sub_process_one.last_processor = process.last_processor;
@@ -289,42 +300,36 @@ namespace Usage
                             sub_process_one.cpu_last_used = process.cpu_last_used;
                             sub_process_one.x_cpu_last_used = process.x_cpu_last_used;
                             sub_process_one.mem_usage = process.mem_usage;
-                            process_table_cmdline[proc_cmd_full].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
+                            process_table_cmdline[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
 
                             var sub_process = new Process();
-                            sub_process.pid = pids[i];
-                            sub_process.alive = true;
-                            sub_process.cmdline = proc_cmd_full;
-                            sub_process.last_processor = proc_state.last_processor;
-                            sub_process.cpu_load = 0;
-                            sub_process.x_cpu_load = 0;
-                            sub_process.cpu_last_used = proc_time.rtime;
-                            sub_process.x_cpu_last_used = (proc_time.xcpu_utime[sub_process.last_processor] + proc_time.xcpu_stime[sub_process.last_processor]);
-                            sub_process.mem_usage = 0;
-                            process_table_cmdline[proc_cmd_full].sub_processes.insert(pids[i], (owned) sub_process);
+                            sub_process.pid = process_it.pid;
+                            sub_process.alive = process_it.alive;
+                            sub_process.cmdline = process_it.cmdline;
+                            sub_process.last_processor = process_it.last_processor;
+                            sub_process.cpu_load = process_it.cpu_load;
+                            sub_process.x_cpu_load = process_it.x_cpu_load;
+                            sub_process.cpu_last_used = process_it.cpu_last_used;
+                            sub_process.x_cpu_last_used = process_it.x_cpu_last_used;
+                            sub_process.mem_usage = process_it.mem_usage;
+                            process_table_cmdline[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) sub_process);
                         }
                     }
                 }
                 else //add process
                 {
                      var process = new Process();
-                     process.pid = pids[i];
-                     process.alive = true;
-                     process.cmdline = proc_cmd_full;
-                     process.last_processor = proc_state.last_processor;
-                     process.cpu_load = 0;
-                     process.x_cpu_load = 0;
-                     process.cpu_last_used = proc_time.rtime;
-                     process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);
-                     process.mem_usage = 0;
+                     process.pid = process_it.pid;
+                     process.alive = process_it.alive;
+                     process.cmdline = process_it.cmdline;
+                     process.last_processor = process_it.last_processor;
+                     process.cpu_load = process_it.cpu_load;
+                     process.x_cpu_load = process_it.x_cpu_load;
+                     process.cpu_last_used = process_it.cpu_last_used;
+                     process.x_cpu_last_used = process_it.x_cpu_last_used;
+                     process.mem_usage = process_it.mem_usage;
                      process_table_cmdline.insert(process.cmdline, (owned) process);
                 }
-            }
-
-            foreach(unowned Process process in process_table_pid.get_values())
-            {
-                if (process.alive == false)
-                    process_table_pid.remove (process.pid);
             }
 
             foreach(unowned Process process in process_table_cmdline.get_values())
