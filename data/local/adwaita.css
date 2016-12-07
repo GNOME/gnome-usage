@@ -13,6 +13,16 @@ list separator {
     background: #dadada;
 }
 
+list row.max {
+    background: #fabbbb;
+    border: 1px solid #faa5a2;
+}
+
+list row.max:hover {
+    background: #faa5a2;
+    border: 1px solid #faa5a2;
+}
+
 list row.opened {
     background: #919191;
 }
@@ -27,8 +37,17 @@ subprocess-list row {
 }
 
 subprocess-list row:hover {
-    padding: 0;
     background: #e2e2e2;
+}
+
+subprocess-list row.max {
+    background: #fabbbb;
+    border: 1px solid #faa5a2;
+}
+
+subprocess-list row.max:hover {
+    background: #faa5a2;
+    border: 1px solid #faa5a2;
 }
 
 graph-stack-switcher {
@@ -59,7 +78,7 @@ scrolledwindow {
     background: #f1f2f1;
 }
 
-line-graph.big {
+cpu-all-graph.big {
     background-color: #ffffff;
     background-size: 57px 57px;
     background-image: repeating-linear-gradient(0deg, #e6e6e6, #e6e6e6 1px, transparent 1px, transparent 57px);

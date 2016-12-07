@@ -29,6 +29,9 @@ namespace Usage
             row_box.pack_end(load_label, false, true, 10);
             this.add(row_box);
 
+            notify["max-usage"].connect (() => {
+                set_styles();
+            });
             update();
             show_all();
         }
@@ -41,6 +44,14 @@ namespace Usage
                 max_usage = true;
             else
                 max_usage = false;
+        }
+
+        private void set_styles()
+        {
+            if(max_usage == true)
+                get_style_context().add_class("max");
+            else
+                get_style_context().remove_class("max");
         }
 
         public void activate()

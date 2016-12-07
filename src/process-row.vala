@@ -15,8 +15,9 @@ namespace Usage
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
 
-        public ProcessRowNew(Process process, bool opened)
+        public ProcessRowNew(Process process, bool opened = false)
         {
+            showing_details = opened;
             if(apps_info == null)
                 apps_info = AppInfo.get_all(); //Because it takes too long
             this.process = process;
@@ -37,7 +38,11 @@ namespace Usage
             row_box.pack_end(load_label, false, true, 10);
             box.pack_start(row_box, false, true, 0);
 
+            notify["max-usage"].connect (() => {
+                set_styles();
+            });
             update();
+
             if(process.sub_processes != null)
             {
                 sub_process_list_box = new SubProcessListBox(process);
@@ -164,12 +169,22 @@ namespace Usage
                     hide_details();
                 else
                     show_details();
+
+                set_styles();
             }
             else
             {
                 var dialog = new ProcessDialog(process.pid, display_name);
                 dialog.show_all ();
             }
+        }
+
+        private void set_styles()
+        {
+            if(max_usage == true && showing_details == false)
+                get_style_context().add_class("max");
+            else
+                get_style_context().remove_class("max");
         }
     }
 }

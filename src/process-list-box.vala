@@ -41,7 +41,7 @@ namespace Usage
             {
                 if((process.cmdline in rows) == false)
                 {
-                    if(process.cpu_load >= 1)
+                    if(process.cpu_load >= 1) //TODO To backend!
                     {
                         rows.add(process.cmdline);
                         model.append(process);
