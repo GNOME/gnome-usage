@@ -2,18 +2,25 @@ using Gee;
 
 namespace Usage
 {
+    public enum ProcessListBoxType {
+        PROCESSOR,
+        MEMORY
+    }
+
     public class ProcessListBoxNew : Gtk.ListBox
     {
         ListStore model;
         string cmdline_opened_process;
-        ProcessRowNew? opened_row = null;
+        ProcessRow? opened_row = null;
+        ProcessListBoxType type;
 
-        public ProcessListBoxNew()
+        public ProcessListBoxNew(ProcessListBoxType type)
         {
+            this.type = type;
             set_selection_mode (Gtk.SelectionMode.NONE);
             set_header_func (update_header);
             row_activated.connect( (row) => {
-                var process_row = (ProcessRowNew) row;
+                var process_row = (ProcessRow) row;
 
                 if(opened_row != null)
                     opened_row.activate();
@@ -47,8 +54,18 @@ namespace Usage
         {
             model.remove_all();
 
-            foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_processes_cmdline())
-                model.insert_sorted(process, sort);
+            switch(type)
+            {
+                default:
+                case ProcessListBoxType.PROCESSOR:
+                    foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_cpu_processes())
+                        model.insert_sorted(process, sort);
+                    break;
+                case ProcessListBoxType.MEMORY:
+                    foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_ram_processes())
+                        model.insert_sorted(process, sort);
+                    break;
+            }
 
             return true;
         }
@@ -66,7 +83,7 @@ namespace Usage
                 }
             }
 
-            var row = new ProcessRowNew(process, opened);
+            var row = new ProcessRow(process, type, opened);
             if(opened)
                opened_row = row;
 
@@ -88,7 +105,16 @@ namespace Usage
 
         public int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
         {
-            return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
+            switch(type)
+            {
+                default:
+                case ProcessListBoxType.PROCESSOR:
+                    return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
+                    break;
+                case ProcessListBoxType.MEMORY:
+                    return (int) ((Process) b).mem_usage - (int) ((Process) a).mem_usage;
+                    break;
+            }
         }
     }
 }

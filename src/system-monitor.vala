@@ -12,7 +12,8 @@ namespace Usage
         internal uint64 cpu_last_used;
         internal uint64 x_cpu_last_used;
         internal uint last_processor;
-        internal double mem_usage;
+        internal uint64 mem_usage;
+        internal double mem_usage_percentages;
         internal HashTable<pid_t?, Process> sub_processes;
         internal bool alive;
     }
@@ -30,9 +31,9 @@ namespace Usage
         uint64[] x_cpu_last_used;
         uint64[] x_cpu_last_total;
 
-        HashTable<string, Process> process_table_cmdline;
         HashTable<pid_t?, Process> process_table_pid;
-        HashTable<pid_t?, Process> process_table_pid_condition;
+        HashTable<string, Process> cpu_process_table;
+        HashTable<string, Process> ram_process_table;
 
 		private int process_mode = GTop.KERN_PROC_UID;
 
@@ -53,14 +54,24 @@ namespace Usage
             return process_table_pid.get(pid);
         }
 
-        public List<unowned Process> get_processes_cmdline()
+        public List<unowned Process> get_cpu_processes()
         {
-            return process_table_cmdline.get_values();
+            return cpu_process_table.get_values();
         }
 
-        public unowned Process get_process_by_cmdline(string cmdline)
+        public unowned Process get_cpu_process(string cmdline)
         {
-            return process_table_cmdline[cmdline];
+            return cpu_process_table[cmdline];
+        }
+
+        public List<unowned Process> get_ram_processes()
+        {
+            return ram_process_table.get_values();
+        }
+
+        public unowned Process get_ram_process(string cmdline)
+        {
+            return ram_process_table[cmdline];
         }
 
         public SystemMonitor()
@@ -70,9 +81,9 @@ namespace Usage
             x_cpu_load = new double[get_num_processors()];
             x_cpu_last_used = new uint64[get_num_processors()];
             x_cpu_last_total = new uint64[get_num_processors()];
-            process_table_cmdline = new HashTable<string, Process>(str_hash, str_equal);
+            cpu_process_table = new HashTable<string, Process>(str_hash, str_equal);
+            ram_process_table = new HashTable<string, Process>(str_hash, str_equal);
             process_table_pid = new HashTable<pid_t?, Process>(int_hash, int_equal);
-            process_table_pid_condition = new HashTable<pid_t?, Process>(int_hash, int_equal);
 
             var settings = (GLib.Application.get_default() as Application).settings;
 
@@ -169,18 +180,8 @@ namespace Usage
                 process.alive = false;
             }
 
-            foreach(unowned Process process in process_table_cmdline.get_values())
-            {
-                if(process.sub_processes == null)
-                    process.alive = false;
-                else
-                {
-                    foreach(unowned Process sub_process in process.sub_processes.get_values())
-                    {
-                        sub_process.alive = false;
-                    }
-                }
-            }
+            set_alive_false_table_cmdline(ref cpu_process_table);
+            set_alive_false_table_cmdline(ref ram_process_table);
 
             var uid = Posix.getuid();
             GTop.Proclist proclist;
@@ -224,31 +225,69 @@ namespace Usage
 
                     GTop.ProcMem proc_mem;
                     GTop.get_proc_mem (out proc_mem, process.pid);
-                    process.mem_usage = ((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100;
+                    process.mem_usage = (proc_mem.resident - proc_mem.share) / 1000000;
+                    process.mem_usage_percentages = ((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100;
                 }
             }
 
-            process_table_pid_condition.remove_all();
             foreach(unowned Process process in process_table_pid.get_values())
             {
                 if (process.alive == false)
                     process_table_pid.remove (process.pid);
-                else
-                {
-                    if(process.cpu_load >= 1)
-                        process_table_pid_condition.insert(process.pid, process);
-                }
             }
 
-            foreach(unowned Process process_it in process_table_pid_condition.get_values())
+            var process_table_pid_condition = new HashTable<pid_t?, Process>(int_hash, int_equal);
+            foreach(unowned Process process in process_table_pid.get_values())
             {
-                if(process_it.cmdline in process_table_cmdline) //subprocess or update process
+                if(process.cpu_load >= 1)
+                    process_table_pid_condition.insert(process.pid, process);
+            }
+            get_updates_table_cmdline(process_table_pid_condition, ref cpu_process_table);
+
+            process_table_pid_condition.remove_all();
+            foreach(unowned Process process in process_table_pid.get_values())
+            {
+                if(process.mem_usage >= 15)
+                    process_table_pid_condition.insert(process.pid, process);
+            }
+            get_updates_table_cmdline(process_table_pid_condition, ref ram_process_table);
+
+            cpu_last_used = used;
+            cpu_last_total = cpu_data.total;
+
+            x_cpu_last_used = x_cpu_used;
+            x_cpu_last_total = cpu_data.xcpu_total;
+
+            return true;
+        }
+
+        private void set_alive_false_table_cmdline(ref HashTable<string, Process> process_table_cmdline)
+        {
+            foreach(unowned Process process in process_table_cmdline.get_values())
+            {
+                if(process.sub_processes == null)
+                    process.alive = false;
+                else
                 {
-                    if(process_table_cmdline[process_it.cmdline].sub_processes != null) //subprocess
+                    foreach(unowned Process sub_process in process.sub_processes.get_values())
                     {
-                        if(process_it.pid in process_table_cmdline[process_it.cmdline].sub_processes) //update subprocess
+                        sub_process.alive = false;
+                    }
+                }
+            }
+        }
+
+        private void get_updates_table_cmdline(HashTable<pid_t?, Process> from_table, ref HashTable<string, Process> to_table)
+        {
+            foreach(unowned Process process_it in from_table.get_values())
+            {
+                if(process_it.cmdline in to_table) //subprocess or update process
+                {
+                    if(to_table[process_it.cmdline].sub_processes != null) //subprocess
+                    {
+                        if(process_it.pid in to_table[process_it.cmdline].sub_processes) //update subprocess
                         {
-                            unowned Process process = process_table_cmdline[process_it.cmdline].sub_processes[process_it.pid];
+                            unowned Process process = to_table[process_it.cmdline].sub_processes[process_it.pid];
                             process.last_processor = process_it.last_processor;
                             process.cpu_load = process_it.cpu_load;
                             process.x_cpu_load = process_it.x_cpu_load;
@@ -269,14 +308,14 @@ namespace Usage
                             process.cpu_last_used = process_it.cpu_last_used;
                             process.x_cpu_last_used = process_it.x_cpu_last_used;
                             process.mem_usage = process_it.mem_usage;
-                            process_table_cmdline[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) process);
+                            to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) process);
                         }
                     }
                     else //update process or transform to group and add subrow
                     {
-                        if(process_it.pid == process_table_cmdline[process_it.cmdline].pid) //update process
+                        if(process_it.pid == to_table[process_it.cmdline].pid) //update process
                         {
-                            unowned Process process = process_table_cmdline[process_it.cmdline];
+                            unowned Process process = to_table[process_it.cmdline];
                             process.last_processor = process_it.last_processor;
                             process.cpu_load = process_it.cpu_load;
                             process.x_cpu_load = process_it.x_cpu_load ;
@@ -287,8 +326,8 @@ namespace Usage
                         }
                         else //add transform to group and add subrow
                         {
-                            process_table_cmdline[process_it.cmdline].sub_processes = new HashTable<pid_t?, Process>(int_hash, int_equal);
-                            unowned Process process = process_table_cmdline[process_it.cmdline];
+                            to_table[process_it.cmdline].sub_processes = new HashTable<pid_t?, Process>(int_hash, int_equal);
+                            unowned Process process = to_table[process_it.cmdline];
 
                             var sub_process_one = new Process();
                             sub_process_one.pid = process_it.pid;
@@ -300,7 +339,7 @@ namespace Usage
                             sub_process_one.cpu_last_used = process.cpu_last_used;
                             sub_process_one.x_cpu_last_used = process.x_cpu_last_used;
                             sub_process_one.mem_usage = process.mem_usage;
-                            process_table_cmdline[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
+                            to_table[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
 
                             var sub_process = new Process();
                             sub_process.pid = process_it.pid;
@@ -312,7 +351,7 @@ namespace Usage
                             sub_process.cpu_last_used = process_it.cpu_last_used;
                             sub_process.x_cpu_last_used = process_it.x_cpu_last_used;
                             sub_process.mem_usage = process_it.mem_usage;
-                            process_table_cmdline[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) sub_process);
+                            to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) sub_process);
                         }
                     }
                 }
@@ -328,16 +367,16 @@ namespace Usage
                      process.cpu_last_used = process_it.cpu_last_used;
                      process.x_cpu_last_used = process_it.x_cpu_last_used;
                      process.mem_usage = process_it.mem_usage;
-                     process_table_cmdline.insert(process.cmdline, (owned) process);
+                     to_table.insert(process.cmdline, (owned) process);
                 }
             }
 
-            foreach(unowned Process process in process_table_cmdline.get_values())
+            foreach(unowned Process process in to_table.get_values())
             {
                 if(process.sub_processes == null)
                 {
                     if(process.alive == false)
-                        process_table_cmdline.remove (process.cmdline);
+                        to_table.remove (process.cmdline);
                 }
                 else
                 {
@@ -373,18 +412,10 @@ namespace Usage
                     {
                         process.sub_processes = null;
                         process.alive = false;
-                        process_table_cmdline.remove(process.cmdline);
+                        to_table.remove(process.cmdline);
                     }
                 }
             }
-
-            cpu_last_used = used;
-            cpu_last_total = cpu_data.total;
-
-            x_cpu_last_used = x_cpu_used;
-            x_cpu_last_total = cpu_data.xcpu_total;
-
-            return true;
         }
     }
 }

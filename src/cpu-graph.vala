@@ -12,6 +12,11 @@ namespace Usage
 		private Gdk.RGBA color_max;
         private Gdk.RGBA color_normal;
 
+        class construct
+        {
+            set_css_name("rg-graph");
+        }
+
         public CpuGraphMostUsed ()
         {
             color_max.parse("#ee2222");
@@ -40,7 +45,7 @@ namespace Usage
     /**
      *  Graph showing all processor cores.
     **/
-    public class CpuGraphAllCores : Rg.Graph
+    public class CpuGraphBig : Rg.Graph
     {
     	private static CpuGraphTableComplex table;
         private LineRenderer[] renderers;
@@ -49,10 +54,10 @@ namespace Usage
 
         class construct
         {
-            set_css_name("cpu-all-graph");
+            set_css_name("rg-graph");
         }
 
-        public CpuGraphAllCores()
+        public CpuGraphBig()
         {
             color_max.parse("#ee2222");
             color_normal.parse("#4a90d9");
@@ -69,7 +74,7 @@ namespace Usage
                 renderers[i] = new LineRenderer();
                 renderers[i].column = i;
                 renderers[i].stroke_color_rgba = color_normal;
-                renderers[i].line_width = 2.5;
+                renderers[i].line_width = 1.5;
                 add_renderer(renderers[i]);
             }
 

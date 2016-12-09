@@ -7,14 +7,16 @@ namespace Usage
     {
         ListStore model;
         Process parent_process;
+        ProcessListBoxType type;
 
         class construct
         {
             set_css_name("subprocess-list");
         }
 
-        public SubProcessListBox(Process process)
+        public SubProcessListBox(Process process, ProcessListBoxType type)
         {
+            this.type = type;
             parent_process = process;
             set_selection_mode (Gtk.SelectionMode.NONE);
             set_header_func (update_header);
@@ -44,7 +46,7 @@ namespace Usage
         public Gtk.Widget on_row_created (Object item)
         {
             Process process = (Process) item;
-            var row = new SubProcessSubRow(process);
+            var row = new SubProcessSubRow(process, type);
             return row;
         }
 
@@ -63,7 +65,16 @@ namespace Usage
 
         public int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
         {
-            return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
+            switch(type)
+            {
+                default:
+                case ProcessListBoxType.PROCESSOR:
+                    return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
+                    break;
+                case ProcessListBoxType.MEMORY:
+                    return (int) ((Process) b).mem_usage - (int) ((Process) a).mem_usage;
+                    break;
+            }
         }
     }
 }

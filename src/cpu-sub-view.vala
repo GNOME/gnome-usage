@@ -6,19 +6,19 @@ namespace Usage
         {
             name = "PROCESSOR";
 
-            var label =  new Gtk.Label("<span font_desc=\"14.0\">" + _("Processor") + "</span>");
+            var label = new Gtk.Label("<span font_desc=\"14.0\">" + _("Processor") + "</span>");
             label.set_use_markup(true);
-            label.margin_top = 20;
+            label.margin_top = 25;
             label.margin_bottom = 15;
 
-            var cpu_graph = new CpuGraphAllCores();
+            var cpu_graph = new CpuGraphBig();
             cpu_graph.hexpand = true;
             var cpu_graph_box = new GraphBox(cpu_graph);
             cpu_graph_box.height_request = 225;
             cpu_graph_box.width_request = 600;
             cpu_graph_box.valign = Gtk.Align.START;
 
-            var process_list_box = new ProcessListBoxNew();
+            var process_list_box = new ProcessListBoxNew(ProcessListBoxType.PROCESSOR);
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
 
@@ -36,7 +36,6 @@ namespace Usage
             var scrolled_window = new Gtk.ScrolledWindow(null, null);
             scrolled_window.add(better_box);
             scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
-
 
             add(scrolled_window);
         }

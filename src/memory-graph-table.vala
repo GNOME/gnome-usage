@@ -6,6 +6,10 @@ namespace Usage {
     {
         public const int column_ram_id = 0;
         public const int column_swap_id = 1;
+        public signal void big_ram_usage();
+        public signal void small_ram_usage();
+        private bool change_big_ram_usage = true;
+        private bool change_small_ram_usage = true;
 
         public MemoryGraphTable ()
         {
@@ -25,8 +29,31 @@ namespace Usage {
         {
             Rg.TableIter iter;
             push (out iter, get_monotonic_time ());
-            iter.set (column_ram_id, (GLib.Application.get_default() as Application).monitor.mem_usage, -1);
+
+            SystemMonitor monitor = (GLib.Application.get_default() as Application).monitor;
+            double ram_usage = monitor.mem_usage;
+
+            iter.set (column_ram_id, ram_usage, -1);
             iter.set (column_swap_id, (GLib.Application.get_default() as Application).monitor.swap_usage, -1);
+
+            if(ram_usage >= 90)
+            {
+                if(change_big_ram_usage)
+                {
+                    big_ram_usage();
+                    change_big_ram_usage = false;
+                    change_small_ram_usage = true;
+                }
+            }
+            else
+            {
+                if(change_small_ram_usage)
+                {
+                    small_ram_usage();
+                    change_small_ram_usage = false;
+                    change_big_ram_usage = true;
+                }
+            }
 
             return true;
         }

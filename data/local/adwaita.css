@@ -1,6 +1,3 @@
-.subProcessSubRow-max { background: #fabbbb;  border: 1px solid #faa5a2; }
-.subProcessSubRow-max-hover { background: #faa5a2; border: 1px solid #faa5a2; }
-
 list, graph-box {
     border: 1px solid #d3d7cf;
 }
@@ -78,7 +75,7 @@ scrolledwindow {
     background: #f1f2f1;
 }
 
-cpu-all-graph.big {
+rg-graph.big {
     background-color: #ffffff;
     background-size: 57px 57px;
     background-image: repeating-linear-gradient(0deg, #e6e6e6, #e6e6e6 1px, transparent 1px, transparent 57px);

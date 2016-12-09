@@ -3,20 +3,22 @@ using Gee;
 
 namespace Usage
 {
-    public class ProcessRowNew : Gtk.ListBoxRow
+    public class ProcessRow : Gtk.ListBoxRow
     {
         Gtk.Label load_label;
         Gtk.Revealer revealer;
         SubProcessListBox sub_process_list_box;
         string display_name;
         static GLib.List<AppInfo> apps_info;
+        ProcessListBoxType type;
 
         public Process process { get; private set; }
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
 
-        public ProcessRowNew(Process process, bool opened = false)
+        public ProcessRow(Process process, ProcessListBoxType type, bool opened = false)
         {
+            this.type = type;
             showing_details = opened;
             if(apps_info == null)
                 apps_info = AppInfo.get_all(); //Because it takes too long
@@ -42,7 +44,7 @@ namespace Usage
 
             if(process.sub_processes != null)
             {
-                sub_process_list_box = new SubProcessListBox(process);
+                sub_process_list_box = new SubProcessListBox(process, type);
                 revealer = new Gtk.Revealer();
                 revealer.add(sub_process_list_box);
                 box.pack_end(revealer, false, true, 0);
@@ -60,7 +62,7 @@ namespace Usage
         public Gtk.Widget on_subrow_created (Object item)
         {
             Process process = (Process) item;
-            var row = new SubProcessSubRow(process);
+            var row = new SubProcessSubRow(process, type);
             return row;
         }
 
@@ -121,21 +123,43 @@ namespace Usage
 
         private void update()
         {
-            if(process.sub_processes != null)
+            switch(type)
             {
-                string values = "";
-                foreach(Process sub_process in process.sub_processes.get_values())
-                    values += "   " + ((int) sub_process.cpu_load).to_string() + " %";
+                case ProcessListBoxType.PROCESSOR:
+                    if(process.sub_processes != null)
+                    {
+                        string values = "";
+                        foreach(Process sub_process in process.sub_processes.get_values())
+                            values += "   " + ((int) sub_process.cpu_load).to_string() + " %";
 
-                load_label.set_label(values);
+                        load_label.set_label(values);
+                    }
+                    else
+                        load_label.set_label(((int) process.cpu_load).to_string() + " %");
+
+                    if(process.cpu_load >= 90)
+                        max_usage = true;
+                    else
+                        max_usage = false;
+                    break;
+                case ProcessListBoxType.MEMORY:
+                    if(process.sub_processes != null)
+                    {
+                        string values = "";
+                        foreach(Process sub_process in process.sub_processes.get_values())
+                            values += "   " + ((int) sub_process.mem_usage).to_string() + " MB";
+
+                        load_label.set_label(values);
+                    }
+                    else
+                        load_label.set_label(((int) process.mem_usage).to_string() + " MB");
+
+                    if(process.mem_usage_percentages >= 90)
+                        max_usage = true;
+                    else
+                        max_usage = false;
+                    break;
             }
-            else
-                load_label.set_label(((int) process.cpu_load).to_string() + " %");
-
-            if(process.cpu_load >= 90)
-                max_usage = true;
-            else
-                max_usage = false;
 
             set_styles();
         }

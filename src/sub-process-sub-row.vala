@@ -5,11 +5,13 @@ namespace Usage
     public class SubProcessSubRow : Gtk.ListBoxRow
     {
         Gtk.Label load_label;
+        ProcessListBoxType type;
         public Process process { get; private set; }
         public bool max_usage { get; private set; }
 
-        public SubProcessSubRow(Process process)
+        public SubProcessSubRow(Process process, ProcessListBoxType type)
         {
+            this.type = type;
             this.process = process;
 
 			var row_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -38,12 +40,25 @@ namespace Usage
 
         private void update()
         {
-            load_label.set_label(((int) process.cpu_load).to_string() + " %");
+            switch(type)
+            {
+                case ProcessListBoxType.PROCESSOR:
+                    load_label.set_label(((int) process.cpu_load).to_string() + " %");
 
-            if(process.cpu_load >= 90)
-                max_usage = true;
-            else
-                max_usage = false;
+                    if(process.cpu_load >= 90)
+                        max_usage = true;
+                    else
+                        max_usage = false;
+                    break;
+                case ProcessListBoxType.MEMORY:
+                    load_label.set_label(((int) process.mem_usage).to_string() + " MB");
+
+                    if(process.mem_usage_percentages >= 90)
+                        max_usage = true;
+                    else
+                        max_usage = false;
+                    break;
+            }
         }
 
         private void set_styles()

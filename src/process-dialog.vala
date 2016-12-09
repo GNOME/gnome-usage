@@ -63,7 +63,7 @@ namespace Usage
     	    if(data != null)
     	    {
     	        app_cpu_load = (int) data.x_cpu_load;
-    	        app_memory_usage = (int) data.mem_usage;
+    	        app_memory_usage = (int) data.mem_usage_percentages;
     	        processor_graph_block.update((int) data.last_processor, app_cpu_load, (int) monitor.x_cpu_load[data.last_processor]);
     	    }
     	    else
