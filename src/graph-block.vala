@@ -56,10 +56,13 @@ namespace Usage
                 label.use_markup = true;
             }
 
+            if(other_percentages < 0)
+                other_percentages = 0;
+
             graph.update(application_percentages, other_percentages);
             application_row.update(application_percentages);
-            others_row.update(other_percentages-application_percentages);
-            available_row.update(100-other_percentages);
+            others_row.update(other_percentages);
+            available_row.update(100-other_percentages-application_percentages);
         }
     }
 }

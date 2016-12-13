@@ -77,7 +77,7 @@ namespace Usage {
         public void update(int used_percentages, int other_percentages)
         {
             this.used_percentages = used_percentages;
-            this.other_percentages = other_percentages;
+            this.other_percentages = used_percentages + other_percentages;
             this.queue_draw();
         }
     }

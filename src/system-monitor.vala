@@ -215,10 +215,8 @@ namespace Usage
                 {
                     unowned Process process = process_table_pid[pids[i]];
                     process.last_processor = proc_state.last_processor;
-                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors();//FIX ME remove * get_num_processors()
-                    process.x_cpu_load = (((double) ((proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]) - process.x_cpu_last_used)) / (cpu_data.xcpu_total[process.last_processor] - x_cpu_last_total[process.last_processor])) * 100;
-                    //FIX ME: It is always 0, libGTop bug propably
-                    //GLib.stdout.printf("X_cpu: " + process.last_processor.to_string() + " " + (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]).to_string() + "\n");
+                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors();
+                    process.cpu_load = double.min(100, process.cpu_load);
                     process.alive = true;
                     process.cpu_last_used = proc_time.rtime;
                     process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);

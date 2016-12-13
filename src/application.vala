@@ -10,7 +10,6 @@ namespace Usage
 
         private const GLib.ActionEntry app_entries[] =
         {
-          { "preferences", on_preferences },
           { "about", on_about },
           { "quit", on_quit }
         };
@@ -28,11 +27,8 @@ namespace Usage
 
             // Create menu
             GLib.Menu menu_preferences = new GLib.Menu();
-            GLib.MenuItem item = new GLib.MenuItem (_("Preferences"), "app.preferences");
-            menu_preferences.append_item(item);
-
             GLib.Menu menu_common = new GLib.Menu();
-            item = new GLib.MenuItem (_("About"), "app.about");
+            var item = new GLib.MenuItem (_("About"), "app.about");
             menu_common.append_item(item);
 
             item = new GLib.MenuItem (_("Quit"), "app.quit");
@@ -51,11 +47,6 @@ namespace Usage
         {
             base.startup();
             add_action_entries(app_entries, this);
-        }
-
-        private void on_preferences(GLib.SimpleAction action, GLib.Variant? parameter)
-        {
-            //TODO settings window
         }
 
         private void on_about(GLib.SimpleAction action, GLib.Variant? parameter)
