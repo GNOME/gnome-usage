@@ -59,6 +59,8 @@ EggTaskCache *egg_task_cache_new        (GHashFunc              key_hash_func,
                                          EggTaskCacheCallback   populate_callback,
                                          gpointer               populate_callback_data,
                                          GDestroyNotify         populate_callback_data_destroy);
+void          egg_task_cache_set_name   (EggTaskCache          *self,
+                                         const gchar           *name);
 void          egg_task_cache_get_async  (EggTaskCache          *self,
                                          gconstpointer          key,
                                          gboolean               force_update,
@@ -70,6 +72,7 @@ gpointer      egg_task_cache_get_finish (EggTaskCache          *self,
                                          GError               **error);
 gboolean      egg_task_cache_evict      (EggTaskCache          *self,
                                          gconstpointer          key);
+void          egg_task_cache_evict_all  (EggTaskCache          *self);
 gpointer      egg_task_cache_peek       (EggTaskCache          *self,
                                          gconstpointer          key);
 GPtrArray    *egg_task_cache_get_values (EggTaskCache          *self);

@@ -24,7 +24,7 @@ sudo make install
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.2.1
+Actual version is 0.2.2
 
 ##License
 Code is under GNU GPLv3 license.

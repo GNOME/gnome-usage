@@ -1,6 +1,6 @@
 /* egg-scrolled-window.h
  *
- * Copyright (C) 2014 Christian Hergert <christian@hergert.me>
+ * Copyright (C) 2016 Christian Hergert <chergert@redhat.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,14 +25,7 @@ G_BEGIN_DECLS
 
 #define EGG_TYPE_SCROLLED_WINDOW (egg_scrolled_window_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (EggScrolledWindow, egg_scrolled_window, EGG, SCROLLED_WINDOW, GtkScrolledWindow)
-
-struct _EggScrolledWindowClass
-{
-  GtkScrolledWindowClass parent_class;
-};
-
-GtkWidget *egg_scrolled_window_new (void);
+G_DECLARE_FINAL_TYPE (EggScrolledWindow, egg_scrolled_window, EGG, SCROLLED_WINDOW, GtkScrolledWindow)
 
 G_END_DECLS
 

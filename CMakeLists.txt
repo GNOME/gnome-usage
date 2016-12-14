@@ -47,8 +47,10 @@ set(MODULES_TO_CHECK ${MODULES_TO_CHECK} x11)
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})
 
 
-add_subdirectory(data/local)
 add_subdirectory(po)
+add_subdirectory(data/local)
 add_subdirectory(data)
+add_subdirectory(src/../external/rg)
+add_subdirectory(src/../external/egg)
 add_subdirectory(src)
 

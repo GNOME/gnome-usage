@@ -1,6 +1,6 @@
-/* egg-private.h
+/* egg-entry-box.h
  *
- * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
+ * Copyright (C) 2016 Christian Hergert <chergert@redhat.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,23 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EGG_PRIVATE_H
-#define EGG_PRIVATE_H
+#ifndef EGG_ENTRY_BOX_H
+#define EGG_ENTRY_BOX_H
+
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#include "egg-animation.h"
-#include "egg-binding-group.h"
-#include "egg-counter.h"
-#include "egg-frame-source.h"
-#include "egg-heap.h"
-#include "egg-search-bar.h"
-#include "egg-settings-sandwich.h"
-#include "egg-signal-group.h"
-#include "egg-state-machine-buildable.h"
-#include "egg-state-machine.h"
-#include "egg-task-cache.h"
+#define EGG_TYPE_ENTRY_BOX (egg_entry_box_get_type())
+
+G_DECLARE_FINAL_TYPE (EggEntryBox, egg_entry_box, EGG, ENTRY_BOX, GtkBox)
+
+GtkWidget *egg_entry_box_new (void);
 
 G_END_DECLS
 
-#endif /* EGG_PRIVATE_H */
+#endif /* EGG_ENTRY_BOX_H */
