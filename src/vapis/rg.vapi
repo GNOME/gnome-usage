@@ -50,6 +50,21 @@ namespace Rg {
 		public string stroke_color { owned get; set; }
 		public Gdk.RGBA stroke_color_rgba { get; set; }
 	}
+    [CCode (cheader_filename = "realtime-graphs.h", type_id = "rg_stacked_renderer_get_type ()")]
+	public class StackedRenderer : GLib.Object, Rg.Renderer {
+		[CCode (has_construct_function = false)]
+		public StackedRenderer ();
+		public unowned Gdk.RGBA? get_stroke_color_rgba ();
+		public void set_stroke_color (string stroke_color);
+		public void set_stroke_color_rgba (Gdk.RGBA stroke_color_rgba);
+		[NoAccessorMethod]
+		public uint column { get; set; }
+		[NoAccessorMethod]
+		public double line_width { get; set; }
+		[NoAccessorMethod]
+		public string stroke_color { owned get; set; }
+		public Gdk.RGBA stroke_color_rgba { get; set; }
+	}
 	[CCode (cheader_filename = "realtime-graphs.h", ref_function = "rg_ring_ref", type_id = "rg_ring_get_type ()", unref_function = "rg_ring_unref")]
 	[Compact]
 	public class Ring {

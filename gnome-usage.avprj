@@ -5,7 +5,7 @@ project_name: gnome-usage
 
 
 vala_binary: src/gnome-usage
-*version: 0.2.2
+*version: 0.2.3
 *vala_vapi: vapis/better.vapi
 *vala_vapi: vapis/egg.vapi
 *vala_vapi: vapis/glibtop.vapi
@@ -91,6 +91,7 @@ c_source: ../external/rg/rg-graph.c
 c_source: ../external/rg/rg-line-renderer.c
 c_source: ../external/rg/rg-renderer.c
 c_source: ../external/rg/rg-ring.c
+c_source: ../external/rg/rg-stacked-renderer.c
 c_source: ../external/rg/rg-table.c
 *c_source: better-box.c
 h_folder: ../external/egg
@@ -137,20 +138,21 @@ translate: c src/../external/rg/rg-graph.c
 translate: c src/../external/rg/rg-line-renderer.c
 translate: c src/../external/rg/rg-renderer.c
 translate: c src/../external/rg/rg-ring.c
+translate: c src/../external/rg/rg-stacked-renderer.c
 translate: c src/../external/rg/rg-table.c
 *translate: vala src/cpu-graph-table.vala
 *translate: vala src/cookie-graph.vala
+*translate: vala src/memory-graph.vala
 *translate: vala src/application.vala
 *translate: vala src/header-bar.vala
 *translate: vala src/process-dialog.vala
 *translate: vala src/system-monitor.vala
 *translate: vala src/graph-block.vala
-*translate: vala src/gnome-usage.vala
 *translate: vala src/process-list-box.vala
 *translate: vala src/network-sub-view.vala
 *translate: vala src/memory-graph-table.vala
 *translate: vala src/performance-view.vala
-*translate: vala src/memory-graph.vala
+*translate: vala src/gnome-usage.vala
 *translate: vala src/memory-sub-view.vala
 *translate: vala src/graph-box.vala
 *translate: vala src/view.vala

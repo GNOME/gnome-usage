@@ -66,5 +66,6 @@ src/../external/rg/rg-graph.c
 src/../external/rg/rg-line-renderer.c
 src/../external/rg/rg-renderer.c
 src/../external/rg/rg-ring.c
+src/../external/rg/rg-stacked-renderer.c
 src/../external/rg/rg-table.c
 src/better-box.c

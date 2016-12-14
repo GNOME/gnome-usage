@@ -8,7 +8,7 @@ namespace Usage
     public class CpuGraphMostUsed : Rg.Graph
     {
 		private static CpuGraphTableMostUsedCore rg_table;
-		private LineRenderer renderer;
+		private StackedRenderer renderer;
 		private Gdk.RGBA color_max;
         private Gdk.RGBA color_normal;
 
@@ -19,15 +19,15 @@ namespace Usage
 
         public CpuGraphMostUsed ()
         {
-            color_max.parse("#ee2222");
-            color_normal.parse("#4a90d9");
+            color_max.parse("#fbcccc");
+            color_normal.parse("#c4dbff");
 
             if(rg_table == null)
                 rg_table = new CpuGraphTableMostUsedCore();
 
             set_table(rg_table);
 
-            renderer = new LineRenderer();
+            renderer = new StackedRenderer();
             renderer.stroke_color_rgba = color_normal;
             renderer.line_width = 1.2;
             add_renderer(renderer);

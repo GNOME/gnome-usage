@@ -14,6 +14,8 @@ librg_la_SOURCES = \
 	rg-graph.h \
 	rg-line-renderer.c \
 	rg-line-renderer.h \
+	rg-stacked-renderer.c \
+	rg-stacked-renderer.h \
 	rg-renderer.c \
 	rg-renderer.h \
 	rg-ring.c \

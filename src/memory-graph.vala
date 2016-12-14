@@ -15,8 +15,8 @@ namespace Usage
 
         public MemoryGraph ()
         {
-            color_max.parse("#ee2222");
-            color_normal.parse("#4a90d9");
+            color_max.parse("#fbcccc");
+            color_normal.parse("#c4dbff");
 
             if(rg_table == null)
             {
@@ -26,7 +26,7 @@ namespace Usage
             else
                 set_table(rg_table);
 
-            LineRenderer renderer_ram = new LineRenderer();
+            var renderer_ram = new StackedRenderer();
             renderer_ram.column = MemoryGraphTable.column_ram_id;
             renderer_ram.stroke_color_rgba = color_normal;
             renderer_ram.line_width = 1.2;

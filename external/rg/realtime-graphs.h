@@ -28,6 +28,7 @@ G_BEGIN_DECLS
 #include "rg-cpu-table.h"
 #include "rg-graph.h"
 #include "rg-line-renderer.h"
+#include "rg-stacked-renderer.h"
 #include "rg-renderer.h"
 #include "rg-table.h"
 
