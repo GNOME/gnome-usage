@@ -32,7 +32,7 @@ Code is under GNU GPLv3 license.
 ##Screenshots:
 More screenshots is in screenshots subdirectory.
 
-![Screenshot](screenshots/screenshot3.png?raw=true )
+![Screenshot](screenshots/screenshot8.png?raw=true )
 
 ![Screenshot](screenshots/screenshot4.png?raw=true )
 
