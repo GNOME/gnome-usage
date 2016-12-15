@@ -378,16 +378,20 @@ namespace Usage
                 }
                 else
                 {
-                    int max_value = 0;
+                    int max_cpu_load = 0;
+                    int mem_usage = 0;
                     foreach(unowned Process sub_process in process.sub_processes.get_values())
                     {
                         if (sub_process.alive == false)
                             process.sub_processes.remove(sub_process.pid);
 
-                        if(sub_process.cpu_load > max_value)
-                            max_value = (int) sub_process.cpu_load;
+                        if(sub_process.cpu_load > max_cpu_load)
+                            max_cpu_load = (int) sub_process.cpu_load;
+
+                        mem_usage += (int) sub_process.mem_usage;
                     }
-                    process.cpu_load = max_value;
+                    process.cpu_load = max_cpu_load;
+                    process.mem_usage = mem_usage;
 
                     if(process.sub_processes.size() == 1) //tranform to process
                     {

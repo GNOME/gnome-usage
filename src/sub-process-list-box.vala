@@ -32,7 +32,7 @@ namespace Usage
             update();
         }
 
-        public void update()
+        private void update()
         {
            if(parent_process.sub_processes != null)
            {
@@ -43,14 +43,14 @@ namespace Usage
            }
         }
 
-        public Gtk.Widget on_row_created (Object item)
+        private Gtk.Widget on_row_created (Object item)
         {
             Process process = (Process) item;
             var row = new SubProcessSubRow(process, type);
             return row;
         }
 
-        void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row)
+        private void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row)
         {
             if(before_row == null)
         	    row.set_header(null);
@@ -63,7 +63,7 @@ namespace Usage
         	}
         }
 
-        public int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
+        private int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
         {
             switch(type)
             {

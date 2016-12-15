@@ -12,6 +12,8 @@ namespace Usage {
             var color_rectangle = new ColorRectangle(css_class);
             var label = new Gtk.Label(label_text);
             label.margin = 5;
+            label.ellipsize = Pango.EllipsizeMode.END;
+            label.max_width_chars = 15;
             value_label = new Gtk.Label("0 %");
             this.pack_start(color_rectangle, false, false);
             this.pack_start(label, false, true, 5);

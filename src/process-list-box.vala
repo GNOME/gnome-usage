@@ -50,7 +50,7 @@ namespace Usage
             });
         }
 
-        public bool update()
+        private bool update()
         {
             model.remove_all();
 
@@ -70,7 +70,7 @@ namespace Usage
             return true;
         }
 
-        public Gtk.Widget on_row_created (Object item)
+        private Gtk.Widget on_row_created (Object item)
         {
             Process process = (Process) item;
             bool opened = false;
@@ -90,8 +90,8 @@ namespace Usage
             return row;
         }
 
-         void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row)
-         {
+        private void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row)
+        {
          	if(before_row == null)
         	    row.set_header(null);
             else
@@ -101,9 +101,9 @@ namespace Usage
             	separator.show();
         	    row.set_header(separator);
         	}
-         }
+        }
 
-        public int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
+        private int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
         {
             switch(type)
             {

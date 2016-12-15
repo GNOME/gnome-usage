@@ -59,7 +59,7 @@ namespace Usage
                 show_details();
         }
 
-        public Gtk.Widget on_subrow_created (Object item)
+        private Gtk.Widget on_subrow_created (Object item)
         {
             Process process = (Process) item;
             var row = new SubProcessSubRow(process, type);
@@ -123,16 +123,24 @@ namespace Usage
 
         private void update()
         {
+            CompareFunc<int> sort = (a, b) => {
+                return (int) (a < b) - (int) (a > b);
+            };
+
             switch(type)
             {
                 case ProcessListBoxType.PROCESSOR:
                     if(process.sub_processes != null)
                     {
-                        string values = "";
+                        string values_string = "";
+                        var values = new GLib.List<int>();
                         foreach(Process sub_process in process.sub_processes.get_values())
-                            values += "   " + ((int) sub_process.cpu_load).to_string() + " %";
+                            values.insert_sorted((int) sub_process.cpu_load, sort);
 
-                        load_label.set_label(values);
+                        foreach(int value in values)
+                            values_string += "   " + value.to_string() + " %";
+
+                        load_label.set_label(values_string);
                     }
                     else
                         load_label.set_label(((int) process.cpu_load).to_string() + " %");
@@ -145,11 +153,15 @@ namespace Usage
                 case ProcessListBoxType.MEMORY:
                     if(process.sub_processes != null)
                     {
-                        string values = "";
+                        string values_string = "";
+                                                var values = new GLib.List<int>();
                         foreach(Process sub_process in process.sub_processes.get_values())
-                            values += "   " + ((int) sub_process.mem_usage).to_string() + " MB";
+                            values.insert_sorted((int) sub_process.mem_usage, sort);
 
-                        load_label.set_label(values);
+                         foreach(int value in values)
+                            values_string += "   " + value.to_string() + " MB";
+
+                        load_label.set_label(values_string);
                     }
                     else
                         load_label.set_label(((int) process.mem_usage).to_string() + " MB");

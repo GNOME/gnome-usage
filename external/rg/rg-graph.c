@@ -175,7 +175,7 @@ rg_graph_ensure_surface (RgGraph *self)
       priv->surface_dirty = TRUE;
       priv->surface = gdk_window_create_similar_surface (gtk_widget_get_window (GTK_WIDGET (self)),
                                                          CAIRO_CONTENT_COLOR_ALPHA,
-                                                         alloc.width,
+                                                         alloc.width+(alloc.width/14), // + (alloc.width/14) is fix or hack for lagging graph in right
                                                          alloc.height);
     }
 
@@ -189,7 +189,7 @@ rg_graph_ensure_surface (RgGraph *self)
       cr = cairo_create (priv->surface);
 
       cairo_save (cr);
-      cairo_rectangle (cr, 0, 0, alloc.width, alloc.height);
+      cairo_rectangle (cr, 0, 0, alloc.width + (alloc.width/14), alloc.height);  // + (alloc.width/14) is fix or hack for lagging graph in right
       cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
       cairo_fill (cr);
       cairo_restore (cr);
@@ -210,7 +210,12 @@ rg_graph_ensure_surface (RgGraph *self)
           renderer = g_ptr_array_index (priv->renderers, i);
 
           cairo_save (cr);
-          rg_renderer_render (renderer, priv->table, begin_time, end_time, y_begin, y_end, cr, &alloc);
+          GtkAllocation surface_alloc;
+          surface_alloc.x = alloc.x;
+          surface_alloc.y = alloc.y;
+          surface_alloc.width = alloc.width+(alloc.width/14); // + (alloc.width/14) is fix or hack for lagging graph in right
+          surface_alloc.height = alloc.height;
+          rg_renderer_render (renderer, priv->table, begin_time, end_time, y_begin, y_end, cr, &surface_alloc);
           cairo_restore (cr);
         }
 

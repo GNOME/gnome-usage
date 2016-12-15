@@ -5,8 +5,8 @@ New GNOME Usage!
 ## Actual TODO:
 - [x] Processor Usage
 - [x] Memory usage
-- [ ] Disk usage (What library we can use?)
 - [ ] Network usage [#1](http://github.com/petr-stety-stetka/gnome-usage/issues/1)
+- [ ] Disk usage (What library we can use?)
 - [ ] Thumbnails of of graphs corresponding to design
 - [ ] Data view
 - [ ] Storage view
@@ -24,7 +24,7 @@ sudo make install
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.2.3
+Actual version is 0.2.4
 
 ##License
 Code is under GNU GPLv3 license.
