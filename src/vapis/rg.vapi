@@ -57,6 +57,9 @@ namespace Rg {
 		public unowned Gdk.RGBA? get_stroke_color_rgba ();
 		public void set_stroke_color (string stroke_color);
 		public void set_stroke_color_rgba (Gdk.RGBA stroke_color_rgba);
+		public unowned Gdk.RGBA? get_stacked_color_rgba ();
+        public void set_stacked_color (string stacked_color);
+        public void set_stacked_color_rgba (Gdk.RGBA stacked_color_rgba);
 		[NoAccessorMethod]
 		public uint column { get; set; }
 		[NoAccessorMethod]
@@ -64,6 +67,9 @@ namespace Rg {
 		[NoAccessorMethod]
 		public string stroke_color { owned get; set; }
 		public Gdk.RGBA stroke_color_rgba { get; set; }
+		[NoAccessorMethod]
+        public string stacked_color { owned get; set; }
+        public Gdk.RGBA stacked_color_rgba { get; set; }
 	}
 	[CCode (cheader_filename = "realtime-graphs.h", ref_function = "rg_ring_ref", type_id = "rg_ring_get_type ()", unref_function = "rg_ring_unref")]
 	[Compact]

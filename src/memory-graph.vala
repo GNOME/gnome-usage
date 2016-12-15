@@ -5,7 +5,9 @@ namespace Usage
     public class MemoryGraph : Rg.Graph
     {
 		private static MemoryGraphTable rg_table;
-		private Gdk.RGBA color_max;
+		private Gdk.RGBA line_color_max;
+        private Gdk.RGBA line_color_normal;
+        private Gdk.RGBA color_max;
         private Gdk.RGBA color_normal;
 
         class construct
@@ -15,6 +17,8 @@ namespace Usage
 
         public MemoryGraph ()
         {
+            line_color_max.parse("#ee2222");
+            line_color_normal.parse("#4a90d9");
             color_max.parse("#fbcccc");
             color_normal.parse("#c4dbff");
 
@@ -28,16 +32,19 @@ namespace Usage
 
             var renderer_ram = new StackedRenderer();
             renderer_ram.column = MemoryGraphTable.column_ram_id;
-            renderer_ram.stroke_color_rgba = color_normal;
+            renderer_ram.stroke_color_rgba = line_color_normal;
+            renderer_ram.stacked_color_rgba = color_normal;
             renderer_ram.line_width = 1.2;
             add_renderer(renderer_ram);
 
             rg_table.big_ram_usage.connect (() => {
-                renderer_ram.stroke_color_rgba = color_max;
+                renderer_ram.stroke_color_rgba = line_color_max;
+                renderer_ram.stacked_color_rgba = color_max;
             });
 
             rg_table.small_ram_usage.connect (() => {
-                renderer_ram.stroke_color_rgba = color_normal;
+                renderer_ram.stroke_color_rgba = line_color_normal;
+                renderer_ram.stacked_color_rgba = color_normal;
             });
         }
     }

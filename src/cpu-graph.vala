@@ -9,7 +9,9 @@ namespace Usage
     {
 		private static CpuGraphTableMostUsedCore rg_table;
 		private StackedRenderer renderer;
-		private Gdk.RGBA color_max;
+		private Gdk.RGBA line_color_max;
+        private Gdk.RGBA line_color_normal;
+        private Gdk.RGBA color_max;
         private Gdk.RGBA color_normal;
 
         class construct
@@ -19,6 +21,8 @@ namespace Usage
 
         public CpuGraphMostUsed ()
         {
+            line_color_max.parse("#ee2222");
+            line_color_normal.parse("#4a90d9");
             color_max.parse("#fbcccc");
             color_normal.parse("#c4dbff");
 
@@ -28,16 +32,19 @@ namespace Usage
             set_table(rg_table);
 
             renderer = new StackedRenderer();
-            renderer.stroke_color_rgba = color_normal;
-            renderer.line_width = 1.2;
+            renderer.stroke_color_rgba = line_color_normal;
+            renderer.stacked_color_rgba = color_normal;
+            renderer.line_width = 1.0;
             add_renderer(renderer);
 
             rg_table.big_process_usage.connect (() => {
-                renderer.stroke_color_rgba = color_max;
+                renderer.stroke_color_rgba = line_color_max;
+                renderer.stacked_color_rgba = color_max;
             });
 
             rg_table.small_process_usage.connect (() => {
-                renderer.stroke_color_rgba = color_normal;
+                renderer.stroke_color_rgba = line_color_normal;
+                renderer.stacked_color_rgba = color_normal;
             });
         }
     }
@@ -49,8 +56,8 @@ namespace Usage
     {
     	private static CpuGraphTableComplex table;
         private LineRenderer[] renderers;
-        private Gdk.RGBA color_max;
-        private Gdk.RGBA color_normal;
+        private Gdk.RGBA line_color_max;
+        private Gdk.RGBA line_color_normal;
 
         class construct
         {
@@ -59,8 +66,8 @@ namespace Usage
 
         public CpuGraphBig()
         {
-            color_max.parse("#ee2222");
-            color_normal.parse("#4a90d9");
+            line_color_max.parse("#ee2222");
+            line_color_normal.parse("#4a90d9");
             get_style_context().add_class("big");
 
             if(table == null)
@@ -73,17 +80,19 @@ namespace Usage
             {
                 renderers[i] = new LineRenderer();
                 renderers[i].column = i;
-                renderers[i].stroke_color_rgba = color_normal;
+                renderers[i].stroke_color_rgba = line_color_normal;
                 renderers[i].line_width = 1.5;
                 add_renderer(renderers[i]);
             }
 
             table.big_process_usage.connect ((column) => {
-                renderers[column].stroke_color_rgba = color_max;
+                renderers[column].stroke_color_rgba = line_color_max;
+                renderers[column].line_width = 2.5;
             });
 
             table.small_process_usage.connect ((column) => {
-                renderers[column].stroke_color_rgba = color_normal;
+                renderers[column].stroke_color_rgba = line_color_normal;
+                renderers[column].line_width = 1.5;
             });
         }
     }

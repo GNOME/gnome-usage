@@ -18,6 +18,11 @@ void            rg_stacked_renderer_set_stroke_color_rgba (RgStackedRenderer *se
                                                         const GdkRGBA  *stroke_color_rgba);
 const GdkRGBA  *rg_stacked_renderer_get_stroke_color_rgba (RgStackedRenderer *self);
 
+void            rg_stacked_renderer_set_stacked_color      (RgStackedRenderer *self,
+                                                           const gchar    *stacked_color);
+void            rg_stacked_renderer_set_stacked_color_rgba (RgStackedRenderer *self,
+                                                           const GdkRGBA  *stacked_color_rgba);
+const GdkRGBA  *rg_stacked_renderer_get_stacked_color_rgba (RgStackedRenderer *self);
 G_END_DECLS
 
 #endif /* RG_STACKED_RENDERER_H */

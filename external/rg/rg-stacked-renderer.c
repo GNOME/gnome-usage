@@ -8,6 +8,7 @@ struct _RgStackedRenderer
   GObject parent_instance;
 
   GdkRGBA stroke_color;
+  GdkRGBA stacked_color;
   gdouble line_width;
   guint   column;
 };
@@ -24,6 +25,8 @@ enum {
   PROP_LINE_WIDTH,
   PROP_STROKE_COLOR,
   PROP_STROKE_COLOR_RGBA,
+  PROP_STACKED_COLOR,
+  PROP_STACKED_COLOR_RGBA,
   LAST_PROP
 };
 
@@ -125,7 +128,7 @@ rg_stacked_renderer_render (RgRenderer                  *renderer,
       chunk = area->width / (gdouble)(max_samples - 1) / 2.0;
 
       last_x = calc_x (&iter, x_begin, x_end, area->width);
-      last_y = calc_y (&iter, y_begin, y_end, area->height, self->column);
+      last_y = area->height;
 
       cairo_move_to (cr, last_x, area->height);
 
@@ -151,11 +154,52 @@ rg_stacked_renderer_render (RgRenderer                  *renderer,
     }
 
   cairo_set_line_width (cr, self->line_width);
-  gdk_cairo_set_source_rgba (cr, &self->stroke_color);
+  gdk_cairo_set_source_rgba (cr, &self->stacked_color);
   cairo_rel_line_to (cr, 0, area->height);
   cairo_stroke_preserve (cr);
   cairo_close_path(cr);
   cairo_fill(cr);
+
+
+  if (rg_table_get_iter_first (table, &iter))
+  {
+    guint max_samples;
+    gdouble chunk;
+    gdouble last_x;
+    gdouble last_y;
+
+    max_samples = rg_table_get_max_samples (table);
+
+    chunk = area->width / (gdouble)(max_samples - 1) / 2.0;
+
+    last_x = calc_x (&iter, x_begin, x_end, area->width);
+    last_y = area->height;
+
+    cairo_move_to (cr, last_x, last_y);
+
+    while (rg_table_iter_next (&iter))
+    {
+      gdouble x;
+      gdouble y;
+
+      x = calc_x (&iter, x_begin, x_end, area->width);
+      y = calc_y (&iter, y_begin, y_end, area->height, self->column);
+
+      cairo_curve_to (cr,
+                      last_x + chunk,
+                      last_y,
+                      last_x + chunk,
+                      y,
+                      x,
+                      y);
+
+      last_x = x;
+      last_y = y;
+    }
+  }
+
+  gdk_cairo_set_source_rgba (cr, &self->stroke_color);
+  cairo_stroke (cr);
 
   cairo_restore (cr);
 }
@@ -182,8 +226,16 @@ rg_stacked_renderer_get_property (GObject    *object,
       g_value_take_string (value, gdk_rgba_to_string (&self->stroke_color));
       break;
 
+    case PROP_STACKED_COLOR:
+      g_value_take_string (value, gdk_rgba_to_string (&self->stacked_color));
+      break;
+
     case PROP_STROKE_COLOR_RGBA:
       g_value_set_boxed (value, &self->stroke_color);
+      break;
+
+    case PROP_STACKED_COLOR_RGBA:
+      g_value_set_boxed (value, &self->stacked_color);
       break;
 
     default:
@@ -215,6 +267,14 @@ rg_stacked_renderer_set_property (GObject      *object,
 
     case PROP_STROKE_COLOR_RGBA:
       rg_stacked_renderer_set_stroke_color_rgba (self, g_value_get_boxed (value));
+      break;
+
+    case PROP_STACKED_COLOR:
+      rg_stacked_renderer_set_stacked_color (self, g_value_get_string (value));
+      break;
+
+    case PROP_STACKED_COLOR_RGBA:
+      rg_stacked_renderer_set_stacked_color_rgba (self, g_value_get_boxed (value));
       break;
 
     default:
@@ -259,6 +319,20 @@ rg_stacked_renderer_class_init (RgStackedRendererClass *klass)
                         "Stroke Color RGBA",
                         GDK_TYPE_RGBA,
                         (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+  properties [PROP_STACKED_COLOR] =
+      g_param_spec_string ("stacked-color",
+                           "Stacked Color",
+                           "Stacked Color",
+                           NULL,
+                           (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+  properties [PROP_STACKED_COLOR_RGBA] =
+      g_param_spec_boxed ("stacked-color-rgba",
+                          "Stacked Color RGBA",
+                          "Stacked Color RGBA",
+                          GDK_TYPE_RGBA,
+                          (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
@@ -305,5 +379,38 @@ rg_stacked_renderer_set_stroke_color (RgStackedRenderer *self,
     stroke_color = "#000000";
 
   if (gdk_rgba_parse (&rgba, stroke_color))
+    rg_stacked_renderer_set_stroke_color_rgba (self, &rgba);
+}
+
+void
+rg_stacked_renderer_set_stacked_color_rgba (RgStackedRenderer *self,
+                                           const GdkRGBA  *rgba)
+{
+  const GdkRGBA black = { 0, 0, 0, 1.0 };
+
+  g_return_if_fail (RG_IS_STACKED_RENDERER (self));
+
+  if (rgba == NULL)
+    rgba = &black;
+
+  if (!gdk_rgba_equal (rgba, &self->stacked_color))
+  {
+    self->stacked_color = *rgba;
+    g_object_notify_by_pspec (G_OBJECT (self), properties [PROP_STACKED_COLOR_RGBA]);
+  }
+}
+
+void
+rg_stacked_renderer_set_stacked_color (RgStackedRenderer *self,
+                                      const gchar    *stacked_color)
+{
+  GdkRGBA rgba;
+
+  g_return_if_fail (RG_IS_STACKED_RENDERER (self));
+
+  if (stacked_color == NULL)
+    stacked_color = "#000000";
+
+  if (gdk_rgba_parse (&rgba, stacked_color))
     rg_stacked_renderer_set_stroke_color_rgba (self, &rgba);
 }
