@@ -6,11 +6,10 @@ New GNOME Usage!
 - [x] Processor Usage
 - [x] Memory usage
 - [ ] Network usage [#1](http://github.com/petr-stety-stetka/gnome-usage/issues/1)
+- [ ] Storage view - 0%
+- [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
-- [ ] Thumbnails of of graphs corresponding to design
-- [ ] Data view
-- [ ] Storage view
-- [ ] Power view
+- [ ] Data view - 0%
 
 ##Compilation:
 ```
