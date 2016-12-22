@@ -7,6 +7,7 @@ namespace Usage
     {
         internal pid_t pid;
         internal string cmdline;
+        internal string cmdline_parameter; //Isn't parameters as "-p" etc, but parameter for running app, for ex. "--writer' with libreoffice, or "privacy" with gnome-control-center
         internal double cpu_load;
         internal double x_cpu_load;
         internal uint64 cpu_last_used;
@@ -112,7 +113,7 @@ namespace Usage
 			  }
 		}
 
-		private string get_full_process_cmd (string cmd, string[] args)
+		private string get_full_process_cmd (string cmd, string[] args, out string cmd_parameter)
         {
             var secure_arguments = new string[2];
 
@@ -142,6 +143,10 @@ namespace Usage
                         if(name[j] == ' ')
                             name = name.substring(0, j);
                     }
+                    if(i == 0)
+                        cmd_parameter = secure_arguments[1];
+                    else
+                        cmd_parameter = secure_arguments[0];
 
                     return name;
                 }
@@ -195,14 +200,13 @@ namespace Usage
                 GTop.get_proc_state (out proc_state, pids[i]);
                 GTop.get_proc_time (out proc_time, pids[i]);
                 var arguments = GTop.get_proc_argv (out proc_args, pids[i]);
-                var proc_cmd_full = get_full_process_cmd ((string) proc_state.cmd, arguments);
 
                 if (!(pids[i] in process_table_pid))
                 {
                     var process = new Process();
                     process.pid = pids[i];
                     process.alive = true;
-                    process.cmdline = get_full_process_cmd ((string) proc_state.cmd, arguments);
+                    process.cmdline = get_full_process_cmd ((string) proc_state.cmd, arguments, out process.cmdline_parameter);
                     process.last_processor = proc_state.last_processor;
                     process.cpu_load = 0;
                     process.x_cpu_load = 0;
@@ -300,6 +304,7 @@ namespace Usage
                             process.pid = process_it.pid;
                             process.alive = process_it.alive;
                             process.cmdline = process_it.cmdline;
+                            process.cmdline_parameter = process_it.cmdline_parameter;
                             process.last_processor = process_it.last_processor;
                             process.cpu_load = process_it.cpu_load;
                             process.x_cpu_load = process_it.x_cpu_load ;
@@ -331,6 +336,7 @@ namespace Usage
                             sub_process_one.pid = process_it.pid;
                             sub_process_one.alive = process.alive;
                             sub_process_one.cmdline = process.cmdline;
+                            sub_process_one.cmdline_parameter = process.cmdline_parameter;
                             sub_process_one.last_processor = process.last_processor;
                             sub_process_one.cpu_load = process.cpu_load;
                             sub_process_one.x_cpu_load = process.x_cpu_load;
@@ -343,6 +349,7 @@ namespace Usage
                             sub_process.pid = process_it.pid;
                             sub_process.alive = process_it.alive;
                             sub_process.cmdline = process_it.cmdline;
+                            sub_process.cmdline_parameter = process_it.cmdline_parameter;
                             sub_process.last_processor = process_it.last_processor;
                             sub_process.cpu_load = process_it.cpu_load;
                             sub_process.x_cpu_load = process_it.x_cpu_load;
@@ -359,6 +366,7 @@ namespace Usage
                      process.pid = process_it.pid;
                      process.alive = process_it.alive;
                      process.cmdline = process_it.cmdline;
+                     process.cmdline_parameter = process_it.cmdline_parameter;
                      process.last_processor = process_it.last_processor;
                      process.cpu_load = process_it.cpu_load;
                      process.x_cpu_load = process_it.x_cpu_load;
@@ -400,6 +408,7 @@ namespace Usage
                             process.pid = sub_process.pid;
                             process.alive = sub_process.alive;
                             process.cmdline = sub_process.cmdline;
+                            process.cmdline_parameter = sub_process.cmdline_parameter;
                             process.last_processor = sub_process.last_processor;
                             process.cpu_load = sub_process.cpu_load;
                             process.x_cpu_load = sub_process.x_cpu_load;
