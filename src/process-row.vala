@@ -77,6 +77,10 @@ namespace Usage
                     if(commandline[i] == ' ')
                         commandline = commandline.substring(0, i);
                 }
+
+                if(info.get_commandline().has_prefix(commandline + " " + commandline + "://")) //Fix for Steam naming
+                    commandline = info.get_commandline();
+
                 commandline = Path.get_basename(commandline);
 
         	    if(commandline == process.cmdline)
