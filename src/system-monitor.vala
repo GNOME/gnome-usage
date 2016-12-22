@@ -327,7 +327,7 @@ namespace Usage
                             process.x_cpu_last_used = process_it.x_cpu_last_used;
                             process.mem_usage = process_it.mem_usage;
                         }
-                        else //add transform to group and add subrow
+                        else //transform to group and add subrow
                         {
                             to_table[process_it.cmdline].sub_processes = new HashTable<pid_t?, Process>(int_hash, int_equal);
                             unowned Process process = to_table[process_it.cmdline];
@@ -344,6 +344,7 @@ namespace Usage
                             sub_process_one.x_cpu_last_used = process.x_cpu_last_used;
                             sub_process_one.mem_usage = process.mem_usage;
                             to_table[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
+                            process.cmdline_parameter = "";
 
                             var sub_process = new Process();
                             sub_process.pid = process_it.pid;
