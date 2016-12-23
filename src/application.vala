@@ -7,6 +7,7 @@ namespace Usage
         public Settings settings;
         public Window window;
         public SystemMonitor monitor;
+        public NetMonitor net_monitor;
 
         private const GLib.ActionEntry app_entries[] =
         {
@@ -19,6 +20,7 @@ namespace Usage
             application_id = "org.gnome.usage";
             settings = new Settings();
             monitor = new SystemMonitor();
+            net_monitor = new NetMonitor();
         }
 
         public override void activate()

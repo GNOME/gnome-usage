@@ -5,7 +5,7 @@ New GNOME Usage!
 ## Actual TODO:
 - [x] Processor Usage
 - [x] Memory usage
-- [ ] Network usage [#1](http://github.com/petr-stety-stetka/gnome-usage/issues/1)
+- [ ] Network usage - 20%
 - [ ] Storage view - 0%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
@@ -18,6 +18,7 @@ cd build
 cmake ..
 make
 sudo make install
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 ```
 ##Run
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.

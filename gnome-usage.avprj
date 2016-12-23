@@ -5,10 +5,11 @@ project_name: gnome-usage
 
 
 vala_binary: src/gnome-usage
-*version: 0.2.5
+*version: 0.2.7
 *vala_vapi: vapis/better.vapi
 *vala_vapi: vapis/egg.vapi
 *vala_vapi: vapis/glibtop.vapi
+*vala_vapi: vapis/netinfo.vapi
 *vala_vapi: vapis/rg.vapi
 *vala_package: posix
 *vala_check_package: atk
@@ -22,7 +23,7 @@ vala_binary: src/gnome-usage
 *vala_check_package: gtk+-3.0
 *vala_check_package: pango
 *vala_check_package: x11
-c_library: gmodule-2.0 m rt gtop-2.0
+c_library: gmodule-2.0 m rt gtop-2.0 ${CMAKE_SOURCE_DIR}/external/netinfo/libnetinfo.a pthread dl
 *vala_source: application.vala
 *vala_source: color-rectangle.vala
 *vala_source: cookie-graph.vala
@@ -52,6 +53,7 @@ c_library: gmodule-2.0 m rt gtop-2.0
 *vala_source: sub-process-list-box.vala
 *vala_source: sub-process-sub-row.vala
 *vala_source: system-monitor.vala
+*vala_source: test-netinfo.vala
 *vala_source: view.vala
 *vala_source: window.vala
 c_source: ../external/egg/egg-animation.c
@@ -95,6 +97,7 @@ c_source: ../external/rg/rg-stacked-renderer.c
 c_source: ../external/rg/rg-table.c
 *c_source: better-box.c
 h_folder: ../external/egg
+h_folder: ../external/netinfo
 h_folder: ../external/rg
 h_folder: /usr/include/libgtop-2.0
 *h_folder: .
@@ -146,7 +149,6 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/application.vala
 *translate: vala src/header-bar.vala
 *translate: vala src/process-dialog.vala
-*translate: vala src/system-monitor.vala
 *translate: vala src/graph-block.vala
 *translate: vala src/memory-graph.vala
 *translate: vala src/process-row.vala
@@ -159,6 +161,8 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/view.vala
 *translate: vala src/disk-sub-view.vala
 *translate: vala src/sub-process-sub-row.vala
+*translate: vala src/gnome-usage.vala
+*translate: vala src/system-monitor.vala
 *translate: vala src/window.vala
 *translate: vala src/sub-process-list-box.vala
 *translate: vala src/color-rectangle.vala
@@ -167,7 +171,7 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/settings.vala
 *translate: vala src/power-view.vala
 *translate: vala src/cpu-sub-view.vala
-*translate: vala src/gnome-usage.vala
+*translate: vala src/test-netinfo.vala
 *translate: vala src/graph-block-row.vala
 *translate: vala src/graph-switcher-button.vala
 *translate: vala src/data-view.vala

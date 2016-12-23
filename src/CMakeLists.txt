@@ -7,13 +7,13 @@ set (GETTEXT_PACKAGE "gnome-usage")
 set (RELEASE_NAME "gnome-usage")
 set (CMAKE_C_FLAGS "")
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (VERSION "0.2.5")
+set (VERSION "0.2.7")
 set (TESTSRCDIR "${CMAKE_SOURCE_DIR}")
 set (DOLLAR "$")
 
 configure_file (${CMAKE_SOURCE_DIR}/src/Config.vala.cmake ${CMAKE_BINARY_DIR}/src/Config.vala)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
-set (VERSION "0.2.5")
+set (VERSION "0.2.7")
 add_definitions (${DEPS_CFLAGS})
 link_libraries ( ${DEPS_LIBRARIES} )
 link_directories ( ${DEPS_LIBRARY_DIRS} )
@@ -65,12 +65,14 @@ set (APP_SOURCES ${APP_SOURCES} storage-view.vala)
 set (APP_SOURCES ${APP_SOURCES} sub-process-list-box.vala)
 set (APP_SOURCES ${APP_SOURCES} sub-process-sub-row.vala)
 set (APP_SOURCES ${APP_SOURCES} system-monitor.vala)
+set (APP_SOURCES ${APP_SOURCES} test-netinfo.vala)
 set (APP_SOURCES ${APP_SOURCES} view.vala)
 set (APP_SOURCES ${APP_SOURCES} window.vala)
 
 set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/better.vapi)
 set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/egg.vapi)
 set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/glibtop.vapi)
+set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/netinfo.vapi)
 set (CUSTOM_VAPIS_LIST ${CUSTOM_VAPIS_LIST} ${CMAKE_SOURCE_DIR}/src/vapis/rg.vapi)
 
 
@@ -79,6 +81,7 @@ if ((${CMAKE_BUILD_TYPE} STREQUAL "Debug") OR (${CMAKE_BUILD_TYPE} STREQUAL "Rel
 endif()
 
 include_directories (AFTER ../external/egg )
+include_directories (AFTER ../external/netinfo )
 include_directories (AFTER ../external/rg )
 include_directories (AFTER /usr/include/libgtop-2.0 )
 include_directories (AFTER . )
@@ -133,7 +136,7 @@ set (VALA_C ${VALA_C} ../external/rg/rg-table.c)
 set (VALA_C ${VALA_C} better-box.c)
 
 add_executable(gnome-usage ${VALA_C})
-target_link_libraries( gnome-usage gmodule-2.0 m rt gtop-2.0 )
+target_link_libraries( gnome-usage gmodule-2.0 m rt gtop-2.0 ${CMAKE_SOURCE_DIR}/external/netinfo/libnetinfo.a pthread dl )
 
 
 install(TARGETS
