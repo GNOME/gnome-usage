@@ -2,39 +2,23 @@ using Posix;
 
 namespace Usage
 {
-    [Compact]
-    public class Process : Object
-    {
-        internal pid_t pid;
-        internal string cmdline;
-        internal string cmdline_parameter; //Isn't parameters as "-p" etc, but parameter for running app, for ex. "--writer' with libreoffice, or "privacy" with gnome-control-center
-        internal double cpu_load;
-        internal double x_cpu_load;
-        internal uint64 cpu_last_used;
-        internal uint64 x_cpu_last_used;
-        internal uint last_processor;
-        internal uint64 mem_usage;
-        internal double mem_usage_percentages;
-        internal HashTable<pid_t?, Process> sub_processes;
-        internal bool alive;
-    }
-
     public class SystemMonitor
     {
         public double cpu_load { get; private set; }
         public double[] x_cpu_load { get; private set; }
-        public double mem_usage { get; private set; }
+        public double ram_usage { get; private set; }
         public double swap_usage { get; private set; }
+        public double download_usage { get; private set; }
+        public double upload_usage { get; private set; }
 
-        uint64 cpu_last_used = 0;
-        uint64 cpu_last_total = 0;
+        private CpuMonitor cpu_monitor;
+        private MemoryMonitor memory_monitor;
+        private NetworkMonitor network_monitor;
 
-        uint64[] x_cpu_last_used;
-        uint64[] x_cpu_last_total;
-
-        HashTable<pid_t?, Process> process_table_pid;
-        HashTable<string, Process> cpu_process_table;
-        HashTable<string, Process> ram_process_table;
+        private HashTable<pid_t?, Process> process_table_pid;
+        private HashTable<string, Process> cpu_process_table;
+        private HashTable<string, Process> ram_process_table;
+        private HashTable<string, Process> net_process_table;
 
 		private int process_mode = GTop.KERN_PROC_UID;
 
@@ -75,16 +59,28 @@ namespace Usage
             return ram_process_table[cmdline];
         }
 
+        public List<unowned Process> get_net_processes()
+        {
+            return net_process_table.get_values();
+        }
+
+        public unowned Process get_net_process(string cmdline)
+        {
+            return net_process_table[cmdline];
+        }
+
         public SystemMonitor()
         {
             GTop.init();
 
-            x_cpu_load = new double[get_num_processors()];
-            x_cpu_last_used = new uint64[get_num_processors()];
-            x_cpu_last_total = new uint64[get_num_processors()];
+            cpu_monitor = new CpuMonitor();
+            memory_monitor = new MemoryMonitor();
+            network_monitor = new NetworkMonitor();
+
+            process_table_pid = new HashTable<pid_t?, Process>(int_hash, int_equal);
             cpu_process_table = new HashTable<string, Process>(str_hash, str_equal);
             ram_process_table = new HashTable<string, Process>(str_hash, str_equal);
-            process_table_pid = new HashTable<pid_t?, Process>(int_hash, int_equal);
+            net_process_table = new HashTable<string, Process>(str_hash, str_equal);
 
             var settings = (GLib.Application.get_default() as Application).settings;
 
@@ -97,7 +93,91 @@ namespace Usage
             });
         }
 
-		public void set_process_mode(ProcessMode mode)
+		public bool update_data()
+        {
+            cpu_monitor.update();
+            memory_monitor.update();
+            network_monitor.update();
+
+            cpu_load = cpu_monitor.get_cpu_load();
+            x_cpu_load = cpu_monitor.get_x_cpu_load();
+            ram_usage = memory_monitor.get_ram_usage();
+            swap_usage = memory_monitor.get_swap_usage();
+            // TODO net
+            //download_usage =
+            //upload_usage =
+
+            foreach(unowned Process process in process_table_pid.get_values())
+            {
+                process.alive = false;
+            }
+
+            set_alive_false_table_cmdline(ref cpu_process_table);
+            set_alive_false_table_cmdline(ref ram_process_table);
+            set_alive_false_table_cmdline(ref net_process_table);
+
+            var uid = Posix.getuid();
+            GTop.Proclist proclist;
+            var pids = GTop.get_proclist (out proclist, process_mode, uid);
+
+            for(int i = 0; i < proclist.number; i++)
+            {
+                if (!(pids[i] in process_table_pid))
+                {
+                    var process = new Process();
+                    process.pid = pids[i];
+                    process.alive = true;
+                    process.cmdline = get_full_process_cmd_for_pid (pids[i], out process.cmdline_parameter);
+                    process.mem_usage = 0;
+                    process.mem_usage_percentages = 0;
+                    cpu_monitor.get_cpu_info_for_pid(pids[i], ref process.last_processor, ref process.cpu_load, ref process.cpu_last_used, ref process.x_cpu_last_used);
+                    process.cpu_load = 0;
+                    process.x_cpu_load = 0;
+                    process_table_pid.insert (pids[i], (owned) process);
+                }
+                else
+                {
+                    unowned Process process = process_table_pid[pids[i]];
+                    process.alive = true;
+                    cpu_monitor.get_cpu_info_for_pid(pids[i], ref process.last_processor, ref process.cpu_load, ref process.cpu_last_used, ref process.x_cpu_last_used);
+                    memory_monitor.get_memory_info_for_pid(pids[i], ref process.mem_usage, ref process.mem_usage_percentages);
+                }
+            }
+
+            foreach(unowned Process process in process_table_pid.get_values())
+            {
+                if (process.alive == false)
+                    process_table_pid.remove (process.pid);
+            }
+
+            var process_table_pid_condition = new HashTable<pid_t?, Process>(int_hash, int_equal);
+            foreach(unowned Process process in process_table_pid.get_values())
+            {
+                if(process.cpu_load >= 1)
+                    process_table_pid_condition.insert(process.pid, process);
+            }
+            get_updates_table_cmdline(process_table_pid_condition, ref cpu_process_table);
+
+            process_table_pid_condition.remove_all();
+            foreach(unowned Process process in process_table_pid.get_values())
+            {
+                if(process.mem_usage >= 15)
+                    process_table_pid_condition.insert(process.pid, process);
+            }
+            get_updates_table_cmdline(process_table_pid_condition, ref ram_process_table);
+
+            process_table_pid_condition.remove_all();
+            foreach(unowned Process process in process_table_pid.get_values())
+            {
+                if(process.net_usage >= 15) //TODO net value
+                    process_table_pid_condition.insert(process.pid, process);
+            }
+            get_updates_table_cmdline(process_table_pid_condition, ref net_process_table);
+
+            return true;
+        }
+
+        public void set_process_mode(ProcessMode mode)
         {
 		    switch(mode)
   			{
@@ -113,8 +193,14 @@ namespace Usage
 			  }
 		}
 
-		private string get_full_process_cmd (string cmd, string[] args, out string cmd_parameter)
+		private string get_full_process_cmd_for_pid (pid_t pid, out string cmd_parameter)
         {
+            GTop.ProcArgs proc_args;
+            GTop.ProcState proc_state;
+            var args = GTop.get_proc_argv (out proc_args, pid);
+            GTop.get_proc_state (out proc_state, pid);
+            string cmd = (string) proc_state.cmd;
+
             var secure_arguments = new string[2];
 
             for(int i = 0; i < 2; i++)
@@ -153,114 +239,6 @@ namespace Usage
             }
 
             return cmd;
-        }
-
-		public bool update_data()
-        {
-		    /* CPU */
-            GTop.Cpu cpu_data;
-            GTop.get_cpu (out cpu_data);
-            var used = cpu_data.user + cpu_data.nice + cpu_data.sys;
-            cpu_load = (((double) (used - cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100;
-
-            var x_cpu_used = new uint64[get_num_processors()];
-            for (int i = 0; i < x_cpu_load.length; i++)
-            {
-                x_cpu_used[i] = cpu_data.xcpu_user[i] + cpu_data.xcpu_nice[i] + cpu_data.xcpu_sys[i];
-                x_cpu_load[i] = (((double) (x_cpu_used[i] - x_cpu_last_used[i])) / (cpu_data.xcpu_total[i] - x_cpu_last_total[i])) * 100;
-            }
-
-            /* Memory */
-            GTop.Mem mem;
-            GTop.get_mem (out mem);
-            mem_usage = (((double) (mem.used - mem.buffer - mem.cached)) / mem.total) * 100;
-
-            /* Swap */
-            GTop.Swap swap;
-            GTop.get_swap (out swap);
-            swap_usage = (double) swap.used / swap.total;
-
-            foreach(unowned Process process in process_table_pid.get_values())
-            {
-                process.alive = false;
-            }
-
-            set_alive_false_table_cmdline(ref cpu_process_table);
-            set_alive_false_table_cmdline(ref ram_process_table);
-
-            var uid = Posix.getuid();
-            GTop.Proclist proclist;
-            var pids = GTop.get_proclist (out proclist, process_mode, uid);
-
-            for(int i = 0; i < proclist.number; i++)
-            {
-                GTop.ProcState proc_state;
-                GTop.ProcTime proc_time;
-                GTop.ProcArgs proc_args;
-                GTop.get_proc_state (out proc_state, pids[i]);
-                GTop.get_proc_time (out proc_time, pids[i]);
-                var arguments = GTop.get_proc_argv (out proc_args, pids[i]);
-
-                if (!(pids[i] in process_table_pid))
-                {
-                    var process = new Process();
-                    process.pid = pids[i];
-                    process.alive = true;
-                    process.cmdline = get_full_process_cmd ((string) proc_state.cmd, arguments, out process.cmdline_parameter);
-                    process.last_processor = proc_state.last_processor;
-                    process.cpu_load = 0;
-                    process.x_cpu_load = 0;
-                    process.cpu_last_used = proc_time.rtime;
-                    process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);
-                    process.mem_usage = 0;
-                    process_table_pid.insert (pids[i], (owned) process);
-                }
-                else
-                {
-                    unowned Process process = process_table_pid[pids[i]];
-                    process.last_processor = proc_state.last_processor;
-                    process.cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / (cpu_data.total - cpu_last_total)) * 100 * get_num_processors();
-                    process.cpu_load = double.min(100, process.cpu_load);
-                    process.alive = true;
-                    process.cpu_last_used = proc_time.rtime;
-                    process.x_cpu_last_used = (proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor]);
-
-                    GTop.ProcMem proc_mem;
-                    GTop.get_proc_mem (out proc_mem, process.pid);
-                    process.mem_usage = (proc_mem.resident - proc_mem.share) / 1000000;
-                    process.mem_usage_percentages = ((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100;
-                }
-            }
-
-            foreach(unowned Process process in process_table_pid.get_values())
-            {
-                if (process.alive == false)
-                    process_table_pid.remove (process.pid);
-            }
-
-            var process_table_pid_condition = new HashTable<pid_t?, Process>(int_hash, int_equal);
-            foreach(unowned Process process in process_table_pid.get_values())
-            {
-                if(process.cpu_load >= 1)
-                    process_table_pid_condition.insert(process.pid, process);
-            }
-            get_updates_table_cmdline(process_table_pid_condition, ref cpu_process_table);
-
-            process_table_pid_condition.remove_all();
-            foreach(unowned Process process in process_table_pid.get_values())
-            {
-                if(process.mem_usage >= 15)
-                    process_table_pid_condition.insert(process.pid, process);
-            }
-            get_updates_table_cmdline(process_table_pid_condition, ref ram_process_table);
-
-            cpu_last_used = used;
-            cpu_last_total = cpu_data.total;
-
-            x_cpu_last_used = x_cpu_used;
-            x_cpu_last_total = cpu_data.xcpu_total;
-
-            return true;
         }
 
         private void set_alive_false_table_cmdline(ref HashTable<string, Process> process_table_cmdline)

@@ -6,6 +6,7 @@ New GNOME Usage!
 - [x] Processor Usage
 - [x] Memory usage
 - [ ] Network usage - 20%
+- [ ] RPM/DEB packages
 - [ ] Storage view - 0%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
@@ -24,7 +25,7 @@ sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.2.6
+Actual version is 0.2.8
 
 ##License
 Code is under GNU GPLv3 license.

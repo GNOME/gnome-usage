@@ -5,7 +5,7 @@ project_name: gnome-usage
 
 
 vala_binary: src/gnome-usage
-*version: 0.2.7
+*version: 0.2.8
 *vala_vapi: vapis/better.vapi
 *vala_vapi: vapis/egg.vapi
 *vala_vapi: vapis/glibtop.vapi
@@ -29,6 +29,7 @@ c_library: gmodule-2.0 m rt gtop-2.0 ${CMAKE_SOURCE_DIR}/external/netinfo/libnet
 *vala_source: cookie-graph.vala
 *vala_source: cpu-graph-table.vala
 *vala_source: cpu-graph.vala
+*vala_source: cpu-monitor.vala
 *vala_source: cpu-sub-view.vala
 *vala_source: data-view.vala
 *vala_source: disk-sub-view.vala
@@ -41,13 +42,16 @@ c_library: gmodule-2.0 m rt gtop-2.0 ${CMAKE_SOURCE_DIR}/external/netinfo/libnet
 *vala_source: header-bar.vala
 *vala_source: memory-graph-table.vala
 *vala_source: memory-graph.vala
+*vala_source: memory-monitor.vala
 *vala_source: memory-sub-view.vala
+*vala_source: network-monitor.vala
 *vala_source: network-sub-view.vala
 *vala_source: performance-view.vala
 *vala_source: power-view.vala
 *vala_source: process-dialog.vala
 *vala_source: process-list-box.vala
 *vala_source: process-row.vala
+*vala_source: process.vala
 *vala_source: settings.vala
 *vala_source: storage-view.vala
 *vala_source: sub-process-list-box.vala
@@ -149,11 +153,12 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/application.vala
 *translate: vala src/header-bar.vala
 *translate: vala src/process-dialog.vala
+*translate: vala src/cpu-monitor.vala
 *translate: vala src/graph-block.vala
 *translate: vala src/memory-graph.vala
 *translate: vala src/process-row.vala
 *translate: vala src/network-sub-view.vala
-*translate: vala src/memory-graph-table.vala
+*translate: vala src/system-monitor.vala
 *translate: vala src/performance-view.vala
 *translate: vala src/process-list-box.vala
 *translate: vala src/memory-sub-view.vala
@@ -161,8 +166,7 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/view.vala
 *translate: vala src/disk-sub-view.vala
 *translate: vala src/sub-process-sub-row.vala
-*translate: vala src/gnome-usage.vala
-*translate: vala src/system-monitor.vala
+*translate: vala src/memory-graph-table.vala
 *translate: vala src/window.vala
 *translate: vala src/sub-process-list-box.vala
 *translate: vala src/color-rectangle.vala
@@ -175,6 +179,10 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/graph-block-row.vala
 *translate: vala src/graph-switcher-button.vala
 *translate: vala src/data-view.vala
+*translate: vala src/network-monitor.vala
+*translate: vala src/process.vala
+*translate: vala src/gnome-usage.vala
+*translate: vala src/memory-monitor.vala
 *translate: c src/better-box.c
 
 *data: data/local

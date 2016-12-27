@@ -31,7 +31,7 @@ namespace Usage {
             push (out iter, get_monotonic_time ());
 
             SystemMonitor monitor = (GLib.Application.get_default() as Application).monitor;
-            double ram_usage = monitor.mem_usage;
+            double ram_usage = monitor.ram_usage;
 
             iter.set (column_ram_id, ram_usage, -1);
             iter.set (column_swap_id, (GLib.Application.get_default() as Application).monitor.swap_usage, -1);

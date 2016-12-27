@@ -71,7 +71,7 @@ namespace Usage
     	        processor_graph_block.update(-1, 0, (int) monitor.cpu_load);
     	    }
 
-    	    memory_graph_block.update(-1, app_memory_usage, (int) monitor.mem_usage);
+    	    memory_graph_block.update(-1, app_memory_usage, (int) monitor.ram_usage);
     	    return true;
     	}
 
