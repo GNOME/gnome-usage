@@ -4,7 +4,8 @@ namespace Usage
 {
     public enum ProcessListBoxType {
         PROCESSOR,
-        MEMORY
+        MEMORY,
+        NETWORK
     }
 
     public class ProcessListBoxNew : Gtk.ListBox
@@ -65,6 +66,10 @@ namespace Usage
                     foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_ram_processes())
                         model.insert_sorted(process, sort);
                     break;
+                case ProcessListBoxType.NETWORK:
+                    foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_net_processes())
+                        model.insert_sorted(process, sort);
+                    break;
             }
 
             return true;
@@ -113,6 +118,9 @@ namespace Usage
                     break;
                 case ProcessListBoxType.MEMORY:
                     return (int) ((Process) b).mem_usage - (int) ((Process) a).mem_usage;
+                    break;
+                case ProcessListBoxType.NETWORK:
+                    return (int) ((Process) b).net_all - (int) ((Process) a).net_all;
                     break;
             }
         }

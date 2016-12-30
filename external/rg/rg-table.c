@@ -175,6 +175,89 @@ rg_table_set_max_samples (RgTable *self,
   g_object_notify_by_pspec (G_OBJECT (self), properties [PROP_MAX_SAMPLES]);
 }
 
+gdouble
+rg_table_get_max_iter_value (RgTable     *self,
+                             guint        column_index)
+{
+  gdouble max_value = 0.0;
+  gdouble double_value = 0.0;
+	RgTableIter iter;
+
+	if (rg_table_get_iter_first (self, &iter))
+	{
+		GValue value = G_VALUE_INIT;
+
+		rg_table_iter_get_value(&iter, column_index, &value);
+
+		switch (G_VALUE_TYPE (&value))
+		{
+			case G_TYPE_DOUBLE:
+				double_value = g_value_get_double (&value);
+				break;
+
+			case G_TYPE_UINT:
+				double_value = g_value_get_uint (&value);
+				break;
+
+			case G_TYPE_UINT64:
+				double_value = g_value_get_uint64 (&value);
+				break;
+
+			case G_TYPE_INT:
+				double_value = g_value_get_int (&value);
+				break;
+
+			case G_TYPE_INT64:
+				double_value = g_value_get_int64 (&value);
+				break;
+
+			default:
+				double_value = 0.0;
+				break;
+		}
+		max_value = double_value;
+
+		while (rg_table_iter_next (&iter))
+		{
+			GValue value = G_VALUE_INIT;
+
+			rg_table_iter_get_value(&iter, column_index, &value);
+
+			switch (G_VALUE_TYPE (&value))
+			{
+				case G_TYPE_DOUBLE:
+					double_value = g_value_get_double (&value);
+					break;
+
+				case G_TYPE_UINT:
+					double_value = g_value_get_uint (&value);
+					break;
+
+				case G_TYPE_UINT64:
+					double_value = g_value_get_uint64 (&value);
+					break;
+
+				case G_TYPE_INT:
+					double_value = g_value_get_int (&value);
+					break;
+
+				case G_TYPE_INT64:
+					double_value = g_value_get_int64 (&value);
+					break;
+
+				default:
+					double_value = 0.0;
+					break;
+			}
+
+			if(double_value > max_value)
+				max_value = double_value;
+		}
+	}
+
+  return max_value;
+}
+
 /**
  * rg_table_push:
  * @self: Table to push to

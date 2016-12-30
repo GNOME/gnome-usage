@@ -38,7 +38,7 @@ namespace Usage
             GTop.get_mem (out mem);
             GTop.get_proc_mem (out proc_mem, pid);
 
-            mem_usage = (proc_mem.resident - proc_mem.share) / 1000000;
+            mem_usage = (proc_mem.resident - proc_mem.share);
             mem_usage_percentages = ((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100;
         }
     }

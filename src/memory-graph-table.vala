@@ -34,7 +34,7 @@ namespace Usage {
             double ram_usage = monitor.ram_usage;
 
             iter.set (column_ram_id, ram_usage, -1);
-            iter.set (column_swap_id, (GLib.Application.get_default() as Application).monitor.swap_usage, -1);
+            iter.set (column_swap_id, monitor.swap_usage, -1);
 
             if(ram_usage >= 90)
             {

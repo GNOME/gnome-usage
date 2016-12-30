@@ -15,7 +15,9 @@ namespace Usage
         internal uint last_processor;
         internal uint64 mem_usage;
         internal double mem_usage_percentages;
-        internal double net_usage;
+        internal uint64 net_download;
+        internal uint64 net_upload;
+        internal uint64 net_all;
         internal HashTable<pid_t?, Process> sub_processes;
         internal bool alive;
     }

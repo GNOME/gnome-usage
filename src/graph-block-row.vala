@@ -15,6 +15,9 @@ namespace Usage {
             label.ellipsize = Pango.EllipsizeMode.END;
             label.max_width_chars = 15;
             value_label = new Gtk.Label("0 %");
+            value_label.width_chars = 5;
+            value_label.width_chars = 5;
+            value_label.xalign = 1;
             this.pack_start(color_rectangle, false, false);
             this.pack_start(label, false, true, 5);
             this.pack_end(value_label, false, true, 10);

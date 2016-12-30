@@ -93,6 +93,7 @@ namespace Rg {
 		public bool get_iter_first (Rg.TableIter iter);
 		public bool get_iter_last (Rg.TableIter iter);
 		public uint get_max_samples ();
+		public double get_max_iter_value(uint column_index);
 		public GLib.TimeSpan get_timespan ();
 		public void push (out Rg.TableIter iter, int64 timestamp);
 		public void set_max_samples (uint n_rows);

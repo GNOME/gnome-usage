@@ -87,19 +87,19 @@ namespace NI
     public class NetStatistics
     {
         [CCode(cname = "netinfo_stat_get_total_bytes")]
-        public ErrorCode stat_get_total_bytes(out uint64 bytes_out);
+        public ErrorCode get_total_bytes(out uint64 bytes_out);
         [CCode(cname = "netinfo_stat_get_bytes_per_pid")]
-        public ErrorCode stat_get_bytes_per_pid(Pid pid, out uint64 bytes_out);
+        public ErrorCode get_bytes_per_pid(Pid pid, out uint64 bytes_out);
         [CCode(cname = "netinfo_stat_get_unassigned_bytes")]
-        public ErrorCode stat_get_unassigned_bytes(out uint64 bytes_out);
+        public ErrorCode get_unassigned_bytes(out uint64 bytes_out);
         [CCode(cname = "netinfo_stat_get_bytes_by_transport_type")]
-        public ErrorCode stat_get_bytes_by_transport_type(TransportType t, out uint64 bytes_out);
+        public ErrorCode get_bytes_by_transport_type(TransportType t, out uint64 bytes_out);
         [CCode(cname = "netinfo_stat_get_bytes_by_inout_type")]
-        public ErrorCode stat_get_bytes_by_inout_type(Inout t, out uint64 bytes_out);
+        public ErrorCode get_bytes_by_inout_type(Inout t, out uint64 bytes_out);
 
         // Returns all pids that had some traffic since the last "netinfo_clear()"
         [CCode(cname = "netinfo_stat_get_all_pids")]
-        public ErrorCode stat_get_all_pids(out unowned Pid[] pid_array_out);
+        public ErrorCode get_all_pids(out unowned Pid[] pid_array_out);
         [CCode(cname = "netinfo_free_pid_array")]
         public static ErrorCode free_pid_array(Pid[] pid_array);
 
@@ -113,7 +113,7 @@ namespace NI
         // Example: (1234, NULL, tcp) will return the number of bytes of the tcp traffic (incoming and outgoing) for pid 1234.
         // Example: (1234, incoming, NULL) will return the number of bytes of the incoming traffic (tcp and udp) for pid 1234.
         [CCode(cname = "netinfo_stat_get_bytes_per_attr")]
-        public ErrorCode stat_get_bytes_per_attr(Pid pid_opt, Inout inout_opt, TransportType tt_opt, out uint64 bytes_out);
+        public ErrorCode get_bytes_per_attr(ref Pid pid_opt, ref Inout inout_opt, ref TransportType tt_opt, out uint64 bytes_out);
     }
 
     [SimpleType]

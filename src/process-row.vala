@@ -172,22 +172,40 @@ namespace Usage
                     if(process.sub_processes != null)
                     {
                         string values_string = "";
-                                                var values = new GLib.List<int>();
+                        var values = new GLib.List<int>();
                         foreach(Process sub_process in process.sub_processes.get_values())
                             values.insert_sorted((int) sub_process.mem_usage, sort);
 
                          foreach(int value in values)
-                            values_string += "   " + value.to_string() + " MB";
+                            values_string += "   " + ((int) (value/1000000)).to_string() + " MB";
 
                         load_label.set_label(values_string);
                     }
                     else
-                        load_label.set_label(((int) process.mem_usage).to_string() + " MB");
+                        load_label.set_label(((int) process.mem_usage/1000000).to_string() + " MB");
 
                     if(process.mem_usage_percentages >= 90)
                         max_usage = true;
                     else
                         max_usage = false;
+                    break;
+                case ProcessListBoxType.NETWORK:
+                    if(process.sub_processes != null)
+                    {
+                        string values_string = "";
+                        var values = new GLib.List<int>();
+                        foreach(Process sub_process in process.sub_processes.get_values())
+                            values.insert_sorted((int) sub_process.net_all, sort);
+
+                         foreach(int value in values)
+                            values_string += "   " + value.to_string() + " B";
+
+                        load_label.set_label(values_string);
+                    }
+                    else
+                    {
+                        load_label.set_label(((int) process.net_all).to_string() + " B");
+                    }
                     break;
             }
 

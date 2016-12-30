@@ -51,12 +51,15 @@ namespace Usage
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
-                    load_label.set_label(((int) process.mem_usage).to_string() + " MB");
+                    load_label.set_label(((int) process.mem_usage/1000000).to_string() + " MB");
 
                     if(process.mem_usage_percentages >= 90)
                         max_usage = true;
                     else
                         max_usage = false;
+                    break;
+                case ProcessListBoxType.NETWORK:
+                    load_label.set_label(((int) process.net_all).to_string() + " B");
                     break;
             }
         }

@@ -18,6 +18,8 @@ src/memory-graph-table.vala
 src/memory-graph.vala
 src/memory-monitor.vala
 src/memory-sub-view.vala
+src/network-graph-table.vala
+src/network-graph.vala
 src/network-monitor.vala
 src/network-sub-view.vala
 src/performance-view.vala
@@ -31,7 +33,6 @@ src/storage-view.vala
 src/sub-process-list-box.vala
 src/sub-process-sub-row.vala
 src/system-monitor.vala
-src/test-netinfo.vala
 src/view.vala
 src/window.vala
 src/../external/egg/egg-animation.c

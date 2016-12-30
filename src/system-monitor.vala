@@ -8,8 +8,9 @@ namespace Usage
         public double[] x_cpu_load { get; private set; }
         public double ram_usage { get; private set; }
         public double swap_usage { get; private set; }
-        public double download_usage { get; private set; }
-        public double upload_usage { get; private set; }
+        public uint64 net_download { get; private set; }
+        public uint64 net_upload { get; private set; }
+        public uint64 net_usage { get; private set; }
 
         private CpuMonitor cpu_monitor;
         private MemoryMonitor memory_monitor;
@@ -103,9 +104,9 @@ namespace Usage
             x_cpu_load = cpu_monitor.get_x_cpu_load();
             ram_usage = memory_monitor.get_ram_usage();
             swap_usage = memory_monitor.get_swap_usage();
-            // TODO net
-            //download_usage =
-            //upload_usage =
+            net_download = network_monitor.get_net_download();
+            net_upload = network_monitor.get_net_upload();
+            net_usage = network_monitor.get_net_usage();
 
             foreach(unowned Process process in process_table_pid.get_values())
             {
@@ -133,6 +134,9 @@ namespace Usage
                     cpu_monitor.get_cpu_info_for_pid(pids[i], ref process.last_processor, ref process.cpu_load, ref process.cpu_last_used, ref process.x_cpu_last_used);
                     process.cpu_load = 0;
                     process.x_cpu_load = 0;
+                    process.net_download = 0;
+                    process.net_upload = 0;
+                    process.net_all = 0;
                     process_table_pid.insert (pids[i], (owned) process);
                 }
                 else
@@ -141,6 +145,7 @@ namespace Usage
                     process.alive = true;
                     cpu_monitor.get_cpu_info_for_pid(pids[i], ref process.last_processor, ref process.cpu_load, ref process.cpu_last_used, ref process.x_cpu_last_used);
                     memory_monitor.get_memory_info_for_pid(pids[i], ref process.mem_usage, ref process.mem_usage_percentages);
+                    network_monitor.get_network_info_for_pid(pids[i], ref process.net_download, ref process.net_upload, ref process.net_all);
                 }
             }
 
@@ -161,7 +166,7 @@ namespace Usage
             process_table_pid_condition.remove_all();
             foreach(unowned Process process in process_table_pid.get_values())
             {
-                if(process.mem_usage >= 15)
+                if(process.mem_usage >= 15000000)
                     process_table_pid_condition.insert(process.pid, process);
             }
             get_updates_table_cmdline(process_table_pid_condition, ref ram_process_table);
@@ -169,7 +174,7 @@ namespace Usage
             process_table_pid_condition.remove_all();
             foreach(unowned Process process in process_table_pid.get_values())
             {
-                if(process.net_usage >= 15) //TODO net value
+                if(process.net_all >= 1)
                     process_table_pid_condition.insert(process.pid, process);
             }
             get_updates_table_cmdline(process_table_pid_condition, ref net_process_table);
@@ -275,6 +280,9 @@ namespace Usage
                             process.cpu_last_used = process_it.cpu_last_used;
                             process.x_cpu_last_used = process_it.x_cpu_last_used;
                             process.mem_usage = process_it.mem_usage;
+                            process.net_download = process_it.net_download;
+                            process.net_upload = process_it.net_upload;
+                            process.net_all = process_it.net_all;
                         }
                         else //add subrow
                         {
@@ -289,6 +297,9 @@ namespace Usage
                             process.cpu_last_used = process_it.cpu_last_used;
                             process.x_cpu_last_used = process_it.x_cpu_last_used;
                             process.mem_usage = process_it.mem_usage;
+                            process.net_download = process_it.net_download;
+                            process.net_upload = process_it.net_upload;
+                            process.net_all = process_it.net_all;
                             to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) process);
                         }
                     }
@@ -304,6 +315,9 @@ namespace Usage
                             process.cpu_last_used = process_it.cpu_last_used;
                             process.x_cpu_last_used = process_it.x_cpu_last_used;
                             process.mem_usage = process_it.mem_usage;
+                            process.net_download = process_it.net_download;
+                            process.net_upload = process_it.net_upload;
+                            process.net_all = process_it.net_all;
                         }
                         else //transform to group and add subrow
                         {
@@ -321,6 +335,9 @@ namespace Usage
                             sub_process_one.cpu_last_used = process.cpu_last_used;
                             sub_process_one.x_cpu_last_used = process.x_cpu_last_used;
                             sub_process_one.mem_usage = process.mem_usage;
+                            sub_process_one.net_download = process.net_download;
+                            sub_process_one.net_upload = process.net_upload;
+                            sub_process_one.net_all = process.net_all;
                             to_table[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
                             process.cmdline_parameter = "";
 
@@ -335,6 +352,9 @@ namespace Usage
                             sub_process.cpu_last_used = process_it.cpu_last_used;
                             sub_process.x_cpu_last_used = process_it.x_cpu_last_used;
                             sub_process.mem_usage = process_it.mem_usage;
+                            sub_process.net_download = process_it.net_download;
+                            sub_process.net_upload = process_it.net_upload;
+                            sub_process.net_all = process_it.net_all;
                             to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) sub_process);
                         }
                     }
@@ -352,6 +372,9 @@ namespace Usage
                      process.cpu_last_used = process_it.cpu_last_used;
                      process.x_cpu_last_used = process_it.x_cpu_last_used;
                      process.mem_usage = process_it.mem_usage;
+                     process.net_download = process_it.net_download;
+                     process.net_upload = process_it.net_upload;
+                     process.net_all = process_it.net_all;
                      to_table.insert(process.cmdline, (owned) process);
                 }
             }
@@ -394,6 +417,9 @@ namespace Usage
                             process.cpu_last_used = sub_process.cpu_last_used;
                             process.x_cpu_last_used = sub_process.x_cpu_last_used;
                             process.mem_usage = sub_process.mem_usage;
+                            process.net_download = sub_process.net_download;
+                            process.net_upload = sub_process.net_upload;
+                            process.net_all = sub_process.net_all;
                             process.sub_processes.remove(sub_process.pid);
                             process.sub_processes = null;
                         }

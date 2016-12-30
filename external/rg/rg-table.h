@@ -67,6 +67,8 @@ gint64     rg_table_iter_get_timestamp (RgTableIter *iter);
 void       rg_table_iter_set           (RgTableIter *iter,
                                         gint         first_column,
                                         ...);
+gdouble    rg_table_get_max_iter_value(RgTable      *self,
+                                       guint         column);
 
 G_END_DECLS
 

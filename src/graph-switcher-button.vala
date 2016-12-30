@@ -22,7 +22,7 @@ namespace Usage
 
         public GraphSwitcherButton.network(string label)
         {
-            Rg.Graph network_graph = new MemoryGraph();
+            Rg.Graph network_graph = new NetworkGraph();
             child = createContent(network_graph, label);
         }
 
