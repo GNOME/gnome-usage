@@ -82,6 +82,8 @@ namespace Usage
                 string process_full_cmd = process.cmdline + " " + process.cmdline_parameter;
         	    if(commandline == process_full_cmd)
         	        app_info = info;
+        	    else if(commandline.contains("google-" + process.cmdline + "-")) //Fix for Google Chrome naming
+                    app_info = info;
 
         	    if(app_info == null)
                 {
@@ -93,7 +95,7 @@ namespace Usage
                     }
 
                     if(info.get_commandline().has_prefix(commandline + " " + commandline + "://")) //Fix for Steam naming
-                                        commandline = info.get_commandline();
+                        commandline = info.get_commandline();
 
                     commandline = Path.get_basename(commandline);
                     if(commandline == process.cmdline)
