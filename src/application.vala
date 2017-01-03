@@ -5,8 +5,8 @@ namespace Usage
     public class Application : Gtk.Application
     {
         public Settings settings;
-        public Window window;
-        public SystemMonitor monitor;
+        private Window window;
+        private SystemMonitor monitor;
 
         private const GLib.ActionEntry app_entries[] =
         {
@@ -19,6 +19,16 @@ namespace Usage
             application_id = "org.gnome.usage";
             settings = new Settings();
             monitor = new SystemMonitor();
+        }
+
+        public SystemMonitor get_system_monitor()
+        {
+            return monitor;
+        }
+
+        public Window get_window()
+        {
+            return window;
         }
 
         public override void activate()

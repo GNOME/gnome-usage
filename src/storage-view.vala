@@ -10,11 +10,5 @@ namespace Usage
             var label = new Gtk.Label("Page Storage Content.");
 			add(label);
         }
-
-        public override void update_header_bar()
-        {
-            header_bar.clear();
-            header_bar.show_stack_switcher();
-        }
     }
 }

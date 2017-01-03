@@ -72,7 +72,7 @@ namespace Usage
                 get_style_context().remove_class("max");
         }
 
-        public void activate()
+        public new void activate()
         {
             var dialog = new ProcessDialog(process.pid, process.cmdline);
             dialog.show_all();

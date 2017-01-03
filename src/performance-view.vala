@@ -33,11 +33,5 @@ namespace Usage
     	    paned.add2(performance_stack);
 		    add(paned);
         }
-
-        public override void update_header_bar()
-        {
-            var visible_sub_view = (View) performance_stack.get_visible_child();
-            visible_sub_view.update_header_bar();
-        }
     }
 }

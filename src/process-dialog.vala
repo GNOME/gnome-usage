@@ -14,7 +14,7 @@ namespace Usage
     	public ProcessDialog(pid_t pid, string name)
     	{
     	    Object(use_header_bar: 1);
-    	    set_transient_for((GLib.Application.get_default() as Application).window);
+    	    set_transient_for((GLib.Application.get_default() as Application).get_window());
     	    set_position(Gtk.WindowPosition.CENTER);
     	    set_resizable(false);
     	    this.pid = pid;
@@ -56,7 +56,7 @@ namespace Usage
 
     	private bool update()
     	{
-    	    unowned SystemMonitor monitor = (GLib.Application.get_default() as Application).monitor;
+    	    SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
     	    unowned Process data = monitor.get_process_by_pid(pid);
 
     	    int app_cpu_load = 0;

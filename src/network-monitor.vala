@@ -98,13 +98,12 @@ namespace Usage
         void handle_thread_errors()
         {
             unowned ErrorCode[] errors = null;
-            uint32 num_errors = 0;
             handle_error(netinfo.pop_thread_errors(out errors));
             if(errors.length > 0)
             {
                 handle_error(errors[0]);
             }
-            handle_error(netinfo.free_thread_error_array(errors));
+            handle_error(NetInfo.free_thread_error_array(errors));
         }
     }
 }

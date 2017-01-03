@@ -2,8 +2,8 @@ namespace Usage
 {
     public class Window : Gtk.ApplicationWindow
     {
-        public static Gtk.Stack stack;
-        public static Usage.HeaderBar header_bar;
+        private Gtk.Stack stack;
+        private Usage.HeaderBar header_bar;
 
 		public Window(Gtk.Application application)
         {
@@ -16,9 +16,11 @@ namespace Usage
 
 			stack = new Gtk.Stack();
 			header_bar = new Usage.HeaderBar(stack);
+			set_titlebar(header_bar);
+
 			header_bar.show_close_button = true;
 
-            var views =  new View[]
+            var views = new View[]
             {
                 new PerformanceView(),
                 new DataView(),
@@ -29,13 +31,6 @@ namespace Usage
             foreach(var view in views)
                 stack.add_titled(view, view.name, view.title);
 
-            stack.notify["visible-child"].connect (() => {
-                var visibleView = (View) stack.get_visible_child();
-                visibleView.update_header_bar();
-            });
-
-            views[0].update_header_bar();
-            set_titlebar(header_bar);
             this.add(stack);
 
             load_css();

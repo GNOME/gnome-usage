@@ -27,7 +27,7 @@ namespace Usage {
             Rg.TableIter iter;
             push (out iter, get_monotonic_time ());
 
-            SystemMonitor monitor = (GLib.Application.get_default() as Application).monitor;
+            SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
 
             double net_download = monitor.net_download;
             double net_upload = monitor.net_upload;

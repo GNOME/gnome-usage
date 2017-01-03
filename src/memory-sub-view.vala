@@ -39,11 +39,5 @@ namespace Usage
 
             add(scrolled_window);
         }
-
-        public override void update_header_bar()
-        {
-            header_bar.clear();
-            header_bar.show_stack_switcher();
-        }
     }
 }

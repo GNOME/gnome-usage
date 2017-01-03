@@ -54,7 +54,7 @@ namespace Usage
     **/
     public class CpuGraphBig : Rg.Graph
     {
-    	private static CpuGraphTableComplex table;
+    	private static CpuGraphTableComplex rg_table;
         private LineRenderer[] renderers;
         private Gdk.RGBA line_color_max;
         private Gdk.RGBA line_color_normal;
@@ -70,10 +70,10 @@ namespace Usage
             line_color_normal.parse("rgba(74,144,217,1)");
             get_style_context().add_class("big");
 
-            if(table == null)
-                table = new CpuGraphTableComplex();
+            if(rg_table == null)
+                rg_table = new CpuGraphTableComplex();
 
-            set_table(table);
+            set_table(rg_table);
 
             renderers = new LineRenderer[get_num_processors()];
             for(int i = 0; i < get_num_processors(); i++)
@@ -85,12 +85,12 @@ namespace Usage
                 add_renderer(renderers[i]);
             }
 
-            table.big_process_usage.connect ((column) => {
+            rg_table.big_process_usage.connect ((column) => {
                 renderers[column].stroke_color_rgba = line_color_max;
                 renderers[column].line_width = 2.5;
             });
 
-            table.small_process_usage.connect ((column) => {
+            rg_table.small_process_usage.connect ((column) => {
                 renderers[column].stroke_color_rgba = line_color_normal;
                 renderers[column].line_width = 1.5;
             });

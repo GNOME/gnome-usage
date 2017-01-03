@@ -59,15 +59,9 @@ namespace Usage
                 show_details();
         }
 
-        private Gtk.Widget on_subrow_created (Object item)
-        {
-            Process process = (Process) item;
-            var row = new SubProcessSubRow(process, type);
-            return row;
-        }
-
         private void load_icon_and_name(out Gtk.Image icon, out string display_name)
         {
+            icon = null;
             AppInfo app_info = null;
         	foreach (AppInfo info in apps_info)
         	{
@@ -103,33 +97,34 @@ namespace Usage
                 }
         	}
 
-            bool not_have_icon = false;
             if(app_info != null)
             {
                 display_name = app_info.get_display_name();
 
-        	    if(app_info.get_icon() == null)
-                    not_have_icon = true;
-                else
+        	    if(app_info.get_icon() != null)
                 {
                     var icon_theme = new Gtk.IconTheme();
                     var icon_info = icon_theme.lookup_by_gicon_for_scale(app_info.get_icon(), 24, 1, Gtk.IconLookupFlags.FORCE_SIZE);
                     if(icon_info != null)
                     {
-                        var pixbuf = icon_info.load_icon();
-                        icon = new Gtk.Image.from_pixbuf(pixbuf);
+                        try
+                        {
+                            var pixbuf = icon_info.load_icon();
+                            icon = new Gtk.Image.from_pixbuf(pixbuf);
+                        }
+                        catch(Error e) {
+                            GLib.stderr.printf ("Could not load icon for application %s: %s\n", display_name, e.message);
+                        }
+
                     }
-                    else
-                        not_have_icon = true;
                 }
         	}
         	else
         	{
         	    display_name = process.cmdline;
-        	    not_have_icon = true;
         	}
 
-        	if(not_have_icon)
+        	if(icon == null)
         	{
         	    icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
         	    icon.width_request = 24;
@@ -230,7 +225,7 @@ namespace Usage
             get_style_context().add_class("opened");
         }
 
-        public void activate()
+        public new void activate()
         {
             if(process.sub_processes != null)
             {

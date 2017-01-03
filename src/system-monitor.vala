@@ -205,6 +205,7 @@ namespace Usage
             var args = GTop.get_proc_argv (out proc_args, pid);
             GTop.get_proc_state (out proc_state, pid);
             string cmd = (string) proc_state.cmd;
+            cmd_parameter = "";
 
             var secure_arguments = new string[2];
 

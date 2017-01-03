@@ -11,7 +11,6 @@ namespace Usage
     public class ProcessListBoxNew : Gtk.ListBox
     {
         ListStore model;
-        string cmdline_opened_process;
         ProcessRow? opened_row = null;
         ProcessListBoxType type;
 
@@ -59,15 +58,15 @@ namespace Usage
             {
                 default:
                 case ProcessListBoxType.PROCESSOR:
-                    foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_cpu_processes())
+                    foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_cpu_processes())
                         model.insert_sorted(process, sort);
                     break;
                 case ProcessListBoxType.MEMORY:
-                    foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_ram_processes())
+                    foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes())
                         model.insert_sorted(process, sort);
                     break;
                 case ProcessListBoxType.NETWORK:
-                    foreach(unowned Process process in (GLib.Application.get_default() as Application).monitor.get_net_processes())
+                    foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_net_processes())
                         model.insert_sorted(process, sort);
                     break;
             }
@@ -115,13 +114,10 @@ namespace Usage
                 default:
                 case ProcessListBoxType.PROCESSOR:
                     return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
-                    break;
                 case ProcessListBoxType.MEMORY:
                     return (int) ((Process) b).mem_usage - (int) ((Process) a).mem_usage;
-                    break;
                 case ProcessListBoxType.NETWORK:
                     return (int) ((Process) b).net_all - (int) ((Process) a).net_all;
-                    break;
             }
         }
     }

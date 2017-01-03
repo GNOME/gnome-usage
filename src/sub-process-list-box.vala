@@ -70,13 +70,10 @@ namespace Usage
                 default:
                 case ProcessListBoxType.PROCESSOR:
                     return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
-                    break;
                 case ProcessListBoxType.MEMORY:
                     return (int) ((Process) b).mem_usage - (int) ((Process) a).mem_usage;
-                    break;
                 case ProcessListBoxType.NETWORK:
                     return (int) ((Process) b).net_all - (int) ((Process) a).net_all;
-                    break;
             }
         }
     }
