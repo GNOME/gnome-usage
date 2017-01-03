@@ -5,7 +5,7 @@ project_name: gnome-usage
 
 
 vala_binary: src/gnome-usage
-version: 0.3.1
+version: 0.3.2
 *vala_vapi: vapis/better.vapi
 *vala_vapi: vapis/egg.vapi
 *vala_vapi: vapis/glibtop.vapi

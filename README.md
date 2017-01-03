@@ -26,7 +26,7 @@ sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.3.0
+Actual version is 0.3.2
 
 ##License
 Code is under GNU GPLv3 license.
