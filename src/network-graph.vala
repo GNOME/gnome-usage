@@ -17,11 +17,10 @@ namespace Usage
 
         public NetworkGraph ()
         {
-            color_line_download.parse("#4a90d9");
-            color_download.parse("#c4dbff");
-
-            color_line_upload.parse("#ff9900");
-            color_upload.parse("#fcd8a2");
+            color_line_download.parse("rgba(74,144,217,1)");
+            color_download.parse("rgba(74,144,217,0.325)");
+            color_line_upload.parse("rgba(255,153,0,1)");
+            color_upload.parse("rgba(255,153,0,0.353)");
 
             if(rg_table == null)
             {

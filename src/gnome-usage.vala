@@ -1,5 +1,3 @@
-// project version=0.3.0
-
 public static int main (string[] args)
 {
     Intl.bindtextdomain(Constants.GETTEXT_PACKAGE, Path.build_filename(Constants.DATADIR,"locale"));

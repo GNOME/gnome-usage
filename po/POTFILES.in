@@ -6,6 +6,7 @@ src/cpu-graph.vala
 src/cpu-monitor.vala
 src/cpu-sub-view.vala
 src/data-view.vala
+src/disk-graph.vala
 src/disk-sub-view.vala
 src/gnome-usage.vala
 src/graph-block-row.vala

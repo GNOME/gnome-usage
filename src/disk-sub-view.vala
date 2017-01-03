@@ -5,6 +5,8 @@ namespace Usage
         public DiskSubView()
         {
             name = "DISK";
+            var label = new Gtk.Label("What library we can use for disk I/O usage?");
+            this.add(label);
         }
 
         public override void update_header_bar()

@@ -17,10 +17,10 @@ namespace Usage
 
         public MemoryGraph ()
         {
-            line_color_max.parse("#ee2222");
-            line_color_normal.parse("#4a90d9");
-            color_max.parse("#fbcccc");
-            color_normal.parse("#c4dbff");
+            color_max.parse("rgba(238,34,34,0.227)");
+            line_color_max.parse("rgba(238,34,34,1)");
+            color_normal.parse("rgba(74,144,217,0.325)");
+            line_color_normal.parse("rgba(74,144,217,1)");
 
             if(rg_table == null)
             {
@@ -52,9 +52,10 @@ namespace Usage
     public class MemoryGraphBig : Rg.Graph
     {
 		private static MemoryGraphTable rg_table;
-		private Gdk.RGBA color_max;
+		private Gdk.RGBA line_color_max;
+        private Gdk.RGBA line_color_normal;
+        private Gdk.RGBA color_max;
         private Gdk.RGBA color_normal;
-        private Gdk.RGBA color_swap;
 
         class construct
         {
@@ -63,9 +64,10 @@ namespace Usage
 
         public MemoryGraphBig()
         {
-            color_max.parse("#ee2222");
-            color_normal.parse("#4a90d9");
-            color_swap.parse("#ff9900");
+            color_max.parse("rgba(238,34,34,0.227)");
+            line_color_max.parse("rgba(238,34,34,1)");
+            color_normal.parse("rgba(74,144,217,0.325)");
+            line_color_normal.parse("rgba(74,144,217,1)");
             get_style_context().add_class("big");
 
             if(rg_table == null)
@@ -76,24 +78,21 @@ namespace Usage
             else
                 set_table(rg_table);
 
-            LineRenderer renderer_ram = new LineRenderer();
+            var renderer_ram = new StackedRenderer();
             renderer_ram.column = MemoryGraphTable.column_ram_id;
-            renderer_ram.stroke_color_rgba = color_normal;
+            renderer_ram.stroke_color_rgba = line_color_normal;
+            renderer_ram.stacked_color_rgba = color_normal;
             renderer_ram.line_width = 1.5;
             add_renderer(renderer_ram);
 
-            LineRenderer renderer_swap = new LineRenderer();
-            renderer_swap.column = MemoryGraphTable.column_swap_id;
-            renderer_swap.stroke_color_rgba = color_swap;
-            renderer_swap.line_width = 1.5;
-            add_renderer(renderer_swap);
-
             rg_table.big_ram_usage.connect (() => {
-                renderer_ram.stroke_color_rgba = color_max;
+                renderer_ram.stroke_color_rgba = line_color_normal;
+                renderer_ram.stacked_color_rgba = color_normal;
             });
 
             rg_table.small_ram_usage.connect (() => {
-                renderer_ram.stroke_color_rgba = color_normal;
+                renderer_ram.stroke_color_rgba = line_color_normal;
+                renderer_ram.stacked_color_rgba = color_normal;
             });
         }
     }

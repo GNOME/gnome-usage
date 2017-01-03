@@ -16,7 +16,7 @@ namespace Usage
 
         public GraphSwitcherButton.disk(string label)
         {
-            Rg.Graph disk_graph = new MemoryGraph();
+            Rg.Graph disk_graph = new DiskGraph();
             child = createContent(disk_graph, label);
         }
 

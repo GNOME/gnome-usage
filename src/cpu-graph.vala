@@ -21,10 +21,10 @@ namespace Usage
 
         public CpuGraphMostUsed ()
         {
-            line_color_max.parse("#ee2222");
-            line_color_normal.parse("#4a90d9");
-            color_max.parse("#fbcccc");
-            color_normal.parse("#c4dbff");
+            line_color_max.parse("rgba(238,34,34,1)");
+            line_color_normal.parse("rgba(74,144,217,1)");
+            color_max.parse("rgba(238,34,34,0.227)");
+            color_normal.parse("rgba(74,144,217,0.325)");
 
             if(rg_table == null)
                 rg_table = new CpuGraphTableMostUsedCore();
@@ -66,8 +66,8 @@ namespace Usage
 
         public CpuGraphBig()
         {
-            line_color_max.parse("#ee2222");
-            line_color_normal.parse("#4a90d9");
+            line_color_max.parse("rgba(238,34,34,1)");
+            line_color_normal.parse("rgba(74,144,217,1)");
             get_style_context().add_class("big");
 
             if(table == null)
