@@ -8,6 +8,7 @@ New GNOME Usage!
 - [x] Network usage
 - [ ] Tweak network usage
 - [x] RPM packages
+- [ ] Support other architectures then x86_64 (netinfo precompiled library) 
 - [ ] DEB packages
 - [ ] Show fancy clear Process Box
 - [ ] Storage view - 0%
@@ -36,18 +37,19 @@ sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 
 ##Building RPMs:
 ```
-TODO
+cd rpmbuild
+rpmbuild --define "_topdir `pwd`" -ba SPECS/gnome-usage.spec
 ```
 
 ##License
 Code is under GNU GPLv3 license.
 
 ##Screenshots:
-More screenshots is in screenshots subdirectory. (Sorry screenshot are)
+More screenshots is in screenshots subdirectory (sorry screenshots may not be current).
 
-![Screenshot](screenshots/screenshot9.png?raw=true )
+![Screenshot](screenshots/screenshot11.png?raw=true )
 
-![Screenshot](screenshots/screenshot4.png?raw=true )
+![Screenshot](screenshots/screenshot10.png?raw=true )
 
 ##Design:
 <img src="https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage-wires.png">
