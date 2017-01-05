@@ -7,13 +7,24 @@ New GNOME Usage!
 - [x] Memory usage
 - [x] Network usage
 - [ ] Tweak network usage
-- [ ] RPM/DEB packages
+- [x] RPM packages
+- [ ] DEB packages
+- [ ] Show fancy clear Process Box
 - [ ] Storage view - 0%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
 - [ ] Data view - 0%
 
-##Compilation:
+##Installation from RPM
+[Download RPM](rpmbuild/RPMS/gnome-usage-0.3.2-1.x86_64.rpm)
+
+##Run
+In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
+
+##Version
+Actual version is 0.3.2
+
+##Compilation from sources:
 ```
 autovala update
 cd build
@@ -22,17 +33,17 @@ make
 sudo make install
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 ```
-##Run
-In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
-##Version
-Actual version is 0.3.2
+##Building RPMs:
+```
+TODO
+```
 
 ##License
 Code is under GNU GPLv3 license.
 
 ##Screenshots:
-More screenshots is in screenshots subdirectory.
+More screenshots is in screenshots subdirectory. (Sorry screenshot are)
 
 ![Screenshot](screenshots/screenshot9.png?raw=true )
 
