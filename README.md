@@ -9,8 +9,10 @@ New GNOME Usage!
 - [ ] Tweak network usage
 - [x] RPM packages
 - [ ] Support other architectures then x86_64 (netinfo precompiled library) 
+- [ ] Fix bug with refreshing ProcessListBox
 - [ ] DEB packages
 - [ ] Show fancy clear Process Box
+- [ ] Add loading ProcessListBox with CPU, etc.. when open app 
 - [ ] Storage view - 0%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
