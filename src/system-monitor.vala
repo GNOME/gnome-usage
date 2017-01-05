@@ -2,8 +2,9 @@ using Posix;
 
 namespace Usage
 {
-    public class SystemMonitor
+    public class SystemMonitor : Object
     {
+        public signal void cpu_processes_ready();
         public double cpu_load { get; private set; }
         public double[] x_cpu_load { get; private set; }
         public double ram_usage { get; private set; }
@@ -87,9 +88,9 @@ namespace Usage
 
             update_data();
             Timeout.add(settings.data_update_interval, update_data);
-            Timeout.add(settings.first_data_update_interval, () => //First load
+            Timeout.add(settings.data_update_interval, () =>
             {
-                update_data();
+                cpu_processes_ready();
                 return false;
             });
         }

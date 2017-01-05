@@ -6,26 +6,26 @@ New GNOME Usage!
 - [x] Processor Usage
 - [x] Memory usage
 - [x] Network usage
-- [ ] Tweak network usage
 - [x] RPM packages
+- [x] Add loading ProcessListBox with CPU, etc.. when open app 
+- [ ] Tweak network usage
 - [ ] Support other architectures then x86_64 (netinfo precompiled library) 
 - [ ] Fix bug with refreshing ProcessListBox
 - [ ] DEB packages
 - [ ] Show fancy clear Process Box
-- [ ] Add loading ProcessListBox with CPU, etc.. when open app 
 - [ ] Storage view - 0%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
 - [ ] Data view - 0%
 
 ##Installation from RPM
-[Download RPM](https://github.com/petr-stety-stetka/gnome-usage/raw/master/rpmbuild/RPMS/x86_64/gnome-usage-0.3.2-1.x86_64.rpm)
+[Download RPM](https://github.com/petr-stety-stetka/gnome-usage/raw/master/rpmbuild/RPMS/x86_64/gnome-usage-0.3.3-1.x86_64.rpm)
 
 ##Run
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.3.2
+Actual version is 0.3.3
 
 ##Compilation from sources:
 ```

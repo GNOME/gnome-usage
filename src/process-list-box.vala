@@ -8,13 +8,13 @@ namespace Usage
         NETWORK
     }
 
-    public class ProcessListBoxNew : Gtk.ListBox
+    public class ProcessListBox : Gtk.ListBox
     {
         ListStore model;
         ProcessRow? opened_row = null;
         ProcessListBoxType type;
 
-        public ProcessListBoxNew(ProcessListBoxType type)
+        public ProcessListBox(ProcessListBoxType type)
         {
             this.type = type;
             set_selection_mode (Gtk.SelectionMode.NONE);
@@ -43,14 +43,9 @@ namespace Usage
             var settings = (GLib.Application.get_default() as Application).settings;
 
             Timeout.add(settings.list_update_interval_UI, update);
-            Timeout.add(settings.first_list_update_interval_UI, () => //First load
-            {
-                update();
-                return false;
-            });
         }
 
-        private bool update()
+        public bool update()
         {
             model.remove_all();
 

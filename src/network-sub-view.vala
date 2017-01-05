@@ -18,20 +18,32 @@ namespace Usage
             network_graph_box.width_request = 600;
             network_graph_box.valign = Gtk.Align.START;
 
-            var process_list_box = new ProcessListBoxNew(ProcessListBoxType.NETWORK);
+            var process_list_box = new ProcessListBox(ProcessListBoxType.NETWORK);
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
 
-            var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            memory_box.pack_start(label, false, false, 0);
-            memory_box.pack_start(network_graph_box, false, false, 0);
-            memory_box.pack_start(process_list_box, false, false, 0);
+            var spinner = new Gtk.Spinner();
+            spinner.active = true;
+            spinner.margin_top = 30;
+            spinner.margin_bottom = 20;
+
+            var network_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            network_box.pack_start(label, false, false, 0);
+            network_box.pack_start(network_graph_box, false, false, 0);
+
+            (GLib.Application.get_default() as Application).get_system_monitor().cpu_processes_ready.connect(() =>
+            {
+                network_box.pack_start(process_list_box, false, false, 0);
+                process_list_box.update();
+                process_list_box.show();
+                network_box.remove(spinner);
+            });
 
             var better_box = new Better.Box();
             better_box.max_width_request = 600;
             better_box.halign = Gtk.Align.CENTER;
             better_box.orientation = Gtk.Orientation.HORIZONTAL;
-            better_box.add(memory_box);
+            better_box.add(network_box);
 
             var scrolled_window = new Gtk.ScrolledWindow(null, null);
             scrolled_window.add(better_box);

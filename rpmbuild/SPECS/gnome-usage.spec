@@ -1,5 +1,5 @@
 Name: gnome-usage
-Version: 0.3.2
+Version: 0.3.3
 Release: 1
 License: GPLv3
 Summary: New GNOME Usage!

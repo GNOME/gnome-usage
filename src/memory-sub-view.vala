@@ -18,14 +18,27 @@ namespace Usage
             memory_graph_box.width_request = 600;
             memory_graph_box.valign = Gtk.Align.START;
 
-            var process_list_box = new ProcessListBoxNew(ProcessListBoxType.MEMORY);
+            var process_list_box = new ProcessListBox(ProcessListBoxType.MEMORY);
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
+
+            var spinner = new Gtk.Spinner();
+            spinner.active = true;
+            spinner.margin_top = 30;
+            spinner.margin_bottom = 20;
 
             var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             memory_box.pack_start(label, false, false, 0);
             memory_box.pack_start(memory_graph_box, false, false, 0);
-            memory_box.pack_start(process_list_box, false, false, 0);
+            memory_box.pack_start(spinner, true, true, 0);
+
+            (GLib.Application.get_default() as Application).get_system_monitor().cpu_processes_ready.connect(() =>
+            {
+                memory_box.pack_start(process_list_box, false, false, 0);
+                process_list_box.update();
+                process_list_box.show();
+                memory_box.remove(spinner);
+            });
 
             var better_box = new Better.Box();
             better_box.max_width_request = 600;
