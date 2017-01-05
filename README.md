@@ -16,7 +16,7 @@ New GNOME Usage!
 - [ ] Data view - 0%
 
 ##Installation from RPM
-[Download RPM](rpmbuild/RPMS/gnome-usage-0.3.2-1.x86_64.rpm)
+[Download RPM](https://github.com/petr-stety-stetka/gnome-usage/raw/master/rpmbuild/RPMS/x86_64/gnome-usage-0.3.2-1.x86_64.rpm)
 
 ##Run
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
