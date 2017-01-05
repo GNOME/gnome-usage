@@ -35,7 +35,6 @@ namespace Usage
             {
                 network_box.pack_start(process_list_box, false, false, 0);
                 process_list_box.update();
-                process_list_box.show();
                 network_box.remove(spinner);
             });
 

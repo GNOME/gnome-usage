@@ -36,7 +36,6 @@ namespace Usage
             {
                 cpu_box.pack_start(process_list_box, false, false, 0);
                 process_list_box.update();
-                process_list_box.show();
                 cpu_box.remove(spinner);
             });
 

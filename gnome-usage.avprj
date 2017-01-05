@@ -5,7 +5,7 @@ project_name: gnome-usage
 
 
 vala_binary: src/gnome-usage
-version: 0.3.3
+version: 0.3.4
 *vala_vapi: vapis/better.vapi
 *vala_vapi: vapis/egg.vapi
 *vala_vapi: vapis/glibtop.vapi
@@ -152,7 +152,6 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/cookie-graph.vala
 *translate: vala src/memory-graph.vala
 *translate: vala src/header-bar.vala
-*translate: vala src/network-sub-view.vala
 *translate: vala src/cpu-monitor.vala
 *translate: vala src/graph-block.vala
 *translate: vala src/disk-graph.vala
@@ -161,10 +160,11 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/disk-sub-view.vala
 *translate: vala src/process-row.vala
 *translate: vala src/graph-stack-switcher.vala
-*translate: vala src/graph-box.vala
 *translate: vala src/cpu-sub-view.vala
-*translate: vala src/power-view.vala
+*translate: vala src/graph-box.vala
 *translate: vala src/memory-sub-view.vala
+*translate: vala src/power-view.vala
+*translate: vala src/network-sub-view.vala
 *translate: vala src/process-list-box.vala
 *translate: vala src/cpu-graph-table.vala
 *translate: vala src/network-graph-table.vala

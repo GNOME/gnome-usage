@@ -66,6 +66,11 @@ namespace Usage
                     break;
             }
 
+            if(model.get_n_items() == 0)
+                this.hide();
+            else
+                this.show();
+
             return true;
         }
 
