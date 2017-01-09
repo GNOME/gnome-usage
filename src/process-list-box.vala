@@ -10,6 +10,9 @@ namespace Usage
 
     public class ProcessListBox : Gtk.ListBox
     {
+        public signal void empty();
+        public signal void filled();
+
         ListStore model;
         ProcessRow? opened_row = null;
         ProcessListBoxType type;
@@ -67,9 +70,15 @@ namespace Usage
             }
 
             if(model.get_n_items() == 0)
+            {
                 this.hide();
+                empty();
+            }
             else
+            {
                 this.show();
+                filled();
+            }
 
             return true;
         }

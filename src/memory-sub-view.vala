@@ -32,11 +32,25 @@ namespace Usage
             memory_box.pack_start(memory_graph_box, false, false, 0);
             memory_box.pack_start(spinner, true, true, 0);
 
+            var no_process_label = new Gtk.Label("<span font_desc=\"14.0\">" + _("No application using memory.") + "</span>");
+            no_process_label.set_use_markup(true);
+
             (GLib.Application.get_default() as Application).get_system_monitor().cpu_processes_ready.connect(() =>
             {
                 memory_box.pack_start(process_list_box, false, false, 0);
+                memory_box.pack_start(no_process_label, true, true, 0);
                 process_list_box.update();
                 memory_box.remove(spinner);
+            });
+
+            process_list_box.empty.connect(() =>
+            {
+                no_process_label.show();
+            });
+
+            process_list_box.filled.connect(() =>
+            {
+                no_process_label.hide();
             });
 
             var better_box = new Better.Box();

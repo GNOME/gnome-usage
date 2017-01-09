@@ -8,7 +8,7 @@ New GNOME Usage!
 - [x] Network usage
 - [x] RPM packages
 - [x] Add loading ProcessListBox with CPU, etc.. when open app 
-- [ ] Show fancy clear Process Box - 50%
+- [x] Show fancy clear Process Box
 - [ ] Tweak network usage
 - [ ] Support other architectures then x86_64 (netinfo precompiled library) 
 - [ ] Fix bug with refreshing ProcessListBox
