@@ -10,16 +10,18 @@ namespace Usage
         GraphBlockRow available_row;
         Gtk.Label label;
         string block_name;
+        bool show_avaiable;
 
         class construct
         {
             set_css_name("GraphBlock");
         }
 
-        public GraphBlock(string block_name, string app_name)
+        public GraphBlock(string block_name, string app_name, bool show_avaiable = true)
         {
             this.expand = true;
             this.block_name = block_name;
+            this.show_avaiable = show_avaiable;
             label = new Gtk.Label("<span font_desc=\"11.0\"><b>" + block_name + "</b></span>");
             label.set_use_markup(true);
             this.attach(label, 0, 0, 1, 1);
@@ -32,14 +34,16 @@ namespace Usage
 
             application_row = new GraphBlockRow(app_name, "used");
             others_row = new GraphBlockRow(_("Others"), "others");
-            available_row = new GraphBlockRow(_("Available"), "available");
+            if(show_avaiable)
+                available_row = new GraphBlockRow(_("Available"), "available");
 
             Gtk.Box box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             box.margin_left = 15;
             box.valign = Align.CENTER;
             box.pack_start(application_row, false, false);
             box.pack_start(others_row , false, false);
-            box.pack_start(available_row, false, false);
+            if(show_avaiable)
+                box.pack_start(available_row, false, false);
             this.attach(box, 1, 1, 1, 1);
         }
 
@@ -62,7 +66,8 @@ namespace Usage
             graph.update(application_percentages, other_percentages);
             application_row.update(application_percentages);
             others_row.update(other_percentages);
-            available_row.update(100-other_percentages-application_percentages);
+            if(show_avaiable)
+                available_row.update(100-other_percentages-application_percentages);
         }
     }
 }

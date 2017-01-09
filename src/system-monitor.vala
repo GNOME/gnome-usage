@@ -9,6 +9,9 @@ namespace Usage
         public double[] x_cpu_load { get; private set; }
         public double ram_usage { get; private set; }
         public double swap_usage { get; private set; }
+        public uint64 net_download_actual { get; private set; }
+        public uint64 net_upload_actual { get; private set; }
+        public uint64 net_usage_actual { get; private set; }
         public uint64 net_download { get; private set; }
         public uint64 net_upload { get; private set; }
         public uint64 net_usage { get; private set; }
@@ -105,6 +108,9 @@ namespace Usage
             x_cpu_load = cpu_monitor.get_x_cpu_load();
             ram_usage = memory_monitor.get_ram_usage();
             swap_usage = memory_monitor.get_swap_usage();
+            net_download_actual = network_monitor.get_net_download_actual();
+            net_upload_actual = network_monitor.get_net_upload_actual();
+            net_usage_actual = network_monitor.get_net_usage_actual();
             net_download = network_monitor.get_net_download();
             net_upload = network_monitor.get_net_upload();
             net_usage = network_monitor.get_net_usage();

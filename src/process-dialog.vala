@@ -37,8 +37,8 @@ namespace Usage
             processor_graph_block = new GraphBlock(_("Processor"), this.title);
             memory_graph_block = new GraphBlock(_("Memory"), this.title);
             disk_graph_block = new GraphBlock(_("Disk I/O"), this.title);
-            downloads_graph_block = new GraphBlock(_("Downloads"), this.title);
-            uploads_graph_block = new GraphBlock(_("Uploads"), this.title);
+            downloads_graph_block = new GraphBlock(_("Downloads"), this.title, false);
+            uploads_graph_block = new GraphBlock(_("Uploads"), this.title, false);
 
             grid.attach(processor_graph_block, 0, 0, 1, 1);
             grid.attach(memory_graph_block, 1, 0, 1, 1);

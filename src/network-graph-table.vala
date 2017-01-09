@@ -29,8 +29,8 @@ namespace Usage {
 
             SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
 
-            double net_download = monitor.net_download;
-            double net_upload = monitor.net_upload;
+            double net_download = monitor.net_download_actual;
+            double net_upload = monitor.net_upload_actual;
 
             iter.set (column_download_id, net_download, -1);
             iter.set (column_upload_id, net_upload, -1);

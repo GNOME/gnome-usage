@@ -113,7 +113,7 @@ namespace NI
         // Example: (1234, NULL, tcp) will return the number of bytes of the tcp traffic (incoming and outgoing) for pid 1234.
         // Example: (1234, incoming, NULL) will return the number of bytes of the incoming traffic (tcp and udp) for pid 1234.
         [CCode(cname = "netinfo_stat_get_bytes_per_attr")]
-        public ErrorCode get_bytes_per_attr(ref Pid? pid_opt, ref Inout? inout_opt, ref TransportType? tt_opt, out uint64 bytes_out);
+        public ErrorCode get_bytes_per_attr(Pid? pid_opt, Inout? inout_opt, TransportType? tt_opt, out uint64 bytes_out);
     }
 
     [SimpleType]
