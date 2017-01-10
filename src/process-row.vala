@@ -11,6 +11,7 @@ namespace Usage
         string display_name;
         static GLib.List<AppInfo> apps_info;
         ProcessListBoxType type;
+        bool group;
 
         public Process process { get; private set; }
         public bool showing_details { get; private set; }
@@ -40,10 +41,9 @@ namespace Usage
             row_box.pack_end(load_label, false, true, 10);
             box.pack_start(row_box, false, true, 0);
 
-            update();
-
             if(process.sub_processes != null)
             {
+                group = true;
                 sub_process_list_box = new SubProcessListBox(process, type);
                 revealer = new Gtk.Revealer();
                 revealer.add(sub_process_list_box);
@@ -52,10 +52,15 @@ namespace Usage
                 if(opened)
                     show_details();
             }
+            else
+                group = false;
+
+            update();
+
             this.add(box);
             show_all();
 
-            if(opened && process.sub_processes != null)
+            if(opened && group)
                 show_details();
         }
 
@@ -160,7 +165,7 @@ namespace Usage
             switch(type)
             {
                 case ProcessListBoxType.PROCESSOR:
-                    if(process.sub_processes != null)
+                    if(group)
                     {
                         string values_string = "";
                         var values = new GLib.List<uint64?>();
@@ -181,7 +186,7 @@ namespace Usage
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
-                    if(process.sub_processes != null)
+                    if(group)
                     {
                         string values_string = "";
                         var values = new GLib.List<uint64?>();
@@ -202,7 +207,7 @@ namespace Usage
                         max_usage = false;
                     break;
                 case ProcessListBoxType.NETWORK:
-                    if(process.sub_processes != null)
+                    if(group)
                     {
                         string values_string = "";
                         var values = new GLib.List<uint64?>();
@@ -242,7 +247,7 @@ namespace Usage
 
         public new void activate()
         {
-            if(process.sub_processes != null)
+            if(group)
             {
                 if(showing_details)
                     hide_details();
