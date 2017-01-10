@@ -118,15 +118,18 @@ namespace Usage
 
         private int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
         {
+            Process p_a = (Process) a;
+            Process p_b = (Process) b;
+
             switch(type)
             {
                 default:
                 case ProcessListBoxType.PROCESSOR:
-                    return (int) ((Process) b).cpu_load - (int) ((Process) a).cpu_load;
+                    return (int) ((uint64) (p_a.cpu_load < p_b.cpu_load) - (uint64) (p_a.cpu_load > p_b.cpu_load));
                 case ProcessListBoxType.MEMORY:
-                    return (int) ((Process) b).mem_usage - (int) ((Process) a).mem_usage;
+                    return (int) ((uint64) (p_a.mem_usage < p_b.mem_usage) - (uint64) (p_a.mem_usage > p_b.mem_usage));
                 case ProcessListBoxType.NETWORK:
-                    return (int) ((Process) b).net_all - (int) ((Process) a).net_all;
+                    return (int) ((uint64) (p_a.net_all < p_b.net_all) - (uint64) (p_a.net_all > p_b.net_all));
             }
         }
     }

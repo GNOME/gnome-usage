@@ -136,10 +136,25 @@ namespace Usage
 
         }
 
+        public static string format_size_values(uint64 value)
+        {
+            if(value >= 1000000000000)
+                return "%.3f TB".printf((double) value / 1000000000000d);
+            else if(value >= 1000000000)
+                return "%.1f GB".printf((double) value / 1000000000d);
+            else if(value >= 1000000)
+                return(value / 1000000).to_string() + " MB";
+            else if(value >= 1000)
+                return (value / 1000).to_string() + " KB";
+            else
+                return value.to_string() + " B";
+
+        }
+
         private void update()
         {
-            CompareFunc<int> sort = (a, b) => {
-                return (int) (a < b) - (int) (a > b);
+            CompareFunc<uint64?> sort = (a, b) => {
+                return (int) ((uint64) (a < b) - (uint64) (a > b));
             };
 
             switch(type)
@@ -148,11 +163,11 @@ namespace Usage
                     if(process.sub_processes != null)
                     {
                         string values_string = "";
-                        var values = new GLib.List<int>();
+                        var values = new GLib.List<uint64?>();
                         foreach(Process sub_process in process.sub_processes.get_values())
-                            values.insert_sorted((int) sub_process.cpu_load, sort);
+                            values.insert_sorted((uint64) sub_process.cpu_load, sort);
 
-                        foreach(int value in values)
+                        foreach(uint64 value in values)
                             values_string += "   " + value.to_string() + " %";
 
                         load_label.set_label(values_string);
@@ -169,17 +184,17 @@ namespace Usage
                     if(process.sub_processes != null)
                     {
                         string values_string = "";
-                        var values = new GLib.List<int>();
+                        var values = new GLib.List<uint64?>();
                         foreach(Process sub_process in process.sub_processes.get_values())
-                            values.insert_sorted((int) sub_process.mem_usage, sort);
+                            values.insert_sorted(sub_process.mem_usage, sort);
 
-                         foreach(int value in values)
-                            values_string += "   " + ((int) (value/1000000)).to_string() + " MB";
+                        foreach(uint64 value in values)
+                            values_string += "   " + format_size_values(value);
 
                         load_label.set_label(values_string);
                     }
                     else
-                        load_label.set_label(((int) process.mem_usage/1000000).to_string() + " MB");
+                        load_label.set_label(format_size_values(process.mem_usage));
 
                     if(process.mem_usage_percentages >= 90)
                         max_usage = true;
@@ -190,18 +205,18 @@ namespace Usage
                     if(process.sub_processes != null)
                     {
                         string values_string = "";
-                        var values = new GLib.List<int>();
+                        var values = new GLib.List<uint64?>();
                         foreach(Process sub_process in process.sub_processes.get_values())
-                            values.insert_sorted((int) sub_process.net_all, sort);
+                            values.insert_sorted((uint64) sub_process.net_all, sort);
 
-                         foreach(int value in values)
-                            values_string += "   " + value.to_string() + " B";
+                         foreach(uint64 value in values)
+                            values_string += "   " + format_size_values(value);
 
                         load_label.set_label(values_string);
                     }
                     else
                     {
-                        load_label.set_label(((int) process.net_all).to_string() + " B");
+                        load_label.set_label(format_size_values(process.net_all));
                     }
                     break;
             }

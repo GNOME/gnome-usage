@@ -57,7 +57,7 @@ namespace Usage
 
             upload_usage += bytes_out - bytes_out_unasigned;
             download_usage += bytes_in - bytes_in_unasigned;
-            net_usage += bytes_all - bytes_all_unasigned;// TODO clear it every 5sec or? Mabe 30 sec will beter
+            net_usage += bytes_all - bytes_all_unasigned;
 
             handle_error(netinfo.clear());
         }

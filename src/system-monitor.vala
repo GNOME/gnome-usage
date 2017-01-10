@@ -128,7 +128,7 @@ namespace Usage
             GTop.Proclist proclist;
             var pids = GTop.get_proclist (out proclist, process_mode, uid);
 
-            for(int i = 0; i < proclist.number; i++)
+            for(uint i = 0; i < proclist.number; i++)
             {
                 if (!(pids[i] in process_table_pid))
                 {
@@ -396,20 +396,27 @@ namespace Usage
                 }
                 else
                 {
-                    int max_cpu_load = 0;
-                    int mem_usage = 0;
+                    double cpu_load = 0;
+                    uint64 mem_usage = 0;
+                    uint64 net_all = 0;
+                    uint64 net_download = 0;
+                    uint64 net_upload = 0;
                     foreach(unowned Process sub_process in process.sub_processes.get_values())
                     {
                         if (sub_process.alive == false)
                             process.sub_processes.remove(sub_process.pid);
 
-                        if(sub_process.cpu_load > max_cpu_load)
-                            max_cpu_load = (int) sub_process.cpu_load;
-
-                        mem_usage += (int) sub_process.mem_usage;
+                        cpu_load += sub_process.cpu_load;
+                        mem_usage += sub_process.mem_usage;
+                        net_all += sub_process.net_all;
+                        net_download += sub_process.net_download;
+                        net_upload += sub_process.net_upload;
                     }
-                    process.cpu_load = max_cpu_load;
+                    process.cpu_load = cpu_load;
                     process.mem_usage = mem_usage;
+                    process.net_all = net_all;
+                    process.net_download = net_download;
+                    process.net_upload = net_upload;
 
                     if(process.sub_processes.size() == 1) //tranform to process
                     {
