@@ -10,7 +10,7 @@ namespace Usage
             GLib.Object(application : application);
 
             this.set_default_size(950, 600);
-            this.set_size_request(855, 300);
+            this.set_size_request(930, 300);
             this.window_position = Gtk.WindowPosition.CENTER;
             this.set_title(_("Usage"));
 
