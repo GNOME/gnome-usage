@@ -15,6 +15,7 @@ namespace Usage
 
         ListStore model;
         ProcessRow? opened_row = null;
+        string focused_row_cmdline;
         ProcessListBoxType type;
 
         public ProcessListBox(ProcessListBoxType type)
@@ -22,7 +23,7 @@ namespace Usage
             this.type = type;
             set_selection_mode (Gtk.SelectionMode.NONE);
             set_header_func (update_header);
-            row_activated.connect( (row) => {
+            row_activated.connect((row) => {
                 var process_row = (ProcessRow) row;
 
                 if(opened_row != null)
@@ -38,6 +39,15 @@ namespace Usage
                 }
                 else
                     opened_row = null;
+            });
+
+            set_focus_child.connect((child) =>
+            {
+                if(child != null)
+                {
+                    focused_row_cmdline = ((ProcessRow) child).process.cmdline;
+                    //GLib.stdout.printf("focused: " + focused_row_cmdline+ "\n");
+                }
             });
 
             model = new ListStore(typeof(Process));
@@ -89,16 +99,19 @@ namespace Usage
             bool opened = false;
 
             if(opened_row != null)
-            {
                 if(process.cmdline == opened_row.process.cmdline)
-                {
                     opened = true;
-                }
-            }
 
             var row = new ProcessRow(process, type, opened);
             if(opened)
                opened_row = row;
+
+            if(focused_row_cmdline != null)
+                if(process.cmdline == focused_row_cmdline)
+                {
+                    //row.grab_focus(); TODO not working
+                    //GLib.stdout.printf("grab focus for: " + focused_row_cmdline+ "\n");
+                }
 
             return row;
         }

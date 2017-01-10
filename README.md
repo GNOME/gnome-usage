@@ -25,7 +25,7 @@ New GNOME Usage!
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.3.4
+Actual version is 0.3.5
 
 ##Compilation from sources:
 ```
