@@ -144,12 +144,14 @@ namespace Usage
                     process.net_download = 0;
                     process.net_upload = 0;
                     process.net_all = 0;
+                    process.status = get_process_status(process.pid, process.cpu_load);
                     process_table_pid.insert (pids[i], (owned) process);
                 }
                 else
                 {
                     unowned Process process = process_table_pid[pids[i]];
                     process.alive = true;
+                    process.status = get_process_status(process.pid, process.cpu_load);
                     cpu_monitor.get_cpu_info_for_pid(pids[i], ref process.last_processor, ref process.cpu_load, ref process.cpu_last_used, ref process.x_cpu_last_used);
                     memory_monitor.get_memory_info_for_pid(pids[i], ref process.mem_usage, ref process.mem_usage_percentages);
                     network_monitor.get_network_info_for_pid(pids[i], ref process.net_download, ref process.net_upload, ref process.net_all);
@@ -159,7 +161,10 @@ namespace Usage
             foreach(unowned Process process in process_table_pid.get_values())
             {
                 if (process.alive == false)
+                {
+                    process.status = ProcessStatus.DEAD;
                     process_table_pid.remove (process.pid);
+                }
             }
 
             var process_table_pid_condition = new HashTable<pid_t?, Process>(int_hash, int_equal);
@@ -254,6 +259,37 @@ namespace Usage
             return cmd;
         }
 
+        private ProcessStatus get_process_status (pid_t pid, double process_cpu_load)
+        {
+            GTop.ProcState proc_state;
+            GTop.get_proc_state (out proc_state, pid);
+
+            ProcessStatus process_status;
+
+            switch(proc_state.state)
+            {
+                case GTop.PROCESS_RUNNING:
+                case GTop.PROCESS_UNINTERRUPTIBLE:
+                    process_status = ProcessStatus.RUNNING;
+                    break;
+                case GTop.PROCESS_SWAPPING:
+                case GTop.PROCESS_INTERRUPTIBLE:
+                case GTop.PROCESS_STOPPED:
+                    process_status = ProcessStatus.SLEEPING;
+                    break;
+                case GTop.PROCESS_DEAD:
+                case GTop.PROCESS_ZOMBIE:
+                default:
+                    process_status = ProcessStatus.DEAD;
+                    break;
+            }
+
+            if(process_cpu_load > 0)
+                process_status = ProcessStatus.RUNNING;
+
+            return process_status;
+        }
+
         private void set_alive_false_table_cmdline(ref HashTable<string, Process> process_table_cmdline)
         {
             foreach(unowned Process process in process_table_cmdline.get_values())
@@ -291,6 +327,7 @@ namespace Usage
                             process.net_download = process_it.net_download;
                             process.net_upload = process_it.net_upload;
                             process.net_all = process_it.net_all;
+                            process.status = process_it.status;
                         }
                         else //add subrow
                         {
@@ -308,6 +345,7 @@ namespace Usage
                             process.net_download = process_it.net_download;
                             process.net_upload = process_it.net_upload;
                             process.net_all = process_it.net_all;
+                            process.status = process_it.status;
                             to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) process);
                         }
                     }
@@ -326,6 +364,7 @@ namespace Usage
                             process.net_download = process_it.net_download;
                             process.net_upload = process_it.net_upload;
                             process.net_all = process_it.net_all;
+                            process.status = process_it.status;
                         }
                         else //transform to group and add subrow
                         {
@@ -346,6 +385,7 @@ namespace Usage
                             sub_process_one.net_download = process.net_download;
                             sub_process_one.net_upload = process.net_upload;
                             sub_process_one.net_all = process.net_all;
+                            sub_process_one.status = process.status;
                             to_table[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
                             process.cmdline_parameter = "";
 
@@ -363,6 +403,7 @@ namespace Usage
                             sub_process.net_download = process_it.net_download;
                             sub_process.net_upload = process_it.net_upload;
                             sub_process.net_all = process_it.net_all;
+                            sub_process.status = process_it.status;
                             to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) sub_process);
                         }
                     }
@@ -383,6 +424,7 @@ namespace Usage
                      process.net_download = process_it.net_download;
                      process.net_upload = process_it.net_upload;
                      process.net_all = process_it.net_all;
+                     process.status = process_it.status;
                      to_table.insert(process.cmdline, (owned) process);
                 }
             }
@@ -435,6 +477,7 @@ namespace Usage
                             process.net_download = sub_process.net_download;
                             process.net_upload = sub_process.net_upload;
                             process.net_all = sub_process.net_all;
+                            process.status = sub_process.status;
                             process.sub_processes.remove(sub_process.pid);
                             process.sub_processes = null;
                         }
@@ -443,6 +486,7 @@ namespace Usage
                     {
                         process.sub_processes = null;
                         process.alive = false;
+                        process.status = ProcessStatus.DEAD;
                         to_table.remove(process.cmdline);
                     }
                 }

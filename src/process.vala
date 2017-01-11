@@ -20,5 +20,13 @@ namespace Usage
         internal uint64 net_all;
         internal HashTable<pid_t?, Process> sub_processes;
         internal bool alive;
+        internal ProcessStatus status;
+    }
+
+    public enum ProcessStatus
+    {
+        RUNNING,
+        SLEEPING,
+        DEAD
     }
 }

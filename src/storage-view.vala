@@ -7,8 +7,13 @@ namespace Usage
             name = "STORAGE";
             title = _("Storage");
 
-            var label = new Gtk.Label("Page Storage Content.");
-			add(label);
+            var storage_list_box = new StorageListBox();
+            var storage_graph = new StorageGraph();
+
+            var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
+            paned.add1(storage_list_box);
+            paned.add2(storage_graph);
+            add(paned);
         }
     }
 }

@@ -4,6 +4,7 @@ namespace Usage
 {
 	public class ProcessDialog : Gtk.Dialog
 	{
+	    ProcessDialogHeaderBar headerbar;
     	private pid_t pid;
         GraphBlock processor_graph_block;
         GraphBlock memory_graph_block;
@@ -11,7 +12,7 @@ namespace Usage
         GraphBlock downloads_graph_block;
         GraphBlock uploads_graph_block;
 
-    	public ProcessDialog(pid_t pid, string name)
+    	public ProcessDialog(pid_t pid, string app_name)
     	{
     	    Object(use_header_bar: 1);
     	    set_modal(true);
@@ -19,11 +20,11 @@ namespace Usage
     	    set_position(Gtk.WindowPosition.CENTER);
     	    set_resizable(false);
     	    this.pid = pid;
-    		this.title = name;
+    		this.title = app_name;
     		this.border_width = 5;
     		set_default_size (900, 350);
     		create_widgets();
-    		connect_signals();
+    		//connect_signals();
     	}
 
     	private void create_widgets()
@@ -49,10 +50,15 @@ namespace Usage
             content.add(grid);
             content.show_all();
 
+            //add_button (_("Stop"), Gtk.ResponseType.HELP).get_style_context().add_class ("destructive-action");
+            var stop_button = new Gtk.Button.with_label(_("Stop"));
+            stop_button.get_style_context().add_class ("destructive-action");
+
+            headerbar = new ProcessDialogHeaderBar(stop_button, pid, this.title);
+            set_titlebar(headerbar);
+
             Timeout.add((GLib.Application.get_default() as Application).settings.list_update_cookie_graphs_UI, update);
             update();
-
-    		add_button (_("Stop"), Gtk.ResponseType.HELP).get_style_context().add_class ("destructive-action");
     	}
 
     	private bool update()
@@ -60,6 +66,7 @@ namespace Usage
     	    SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
     	    unowned Process data = monitor.get_process_by_pid(pid);
 
+            ProcessStatus process_status = ProcessStatus.DEAD;
     	    int app_cpu_load = 0;
     	    int app_memory_usage = 0;
     	    int app_download = 0;
@@ -89,40 +96,71 @@ namespace Usage
                     app_upload = int.min(app_upload, 100);
                     other_upload = 100 - app_upload;
                 }
+                process_status = data.status;
     	    }
     	    else
-    	    {
     	        processor_graph_block.update(-1, 0, (int) monitor.cpu_load);
-    	    }
 
     	    memory_graph_block.update(-1, app_memory_usage, (int) monitor.ram_usage);
     	    downloads_graph_block.update(-1, app_download, other_download);
             uploads_graph_block.update(-1, app_upload, other_upload);
+            headerbar.set_process_state(process_status);
     	    return true;
     	}
+    }
 
-    	private void connect_signals()
-    	{
-    		this.response.connect (on_response);
-    	}
+    public class ProcessDialogHeaderBar : Gtk.HeaderBar
+    {
+        private Gtk.Label label;
+        private string app_name;
+        private Gtk.Button stop_button;
 
-    	private void on_response(Gtk.Dialog source, int response_id)
-    	{
-    		switch(response_id)
-    		{
-    		    case Gtk.ResponseType.HELP:
-    		        kill_process(pid);
-    		    	destroy();
-    		    	break;
-    		    case Gtk.ResponseType.CLOSE:
-    		    	destroy();
-    		    	break;
-    		}
-    	}
+        public ProcessDialogHeaderBar(Gtk.Button stop_button, pid_t pid, string app_name)
+        {
+            this.app_name = app_name;
+            show_close_button = true;
+            this.stop_button = stop_button;
+
+            stop_button.clicked.connect(() => {
+                kill_process(pid);
+                set_process_state(ProcessStatus.DEAD);
+            });
+
+            var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            box.hexpand = true;
+            box.pack_start(stop_button, false, false);
+            label = new Gtk.Label(null);
+            label.justify = Gtk.Justification.CENTER;
+            box.set_center_widget(label);
+
+            set_custom_title(box);
+            show_all();
+        }
 
         private void kill_process(pid_t pid)
-    	{
+        {
              Posix.kill (pid, Posix.SIGKILL);
-    	}
+        }
+
+        public void set_process_state(ProcessStatus status)
+        {
+            string status_string = "";
+            switch(status)
+            {
+                case ProcessStatus.RUNNING:
+                    status_string = _("Running");
+                    break;
+                case ProcessStatus.SLEEPING:
+                    status_string = _("Sleeping");
+                    break;
+                case ProcessStatus.DEAD:
+                    status_string = _("Dead");
+                    stop_button.hide();
+                    break;
+            }
+
+            this.label.set_text("<span font_weight=\"bold\">" + this.app_name + "</span>\n<span font_desc=\"8.0\">" + status_string + "</span>");
+            this.label.use_markup = true;
+        }
     }
 }

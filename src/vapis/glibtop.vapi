@@ -59,6 +59,21 @@ namespace GTop {
     }
     public void get_proc_state(out ProcState proc_state, Posix.pid_t pid);
 
+    [CCode(cname = "GLIBTOP_PROCESS_RUNNING")]
+    public const int PROCESS_RUNNING;
+    [CCode(cname = "GLIBTOP_PROCESS_INTERRUPTIBLE")]
+    public const int PROCESS_INTERRUPTIBLE;
+    [CCode(cname = "GLIBTOP_PROCESS_UNINTERRUPTIBLE")]
+    public const int PROCESS_UNINTERRUPTIBLE;
+    [CCode(cname = "GLIBTOP_PROCESS_ZOMBIE")]
+    public const int PROCESS_ZOMBIE;
+    [CCode(cname = "GLIBTOP_PROCESS_STOPPED")]
+    public const int PROCESS_STOPPED;
+    [CCode(cname = "GLIBTOP_PROCESS_SWAPPING")]
+    public const int PROCESS_SWAPPING;
+    [CCode(cname = "GLIBTOP_PROCESS_DEAD")]
+    public const int PROCESS_DEAD;
+
     [CCode(cname = "glibtop_proc_time", cheader_filename = "glibtop/proctime.h")]
     public struct ProcTime {
         uint64 flags;
