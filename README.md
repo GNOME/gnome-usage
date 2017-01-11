@@ -10,6 +10,7 @@ New GNOME Usage!
 - [x] Add loading ProcessListBox when open app 
 - [x] Show fancy clear Process Box
 - [x] Tweak network usage
+- [x] Add Running/Sleeping/Dead label
 - [ ] Support other architectures than x86_64 (netinfo precompiled library) 
 - [ ] Fix bug with refreshing ProcessListBox 50% (focus, and click when refresh)
 - [ ] DEB packages
@@ -19,13 +20,13 @@ New GNOME Usage!
 - [ ] Data view - 0%
 
 ##Installation from RPM
-[Download RPM](https://github.com/petr-stety-stetka/gnome-usage/raw/master/rpmbuild/RPMS/x86_64/gnome-usage-0.3.6-1.x86_64.rpm)
+[Download RPM](https://github.com/petr-stety-stetka/gnome-usage/raw/master/rpmbuild/RPMS/x86_64/gnome-usage-0.3.7-1.x86_64.rpm)
 
 ##Run
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.3.6
+Actual version is 0.3.7
 
 ##Compilation from sources:
 ```

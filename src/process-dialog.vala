@@ -5,7 +5,7 @@ namespace Usage
 	public class ProcessDialog : Gtk.Dialog
 	{
 	    ProcessDialogHeaderBar headerbar;
-    	private pid_t pid;
+    	pid_t pid;
         GraphBlock processor_graph_block;
         GraphBlock memory_graph_block;
         GraphBlock disk_graph_block;
@@ -24,7 +24,6 @@ namespace Usage
     		this.border_width = 5;
     		set_default_size (900, 350);
     		create_widgets();
-    		//connect_signals();
     	}
 
     	private void create_widgets()
@@ -50,7 +49,6 @@ namespace Usage
             content.add(grid);
             content.show_all();
 
-            //add_button (_("Stop"), Gtk.ResponseType.HELP).get_style_context().add_class ("destructive-action");
             var stop_button = new Gtk.Button.with_label(_("Stop"));
             stop_button.get_style_context().add_class ("destructive-action");
 
