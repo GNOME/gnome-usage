@@ -107,11 +107,13 @@ namespace Usage
                opened_row = row;
 
             if(focused_row_cmdline != null)
+            {
                 if(process.cmdline == focused_row_cmdline)
                 {
                     //row.grab_focus(); TODO not working
                     //GLib.stdout.printf("grab focus for: " + focused_row_cmdline+ "\n");
                 }
+            }
 
             return row;
         }

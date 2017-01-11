@@ -14,6 +14,7 @@ namespace Usage
     	public ProcessDialog(pid_t pid, string name)
     	{
     	    Object(use_header_bar: 1);
+    	    set_modal(true);
     	    set_transient_for((GLib.Application.get_default() as Application).get_window());
     	    set_position(Gtk.WindowPosition.CENTER);
     	    set_resizable(false);

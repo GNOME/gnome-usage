@@ -7,10 +7,10 @@ New GNOME Usage!
 - [x] Memory usage
 - [x] Network usage
 - [x] RPM packages
-- [x] Add loading ProcessListBox with CPU, etc.. when open app 
+- [x] Add loading ProcessListBox when open app 
 - [x] Show fancy clear Process Box
 - [x] Tweak network usage
-- [ ] Support other architectures then x86_64 (netinfo precompiled library) 
+- [ ] Support other architectures than x86_64 (netinfo precompiled library) 
 - [ ] Fix bug with refreshing ProcessListBox 50% (focus, and click when refresh)
 - [ ] DEB packages
 - [ ] Storage view - 0%
@@ -25,7 +25,7 @@ New GNOME Usage!
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.3.5
+Actual version is 0.3.6
 
 ##Compilation from sources:
 ```
