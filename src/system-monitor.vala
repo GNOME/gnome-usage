@@ -173,7 +173,7 @@ namespace Usage
             process_table_pid_condition.remove_all();
             foreach(unowned Process process in process_table_pid.get_values())
             {
-                if(process.mem_usage >= 15000000)
+                if(process.mem_usage >= 1)
                     process_table_pid_condition.insert(process.pid, process);
             }
             get_updates_table_cmdline(process_table_pid_condition, ref ram_process_table);
