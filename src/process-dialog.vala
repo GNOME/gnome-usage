@@ -75,14 +75,14 @@ namespace Usage
 
     	    if(data != null)
     	    {
-    	        app_cpu_load = (int) data.cpu_load;
-    	        app_memory_usage = (int) data.mem_usage_percentages;
-    	        processor_graph_block.update((int) data.last_processor, app_cpu_load, (int) monitor.x_cpu_load[data.last_processor]-app_cpu_load);
+    	        app_cpu_load = (int) data.get_cpu_load();
+    	        app_memory_usage = (int) data.get_mem_usage_percentages();
+    	        processor_graph_block.update((int) data.get_last_processor(), app_cpu_load, (int) monitor.x_cpu_load[data.get_last_processor()]-app_cpu_load);
 
                 double download_one_percentage = monitor.net_download / 100;
                 if(download_one_percentage != 0)
                 {
-                    app_download = (int) (data.net_download / download_one_percentage);
+                    app_download = (int) (data.get_net_download() / download_one_percentage);
                     app_download = int.min(app_download, 100);
                     other_download = 100 - app_download;
                 }
@@ -90,11 +90,11 @@ namespace Usage
                 double upload_one_percentage = monitor.net_upload / 100;
                 if(upload_one_percentage != 0)
                 {
-                    app_upload = (int) (data.net_upload / upload_one_percentage);
+                    app_upload = (int) (data.get_net_upload() / upload_one_percentage);
                     app_upload = int.min(app_upload, 100);
                     other_upload = 100 - app_upload;
                 }
-                process_status = data.status;
+                process_status = data.get_status();
     	    }
     	    else
     	        processor_graph_block.update(-1, 0, (int) monitor.cpu_load);

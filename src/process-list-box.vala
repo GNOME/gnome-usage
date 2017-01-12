@@ -32,7 +32,7 @@ namespace Usage
                 if(opened_row != process_row)
                 {
                     process_row.activate();
-                    if(process_row.process.sub_processes != null)
+                    if(process_row.process.get_sub_processes() != null)
                         opened_row = process_row;
                     else
                         opened_row = null;
@@ -45,7 +45,7 @@ namespace Usage
             {
                 if(child != null)
                 {
-                    focused_row_cmdline = ((ProcessRow) child).process.cmdline;
+                    focused_row_cmdline = ((ProcessRow) child).process.get_cmdline();
                     //GLib.stdout.printf("focused: " + focused_row_cmdline+ "\n");
                 }
             });
@@ -99,7 +99,7 @@ namespace Usage
             bool opened = false;
 
             if(opened_row != null)
-                if(process.cmdline == opened_row.process.cmdline)
+                if(process.get_cmdline() == opened_row.process.get_cmdline())
                     opened = true;
 
             var row = new ProcessRow(process, type, opened);
@@ -108,7 +108,7 @@ namespace Usage
 
             if(focused_row_cmdline != null)
             {
-                if(process.cmdline == focused_row_cmdline)
+                if(process.get_cmdline() == focused_row_cmdline)
                 {
                     //row.grab_focus(); TODO not working
                     //GLib.stdout.printf("grab focus for: " + focused_row_cmdline+ "\n");
@@ -140,11 +140,11 @@ namespace Usage
             {
                 default:
                 case ProcessListBoxType.PROCESSOR:
-                    return (int) ((uint64) (p_a.cpu_load < p_b.cpu_load) - (uint64) (p_a.cpu_load > p_b.cpu_load));
+                    return (int) ((uint64) (p_a.get_cpu_load() < p_b.get_cpu_load()) - (uint64) (p_a.get_cpu_load() > p_b.get_cpu_load()));
                 case ProcessListBoxType.MEMORY:
-                    return (int) ((uint64) (p_a.mem_usage < p_b.mem_usage) - (uint64) (p_a.mem_usage > p_b.mem_usage));
+                    return (int) ((uint64) (p_a.get_mem_usage() < p_b.get_mem_usage()) - (uint64) (p_a.get_mem_usage() > p_b.get_mem_usage()));
                 case ProcessListBoxType.NETWORK:
-                    return (int) ((uint64) (p_a.net_all < p_b.net_all) - (uint64) (p_a.net_all > p_b.net_all));
+                    return (int) ((uint64) (p_a.get_net_all() < p_b.get_net_all()) - (uint64) (p_a.get_net_all() > p_b.get_net_all()));
             }
         }
     }

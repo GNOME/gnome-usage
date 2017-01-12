@@ -41,7 +41,7 @@ namespace Usage
             row_box.pack_end(load_label, false, true, 10);
             box.pack_start(row_box, false, true, 0);
 
-            if(process.sub_processes != null)
+            if(process.get_sub_processes() != null)
             {
                 group = true;
                 sub_process_list_box = new SubProcessListBox(process, type);
@@ -78,10 +78,10 @@ namespace Usage
                 }
 
                 commandline = Path.get_basename(commandline);
-                string process_full_cmd = process.cmdline + " " + process.cmdline_parameter;
+                string process_full_cmd = process.get_cmdline() + " " + process.get_cmdline_parameter();
         	    if(commandline == process_full_cmd)
         	        app_info = info;
-        	    else if(commandline.contains("google-" + process.cmdline + "-")) //Fix for Google Chrome naming
+        	    else if(commandline.contains("google-" + process.get_cmdline() + "-")) //Fix for Google Chrome naming
                     app_info = info;
 
         	    if(app_info == null)
@@ -97,7 +97,7 @@ namespace Usage
                         commandline = info.get_commandline();
 
                     commandline = Path.get_basename(commandline);
-                    if(commandline == process.cmdline)
+                    if(commandline == process.get_cmdline())
                         app_info = info;
                 }
         	}
@@ -126,7 +126,7 @@ namespace Usage
         	}
         	else
         	{
-        	    display_name = process.cmdline;
+        	    display_name = process.get_cmdline();
         	}
 
         	if(icon == null)
@@ -138,21 +138,6 @@ namespace Usage
 
         	icon.margin_left = 10;
         	icon.margin_right = 10;
-
-        }
-
-        public static string format_size_values(uint64 value)
-        {
-            if(value >= 1000000000000)
-                return "%.3f TB".printf((double) value / 1000000000000d);
-            else if(value >= 1000000000)
-                return "%.1f GB".printf((double) value / 1000000000d);
-            else if(value >= 1000000)
-                return(value / 1000000).to_string() + " MB";
-            else if(value >= 1000)
-                return (value / 1000).to_string() + " KB";
-            else
-                return value.to_string() + " B";
 
         }
 
@@ -169,8 +154,8 @@ namespace Usage
                     {
                         string values_string = "";
                         var values = new GLib.List<uint64?>();
-                        foreach(Process sub_process in process.sub_processes.get_values())
-                            values.insert_sorted((uint64) sub_process.cpu_load, sort);
+                        foreach(Process sub_process in process.get_sub_processes().get_values())
+                            values.insert_sorted((uint64) sub_process.get_cpu_load(), sort);
 
                         foreach(uint64 value in values)
                             values_string += "   " + value.to_string() + " %";
@@ -178,9 +163,9 @@ namespace Usage
                         load_label.set_label(values_string);
                     }
                     else
-                        load_label.set_label(((int) process.cpu_load).to_string() + " %");
+                        load_label.set_label(((int) process.get_cpu_load()).to_string() + " %");
 
-                    if(process.cpu_load >= 90)
+                    if(process.get_cpu_load() >= 90)
                         max_usage = true;
                     else
                         max_usage = false;
@@ -190,18 +175,18 @@ namespace Usage
                     {
                         string values_string = "";
                         var values = new GLib.List<uint64?>();
-                        foreach(Process sub_process in process.sub_processes.get_values())
-                            values.insert_sorted(sub_process.mem_usage, sort);
+                        foreach(Process sub_process in process.get_sub_processes().get_values())
+                            values.insert_sorted(sub_process.get_mem_usage(), sort);
 
                         foreach(uint64 value in values)
-                            values_string += "   " + format_size_values(value);
+                            values_string += "   " + Utils.format_size_values(value);
 
                         load_label.set_label(values_string);
                     }
                     else
-                        load_label.set_label(format_size_values(process.mem_usage));
+                        load_label.set_label(Utils.format_size_values(process.get_mem_usage()));
 
-                    if(process.mem_usage_percentages >= 90)
+                    if(process.get_mem_usage_percentages() >= 90)
                         max_usage = true;
                     else
                         max_usage = false;
@@ -211,17 +196,17 @@ namespace Usage
                     {
                         string values_string = "";
                         var values = new GLib.List<uint64?>();
-                        foreach(Process sub_process in process.sub_processes.get_values())
-                            values.insert_sorted((uint64) sub_process.net_all, sort);
+                        foreach(Process sub_process in process.get_sub_processes().get_values())
+                            values.insert_sorted((uint64) sub_process.get_net_all(), sort);
 
                          foreach(uint64 value in values)
-                            values_string += "   " + format_size_values(value);
+                            values_string += "   " + Utils.format_size_values(value);
 
                         load_label.set_label(values_string);
                     }
                     else
                     {
-                        load_label.set_label(format_size_values(process.net_all));
+                        load_label.set_label(Utils.format_size_values(process.get_net_all()));
                     }
                     break;
             }
@@ -258,7 +243,7 @@ namespace Usage
             }
             else
             {
-                var dialog = new ProcessDialog(process.pid, display_name);
+                var dialog = new ProcessDialog(process.get_pid(), display_name);
                 dialog.show_all();
             }
         }

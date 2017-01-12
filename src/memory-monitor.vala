@@ -30,16 +30,16 @@ namespace Usage
             return swap_usage;
         }
 
-        public void get_memory_info_for_pid(pid_t pid, ref uint64 mem_usage, ref double mem_usage_percentages)
+        public void update_process_info(ref Process process)
         {
             GTop.Mem mem;
             GTop.ProcMem proc_mem;
 
             GTop.get_mem (out mem);
-            GTop.get_proc_mem (out proc_mem, pid);
+            GTop.get_proc_mem (out proc_mem, process.get_pid());
 
-            mem_usage = (proc_mem.resident - proc_mem.share);
-            mem_usage_percentages = ((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100;
+            process.set_mem_usage(proc_mem.resident - proc_mem.share);
+            process.set_mem_usage_percentages(((double) (proc_mem.resident - proc_mem.share) / mem.total) * 100);
         }
     }
 }

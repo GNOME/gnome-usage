@@ -32,10 +32,13 @@ src/process.vala
 src/settings.vala
 src/storage-graph.vala
 src/storage-list-box.vala
+src/storage-list.vala
+src/storage-row.vala
 src/storage-view.vala
 src/sub-process-list-box.vala
 src/sub-process-sub-row.vala
 src/system-monitor.vala
+src/utils.vala
 src/view.vala
 src/window.vala
 src/../external/egg/egg-animation.c

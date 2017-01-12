@@ -92,18 +92,18 @@ namespace Usage
             return net_usage;
         }
 
-        public void get_network_info_for_pid(pid_t pid, ref uint64 download, ref uint64 upload, ref uint64 all)
+        public void update_process_info(ref Process process)
         {
             uint64 bytes_out;
             uint64 bytes_in;
             uint64 bytes_all;
-            handle_error(stat.get_bytes_per_attr(pid, InoutEnum.OUTGOING, null, out bytes_out));
-            handle_error(stat.get_bytes_per_attr(pid, InoutEnum.INCOMING, null, out bytes_in));
-            handle_error(stat.get_bytes_per_pid(pid, out bytes_all));
+            handle_error(stat.get_bytes_per_attr(process.get_pid(), InoutEnum.OUTGOING, null, out bytes_out));
+            handle_error(stat.get_bytes_per_attr(process.get_pid(), InoutEnum.INCOMING, null, out bytes_in));
+            handle_error(stat.get_bytes_per_pid(process.get_pid(), out bytes_all));
 
-            upload += bytes_out;
-            download += bytes_in;
-            all += bytes_all;
+            process.set_net_upload(process.get_net_upload() + bytes_out);
+            process.set_net_download(process.get_net_download() + bytes_in);
+            process.set_net_all(process.get_net_all() + bytes_all);
         }
 
         private void handle_error(ErrorCode e)

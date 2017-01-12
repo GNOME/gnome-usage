@@ -25,7 +25,7 @@ namespace Usage
             icon.height_request = 24;
             icon.margin_left = 10;
             icon.margin_right = 10;
-            var title_label = new Gtk.Label(process.cmdline);
+            var title_label = new Gtk.Label(process.get_cmdline());
             row_box.pack_start(icon, false, false, 0);
             row_box.pack_start(title_label, false, true, 5);
             row_box.pack_end(load_label, false, true, 10);
@@ -43,23 +43,23 @@ namespace Usage
             switch(type)
             {
                 case ProcessListBoxType.PROCESSOR:
-                    load_label.set_label(((uint64) process.cpu_load).to_string() + " %");
+                    load_label.set_label(((uint64) process.get_cpu_load()).to_string() + " %");
 
-                    if(process.cpu_load >= 90)
+                    if(process.get_cpu_load() >= 90)
                         max_usage = true;
                     else
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
-                    load_label.set_label(ProcessRow.format_size_values(process.mem_usage));
+                    load_label.set_label(Utils.format_size_values(process.get_mem_usage()));
 
-                    if(process.mem_usage_percentages >= 90)
+                    if(process.get_mem_usage_percentages() >= 90)
                         max_usage = true;
                     else
                         max_usage = false;
                     break;
                 case ProcessListBoxType.NETWORK:
-                    load_label.set_label(ProcessRow.format_size_values(process.net_all));
+                    load_label.set_label(Utils.format_size_values(process.get_net_all()));
                     break;
             }
         }
@@ -74,7 +74,7 @@ namespace Usage
 
         public new void activate()
         {
-            var dialog = new ProcessDialog(process.pid, process.cmdline);
+            var dialog = new ProcessDialog(process.get_pid(), process.get_cmdline());
             dialog.show_all();
         }
     }

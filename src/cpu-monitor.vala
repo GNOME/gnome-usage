@@ -50,19 +50,20 @@ namespace Usage
             return x_cpu_load;
         }
 
-        public void get_cpu_info_for_pid(pid_t pid, ref uint process_last_processor, ref double process_cpu_load, ref uint64 process_cpu_last_used, ref uint64 process_x_cpu_last_used)
+        public void update_process_info(ref Process process)
         {
             GTop.ProcTime proc_time;
             GTop.ProcState proc_state;
 
-            GTop.get_proc_time (out proc_time, pid);
-            GTop.get_proc_state (out proc_state, pid);
+            GTop.get_proc_time (out proc_time, process.get_pid());
+            GTop.get_proc_state (out proc_state, process.get_pid());
 
-            process_last_processor = proc_state.last_processor;
-            process_cpu_load = (((double) (proc_time.rtime - process_cpu_last_used)) / cpu_last_total_step) * 100 * get_num_processors();
-            process_cpu_load = double.min(100, process_cpu_load);
-            process_cpu_last_used = proc_time.rtime;
-            process_x_cpu_last_used = (proc_time.xcpu_utime[process_last_processor] + proc_time.xcpu_stime[process_last_processor]);
+            process.set_last_processor(proc_state.last_processor);
+            double cpu_load = (((double) (proc_time.rtime - process.get_cpu_last_used())) / cpu_last_total_step) * 100 * get_num_processors();
+            cpu_load = double.min(100, cpu_load);
+            process.set_cpu_load(cpu_load);
+            process.set_cpu_last_used(proc_time.rtime);
+            process.set_x_cpu_last_used(proc_time.xcpu_utime[process.get_last_processor()] + proc_time.xcpu_stime[process.get_last_processor()]);
         }
     }
 }

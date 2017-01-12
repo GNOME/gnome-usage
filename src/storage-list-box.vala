@@ -6,7 +6,7 @@ namespace Usage
     {
         public StorageListBox()
         {
-            width_request = 300; //TODO remove
+            //width_request = 300; //TODO remove
         }
     }
 }

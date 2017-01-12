@@ -7,11 +7,11 @@ namespace Usage
             name = "STORAGE";
             title = _("Storage");
 
-            var storage_list_box = new StorageListBox();
+            var storage_list = new StorageList();
             var storage_graph = new StorageGraph();
 
             var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
-            paned.add1(storage_list_box);
+            paned.add1(storage_list);
             paned.add2(storage_graph);
             add(paned);
         }
