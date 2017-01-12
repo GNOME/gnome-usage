@@ -8,19 +8,17 @@ namespace Usage
         public StorageList()
         {
             main_page = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            //width_request = 300; //TODO remove
 
             var storage1 = create_header("Storage 1" , 650000000); //TODO find out one partiton or two (root and home)
             main_page.add(storage1);
-            var storage_list_box1 = new StorageListBox();
+            var storage_list_box1 = new StorageMainListBox(StoragemMainListBoxType.HOME);
             main_page.add(storage_list_box1);
             var storage2 = create_header("Storage 2" , 650000000); //TODO find out one partiton or two (root and home)
             main_page.add(storage2);
-            var storage_list_box2 = new StorageListBox();
+            var storage_list_box2 = new StorageMainListBox(StoragemMainListBoxType.SYSTEM);
             main_page.add(storage_list_box2);
 
             add_named(main_page, "MAIN_PAGE");
-
         }
 
         private Gtk.Box create_header(string storage_name, uint64 size)

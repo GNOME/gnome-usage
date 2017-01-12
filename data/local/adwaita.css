@@ -81,14 +81,62 @@ rg-graph.big {
     background-image: repeating-linear-gradient(0deg, #e6e6e6, #e6e6e6 1px, transparent 1px, transparent 57px);
 }
 
-CookieGraph.used {
+CookieGraph.used, ColorRectangle.used {
     color: #4a90d9;
 }
 
-CookieGraph.others {
+CookieGraph.others, ColorRectangle.others {
     color: #707070;
 }
 
-CookieGraph.available {
+CookieGraph.available, ColorRectangle.available {
     color: #fafafa;
+}
+
+ColorRectangle.system {
+    color: #2e3436;
+}
+
+ColorRectangle.application {
+    color: #4e9a06;
+}
+
+ColorRectangle.documents {
+    color: #99b9dc;
+}
+
+ColorRectangle.downloads {
+    color: #9bb8db;
+}
+
+ColorRectangle.music {
+    color: #457fd3;
+}
+
+ColorRectangle.pictures {
+    color: #3466a5;
+}
+
+ColorRectangle.videos {
+    color: #204a87;
+}
+
+ColorRectangle.others_storage {
+    color: #16325c;
+}
+
+ColorRectangle.trash {
+    color: #ef2929;
+}
+
+ColorRectangle.cache {
+    color: #fce94f;
+}
+
+ColorRectangle.user {
+    color: #ad7fa8;
+}
+
+ColorRectangle.available_storage {
+    color: #d3d7cf;
 }

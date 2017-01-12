@@ -7,7 +7,7 @@ namespace Usage {
         Gdk.RGBA color;
         class construct
         {
-            set_css_name("CookieGraph");
+            set_css_name("ColorRectangle");
         }
 
         public ColorRectangle(string css_class)

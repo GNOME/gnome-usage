@@ -1,13 +1,3 @@
-.processRow-opened { background: #3b4043; border: 1px solid #898989; }
-.processRow { background: #232729; }
-.processRow-hover { background: #4d5356; }
-.processRow-max { background: #8E0000; border: 1px solid #faa5a2; }
-.processRow-max-hover { background: #b40000; border: 1px solid #faa5a2; }
-.subProcessSubRow { background: #2c3032; }
-.subProcessSubRow-hover { background: #4d5356; }
-.subProcessSubRow-max { background: #fabbbb;  border: 1px solid #faa5a2; }
-.subProcessSubRow-max-hover { background: #faa5a2; border: 1px solid #faa5a2; }
-
 list, graph-box {
     border: 1px solid #3f3f3f;
 }
@@ -85,14 +75,62 @@ rg-graph.big {
     background-image: repeating-linear-gradient(0deg, #3f3f3f, #3f3f3f 1px, transparent 1px, transparent 57px);
 }
 
-CookieGraph.used {
+CookieGraph.used, ColorRectangle.used {
     color: #4a90d9;
 }
 
-CookieGraph.others {
+CookieGraph.others, ColorRectangle.others {
     color: #4d5356;
 }
 
-CookieGraph.available {
+CookieGraph.available, ColorRectangle.available {
     color: #232729;
+}
+
+ColorRectangle.system {
+    color: #2e3436;
+}
+
+ColorRectangle.application {
+    color: #4e9a06;
+}
+
+ColorRectangle.documents {
+    color: #99b9dc;
+}
+
+ColorRectangle.downloads {
+    color: #9bb8db;
+}
+
+ColorRectangle.music {
+    color: #457fd3;
+}
+
+ColorRectangle.pictures {
+    color: #3466a5;
+}
+
+ColorRectangle.videos {
+    color: #204a87;
+}
+
+ColorRectangle.others-storage {
+    color: #16325c;
+}
+
+ColorRectangle.trash {
+    color: #ef2929;
+}
+
+ColorRectangle.cache {
+    color: #fce94f;
+}
+
+ColorRectangle.user {
+    color: #ad7fa8;
+}
+
+ColorRectangle.available-storage {
+    color: #d3d7cf;
 }
