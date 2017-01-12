@@ -6,7 +6,6 @@ New GNOME Usage!
 - [x] Processor Usage
 - [x] Memory usage
 - [x] Network usage
-- [x] RPM packages
 - [x] Add loading ProcessListBox when open app 
 - [x] Show fancy clear Process Box
 - [x] Tweak network usage
@@ -14,14 +13,13 @@ New GNOME Usage!
 - [ ] Support other architectures than x86_64 (netinfo precompiled library) 
 - [ ] Fix bug with refreshing ProcessListBox 50% (focus, and click when refresh)
 - [ ] Search in processes 
-- [ ] DEB packages
-- [ ] Storage view - 0%
+- [ ] Storage view - 1%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
 - [ ] Data view - 0%
 
 ##Installation from RPM
-[Download RPM](https://github.com/petr-stety-stetka/gnome-usage/raw/master/rpmbuild/RPMS/x86_64/gnome-usage-0.3.8-1.x86_64.rpm)
+[Download RPM](https://github.com/petr-stety-stetka/gnome-usage/releases/download/v0.3.8/gnome-usage-0.3.8-1.x86_64.rpm)
 
 ##Run
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
@@ -32,7 +30,7 @@ Actual version is 0.3.8
 ##Compilation from sources:
 ```
 autovala update
-cd build
+mkdir build && cd build
 cmake ..
 make
 sudo make install

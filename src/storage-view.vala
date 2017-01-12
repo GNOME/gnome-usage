@@ -10,8 +10,12 @@ namespace Usage
             var storage_list = new StorageList();
             var storage_graph = new StorageGraph();
 
+            var scrolled_window = new Gtk.ScrolledWindow(null, null);
+            scrolled_window.add(storage_list);
+            scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
+
             var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
-            paned.add1(storage_list);
+            paned.add1(scrolled_window);
             paned.add2(storage_graph);
             add(paned);
         }
