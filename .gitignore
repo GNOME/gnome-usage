@@ -2,3 +2,4 @@
 .bzrignore
 .hgignore
 install
+build
