@@ -2,7 +2,7 @@ using Gtk;
 
 namespace Usage {
 
-    public class CookieGraph : Gtk.DrawingArea
+    public class PieChart : Gtk.DrawingArea
     {
         int used_percentages = 0;
         int other_percentages = 0;
@@ -12,10 +12,10 @@ namespace Usage {
 
         class construct
         {
-            set_css_name("CookieGraph");
+            set_css_name("PieChart");
         }
 
-        public CookieGraph()
+        public PieChart()
         {
             set_styles();
 

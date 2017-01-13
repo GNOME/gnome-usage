@@ -4,7 +4,7 @@ namespace Usage
 {
     public class GraphBlock : Gtk.Grid
     {
-        CookieGraph graph;
+        PieChart graph;
         GraphBlockRow application_row;
         GraphBlockRow others_row;
         GraphBlockRow available_row;
@@ -26,7 +26,7 @@ namespace Usage
             label.set_use_markup(true);
             this.attach(label, 0, 0, 1, 1);
 
-            graph = new CookieGraph();
+            graph = new PieChart();
             graph.margin = 15;
             graph.height_request = 90;
             graph.width_request = 90;

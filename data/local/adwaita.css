@@ -81,15 +81,15 @@ rg-graph.big {
     background-image: repeating-linear-gradient(0deg, #e6e6e6, #e6e6e6 1px, transparent 1px, transparent 57px);
 }
 
-CookieGraph.used, ColorRectangle.used {
+PieChart.used, ColorRectangle.used {
     color: #4a90d9;
 }
 
-CookieGraph.others, ColorRectangle.others {
+PieChart.others, ColorRectangle.others {
     color: #707070;
 }
 
-CookieGraph.available, ColorRectangle.available {
+PieChart.available, ColorRectangle.available {
     color: #fafafa;
 }
 

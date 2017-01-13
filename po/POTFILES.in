@@ -1,6 +1,5 @@
 src/application.vala
 src/color-rectangle.vala
-src/cookie-graph.vala
 src/cpu-graph-table.vala
 src/cpu-graph.vala
 src/cpu-monitor.vala
@@ -24,6 +23,7 @@ src/network-graph.vala
 src/network-monitor.vala
 src/network-sub-view.vala
 src/performance-view.vala
+src/pie-chart.vala
 src/power-view.vala
 src/process-dialog.vala
 src/process-list-box.vala
@@ -31,8 +31,8 @@ src/process-row.vala
 src/process.vala
 src/settings.vala
 src/storage-graph.vala
-src/storage-list-box.vala
 src/storage-list.vala
+src/storage-main-list-box.vala
 src/storage-row.vala
 src/storage-view.vala
 src/sub-process-list-box.vala
