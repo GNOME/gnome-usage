@@ -16,7 +16,7 @@ namespace Usage
 
         public Application ()
         {
-            application_id = "org.gnome.usage";
+            application_id = "org.gnome.Usage";
             settings = new Settings();
             monitor = new SystemMonitor();
         }
