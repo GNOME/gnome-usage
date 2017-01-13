@@ -14,6 +14,12 @@ namespace Usage
             this.window_position = Gtk.WindowPosition.CENTER;
             this.set_title(_("Usage"));
 
+            load_css();
+            Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect(() =>
+            {
+                load_css();
+            });
+
 			stack = new Gtk.Stack();
 			header_bar = new Usage.HeaderBar(stack);
 			set_titlebar(header_bar);
@@ -32,12 +38,6 @@ namespace Usage
                 stack.add_titled(view, view.name, view.title);
 
             this.add(stack);
-
-            load_css();
-            Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect(() =>
-            {
-                load_css();
-            });
         }
 
         private void load_css()
