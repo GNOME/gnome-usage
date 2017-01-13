@@ -55,7 +55,7 @@ namespace Usage
             headerbar = new ProcessDialogHeaderBar(stop_button, pid, this.title);
             set_titlebar(headerbar);
 
-            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_cookie_graphs_UI, update);
+            Timeout.add((GLib.Application.get_default() as Application).settings.list_update_pie_charts_UI, update);
             update();
     	}
 
