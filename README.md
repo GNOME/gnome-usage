@@ -27,6 +27,9 @@ In terminal run ```gnome-usage``` command or run GNOME Usage application from ap
 ##Version
 Actual version is 0.3.8
 
+##Notes
+For correctly showing what processor core application/process use, you must have Libgtop library updated to version 2.34.2!
+
 ##Compilation from sources:
 ```
 autovala update
@@ -35,12 +38,6 @@ cmake ..
 make
 sudo make install
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
-```
-
-##Building RPMs:
-```
-cd rpmbuild
-rpmbuild --define "_topdir `pwd`" -ba SPECS/gnome-usage.spec
 ```
 
 ##License
