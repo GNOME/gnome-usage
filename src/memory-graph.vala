@@ -17,10 +17,18 @@ namespace Usage
 
         public MemoryGraph ()
         {
-            color_max.parse("rgba(238,34,34,0.227)");
-            line_color_max.parse("rgba(238,34,34,1)");
-            color_normal.parse("rgba(74,144,217,0.325)");
-            line_color_normal.parse("rgba(74,144,217,1)");
+            get_style_context().add_class("line_max");
+            line_color_max = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("line_max");
+            get_style_context().add_class("line");
+            line_color_normal = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("line");
+            get_style_context().add_class("stacked_max");
+            color_max = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("stacked_max");
+            get_style_context().add_class("stacked");
+            color_normal = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("stacked");
 
             if(rg_table == null)
             {
@@ -64,10 +72,18 @@ namespace Usage
 
         public MemoryGraphBig()
         {
-            color_max.parse("rgba(238,34,34,0.227)");
-            line_color_max.parse("rgba(238,34,34,1)");
-            color_normal.parse("rgba(74,144,217,0.325)");
-            line_color_normal.parse("rgba(74,144,217,1)");
+            get_style_context().add_class("line_max");
+            line_color_max = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("line_max");
+            get_style_context().add_class("line");
+            line_color_normal = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("line");
+            get_style_context().add_class("stacked_max");
+            color_max = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("stacked_max");
+            get_style_context().add_class("stacked");
+            color_normal = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("stacked");
             get_style_context().add_class("big");
 
             if(rg_table == null)

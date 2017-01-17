@@ -17,10 +17,18 @@ namespace Usage
 
         public NetworkGraph ()
         {
-            color_line_download.parse("rgba(74,144,217,1)");
-            color_download.parse("rgba(74,144,217,0.325)");
-            color_line_upload.parse("rgba(255,153,0,1)");
-            color_upload.parse("rgba(255,153,0,0.353)");
+            get_style_context().add_class("line");
+            color_line_download = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("line");
+            get_style_context().add_class("stacked");
+            color_download = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("stacked");
+            get_style_context().add_class("line_orange");
+            color_line_upload = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("line_orange");
+            get_style_context().add_class("stacked_orange");
+            color_upload = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("stacked_orange");
 
             if(rg_table == null)
             {
@@ -59,8 +67,12 @@ namespace Usage
 
         public NetworkGraphBig()
         {
-            color_download.parse("#4a90d9");
-            color_upload.parse("#ff9900");
+            get_style_context().add_class("line");
+            color_download = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("line");
+            get_style_context().add_class("line_orange");
+            color_upload = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("line_orange");
             get_style_context().add_class("big");
 
             if(rg_table == null)
