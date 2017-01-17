@@ -74,7 +74,7 @@ namespace Usage
 
         public new void activate()
         {
-            var dialog = new ProcessDialog(process.get_pid(), process.get_cmdline());
+            var dialog = new ProcessDialog(process.get_pid(), process.get_cmdline(), process.get_cmdline());
             dialog.show_all();
         }
     }

@@ -6,13 +6,14 @@ namespace Usage
 	{
 	    ProcessDialogHeaderBar headerbar;
     	pid_t pid;
+    	string process;
         GraphBlock processor_graph_block;
         GraphBlock memory_graph_block;
         GraphBlock disk_graph_block;
         GraphBlock downloads_graph_block;
         GraphBlock uploads_graph_block;
 
-    	public ProcessDialog(pid_t pid, string app_name)
+    	public ProcessDialog(pid_t pid, string app_name, string process)
     	{
     	    Object(use_header_bar: 1);
     	    set_modal(true);
@@ -21,6 +22,7 @@ namespace Usage
     	    set_resizable(false);
     	    this.pid = pid;
     		this.title = app_name;
+    		this.process = process;
     		this.border_width = 5;
     		set_default_size (900, 350);
     		create_widgets();
@@ -52,7 +54,7 @@ namespace Usage
             var stop_button = new Gtk.Button.with_label(_("Stop"));
             stop_button.get_style_context().add_class ("destructive-action");
 
-            headerbar = new ProcessDialogHeaderBar(stop_button, pid, this.title);
+            headerbar = new ProcessDialogHeaderBar(stop_button, pid, this.title, process);
             set_titlebar(headerbar);
 
             Timeout.add((GLib.Application.get_default() as Application).settings.list_update_pie_charts_UI, update);
@@ -111,11 +113,13 @@ namespace Usage
     {
         private Gtk.Label label;
         private string app_name;
+        private string process;
         private Gtk.Button stop_button;
 
-        public ProcessDialogHeaderBar(Gtk.Button stop_button, pid_t pid, string app_name)
+        public ProcessDialogHeaderBar(Gtk.Button stop_button, pid_t pid, string app_name, string process)
         {
             this.app_name = app_name;
+            this.process = process;
             show_close_button = true;
             this.stop_button = stop_button;
 
@@ -126,13 +130,22 @@ namespace Usage
 
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             box.hexpand = true;
-            box.pack_start(stop_button, false, false);
+            if(show_stop_button(process))
+                box.pack_start(stop_button, false, false);
             label = new Gtk.Label(null);
             label.justify = Gtk.Justification.CENTER;
             box.set_center_widget(label);
 
             set_custom_title(box);
             show_all();
+        }
+
+        private bool show_stop_button(string process)
+        {
+            var settings = new GLib.Settings ("org.gnome.Usage");
+            var unkillable_processes = settings.get_strv ("unkillable-processes");
+
+            return !(process in unkillable_processes);
         }
 
         private void kill_process(pid_t pid)

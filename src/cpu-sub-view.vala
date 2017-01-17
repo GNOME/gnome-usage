@@ -34,6 +34,7 @@ namespace Usage
 
             var no_process_label = new Gtk.Label("<span font_desc=\"14.0\">" + _("No application using processor.") + "</span>");
             no_process_label.set_use_markup(true);
+            no_process_label.get_style_context().add_class("dim-label");
 
             (GLib.Application.get_default() as Application).get_system_monitor().cpu_processes_ready.connect(() =>
             {

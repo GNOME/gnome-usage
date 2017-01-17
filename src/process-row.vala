@@ -243,7 +243,7 @@ namespace Usage
             }
             else
             {
-                var dialog = new ProcessDialog(process.get_pid(), display_name);
+                var dialog = new ProcessDialog(process.get_pid(), display_name, process.get_cmdline());
                 dialog.show_all();
             }
         }
