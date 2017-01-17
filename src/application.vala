@@ -26,7 +26,7 @@ namespace Usage
             return monitor;
         }
 
-        public Window get_window()
+        public Window? get_window()
         {
             return window;
         }
