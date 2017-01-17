@@ -3,9 +3,12 @@ autovala_version: 23
 project_name: gnome-usage
 *vala_version: 0.34
 
+*gresource: usage_gresource_xml data/usage.gresource.xml
+
 
 vala_binary: src/gnome-usage
 version: 0.3.8
+use_gresource: usage_gresource_xml
 *vala_vapi: vapis/better.vapi
 *vala_vapi: vapis/egg.vapi
 *vala_vapi: vapis/glibtop.vapi
@@ -156,8 +159,9 @@ translate: c src/../external/rg/rg-stacked-renderer.c
 translate: c src/../external/rg/rg-table.c
 *translate: vala src/storage-row.vala
 *translate: vala src/performance-view.vala
+*translate: vala src/cpu-graph.vala
 *translate: vala src/system-monitor.vala
-*translate: vala src/memory-graph.vala
+*translate: vala src/network-graph.vala
 *translate: vala src/header-bar.vala
 *translate: vala src/process-list-box.vala
 *translate: vala src/disk-graph.vala
@@ -183,23 +187,20 @@ translate: c src/../external/rg/rg-table.c
 *translate: vala src/storage-main-list-box.vala
 *translate: vala src/storage-graph.vala
 *translate: vala src/view.vala
-*translate: vala src/cpu-graph.vala
 *translate: vala src/process-dialog.vala
-*translate: vala src/application.vala
+*translate: vala src/utils.vala
 *translate: vala src/sub-process-list-box.vala
 *translate: vala src/sub-process-sub-row.vala
 *translate: vala src/pie-chart.vala
 *translate: vala src/color-rectangle.vala
 *translate: vala src/storage-list.vala
 *translate: vala src/storage-view.vala
-*translate: vala src/utils.vala
+*translate: vala src/memory-graph.vala
+*translate: vala src/application.vala
 *translate: vala src/graph-block-row.vala
-*translate: vala src/network-graph.vala
 *translate: vala src/gnome-usage.vala
 *translate: vala src/graph-switcher-button.vala
 *translate: c src/better-box.c
-
-*data: data/local
 
 *desktop: data/org.gnome.Usage.desktop
 

@@ -51,7 +51,7 @@ namespace Usage
             var provider = new Gtk.CssProvider();
             try {
                 Gtk.StyleContext.reset_widgets(get_screen());
-                provider.load_from_path(GLib.Path.build_filename(Constants.PKGDATADIR, name_css));
+                provider.load_from_resource("/org/gnome/Usage/interface/" + name_css);
                 Gtk.StyleContext.add_provider_for_screen(get_screen(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             }
             catch (Error e) {
