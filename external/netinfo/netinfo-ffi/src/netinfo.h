@@ -13,6 +13,7 @@
 extern "C" {
 #endif
 
+
 typedef void* ni_netinfo;
 typedef void* ni_net_interface;
 typedef void* ni_net_statistics;
@@ -45,6 +46,7 @@ typedef enum {
   NETINFO_TT_UDP = 1,
 } ni_transport_type_enum;
 typedef uint32_t ni_transport_type;
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Network-Interface related functions

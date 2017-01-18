@@ -1,0 +1,18 @@
+[package]
+name = "netinfo-ffi"
+version = "0.3.1"
+authors = ["Chang Spivey <chang.spivey@gmail.com>"]
+description = "C FFI for netinfo, which groups network usage by process"
+repository = "https://github.com/ChangSpivey/netinfo-ffi"
+documentation = "https://docs.rs/netinfo-ffi"
+readme = "README.md"
+keywords = ["network", "profile", "usage", "netinfo", "ffi"]
+license = "AGPL-3.0"
+
+[lib]
+name = "netinfo"
+crate-type = ["staticlib", "cdylib"]
+
+[dependencies]
+netinfo = "0.3.0"
+enum_primitive = "0.1.0"

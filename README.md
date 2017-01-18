@@ -10,7 +10,7 @@ New GNOME Usage!
 - [x] Show fancy clear Process Box
 - [x] Tweak network usage
 - [x] Add Running/Sleeping/Dead label
-- [ ] Support other architectures than x86_64 (netinfo precompiled library) 
+- [x] Support other architectures than x86_64 (netinfo precompiled library) 
 - [ ] Fix bug with refreshing ProcessListBox 50% (focus, and click when refresh)
 - [ ] Search in processes 
 - [ ] Storage view - 1%
