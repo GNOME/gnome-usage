@@ -60,9 +60,6 @@ c_library: rg egg gmodule-2.0 m rt gtop-2.0 pthread dl ${CMAKE_SOURCE_DIR}/exter
 *vala_source: process.vala
 *vala_source: settings.vala
 *vala_source: storage-graph.vala
-*vala_source: storage-list.vala
-*vala_source: storage-main-list-box.vala
-*vala_source: storage-row.vala
 *vala_source: storage-view.vala
 *vala_source: sub-process-list-box.vala
 *vala_source: sub-process-sub-row.vala
@@ -79,7 +76,6 @@ h_folder: /usr/include/libgtop-2.0
 
 *po: po
 
-*translate: vala src/storage-row.vala
 *translate: vala src/performance-view.vala
 *translate: vala src/window.vala
 *translate: vala src/cpu-graph.vala
@@ -107,7 +103,6 @@ h_folder: /usr/include/libgtop-2.0
 *translate: vala src/network-monitor.vala
 *translate: vala src/data-view.vala
 *translate: vala src/settings.vala
-*translate: vala src/storage-main-list-box.vala
 *translate: vala src/storage-graph.vala
 *translate: vala src/view.vala
 *translate: vala src/sub-process-sub-row.vala
@@ -115,7 +110,6 @@ h_folder: /usr/include/libgtop-2.0
 *translate: vala src/sub-process-list-box.vala
 *translate: vala src/pie-chart.vala
 *translate: vala src/color-rectangle.vala
-*translate: vala src/storage-list.vala
 *translate: vala src/storage-view.vala
 *translate: vala src/memory-graph.vala
 *translate: vala src/application.vala
