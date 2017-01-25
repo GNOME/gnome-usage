@@ -32,7 +32,6 @@ src/process.vala
 src/settings.vala
 src/storage-analyzer.vala
 src/storage-graph.vala
-src/storage-item.vala
 src/storage-view.vala
 src/sub-process-list-box.vala
 src/sub-process-sub-row.vala

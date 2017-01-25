@@ -27,8 +27,9 @@ In terminal run ```gnome-usage``` command or run GNOME Usage application from ap
 ##Version
 Actual version is 0.3.8
 
-##Notes
-For correctly showing what processor core application/process use, you must have Libgtop library updated to version 2.34.2!
+##Dependencies
+- libnetinfo >= 0.3.1
+- libgtop >= 2.34.2
 
 ##Compilation from sources:
 ```
