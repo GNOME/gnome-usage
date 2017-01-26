@@ -1,0 +1,13 @@
+# List of source files that should *not* be translated.
+# Please keep this file sorted alphabetically.
+src/application.c
+src/cpu-sub-view.c
+src/data-view.c
+src/graph-block.c
+src/memory-sub-view.c
+src/network-sub-view.c
+src/performance-view.c
+src/power-view.c
+src/process-dialog.c
+src/storage-view.c
+src/window.c
