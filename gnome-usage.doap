@@ -20,4 +20,5 @@
       <foaf:mbox rdf:resource="mailto:pstetka@redhat.com" />
      <gnome:userid>pstetka</gnome:userid>
     </foaf:Person>
+  </maintainer>
 </Project>
