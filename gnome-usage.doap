@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+  <name xml:lang="en">GNOME Usage</name>
+  <shortdesc xml:lang="en">View system usage information</shortdesc>
+  <description xml:lang="en">A nice way to view information about use of system resources, like memory and disk space.</description>
+  <category rdf:resource="http://api.gnome.org/doap-extensions#core" />
+  <programming-language>Vala</programming-language>
+
+<!--
+FIXME: Add all of these things!
+  <homepage rdf:resource="https://wiki.gnome.org/Apps/Web" />
+  <mailing-list rdf:resource="https://mail.gnome.org/mailman/listinfo/epiphany-list" />
+  <download-page rdf:resource="https://download.gnome.org/sources/epiphany/" />
+  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=epiphany" />
+-->
+
+<!-- FIXME: Update Petr's userid and uncomment.
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Petr Štětka</foaf:name>
+      <foaf:mbox rdf:resource="mailto:stetka.peta@gmail.com" />
+     <gnome:userid>mcatanzaro</gnome:userid>
+    </foaf:Person>
+-->
+<!-- FIXME: Remove me once Petr is added. I don't want to be here. :) -->
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Michael Catanzaro</foaf:name>
+      <foaf:mbox rdf:resource="mailto:mcatanzaro@gnome.org" />
+      <gnome:userid>mcatanzaro</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+</Project>
