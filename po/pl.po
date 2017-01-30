@@ -1,0 +1,214 @@
+# Polish translation for gnome-usage.
+# Copyright © 2017 the gnome-usage authors.
+# This file is distributed under the same license as the gnome-usage package.
+# Piotr Drąg <piotrdrag@gmail.com>, 2017.
+# Aviary.pl <community-poland@mozilla.org>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-30 03:40+0100\n"
+"PO-Revision-Date: 2017-01-30 03:41+0100\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish <community-poland@mozilla.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:67
+#: ../src/window.vala:15
+msgid "Usage"
+msgstr "Monitor"
+
+#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:68
+msgid "View current application and monitor system state"
+msgstr "Wyświetlanie uruchomionych programów i monitorowanie stanu systemu"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: ../data/org.gnome.Usage.desktop:8
+msgid "application-default-icon"
+msgstr "application-default-icon"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.Usage.desktop:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Monitor;System;Proces;Procesor;CPU;Pamięć;RAM;Sieć;Internet;Historia;Użycie;"
+"Wykorzystanie;Wydajność;Zadanie;Menedżer;Menadżer;Manadżer;Manedżer;Zadań;"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:1
+msgid "A list of processes, which we don’t want kill"
+msgstr "Lista procesów, których nie można usunąć"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:2
+msgid "This list is used for filtering, which processes user can’t stop."
+msgstr ""
+"Ta lista jest używana do filtrowania, których procesów użytkownik nie może "
+"zatrzymywać."
+
+#: ../external/egg/egg-animation.c:726
+#, c-format
+msgid "Cannot locate property %s in class %s"
+msgstr "Nie można odnaleźć właściwości %s w klasie %s"
+
+#: ../external/egg/egg-animation.c:1073 ../external/egg/egg-animation.c:1079
+#, c-format
+msgid "Failed to find property %s in %s"
+msgstr "Odnalezienie właściwości %s w %s się nie powiodło"
+
+#: ../external/egg/egg-animation.c:1087
+#, c-format
+msgid "Failed to find property %s in %s or parent %s"
+msgstr "Odnalezienie właściwości %s w %s lub nadrzędnego %s się nie powiodło"
+
+#: ../external/egg/egg-animation.c:1097
+#, c-format
+msgid "Failed to retrieve va_list value: %s"
+msgstr "Pobranie wartości „va_list” się nie powiodło: %s"
+
+#: ../external/egg/egg-date-time.c:55
+msgid "Just now"
+msgstr "Przed chwilą"
+
+#: ../external/egg/egg-date-time.c:57
+msgid "An hour ago"
+msgstr "Godzina temu"
+
+#: ../external/egg/egg-date-time.c:59
+msgid "Yesterday"
+msgstr "Wczoraj"
+
+#: ../external/egg/egg-date-time.c:65
+msgid "About a year ago"
+msgstr "Około rok temu"
+
+#: ../external/egg/egg-date-time.c:69
+#, c-format
+msgid "About %u year ago"
+msgid_plural "About %u years ago"
+msgstr[0] "Około %u rok temu"
+msgstr[1] "Około %u lata temu"
+msgstr[2] "Około %u lat temu"
+
+#: ../external/egg/egg-file-chooser-entry.c:100
+#: ../external/egg/egg-file-chooser-entry.c:489
+msgid "Open"
+msgstr "Otwórz"
+
+#: ../external/egg/egg-file-chooser-entry.c:104
+msgid "Select"
+msgstr "Wybierz"
+
+#: ../external/egg/egg-file-chooser-entry.c:108
+msgid "Create"
+msgstr "Utwórz"
+
+#: ../external/egg/egg-file-chooser-entry.c:112
+msgid "Save"
+msgstr "Zapisz"
+
+#: ../external/egg/egg-file-chooser-entry.c:455
+msgid "Browse…"
+msgstr "Przeglądaj…"
+
+#: ../external/egg/egg-file-chooser-entry.c:488
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: ../external/egg/egg-search-bar.c:378
+msgid "Search"
+msgstr "Wyszukaj"
+
+#: ../src/application.vala:41
+msgid "About"
+msgstr "O programie"
+
+#: ../src/application.vala:44
+msgid "Quit"
+msgstr "Zakończ"
+
+#: ../src/application.vala:71
+msgid "Websites"
+msgstr "Strony WWW"
+
+#: ../src/cpu-sub-view.vala:9 ../src/process-dialog.vala:40
+msgid "Processor"
+msgstr "Procesor"
+
+#: ../src/cpu-sub-view.vala:35
+msgid "No application using processor."
+msgstr "Żadne programy nie używają procesora."
+
+#: ../src/data-view.vala:8
+msgid "Data"
+msgstr "Dane"
+
+#: ../src/graph-block.vala:36
+msgid "Others"
+msgstr "Pozostałe"
+
+#: ../src/graph-block.vala:38
+msgid "Available"
+msgstr "Dostępne"
+
+#: ../src/memory-sub-view.vala:9 ../src/process-dialog.vala:41
+msgid "Memory"
+msgstr "Pamięć"
+
+#: ../src/memory-sub-view.vala:35
+msgid "No application using memory."
+msgstr "Żadne programy nie używają pamięci."
+
+#: ../src/network-sub-view.vala:9
+msgid "Network"
+msgstr "Sieć"
+
+#: ../src/network-sub-view.vala:34
+msgid "No application using network."
+msgstr "Żadne programy nie używają sieci."
+
+#: ../src/performance-view.vala:10
+msgid "Performance"
+msgstr "Wydajność"
+
+#: ../src/power-view.vala:8
+msgid "Power"
+msgstr "Zasilanie"
+
+#: ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "Wejście/wyjście dysku"
+
+#: ../src/process-dialog.vala:43
+msgid "Downloads"
+msgstr "Pobieranie"
+
+#: ../src/process-dialog.vala:44
+msgid "Uploads"
+msgstr "Wysyłanie"
+
+#: ../src/process-dialog.vala:54
+msgid "Stop"
+msgstr "Zatrzymaj"
+
+#: ../src/process-dialog.vala:162
+msgid "Running"
+msgstr "Uruchomione"
+
+#: ../src/process-dialog.vala:165
+msgid "Sleeping"
+msgstr "Uśpione"
+
+#: ../src/process-dialog.vala:168
+msgid "Dead"
+msgstr "Martwe"
+
+#: ../src/storage-view.vala:8
+msgid "Storage"
+msgstr "Urządzenia do przechowywania danych"
