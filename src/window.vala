@@ -49,14 +49,9 @@ namespace Usage
                 name_css = "adwaita-dark.css";
 
             var provider = new Gtk.CssProvider();
-            try {
-                Gtk.StyleContext.reset_widgets(get_screen());
-                provider.load_from_resource("/org/gnome/Usage/interface/" + name_css);
-                Gtk.StyleContext.add_provider_for_screen(get_screen(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            }
-            catch (Error e) {
-                stdout.printf("Could not load CSS. %s\n", e.message);
-            }
+            Gtk.StyleContext.reset_widgets(get_screen());
+            provider.load_from_resource("/org/gnome/Usage/interface/" + name_css);
+            Gtk.StyleContext.add_provider_for_screen(get_screen(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
     }
 }
