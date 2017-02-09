@@ -31,7 +31,7 @@ namespace Usage
             network_box.pack_start(label, false, false, 0);
             network_box.pack_start(network_graph_box, false, false, 0);
 
-            var no_process_label = new Gtk.Label("<span font_desc=\"14.0\">" + _("No application using network.") + "</span>");
+            var no_process_label = new Gtk.Label("<span font_desc=\"14.0\">" + _("No applications using network.") + "</span>");
             no_process_label.set_use_markup(true);
             no_process_label.get_style_context().add_class("dim-label");
 

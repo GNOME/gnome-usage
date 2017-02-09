@@ -32,7 +32,7 @@ namespace Usage
             cpu_box.pack_start(cpu_graph_box, false, false, 0);
             cpu_box.pack_start(spinner, true, true, 0);
 
-            var no_process_label = new Gtk.Label("<span font_desc=\"14.0\">" + _("No application using processor.") + "</span>");
+            var no_process_label = new Gtk.Label("<span font_desc=\"14.0\">" + _("No applications using processor.") + "</span>");
             no_process_label.set_use_markup(true);
             no_process_label.get_style_context().add_class("dim-label");
 
