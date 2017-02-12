@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-30 03:40+0100\n"
-"PO-Revision-Date: 2017-01-30 03:41+0100\n"
+"POT-Creation-Date: 2017-02-12 14:17+0100\n"
+"PO-Revision-Date: 2017-02-12 14:18+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -43,11 +43,11 @@ msgstr ""
 "Wykorzystanie;Wydajność;Zadanie;Menedżer;Menadżer;Manadżer;Manedżer;Zadań;"
 
 #: ../data/org.gnome.Usage.gschema.xml.h:1
-msgid "A list of processes, which we don’t want kill"
+msgid "A list of processes which we don’t want killed"
 msgstr "Lista procesów, których nie można usunąć"
 
 #: ../data/org.gnome.Usage.gschema.xml.h:2
-msgid "This list is used for filtering, which processes user can’t stop."
+msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Ta lista jest używana do filtrowania, których procesów użytkownik nie może "
 "zatrzymywać."
@@ -142,7 +142,7 @@ msgid "Processor"
 msgstr "Procesor"
 
 #: ../src/cpu-sub-view.vala:35
-msgid "No application using processor."
+msgid "No applications using processor."
 msgstr "Żadne programy nie używają procesora."
 
 #: ../src/data-view.vala:8
@@ -162,7 +162,7 @@ msgid "Memory"
 msgstr "Pamięć"
 
 #: ../src/memory-sub-view.vala:35
-msgid "No application using memory."
+msgid "No applications using memory."
 msgstr "Żadne programy nie używają pamięci."
 
 #: ../src/network-sub-view.vala:9
@@ -170,7 +170,7 @@ msgid "Network"
 msgstr "Sieć"
 
 #: ../src/network-sub-view.vala:34
-msgid "No application using network."
+msgid "No applications using network."
 msgstr "Żadne programy nie używają sieci."
 
 #: ../src/performance-view.vala:10
