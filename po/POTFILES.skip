@@ -1,5 +1,6 @@
 # List of source files that should *not* be translated.
 # Please keep this file sorted alphabetically.
+external/egg/egg-animation.c
 src/application.c
 src/cpu-sub-view.c
 src/data-view.c
