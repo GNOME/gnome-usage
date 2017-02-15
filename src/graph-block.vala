@@ -2,6 +2,13 @@ using Gtk;
 
 namespace Usage
 {
+    public enum GraphBlockType {
+        PROCESSOR,
+        MEMORY,
+        DISK,
+        NETWORK
+    }
+
     public class GraphBlock : Gtk.Grid
     {
         PieChart graph;
@@ -11,14 +18,16 @@ namespace Usage
         Gtk.Label label;
         string block_name;
         bool show_avaiable;
+        GraphBlockType type;
 
         class construct
         {
             set_css_name("GraphBlock");
         }
 
-        public GraphBlock(string block_name, string app_name, bool show_avaiable = true)
+        public GraphBlock(GraphBlockType type, string block_name, string app_name, bool show_avaiable = true)
         {
+            this.type = type;
             this.expand = true;
             this.block_name = block_name;
             this.show_avaiable = show_avaiable;
@@ -32,10 +41,10 @@ namespace Usage
             graph.width_request = 90;
             this.attach(graph, 0, 1, 1, 1);
 
-            application_row = new GraphBlockRow(app_name, "used");
-            others_row = new GraphBlockRow(_("Others"), "others");
+            application_row = new GraphBlockRow(type, app_name, "used");
+            others_row = new GraphBlockRow(type, _("Others"), "others");
             if(show_avaiable)
-                available_row = new GraphBlockRow(_("Available"), "available");
+                available_row = new GraphBlockRow(type, _("Available"), "available");
 
             Gtk.Box box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             box.margin_left = 15;
@@ -47,7 +56,7 @@ namespace Usage
             this.attach(box, 1, 1, 1, 1);
         }
 
-        public void update(int processor_core, int application_percentages, int other_percentages)
+        public void update(uint64 application, uint64 other, uint64 all, int processor_core = -1)
         {
             if(processor_core != -1)
             {
@@ -60,14 +69,19 @@ namespace Usage
                 label.use_markup = true;
             }
 
-            if(other_percentages < 0)
-                other_percentages = 0;
+            int application_percentages = 0;
+            if(all != 0)
+                application_percentages = (int) (((double) application / all) * 100);
+
+            int other_percentages = 0;
+            if(all != 0)
+                other_percentages = (int) (((double) other / all) * 100);
 
             graph.update(application_percentages, other_percentages);
-            application_row.update(application_percentages);
-            others_row.update(other_percentages);
+            application_row.update(application);
+            others_row.update(other);
             if(show_avaiable)
-                available_row.update(100-other_percentages-application_percentages);
+                available_row.update(all-other-application);
         }
     }
 }

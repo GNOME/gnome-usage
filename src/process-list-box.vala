@@ -55,7 +55,19 @@ namespace Usage
 
             var settings = (GLib.Application.get_default() as Application).settings;
 
-            Timeout.add(settings.list_update_interval_UI, update);
+            uint update_interval;
+            switch(type)
+            {
+                default:
+                case ProcessListBoxType.PROCESSOR:
+                case ProcessListBoxType.MEMORY:
+                    update_interval = settings.list_update_interval_UI;
+                    break;
+                case ProcessListBoxType.NETWORK:
+                    update_interval = settings.list_update_interval_UI_often;
+                    break;
+            }
+            Timeout.add(update_interval, update);
         }
 
         public bool update()

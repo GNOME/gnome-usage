@@ -2,7 +2,6 @@ using Posix;
 
 namespace Usage
 {
-    [Compact]
     public class Process : Object
     {
         pid_t pid;
@@ -14,7 +13,6 @@ namespace Usage
         uint64 x_cpu_last_used;
         uint last_processor;
         uint64 mem_usage;
-        double mem_usage_percentages;
         uint64 net_download;
         uint64 net_upload;
         uint64 net_all;
@@ -33,7 +31,6 @@ namespace Usage
             this.x_cpu_last_used = 0;
             this.last_processor = 0;
             this.mem_usage = 0;
-            this.mem_usage_percentages = 0;
             this.net_download = 0;
             this.net_upload = 0;
             this.net_all = 0;
@@ -145,16 +142,6 @@ namespace Usage
         public void set_mem_usage(uint64 mem_usage)
         {
             this.mem_usage = mem_usage;
-        }
-
-        public double get_mem_usage_percentages()
-        {
-            return mem_usage_percentages;
-        }
-
-        public void set_mem_usage_percentages(double mem_usage_percentages)
-        {
-            this.mem_usage_percentages = mem_usage_percentages;
         }
 
         public uint64 get_net_download()

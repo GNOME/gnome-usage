@@ -31,10 +31,16 @@ namespace Usage {
             push (out iter, get_monotonic_time ());
 
             SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
-            double ram_usage = monitor.ram_usage;
+            double ram_usage = 0;
+            if(monitor.ram_total != 0)
+                ram_usage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
+
+            double swap_usage = 0;
+            if(monitor.ram_total != 0)
+                swap_usage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
 
             iter.set (column_ram_id, ram_usage, -1);
-            iter.set (column_swap_id, monitor.swap_usage, -1);
+            iter.set (column_swap_id, swap_usage, -1);
 
             if(ram_usage >= 90)
             {

@@ -5,8 +5,9 @@ namespace Usage {
     public class GraphBlockRow : Gtk.Box
     {
         Gtk.Label value_label;
+        GraphBlockType type;
 
-        public GraphBlockRow(string label_text, string css_class)
+        public GraphBlockRow(GraphBlockType type, string label_text, string css_class)
         {
             Object(orientation: Gtk.Orientation.HORIZONTAL);
             var color_rectangle = new ColorRectangle(css_class);
@@ -21,11 +22,23 @@ namespace Usage {
             this.pack_start(color_rectangle, false, false);
             this.pack_start(label, false, true, 5);
             this.pack_end(value_label, false, true, 10);
+            this.type = type;
         }
 
-        public void update(int value)
+        public void update(uint64 value)
         {
-            value_label.set_text(value.to_string() + " %");
+            switch(type)
+            {
+                case GraphBlockType.PROCESSOR:
+                    value_label.set_text(value.to_string() + " %");
+                    break;
+                case GraphBlockType.MEMORY:
+                    value_label.set_text(Utils.format_size_values(value));
+                    break;
+                case GraphBlockType.NETWORK:
+                    value_label.set_text(Utils.format_size_speed_values(value));
+                    break;
+            }
         }
     }
 }

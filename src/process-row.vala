@@ -6,6 +6,7 @@ namespace Usage
     public class ProcessRow : Gtk.ListBoxRow
     {
         Gtk.Label load_label;
+        Gtk.Label title_label;
         Gtk.Revealer revealer;
         SubProcessListBox sub_process_list_box;
         string display_name;
@@ -35,7 +36,7 @@ namespace Usage
 
             Gtk.Image icon;
             load_icon_and_name(out icon, out display_name);
-            var title_label = new Gtk.Label(display_name);
+            title_label = new Gtk.Label(display_name);
             row_box.pack_start(icon, false, false, 0);
             row_box.pack_start(title_label, false, true, 5);
             row_box.pack_end(load_label, false, true, 10);
@@ -160,6 +161,7 @@ namespace Usage
                         foreach(uint64 value in values)
                             values_string += "   " + value.to_string() + " %";
 
+                        title_label.label += " (" + process.get_sub_processes().size().to_string() + ")";
                         load_label.set_label(values_string);
                     }
                     else
@@ -171,6 +173,8 @@ namespace Usage
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
+                    SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
+
                     if(group)
                     {
                         string values_string = "";
@@ -181,12 +185,13 @@ namespace Usage
                         foreach(uint64 value in values)
                             values_string += "   " + Utils.format_size_values(value);
 
+                        title_label.label += " (" + process.get_sub_processes().size().to_string() + ")";
                         load_label.set_label(values_string);
                     }
                     else
                         load_label.set_label(Utils.format_size_values(process.get_mem_usage()));
 
-                    if(process.get_mem_usage_percentages() >= 90)
+                    if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= 90)
                         max_usage = true;
                     else
                         max_usage = false;
@@ -200,13 +205,14 @@ namespace Usage
                             values.insert_sorted((uint64) sub_process.get_net_all(), sort);
 
                          foreach(uint64 value in values)
-                            values_string += "   " + Utils.format_size_values(value);
+                            values_string += "   " + Utils.format_size_speed_values(value);
 
+                        title_label.label += " (" + process.get_sub_processes().size().to_string() + ")";
                         load_label.set_label(values_string);
                     }
                     else
                     {
-                        load_label.set_label(Utils.format_size_values(process.get_net_all()));
+                        load_label.set_label(Utils.format_size_speed_values(process.get_net_all()));
                     }
                     break;
             }

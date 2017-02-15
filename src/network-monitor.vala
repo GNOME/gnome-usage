@@ -5,9 +5,6 @@ namespace Usage
 {
     public class NetworkMonitor
     {
-        private uint64 download_usage_actual;
-        private uint64 upload_usage_actual;
-        private uint64 net_usage_actual;
         private uint64 download_usage;
         private uint64 upload_usage;
         private uint64 net_usage;
@@ -51,30 +48,11 @@ namespace Usage
             handle_error(stat.get_bytes_per_attr(null, InoutEnum.INCOMING, null, out bytes_in_unasigned));
             handle_error(stat.get_unassigned_bytes(out bytes_all_unasigned));
 
-            upload_usage_actual = bytes_out;
-            download_usage_actual = bytes_in;
-            net_usage_actual = bytes_all;
-
-            upload_usage += bytes_out - bytes_out_unasigned;
-            download_usage += bytes_in - bytes_in_unasigned;
-            net_usage += bytes_all - bytes_all_unasigned;
+            upload_usage = bytes_out - bytes_out_unasigned;
+            download_usage = bytes_in - bytes_in_unasigned;
+            net_usage = bytes_all - bytes_all_unasigned;
 
             handle_error(netinfo.clear());
-        }
-
-        public uint64 get_net_download_actual()
-        {
-            return download_usage_actual;
-        }
-
-        public uint64 get_net_upload_actual()
-        {
-            return upload_usage_actual;
-        }
-
-        public uint64 get_net_usage_actual()
-        {
-            return net_usage_actual;
         }
 
         public uint64 get_net_download()
@@ -101,9 +79,9 @@ namespace Usage
             handle_error(stat.get_bytes_per_attr(process.get_pid(), InoutEnum.INCOMING, null, out bytes_in));
             handle_error(stat.get_bytes_per_pid(process.get_pid(), out bytes_all));
 
-            process.set_net_upload(process.get_net_upload() + bytes_out);
-            process.set_net_download(process.get_net_download() + bytes_in);
-            process.set_net_all(process.get_net_all() + bytes_all);
+            process.set_net_upload(bytes_out);
+            process.set_net_download(bytes_in);
+            process.set_net_all(bytes_all);
         }
 
         private void handle_error(ErrorCode e)

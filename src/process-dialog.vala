@@ -37,11 +37,11 @@ namespace Usage
             grid.margin_start = 20;
             grid.margin_end = 20;
 
-            processor_graph_block = new GraphBlock(_("Processor"), this.title);
-            memory_graph_block = new GraphBlock(_("Memory"), this.title);
-            disk_graph_block = new GraphBlock(_("Disk I/O"), this.title);
-            downloads_graph_block = new GraphBlock(_("Downloads"), this.title, false);
-            uploads_graph_block = new GraphBlock(_("Uploads"), this.title, false);
+            processor_graph_block = new GraphBlock(GraphBlockType.PROCESSOR, _("Processor"), this.title);
+            memory_graph_block = new GraphBlock(GraphBlockType.MEMORY, _("Memory"), this.title);
+            disk_graph_block = new GraphBlock(GraphBlockType.DISK, _("Disk I/O"), this.title);
+            downloads_graph_block = new GraphBlock(GraphBlockType.NETWORK, _("Downloads"), this.title, false);
+            uploads_graph_block = new GraphBlock(GraphBlockType.NETWORK, _("Uploads"), this.title, false);
 
             grid.attach(processor_graph_block, 0, 0, 1, 1);
             grid.attach(memory_graph_block, 1, 0, 1, 1);
@@ -64,48 +64,33 @@ namespace Usage
     	private bool update()
     	{
     	    SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
-    	    unowned Process data = monitor.get_process_by_pid(pid);
+            unowned Process data = monitor.get_process_by_pid(pid);
 
             ProcessStatus process_status = ProcessStatus.DEAD;
-    	    int app_cpu_load = 0;
-    	    int app_memory_usage = 0;
-    	    int app_download = 0;
-    	    int app_upload = 0;
+            int app_cpu_load = 0;
+            uint64 app_memory_usage = 0;
+            uint64 app_net_download = 0;
+            uint64 app_net_upload = 0;
 
-    	    int other_download = 0;
-            int other_upload = 0;
-
-    	    if(data != null)
-    	    {
-    	        app_cpu_load = (int) data.get_cpu_load();
-    	        app_memory_usage = (int) data.get_mem_usage_percentages();
-    	        processor_graph_block.update((int) data.get_last_processor(), app_cpu_load, (int) monitor.x_cpu_load[data.get_last_processor()]-app_cpu_load);
-
-                double download_one_percentage = monitor.net_download / 100;
-                if(download_one_percentage != 0)
-                {
-                    app_download = (int) (data.get_net_download() / download_one_percentage);
-                    app_download = int.min(app_download, 100);
-                    other_download = 100 - app_download;
-                }
-
-                double upload_one_percentage = monitor.net_upload / 100;
-                if(upload_one_percentage != 0)
-                {
-                    app_upload = (int) (data.get_net_upload() / upload_one_percentage);
-                    app_upload = int.min(app_upload, 100);
-                    other_upload = 100 - app_upload;
-                }
+            if(data != null)
+            {
+                app_cpu_load = (int) data.get_cpu_load();
+                app_memory_usage = data.get_mem_usage();
+                int processor_other = (int) monitor.x_cpu_load[data.get_last_processor()] - app_cpu_load;
+                processor_other = int.max(processor_other, 0);
+                processor_graph_block.update(app_cpu_load, processor_other, 100, (int) data.get_last_processor());
                 process_status = data.get_status();
-    	    }
-    	    else
-    	        processor_graph_block.update(-1, 0, (int) monitor.cpu_load);
+                app_net_download = data.get_net_download();
+                app_net_upload = data.get_net_upload();
+            }
+            else
+                processor_graph_block.update(0, (int) monitor.cpu_load, 100);
 
-    	    memory_graph_block.update(-1, app_memory_usage, (int) monitor.ram_usage);
-    	    downloads_graph_block.update(-1, app_download, other_download);
-            uploads_graph_block.update(-1, app_upload, other_upload);
+            memory_graph_block.update(app_memory_usage, monitor.ram_usage, monitor.ram_total);
+            downloads_graph_block.update(app_net_download, monitor.net_download - app_net_download, monitor.net_download);
+            uploads_graph_block.update(app_net_upload, monitor.net_upload - app_net_upload, monitor.net_upload);
             headerbar.set_process_state(process_status);
-    	    return true;
+            return true;
     	}
     }
 

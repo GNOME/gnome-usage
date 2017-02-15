@@ -51,15 +51,16 @@ namespace Usage
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
+                    SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
                     load_label.set_label(Utils.format_size_values(process.get_mem_usage()));
 
-                    if(process.get_mem_usage_percentages() >= 90)
+                    if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= 90)
                         max_usage = true;
                     else
                         max_usage = false;
                     break;
                 case ProcessListBoxType.NETWORK:
-                    load_label.set_label(Utils.format_size_values(process.get_net_all()));
+                    load_label.set_label(Utils.format_size_speed_values(process.get_net_all()));
                     break;
             }
         }
