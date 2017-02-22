@@ -8,10 +8,14 @@ src/application.c
 src/cpu-sub-view.c
 src/data-view.c
 src/graph-block.c
+src/graph-stack-switcher.c
 src/memory-sub-view.c
 src/network-sub-view.c
 src/performance-view.c
 src/power-view.c
 src/process-dialog.c
+src/storage-analyzer.c
+src/storage-item.c
 src/storage-view.c
+src/utils.c
 src/window.c
