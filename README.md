@@ -13,7 +13,7 @@ New GNOME Usage!
 - [x] Support other architectures than x86_64 (netinfo precompiled library) 
 - [ ] Fix bug with refreshing ProcessListBox 50% (focus, and click when refresh)
 - [ ] Search in processes 
-- [ ] Storage view - 1%
+- [ ] Storage view - 75%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
 - [ ] Data view - 0%

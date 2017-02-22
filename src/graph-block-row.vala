@@ -10,7 +10,7 @@ namespace Usage {
         public GraphBlockRow(GraphBlockType type, string label_text, string css_class)
         {
             Object(orientation: Gtk.Orientation.HORIZONTAL);
-            var color_rectangle = new ColorRectangle(css_class);
+            var color_rectangle = new ColorRectangle.new_from_css(css_class);
             var label = new Gtk.Label(label_text);
             label.margin = 5;
             label.ellipsize = Pango.EllipsizeMode.END;

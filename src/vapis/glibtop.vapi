@@ -134,7 +134,7 @@ namespace GTop {
         uint32 number;
     }
 
-    [CCode(array_length = false, array_null_terminated = false)]
+    [CCode(array_null_terminated = "true")]
     public string[] get_netlist(out Netlist netlist);
 
     [CCode(cname = "glibtop_proc_uid", cheader_filename = "glibtop/procuid.h")]
@@ -168,4 +168,38 @@ namespace GTop {
     }
     [CCode(array_null_terminated = "true")]
     public string[] get_proc_argv(out ProcArgs proc_args, Posix.pid_t pid);
+
+    [CCode(cname = "glibtop_fsusage", cheader_filename = "glibtop/fsusage.h")]
+    public struct FsUsage {
+        uint64 flags;
+        uint64 blocks;
+        uint64 bfree;
+        uint64 bavail;
+        uint64 files;
+        uint64 ffree;
+        uint32 block_size;
+        uint64 read;
+        uint64 write;
+    }
+    public void get_fsusage(out FsUsage fs_usage, string mount_dir);
+
+    [CCode(cname = "glibtop_mountentry", cheader_filename = "glibtop/mountlist.h", destroy_function="g_free")]
+    public struct MountEntry
+    {
+    	uint64 dev;
+    	char devname[80];
+    	char mountdir[80];
+    	char type[80];
+    }
+
+    [CCode(cname = "glibtop_mountlist", cheader_filename = "glibtop/mountlist.h")]
+    public struct MountList
+    {
+    	uint64 flags;
+    	uint64 number;
+    	uint64 total;
+    	uint64 size;
+    }
+    [CCode(array_length = false)]
+    public MountEntry[] get_mountlist(out MountList mount_list, bool all_fs);
 }

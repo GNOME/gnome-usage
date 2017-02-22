@@ -58,8 +58,13 @@ c_library: rg egg gmodule-2.0 m rt gtop-2.0 pthread dl netinfo
 *vala_source: process-row.vala
 *vala_source: process.vala
 *vala_source: settings.vala
+*vala_source: storage-analyzer.vala
 *vala_source: storage-graph.vala
+*vala_source: storage-item.vala
+*vala_source: storage-list-box.vala
+*vala_source: storage-row.vala
 *vala_source: storage-view.vala
+*vala_source: storage-worker.vala
 *vala_source: sub-process-list-box.vala
 *vala_source: sub-process-sub-row.vala
 *vala_source: system-monitor.vala
@@ -108,8 +113,13 @@ h_folder: /usr/include/libgtop-2.0
 *translate: vala src/process-row.vala
 *translate: vala src/process.vala
 *translate: vala src/settings.vala
+*translate: vala src/storage-analyzer.vala
 *translate: vala src/storage-graph.vala
+*translate: vala src/storage-item.vala
+*translate: vala src/storage-list-box.vala
+*translate: vala src/storage-row.vala
 *translate: vala src/storage-view.vala
+*translate: vala src/storage-worker.vala
 *translate: vala src/sub-process-list-box.vala
 *translate: vala src/sub-process-sub-row.vala
 *translate: vala src/system-monitor.vala

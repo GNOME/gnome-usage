@@ -10,11 +10,26 @@ namespace Usage {
             set_css_name("ColorRectangle");
         }
 
-        public ColorRectangle(string css_class)
+        public Gdk.RGBA get_color()
+        {
+            return color;
+        }
+
+        public ColorRectangle.new_from_rgba(Gdk.RGBA color)
+        {
+            this.color = color;
+            init();
+        }
+
+        public ColorRectangle.new_from_css(string css_class)
         {
             get_style_context().add_class(css_class);
             color = get_style_context().get_color(get_style_context().get_state());
+            init();
+        }
 
+        private void init()
+        {
             this.height_request = 17;
             this.width_request = 17;
             this.valign = Gtk.Align.CENTER;

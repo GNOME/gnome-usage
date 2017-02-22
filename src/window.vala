@@ -2,8 +2,8 @@ namespace Usage
 {
     public class Window : Gtk.ApplicationWindow
     {
-        private Gtk.Stack stack;
         private Usage.HeaderBar header_bar;
+        private View[] views;
 
 		public Window(Gtk.Application application)
         {
@@ -20,13 +20,11 @@ namespace Usage
                 load_css();
             });
 
-			stack = new Gtk.Stack();
+			var stack = new Gtk.Stack();
 			header_bar = new Usage.HeaderBar(stack);
 			set_titlebar(header_bar);
 
-			header_bar.show_close_button = true;
-
-            var views = new View[]
+            views = new View[]
             {
                 new PerformanceView(),
                 new DataView(),
@@ -37,7 +35,37 @@ namespace Usage
             foreach(var view in views)
                 stack.add_titled(view, view.name, view.title);
 
+            stack.notify.connect(() => {
+                if(stack.visible_child_name == views[0].name)
+                {
+                    header_bar.set_mode(HeaderBarMode.PERFORMANCE);
+                }
+                else if(stack.visible_child_name == views[1].name)
+                {
+                    header_bar.set_mode(HeaderBarMode.DATA);
+                }
+                else if(stack.visible_child_name == views[2].name)
+                {
+                    header_bar.set_mode(HeaderBarMode.STORAGE);
+                    (GLib.Application.get_default() as Application).get_storage_analyzer().create_cache.begin();
+                }
+                else if(stack.visible_child_name == views[3].name)
+                {
+                    header_bar.set_mode(HeaderBarMode.POWER);
+                }
+            });
+
             this.add(stack);
+        }
+
+        public Usage.HeaderBar get_header_bar()
+        {
+            return header_bar;
+        }
+
+        public View[] get_views()
+        {
+            return views;
         }
 
         private void load_css()

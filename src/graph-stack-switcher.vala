@@ -22,10 +22,10 @@ namespace Usage
             this.sub_views = sub_views;
 
             buttons = {
-                new GraphSwitcherButton.processor("Processor"),
-                new GraphSwitcherButton.memory("Memory"),
-                new GraphSwitcherButton.disk("Disk I/O"),
-                new GraphSwitcherButton.network("Network"),
+                new GraphSwitcherButton.processor(_("Processor")),
+                new GraphSwitcherButton.memory(_("Memory")),
+                new GraphSwitcherButton.disk(_("Disk I/O")),
+                new GraphSwitcherButton.network(_("Network")),
             };
 
     	    foreach(Gtk.ToggleButton button in buttons)
