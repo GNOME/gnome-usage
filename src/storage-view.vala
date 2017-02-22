@@ -10,6 +10,7 @@ namespace Usage
             title = _("Storage");
 
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            box.get_style_context().add_class("storage");
             storage_list_box = new StorageListBox();
             var scrolled_window = new Gtk.ScrolledWindow(null, null);
             scrolled_window.add(box);

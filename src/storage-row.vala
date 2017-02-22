@@ -20,42 +20,38 @@ namespace Usage
             item_path = storage_item.get_path();
             item_name = storage_item.get_name();
             type = storage_item.get_item_type();
-
-            string? color_css_class = null;
-            bool is_header = false;
-
-            ColorRectangle color_rectangle;
+            var title_label = new Gtk.Label(storage_item.get_name());
+            title_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
 
             switch(storage_item.get_item_type())
             {
                 case StorageItemType.SYSTEM:
-                    color_css_class = "system";
-                    color_rectangle = new ColorRectangle.new_from_css(color_css_class);
+                    var color_rectangle = new ColorRectangle.new_from_css("system");
                     color = color_rectangle.get_color();
                     box.pack_start(color_rectangle, false, false, 5);
                     break;
                 case StorageItemType.TRASH:
-                    color_css_class = "trash";
-                    color_rectangle = new ColorRectangle.new_from_css(color_css_class);
+                    var color_rectangle = new ColorRectangle.new_from_css("trash");
                     color = color_rectangle.get_color();
                     box.pack_start(color_rectangle, false, false, 5);
                     break;
                 case StorageItemType.USER:
-                    color_css_class = "user";
-                    color_rectangle = new ColorRectangle.new_from_css(color_css_class);
+                    var color_rectangle = new ColorRectangle.new_from_css("user");
                     color = color_rectangle.get_color();
                     box.pack_start(color_rectangle, false, false, 5);
                     break;
                 case StorageItemType.AVAILABLE:
-                    color_css_class = "available-storage";
-                    color_rectangle = new ColorRectangle.new_from_css(color_css_class);
+                    var color_rectangle = new ColorRectangle.new_from_css("available-storage");
                     color = color_rectangle.get_color();
                     box.pack_start(color_rectangle, false, false, 5);
                     break;
                 case StorageItemType.STORAGE:
-                    is_header = true;
-                    box.margin_top = 9;
-                    box.margin_bottom = 9;
+                    box.margin_top = 10;
+                    box.margin_bottom = 10;
+                    title_label.set_markup ("<b>" + storage_item.get_name() + "</b>");
+                    size_label.set_markup ("<b>" + Utils.format_size_values(storage_item.get_size()) + "</b>");
+                    activatable = false;
+                    selectable = false;
                     break;
                 case StorageItemType.DOCUMENTS:
                 case StorageItemType.DOWNLOADS:
@@ -66,7 +62,7 @@ namespace Usage
                     get_style_context().add_class("folders");
                     color = get_style_context().get_color(get_style_context().get_state());
                     get_style_context().remove_class("folders");
-                    color_rectangle = new ColorRectangle.new_from_rgba(storage_item.get_color());
+                    var color_rectangle = new ColorRectangle.new_from_rgba(storage_item.get_color());
                     box.pack_start(color_rectangle, false, false, 5);
                     break;
                 case StorageItemType.DIRECTORY:
@@ -97,8 +93,6 @@ namespace Usage
                     break;
             }
 
-            var title_label = new Gtk.Label(storage_item.get_name());
-            title_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
             box.pack_start(title_label, false, true, 5);
             box.pack_end(size_label, false, true, 10);
             add(box);
