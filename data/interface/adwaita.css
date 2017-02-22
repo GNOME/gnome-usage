@@ -133,7 +133,7 @@ ColorRectangle.user {
     color: #ad7fa8;
 }
 
-ColorRectangle.available_storage {
+ColorRectangle.available-storage {
     color: #d3d7cf;
 }
 
@@ -143,4 +143,9 @@ row.folders {
 
 list.folders {
     color: #457fd3;
+}
+
+box.storage
+{
+    background-color: #ffffff
 }
