@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-15 09:49+0000\n"
-"PO-Revision-Date: 2017-02-18 17:11+0200\n"
+"POT-Creation-Date: 2017-02-22 18:16+0000\n"
+"PO-Revision-Date: 2017-02-22 20:53+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -19,14 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:67
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
 #: ../src/window.vala:15
 msgid "Usage"
 msgstr "Käyttötiedot"
 
-#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:68
+#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:75
 msgid "View current application and monitor system state"
 msgstr ""
+"Tutki avoinna olevan sovelluksen resurssikäyttöä ja tarkkaile järjestelmän "
+"tilaa"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: ../data/org.gnome.Usage.desktop:8
@@ -44,77 +46,28 @@ msgstr ""
 
 #: ../data/org.gnome.Usage.gschema.xml.h:1
 msgid "A list of processes which we don’t want killed"
-msgstr ""
+msgstr "Luettelo prosesseist, joita ei haluta tapettavan"
 
 #: ../data/org.gnome.Usage.gschema.xml.h:2
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
+"Tätä luettelo käytetään lähteenä sille, mitä prosesseja käyttäjä ei voi "
+"pysäyttää."
 
-#: ../external/egg/egg-date-time.c:55
-msgid "Just now"
-msgstr "Juuri nyt"
-
-#: ../external/egg/egg-date-time.c:57
-msgid "An hour ago"
-msgstr "Tunti sitten"
-
-#: ../external/egg/egg-date-time.c:59
-msgid "Yesterday"
-msgstr "Eilen"
-
-#: ../external/egg/egg-date-time.c:65
-msgid "About a year ago"
-msgstr "Noin vuosi sitten"
-
-#: ../external/egg/egg-date-time.c:69
-#, c-format
-msgid "About %u year ago"
-msgid_plural "About %u years ago"
-msgstr[0] "Noin %u vuosi sitten"
-msgstr[1] "Noin %u vuotta sitten"
-
-#: ../external/egg/egg-file-chooser-entry.c:100
-#: ../external/egg/egg-file-chooser-entry.c:489
-msgid "Open"
-msgstr "Avaa"
-
-#: ../external/egg/egg-file-chooser-entry.c:104
-msgid "Select"
-msgstr "Valitse"
-
-#: ../external/egg/egg-file-chooser-entry.c:108
-msgid "Create"
-msgstr "Luo"
-
-#: ../external/egg/egg-file-chooser-entry.c:112
-msgid "Save"
-msgstr "Tallenna"
-
-#: ../external/egg/egg-file-chooser-entry.c:455
-msgid "Browse…"
-msgstr "Selaa…"
-
-#: ../external/egg/egg-file-chooser-entry.c:488
-msgid "Cancel"
-msgstr "Peru"
-
-#: ../external/egg/egg-search-bar.c:378
-msgid "Search"
-msgstr "Etsi"
-
-#: ../src/application.vala:41
+#: ../src/application.vala:48
 msgid "About"
 msgstr "Tietoja"
 
-#: ../src/application.vala:44
+#: ../src/application.vala:51
 msgid "Quit"
 msgstr "Lopeta"
 
-#: ../src/application.vala:71
+#: ../src/application.vala:78
 msgid "Websites"
 msgstr "Verkkosivustot"
 
-#: ../src/cpu-sub-view.vala:9 ../src/process-dialog.vala:40
+#: ../src/cpu-sub-view.vala:9 ../src/graph-stack-switcher.vala:25
+#: ../src/process-dialog.vala:40
 msgid "Processor"
 msgstr "Suoritin"
 
@@ -130,21 +83,26 @@ msgstr "Tiedot"
 msgid "Others"
 msgstr "Muut"
 
-#: ../src/graph-block.vala:47
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
 msgid "Available"
 msgstr "Käytettävissä"
 
-#: ../src/memory-sub-view.vala:9 ../src/process-dialog.vala:41
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:9
+#: ../src/process-dialog.vala:41
 msgid "Memory"
 msgstr "Muisti"
+
+#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "Levyn I/O"
+
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:9
+msgid "Network"
+msgstr "Verkko"
 
 #: ../src/memory-sub-view.vala:35
 msgid "No applications using memory."
 msgstr "Mikään sovellus ei käytä muistia."
-
-#: ../src/network-sub-view.vala:9
-msgid "Network"
-msgstr "Verkko"
 
 #: ../src/network-sub-view.vala:34
 msgid "No applications using network."
@@ -157,10 +115,6 @@ msgstr "Suorituskyky"
 #: ../src/power-view.vala:8
 msgid "Power"
 msgstr "Virrankäyttö"
-
-#: ../src/process-dialog.vala:42
-msgid "Disk I/O"
-msgstr "Levyn I/O"
 
 #: ../src/process-dialog.vala:43
 msgid "Downloads"
@@ -186,6 +140,66 @@ msgstr "Nukkuu"
 msgid "Dead"
 msgstr "Kuollut"
 
-#: ../src/storage-view.vala:8
+#: ../src/storage-analyzer.vala:58 ../src/storage-analyzer.vala:69
+#| msgid "Storage"
+msgid "Storage 1"
+msgstr "Tallennustila 1"
+
+#: ../src/storage-analyzer.vala:62
+#| msgid "Storage"
+msgid "Storage 2"
+msgstr "Tallennustila 2"
+
+#: ../src/storage-analyzer.vala:248 ../src/storage-item.vala:65
+msgid "Trash"
+msgstr "Roskakori"
+
+#: ../src/storage-analyzer.vala:282
+msgid "Operation System"
+msgstr ""
+
+#: ../src/storage-analyzer.vala:291
+msgid "Home"
+msgstr "Koti"
+
+#: ../src/storage-view.vala:10
 msgid "Storage"
 msgstr "Tallennustila"
+
+#~ msgid "Just now"
+#~ msgstr "Juuri nyt"
+
+#~ msgid "An hour ago"
+#~ msgstr "Tunti sitten"
+
+#~ msgid "Yesterday"
+#~ msgstr "Eilen"
+
+#~ msgid "About a year ago"
+#~ msgstr "Noin vuosi sitten"
+
+#~ msgid "About %u year ago"
+#~ msgid_plural "About %u years ago"
+#~ msgstr[0] "Noin %u vuosi sitten"
+#~ msgstr[1] "Noin %u vuotta sitten"
+
+#~ msgid "Open"
+#~ msgstr "Avaa"
+
+#~ msgid "Select"
+#~ msgstr "Valitse"
+
+#~ msgid "Create"
+#~ msgstr "Luo"
+
+#~ msgid "Save"
+#~ msgstr "Tallenna"
+
+#~ msgid "Browse…"
+#~ msgstr "Selaa…"
+
+#~ msgid "Cancel"
+#~ msgstr "Peru"
+
+#~ msgid "Search"
+#~ msgstr "Etsi"
