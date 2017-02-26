@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-12 14:17+0100\n"
-"PO-Revision-Date: 2017-02-12 14:18+0100\n"
+"POT-Creation-Date: 2017-02-26 18:03+0100\n"
+"PO-Revision-Date: 2017-02-26 18:04+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:67
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
 #: ../src/window.vala:15
 msgid "Usage"
 msgstr "Monitor"
 
-#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:68
+#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:75
 msgid "View current application and monitor system state"
 msgstr "Wyświetlanie uruchomionych programów i monitorowanie stanu systemu"
 
@@ -52,92 +52,20 @@ msgstr ""
 "Ta lista jest używana do filtrowania, których procesów użytkownik nie może "
 "zatrzymywać."
 
-#: ../external/egg/egg-animation.c:726
-#, c-format
-msgid "Cannot locate property %s in class %s"
-msgstr "Nie można odnaleźć właściwości %s w klasie %s"
-
-#: ../external/egg/egg-animation.c:1073 ../external/egg/egg-animation.c:1079
-#, c-format
-msgid "Failed to find property %s in %s"
-msgstr "Odnalezienie właściwości %s w %s się nie powiodło"
-
-#: ../external/egg/egg-animation.c:1087
-#, c-format
-msgid "Failed to find property %s in %s or parent %s"
-msgstr "Odnalezienie właściwości %s w %s lub nadrzędnego %s się nie powiodło"
-
-#: ../external/egg/egg-animation.c:1097
-#, c-format
-msgid "Failed to retrieve va_list value: %s"
-msgstr "Pobranie wartości „va_list” się nie powiodło: %s"
-
-#: ../external/egg/egg-date-time.c:55
-msgid "Just now"
-msgstr "Przed chwilą"
-
-#: ../external/egg/egg-date-time.c:57
-msgid "An hour ago"
-msgstr "Godzina temu"
-
-#: ../external/egg/egg-date-time.c:59
-msgid "Yesterday"
-msgstr "Wczoraj"
-
-#: ../external/egg/egg-date-time.c:65
-msgid "About a year ago"
-msgstr "Około rok temu"
-
-#: ../external/egg/egg-date-time.c:69
-#, c-format
-msgid "About %u year ago"
-msgid_plural "About %u years ago"
-msgstr[0] "Około %u rok temu"
-msgstr[1] "Około %u lata temu"
-msgstr[2] "Około %u lat temu"
-
-#: ../external/egg/egg-file-chooser-entry.c:100
-#: ../external/egg/egg-file-chooser-entry.c:489
-msgid "Open"
-msgstr "Otwórz"
-
-#: ../external/egg/egg-file-chooser-entry.c:104
-msgid "Select"
-msgstr "Wybierz"
-
-#: ../external/egg/egg-file-chooser-entry.c:108
-msgid "Create"
-msgstr "Utwórz"
-
-#: ../external/egg/egg-file-chooser-entry.c:112
-msgid "Save"
-msgstr "Zapisz"
-
-#: ../external/egg/egg-file-chooser-entry.c:455
-msgid "Browse…"
-msgstr "Przeglądaj…"
-
-#: ../external/egg/egg-file-chooser-entry.c:488
-msgid "Cancel"
-msgstr "Anuluj"
-
-#: ../external/egg/egg-search-bar.c:378
-msgid "Search"
-msgstr "Wyszukaj"
-
-#: ../src/application.vala:41
+#: ../src/application.vala:48
 msgid "About"
 msgstr "O programie"
 
-#: ../src/application.vala:44
+#: ../src/application.vala:51
 msgid "Quit"
 msgstr "Zakończ"
 
-#: ../src/application.vala:71
+#: ../src/application.vala:78
 msgid "Websites"
 msgstr "Strony WWW"
 
-#: ../src/cpu-sub-view.vala:9 ../src/process-dialog.vala:40
+#: ../src/cpu-sub-view.vala:9 ../src/graph-stack-switcher.vala:25
+#: ../src/process-dialog.vala:40
 msgid "Processor"
 msgstr "Procesor"
 
@@ -149,25 +77,30 @@ msgstr "Żadne programy nie używają procesora."
 msgid "Data"
 msgstr "Dane"
 
-#: ../src/graph-block.vala:36
+#: ../src/graph-block.vala:45
 msgid "Others"
 msgstr "Pozostałe"
 
-#: ../src/graph-block.vala:38
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
 msgid "Available"
 msgstr "Dostępne"
 
-#: ../src/memory-sub-view.vala:9 ../src/process-dialog.vala:41
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:9
+#: ../src/process-dialog.vala:41
 msgid "Memory"
 msgstr "Pamięć"
+
+#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "Wejście/wyjście dysku"
+
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:9
+msgid "Network"
+msgstr "Sieć"
 
 #: ../src/memory-sub-view.vala:35
 msgid "No applications using memory."
 msgstr "Żadne programy nie używają pamięci."
-
-#: ../src/network-sub-view.vala:9
-msgid "Network"
-msgstr "Sieć"
 
 #: ../src/network-sub-view.vala:34
 msgid "No applications using network."
@@ -181,10 +114,6 @@ msgstr "Wydajność"
 msgid "Power"
 msgstr "Zasilanie"
 
-#: ../src/process-dialog.vala:42
-msgid "Disk I/O"
-msgstr "Wejście/wyjście dysku"
-
 #: ../src/process-dialog.vala:43
 msgid "Downloads"
 msgstr "Pobieranie"
@@ -197,18 +126,38 @@ msgstr "Wysyłanie"
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: ../src/process-dialog.vala:162
+#: ../src/process-dialog.vala:147
 msgid "Running"
 msgstr "Uruchomione"
 
-#: ../src/process-dialog.vala:165
+#: ../src/process-dialog.vala:150
 msgid "Sleeping"
 msgstr "Uśpione"
 
-#: ../src/process-dialog.vala:168
+#: ../src/process-dialog.vala:153
 msgid "Dead"
 msgstr "Martwe"
 
-#: ../src/storage-view.vala:8
+#: ../src/storage-analyzer.vala:58 ../src/storage-analyzer.vala:69
+msgid "Storage 1"
+msgstr "1. urządzenie do przechowywania danych"
+
+#: ../src/storage-analyzer.vala:62
+msgid "Storage 2"
+msgstr "2. urządzenie do przechowywania danych"
+
+#: ../src/storage-analyzer.vala:248 ../src/storage-item.vala:65
+msgid "Trash"
+msgstr "Kosz"
+
+#: ../src/storage-analyzer.vala:282
+msgid "Operation System"
+msgstr "System operacyjny"
+
+#: ../src/storage-analyzer.vala:291
+msgid "Home"
+msgstr "Katalog domowy"
+
+#: ../src/storage-view.vala:10
 msgid "Storage"
 msgstr "Urządzenia do przechowywania danych"
