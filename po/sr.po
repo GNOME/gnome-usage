@@ -94,6 +94,7 @@ msgid_plural "About %u years ago"
 msgstr[0] "Пре %u годину"
 msgstr[1] "Пре %u године"
 msgstr[2] "Пре %u година"
+msgstr[3] "Пре %u годину"
 
 #: ../external/egg/egg-file-chooser-entry.c:100
 #: ../external/egg/egg-file-chooser-entry.c:489
