@@ -2,29 +2,30 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2017.
+# Enrico Nicoletto <liverig@gmail.com>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-26 18:16+0000\n"
-"PO-Revision-Date: 2017-01-29 17:03-0200\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2017-02-22 18:16+0000\n"
+"PO-Revision-Date: 2017-02-28 23:03-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 1.0.0-beta1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:67
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
 #: ../src/window.vala:15
 msgid "Usage"
 msgstr "Uso"
 
-#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:68
+#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:75
 msgid "View current application and monitor system state"
 msgstr "Veja o estado atual do aplicativo e monitore o estado do sistema"
 
@@ -39,137 +40,70 @@ msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
 msgstr ""
-"Monitor;Sistema;Processo;CPU;Memória;Rede;História;Uso;Desempenho;Performance"
-";Tarefa;Gerenciar;"
+"Monitor;Sistema;Processo;CPU;Memória;Rede;História;Uso;Desempenho;"
+"Performance;Tarefa;Gerenciar;"
 
 #: ../data/org.gnome.Usage.gschema.xml.h:1
-msgid "A list of processes, which we don’t want kill"
+msgid "A list of processes which we don’t want killed"
 msgstr "Uma lista de processos que não desejamos matar"
 
 #: ../data/org.gnome.Usage.gschema.xml.h:2
-msgid "This list is used for filtering, which processes user can’t stop."
+msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
-"Essa lista é usada para filtrar aqueles processos que o usuário não pode "
-"parar."
+"Essa lista é usada para filtrar quais processos o usuário não pode parar."
 
-#: ../external/egg/egg-animation.c:726
-#, c-format
-msgid "Cannot locate property %s in class %s"
-msgstr "Não foi possível localizar a propriedade %s na classe %s"
-
-#: ../external/egg/egg-animation.c:1073 ../external/egg/egg-animation.c:1079
-#, c-format
-msgid "Failed to find property %s in %s"
-msgstr "Falha ao localizar a propriedade %s em %s"
-
-#: ../external/egg/egg-animation.c:1087
-#, c-format
-msgid "Failed to find property %s in %s or parent %s"
-msgstr "Falha ao localizar a propriedade %s em %s ou pai %s"
-
-#: ../external/egg/egg-animation.c:1097
-#, c-format
-msgid "Failed to retrieve va_list value: %s"
-msgstr "Falha ao obter o valor do va_list: %s"
-
-#: ../external/egg/egg-date-time.c:55
-msgid "Just now"
-msgstr "Agora mesmo"
-
-#: ../external/egg/egg-date-time.c:57
-msgid "An hour ago"
-msgstr "Uma hora atrás"
-
-#: ../external/egg/egg-date-time.c:59
-msgid "Yesterday"
-msgstr "Ontem"
-
-#: ../external/egg/egg-date-time.c:65
-msgid "About a year ago"
-msgstr "Cerca de ano atrás"
-
-#: ../external/egg/egg-date-time.c:69
-#, c-format
-msgid "About %u year ago"
-msgid_plural "About %u years ago"
-msgstr[0] "Cerca de %u ano atrás"
-msgstr[1] "Cerca de %u anos atrás"
-
-#: ../external/egg/egg-file-chooser-entry.c:100
-#: ../external/egg/egg-file-chooser-entry.c:489
-msgid "Open"
-msgstr "Abrir"
-
-#: ../external/egg/egg-file-chooser-entry.c:104
-msgid "Select"
-msgstr "Selecionar"
-
-#: ../external/egg/egg-file-chooser-entry.c:108
-msgid "Create"
-msgstr "Criar"
-
-#: ../external/egg/egg-file-chooser-entry.c:112
-msgid "Save"
-msgstr "Salvar"
-
-#: ../external/egg/egg-file-chooser-entry.c:455
-msgid "Browse…"
-msgstr "Navegar…"
-
-#: ../external/egg/egg-file-chooser-entry.c:488
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: ../external/egg/egg-search-bar.c:378
-msgid "Search"
-msgstr "Pesquisar"
-
-#: ../src/application.vala:41
+#: ../src/application.vala:48
 msgid "About"
 msgstr "Sobre"
 
-#: ../src/application.vala:44
+#: ../src/application.vala:51
 msgid "Quit"
 msgstr "Sair"
 
-#: ../src/application.vala:71
+#: ../src/application.vala:78
 msgid "Websites"
 msgstr "Sites"
 
-#: ../src/cpu-sub-view.vala:9 ../src/process-dialog.vala:40
+#: ../src/cpu-sub-view.vala:9 ../src/graph-stack-switcher.vala:25
+#: ../src/process-dialog.vala:40
 msgid "Processor"
 msgstr "Processador"
 
 #: ../src/cpu-sub-view.vala:35
-msgid "No application using processor."
+msgid "No applications using processor."
 msgstr "Nenhum aplicativo usando o processador."
 
 #: ../src/data-view.vala:8
 msgid "Data"
 msgstr "Dados"
 
-#: ../src/graph-block.vala:36
+#: ../src/graph-block.vala:45
 msgid "Others"
 msgstr "Outros"
 
-#: ../src/graph-block.vala:38
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
 msgid "Available"
 msgstr "Disponível"
 
-#: ../src/memory-sub-view.vala:9 ../src/process-dialog.vala:41
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:9
+#: ../src/process-dialog.vala:41
 msgid "Memory"
 msgstr "Memória"
 
-#: ../src/memory-sub-view.vala:35
-msgid "No application using memory."
-msgstr "Nenhum aplicativo usando a memória."
+#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "E/S de Disco"
 
-#: ../src/network-sub-view.vala:9
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:9
 msgid "Network"
 msgstr "Rede"
 
+#: ../src/memory-sub-view.vala:35
+msgid "No applications using memory."
+msgstr "Nenhum aplicativo usando a memória."
+
 #: ../src/network-sub-view.vala:34
-msgid "No application using network."
+msgid "No applications using network."
 msgstr "Nenhum aplicativo usando a rede."
 
 #: ../src/performance-view.vala:10
@@ -179,10 +113,6 @@ msgstr "Desempenho"
 #: ../src/power-view.vala:8
 msgid "Power"
 msgstr "Energia"
-
-#: ../src/process-dialog.vala:42
-msgid "Disk I/O"
-msgstr "E/S de Disco"
 
 #: ../src/process-dialog.vala:43
 msgid "Downloads"
@@ -196,18 +126,88 @@ msgstr "Uploads"
 msgid "Stop"
 msgstr "Parar"
 
-#: ../src/process-dialog.vala:162
+#: ../src/process-dialog.vala:147
 msgid "Running"
 msgstr "Em execução"
 
-#: ../src/process-dialog.vala:165
+#: ../src/process-dialog.vala:150
 msgid "Sleeping"
 msgstr "Suspenso"
 
-#: ../src/process-dialog.vala:168
+#: ../src/process-dialog.vala:153
 msgid "Dead"
 msgstr "Morto"
 
-#: ../src/storage-view.vala:8
+#: ../src/storage-analyzer.vala:58 ../src/storage-analyzer.vala:69
+msgid "Storage 1"
+msgstr "Armazenamento 1"
+
+#: ../src/storage-analyzer.vala:62
+msgid "Storage 2"
+msgstr "Armazenamento 2"
+
+#: ../src/storage-analyzer.vala:248 ../src/storage-item.vala:65
+msgid "Trash"
+msgstr "Lixeira"
+
+#: ../src/storage-analyzer.vala:282
+msgid "Operation System"
+msgstr "Sistema operacional"
+
+#: ../src/storage-analyzer.vala:291
+msgid "Home"
+msgstr "Home"
+
+#: ../src/storage-view.vala:10
 msgid "Storage"
 msgstr "Armazenamento"
+
+#~ msgid "Cannot locate property %s in class %s"
+#~ msgstr "Não foi possível localizar a propriedade %s na classe %s"
+
+#~ msgid "Failed to find property %s in %s"
+#~ msgstr "Falha ao localizar a propriedade %s em %s"
+
+#~ msgid "Failed to find property %s in %s or parent %s"
+#~ msgstr "Falha ao localizar a propriedade %s em %s ou pai %s"
+
+#~ msgid "Failed to retrieve va_list value: %s"
+#~ msgstr "Falha ao obter o valor do va_list: %s"
+
+#~ msgid "Just now"
+#~ msgstr "Agora mesmo"
+
+#~ msgid "An hour ago"
+#~ msgstr "Uma hora atrás"
+
+#~ msgid "Yesterday"
+#~ msgstr "Ontem"
+
+#~ msgid "About a year ago"
+#~ msgstr "Cerca de ano atrás"
+
+#~ msgid "About %u year ago"
+#~ msgid_plural "About %u years ago"
+#~ msgstr[0] "Cerca de %u ano atrás"
+#~ msgstr[1] "Cerca de %u anos atrás"
+
+#~ msgid "Open"
+#~ msgstr "Abrir"
+
+#~ msgid "Select"
+#~ msgstr "Selecionar"
+
+#~ msgid "Create"
+#~ msgstr "Criar"
+
+#~ msgid "Save"
+#~ msgstr "Salvar"
+
+#~ msgid "Browse…"
+#~ msgstr "Navegar…"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+#~ msgid "Search"
+#~ msgstr "Pesquisar"
