@@ -4,6 +4,7 @@ namespace Usage
     {
         public signal void loading();
         public signal void loaded();
+        public signal void empty();
 
         private List<string?> path_history;
         private List<string?> name_history;
@@ -29,7 +30,21 @@ namespace Usage
             actual_path = null;
             actual_name = null;
             storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+
+            get_style_context().add_class("folders");
+            color = get_style_context().get_color(get_style_context().get_state());
+            get_style_context().remove_class("folders");
             reload();
+        }
+
+        public ListStore get_model()
+        {
+            return model;
+        }
+
+        public bool get_root()
+        {
+            return root;
         }
 
         public void on_back_button_clicked()
@@ -44,28 +59,43 @@ namespace Usage
             if(root)
             {
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_back_button(false);
+                (GLib.Application.get_default() as Application).get_window().get_header_bar().set_title_text("");
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_stack_switcher();
             }
             else
-                (GLib.Application.get_default() as Application).get_window().get_header_bar().show_title_text(actual_name);
+            {
+                (GLib.Application.get_default() as Application).get_window().get_header_bar().set_title_text(actual_name);
+                (GLib.Application.get_default() as Application).get_window().get_header_bar().show_title();
+            }
         }
 
         public void reload()
         {
-            get_style_context().add_class("folders");
-            color = get_style_context().get_color(get_style_context().get_state());
-            get_style_context().remove_class("folders");
             this.hide();
             loading();
-            root = true;
             storage_analyzer.cache_complete.connect(() => {
                 storage_analyzer.prepare_items.begin(actual_path, color, (obj, res) => {
+                    var header_bar = (GLib.Application.get_default() as Application).get_window().get_header_bar();
+                    if(root == false)
+                    {
+                        header_bar.show_storage_back_button(true);
+                        if(header_bar.get_mode() == HeaderBarMode.STORAGE)
+                        {
+                            header_bar.set_title_text(actual_name);
+                            header_bar.show_title();
+                        }
+                    }
+
+                    header_bar.show_storage_rescan_button(true);
                     loaded();
                     this.show();
                     model.remove_all();
 
                     foreach(unowned StorageItem item in storage_analyzer.prepare_items.end(res))
                         model.append(item);
+
+                    if(model.get_n_items() == 0)
+                        empty();
                 });
             });
         }
@@ -91,6 +121,9 @@ namespace Usage
 
                 foreach(unowned StorageItem item in storage_analyzer.prepare_items.end(res))
                     model.append(item);
+
+                if(model.get_n_items() == 0)
+                    empty();
             });
         }
 
@@ -108,7 +141,8 @@ namespace Usage
                 actual_name = storage_row.get_item_name();
 
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_back_button(true);
-                (GLib.Application.get_default() as Application).get_window().get_header_bar().show_title_text(actual_name);
+                (GLib.Application.get_default() as Application).get_window().get_header_bar().set_title_text(actual_name);
+                (GLib.Application.get_default() as Application).get_window().get_header_bar().show_title();
 
                 if(root)
                     color = storage_row.get_color();

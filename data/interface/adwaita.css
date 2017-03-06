@@ -117,35 +117,30 @@ PieChart.available, ColorRectangle.available {
     color: #fafafa;
 }
 
-ColorRectangle.system {
+ColorRectangle.system, StorageGraph.system {
     color: #2e3436;
 }
 
-ColorRectangle.applications {
+ColorRectangle.applications, StorageGraph.applications {
     color: #4e9a06;
 }
 
-ColorRectangle.trash {
+ColorRectangle.trash, StorageGraph.trash {
     color: #ef2929;
 }
 
-ColorRectangle.user {
+ColorRectangle.user, StorageGraph.user {
     color: #ad7fa8;
 }
 
-ColorRectangle.available-storage {
+ColorRectangle.available-storage, StorageGraph.available-storage {
     color: #d3d7cf;
 }
 
-row.folders {
+row.folders, list.folders {
     color: #457fd3;
 }
 
-list.folders {
-    color: #457fd3;
-}
-
-box.storage
-{
+box.storage {
     background-color: #ffffff
 }

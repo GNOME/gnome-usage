@@ -6,14 +6,15 @@ namespace Usage
     {
         public signal void cache_complete();
         public bool cache { private set; get; }
-        public bool separate_home = false;
 
+        private bool separate_home = false;
         private Cancellable cancellable;
         private HashTable<string, Directory?> directory_table;
         private HashTable<string, Storage?> storages;
         private AsyncQueue<StorageResult> results_queue;
         private string[] exclude_from_home;
         private static bool path_null;
+        private bool can_scan = true;
 
         private struct Directory
         {
@@ -43,6 +44,11 @@ namespace Usage
         public void stop_scanning()
         {
             cancellable.cancel();
+        }
+
+        public bool get_separate_home()
+        {
+            return separate_home;
         }
 
         public async List<StorageItem> prepare_items(string? path, Gdk.RGBA color)
@@ -144,7 +150,14 @@ namespace Usage
 
         private void set_colors(ref List<StorageItem> items, Gdk.RGBA default_color)
         {
-            for(int i = 0; i < items.length(); i++)
+            uint showed_items_length = 1;
+            foreach(StorageItem item in items)
+            {
+                if(item.get_percentage() > StorageGraph.MIN_PERCENTAGE_SHOWN_FILES)
+                    showed_items_length++;
+            }
+
+            for(uint i = 0; i < items.length(); i++)
             {
                 unowned StorageItem item = items.nth_data(i);
                 switch(item.get_item_type())
@@ -155,18 +168,22 @@ namespace Usage
                     case StorageItemType.MUSIC:
                     case StorageItemType.PICTURES:
                     case StorageItemType.VIDEOS:
-                        item.set_color(generate_color(default_color, i-2, 6, false)); //6 because DOCUMENTS, DOWNLOADS, DESKTOP, MUSIC, PICTURES, VIDEOS, 2 because header and Home
+                        //6 because DOCUMENTS, DOWNLOADS, DESKTOP, MUSIC, PICTURES, VIDEOS, 2 because header and Home
+                        item.set_color(generate_color(default_color, i-2, 6, false));
                         break;
                     case StorageItemType.DIRECTORY:
                     case StorageItemType.FILE:
-                        item.set_color(generate_color(default_color, i, items.length(), true));
+                        item.set_color(generate_color(default_color, i, showed_items_length, true));
                         break;
                 }
             }
         }
 
-        private Gdk.RGBA generate_color(Gdk.RGBA default_color, int order, uint all_color, bool reverse = false)
+        private Gdk.RGBA generate_color(Gdk.RGBA default_color, uint order, uint all_color, bool reverse = false)
         {
+            if(order >= all_color)
+                order = all_color - 1;
+
             order += 1;
 
             double step = 100 / all_color;
@@ -200,12 +217,15 @@ namespace Usage
 
         public async void create_cache(bool force_override = false)
         {
-            if(force_override == true)
-               cache = false;
+            bool scan = false;
+            if(force_override == true || cache == false)
+               scan = true;
 
-            if(cache == false)
+            if(scan && can_scan)
             {
-                cache = true;
+                cache = false;
+                can_scan = false;
+
                 analyze_storages();
                 stop_scanning();
                 cancellable.reset();
@@ -221,8 +241,11 @@ namespace Usage
                 var thread = new Thread<void*>("storage_analyzer", run);
                 yield;
                 thread.join();
+
+                cache = true;
                 cache_complete();
             }
+            can_scan = true;
         }
 
         private void scan_cache()
@@ -279,7 +302,7 @@ namespace Usage
 
         private void add_root_items(ref List<StorageItem> items, Storage storage, int section)
         {
-            items.insert_sorted(new StorageItem.system(_("Operation System"), storage.used, ((float) storage.free / storage.total) * 100, section), (CompareFunc) sort);
+            items.insert_sorted(new StorageItem.system(_("Operating System"), storage.used, ((float) storage.used / storage.total) * 100, section), (CompareFunc) sort);
         }
 
         private void add_home_items(ref List<StorageItem> items, int section)

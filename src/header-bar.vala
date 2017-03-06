@@ -13,6 +13,8 @@ namespace Usage
 	    private Gtk.StackSwitcher stack_switcher;
 	    private Gtk.Button? storage_back_button;
 	    private bool show_storage_back_btn = false;
+	    private bool show_storage_rescan_btn = false;
+	    private string title_text = "";
 	    private Gtk.Button? storage_rescan_button;
 	    private HeaderBarMode mode;
 
@@ -55,18 +57,26 @@ namespace Usage
                     show_stack_switcher();
                     break;
                 case HeaderBarMode.STORAGE:
-                    show_stack_switcher();
+                    if(title_text == "")
+                        show_stack_switcher();
+                    else
+                        show_title();
                     storage_back_button = new Gtk.Button.from_icon_name("go-previous-symbolic");
                     storage_back_button.clicked.connect(() => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().on_back_button_clicked();
                     });
                     show_storage_back_button(show_storage_back_btn);
+
                     storage_rescan_button = new Gtk.Button.from_icon_name("view-refresh-symbolic");
                     storage_rescan_button.clicked.connect(() => {
+                        show_stack_switcher();
+                        show_storage_rescan_button(false);
+                        show_storage_back_button(false);
                         (GLib.Application.get_default() as Application).get_storage_analyzer().create_cache.begin(true);
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().reload();
                     });
-                    storage_rescan_button.show();
+                    show_storage_rescan_button(show_storage_rescan_btn);
+
                     pack_start(storage_back_button);
                     pack_end(storage_rescan_button);
                     break;
@@ -77,11 +87,21 @@ namespace Usage
             this.mode = mode;
 	    }
 
-	    public void show_title_text(string title)
+	    public HeaderBarMode get_mode()
+	    {
+	        return mode;
+	    }
+
+	    public void show_title()
 	    {
 	        set_custom_title(null);
-            set_title(title);
+            set_title(title_text);
 	    }
+
+	    public void set_title_text(string title)
+        {
+            this.title_text = title;
+        }
 
 	    public void show_stack_switcher()
         {
@@ -90,20 +110,34 @@ namespace Usage
 
         public void show_storage_back_button(bool show)
         {
-            if(storage_back_button != null)
+            if(show)
             {
-                if(show)
-                {
+                if(storage_back_button != null)
                     storage_back_button.show();
-                    show_storage_back_btn = true;
-                }
-                else
-                {
-                    storage_back_button.hide();
-                    show_storage_back_btn = false;
-                }
+                show_storage_back_btn = true;
             }
+            else
+            {
+                if(storage_back_button != null)
+                    storage_back_button.hide();
+                show_storage_back_btn = false;
+            }
+        }
 
+        public void show_storage_rescan_button(bool show)
+        {
+            if(show)
+            {
+                if(storage_rescan_button != null)
+                    storage_rescan_button.show();
+                show_storage_rescan_btn = true;
+            }
+            else
+            {
+                if(storage_rescan_button != null)
+                    storage_rescan_button.hide();
+                show_storage_rescan_btn = false;
+            }
         }
 	}
 }
