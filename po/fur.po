@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-02 15:48+0000\n"
-"PO-Revision-Date: 2017-03-06 22:05+0100\n"
+"POT-Creation-Date: 2017-03-06 21:08+0000\n"
+"PO-Revision-Date: 2017-03-06 22:09+0100\n"
+"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "X-Generator: Poedit 1.8.12\n"
 
 #: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
@@ -136,26 +136,30 @@ msgstr "In polse"
 msgid "Dead"
 msgstr "Muart"
 
-#: ../src/storage-analyzer.vala:58 ../src/storage-analyzer.vala:69
+#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
 msgid "Storage 1"
 msgstr "Archivi 1"
 
-#: ../src/storage-analyzer.vala:62
+#: ../src/storage-analyzer.vala:68
 msgid "Storage 2"
 msgstr "Archivi 2"
 
-#: ../src/storage-analyzer.vala:248 ../src/storage-item.vala:65
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:65
 msgid "Trash"
 msgstr "Scovacere"
 
-#: ../src/storage-analyzer.vala:282
-msgid "Operation System"
+#: ../src/storage-analyzer.vala:305
+msgid "Operating System"
 msgstr "Sisteme operatîf"
 
-#: ../src/storage-analyzer.vala:291
+#: ../src/storage-analyzer.vala:314
 msgid "Home"
 msgstr "Cjase"
 
 #: ../src/storage-view.vala:10
 msgid "Storage"
 msgstr "Archivi"
+
+#: ../src/storage-view.vala:26
+msgid "No content here"
+msgstr "Nissun contignût achì"
