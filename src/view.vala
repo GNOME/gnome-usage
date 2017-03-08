@@ -11,4 +11,8 @@ namespace Usage
             visible = true;
         }
     }
+
+    public interface SubView {
+        public abstract void search_in_processes(string text);
+    }
 }

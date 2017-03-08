@@ -1,6 +1,6 @@
 namespace Usage
 {
-    public class DiskSubView : View
+    public class DiskSubView : View, SubView
     {
         public DiskSubView()
         {
@@ -9,6 +9,11 @@ namespace Usage
             label.set_use_markup(true);
             label.get_style_context().add_class("dim-label");
             this.add(label);
+        }
+
+        public void search_in_processes(string text)
+        {
+
         }
     }
 }

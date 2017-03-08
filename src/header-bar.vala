@@ -11,11 +11,12 @@ namespace Usage
 	public class HeaderBar : Gtk.HeaderBar
 	{
 	    private Gtk.StackSwitcher stack_switcher;
+	    private Gtk.ToggleButton? performance_search_button;
 	    private Gtk.Button? storage_back_button;
+	    private Gtk.Button? storage_rescan_button;
 	    private bool show_storage_back_btn = false;
 	    private bool show_storage_rescan_btn = false;
 	    private string title_text = "";
-	    private Gtk.Button? storage_rescan_button;
 	    private HeaderBarMode mode;
 
 	    public HeaderBar(Gtk.Stack stack)
@@ -35,12 +36,14 @@ namespace Usage
             switch(this.mode)
             {
                 case HeaderBarMode.PERFORMANCE:
+                    remove_widget(performance_search_button);
+                    performance_search_button = null;
                     break;
                 case HeaderBarMode.DATA:
                     break;
                 case HeaderBarMode.STORAGE:
-                    remove(storage_back_button);
-                    remove(storage_rescan_button);
+                    remove_widget(storage_back_button);
+                    remove_widget(storage_rescan_button);
                     storage_rescan_button = null;
                     storage_back_button = null;
                     break;
@@ -52,6 +55,13 @@ namespace Usage
             {
                 case HeaderBarMode.PERFORMANCE:
                     show_stack_switcher();
+                    performance_search_button = new Gtk.ToggleButton();
+                    performance_search_button.set_image(new Gtk.Image.from_icon_name("system-search-symbolic", Gtk.IconSize.BUTTON));
+                    performance_search_button.toggled.connect(() => {
+                        ((PerformanceView) (GLib.Application.get_default() as Application).get_window().get_views()[0]).set_search_mode(performance_search_button.active);
+                    });
+                    performance_search_button.show();
+                    pack_end(performance_search_button);
                     break;
                 case HeaderBarMode.DATA:
                     show_stack_switcher();
@@ -85,6 +95,12 @@ namespace Usage
                     break;
             }
             this.mode = mode;
+	    }
+
+	    private void remove_widget(Gtk.Widget? widget)
+	    {
+            if(widget != null)
+                remove(widget);
 	    }
 
 	    public HeaderBarMode get_mode()
@@ -137,6 +153,20 @@ namespace Usage
                 if(storage_rescan_button != null)
                     storage_rescan_button.hide();
                 show_storage_rescan_btn = false;
+            }
+        }
+
+        public void action_on_search()
+        {
+            switch(mode)
+            {
+                case HeaderBarMode.PERFORMANCE:
+                    performance_search_button.set_active(!performance_search_button.get_active());
+                    break;
+                case HeaderBarMode.DATA:
+                case HeaderBarMode.STORAGE:
+                case HeaderBarMode.POWER:
+                    break;
             }
         }
 	}

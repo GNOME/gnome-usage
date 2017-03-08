@@ -12,6 +12,7 @@ namespace Usage
         private const GLib.ActionEntry app_entries[] =
         {
           { "about", on_about },
+          { "search", on_search },
           { "quit", on_quit }
         };
 
@@ -64,6 +65,7 @@ namespace Usage
         {
             base.startup();
             add_action_entries(app_entries, this);
+            set_accels_for_action ("app.search", {"<Primary>f"});
         }
 
         private void on_about(GLib.SimpleAction action, GLib.Variant? parameter)
@@ -83,6 +85,11 @@ namespace Usage
         private void on_quit(GLib.SimpleAction action, GLib.Variant? parameter)
         {
             window.destroy();
+        }
+
+        private void on_search(GLib.SimpleAction action, GLib.Variant? parameter)
+        {
+            window.get_header_bar().action_on_search();
         }
     }
 }

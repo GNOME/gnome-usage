@@ -6,13 +6,8 @@ New GNOME Usage!
 - [x] Processor Usage
 - [x] Memory usage
 - [x] Network usage
-- [x] Add loading ProcessListBox when open app 
-- [x] Show fancy clear Process Box
-- [x] Tweak network usage
-- [x] Add Running/Sleeping/Dead label
-- [x] Support other architectures than x86_64 (netinfo precompiled library) 
+- [x] Search in processes 
 - [ ] Fix bug with refreshing ProcessListBox 50% (focus, and click when refresh)
-- [ ] Search in processes 
 - [ ] Storage view - 75%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)

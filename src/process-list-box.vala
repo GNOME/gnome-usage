@@ -17,6 +17,7 @@ namespace Usage
         ProcessRow? opened_row = null;
         string focused_row_cmdline;
         ProcessListBoxType type;
+        string search_text = "";
 
         public ProcessListBox(ProcessListBoxType type)
         {
@@ -72,23 +73,35 @@ namespace Usage
 
         public bool update()
         {
+            bind_model(null, null);
             model.remove_all();
 
-            switch(type)
+            if(search_text == "")
             {
-                default:
-                case ProcessListBoxType.PROCESSOR:
-                    foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_cpu_processes())
+                switch(type)
+                {
+                    default:
+                    case ProcessListBoxType.PROCESSOR:
+                        foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_cpu_processes())
+                            model.insert_sorted(process, sort);
+                        break;
+                    case ProcessListBoxType.MEMORY:
+                        foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes())
+                            model.insert_sorted(process, sort);
+                        break;
+                    case ProcessListBoxType.NETWORK:
+                        foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_net_processes())
+                            model.insert_sorted(process, sort);
+                        break;
+                }
+            }
+            else
+            {
+                foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes()) //because ram contains all processes
+                {
+                    if(process.get_cmdline().down().contains(search_text.down())) //TODO Search in DisplayName too
                         model.insert_sorted(process, sort);
-                    break;
-                case ProcessListBoxType.MEMORY:
-                    foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes())
-                        model.insert_sorted(process, sort);
-                    break;
-                case ProcessListBoxType.NETWORK:
-                    foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_net_processes())
-                        model.insert_sorted(process, sort);
-                    break;
+                }
             }
 
             if(model.get_n_items() == 0)
@@ -102,7 +115,14 @@ namespace Usage
                 filled();
             }
 
+            bind_model(model, on_row_created);
             return true;
+        }
+
+        public void search(string text)
+        {
+            search_text = text;
+            update();
         }
 
         private Gtk.Widget on_row_created (Object item)

@@ -1,7 +1,9 @@
 namespace Usage
 {
-    public class NetworkSubView : View
+    public class NetworkSubView : View, SubView
     {
+        private ProcessListBox process_list_box;
+
         public NetworkSubView()
         {
             name = "NETWORK";
@@ -18,7 +20,7 @@ namespace Usage
             network_graph_box.width_request = 600;
             network_graph_box.valign = Gtk.Align.START;
 
-            var process_list_box = new ProcessListBox(ProcessListBoxType.NETWORK);
+            process_list_box = new ProcessListBox(ProcessListBoxType.NETWORK);
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
 
@@ -64,6 +66,11 @@ namespace Usage
             scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
 
             add(scrolled_window);
+        }
+
+        public void search_in_processes(string text)
+        {
+            process_list_box.search(text);
         }
     }
 }
