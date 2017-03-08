@@ -1,0 +1,204 @@
+# Swedish translation for gnome-usage.
+# Copyright © 2017 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Josef Andersson <l10nl18nsweja@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"usage&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-03-06 14:45+0000\n"
+"PO-Revision-Date: 2017-03-07 12:24+0100\n"
+"Last-Translator: Josef Andersson <l10nl18nsweja@gmail.com>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
+#: ../src/window.vala:15
+msgid "Usage"
+msgstr "Användning"
+
+#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:75
+msgid "View current application and monitor system state"
+msgstr "Visa aktuellt program och övervaka systemtillstånd"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: ../data/org.gnome.Usage.desktop:8
+msgid "application-default-icon"
+msgstr "application-default-icon"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.Usage.desktop:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Skärm;System;Process;CPU;Minne;Nätverk;Historik;Användning;Prestanda;Uppgift;"
+"Hanterare;"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:1
+msgid "A list of processes which we don’t want killed"
+msgstr "En lista över processer vi inte vill döda"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:2
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Listan används för att filtrera vilka processer användaren inte kan stoppa."
+
+#: ../src/application.vala:48
+msgid "About"
+msgstr "Om"
+
+#: ../src/application.vala:51
+msgid "Quit"
+msgstr "Avsluta"
+
+#: ../src/application.vala:78
+msgid "Websites"
+msgstr "Webbplatser"
+
+#: ../src/cpu-sub-view.vala:9 ../src/graph-stack-switcher.vala:25
+#: ../src/process-dialog.vala:40
+msgid "Processor"
+msgstr "Processor"
+
+#: ../src/cpu-sub-view.vala:35
+msgid "No applications using processor."
+msgstr "Inga program använder processor."
+
+#: ../src/data-view.vala:8
+msgid "Data"
+msgstr "Data"
+
+#: ../src/graph-block.vala:45
+msgid "Others"
+msgstr "Andra"
+
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
+msgid "Available"
+msgstr "Tillgängliga"
+
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:9
+#: ../src/process-dialog.vala:41
+msgid "Memory"
+msgstr "Minne"
+
+#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "Disk in/ut"
+
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:9
+msgid "Network"
+msgstr "Nätverk"
+
+#: ../src/memory-sub-view.vala:35
+msgid "No applications using memory."
+msgstr "Inga program använder minne."
+
+#: ../src/network-sub-view.vala:34
+msgid "No applications using network."
+msgstr "Inga program använder nätverk."
+
+#: ../src/performance-view.vala:10
+msgid "Performance"
+msgstr "Prestanda"
+
+#: ../src/power-view.vala:8
+msgid "Power"
+msgstr "Ström"
+
+#: ../src/process-dialog.vala:43
+msgid "Downloads"
+msgstr "Hämtningar"
+
+#: ../src/process-dialog.vala:44
+msgid "Uploads"
+msgstr "Skickade"
+
+#: ../src/process-dialog.vala:54
+msgid "Stop"
+msgstr "Stoppade"
+
+#: ../src/process-dialog.vala:147
+msgid "Running"
+msgstr "Körande"
+
+#: ../src/process-dialog.vala:150
+msgid "Sleeping"
+msgstr "Vilande"
+
+#: ../src/process-dialog.vala:153
+msgid "Dead"
+msgstr "Döda"
+
+#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
+msgid "Storage 1"
+msgstr "Lagring 1"
+
+#: ../src/storage-analyzer.vala:68
+msgid "Storage 2"
+msgstr "Lagring 2"
+
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:65
+msgid "Trash"
+msgstr "Flytta till Papperskorg"
+
+#: ../src/storage-analyzer.vala:305
+msgid "Operating System"
+msgstr "Operativsystem"
+
+#: ../src/storage-analyzer.vala:314
+msgid "Home"
+msgstr "Hem"
+
+#: ../src/storage-view.vala:10
+msgid "Storage"
+msgstr "Lagring"
+
+#: ../src/storage-view.vala:26
+msgid "No content here"
+msgstr "Inget innehåll här"
+
+#~ msgid "Just now"
+#~ msgstr "Just nu"
+
+#~ msgid "An hour ago"
+#~ msgstr "För en timme sedan"
+
+#~ msgid "Yesterday"
+#~ msgstr "Igår"
+
+#~ msgid "About a year ago"
+#~ msgstr "För ungefär ett år sedan"
+
+#~ msgid "About %u year ago"
+#~ msgid_plural "About %u years ago"
+#~ msgstr[0] "För ungefär %u år sedan"
+#~ msgstr[1] "För ungefär %u år sedan"
+
+#~ msgid "Open"
+#~ msgstr "Öppna"
+
+#~ msgid "Select"
+#~ msgstr "Välj"
+
+#~ msgid "Create"
+#~ msgstr "Skapa"
+
+#~ msgid "Save"
+#~ msgstr "Spara"
+
+#~ msgid "Browse…"
+#~ msgstr "Bläddra..."
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Search"
+#~ msgstr "Sök"
