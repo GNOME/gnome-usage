@@ -12,6 +12,7 @@ namespace Usage
 	{
 	    private Gtk.StackSwitcher stack_switcher;
 	    private Gtk.ToggleButton? performance_search_button;
+	    private bool active_performance_search_btn = false;
 	    private Gtk.Button? storage_back_button;
 	    private Gtk.Button? storage_rescan_button;
 	    private bool show_storage_back_btn = false;
@@ -57,7 +58,9 @@ namespace Usage
                     show_stack_switcher();
                     performance_search_button = new Gtk.ToggleButton();
                     performance_search_button.set_image(new Gtk.Image.from_icon_name("system-search-symbolic", Gtk.IconSize.BUTTON));
+                    performance_search_button.set_active(active_performance_search_btn);
                     performance_search_button.toggled.connect(() => {
+                        active_performance_search_btn = performance_search_button.active;
                         ((PerformanceView) (GLib.Application.get_default() as Application).get_window().get_views()[0]).set_search_mode(performance_search_button.active);
                     });
                     performance_search_button.show();
