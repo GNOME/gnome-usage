@@ -9,8 +9,6 @@ namespace Usage
         Gtk.Label title_label;
         Gtk.Revealer revealer;
         SubProcessListBox sub_process_list_box;
-        string display_name;
-        static GLib.List<AppInfo> apps_info;
         ProcessListBoxType type;
         bool group;
 
@@ -22,8 +20,6 @@ namespace Usage
         {
             this.type = type;
             showing_details = opened;
-            if(apps_info == null)
-                apps_info = AppInfo.get_all(); //Because it takes too long
             this.process = process;
 
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
@@ -34,9 +30,11 @@ namespace Usage
         	load_label.ellipsize = Pango.EllipsizeMode.END;
         	load_label.max_width_chars = 30;
 
-            Gtk.Image icon;
-            load_icon_and_name(out icon, out display_name);
-            title_label = new Gtk.Label(display_name);
+            Gtk.Image icon = load_icon(process.get_display_name());
+            icon.margin_left = 10;
+            icon.margin_right = 10;
+
+            title_label = new Gtk.Label(process.get_display_name());
             row_box.pack_start(icon, false, false, 0);
             row_box.pack_start(title_label, false, true, 5);
             row_box.pack_end(load_label, false, true, 10);
@@ -65,81 +63,41 @@ namespace Usage
                 show_details();
         }
 
-        private void load_icon_and_name(out Gtk.Image icon, out string display_name)
+        private Gtk.Image load_icon(string display_name)
         {
-            icon = null;
-            AppInfo app_info = null;
-        	foreach (AppInfo info in apps_info)
+            Gtk.Image icon = null;
+        	foreach (AppInfo app_info in (GLib.Application.get_default() as Application).get_system_monitor().get_apps_info())
         	{
-        	    string commandline = info.get_commandline();
-        	    for (int i = 0; i < commandline.length; i++)
+                if(app_info.get_display_name() == display_name)
                 {
-                    if(commandline[i] == ' ' && commandline[i] == '%')
-                        commandline = commandline.substring(0, i);
-                }
-
-                commandline = Path.get_basename(commandline);
-                string process_full_cmd = process.get_cmdline() + " " + process.get_cmdline_parameter();
-        	    if(commandline == process_full_cmd)
-        	        app_info = info;
-        	    else if(commandline.contains("google-" + process.get_cmdline() + "-")) //Fix for Google Chrome naming
-                    app_info = info;
-
-        	    if(app_info == null)
-                {
-                    commandline = info.get_commandline();
-                    for (int i = 0; i < commandline.length; i++)
+                    if(app_info.get_icon() != null)
                     {
-                        if(commandline[i] == ' ')
-                            commandline = commandline.substring(0, i);
-                    }
-
-                    if(info.get_commandline().has_prefix(commandline + " " + commandline + "://")) //Fix for Steam naming
-                        commandline = info.get_commandline();
-
-                    commandline = Path.get_basename(commandline);
-                    if(commandline == process.get_cmdline())
-                        app_info = info;
-                }
-        	}
-
-            if(app_info != null)
-            {
-                display_name = app_info.get_display_name();
-
-        	    if(app_info.get_icon() != null)
-                {
-                    var icon_theme = new Gtk.IconTheme();
-                    var icon_info = icon_theme.lookup_by_gicon_for_scale(app_info.get_icon(), 24, 1, Gtk.IconLookupFlags.FORCE_SIZE);
-                    if(icon_info != null)
-                    {
-                        try
+                        var icon_theme = new Gtk.IconTheme();
+                        var icon_info = icon_theme.lookup_by_gicon_for_scale(app_info.get_icon(), 24, 1, Gtk.IconLookupFlags.FORCE_SIZE);
+                        if(icon_info != null)
                         {
-                            var pixbuf = icon_info.load_icon();
-                            icon = new Gtk.Image.from_pixbuf(pixbuf);
-                        }
-                        catch(Error e) {
-                            GLib.stderr.printf ("Could not load icon for application %s: %s\n", display_name, e.message);
-                        }
+                            try
+                            {
+                                var pixbuf = icon_info.load_icon();
+                                icon = new Gtk.Image.from_pixbuf(pixbuf);
+                            }
+                            catch(Error e) {
+                                GLib.stderr.printf ("Could not load icon for application %s: %s\n", display_name, e.message);
+                            }
 
+                        }
                     }
                 }
-        	}
-        	else
-        	{
-        	    display_name = process.get_cmdline();
         	}
 
         	if(icon == null)
-        	{
-        	    icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
-        	    icon.width_request = 24;
-        	    icon.height_request = 24;
-        	}
+            {
+                icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
+                icon.width_request = 24;
+                icon.height_request = 24;
+            }
 
-        	icon.margin_left = 10;
-        	icon.margin_right = 10;
-
+        	return icon;
         }
 
         private void update()
@@ -249,7 +207,7 @@ namespace Usage
             }
             else
             {
-                var dialog = new ProcessDialog(process.get_pid(), display_name, process.get_cmdline());
+                var dialog = new ProcessDialog(process.get_pid(), process.get_display_name(), process.get_cmdline());
                 dialog.show_all();
             }
         }

@@ -99,7 +99,7 @@ namespace Usage
             {
                 foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes()) //because ram contains all processes
                 {
-                    if(process.get_cmdline().down().contains(search_text.down())) //TODO Search in DisplayName too
+                    if(process.get_display_name().down().contains(search_text.down()) || process.get_cmdline().down().contains(search_text.down()))
                         model.insert_sorted(process, sort);
                 }
             }

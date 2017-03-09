@@ -25,6 +25,7 @@ namespace Usage
         private HashTable<string, Process> net_process_table;
 
 		private int process_mode = GTop.KERN_PROC_UID;
+		private GLib.List<AppInfo> apps_info;
 
 		public enum ProcessMode
         {
@@ -73,6 +74,11 @@ namespace Usage
             return net_process_table[cmdline];
         }
 
+        public unowned GLib.List<AppInfo> get_apps_info()
+        {
+            return apps_info;
+        }
+
         public SystemMonitor()
         {
             GTop.init();
@@ -87,6 +93,7 @@ namespace Usage
             net_process_table = new HashTable<string, Process>(str_hash, str_equal);
 
             var settings = (GLib.Application.get_default() as Application).settings;
+            apps_info = AppInfo.get_all();
 
             update_data();
             Timeout.add(settings.data_update_interval, update_data);
@@ -132,7 +139,8 @@ namespace Usage
                 {
                     string cmdline_parameter;
                     string cmdline = get_full_process_cmd_for_pid(pids[i], out cmdline_parameter);
-                    var process = new Process(pids[i], cmdline, cmdline_parameter);
+                    string display_name = get_display_name(cmdline, cmdline_parameter);
+                    var process = new Process(pids[i], cmdline, cmdline_parameter, display_name);
                     cpu_monitor.update_process_info(ref process);
                     process_table_pid.insert (pids[i], (owned) process);
                 }
@@ -197,6 +205,49 @@ namespace Usage
 					process_mode = GTop.EXCLUDE_IDLE;
 					break;
 			  }
+		}
+
+		private string get_display_name(string cmdline, string cmdline_parameter)
+		{
+            AppInfo app_info = null;
+            foreach (AppInfo info in apps_info)
+            {
+                string commandline = info.get_commandline();
+                for (int i = 0; i < commandline.length; i++)
+                {
+                    if(commandline[i] == ' ' && commandline[i] == '%')
+                        commandline = commandline.substring(0, i);
+                }
+
+                commandline = Path.get_basename(commandline);
+                string process_full_cmd = cmdline + " " + cmdline_parameter;
+                if(commandline == process_full_cmd)
+                    app_info = info;
+                else if(commandline.contains("google-" + cmdline + "-")) //Fix for Google Chrome naming
+                    app_info = info;
+
+                if(app_info == null)
+                {
+                    commandline = info.get_commandline();
+                    for (int i = 0; i < commandline.length; i++)
+                    {
+                        if(commandline[i] == ' ')
+                            commandline = commandline.substring(0, i);
+                    }
+
+                    if(info.get_commandline().has_prefix(commandline + " " + commandline + "://")) //Fix for Steam naming
+                        commandline = info.get_commandline();
+
+                    commandline = Path.get_basename(commandline);
+                    if(commandline == cmdline)
+                        app_info = info;
+                }
+            }
+
+            if(app_info != null)
+                return app_info.get_display_name();
+            else
+                return cmdline;
 		}
 
 		private string get_full_process_cmd_for_pid (pid_t pid, out string cmd_parameter)
@@ -306,7 +357,7 @@ namespace Usage
                         }
                         else //add subrow
                         {
-                            var process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter());
+                            var process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter(), process_it.get_display_name());
                             process.update_from_process(process_it);
                             to_table[process.get_cmdline()].get_sub_processes().insert(process.get_pid(), (owned) process);
                         }
@@ -323,12 +374,12 @@ namespace Usage
                             to_table[process_it.get_cmdline()].set_sub_processes(new HashTable<pid_t?, Process>(int_hash, int_equal));
                             unowned Process process = to_table[process_it.get_cmdline()];
 
-                            var sub_process_one = new Process(process.get_pid(), process.get_cmdline(), process.get_cmdline_parameter());
+                            var sub_process_one = new Process(process.get_pid(), process.get_cmdline(), process.get_cmdline_parameter(), process.get_display_name());
                             sub_process_one.update_from_process(process);
                             to_table[process_it.get_cmdline()].get_sub_processes().insert(sub_process_one.get_pid(), (owned) sub_process_one);
                             process.set_cmdline_parameter("");
 
-                            var sub_process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter());
+                            var sub_process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter(), process_it.get_display_name());
                             sub_process.update_from_process(process_it);
                             to_table[process_it.get_cmdline()].get_sub_processes().insert(process_it.get_pid(), (owned) sub_process);
                         }
@@ -336,7 +387,7 @@ namespace Usage
                 }
                 else //add process
                 {
-                     var process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter());
+                     var process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter(), process_it.get_display_name());
                      process.update_from_process(process_it);
                      to_table.insert(process.get_cmdline(), (owned) process);
                 }

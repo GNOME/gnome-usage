@@ -7,7 +7,7 @@ New GNOME Usage!
 - [x] Memory usage
 - [x] Network usage
 - [x] Search in processes 
-- [ ] Fix bug with refreshing ProcessListBox 50% (focus, and click when refresh)
+- [ ] Fix bug with refreshing ProcessListBox - 50% (focus, and click when refresh)
 - [ ] Storage view - 75%
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
@@ -40,7 +40,7 @@ sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 Code is under GNU GPLv3 license.
 
 ##Screenshots:
-More screenshots is in screenshots subdirectory (sorry screenshots may not be current).
+More screenshots is in screenshots subdirectory (However screenshots may not be current).
 
 ![Screenshot](screenshots/screenshot11.png?raw=true )
 

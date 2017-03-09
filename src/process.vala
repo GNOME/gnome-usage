@@ -7,6 +7,7 @@ namespace Usage
         pid_t pid;
         string cmdline;
         string cmdline_parameter; //Isn't parameters as "-p" etc, but parameter for running app, for ex. "--writer' with libreoffice, or "privacy" with gnome-control-center
+        string display_name;
         double cpu_load;
         double x_cpu_load;
         uint64 cpu_last_used;
@@ -20,11 +21,12 @@ namespace Usage
         bool alive;
         ProcessStatus status;
 
-        public Process(pid_t pid, string cmdline, string cmdline_parameter)
+        public Process(pid_t pid, string cmdline, string cmdline_parameter, string display_name)
         {
             this.pid = pid;
             this.cmdline = cmdline;
             this.cmdline_parameter = cmdline_parameter;
+            this.display_name = display_name;
             this.cpu_load = 0;
             this.x_cpu_load = 0;
             this.cpu_last_used = 0;
@@ -82,6 +84,16 @@ namespace Usage
         public void set_cmdline_parameter(string cmdline_parameter)
         {
             this.cmdline_parameter = cmdline_parameter;
+        }
+
+        public string get_display_name()
+        {
+            return display_name;
+        }
+
+        public void set_display_name(string display_name)
+        {
+            this.display_name = display_name;
         }
 
         public double get_cpu_load()
