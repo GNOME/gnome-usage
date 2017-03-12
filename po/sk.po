@@ -1,0 +1,167 @@
+# Slovak translation for gnome-usage.
+# Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Dušan Kazik <prescott66@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"usage&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-03-12 10:59+0000\n"
+"PO-Revision-Date: 2017-03-12 14:04+0100\n"
+"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:76
+#: ../src/window.vala:15
+msgid "Usage"
+msgstr "Využitie"
+
+#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:77
+msgid "View current application and monitor system state"
+msgstr "Zobrazuje aktuálnu aplikáciu a sleduje stav systému"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: ../data/org.gnome.Usage.desktop:8
+msgid "application-default-icon"
+msgstr "application-default-icon"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.Usage.desktop:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"monitorovanie;sledovanie;systém;systému;proces;CPU;procesor;pamäť;sieť;"
+"história;využitie;výkon;úloha;správca;"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:1
+msgid "A list of processes which we don’t want killed"
+msgstr "Zoznam procesov, ktoré nebudú zabité"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:2
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Tento zoznam je použitý na filtrovanie procesov, ktoré používateľ nechce "
+"zastaviť."
+
+#: ../src/application.vala:49
+msgid "About"
+msgstr "O aplikácii"
+
+#: ../src/application.vala:52
+msgid "Quit"
+msgstr "Ukončiť"
+
+#: ../src/application.vala:80
+msgid "Websites"
+msgstr "Webové stránky"
+
+#: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
+#: ../src/process-dialog.vala:40
+msgid "Processor"
+msgstr "Procesor"
+
+#: ../src/cpu-sub-view.vala:37
+msgid "No applications using processor."
+msgstr "Žiadne aplikácie využívajúce procesor."
+
+#: ../src/data-view.vala:8
+msgid "Data"
+msgstr "Údaje"
+
+#: ../src/graph-block.vala:45
+msgid "Others"
+msgstr "Iné"
+
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
+msgid "Available"
+msgstr "Dostupné"
+
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:11
+#: ../src/process-dialog.vala:41
+msgid "Memory"
+msgstr "Pamäť"
+
+#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "V/V disku"
+
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:11
+msgid "Network"
+msgstr "Sieť"
+
+#: ../src/memory-sub-view.vala:37
+msgid "No applications using memory."
+msgstr "Žiadne aplikácie využívajúce pamäť."
+
+#: ../src/network-sub-view.vala:36
+msgid "No applications using network."
+msgstr "Žiadne aplikácie využívajúce sieť."
+
+#: ../src/performance-view.vala:12
+msgid "Performance"
+msgstr "Výkon"
+
+#: ../src/power-view.vala:8
+msgid "Power"
+msgstr "Napájanie"
+
+#: ../src/process-dialog.vala:43
+msgid "Downloads"
+msgstr "Preberania"
+
+#: ../src/process-dialog.vala:44
+msgid "Uploads"
+msgstr "Odovzdania"
+
+#: ../src/process-dialog.vala:54
+msgid "Stop"
+msgstr "Zastaviť"
+
+#: ../src/process-dialog.vala:147
+msgid "Running"
+msgstr "Spustený"
+
+#: ../src/process-dialog.vala:150
+msgid "Sleeping"
+msgstr "Spiaci"
+
+#: ../src/process-dialog.vala:153
+msgid "Dead"
+msgstr "Mŕtvy"
+
+#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
+msgid "Storage 1"
+msgstr "Úložisko č. 1"
+
+#: ../src/storage-analyzer.vala:68
+msgid "Storage 2"
+msgstr "Úložisko č. 2"
+
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:65
+msgid "Trash"
+msgstr "Kôš"
+
+#: ../src/storage-analyzer.vala:305
+msgid "Operating System"
+msgstr "Operačný systém"
+
+#: ../src/storage-analyzer.vala:314
+msgid "Home"
+msgstr "Domovský priečinok"
+
+#: ../src/storage-view.vala:10
+msgid "Storage"
+msgstr "Úložisko"
+
+#: ../src/storage-view.vala:26
+msgid "No content here"
+msgstr "Tu nie je žiadny obsah"
