@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-26 18:03+0100\n"
-"PO-Revision-Date: 2017-02-26 18:04+0100\n"
+"POT-Creation-Date: 2017-03-12 11:57+0100\n"
+"PO-Revision-Date: 2017-03-12 11:58+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:76
 #: ../src/window.vala:15
 msgid "Usage"
 msgstr "Monitor"
 
-#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:75
+#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:77
 msgid "View current application and monitor system state"
 msgstr "Wyświetlanie uruchomionych programów i monitorowanie stanu systemu"
 
@@ -52,24 +52,24 @@ msgstr ""
 "Ta lista jest używana do filtrowania, których procesów użytkownik nie może "
 "zatrzymywać."
 
-#: ../src/application.vala:48
+#: ../src/application.vala:49
 msgid "About"
 msgstr "O programie"
 
-#: ../src/application.vala:51
+#: ../src/application.vala:52
 msgid "Quit"
 msgstr "Zakończ"
 
-#: ../src/application.vala:78
+#: ../src/application.vala:80
 msgid "Websites"
 msgstr "Strony WWW"
 
-#: ../src/cpu-sub-view.vala:9 ../src/graph-stack-switcher.vala:25
+#: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
 #: ../src/process-dialog.vala:40
 msgid "Processor"
 msgstr "Procesor"
 
-#: ../src/cpu-sub-view.vala:35
+#: ../src/cpu-sub-view.vala:37
 msgid "No applications using processor."
 msgstr "Żadne programy nie używają procesora."
 
@@ -85,7 +85,7 @@ msgstr "Pozostałe"
 msgid "Available"
 msgstr "Dostępne"
 
-#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:9
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:11
 #: ../src/process-dialog.vala:41
 msgid "Memory"
 msgstr "Pamięć"
@@ -94,19 +94,19 @@ msgstr "Pamięć"
 msgid "Disk I/O"
 msgstr "Wejście/wyjście dysku"
 
-#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:9
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:11
 msgid "Network"
 msgstr "Sieć"
 
-#: ../src/memory-sub-view.vala:35
+#: ../src/memory-sub-view.vala:37
 msgid "No applications using memory."
 msgstr "Żadne programy nie używają pamięci."
 
-#: ../src/network-sub-view.vala:34
+#: ../src/network-sub-view.vala:36
 msgid "No applications using network."
 msgstr "Żadne programy nie używają sieci."
 
-#: ../src/performance-view.vala:10
+#: ../src/performance-view.vala:12
 msgid "Performance"
 msgstr "Wydajność"
 
@@ -138,26 +138,30 @@ msgstr "Uśpione"
 msgid "Dead"
 msgstr "Martwe"
 
-#: ../src/storage-analyzer.vala:58 ../src/storage-analyzer.vala:69
+#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
 msgid "Storage 1"
 msgstr "1. urządzenie do przechowywania danych"
 
-#: ../src/storage-analyzer.vala:62
+#: ../src/storage-analyzer.vala:68
 msgid "Storage 2"
 msgstr "2. urządzenie do przechowywania danych"
 
-#: ../src/storage-analyzer.vala:248 ../src/storage-item.vala:65
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:65
 msgid "Trash"
 msgstr "Kosz"
 
-#: ../src/storage-analyzer.vala:282
-msgid "Operation System"
+#: ../src/storage-analyzer.vala:305
+msgid "Operating System"
 msgstr "System operacyjny"
 
-#: ../src/storage-analyzer.vala:291
+#: ../src/storage-analyzer.vala:314
 msgid "Home"
 msgstr "Katalog domowy"
 
 #: ../src/storage-view.vala:10
 msgid "Storage"
 msgstr "Urządzenia do przechowywania danych"
+
+#: ../src/storage-view.vala:26
+msgid "No content here"
+msgstr "Nic tu nie ma"
