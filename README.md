@@ -20,19 +20,18 @@ New GNOME Usage!
 In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
 
 ##Version
-Actual version is 0.3.8
+Actual version is 0.4.0
 
 ##Dependencies
-- libnetinfo >= 0.3.1
+- [libnetinfo >= 0.3.1](https://github.com/kaegi/netinfo-ffi) 
 - libgtop >= 2.34.2
 
 ##Compilation from sources:
 ```
-autovala update
-mkdir build && cd build
-cmake ..
-make
-sudo make install
+cd gnome-usage
+meson build && cd build
+ninja-build #or ninja
+sudo ninja-build install #sudo ninja install
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 ```
 

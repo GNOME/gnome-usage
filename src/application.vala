@@ -78,7 +78,7 @@ namespace Usage
             	authors: authors,
             	website: "https://wiki.gnome.org/Apps/Usage",
             	website_label: _("Websites"),
-            	version: Constants.VERSION,
+            	version: Config.VERSION,
             	license_type: License.GPL_3_0);
         }
 

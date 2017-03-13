@@ -12,8 +12,8 @@
   <homepage rdf:resource="https://wiki.gnome.org/Apps/Usage" />
 <!--
   <download-page rdf:resource="https://download.gnome.org/sources/epiphany/" />
-  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=epiphany" />
 -->
+  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=gnome-usage" />
   <maintainer>
     <foaf:Person>
       <foaf:name>Petr Štětka</foaf:name>
