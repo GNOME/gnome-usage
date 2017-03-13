@@ -17,10 +17,10 @@ New GNOME Usage!
 [Download RPM](https://github.com/petr-stety-stetka/gnome-usage/releases/download/v0.3.8/gnome-usage-0.3.8-1.x86_64.rpm)
 
 ##Run
-In terminal run ```gnome-usage``` command or run GNOME Usage application from app launcher.
+In terminal run ```gnome-usage``` command or run Usage from app launcher.
 
 ##Version
-Actual version is 0.4.0
+Actual version is 0.4.1
 
 ##Dependencies
 - [libnetinfo >= 0.3.1](https://github.com/kaegi/netinfo-ffi) 

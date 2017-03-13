@@ -243,9 +243,9 @@ namespace Usage
                 thread.join();
 
                 cache = true;
+                can_scan = true;
                 cache_complete();
             }
-            can_scan = true;
         }
 
         private void scan_cache()
