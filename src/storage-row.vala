@@ -1,6 +1,3 @@
-using Posix;
-using Gee;
-
 namespace Usage
 {
     public class StorageRow : Gtk.ListBoxRow

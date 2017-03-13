@@ -1,5 +1,3 @@
-using Gee;
-
 namespace Usage
 {
     public class SubProcessListBox : Gtk.ListBox
