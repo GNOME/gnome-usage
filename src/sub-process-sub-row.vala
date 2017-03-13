@@ -1,5 +1,3 @@
-using Posix;
-
 namespace Usage
 {
     public class SubProcessSubRow : Gtk.ListBoxRow

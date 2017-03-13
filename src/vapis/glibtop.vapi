@@ -29,10 +29,24 @@ namespace GTop {
 
     [CCode(cname = "GLIBTOP_KERN_PROC_ALL")]
     public const int KERN_PROC_ALL;
+    [CCode(cname = "GLIBTOP_KERN_PROC_PID")]
+    public const int KERN_PROC_PID;
+    [CCode(cname = "GLIBTOP_KERN_PROC_PGRP")]
+    public const int KERN_PROC_PRGP;
+    [CCode(cname = "GLIBTOP_KERN_PROC_SESSION")]
+    public const int KERN_PROC_SESSION;
+    [CCode(cname = "GLIBTOP_KERN_PROC_TTY")]
+    public const int KERN_PROC_TTY;
     [CCode(cname = "GLIBTOP_KERN_PROC_UID")]
     public const int KERN_PROC_UID;
+    [CCode(cname = "GLIBTOP_KERN_PROC_RUID")]
+    public const int KERN_PROC_RUID;
+    [CCode(cname = "GLIBTOP_KERN_PROC_MASK")]
+    public const int KERN_PROC_MASK;
     [CCode(cname = "GLIBTOP_EXCLUDE_IDLE")]
     public const int EXCLUDE_IDLE;
+    [CCode(cname = "GLIBTOP_EXCLUDE_SYSTEM")]
+    public const int EXCLUDE_SYSTEM;
 
     [CCode(cname = "glibtop_proclist", cheader_filename = "glibtop/proclist.h")]
     public struct Proclist {
@@ -42,7 +56,7 @@ namespace GTop {
         uint64 size;
     }
     [CCode(array_length = false, array_null_terminated = false)]
-    public Posix.pid_t[] get_proclist(out Proclist proclist, uint64 which, uint64 arg);
+    public GLib.Pid[] get_proclist(out Proclist proclist, uint64 which, uint64? arg = null);
 
     [CCode(cname = "glibtop_proc_state", cheader_filename = "glibtop/procstate.h")]
     public struct ProcState {
@@ -57,7 +71,7 @@ namespace GTop {
         int processor;
         int last_processor;
     }
-    public void get_proc_state(out ProcState proc_state, Posix.pid_t pid);
+    public void get_proc_state(out ProcState proc_state, GLib.Pid pid);
 
     [CCode(cname = "GLIBTOP_PROCESS_RUNNING")]
     public const int PROCESS_RUNNING;
@@ -89,7 +103,7 @@ namespace GTop {
         uint64 xcpu_utime[1024];
         uint64 xcpu_stime[1024];
     }
-    public void get_proc_time(out ProcTime proc_time, Posix.pid_t pid);
+    public void get_proc_time(out ProcTime proc_time, GLib.Pid pid);
 
     [CCode(cname = "glibtop_mem", cheader_filename = "glibtop/mem.h")]
     public struct Mem {
@@ -126,7 +140,7 @@ namespace GTop {
         uint64 rss;
         uint64 rss_rlim;
     }
-    public void get_proc_mem(out ProcMem proc_mem, Posix.pid_t pid);
+    public void get_proc_mem(out ProcMem proc_mem, GLib.Pid pid);
 
     [CCode(cname = "glibtop_netlist", cheader_filename = "glibtop/netlist.h")]
     public struct Netlist {
@@ -159,7 +173,7 @@ namespace GTop {
         int32 ngroups;
         int32 groups[64];
     }
-    public void get_proc_uid(out ProcUid proc_uid, Posix.pid_t pid);
+    public void get_proc_uid(out ProcUid proc_uid, GLib.Pid pid);
 
     [CCode(cname = "glibtop_proc_args", cheader_filename = "glibtop/procargs.h")]
     public struct ProcArgs {
@@ -167,7 +181,7 @@ namespace GTop {
         uint64 size;
     }
     [CCode(array_null_terminated = "true")]
-    public string[] get_proc_argv(out ProcArgs proc_args, Posix.pid_t pid);
+    public string[] get_proc_argv(out ProcArgs proc_args, GLib.Pid pid);
 
     [CCode(cname = "glibtop_fsusage", cheader_filename = "glibtop/fsusage.h")]
     public struct FsUsage {

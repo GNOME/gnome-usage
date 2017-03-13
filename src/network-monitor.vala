@@ -1,5 +1,4 @@
 using NI;
-using Posix;
 
 namespace Usage
 {

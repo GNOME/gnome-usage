@@ -1,5 +1,3 @@
-using Posix;
-
 namespace Usage
 {
     public class SystemMonitor : Object
@@ -19,27 +17,20 @@ namespace Usage
         private MemoryMonitor memory_monitor;
         private NetworkMonitor network_monitor;
 
-        private HashTable<pid_t?, Process> process_table_pid;
+        private HashTable<Pid?, Process> process_table_pid;
         private HashTable<string, Process> cpu_process_table;
         private HashTable<string, Process> ram_process_table;
         private HashTable<string, Process> net_process_table;
 
-		private int process_mode = GTop.KERN_PROC_UID;
+		private int process_mode = GTop.EXCLUDE_SYSTEM;
 		private GLib.List<AppInfo> apps_info;
-
-		public enum ProcessMode
-        {
-		    ALL,
-  			USER,
-  			EXCLUDE_IDLE
-		}
 
 		public List<unowned Process> get_processes_pid()
         {
             return process_table_pid.get_values();
         }
 
-        public unowned Process get_process_by_pid(pid_t pid)
+        public unowned Process get_process_by_pid(Pid pid)
         {
             return process_table_pid.get(pid);
         }
@@ -87,7 +78,7 @@ namespace Usage
             memory_monitor = new MemoryMonitor();
             network_monitor = new NetworkMonitor();
 
-            process_table_pid = new HashTable<pid_t?, Process>(int_hash, int_equal);
+            process_table_pid = new HashTable<Pid?, Process>(int_hash, int_equal);
             cpu_process_table = new HashTable<string, Process>(str_hash, str_equal);
             ram_process_table = new HashTable<string, Process>(str_hash, str_equal);
             net_process_table = new HashTable<string, Process>(str_hash, str_equal);
@@ -129,9 +120,8 @@ namespace Usage
             set_alive_false_table_cmdline(ref ram_process_table);
             set_alive_false_table_cmdline(ref net_process_table);
 
-            var uid = Posix.getuid();
             GTop.Proclist proclist;
-            var pids = GTop.get_proclist (out proclist, process_mode, uid);
+            var pids = GTop.get_proclist (out proclist, process_mode);
 
             for(uint i = 0; i < proclist.number; i++)
             {
@@ -164,7 +154,7 @@ namespace Usage
                 }
             }
 
-            var process_table_pid_condition = new HashTable<pid_t?, Process>(int_hash, int_equal);
+            var process_table_pid_condition = new HashTable<Pid?, Process>(int_hash, int_equal);
             foreach(unowned Process process in process_table_pid.get_values())
             {
                 if(process.get_cpu_load() >= 1)
@@ -190,22 +180,6 @@ namespace Usage
 
             return true;
         }
-
-        public void set_process_mode(ProcessMode mode)
-        {
-		    switch(mode)
-  			{
-        		case ProcessMode.ALL:
-					process_mode = GTop.KERN_PROC_ALL;
-					break;
-				case ProcessMode.USER:
-					process_mode = GTop.KERN_PROC_UID;
-					break;
-				case ProcessMode.EXCLUDE_IDLE:
-					process_mode = GTop.EXCLUDE_IDLE;
-					break;
-			  }
-		}
 
 		private string get_display_name(string cmdline, string cmdline_parameter)
 		{
@@ -250,7 +224,7 @@ namespace Usage
                 return cmdline;
 		}
 
-		private string get_full_process_cmd_for_pid (pid_t pid, out string cmd_parameter)
+		private string get_full_process_cmd_for_pid (Pid pid, out string cmd_parameter)
         {
             GTop.ProcArgs proc_args;
             GTop.ProcState proc_state;
@@ -342,7 +316,7 @@ namespace Usage
             }
         }
 
-        private void get_updates_table_cmdline(HashTable<pid_t?, Process> from_table, ref HashTable<string, Process> to_table)
+        private void get_updates_table_cmdline(HashTable<Pid?, Process> from_table, ref HashTable<string, Process> to_table)
         {
             foreach(unowned Process process_it in from_table.get_values())
             {
@@ -371,7 +345,7 @@ namespace Usage
                         }
                         else //transform to group and add subrow
                         {
-                            to_table[process_it.get_cmdline()].set_sub_processes(new HashTable<pid_t?, Process>(int_hash, int_equal));
+                            to_table[process_it.get_cmdline()].set_sub_processes(new HashTable<Pid?, Process>(int_hash, int_equal));
                             unowned Process process = to_table[process_it.get_cmdline()];
 
                             var sub_process_one = new Process(process.get_pid(), process.get_cmdline(), process.get_cmdline_parameter(), process.get_display_name());

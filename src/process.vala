@@ -1,10 +1,8 @@
-using Posix;
-
 namespace Usage
 {
     public class Process : Object
     {
-        pid_t pid;
+        Pid pid;
         string cmdline;
         string cmdline_parameter; //Isn't parameters as "-p" etc, but parameter for running app, for ex. "--writer' with libreoffice, or "privacy" with gnome-control-center
         string display_name;
@@ -17,11 +15,11 @@ namespace Usage
         uint64 net_download;
         uint64 net_upload;
         uint64 net_all;
-        HashTable<pid_t?, Process>? sub_processes;
+        HashTable<Pid?, Process>? sub_processes;
         bool alive;
         ProcessStatus status;
 
-        public Process(pid_t pid, string cmdline, string cmdline_parameter, string display_name)
+        public Process(Pid pid, string cmdline, string cmdline_parameter, string display_name)
         {
             this.pid = pid;
             this.cmdline = cmdline;
@@ -56,12 +54,12 @@ namespace Usage
             this.status = process.get_status();
         }
 
-        public pid_t get_pid()
+        public Pid get_pid()
         {
             return pid;
         }
 
-        public void set_pid(pid_t pid)
+        public void set_pid(Pid pid)
         {
             this.pid = pid;
         }
@@ -186,12 +184,12 @@ namespace Usage
             this.net_all = net_all;
         }
 
-        public HashTable<pid_t?, Process>? get_sub_processes()
+        public HashTable<Pid?, Process>? get_sub_processes()
         {
             return sub_processes;
         }
 
-        public void set_sub_processes(HashTable<pid_t?, Process>? sub_processes)
+        public void set_sub_processes(HashTable<Pid?, Process>? sub_processes)
         {
             this.sub_processes = sub_processes;
         }

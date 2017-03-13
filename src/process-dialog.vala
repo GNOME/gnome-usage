@@ -5,7 +5,7 @@ namespace Usage
 	public class ProcessDialog : Gtk.Dialog
 	{
 	    ProcessDialogHeaderBar headerbar;
-    	pid_t pid;
+    	Pid pid;
     	string process;
         GraphBlock processor_graph_block;
         GraphBlock memory_graph_block;
@@ -13,7 +13,7 @@ namespace Usage
         GraphBlock downloads_graph_block;
         GraphBlock uploads_graph_block;
 
-    	public ProcessDialog(pid_t pid, string app_name, string process)
+    	public ProcessDialog(Pid pid, string app_name, string process)
     	{
     	    Object(use_header_bar: 1);
     	    set_modal(true);
@@ -101,7 +101,7 @@ namespace Usage
         private string process;
         private Gtk.Button stop_button;
 
-        public ProcessDialogHeaderBar(Gtk.Button stop_button, pid_t pid, string app_name, string process)
+        public ProcessDialogHeaderBar(Gtk.Button stop_button, Pid pid, string app_name, string process)
         {
             this.app_name = app_name;
             this.process = process;
@@ -133,9 +133,9 @@ namespace Usage
             return !(process in unkillable_processes);
         }
 
-        private void kill_process(pid_t pid)
+        private void kill_process(Pid pid)
         {
-             Posix.kill (pid, Posix.SIGKILL);
+            Posix.kill (pid, Posix.SIGKILL);
         }
 
         public void set_process_state(ProcessStatus status)

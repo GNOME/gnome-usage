@@ -1,5 +1,4 @@
 using Gee;
-using Posix;
 
 namespace Usage
 {

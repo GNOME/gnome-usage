@@ -1,4 +1,3 @@
-using Posix;
 using Gee;
 
 namespace Usage
