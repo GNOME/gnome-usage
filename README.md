@@ -13,9 +13,6 @@ New GNOME Usage!
 - [ ] Disk usage (What library we can use?)
 - [ ] Data view - 0%
 
-##Installation from RPM
-[Download RPM](https://github.com/petr-stety-stetka/gnome-usage/releases/download/v0.3.8/gnome-usage-0.3.8-1.x86_64.rpm)
-
 ##Run
 In terminal run ```gnome-usage``` command or run Usage from app launcher.
 
@@ -23,15 +20,15 @@ In terminal run ```gnome-usage``` command or run Usage from app launcher.
 Actual version is 0.4.1
 
 ##Dependencies
-- [libnetinfo >= 0.3.1](https://github.com/kaegi/netinfo-ffi) 
+- [libnetinfo >= 0.3.1](https://github.com/kaegi/netinfo-ffi)
 - libgtop >= 2.34.2
 
-##Compilation from sources:
+##Compilation:
 ```
 cd gnome-usage
 meson build && cd build
 ninja-build #or ninja
-sudo ninja-build install #sudo ninja install
+sudo ninja-build install #or sudo ninja install
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 ```
 
