@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-12 11:57+0100\n"
-"PO-Revision-Date: 2017-03-12 11:58+0100\n"
+"POT-Creation-Date: 2017-03-14 13:40+0100\n"
+"PO-Revision-Date: 2017-03-14 13:41+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -24,9 +24,13 @@ msgstr ""
 msgid "Usage"
 msgstr "Monitor"
 
-#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:77
-msgid "View current application and monitor system state"
-msgstr "Wyświetlanie uruchomionych programów i monitorowanie stanu systemu"
+#: ../data/org.gnome.Usage.desktop:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Wygodny sposób na wyświetlanie informacji o użyciu zasobów komputera, takich "
+"jak pamięć i miejsce na dysku"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: ../data/org.gnome.Usage.desktop:8
@@ -39,8 +43,9 @@ msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
 msgstr ""
-"Monitor;System;Proces;Procesor;CPU;Pamięć;RAM;Sieć;Internet;Historia;Użycie;"
-"Wykorzystanie;Wydajność;Zadanie;Menedżer;Menadżer;Manadżer;Manedżer;Zadań;"
+"Monitor;System;Komputer:Proces;Procesor;CPU;Pamięć;RAM;Sieć;Internet;"
+"Historia;Użycie;Wykorzystanie;Wydajność;Zadanie;Menedżer;Menadżer;Manadżer;"
+"Manedżer;Zadań;"
 
 #: ../data/org.gnome.Usage.gschema.xml.h:1
 msgid "A list of processes which we don’t want killed"
@@ -59,6 +64,10 @@ msgstr "O programie"
 #: ../src/application.vala:52
 msgid "Quit"
 msgstr "Zakończ"
+
+#: ../src/application.vala:77
+msgid "View current application and monitor system state"
+msgstr "Wyświetlanie uruchomionych programów i monitorowanie stanu komputera"
 
 #: ../src/application.vala:80
 msgid "Websites"
@@ -81,7 +90,7 @@ msgstr "Dane"
 msgid "Others"
 msgstr "Pozostałe"
 
-#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:78
 msgid "Available"
 msgstr "Dostępne"
 
@@ -146,7 +155,7 @@ msgstr "1. urządzenie do przechowywania danych"
 msgid "Storage 2"
 msgstr "2. urządzenie do przechowywania danych"
 
-#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:65
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:63
 msgid "Trash"
 msgstr "Kosz"
 
