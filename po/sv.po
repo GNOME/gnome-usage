@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-06 14:45+0000\n"
-"PO-Revision-Date: 2017-03-07 12:24+0100\n"
-"Last-Translator: Josef Andersson <l10nl18nsweja@gmail.com>\n"
+"POT-Creation-Date: 2017-03-13 14:35+0000\n"
+"PO-Revision-Date: 2017-03-14 11:52+0100\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -19,14 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.11\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:76
 #: ../src/window.vala:15
 msgid "Usage"
 msgstr "Användning"
 
-#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:75
-msgid "View current application and monitor system state"
-msgstr "Visa aktuellt program och övervaka systemtillstånd"
+#: ../data/org.gnome.Usage.desktop:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Ett trevligt sätt att se information om användning av systemresurser, så som "
+"minne och diskutrymme"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: ../data/org.gnome.Usage.desktop:8
@@ -51,24 +55,28 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Listan används för att filtrera vilka processer användaren inte kan stoppa."
 
-#: ../src/application.vala:48
+#: ../src/application.vala:49
 msgid "About"
 msgstr "Om"
 
-#: ../src/application.vala:51
+#: ../src/application.vala:52
 msgid "Quit"
 msgstr "Avsluta"
 
-#: ../src/application.vala:78
+#: ../src/application.vala:77
+msgid "View current application and monitor system state"
+msgstr "Visa aktuellt program och övervaka systemtillstånd"
+
+#: ../src/application.vala:80
 msgid "Websites"
 msgstr "Webbplatser"
 
-#: ../src/cpu-sub-view.vala:9 ../src/graph-stack-switcher.vala:25
+#: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
 #: ../src/process-dialog.vala:40
 msgid "Processor"
 msgstr "Processor"
 
-#: ../src/cpu-sub-view.vala:35
+#: ../src/cpu-sub-view.vala:37
 msgid "No applications using processor."
 msgstr "Inga program använder processor."
 
@@ -80,11 +88,11 @@ msgstr "Data"
 msgid "Others"
 msgstr "Andra"
 
-#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:78
 msgid "Available"
 msgstr "Tillgängliga"
 
-#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:9
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:11
 #: ../src/process-dialog.vala:41
 msgid "Memory"
 msgstr "Minne"
@@ -93,19 +101,19 @@ msgstr "Minne"
 msgid "Disk I/O"
 msgstr "Disk in/ut"
 
-#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:9
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:11
 msgid "Network"
 msgstr "Nätverk"
 
-#: ../src/memory-sub-view.vala:35
+#: ../src/memory-sub-view.vala:37
 msgid "No applications using memory."
 msgstr "Inga program använder minne."
 
-#: ../src/network-sub-view.vala:34
+#: ../src/network-sub-view.vala:36
 msgid "No applications using network."
 msgstr "Inga program använder nätverk."
 
-#: ../src/performance-view.vala:10
+#: ../src/performance-view.vala:12
 msgid "Performance"
 msgstr "Prestanda"
 
@@ -145,7 +153,7 @@ msgstr "Lagring 1"
 msgid "Storage 2"
 msgstr "Lagring 2"
 
-#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:65
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:63
 msgid "Trash"
 msgstr "Flytta till Papperskorg"
 
