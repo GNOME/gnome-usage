@@ -1,0 +1,176 @@
+# Hungarian translation for gnome-usage.
+# Copyright (C) 2017 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnome-usage package.
+#
+# Balázs Úr <urbalazs@gmail.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"usage&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-03-16 10:11+0000\n"
+"PO-Revision-Date: 2017-03-18 23:18+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:76
+#: ../src/window.vala:15
+msgid "Usage"
+msgstr "Használat"
+
+#: ../data/org.gnome.Usage.desktop:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Egy jó módszer az információk megtekintéséhez a rendszererőforrások "
+"használatáról, mint például a memória és a lemezterület"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: ../data/org.gnome.Usage.desktop:8
+msgid "application-default-icon"
+msgstr "application-default-icon"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.Usage.desktop:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Figyelő;Rendszer;Folyamat;CPU;Memória;Hálózat;Előzmények;Használat;Teljesítmén"
+"y;Feladat;Kezelő;"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:1
+msgid "A list of processes which we don’t want killed"
+msgstr "Azon folyamatok listája, amelyeket nem szeretnénk kilőni"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:2
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Ez a lista használható annak szűréséhez, hogy mely folyamatokat nem tud a "
+"felhasználó leállítani."
+
+#: ../src/application.vala:49
+msgid "About"
+msgstr "Névjegy"
+
+#: ../src/application.vala:52
+msgid "Quit"
+msgstr "Kilépés"
+
+#: ../src/application.vala:77
+msgid "View current application and monitor system state"
+msgstr "A jelenlegi alkalmazás megtekintése és a rendszerállapot figyelése"
+
+#: ../src/application.vala:80
+msgid "Websites"
+msgstr "Weboldalak"
+
+#: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
+#: ../src/process-dialog.vala:40
+msgid "Processor"
+msgstr "Processzor"
+
+#: ../src/cpu-sub-view.vala:37
+msgid "No applications using processor."
+msgstr "Nincs processzort használó alkalmazás."
+
+#: ../src/data-view.vala:8
+msgid "Data"
+msgstr "Adat"
+
+#: ../src/graph-block.vala:45
+msgid "Others"
+msgstr "Egyebek"
+
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:78
+msgid "Available"
+msgstr "Elérhető"
+
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:11
+#: ../src/process-dialog.vala:41
+msgid "Memory"
+msgstr "Memória"
+
+#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "Lemez I/O"
+
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:11
+msgid "Network"
+msgstr "Hálózat"
+
+#: ../src/memory-sub-view.vala:37
+msgid "No applications using memory."
+msgstr "Nincs memóriát használó alkalmazás."
+
+#: ../src/network-sub-view.vala:36
+msgid "No applications using network."
+msgstr "Nincs hálózatot használó alkalmazás."
+
+#: ../src/performance-view.vala:12
+msgid "Performance"
+msgstr "Teljesítmény"
+
+#: ../src/power-view.vala:8
+msgid "Power"
+msgstr "Energia"
+
+#: ../src/process-dialog.vala:43
+msgid "Downloads"
+msgstr "Letöltések"
+
+#: ../src/process-dialog.vala:44
+msgid "Uploads"
+msgstr "Feltöltések"
+
+#: ../src/process-dialog.vala:54
+msgid "Stop"
+msgstr "Leállítás"
+
+#: ../src/process-dialog.vala:147
+msgid "Running"
+msgstr "Fut"
+
+#: ../src/process-dialog.vala:150
+msgid "Sleeping"
+msgstr "Alszik"
+
+#: ../src/process-dialog.vala:153
+msgid "Dead"
+msgstr "Halott"
+
+#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
+msgid "Storage 1"
+msgstr "1. tároló"
+
+#: ../src/storage-analyzer.vala:68
+msgid "Storage 2"
+msgstr "2. tároló"
+
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:63
+msgid "Trash"
+msgstr "Kuka"
+
+#: ../src/storage-analyzer.vala:305
+msgid "Operating System"
+msgstr "Operációs rendszer"
+
+#: ../src/storage-analyzer.vala:314
+msgid "Home"
+msgstr "Saját mappa"
+
+#: ../src/storage-view.vala:10
+msgid "Storage"
+msgstr "Tároló"
+
+#: ../src/storage-view.vala:26
+msgid "No content here"
+msgstr "Itt nincs tartalom"
+
