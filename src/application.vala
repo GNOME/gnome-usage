@@ -76,6 +76,7 @@ namespace Usage
                 program_name: _("Usage"),
                 comments: _("A nice way to view information about use of system resources, like memory and disk space."),
             	authors: authors,
+            	translator_credits: _("translator-credits"),
             	website: "https://wiki.gnome.org/Apps/Usage",
             	website_label: _("Websites"),
             	version: Config.VERSION,

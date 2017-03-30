@@ -19,9 +19,6 @@ New GNOME Usage!
 ##Run
 In terminal run ```gnome-usage``` command or run Usage from app launcher.
 
-##Version
-Actual version is 0.4.1
-
 ##Dependencies
 - [libnetinfo >= 0.3.1](https://github.com/kaegi/netinfo-ffi)
 - libgtop >= 2.34.2
