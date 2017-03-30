@@ -8,26 +8,30 @@ msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-22 18:16+0000\n"
-"PO-Revision-Date: 2017-02-28 23:03-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2017-03-13 14:35+0000\n"
+"PO-Revision-Date: 2017-03-25 21:29-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:76
 #: ../src/window.vala:15
 msgid "Usage"
 msgstr "Uso"
 
-#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:75
-msgid "View current application and monitor system state"
-msgstr "Veja o estado atual do aplicativo e monitore o estado do sistema"
+#: ../data/org.gnome.Usage.desktop:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Uma forma legal de ver informações sobre o uso dos recursos do sistema, como "
+"memória e espaço em disco"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: ../data/org.gnome.Usage.desktop:8
@@ -52,24 +56,28 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Essa lista é usada para filtrar quais processos o usuário não pode parar."
 
-#: ../src/application.vala:48
+#: ../src/application.vala:49
 msgid "About"
 msgstr "Sobre"
 
-#: ../src/application.vala:51
+#: ../src/application.vala:52
 msgid "Quit"
 msgstr "Sair"
 
-#: ../src/application.vala:78
+#: ../src/application.vala:77
+msgid "View current application and monitor system state"
+msgstr "Veja o estado atual do aplicativo e monitore o estado do sistema"
+
+#: ../src/application.vala:80
 msgid "Websites"
 msgstr "Sites"
 
-#: ../src/cpu-sub-view.vala:9 ../src/graph-stack-switcher.vala:25
+#: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
 #: ../src/process-dialog.vala:40
 msgid "Processor"
 msgstr "Processador"
 
-#: ../src/cpu-sub-view.vala:35
+#: ../src/cpu-sub-view.vala:37
 msgid "No applications using processor."
 msgstr "Nenhum aplicativo usando o processador."
 
@@ -81,11 +89,11 @@ msgstr "Dados"
 msgid "Others"
 msgstr "Outros"
 
-#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:78
 msgid "Available"
 msgstr "Disponível"
 
-#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:9
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:11
 #: ../src/process-dialog.vala:41
 msgid "Memory"
 msgstr "Memória"
@@ -94,19 +102,19 @@ msgstr "Memória"
 msgid "Disk I/O"
 msgstr "E/S de Disco"
 
-#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:9
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:11
 msgid "Network"
 msgstr "Rede"
 
-#: ../src/memory-sub-view.vala:35
+#: ../src/memory-sub-view.vala:37
 msgid "No applications using memory."
 msgstr "Nenhum aplicativo usando a memória."
 
-#: ../src/network-sub-view.vala:34
+#: ../src/network-sub-view.vala:36
 msgid "No applications using network."
 msgstr "Nenhum aplicativo usando a rede."
 
-#: ../src/performance-view.vala:10
+#: ../src/performance-view.vala:12
 msgid "Performance"
 msgstr "Desempenho"
 
@@ -138,29 +146,34 @@ msgstr "Suspenso"
 msgid "Dead"
 msgstr "Morto"
 
-#: ../src/storage-analyzer.vala:58 ../src/storage-analyzer.vala:69
+#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
 msgid "Storage 1"
 msgstr "Armazenamento 1"
 
-#: ../src/storage-analyzer.vala:62
+#: ../src/storage-analyzer.vala:68
 msgid "Storage 2"
 msgstr "Armazenamento 2"
 
-#: ../src/storage-analyzer.vala:248 ../src/storage-item.vala:65
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:63
 msgid "Trash"
 msgstr "Lixeira"
 
-#: ../src/storage-analyzer.vala:282
-msgid "Operation System"
+#: ../src/storage-analyzer.vala:305
+#| msgid "Operation System"
+msgid "Operating System"
 msgstr "Sistema operacional"
 
-#: ../src/storage-analyzer.vala:291
+#: ../src/storage-analyzer.vala:314
 msgid "Home"
 msgstr "Home"
 
 #: ../src/storage-view.vala:10
 msgid "Storage"
 msgstr "Armazenamento"
+
+#: ../src/storage-view.vala:26
+msgid "No content here"
+msgstr "Nenhum conteúdo aqui"
 
 #~ msgid "Cannot locate property %s in class %s"
 #~ msgstr "Não foi possível localizar a propriedade %s na classe %s"
