@@ -7,8 +7,11 @@ New GNOME Usage!
 - [x] Memory usage
 - [x] Network usage
 - [x] Search in processes 
-- [ ] Fix bug with refreshing ProcessListBox - 50% (focus, and click when refresh)
-- [ ] Storage view - 75%
+- [ ] Multiselection in storage
+- [ ] UI for file operations errors (as duplicate file, not enough space, permission...)
+- [ ] Notification for file operations and rollback
+- [ ] Storage support for more users (multiuser system)
+- [ ] Application section in storage 
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
 - [ ] Data view - 0%

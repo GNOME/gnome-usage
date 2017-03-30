@@ -23,12 +23,23 @@ namespace Usage
             paned.position = 300;
             paned.add2(spinner);
 
-            Gtk.Label empty_label = new Gtk.Label("<span font_desc=\"17.0\">" + _("No content here") + "</span>");
+            var center_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 12);
+            var image = new Gtk.Image.from_icon_name("folder-symbolic", Gtk.IconSize.DIALOG );
+            image.pixel_size = 128;
+            center_box.add(image);
+
+            Gtk.Label empty_label = new Gtk.Label("<span size='xx-large' font_weight='bold'>" + _("No content here") + "</span>");
             empty_label.set_use_markup (true);
+            empty_label.margin_top = 10;
+            center_box.add(empty_label);
+            center_box.get_style_context().add_class("dim-label");
+            var empty_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            empty_box.set_center_widget(center_box);
+            empty_box.show_all();
 
             storage_list_box.loading.connect(() =>
             {
-                paned.remove(empty_label);
+                paned.remove(empty_box);
                 paned.remove(scrolled_window);
                 paned.remove(graph);
                 paned.add2(spinner);
@@ -49,7 +60,7 @@ namespace Usage
                 paned.remove(scrolled_window);
                 paned.remove(graph);
                 paned.remove(spinner);
-                paned.add2(empty_label);
+                paned.add2(empty_box);
                 empty_label.show();
             });
 

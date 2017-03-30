@@ -74,7 +74,7 @@ namespace Usage
 
             Gtk.show_about_dialog (window,
                 program_name: _("Usage"),
-                comments: _("View current application and monitor system state"),
+                comments: _("A nice way to view information about use of system resources, like memory and disk space."),
             	authors: authors,
             	website: "https://wiki.gnome.org/Apps/Usage",
             	website_label: _("Websites"),

@@ -9,17 +9,18 @@ namespace Usage
 
         private bool separate_home = false;
         private Cancellable cancellable;
-        private HashTable<string, Directory?> directory_table;
+        private HashTable<string, uint64?> directory_size_table;
         private HashTable<string, Storage?> storages;
-        private AsyncQueue<StorageResult> results_queue;
         private string[] exclude_from_home;
         private static bool path_null;
         private bool can_scan = true;
+        private const string TRASH_PATH = "trash:///";
+        private const string file_attributes = FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE;
 
-        private struct Directory
+        private enum Operation
         {
-            public uint64 size;
-            public float percentage;
+            PLUS,
+            MINUS
         }
 
         private struct Storage
@@ -36,9 +37,9 @@ namespace Usage
             return storages[mount_path];
         }
 
-        private Directory? get_directory(string path)
+        private uint64? get_size_of_directory(string path)
         {
-            return directory_table[path];
+            return directory_size_table[path];
         }
 
         public void stop_scanning()
@@ -51,7 +52,7 @@ namespace Usage
             return separate_home;
         }
 
-        public async List<StorageItem> prepare_items(string? path, Gdk.RGBA color)
+        public async List<StorageItem> prepare_items(string? path, Gdk.RGBA color, StorageItemType? parent)
         {
             if(path == null)
             {
@@ -62,7 +63,7 @@ namespace Usage
                 {
                     Storage? home = get_storage("/home");
                     items.insert_sorted(new StorageItem.storage(_("Storage 1"), home.mount_path, home.total, 0), (CompareFunc) sort);
-                    add_home_items(ref items, 0);
+                    add_home_items(ref items, home, 0);
                     items.insert_sorted(new StorageItem.available(home.free, ((float) home.free / home.total) * 100, 0), (CompareFunc) sort);
                     Storage? root = get_storage("/");
                     items.insert_sorted(new StorageItem.storage(_("Storage 2"), root.mount_path, root.total, 1), (CompareFunc) sort);
@@ -72,9 +73,9 @@ namespace Usage
                 else
                 {
                     Storage? root = get_storage("/");
-                    items.insert_sorted(new StorageItem.storage(_("Storage 1"), root.mount_path, root.total, 0), (CompareFunc) sort);
+                    items.insert_sorted(new StorageItem.storage(_("Capacity"), root.mount_path, root.total, 0), (CompareFunc) sort);
                     add_root_items(ref items, root, 0);
-                    add_home_items(ref items, 0);
+                    add_home_items(ref items, root, 0);
                     items.insert_sorted(new StorageItem.available(root.free, ((float) root.free / root.total) * 100), (CompareFunc) sort);
                 }
 
@@ -83,7 +84,7 @@ namespace Usage
             } else
             {
                 path_null = false;
-                return get_items_for_path(path, color, exclude_from_home);
+                return get_items_for_path(path, color, parent, exclude_from_home);
             }
         }
 
@@ -229,7 +230,7 @@ namespace Usage
                 analyze_storages();
                 stop_scanning();
                 cancellable.reset();
-                directory_table.remove_all();
+                directory_size_table.remove_all();
                 SourceFunc callback = create_cache.callback;
 
                 ThreadFunc<void*> run = () => {
@@ -248,8 +249,291 @@ namespace Usage
             }
         }
 
+        public async void move_file(File src_file, File dest_file)
+        {
+            var src_parent = src_file.get_parent();
+            var dest_parent = dest_file.get_parent();
+            var type = src_file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+            Array<string> folders_for_delete_from_cache = new Array<string>();
+            uint64 size = 0;
+
+            try {
+                if(type == FileType.DIRECTORY)
+                {
+                    size = get_size_of_directory(src_file.get_parse_name());
+                    get_folders_in_dir(src_file, ref folders_for_delete_from_cache);
+                }
+                else if(type == FileType.REGULAR)
+                {
+                    var file_info = src_file.query_info (FileAttribute.STANDARD_SIZE, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+                    size = file_info.get_size();
+                }
+
+            	src_file.move (dest_file, FileCopyFlags.NONE, null);
+
+            	recalculate_size_of_parents(src_parent, size, Operation.MINUS);
+                recalculate_size_of_parents(dest_parent, size, Operation.PLUS);
+
+                if(type == FileType.DIRECTORY)
+                {
+                    for(int i = 0; i < folders_for_delete_from_cache.length; i++)
+                         directory_size_table.remove (folders_for_delete_from_cache.index(i));
+                    add_to_cache(dest_file);
+                }
+            } catch (Error e) {
+            	stderr.printf (e.message);
+            }
+        }
+
+        public async void wipe_folder(string path)
+        {
+            var file = File.new_for_path(path);
+            uint64 size = get_size_of_directory(path);
+            var type = file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+
+            try {
+                if(type == FileType.DIRECTORY)
+                {
+                    FileEnumerator enumerator;
+                    enumerator = file.enumerate_children(file_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                    FileInfo info;
+
+                    while((info = enumerator.next_file(null)) != null)
+                    {
+                        directory_size_table.remove (file.get_child(info.get_name()).get_parse_name());
+                        file.get_child(info.get_name()).trash();
+                        add_to_cache(File.new_for_uri(TRASH_PATH));
+                    }
+                }
+            }
+            catch (Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+
+            recalculate_size_of_parents(file, size, Operation.MINUS);
+        }
+
+        public async void wipe_trash()
+        {
+            var file = File.new_for_uri(TRASH_PATH);
+
+            try {
+                FileEnumerator enumerator = file.enumerate_children(file_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                FileInfo info;
+
+                while((info = enumerator.next_file(null)) != null)
+                    file.get_child(info.get_name()).delete();
+            }
+            catch (Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+
+            add_to_cache(file);
+        }
+
+        public async void trash_file(string path)
+        {
+            var file = File.new_for_path(path);
+            var type = file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+            Array<string> folders_for_delete_from_cache = new Array<string>();
+            uint64 size = 0;
+
+            try {
+                if(type == FileType.DIRECTORY)
+                {
+                    size = get_size_of_directory(path);
+                    get_folders_in_dir(file, ref folders_for_delete_from_cache);
+                }
+                else if(type == FileType.REGULAR)
+                {
+                    var file_info = file.query_info (FileAttribute.STANDARD_SIZE, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+                    size = file_info.get_size();
+                }
+                file.trash();
+            } catch (Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+
+            recalculate_size_of_parents(file.get_parent(), size, Operation.MINUS);
+
+            if(type == FileType.DIRECTORY)
+            {
+                for(int i = 0; i < folders_for_delete_from_cache.length; i++)
+                     directory_size_table.remove (folders_for_delete_from_cache.index(i));
+            }
+
+            add_to_cache(File.new_for_uri(TRASH_PATH));
+        }
+
+        public async void delete_trash_file(string path)
+        {
+            var file = File.new_for_uri(path);
+            try {
+                file.delete();
+            }
+            catch (Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+            add_to_cache(File.new_for_uri(TRASH_PATH));
+        }
+
+        public async void restore_trash_file(string path)
+        {
+            var file = File.new_for_uri(path);
+            try {
+                var file_info = file.query_info (file_attributes + "," + FileAttribute.TRASH_ORIG_PATH, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+                move_file.begin(file, File.new_for_path(file_info.get_attribute_byte_string(FileAttribute.TRASH_ORIG_PATH)));
+            } catch(Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+        }
+
+        public async void delete_file(string path)
+        {
+            var file = File.new_for_path(path);
+            var parent = file.get_parent();
+            var type = file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+            uint64 size = 0;
+
+            if(type == FileType.DIRECTORY)
+                size = get_size_of_directory(path);
+            else if(type == FileType.REGULAR)
+            {
+                try {
+                    var file_info = file.query_info (FileAttribute.STANDARD_SIZE, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+                    size = file_info.get_size();
+                } catch (Error e) {
+                    stderr.printf ("Error: %s\n", e.message);
+                }
+            }
+
+            delete_file_recursive(path, true);
+            recalculate_size_of_parents(parent, size, Operation.MINUS);
+        }
+
+        private void get_folders_in_dir(File file, ref Array<string> folders)
+        {
+            try {
+                FileEnumerator enumerator = file.enumerate_children(file_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+                FileInfo info;
+
+                while((info = enumerator.next_file(null)) != null)
+                {
+                    if(info.get_file_type() == FileType.DIRECTORY)
+                    {
+                        var child = file.get_child(info.get_name());
+                        get_folders_in_dir(child, ref folders);
+                    }
+                }
+            }
+            catch (Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+
+            folders.append_val(file.get_parse_name());
+        }
+
+        private uint64 add_to_cache(File file)
+        {
+            string path = file.get_parse_name();
+            uint64 size = 0;
+
+            try {
+                FileEnumerator enumerator = file.enumerate_children(file_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+                FileInfo info;
+
+                while((info = enumerator.next_file(null)) != null)
+                {
+                    if(info.get_file_type() == FileType.DIRECTORY)
+                    {
+                        var child = file.get_child(info.get_name());
+                        size += add_to_cache(child);
+                    }
+                    else if(info.get_file_type() == FileType.REGULAR)
+                    {
+                        size += info.get_size();
+                    }
+                }
+            }
+            catch (Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+
+            directory_size_table.insert (path, size);
+            return size;
+        }
+
+        private void recalculate_size_of_parents(File? parent, uint64 size, Operation operation)
+        {
+            uint64 orig_size = get_size_of_directory(parent.get_parse_name());
+            uint64 new_size = 0;
+
+            switch(operation)
+            {
+                case Operation.PLUS:
+                    new_size = orig_size + size;
+                    break;
+                case Operation.MINUS:
+                    new_size = orig_size - size;
+                    break;
+            }
+            directory_size_table.replace(parent.get_parse_name(), new_size);
+
+            foreach(string exclude in exclude_from_home)
+            {
+                if(parent.equal(File.new_for_path(exclude)))
+                    return;
+            }
+
+            if(parent.equal(File.new_for_path(Environment.get_home_dir())))
+                return;
+
+            if(parent.get_parent() == null)
+                return;
+
+            recalculate_size_of_parents(parent.get_parent(), size, operation);
+        }
+
+        private void delete_file_recursive(string path, bool delete_basefile, bool uri = false)
+        {
+            File file;
+            if(uri)
+                file = File.new_for_uri(path);
+            else
+                file = File.new_for_path(path);
+
+            var type = file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+
+            try {
+                if(type == FileType.DIRECTORY)
+                {
+                    FileEnumerator enumerator;
+                    enumerator = file.enumerate_children(file_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                    FileInfo info;
+
+                    while((info = enumerator.next_file(null)) != null)
+                    {
+                        string child = file.get_child(info.get_name()).get_parse_name();
+                        delete_file_recursive(child, true, uri);
+                    }
+                }
+
+                if(delete_basefile)
+                {
+                    file.delete();
+                    directory_size_table.remove(path);
+                }
+                else
+                    directory_size_table.replace(path, 0);
+            }
+            catch (Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+        }
+
         private void scan_cache()
         {
+            var results_queue = new AsyncQueue<StorageResult>();
             uint64 total_size;
             if(separate_home)
             {
@@ -262,14 +546,14 @@ namespace Usage
                 total_size = root.total;
             }
 
-            var desktop   = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DESKTOP)), total_size, ref cancellable, ref results_queue);
-            var documents = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DOCUMENTS)), total_size, ref cancellable, ref results_queue);
-            var downloads = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DOWNLOAD)), total_size, ref cancellable, ref results_queue);
-            var music     = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.MUSIC)), total_size, ref cancellable, ref results_queue);
-            var pictures  = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.PICTURES)), total_size, ref cancellable, ref results_queue);
-            var videos    = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.VIDEOS)), total_size, ref cancellable, ref results_queue);
-            var trash     = new StorageWorker(File.new_for_path(Environment.get_home_dir() + "/.local/share/Trash/files"), total_size, ref cancellable, ref results_queue, _("Trash"));
-            var home      = new StorageWorker(File.new_for_path(Environment.get_home_dir()), total_size, ref cancellable, ref results_queue, Environment.get_real_name(), exclude_from_home);
+            var desktop   = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DESKTOP)), ref cancellable, ref results_queue);
+            var documents = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DOCUMENTS)), ref cancellable, ref results_queue);
+            var downloads = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DOWNLOAD)), ref cancellable, ref results_queue);
+            var music     = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.MUSIC)), ref cancellable, ref results_queue);
+            var pictures  = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.PICTURES)), ref cancellable, ref results_queue);
+            var videos    = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.VIDEOS)), ref cancellable, ref results_queue);
+            var trash     = new StorageWorker(File.new_for_uri(TRASH_PATH), ref cancellable, ref results_queue);
+            var home      = new StorageWorker(File.new_for_path(Environment.get_home_dir()), ref cancellable, ref results_queue, exclude_from_home);
 
             try {
                 ThreadPool<StorageWorker> threads = new ThreadPool<StorageWorker>.with_owned_data((worker) => {
@@ -293,10 +577,7 @@ namespace Usage
             StorageResult result;
             while ((result = results_queue.try_pop()) != null)
             {
-                var directory = Directory();
-                directory.size = result.size;
-                directory.percentage = result.percentage;
-                directory_table.insert (result.path, directory);
+                directory_size_table.insert (result.path, result.size);
             }
         }
 
@@ -305,129 +586,146 @@ namespace Usage
             items.insert_sorted(new StorageItem.system(_("Operating System"), storage.used, ((float) storage.used / storage.total) * 100, section), (CompareFunc) sort);
         }
 
-        private void add_home_items(ref List<StorageItem> items, int section)
+        private void add_home_items(ref List<StorageItem> items, Storage storage, int section)
         {
-            Directory? user = get_directory(Environment.get_home_dir());
-            if(user != null)
+            uint64? user_size = get_size_of_directory(Environment.get_home_dir());
+            if(user_size != null)
             {
                 items.insert_sorted(new StorageItem.item(StorageItemType.USER,
+                    StorageItemType.USER,
                     _("Home"),
                     Environment.get_home_dir(),
-                    user.size,
-                    user.percentage,
+                    user_size,
+                    ((float) user_size / storage.total) * 100,
                     section,
                     StorageItemPosition.SECOND), (CompareFunc) sort);
             }
-            Directory? desktop = get_directory(Environment.get_user_special_dir(UserDirectory.DESKTOP));
-            if(desktop != null)
+            uint64? desktop_size = get_size_of_directory(Environment.get_user_special_dir(UserDirectory.DESKTOP));
+            if(desktop_size != null)
             {
                 items.insert_sorted(new StorageItem.item(StorageItemType.DESKTOP,
+                    StorageItemType.DESKTOP,
                     Path.get_basename(Environment.get_user_special_dir(UserDirectory.DESKTOP)),
                     Environment.get_user_special_dir(UserDirectory.DESKTOP),
-                    desktop.size,
-                    desktop.percentage,
+                    desktop_size,
+                    ((float) desktop_size / storage.total) * 100,
                     section), (CompareFunc) sort);
             }
-            Directory? documents = get_directory(Environment.get_user_special_dir(UserDirectory.DOCUMENTS));
-            if(documents != null)
+            uint64? documents_size = get_size_of_directory(Environment.get_user_special_dir(UserDirectory.DOCUMENTS));
+            if(documents_size != null)
             {
                 items.insert_sorted(new StorageItem.item(StorageItemType.DOCUMENTS,
+                    StorageItemType.DOCUMENTS,
                     Path.get_basename(Environment.get_user_special_dir(UserDirectory.DOCUMENTS)),
                     Environment.get_user_special_dir(UserDirectory.DOCUMENTS),
-                    documents.size,
-                    documents.percentage,
+                    documents_size,
+                    ((float) documents_size / storage.total) * 100,
                     section), (CompareFunc) sort);
             }
-            Directory? downloads = get_directory(Environment.get_user_special_dir(UserDirectory.DOWNLOAD));
-            if(downloads != null)
+            uint64? downloads_size = get_size_of_directory(Environment.get_user_special_dir(UserDirectory.DOWNLOAD));
+            if(downloads_size != null)
             {
                 items.insert_sorted(new StorageItem.item(StorageItemType.DOWNLOADS,
+                    StorageItemType.DOWNLOADS,
                     Path.get_basename(Environment.get_user_special_dir(UserDirectory.DOWNLOAD)),
                     Environment.get_user_special_dir(UserDirectory.DOWNLOAD),
-                    downloads.size,
-                    downloads.percentage,
+                    downloads_size,
+                    ((float) downloads_size / storage.total) * 100,
                     section), (CompareFunc) sort);
             }
-            Directory? music = get_directory(Environment.get_user_special_dir(UserDirectory.MUSIC));
-            if(music != null)
+            uint64? music_size = get_size_of_directory(Environment.get_user_special_dir(UserDirectory.MUSIC));
+            if(music_size != null)
             {
                 items.insert_sorted(new StorageItem.item(StorageItemType.MUSIC,
+                    StorageItemType.MUSIC,
                     Path.get_basename(Environment.get_user_special_dir(UserDirectory.MUSIC)),
                     Environment.get_user_special_dir(UserDirectory.MUSIC),
-                    music.size,
-                    music.percentage,
+                    music_size,
+                    ((float) music_size / storage.total) * 100,
                     section), (CompareFunc) sort);
             }
-            Directory? pictures = get_directory(Environment.get_user_special_dir(UserDirectory.PICTURES));
-            if(pictures != null)
+            uint64? pictures_size = get_size_of_directory(Environment.get_user_special_dir(UserDirectory.PICTURES));
+            if(pictures_size != null)
             {
                 items.insert_sorted(new StorageItem.item(StorageItemType.PICTURES,
+                    StorageItemType.PICTURES,
                     Path.get_basename(Environment.get_user_special_dir(UserDirectory.PICTURES)),
                     Environment.get_user_special_dir(UserDirectory.PICTURES),
-                    pictures.size,
-                    pictures.percentage,
+                    pictures_size,
+                    ((float) pictures_size / storage.total) * 100,
                     section), (CompareFunc) sort);
             }
-            Directory? videos = get_directory(Environment.get_user_special_dir(UserDirectory.VIDEOS));
-            if(videos != null)
+            uint64? videos_size = get_size_of_directory(Environment.get_user_special_dir(UserDirectory.VIDEOS));
+            if(videos_size != null)
             {
                 items.insert_sorted(new StorageItem.item(StorageItemType.VIDEOS,
+                    StorageItemType.VIDEOS,
                     Path.get_basename(Environment.get_user_special_dir(UserDirectory.VIDEOS)),
                     Environment.get_user_special_dir(UserDirectory.VIDEOS),
-                    videos.size,
-                    videos.percentage,
+                    videos_size,
+                    ((float) videos_size / storage.total) * 100,
                     section), (CompareFunc) sort);
             }
-            var trash_path = Environment.get_home_dir() + "/.local/share/Trash/files";
-            Directory? trash = get_directory(trash_path);
-            if(trash != null)
+            uint64? trash_size = get_size_of_directory(TRASH_PATH);
+            if(trash_size != null)
             {
                 items.insert_sorted(new StorageItem.trash(
-                    trash_path,
-                    trash.size,
-                    trash.percentage,
+                    TRASH_PATH,
+                    trash_size,
+                    ((float) trash_size / storage.total) * 100,
                     section), (CompareFunc) sort);
             }
         }
 
-        private List<StorageItem> get_items_for_path(string path, Gdk.RGBA color, string[]? exclude_paths = null)
+        private List<StorageItem> get_items_for_path(string path, Gdk.RGBA color, StorageItemType parent, string[]? exclude_paths = null)
         {
             List<StorageItem> items = new List<StorageItem>();
 
-            File file = File.new_for_path(path);
+            File file;
             FileEnumerator enumerator;
 
+            if(parent == StorageItemType.TRASH)
+            {
+                parent = StorageItemType.TRASHFILE;
+                file = File.new_for_uri(path);
+            }
+            else if(parent == StorageItemType.TRASHFILE || parent == StorageItemType.TRASHSUBFILE)
+            {
+                parent = StorageItemType.TRASHSUBFILE;
+                file = File.new_for_uri(path);
+            }
+            else
+                file = File.new_for_path(path);
+
             try {
-                enumerator = file.enumerate_children(FileAttribute.STANDARD_SIZE, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+                enumerator = file.enumerate_children(file_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
                 FileInfo info;
 
                 while((info = enumerator.next_file(null)) != null && cancellable.is_cancelled() == false)
                 {
+                    uint64 parent_size = get_size_of_directory(path);
+
                     if(info.get_file_type() == FileType.DIRECTORY)
                     {
                         if(exclude_paths == null || !(file.resolve_relative_path(info.get_name()).get_path() in exclude_paths))
                         {
                             string folder_path = file.get_child(info.get_name()).get_parse_name();
-                            Directory? folder = get_directory(folder_path);
-                            uint64 folder_size = 0;
-                            double folder_percentage = 0;
+                            uint64? folder_size = get_size_of_directory(folder_path);
 
-                            if(folder != null)
+                            if(folder_size != null)
                             {
-                                folder_size = folder.size;
-                                folder_percentage = folder.percentage;
-                            }
+                                double folder_percentage = ((float) folder_size / parent_size) * 100;
 
-                            items.insert_sorted(new StorageItem.directory(info.get_name(), folder_path, folder_size,
-                                folder_percentage), (CompareFunc) sort);
+                                items.insert_sorted(new StorageItem.directory(parent, info.get_name(), folder_path, folder_size,
+                                    folder_percentage), (CompareFunc) sort);
+                            }
                         }
                     }
                     else if(info.get_file_type() == FileType.REGULAR)
                     {
-                        Directory? parent = get_directory(path);
-                        float percentage = ((float) info.get_size() / parent.size) * 100;
+                        float percentage = ((float) info.get_size() / parent_size) * 100;
 
-                        items.insert_sorted(new StorageItem.file(info.get_name(),
+                        items.insert_sorted(new StorageItem.file(parent, info.get_name(),
                             file.get_child(info.get_name()).get_parse_name(), info.get_size(), percentage),
                             (CompareFunc) sort);
                     }
@@ -462,7 +760,7 @@ namespace Usage
                     GTop.get_fsusage(out root, mountdir);
 
                     Storage storage = Storage();
-                    storage.free = root.bfree * root.block_size;
+                    storage.free = root.bfree * root.block_size; //TODO bavail or bfree
                     storage.total = root.blocks * root.block_size;
                     storage.used = storage.total - storage.free;
                     storage.name = (string) entries[i].devname;
@@ -476,9 +774,8 @@ namespace Usage
         {
             cache = false;
             cancellable = new Cancellable();
-            directory_table = new HashTable<string, Directory?>(str_hash, str_equal);
+            directory_size_table = new HashTable<string, uint64?>(str_hash, str_equal);
             storages = new HashTable<string, Storage?>(str_hash, str_equal);
-            results_queue = new AsyncQueue<StorageResult>();
             exclude_from_home = {
                 Environment.get_user_special_dir(UserDirectory.DESKTOP),
                 Environment.get_user_special_dir(UserDirectory.DOCUMENTS),
@@ -486,7 +783,7 @@ namespace Usage
                 Environment.get_user_special_dir(UserDirectory.MUSIC),
                 Environment.get_user_special_dir(UserDirectory.PICTURES),
                 Environment.get_user_special_dir(UserDirectory.VIDEOS),
-                Environment.get_home_dir() + "/.local/share/Trash/files"
+                Environment.get_user_data_dir() + "/Trash/files"
             };
         }
     }

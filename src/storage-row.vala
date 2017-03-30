@@ -3,9 +3,21 @@ namespace Usage
     public class StorageRow : Gtk.ListBoxRow
     {
         private StorageItemType type;
+        private StorageItemType? parent_type;
         private string item_path;
         private string item_name;
         private Gdk.RGBA color;
+
+ 		const GLib.ActionEntry[] action_entries = {
+           { "rename", action_rename },
+           { "move", action_move },
+           { "move-to-trash", action_move_to_trash },
+           { "delete", action_delete },
+           { "wipe-trash", action_wipe_trash },
+           { "wipe-folder", action_wipe_folder },
+           { "trash-restore", action_trash_restore },
+           { "trash-delete", action_trash_delete }
+        };
 
         public StorageRow(StorageItem storage_item)
         {
@@ -16,6 +28,7 @@ namespace Usage
             var size_label = new Gtk.Label(Utils.format_size_values(storage_item.get_size()));
             item_path = storage_item.get_path();
             item_name = storage_item.get_name();
+            parent_type = storage_item.get_parent_type();
             type = storage_item.get_item_type();
             var title_label = new Gtk.Label(storage_item.get_name());
             title_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
@@ -43,8 +56,6 @@ namespace Usage
                     box.pack_start(color_rectangle, false, false, 5);
                     break;
                 case StorageItemType.STORAGE:
-                    box.margin_top = 10;
-                    box.margin_bottom = 10;
                     title_label.set_markup ("<b>" + storage_item.get_name() + "</b>");
                     size_label.set_markup ("<b>" + Utils.format_size_values(storage_item.get_size()) + "</b>");
                     activatable = false;
@@ -92,7 +103,10 @@ namespace Usage
 
             box.pack_start(title_label, false, true, 5);
             box.pack_end(size_label, false, true, 10);
-            add(box);
+            var event_box = new Gtk.EventBox();
+            event_box.add(box);
+            event_box.button_press_event.connect(row_press_event);
+            add(event_box);
 
             show_all();
         }
@@ -115,6 +129,272 @@ namespace Usage
         public StorageItemType get_item_type()
         {
             return type;
+        }
+
+        public StorageItemType? get_parent_type()
+        {
+            return parent_type;
+        }
+
+        private bool row_press_event (Gdk.EventButton event)
+        {
+            if(event.type == Gdk.EventType.BUTTON_PRESS)
+            {
+                switch (event.button)
+                {
+                    case Gdk.BUTTON_PRIMARY:
+                        action_primary();
+                        return false;
+                    case Gdk.BUTTON_SECONDARY:
+                        action_secondary();
+                        return true;
+                }
+            }
+
+            return true;
+        }
+
+        private void action_primary()
+        {
+            if(type == StorageItemType.FILE)
+            {
+                File file;
+                if(parent_type == StorageItemType.TRASH || parent_type == StorageItemType.TRASHFILE || parent_type == StorageItemType.TRASHSUBFILE)
+                    file = File.new_for_uri(item_path);
+                else
+                    file = File.new_for_path(item_path);
+
+                try {
+                    AppInfo.launch_default_for_uri(file.get_uri(), null);
+                } catch (Error e) {
+                	stderr.printf (e.message);
+                }
+            }
+        }
+
+        private void action_secondary()
+        {
+            bool show_popover = false;
+
+            var action_group = new GLib.SimpleActionGroup ();
+            action_group.add_action_entries (action_entries, this);
+
+            var menu = new GLib.Menu ();
+            var section = new GLib.Menu ();
+
+            switch(type)
+            {
+                case StorageItemType.SYSTEM:
+                case StorageItemType.AVAILABLE:
+                case StorageItemType.STORAGE:
+                case StorageItemType.TRASHSUBFILE:
+                case StorageItemType.TRASHFILE:
+                    break;
+                case StorageItemType.USER:
+                case StorageItemType.DOCUMENTS:
+                case StorageItemType.DOWNLOADS:
+                case StorageItemType.DESKTOP:
+                case StorageItemType.MUSIC:
+                case StorageItemType.PICTURES:
+                case StorageItemType.VIDEOS:
+                    section.append (_("Empty") + " " + item_name, "row.wipe-folder");
+                    menu.append_section (null, section);
+                    show_popover = true;
+                    break;
+                case StorageItemType.TRASH:
+                    section.append (_("Empty Trash"), "row.wipe-trash");
+                    menu.append_section (null, section);
+                    show_popover = true;
+                    break;
+                case StorageItemType.DIRECTORY:
+                case StorageItemType.FILE:
+                    show_popover = true;
+                    switch(parent_type)
+                    {
+                        case StorageItemType.TRASHFILE:
+                            section.append (_("Restore"), "row.trash-restore");
+                            menu.append_section (null, section);
+                            section = new GLib.Menu ();
+                            section.append (_("Delete from Trash"), "row.trash-delete");
+                            menu.append_section (null, section);
+                            break;
+                        case StorageItemType.TRASHSUBFILE:
+                            show_popover = false;
+                            break;
+                        default:
+                            section.append (_("Rename"), "row.rename");
+                            section.append (_("Move to"), "row.move");
+                            menu.append_section (null, section);
+                            section = new GLib.Menu ();
+                            section.append (_("Move to trash"), "row.move-to-trash");
+                            section.append (_("Delete"), "row.delete");
+                            menu.append_section (null, section);
+                            break;
+                    }
+                    break;
+            }
+
+            if(show_popover)
+            {
+                var pop = new Gtk.Popover (this);
+                pop.bind_model (menu, null);
+                pop.insert_action_group ("row", action_group);
+                pop.set_position(Gtk.PositionType.BOTTOM);
+                pop.show_all ();
+            }
+        }
+
+        private void action_trash_restore()
+        {
+            Timeout.add(0, () => {
+                var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                storage_analyzer.restore_trash_file.begin(item_path, () => {
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                });
+
+                return false;
+            });
+        }
+
+        private void action_trash_delete()
+        {
+            Timeout.add(0, () => {
+                var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                storage_analyzer.delete_trash_file.begin(item_path, () => {
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                });
+
+                return false;
+            });
+        }
+
+        private void action_wipe_folder()
+        {
+            var dialog = new Gtk.MessageDialog ((GLib.Application.get_default() as Application).get_window(), Gtk.DialogFlags.MODAL,
+                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, _("Empty all items from %s?").printf(item_name));
+            dialog.secondary_text = _("All items in the %s will be moved to the Trash.").printf(item_name);
+
+            if(dialog.run() == Gtk.ResponseType.OK)
+            {
+            	Timeout.add(0, () => {
+                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    storage_analyzer.wipe_folder.begin(item_path, () => {
+                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                    });
+
+                    return false;
+                });
+            }
+            dialog.close();
+        }
+
+        private void action_wipe_trash()
+        {
+            var dialog = new Gtk.MessageDialog ((GLib.Application.get_default() as Application).get_window(), Gtk.DialogFlags.MODAL,
+                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, _("Empty all items from Trash?"));
+            dialog.secondary_text = _("All items in the Trash will be permanently deleted.");
+
+            if(dialog.run() == Gtk.ResponseType.OK)
+            {
+            	Timeout.add(0, () => {
+                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    storage_analyzer.wipe_trash.begin(() => {
+                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                    });
+
+                    return false;
+                });
+            }
+            dialog.close();
+        }
+
+        private void action_rename()
+        {
+            var pop = new Gtk.Popover (this);
+            var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 5);
+            box.margin = 10;
+            var entry = new Gtk.Entry();
+            entry.set_text (Path.get_basename(item_path));
+            box.add(entry);
+            var button = new Gtk.Button.with_label(_("Rename"));
+            button.get_style_context().add_class ("suggested-action");
+            button.clicked.connect (() => {
+            	Timeout.add(0, () => {
+                    string destination = Path.get_dirname(item_path) + "/" + entry.get_text();
+                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    storage_analyzer.move_file.begin(File.new_for_path(item_path), File.new_for_path(destination), () => {
+                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                    });
+
+                    return false;
+                });
+            });
+            entry.activate.connect(() => {
+                button.activate();
+            });
+            box.add(button);
+            pop.add(box);
+            pop.set_position(Gtk.PositionType.BOTTOM);
+            pop.show_all ();
+        }
+
+        private void action_move()
+        {
+            Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog (
+                _("Select destination folder"), (GLib.Application.get_default() as Application).get_window(), Gtk.FileChooserAction.SELECT_FOLDER,
+                _("Cancel"),
+                Gtk.ResponseType.CANCEL,
+                _("Select"),
+                Gtk.ResponseType.ACCEPT);
+            chooser.destroy_with_parent = true;
+            Gtk.FileFilter filter = new Gtk.FileFilter();
+            filter.add_custom(Gtk.FileFilterFlags.FILENAME, (filter_info) => {
+                if(filter_info.filename != item_path)
+                    return true;
+                else
+                    return false;
+            });
+            chooser.set_filter(filter);
+            chooser.set_filename(item_path);
+            chooser.show();
+
+            if(chooser.run() == Gtk.ResponseType.ACCEPT)
+            {
+            	Timeout.add(0, () => {
+            	    string destination = chooser.get_file().get_parse_name() + "/" + Path.get_basename(item_path);
+                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    storage_analyzer.move_file.begin(File.new_for_path(item_path), File.new_for_path(destination), () => {
+                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                    });
+
+                    return false;
+                });
+            }
+            chooser.close ();
+        }
+
+        private void action_move_to_trash()
+        {
+            Timeout.add(0, () => {
+                var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                storage_analyzer.trash_file.begin(item_path, () => {
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                });
+
+                return false;
+            });
+        }
+
+        private void action_delete()
+        {
+            Timeout.add(0, () => {
+                var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                storage_analyzer.delete_file.begin(item_path, () => {
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                });
+
+                return false;
+            });
         }
     }
 }

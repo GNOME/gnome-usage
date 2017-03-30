@@ -8,8 +8,10 @@ namespace Usage
 
         private List<string?> path_history;
         private List<string?> name_history;
+        private List<StorageItemType?> parent_type_history;
         private string? actual_path;
         private string? actual_name;
+        private StorageItemType? actual_parent_type;
         private ListStore model;
         private bool root = true;
         private StorageAnalyzer storage_analyzer;
@@ -27,8 +29,10 @@ namespace Usage
 
             path_history = new List<string>();
             name_history = new List<string>();
+            parent_type_history = new List<StorageItemType?>();
             actual_path = null;
             actual_name = null;
+            actual_parent_type = null;
             storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
 
             get_style_context().add_class("folders");
@@ -51,11 +55,16 @@ namespace Usage
         {
             unowned List<string>? path = path_history.last();
             unowned List<string>? name = name_history.last();
+            unowned List<StorageItemType?>? parent = parent_type_history.last();
             actual_path = path.data;
             actual_name = name.data;
-            load(path.data);
+            actual_parent_type = parent.data;
+
+            load(path.data, actual_parent_type);
+
             path_history.delete_link(path);
             name_history.delete_link(name);
+            parent_type_history.delete_link(parent);
             if(root)
             {
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_back_button(false);
@@ -74,7 +83,7 @@ namespace Usage
             this.hide();
             loading();
             storage_analyzer.cache_complete.connect(() => {
-                storage_analyzer.prepare_items.begin(actual_path, color, (obj, res) => {
+                storage_analyzer.prepare_items.begin(actual_path, color, actual_parent_type, (obj, res) => {
                     var header_bar = (GLib.Application.get_default() as Application).get_window().get_header_bar();
                     if(root == false)
                     {
@@ -100,7 +109,12 @@ namespace Usage
             });
         }
 
-        private void load(string? path)
+        public void refresh()
+        {
+            load(actual_path, actual_parent_type);
+        }
+
+        private void load(string? path, StorageItemType? parent)
         {
             if(path == null)
             {
@@ -114,7 +128,7 @@ namespace Usage
 
             this.hide();
             loading();
-            storage_analyzer.prepare_items.begin(path, color, (obj, res) => {
+            storage_analyzer.prepare_items.begin(path, color, parent, (obj, res) => {
                 loaded();
                 this.show();
                 model.remove_all();
@@ -130,15 +144,15 @@ namespace Usage
         private void on_row_activated (Gtk.ListBoxRow row)
         {
             StorageRow storage_row = (StorageRow) row;
-            if(storage_row.get_item_type() == StorageItemType.FILE)
-                ;//TODO: action on click
-            else if(storage_row.get_item_type() != StorageItemType.STORAGE && storage_row.get_item_type() != StorageItemType.SYSTEM
-                 && storage_row.get_item_type() != StorageItemType.AVAILABLE)
+            if(storage_row.get_item_type() != StorageItemType.STORAGE && storage_row.get_item_type() != StorageItemType.SYSTEM &&
+                storage_row.get_item_type() != StorageItemType.AVAILABLE && storage_row.get_item_type() != StorageItemType.FILE)
             {
                 path_history.append(actual_path);
                 name_history.append(actual_name);
+                parent_type_history.append(actual_parent_type);
                 actual_path = storage_row.get_item_path();
                 actual_name = storage_row.get_item_name();
+                actual_parent_type = storage_row.get_parent_type();
 
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_back_button(true);
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().set_title_text(actual_name);
@@ -147,7 +161,7 @@ namespace Usage
                 if(root)
                     color = storage_row.get_color();
 
-                load(actual_path);
+                load(actual_path, actual_parent_type);
             }
         }
 

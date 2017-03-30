@@ -14,6 +14,7 @@ src/power-view.vala
 src/process-dialog.vala
 src/storage-analyzer.vala
 src/storage-item.vala
+src/storage-row.vala
 src/storage-view.vala
 src/utils.vala
 src/window.vala

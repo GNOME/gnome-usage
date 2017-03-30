@@ -187,34 +187,37 @@ namespace Usage
             foreach (AppInfo info in apps_info)
             {
                 string commandline = info.get_commandline();
-                for (int i = 0; i < commandline.length; i++)
+                if(commandline != null)
                 {
-                    if(commandline[i] == ' ' && commandline[i] == '%')
-                        commandline = commandline.substring(0, i);
-                }
-
-                commandline = Path.get_basename(commandline);
-                string process_full_cmd = cmdline + " " + cmdline_parameter;
-                if(commandline == process_full_cmd)
-                    app_info = info;
-                else if(commandline.contains("google-" + cmdline + "-")) //Fix for Google Chrome naming
-                    app_info = info;
-
-                if(app_info == null)
-                {
-                    commandline = info.get_commandline();
                     for (int i = 0; i < commandline.length; i++)
                     {
-                        if(commandline[i] == ' ')
+                        if(commandline[i] == ' ' && commandline[i] == '%')
                             commandline = commandline.substring(0, i);
                     }
 
-                    if(info.get_commandline().has_prefix(commandline + " " + commandline + "://")) //Fix for Steam naming
-                        commandline = info.get_commandline();
-
                     commandline = Path.get_basename(commandline);
-                    if(commandline == cmdline)
+                    string process_full_cmd = cmdline + " " + cmdline_parameter;
+                    if(commandline == process_full_cmd)
                         app_info = info;
+                    else if(commandline.contains("google-" + cmdline + "-")) //Fix for Google Chrome naming
+                        app_info = info;
+
+                    if(app_info == null)
+                    {
+                        commandline = info.get_commandline();
+                        for (int i = 0; i < commandline.length; i++)
+                        {
+                            if(commandline[i] == ' ')
+                                commandline = commandline.substring(0, i);
+                        }
+
+                        if(info.get_commandline().has_prefix(commandline + " " + commandline + "://")) //Fix for Steam naming
+                            commandline = info.get_commandline();
+
+                        commandline = Path.get_basename(commandline);
+                        if(commandline == cmdline)
+                            app_info = info;
+                    }
                 }
             }
 
