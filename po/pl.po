@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 13:40+0100\n"
-"PO-Revision-Date: 2017-03-14 13:41+0100\n"
+"POT-Creation-Date: 2017-04-02 09:44+0200\n"
+"PO-Revision-Date: 2017-04-02 09:45+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -66,12 +66,22 @@ msgid "Quit"
 msgstr "Zakończ"
 
 #: ../src/application.vala:77
-msgid "View current application and monitor system state"
-msgstr "Wyświetlanie uruchomionych programów i monitorowanie stanu komputera"
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Wygodny sposób na wyświetlanie informacji o użyciu zasobów komputera, takich "
+"jak pamięć i miejsce na dysku."
 
-#: ../src/application.vala:80
+#: ../src/application.vala:79
+msgid "translator-credits"
+msgstr ""
+"Piotr Drąg <piotrdrag@gmail.com>, 2017\n"
+"Aviary.pl <community-poland@mozilla.org>, 2017"
+
+#: ../src/application.vala:81
 msgid "Websites"
-msgstr "Strony WWW"
+msgstr "Strona WWW"
 
 #: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
 #: ../src/process-dialog.vala:40
@@ -90,7 +100,7 @@ msgstr "Dane"
 msgid "Others"
 msgstr "Pozostałe"
 
-#: ../src/graph-block.vala:47 ../src/storage-item.vala:78
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:82
 msgid "Available"
 msgstr "Dostępne"
 
@@ -147,30 +157,96 @@ msgstr "Uśpione"
 msgid "Dead"
 msgstr "Martwe"
 
-#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
+#: ../src/storage-analyzer.vala:65
 msgid "Storage 1"
 msgstr "1. urządzenie do przechowywania danych"
 
-#: ../src/storage-analyzer.vala:68
+#: ../src/storage-analyzer.vala:69
 msgid "Storage 2"
 msgstr "2. urządzenie do przechowywania danych"
 
-#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:63
-msgid "Trash"
-msgstr "Kosz"
+#: ../src/storage-analyzer.vala:76
+msgid "Capacity"
+msgstr "Pojemność"
 
-#: ../src/storage-analyzer.vala:305
+#: ../src/storage-analyzer.vala:586
 msgid "Operating System"
 msgstr "System operacyjny"
 
-#: ../src/storage-analyzer.vala:314
+#: ../src/storage-analyzer.vala:596
 msgid "Home"
 msgstr "Katalog domowy"
+
+#: ../src/storage-item.vala:67
+msgid "Trash"
+msgstr "Kosz"
+
+#: ../src/storage-row.vala:200
+msgid "Empty"
+msgstr "Usuń zawartość"
+
+#: ../src/storage-row.vala:205
+msgid "Empty Trash"
+msgstr "Opróżnij kosz"
+
+#: ../src/storage-row.vala:215
+msgid "Restore"
+msgstr "Przywróć"
+
+#: ../src/storage-row.vala:218
+msgid "Delete from Trash"
+msgstr "Usuń z kosza"
+
+#: ../src/storage-row.vala:225 ../src/storage-row.vala:319
+msgid "Rename"
+msgstr "Zmień nazwę"
+
+#: ../src/storage-row.vala:226
+msgid "Move to"
+msgstr "Przenieś do"
+
+#: ../src/storage-row.vala:229
+msgid "Move to trash"
+msgstr "Przenieś do kosza"
+
+#: ../src/storage-row.vala:230
+msgid "Delete"
+msgstr "Usuń"
+
+#: ../src/storage-row.vala:274
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "Usunąć wszystkie elementy z „%s”?"
+
+#: ../src/storage-row.vala:275
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "Wszystkie elementy w „%s” zostaną przeniesione do kosza."
+
+#: ../src/storage-row.vala:294
+msgid "Empty all items from Trash?"
+msgstr "Usunąć wszystkie elementy z kosza?"
+
+#: ../src/storage-row.vala:295
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Wszystkie elementy w koszu zostaną trwale usunięte."
+
+#: ../src/storage-row.vala:344
+msgid "Select destination folder"
+msgstr "Wybór katalogu docelowego"
+
+#: ../src/storage-row.vala:345
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: ../src/storage-row.vala:347
+msgid "Select"
+msgstr "Wybierz"
 
 #: ../src/storage-view.vala:10
 msgid "Storage"
 msgstr "Urządzenia do przechowywania danych"
 
-#: ../src/storage-view.vala:26
+#: ../src/storage-view.vala:31
 msgid "No content here"
 msgstr "Nic tu nie ma"
