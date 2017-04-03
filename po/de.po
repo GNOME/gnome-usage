@@ -2,15 +2,16 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2017.
+# Bernd Homuth <dev@hmt.im>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-13 16:07+0000\n"
-"PO-Revision-Date: 2017-03-15 20:14+0100\n"
-"Last-Translator: Bernd Homuth <dev@hmt.im>\n"
+"POT-Creation-Date: 2017-03-30 10:55+0000\n"
+"PO-Revision-Date: 2017-04-03 22:50+0200\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -65,8 +66,12 @@ msgid "Quit"
 msgstr "Beenden"
 
 #: ../src/application.vala:77
-msgid "View current application and monitor system state"
-msgstr "Momentan laufende Prozesse betrachten und den Systemzustand überwachen"
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Eine gute Möglichkeit, Informationen über die Verwendung von System-"
+"Ressourcen, wie Arbeitsspeicher und Speicherplatz anzuzeigen"
 
 #: ../src/application.vala:80
 msgid "Websites"
@@ -89,7 +94,7 @@ msgstr "Daten"
 msgid "Others"
 msgstr "Andere"
 
-#: ../src/graph-block.vala:47 ../src/storage-item.vala:78
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:82
 msgid "Available"
 msgstr "Verfügbar"
 
@@ -146,80 +151,97 @@ msgstr "Schläft"
 msgid "Dead"
 msgstr "Tot"
 
-#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
+#: ../src/storage-analyzer.vala:65
 msgid "Storage 1"
 msgstr "Speicher 1"
 
-#: ../src/storage-analyzer.vala:68
+#: ../src/storage-analyzer.vala:69
 msgid "Storage 2"
 msgstr "Speicher 2"
 
-#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:63
-msgid "Trash"
-msgstr "Papierkorb"
+#: ../src/storage-analyzer.vala:76
+msgid "Capacity"
+msgstr "Kapazität"
 
-#: ../src/storage-analyzer.vala:305
+#: ../src/storage-analyzer.vala:586
 msgid "Operating System"
 msgstr "Betriebssystem"
 
-#: ../src/storage-analyzer.vala:314
+#: ../src/storage-analyzer.vala:596
 msgid "Home"
 msgstr "Persönlicher Ordner"
+
+#: ../src/storage-item.vala:67
+msgid "Trash"
+msgstr "Papierkorb"
+
+#: ../src/storage-row.vala:200
+msgid "Empty"
+msgstr "Leer"
+
+#: ../src/storage-row.vala:205
+msgid "Empty Trash"
+msgstr "Papierkorb leeren"
+
+#: ../src/storage-row.vala:215
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#: ../src/storage-row.vala:218
+msgid "Delete from Trash"
+msgstr "Im Papierkorb löschen"
+
+#: ../src/storage-row.vala:225 ../src/storage-row.vala:319
+msgid "Rename"
+msgstr "Umbenennen"
+
+#: ../src/storage-row.vala:226
+msgid "Move to"
+msgstr "Verschieben nach"
+
+#: ../src/storage-row.vala:229
+msgid "Move to trash"
+msgstr "In den Papierkorb verschieben"
+
+#: ../src/storage-row.vala:230
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../src/storage-row.vala:274
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "Alle Objekte aus %s löschen?"
+
+#: ../src/storage-row.vala:275
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "Alle Objekte in %s werden in den Papierkorb verschoben."
+
+#: ../src/storage-row.vala:294
+msgid "Empty all items from Trash?"
+msgstr "Alle Objekte aus dem Papierkorb löschen?"
+
+#: ../src/storage-row.vala:295
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Alle Objekte im Papierkorb werden dauerhaft gelöscht."
+
+#: ../src/storage-row.vala:344
+msgid "Select destination folder"
+msgstr "Zielordner wählen"
+
+#: ../src/storage-row.vala:345
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../src/storage-row.vala:347
+msgid "Select"
+msgstr "Auswählen"
 
 #: ../src/storage-view.vala:10
 msgid "Storage"
 msgstr "Speicher"
 
-#: ../src/storage-view.vala:26
+#: ../src/storage-view.vala:31
 msgid "No content here"
 msgstr "Kein Inhalt"
 
-#~ msgid "Cannot locate property %s in class %s"
-#~ msgstr "Eigenschaft %s konnte nicht in Klasse %s gefunden werden"
-
-#~ msgid "Failed to find property %s in %s"
-#~ msgstr "Eigenschaft %s konnte nicht in %s gefunden werden"
-
-#~ msgid "Failed to find property %s in %s or parent %s"
-#~ msgstr "Eigenschaft %s konnte nicht in %s oder Elter %s gefunden werden"
-
-#~ msgid "Failed to retrieve va_list value: %s"
-#~ msgstr "va_list-Wert konnte nicht geladen werden: %s"
-
-#~ msgid "Just now"
-#~ msgstr "Genau jetzt"
-
-#~ msgid "An hour ago"
-#~ msgstr "Vor einer Stunde"
-
-#~ msgid "Yesterday"
-#~ msgstr "Gestern"
-
-#~ msgid "About a year ago"
-#~ msgstr "Vor ungefähr einem Jahr"
-
-#~ msgid "About %u year ago"
-#~ msgid_plural "About %u years ago"
-#~ msgstr[0] "Vor ungefähr %u Jahr"
-#~ msgstr[1] "Vor ungefähr %u Jahren"
-
-#~ msgid "Open"
-#~ msgstr "Öffnen"
-
-#~ msgid "Select"
-#~ msgstr "Auswählen"
-
-#~ msgid "Create"
-#~ msgstr "Erstellen"
-
-#~ msgid "Save"
-#~ msgstr "Speichern"
-
-#~ msgid "Browse…"
-#~ msgstr "Durchsuchen …"
-
-#~ msgid "Cancel"
-#~ msgstr "Abbrechen"
-
-#~ msgid "Search"
-#~ msgstr "Suchen"
