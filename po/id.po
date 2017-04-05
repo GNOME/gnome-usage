@@ -1,0 +1,248 @@
+# Indonesian translation for gnome-usage.
+# Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"usage&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-04-02 12:18+0000\n"
+"PO-Revision-Date: 2017-04-05 18:48+0700\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:76
+#: ../src/window.vala:15
+msgid "Usage"
+msgstr "Pemakaian"
+
+#: ../data/org.gnome.Usage.desktop:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Cara yang baik untuk melihat informasi tentang penggunaan sumber daya "
+"sistem, seperti memori dan ruang diska"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: ../data/org.gnome.Usage.desktop:8
+msgid "application-default-icon"
+msgstr "application-default-icon"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.Usage.desktop:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Monitor;Sistem;Proses;CPU;Memori;Jaringan;Riwayat;Pemakaian;Performa;Tugas;"
+"Pengelola;"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:1
+msgid "A list of processes which we don’t want killed"
+msgstr "Daftar proses yang tidak ingin kita dibunuh"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:2
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Daftar ini digunakan untuk menyaring proses yang pengguna tidak bisa "
+"hentikan."
+
+#: ../src/application.vala:49
+msgid "About"
+msgstr "Tentang"
+
+#: ../src/application.vala:52
+msgid "Quit"
+msgstr "Keluar"
+
+#: ../src/application.vala:77
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Cara yang baik untuk melihat informasi tentang penggunaan sumber daya "
+"sistem, seperti memori dan ruang diska."
+
+#: ../src/application.vala:79
+msgid "translator-credits"
+msgstr "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017."
+
+#: ../src/application.vala:81
+msgid "Websites"
+msgstr "Situs Web"
+
+#: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
+#: ../src/process-dialog.vala:40
+msgid "Processor"
+msgstr "Prosesor"
+
+#: ../src/cpu-sub-view.vala:37
+msgid "No applications using processor."
+msgstr "Tidak ada aplikasi yang menggunakan prosesor."
+
+#: ../src/data-view.vala:8
+msgid "Data"
+msgstr "Data"
+
+#: ../src/graph-block.vala:45
+msgid "Others"
+msgstr "Lainnya"
+
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:82
+msgid "Available"
+msgstr "Tersedia"
+
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:11
+#: ../src/process-dialog.vala:41
+msgid "Memory"
+msgstr "Memori"
+
+#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "Diska I/O"
+
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:11
+msgid "Network"
+msgstr "Jaringan"
+
+#: ../src/memory-sub-view.vala:37
+msgid "No applications using memory."
+msgstr "Tidak ada aplikasi yang menggunakan memori."
+
+#: ../src/network-sub-view.vala:36
+msgid "No applications using network."
+msgstr "Tidak ada aplikasi yang menggunakan jaringan."
+
+#: ../src/performance-view.vala:12
+msgid "Performance"
+msgstr "Performa"
+
+#: ../src/power-view.vala:8
+msgid "Power"
+msgstr "Daya"
+
+#: ../src/process-dialog.vala:43
+msgid "Downloads"
+msgstr "Unduh"
+
+#: ../src/process-dialog.vala:44
+msgid "Uploads"
+msgstr "Unggah"
+
+#: ../src/process-dialog.vala:54
+msgid "Stop"
+msgstr "Berhenti"
+
+#: ../src/process-dialog.vala:147
+msgid "Running"
+msgstr "Berjalan"
+
+#: ../src/process-dialog.vala:150
+msgid "Sleeping"
+msgstr "Tidur"
+
+#: ../src/process-dialog.vala:153
+msgid "Dead"
+msgstr "Mati"
+
+#: ../src/storage-analyzer.vala:65
+msgid "Storage 1"
+msgstr "Penyimpanan 1"
+
+#: ../src/storage-analyzer.vala:69
+msgid "Storage 2"
+msgstr "Penyimpanan 2"
+
+#: ../src/storage-analyzer.vala:76
+msgid "Capacity"
+msgstr "Kapasitas"
+
+#: ../src/storage-analyzer.vala:586
+msgid "Operating System"
+msgstr "Sistem Operasi"
+
+#: ../src/storage-analyzer.vala:596
+msgid "Home"
+msgstr "Beranda"
+
+#: ../src/storage-item.vala:67
+msgid "Trash"
+msgstr "Tong Sampah"
+
+#: ../src/storage-row.vala:200
+msgid "Empty"
+msgstr "Kosong"
+
+#: ../src/storage-row.vala:205
+msgid "Empty Trash"
+msgstr "Kosongkan Tong Sampah"
+
+#: ../src/storage-row.vala:215
+msgid "Restore"
+msgstr "Kembalikan"
+
+#: ../src/storage-row.vala:218
+msgid "Delete from Trash"
+msgstr "Hapus dari Tong Sampah"
+
+#: ../src/storage-row.vala:225 ../src/storage-row.vala:319
+msgid "Rename"
+msgstr "Ubah Nama"
+
+#: ../src/storage-row.vala:226
+msgid "Move to"
+msgstr "Pindah ke"
+
+#: ../src/storage-row.vala:229
+msgid "Move to trash"
+msgstr "Pindahkan ke tong sampah"
+
+#: ../src/storage-row.vala:230
+msgid "Delete"
+msgstr "Hapus"
+
+#: ../src/storage-row.vala:274
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "Kosongkan semua item dari %s?"
+
+#: ../src/storage-row.vala:275
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "Semua item di %s akan dipindahkan ke Tong Sampah."
+
+#: ../src/storage-row.vala:294
+msgid "Empty all items from Trash?"
+msgstr "Kosongkan semua item dari Tempat Sampah?"
+
+#: ../src/storage-row.vala:295
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Semua item dalam Tong Sampah akan dihapus secara permanen."
+
+#: ../src/storage-row.vala:344
+msgid "Select destination folder"
+msgstr "Pilih folder tujuan"
+
+#: ../src/storage-row.vala:345
+msgid "Cancel"
+msgstr "Batal"
+
+#: ../src/storage-row.vala:347
+msgid "Select"
+msgstr "Pilih"
+
+#: ../src/storage-view.vala:10
+msgid "Storage"
+msgstr "Penyimpanan"
+
+#: ../src/storage-view.vala:31
+msgid "No content here"
+msgstr "Tidak ada konten di sini"
