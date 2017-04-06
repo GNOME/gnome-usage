@@ -3,6 +3,8 @@ namespace Usage
     public class StorageView : View
     {
         private StorageListBox storage_list_box;
+        private Gtk.Revealer revealer;
+        private StorageActionBar action_bar;
 
         public StorageView ()
         {
@@ -64,12 +66,33 @@ namespace Usage
                 empty_label.show();
             });
 
-            add(paned);
+            action_bar = new StorageActionBar();
+
+            revealer = new Gtk.Revealer();
+            revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_UP;
+            revealer.transition_duration = 400;
+            revealer.add(action_bar);
+
+            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            box.pack_start(paned, true);
+            box.pack_end(revealer, false);
+            add(box);
         }
 
         public StorageListBox get_storage_list_box()
         {
             return storage_list_box;
+        }
+
+        public StorageActionBar get_action_bar()
+        {
+            return action_bar;
+        }
+
+        public void show_action_bar(bool show)
+        {
+            revealer.set_reveal_child(show);
+            action_bar.hide_all();
         }
     }
 }

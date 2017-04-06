@@ -760,7 +760,7 @@ namespace Usage
                     GTop.get_fsusage(out root, mountdir);
 
                     Storage storage = Storage();
-                    storage.free = root.bfree * root.block_size; //TODO bavail or bfree
+                    storage.free = root.bfree * root.block_size;
                     storage.total = root.blocks * root.block_size;
                     storage.used = storage.total - storage.free;
                     storage.name = (string) entries[i].devname;

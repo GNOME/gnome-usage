@@ -7,6 +7,7 @@ namespace Usage
         private string item_path;
         private string item_name;
         private Gdk.RGBA color;
+        private Gtk.CheckButton? check_button;
 
  		const GLib.ActionEntry[] action_entries = {
            { "rename", action_rename },
@@ -33,27 +34,28 @@ namespace Usage
             var title_label = new Gtk.Label(storage_item.get_name());
             title_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
 
+            Gtk.Widget? icon = null;
             switch(storage_item.get_item_type())
             {
                 case StorageItemType.SYSTEM:
-                    var color_rectangle = new ColorRectangle.new_from_css("system");
-                    color = color_rectangle.get_color();
-                    box.pack_start(color_rectangle, false, false, 5);
+                    icon = new ColorRectangle.new_from_css("system");
+                    color = ((ColorRectangle) icon).get_color();
+                    selectable = false;
                     break;
                 case StorageItemType.TRASH:
-                    var color_rectangle = new ColorRectangle.new_from_css("trash");
-                    color = color_rectangle.get_color();
-                    box.pack_start(color_rectangle, false, false, 5);
+                    check_button = new Gtk.CheckButton();
+                    icon = new ColorRectangle.new_from_css("trash");
+                    color = ((ColorRectangle) icon).get_color();
                     break;
                 case StorageItemType.USER:
-                    var color_rectangle = new ColorRectangle.new_from_css("user");
-                    color = color_rectangle.get_color();
-                    box.pack_start(color_rectangle, false, false, 5);
+                    check_button = new Gtk.CheckButton();
+                    icon = new ColorRectangle.new_from_css("user");
+                    color = ((ColorRectangle) icon).get_color();
                     break;
                 case StorageItemType.AVAILABLE:
-                    var color_rectangle = new ColorRectangle.new_from_css("available-storage");
-                    color = color_rectangle.get_color();
-                    box.pack_start(color_rectangle, false, false, 5);
+                    icon = new ColorRectangle.new_from_css("available-storage");
+                    color = ((ColorRectangle) icon).get_color();
+                    selectable = false;
                     break;
                 case StorageItemType.STORAGE:
                     title_label.set_markup ("<b>" + storage_item.get_name() + "</b>");
@@ -67,33 +69,33 @@ namespace Usage
                 case StorageItemType.MUSIC:
                 case StorageItemType.PICTURES:
                 case StorageItemType.VIDEOS:
+                    check_button = new Gtk.CheckButton();
                     get_style_context().add_class("folders");
                     color = get_style_context().get_color(get_style_context().get_state());
                     get_style_context().remove_class("folders");
-                    var color_rectangle = new ColorRectangle.new_from_rgba(storage_item.get_color());
-                    box.pack_start(color_rectangle, false, false, 5);
+                    icon = new ColorRectangle.new_from_rgba(storage_item.get_color());
                     break;
                 case StorageItemType.DIRECTORY:
+                    check_button = new Gtk.CheckButton();
                     color = storage_item.get_color();
                     var info = Gtk.IconTheme.get_default().lookup_icon("folder-symbolic", 15, 0);
 
                     try {
                         var pixbuf = info.load_symbolic (storage_item.get_color());
-                        var icon = new Gtk.Image.from_pixbuf (pixbuf);
-                        box.pack_start(icon, false, false, 5);
+                        icon = new Gtk.Image.from_pixbuf (pixbuf);
                     }
                     catch(Error e) {
                         GLib.stderr.printf ("Could not load folder-symbolic icon: %s\n", e.message);
                     }
                     break;
                  case StorageItemType.FILE:
+                    check_button = new Gtk.CheckButton();
                     color = storage_item.get_color();
                     var info = Gtk.IconTheme.get_default().lookup_icon("folder-documents-symbolic", 15, 0);
 
                     try {
                         var pixbuf = info.load_symbolic (storage_item.get_color());
-                        var icon = new Gtk.Image.from_pixbuf (pixbuf);
-                        box.pack_start(icon, false, false, 5);
+                        icon = new Gtk.Image.from_pixbuf (pixbuf);
                     }
                     catch(Error e) {
                         GLib.stderr.printf ("Could not load folder-documents-symbolic icon: %s\n", e.message);
@@ -101,14 +103,58 @@ namespace Usage
                     break;
             }
 
+            if(check_button != null)
+            {
+                check_button.toggled.connect(() => {
+                    if(check_button.get_active())
+                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().select_row(this);
+                    else
+                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().unselect_row(this);
+                });
+                box.pack_start(check_button, false, false, 5);
+            }
+
+            if(icon != null)
+                box.pack_start(icon, false, false, 5);
+
             box.pack_start(title_label, false, true, 5);
             box.pack_end(size_label, false, true, 10);
-            var event_box = new Gtk.EventBox();
-            event_box.add(box);
-            event_box.button_press_event.connect(row_press_event);
-            add(event_box);
+            add(box);
 
             show_all();
+            set_show_check_button(false);
+        }
+
+        public void set_show_check_button(bool show)
+        {
+            if(check_button != null)
+            {
+                check_button.set_visible(show);
+                if(show == false)
+                    check_button.set_active(false);
+            }
+        }
+
+        public bool get_show_check_button()
+        {
+            if(check_button != null)
+                return check_button.get_visible();
+            else
+                return false;
+        }
+
+        public void set_selected(bool selected)
+        {
+            if(check_button != null)
+                check_button.set_active(selected);
+        }
+
+        public bool get_selected()
+        {
+             if(check_button == null)
+                return false;
+             else
+                return check_button.get_active();
         }
 
         public Gdk.RGBA get_color()
@@ -136,25 +182,7 @@ namespace Usage
             return parent_type;
         }
 
-        private bool row_press_event (Gdk.EventButton event)
-        {
-            if(event.type == Gdk.EventType.BUTTON_PRESS)
-            {
-                switch (event.button)
-                {
-                    case Gdk.BUTTON_PRIMARY:
-                        action_primary();
-                        return false;
-                    case Gdk.BUTTON_SECONDARY:
-                        action_secondary();
-                        return true;
-                }
-            }
-
-            return true;
-        }
-
-        private void action_primary()
+        public void action_primary()
         {
             if(type == StorageItemType.FILE)
             {
@@ -172,7 +200,7 @@ namespace Usage
             }
         }
 
-        private void action_secondary()
+        public void action_secondary()
         {
             bool show_popover = false;
 
@@ -285,7 +313,7 @@ namespace Usage
                     return false;
                 });
             }
-            dialog.close();
+            dialog.destroy();
         }
 
         private void action_wipe_trash()
@@ -305,7 +333,7 @@ namespace Usage
                     return false;
                 });
             }
-            dialog.close();
+            dialog.destroy();
         }
 
         private void action_rename()
@@ -370,7 +398,7 @@ namespace Usage
                     return false;
                 });
             }
-            chooser.close ();
+            chooser.destroy ();
         }
 
         private void action_move_to_trash()
@@ -387,14 +415,22 @@ namespace Usage
 
         private void action_delete()
         {
-            Timeout.add(0, () => {
-                var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
-                storage_analyzer.delete_file.begin(item_path, () => {
-                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
-                });
+            var dialog = new Gtk.MessageDialog ((GLib.Application.get_default() as Application).get_window(), Gtk.DialogFlags.MODAL,
+                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, _("Are you sure you want to permanently delete %s?").printf(item_name));
+            dialog.secondary_text = _("If you delete an item, it will be permanently lost.");
 
-                return false;
-            });
+            if(dialog.run() == Gtk.ResponseType.OK)
+            {
+            	Timeout.add(0, () => {
+                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    storage_analyzer.delete_file.begin(item_path, () => {
+                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
+                    });
+
+                    return false;
+                });
+            }
+            dialog.destroy();
         }
     }
 }

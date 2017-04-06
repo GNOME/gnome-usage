@@ -31,6 +31,7 @@ vala_sources = [
     'process-row.vala',
     'process.vala',
     'settings.vala',
+    'storage-actionbar.vala',
     'storage-analyzer.vala',
     'storage-graph.vala',
     'storage-item.vala',

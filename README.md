@@ -7,11 +7,11 @@ New GNOME Usage!
 - [x] Memory usage
 - [x] Network usage
 - [x] Search in processes 
-- [ ] Multiselection in storage
 - [ ] UI for file operations errors (as duplicate file, not enough space, permission...)
-- [ ] Notification for file operations and rollback
+- [ ] UI for show progress about file operations
+- [ ] Notification for file operations with undo action
 - [ ] Storage support for more users (multiuser system)
-- [ ] Application section in storage 
+- [ ] Application in storage 
 - [ ] Power view (Design?)
 - [ ] Disk usage (What library we can use?)
 - [ ] Data view - 0%

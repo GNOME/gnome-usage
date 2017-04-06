@@ -26,6 +26,7 @@ namespace Usage
             bind_model(model, on_row_created);
 
             row_activated.connect(on_row_activated);
+            selected_rows_changed.connect(on_selected_rows_changed);
 
             path_history = new List<string>();
             name_history = new List<string>();
@@ -75,6 +76,10 @@ namespace Usage
             {
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().set_title_text(actual_name);
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_title();
+                if(actual_parent_type == StorageItemType.TRASHFILE || actual_parent_type == StorageItemType.TRASHSUBFILE)
+                    (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(false);
+                else
+                    (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(true);
             }
         }
 
@@ -96,6 +101,9 @@ namespace Usage
                     }
 
                     header_bar.show_storage_rescan_button(true);
+                    if(actual_parent_type != StorageItemType.TRASHFILE && actual_parent_type != StorageItemType.TRASHSUBFILE)
+                        (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(true);
+
                     loaded();
                     this.show();
                     model.remove_all();
@@ -112,6 +120,79 @@ namespace Usage
         public void refresh()
         {
             load(actual_path, actual_parent_type);
+        }
+
+        public void set_select_mode(bool select_mode)
+        {
+            if(select_mode)
+            {
+                set_selection_mode (Gtk.SelectionMode.MULTIPLE);
+                this.forall ((child) => {
+                    var row = child as StorageRow;
+                    if (row == null)
+                        return;
+
+                    row.set_show_check_button(true);
+                });
+
+                if(root)
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().show_root();
+                else if(actual_parent_type == StorageItemType.TRASH)
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().show_trash();
+                else if(actual_parent_type != StorageItemType.TRASHFILE && actual_parent_type != StorageItemType.TRASHSUBFILE)
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().show_common();
+
+                on_selected_rows_changed();
+            }
+            else
+            {
+                set_selection_mode (Gtk.SelectionMode.NONE);
+                this.forall ((child) => {
+                    var row = child as StorageRow;
+                    if (row == null)
+                        return;
+
+                    row.set_show_check_button(false);
+                });
+            }
+        }
+
+        public bool get_select_mode()
+        {
+            if(get_selection_mode() == Gtk.SelectionMode.MULTIPLE)
+                return true;
+            else
+                return false;
+        }
+
+        public void select_all_rows()
+        {
+            if(get_select_mode())
+            {
+                this.forall ((child) => {
+                    var row = child as StorageRow;
+                    if (row == null)
+                        return;
+
+                    row.set_selected(true);
+                    select_row((Gtk.ListBoxRow) row);
+                });
+            }
+        }
+
+        public void unselect_all_rows()
+        {
+            if(get_select_mode())
+            {
+                this.forall ((child) => {
+                    var row = child as StorageRow;
+                    if (row == null)
+                        return;
+
+                    row.set_selected(false);
+                    unselect_row((Gtk.ListBoxRow) row);
+                });
+            }
         }
 
         private void load(string? path, StorageItemType? parent)
@@ -140,10 +221,28 @@ namespace Usage
                     empty();
             });
         }
-
         private void on_row_activated (Gtk.ListBoxRow row)
         {
             StorageRow storage_row = (StorageRow) row;
+            if(get_select_mode())
+            {
+                if(storage_row.get_selected())
+                {
+                    storage_row.set_selected(false);
+                    unselect_row(row);
+                }
+                else
+                {
+                     storage_row.set_selected(true);
+                     select_row(row);
+                }
+            }
+            else
+                action_primary(storage_row);
+        }
+
+        private void action_primary (StorageRow storage_row)
+        {
             if(storage_row.get_item_type() != StorageItemType.STORAGE && storage_row.get_item_type() != StorageItemType.SYSTEM &&
                 storage_row.get_item_type() != StorageItemType.AVAILABLE && storage_row.get_item_type() != StorageItemType.FILE)
             {
@@ -157,15 +256,78 @@ namespace Usage
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_back_button(true);
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().set_title_text(actual_name);
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_title();
+                if(actual_parent_type == StorageItemType.TRASHFILE || actual_parent_type == StorageItemType.TRASHSUBFILE)
+                    (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(false);
 
                 if(root)
                     color = storage_row.get_color();
 
                 load(actual_path, actual_parent_type);
             }
+            else
+                storage_row.action_primary();
         }
 
-        private Gtk.Widget on_row_created (Object item)
+        protected override bool button_release_event (Gdk.EventButton event)
+        {
+            switch (event.button)
+            {
+            case Gdk.BUTTON_PRIMARY:
+
+                // Necessary to avoid treating an event from a child widget which would mess with getting the correct row.
+                if (event.window != this.get_window ())
+                     return false;
+
+                var row = this.get_row_at_y ((int) event.y);
+                if (row == null)
+                    return false;
+
+                StorageRow storage_row = (StorageRow) row;
+
+                if(get_select_mode())
+                {
+                    if(storage_row.get_selected())
+                    {
+                        storage_row.set_selected(false);
+                        unselect_row(row);
+                    }
+                    else
+                    {
+                         storage_row.set_selected(true);
+                         select_row(row);
+                    }
+                }
+                else
+                    action_primary(storage_row);
+
+                return true;
+            case Gdk.BUTTON_SECONDARY:
+                // Necessary to avoid treating an event from a child widget which would mess with getting the correct row.
+                if (event.window != this.get_window ())
+                     return false;
+
+                var row = this.get_row_at_y ((int) event.y);
+                if (row == null)
+                    return false;
+
+                StorageRow storage_row = (StorageRow) row;
+                storage_row.action_secondary();
+                return true;
+            default:
+                return false;
+            }
+        }
+
+        private void on_selected_rows_changed()
+        {
+            (GLib.Application.get_default() as Application).get_window().get_header_bar().change_selected_items(get_selected_rows().length());
+            if(get_selected_rows().length() > 0)
+                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().set_sensitive_all(true);
+            else
+                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().set_sensitive_all(false);
+        }
+
+        private Gtk.Widget on_row_created(Object item)
         {
             unowned StorageItem storage_item = (StorageItem) item;
             var row = new StorageRow(storage_item);
