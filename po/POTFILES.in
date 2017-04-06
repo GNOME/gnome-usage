@@ -7,6 +7,7 @@ src/cpu-sub-view.vala
 src/data-view.vala
 src/graph-block.vala
 src/graph-stack-switcher.vala
+src/header-bar.vala
 src/memory-sub-view.vala
 src/network-sub-view.vala
 src/performance-view.vala
