@@ -1,6 +1,6 @@
 #GNOME Usage
 
-New GNOME Usage!
+A nice way to view information about use of system resources, like memory and disk space.
 
 ## Actual TODO:
 - [x] Processor Usage
