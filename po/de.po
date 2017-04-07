@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-30 10:55+0000\n"
-"PO-Revision-Date: 2017-04-03 22:50+0200\n"
+"POT-Creation-Date: 2017-04-06 12:12+0000\n"
+"PO-Revision-Date: 2017-04-06 20:11+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -73,7 +73,13 @@ msgstr ""
 "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
 "Ressourcen, wie Arbeitsspeicher und Speicherplatz anzuzeigen"
 
-#: ../src/application.vala:80
+#: ../src/application.vala:79
+msgid "translator-credits"
+msgstr ""
+"Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"Bernd Homuth <dev@hmt.im>"
+
+#: ../src/application.vala:81
 msgid "Websites"
 msgstr "Webseiten"
 
@@ -110,6 +116,30 @@ msgstr "Plattenzugriff Ein-/Ausgabe"
 #: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:11
 msgid "Network"
 msgstr "Netzwerk"
+
+#: ../src/header-bar.vala:114 ../src/storage-actionbar.vala:88
+#: ../src/storage-row.vala:373
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../src/header-bar.vala:136
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "%u ausgewählt"
+msgstr[1] "%u ausgewählt"
+
+#: ../src/header-bar.vala:138
+msgid "Click on items to select them"
+msgstr "Klicken Sie auf Objekte, um diese auszuwählen"
+
+#: ../src/header-bar.vala:237
+msgid "Select all"
+msgstr "Alle auswählen"
+
+#: ../src/header-bar.vala:241
+msgid "Select None"
+msgstr "Nichtds auswählen"
 
 #: ../src/memory-sub-view.vala:37
 msgid "No applications using memory."
@@ -151,6 +181,68 @@ msgstr "Schläft"
 msgid "Dead"
 msgstr "Tot"
 
+#. common
+#: ../src/storage-actionbar.vala:15 ../src/storage-row.vala:254
+msgid "Move to"
+msgstr "Verschieben nach"
+
+#: ../src/storage-actionbar.vala:17 ../src/storage-row.vala:258
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../src/storage-actionbar.vala:20
+msgid "Move to Trash"
+msgstr "In den Papierkorb verschieben"
+
+#. root
+#: ../src/storage-actionbar.vala:27
+msgid "Empty folder"
+msgstr "Ordner leeren"
+
+#. trash
+#: ../src/storage-actionbar.vala:32 ../src/storage-row.vala:243
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#: ../src/storage-actionbar.vala:34 ../src/storage-row.vala:246
+msgid "Delete from Trash"
+msgstr "Im Papierkorb löschen"
+
+#: ../src/storage-actionbar.vala:87 ../src/storage-row.vala:372
+msgid "Select destination folder"
+msgstr "Zielordner wählen"
+
+#: ../src/storage-actionbar.vala:90 ../src/storage-row.vala:375
+msgid "Select"
+msgstr "Auswählen"
+
+#: ../src/storage-actionbar.vala:140
+#, c-format
+msgid "Are you sure you want to permanently delete this items %s?"
+msgstr "Sind Sie sicher, dass Sie diese %s Objekte löschen wollen?"
+
+#: ../src/storage-actionbar.vala:141
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Wenn Sie diese Objekte löschen, gehen Sie dauerhaft verloren."
+
+#: ../src/storage-actionbar.vala:191 ../src/storage-row.vala:322
+msgid "Empty all items from Trash?"
+msgstr "Alle Objekte aus dem Papierkorb löschen?"
+
+#: ../src/storage-actionbar.vala:192 ../src/storage-row.vala:323
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Alle Objekte im Papierkorb werden dauerhaft gelöscht."
+
+#: ../src/storage-actionbar.vala:214 ../src/storage-row.vala:302
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "Alle Objekte aus %s löschen?"
+
+#: ../src/storage-actionbar.vala:215 ../src/storage-row.vala:303
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "Alle Objekte in %s werden in den Papierkorb verschoben."
+
 #: ../src/storage-analyzer.vala:65
 msgid "Storage 1"
 msgstr "Speicher 1"
@@ -175,73 +267,35 @@ msgstr "Persönlicher Ordner"
 msgid "Trash"
 msgstr "Papierkorb"
 
-#: ../src/storage-row.vala:200
+#: ../src/storage-row.vala:228
 msgid "Empty"
 msgstr "Leer"
 
-#: ../src/storage-row.vala:205
+#: ../src/storage-row.vala:233
 msgid "Empty Trash"
 msgstr "Papierkorb leeren"
 
-#: ../src/storage-row.vala:215
-msgid "Restore"
-msgstr "Wiederherstellen"
-
-#: ../src/storage-row.vala:218
-msgid "Delete from Trash"
-msgstr "Im Papierkorb löschen"
-
-#: ../src/storage-row.vala:225 ../src/storage-row.vala:319
+#: ../src/storage-row.vala:253 ../src/storage-row.vala:347
 msgid "Rename"
 msgstr "Umbenennen"
 
-#: ../src/storage-row.vala:226
-msgid "Move to"
-msgstr "Verschieben nach"
-
-#: ../src/storage-row.vala:229
+#: ../src/storage-row.vala:257
 msgid "Move to trash"
 msgstr "In den Papierkorb verschieben"
 
-#: ../src/storage-row.vala:230
-msgid "Delete"
-msgstr "Löschen"
-
-#: ../src/storage-row.vala:274
+#: ../src/storage-row.vala:419
 #, c-format
-msgid "Empty all items from %s?"
-msgstr "Alle Objekte aus %s löschen?"
+msgid "Are you sure you want to permanently delete %s?"
+msgstr "Sind Sie sicher, das Sie %s dauerhaft löschen wollen?"
 
-#: ../src/storage-row.vala:275
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Alle Objekte in %s werden in den Papierkorb verschoben."
+#: ../src/storage-row.vala:420
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Wenn Sie ein Objekt löschen, geht es dauerhaft verloren."
 
-#: ../src/storage-row.vala:294
-msgid "Empty all items from Trash?"
-msgstr "Alle Objekte aus dem Papierkorb löschen?"
-
-#: ../src/storage-row.vala:295
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Alle Objekte im Papierkorb werden dauerhaft gelöscht."
-
-#: ../src/storage-row.vala:344
-msgid "Select destination folder"
-msgstr "Zielordner wählen"
-
-#: ../src/storage-row.vala:345
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: ../src/storage-row.vala:347
-msgid "Select"
-msgstr "Auswählen"
-
-#: ../src/storage-view.vala:10
+#: ../src/storage-view.vala:12
 msgid "Storage"
 msgstr "Speicher"
 
-#: ../src/storage-view.vala:31
+#: ../src/storage-view.vala:33
 msgid "No content here"
 msgstr "Kein Inhalt"
-
