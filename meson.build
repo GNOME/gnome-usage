@@ -1,4 +1,4 @@
-project('gnome-usage', ['vala', 'c'], version : '0.4.3')
+project('gnome-usage', ['vala', 'c'], version : '0.4.4')
 
 cc = meson.get_compiler('c')
 
