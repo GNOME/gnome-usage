@@ -31,11 +31,27 @@ namespace Usage
 
         private void update()
         {
+        	CompareDataFunc<Process> processcmp = (a, b) => {
+            	Process p_a = (Process) a;
+            	Process p_b = (Process) b;
+
+            	switch(type)
+            	{
+                	default:
+                	case ProcessListBoxType.PROCESSOR:
+   	                	return (int) ((uint64) (p_a.get_cpu_load() < p_b.get_cpu_load()) - (uint64) (p_a.get_cpu_load() > p_b.get_cpu_load()));
+    	            case ProcessListBoxType.MEMORY:
+    	                return (int) ((uint64) (p_a.get_mem_usage() < p_b.get_mem_usage()) - (uint64) (p_a.get_mem_usage() > p_b.get_mem_usage()));
+    	            case ProcessListBoxType.NETWORK:
+    	                return (int) ((uint64) (p_a.get_net_all() < p_b.get_net_all()) - (uint64) (p_a.get_net_all() > p_b.get_net_all()));
+            	}
+            };
+
            if(parent_process.get_sub_processes() != null)
            {
                foreach(unowned Process process in parent_process.get_sub_processes().get_values())
                {
-                   model.insert_sorted(process, sort);
+                   model.insert_sorted(process, processcmp);
                }
            }
         }
@@ -58,23 +74,6 @@ namespace Usage
            	    separator.show();
         	    row.set_header(separator);
         	}
-        }
-
-        private int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
-        {
-            Process p_a = (Process) a;
-            Process p_b = (Process) b;
-
-            switch(type)
-            {
-                default:
-                case ProcessListBoxType.PROCESSOR:
-                    return (int) ((uint64) (p_a.get_cpu_load() < p_b.get_cpu_load()) - (uint64) (p_a.get_cpu_load() > p_b.get_cpu_load()));
-                case ProcessListBoxType.MEMORY:
-                    return (int) ((uint64) (p_a.get_mem_usage() < p_b.get_mem_usage()) - (uint64) (p_a.get_mem_usage() > p_b.get_mem_usage()));
-                case ProcessListBoxType.NETWORK:
-                    return (int) ((uint64) (p_a.get_net_all() < p_b.get_net_all()) - (uint64) (p_a.get_net_all() > p_b.get_net_all()));
-            }
         }
     }
 }

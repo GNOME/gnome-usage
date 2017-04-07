@@ -71,6 +71,22 @@ namespace Usage
 
         public bool update()
         {
+        	CompareDataFunc<Process> processcmp = (a, b) => {
+            	Process p_a = (Process) a;
+            	Process p_b = (Process) b;
+
+            	switch(type)
+            	{
+                	default:
+                	case ProcessListBoxType.PROCESSOR:
+                    	return (int) ((uint64) (p_a.get_cpu_load() < p_b.get_cpu_load()) - (uint64) (p_a.get_cpu_load() > p_b.get_cpu_load()));
+                	case ProcessListBoxType.MEMORY:
+                    	return (int) ((uint64) (p_a.get_mem_usage() < p_b.get_mem_usage()) - (uint64) (p_a.get_mem_usage() > p_b.get_mem_usage()));
+                	case ProcessListBoxType.NETWORK:
+                    	return (int) ((uint64) (p_a.get_net_all() < p_b.get_net_all()) - (uint64) (p_a.get_net_all() > p_b.get_net_all()));
+            	}
+            };
+
             bind_model(null, null);
             model.remove_all();
 
@@ -81,15 +97,15 @@ namespace Usage
                     default:
                     case ProcessListBoxType.PROCESSOR:
                         foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_cpu_processes())
-                            model.insert_sorted(process, sort);
+                            model.insert_sorted(process, processcmp);
                         break;
                     case ProcessListBoxType.MEMORY:
                         foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes())
-                            model.insert_sorted(process, sort);
+                            model.insert_sorted(process, processcmp);
                         break;
                     case ProcessListBoxType.NETWORK:
                         foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_net_processes())
-                            model.insert_sorted(process, sort);
+                            model.insert_sorted(process, processcmp);
                         break;
                 }
             }
@@ -98,7 +114,7 @@ namespace Usage
                 foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes()) //because ram contains all processes
                 {
                     if(process.get_display_name().down().contains(search_text.down()) || process.get_cmdline().down().contains(search_text.down()))
-                        model.insert_sorted(process, sort);
+                        model.insert_sorted(process, processcmp);
                 }
             }
 
@@ -159,23 +175,6 @@ namespace Usage
             	separator.show();
         	    row.set_header(separator);
         	}
-        }
-
-        private int sort(GLib.CompareDataFunc.G a, GLib.CompareDataFunc.G b)
-        {
-            Process p_a = (Process) a;
-            Process p_b = (Process) b;
-
-            switch(type)
-            {
-                default:
-                case ProcessListBoxType.PROCESSOR:
-                    return (int) ((uint64) (p_a.get_cpu_load() < p_b.get_cpu_load()) - (uint64) (p_a.get_cpu_load() > p_b.get_cpu_load()));
-                case ProcessListBoxType.MEMORY:
-                    return (int) ((uint64) (p_a.get_mem_usage() < p_b.get_mem_usage()) - (uint64) (p_a.get_mem_usage() > p_b.get_mem_usage()));
-                case ProcessListBoxType.NETWORK:
-                    return (int) ((uint64) (p_a.get_net_all() < p_b.get_net_all()) - (uint64) (p_a.get_net_all() > p_b.get_net_all()));
-            }
         }
     }
 }

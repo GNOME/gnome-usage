@@ -54,32 +54,74 @@ namespace Usage
 
         public StorageItem.directory(StorageItemType parent, string name, string path, uint64 size, double percentage)
         {
-            StorageItem.item(StorageItemType.DIRECTORY, parent, name, path, size, percentage);
+        	this.type = StorageItemType.DIRECTORY;
+            this.parent = parent;
+            this.name = name;
+            this.path = path;
+            this.size = size;
+            this.percentage = percentage;
+            this.section = 0;
+            this.prefered_position = StorageItemPosition.ANYWHERE;
         }
 
         public StorageItem.file(StorageItemType parent, string name, string path, uint64 size, double percentage)
         {
-            StorageItem.item(StorageItemType.FILE, parent, name, path, size, percentage);
+            this.type = StorageItemType.FILE;
+            this.parent = parent;
+            this.name = name;
+            this.path = path;
+            this.size = size;
+            this.percentage = percentage;
+            this.section = 0;
+            this.prefered_position = StorageItemPosition.ANYWHERE;
         }
 
         public StorageItem.trash(string path, uint64 size, double percentage, int section = 0)
         {
-            StorageItem.item(StorageItemType.TRASH, StorageItemType.TRASH, _("Trash"), path, size, percentage, section, StorageItemPosition.PENULTIMATE);
+            this.type = StorageItemType.TRASH;
+            this.parent = StorageItemType.TRASH;
+            this.name = _("Trash");
+            this.path = path;
+            this.size = size;
+            this.percentage = percentage;
+            this.section = section;
+            this.prefered_position = StorageItemPosition.PENULTIMATE;
         }
 
         public StorageItem.storage(string name, string path, uint64 size, int section = 0)
         {
-            StorageItem.item(StorageItemType.STORAGE, StorageItemType.STORAGE, name, path, size, 0, section, StorageItemPosition.FIRST);
+            this.type = StorageItemType.STORAGE;
+            this.parent = StorageItemType.STORAGE;
+            this.name = name;
+            this.path = path;
+            this.size = size;
+            this.percentage = 0;
+            this.section = section;
+            this.prefered_position = StorageItemPosition.FIRST;
         }
 
         public StorageItem.system(string name, uint64 size, double percentage, int section = 0)
         {
-            StorageItem.item(StorageItemType.SYSTEM, StorageItemType.SYSTEM, name, "", size, percentage, section);
+            this.type = StorageItemType.SYSTEM;
+            this.parent = StorageItemType.SYSTEM;
+            this.name = name;
+            this.path = "";
+            this.size = size;
+            this.percentage = percentage;
+            this.section = section;
+            this.prefered_position = StorageItemPosition.ANYWHERE;
         }
 
         public StorageItem.available(uint64 size, double percentage, int section = 0)
         {
-            StorageItem.item(StorageItemType.AVAILABLE, StorageItemType.AVAILABLE, _("Available"), "", size, percentage, section, StorageItemPosition.LAST);
+            this.type = StorageItemType.AVAILABLE;
+            this.parent = StorageItemType.AVAILABLE;
+            this.name = _("Available");
+            this.path = "";
+            this.size = size;
+            this.percentage = percentage;
+            this.section = section;
+            this.prefered_position = StorageItemPosition.LAST;
         }
 
         public StorageItemPosition get_prefered_position()
