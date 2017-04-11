@@ -231,7 +231,7 @@ namespace Usage
         {
             GTop.ProcArgs proc_args;
             GTop.ProcState proc_state;
-            var args = GTop.get_proc_argv (out proc_args, pid);
+            string[] args = GTop.get_proc_argv (out proc_args, pid, 0);
             GTop.get_proc_state (out proc_state, pid);
             string cmd = (string) proc_state.cmd;
             cmd_parameter = "";
@@ -241,14 +241,7 @@ namespace Usage
             for(int i = 0; i < 2; i++)
             {
                 if(args[i] != null)
-                {
                     secure_arguments[i] = args[i];
-                    for (int j = 0; j < args[i].length; j++)
-                    {
-                        if(args[i][j] == ' ')
-                            secure_arguments[i] = args[i].substring(0, j);
-                    }
-                }
                 else
                     secure_arguments[i] = "";
             }

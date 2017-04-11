@@ -48,7 +48,6 @@ vala_sources = [
     'better-box.c']
 
 vala_args = [
-    '--target-glib=2.38',
     '--gresources=../data/org.gnome.Usage.gresource.xml',
     '--pkg=rg',
     '--pkg=egg',

@@ -180,8 +180,8 @@ namespace GTop {
         uint64 flags;
         uint64 size;
     }
-    [CCode(array_null_terminated = "true")]
-    public string[] get_proc_argv(out ProcArgs proc_args, GLib.Pid pid);
+    [CCode (array_length = false, array_null_terminated = true)]
+    public string[] get_proc_argv(out ProcArgs proc_args, GLib.Pid pid, uint length);
 
     [CCode(cname = "glibtop_fsusage", cheader_filename = "glibtop/fsusage.h")]
     public struct FsUsage {
