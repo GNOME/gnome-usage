@@ -48,7 +48,7 @@ namespace Usage
             return x_cpu_load;
         }
 
-        public void update_process_info(ref Process process)
+        public void update_process(ref Process process)
         {
             GTop.ProcTime proc_time;
             GTop.ProcState proc_state;

@@ -39,7 +39,7 @@ namespace Usage
             return swap_total;
         }
 
-        public void update_process_info(ref Process process)
+        public void update_process(ref Process process)
         {
             GTop.Mem mem;
             GTop.ProcMem proc_mem;

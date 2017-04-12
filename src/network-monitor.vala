@@ -69,7 +69,7 @@ namespace Usage
             return net_usage;
         }
 
-        public void update_process_info(ref Process process)
+        public void update_process(ref Process process)
         {
             uint64 bytes_out;
             uint64 bytes_in;

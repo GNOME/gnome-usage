@@ -17,7 +17,7 @@ namespace Usage
         private MemoryMonitor memory_monitor;
         private NetworkMonitor network_monitor;
 
-        private HashTable<Pid?, Process> process_table_pid;
+        private HashTable<Pid?, Process> process_table;
         private HashTable<string, Process> cpu_process_table;
         private HashTable<string, Process> ram_process_table;
         private HashTable<string, Process> net_process_table;
@@ -25,14 +25,14 @@ namespace Usage
 		private int process_mode = GTop.EXCLUDE_SYSTEM;
 		private GLib.List<AppInfo> apps_info;
 
-		public List<unowned Process> get_processes_pid()
+		public List<unowned Process> get_processes()
         {
-            return process_table_pid.get_values();
+            return process_table.get_values();
         }
 
         public unowned Process get_process_by_pid(Pid pid)
         {
-            return process_table_pid.get(pid);
+            return process_table.get(pid);
         }
 
         public List<unowned Process> get_cpu_processes()
@@ -78,7 +78,7 @@ namespace Usage
             memory_monitor = new MemoryMonitor();
             network_monitor = new NetworkMonitor();
 
-            process_table_pid = new HashTable<Pid?, Process>(int_hash, int_equal);
+            process_table = new HashTable<Pid?, Process>(int_hash, int_equal);
             cpu_process_table = new HashTable<string, Process>(str_hash, str_equal);
             ram_process_table = new HashTable<string, Process>(str_hash, str_equal);
             net_process_table = new HashTable<string, Process>(str_hash, str_equal);
@@ -111,72 +111,72 @@ namespace Usage
             net_upload = network_monitor.get_net_upload();
             net_usage = network_monitor.get_net_usage();
 
-            foreach(unowned Process process in process_table_pid.get_values())
+            foreach(unowned Process process in process_table.get_values())
             {
                 process.set_alive(false);
             }
 
-            set_alive_false_table_cmdline(ref cpu_process_table);
-            set_alive_false_table_cmdline(ref ram_process_table);
-            set_alive_false_table_cmdline(ref net_process_table);
+            set_alive_false(ref cpu_process_table);
+            set_alive_false(ref ram_process_table);
+            set_alive_false(ref net_process_table);
 
             GTop.Proclist proclist;
             var pids = GTop.get_proclist (out proclist, process_mode);
 
             for(uint i = 0; i < proclist.number; i++)
             {
-                if (!(pids[i] in process_table_pid))
+                if (!(pids[i] in process_table))
                 {
                     string cmdline_parameter;
-                    string cmdline = get_full_process_cmd_for_pid(pids[i], out cmdline_parameter);
+                    string cmdline = get_full_process_cmd(pids[i], out cmdline_parameter);
                     string display_name = get_display_name(cmdline, cmdline_parameter);
                     var process = new Process(pids[i], cmdline, cmdline_parameter, display_name);
-                    cpu_monitor.update_process_info(ref process);
-                    process_table_pid.insert (pids[i], (owned) process);
+                    cpu_monitor.update_process(ref process);
+                    process_table.insert (pids[i], (owned) process);
                 }
                 else
                 {
-                    Process process = process_table_pid[pids[i]];
+                    Process process = process_table[pids[i]];
                     process.set_alive(true);
                     get_process_status(ref process);
-                    cpu_monitor.update_process_info(ref process);
-                    memory_monitor.update_process_info(ref process);
-                    network_monitor.update_process_info(ref process);
+                    cpu_monitor.update_process(ref process);
+                    memory_monitor.update_process(ref process);
+                    network_monitor.update_process(ref process);
                 }
             }
 
-            foreach(unowned Process process in process_table_pid.get_values())
+            foreach(unowned Process process in process_table.get_values())
             {
                 if (process.get_alive() == false)
                 {
                     process.set_status(ProcessStatus.DEAD);
-                    process_table_pid.remove (process.get_pid());
+                    process_table.remove (process.get_pid());
                 }
             }
 
-            var process_table_pid_condition = new HashTable<Pid?, Process>(int_hash, int_equal);
-            foreach(unowned Process process in process_table_pid.get_values())
+            var process_table_temp = new HashTable<Pid?, Process>(int_hash, int_equal);
+            foreach(unowned Process process in process_table.get_values())
             {
                 if(process.get_cpu_load() >= 1)
-                    process_table_pid_condition.insert(process.get_pid(), process);
+                    process_table_temp.insert(process.get_pid(), process);
             }
-            get_updates_table_cmdline(process_table_pid_condition, ref cpu_process_table);
+            update_processes(process_table_temp, ref cpu_process_table);
 
-            process_table_pid_condition.remove_all();
-            foreach(unowned Process process in process_table_pid.get_values())
+            process_table_temp.remove_all();
+            foreach(unowned Process process in process_table.get_values())
             {
                 if(process.get_mem_usage() >= 1)
-                    process_table_pid_condition.insert(process.get_pid(), process);
+                    process_table_temp.insert(process.get_pid(), process);
             }
-            get_updates_table_cmdline(process_table_pid_condition, ref ram_process_table);
+            update_processes(process_table_temp, ref ram_process_table);
 
-            process_table_pid_condition.remove_all();
-            foreach(unowned Process process in process_table_pid.get_values())
+            process_table_temp.remove_all();
+            foreach(unowned Process process in process_table.get_values())
             {
                 if(process.get_net_all() >= 1)
-                    process_table_pid_condition.insert(process.get_pid(), process);
+                    process_table_temp.insert(process.get_pid(), process);
             }
-            get_updates_table_cmdline(process_table_pid_condition, ref net_process_table);
+            update_processes(process_table_temp, ref net_process_table);
 
             return true;
         }
@@ -227,7 +227,7 @@ namespace Usage
                 return cmdline;
 		}
 
-		private string get_full_process_cmd_for_pid (Pid pid, out string cmd_parameter)
+		private string get_full_process_cmd (Pid pid, out string cmd_parameter)
         {
             GTop.ProcArgs proc_args;
             GTop.ProcState proc_state;
@@ -296,9 +296,9 @@ namespace Usage
                 process.set_status(ProcessStatus.RUNNING);
         }
 
-        private void set_alive_false_table_cmdline(ref HashTable<string, Process> process_table_cmdline)
+        private void set_alive_false(ref HashTable<string, Process> process_table)
         {
-            foreach(unowned Process process in process_table_cmdline.get_values())
+            foreach(unowned Process process in process_table.get_values())
             {
                 if(process.get_sub_processes() == null)
                     process.set_alive(false);
@@ -312,7 +312,7 @@ namespace Usage
             }
         }
 
-        private void get_updates_table_cmdline(HashTable<Pid?, Process> from_table, ref HashTable<string, Process> to_table)
+        private void update_processes(HashTable<Pid?, Process> from_table, ref HashTable<string, Process> to_table)
         {
             foreach(unowned Process process_it in from_table.get_values())
             {
@@ -381,12 +381,14 @@ namespace Usage
                     {
                         if (sub_process.get_alive() == false)
                             process.get_sub_processes().remove(sub_process.get_pid());
-
-                        cpu_load += sub_process.get_cpu_load();
-                        mem_usage += sub_process.get_mem_usage();
-                        net_all += sub_process.get_net_all();
-                        net_download += sub_process.get_net_download();
-                        net_upload += sub_process.get_net_upload();
+                    	else
+                    	{
+                    		cpu_load += sub_process.get_cpu_load();
+                        	mem_usage += sub_process.get_mem_usage();
+                        	net_all += sub_process.get_net_all();
+                        	net_download += sub_process.get_net_download();
+                        	net_upload += sub_process.get_net_upload();
+                    	}
                     }
                     process.set_cpu_load(cpu_load);
                     process.set_mem_usage(mem_usage);
@@ -394,15 +396,15 @@ namespace Usage
                     process.set_net_download(net_download);
                     process.set_net_upload(net_upload);
 
-                    if(process.get_sub_processes().size() == 1) //tranform to process
+                    if(process.get_sub_processes().length == 1) //tranform to process
                     {
                         foreach(unowned Process sub_process in process.get_sub_processes().get_values()) //only one
                         {
-                            process = sub_process;
                             process.set_sub_processes(null);
+                            process = sub_process;
                         }
                     }
-                    else if(process.get_sub_processes().size() == 0)
+                    else if(process.get_sub_processes().length == 0)
                     {
                         process.set_sub_processes(null);
                         process.set_alive(false);
