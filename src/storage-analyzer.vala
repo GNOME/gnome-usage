@@ -105,12 +105,20 @@ namespace Usage
                             return -1;
                         else
                             return 1;
+                    case StorageItemPosition.THIRD:
+                        if(b.get_prefered_position() != StorageItemPosition.FIRST &&
+                            b.get_prefered_position() != StorageItemPosition.SECOND)
+                            return -1;
+                        else
+                            return 1;
                     case StorageItemPosition.ANYWHERE:
                         switch(b.get_prefered_position())
                         {
                             case StorageItemPosition.FIRST:
                                 return 1;
                             case StorageItemPosition.SECOND:
+                                return 1;
+                            case StorageItemPosition.THIRD:
                                 return 1;
                             case StorageItemPosition.ANYWHERE:
                                 if(path_null == true)
@@ -583,7 +591,21 @@ namespace Usage
 
         private void add_root_items(ref List<StorageItem> items, Storage storage, int section)
         {
-            items.insert_sorted(new StorageItem.system(_("Operating System"), storage.used, ((float) storage.used / storage.total) * 100, section), (CompareFunc) sort);
+        	uint64 root_size = storage.used;
+        	if(separate_home == false)
+        	{
+        		uint64 home_size = get_size_of_directory(Environment.get_home_dir())
+							 + get_size_of_directory(Environment.get_user_special_dir(UserDirectory.DESKTOP))
+							 + get_size_of_directory(Environment.get_user_special_dir(UserDirectory.DOCUMENTS))
+							 + get_size_of_directory(Environment.get_user_special_dir(UserDirectory.DOWNLOAD))
+							 + get_size_of_directory(Environment.get_user_special_dir(UserDirectory.MUSIC))
+							 + get_size_of_directory(Environment.get_user_special_dir(UserDirectory.PICTURES))
+							 + get_size_of_directory(Environment.get_user_special_dir(UserDirectory.VIDEOS))
+							 + get_size_of_directory(TRASH_PATH);
+				root_size -= home_size;
+			}
+
+            items.insert_sorted(new StorageItem.system(root_size, ((float) root_size / storage.total) * 100, section), (CompareFunc) sort);
         }
 
         private void add_home_items(ref List<StorageItem> items, Storage storage, int section)
@@ -598,7 +620,7 @@ namespace Usage
                     user_size,
                     ((float) user_size / storage.total) * 100,
                     section,
-                    StorageItemPosition.SECOND), (CompareFunc) sort);
+                    StorageItemPosition.THIRD), (CompareFunc) sort);
             }
             uint64? desktop_size = get_size_of_directory(Environment.get_user_special_dir(UserDirectory.DESKTOP));
             if(desktop_size != null)

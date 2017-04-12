@@ -4,6 +4,7 @@ namespace Usage
     {
         FIRST,
         SECOND,
+        THIRD,
         ANYWHERE,
         PENULTIMATE,
         LAST
@@ -100,16 +101,16 @@ namespace Usage
             this.prefered_position = StorageItemPosition.FIRST;
         }
 
-        public StorageItem.system(string name, uint64 size, double percentage, int section = 0)
+        public StorageItem.system(uint64 size, double percentage, int section = 0)
         {
             this.type = StorageItemType.SYSTEM;
             this.parent = StorageItemType.SYSTEM;
-            this.name = name;
+            this.name = _("Operating System");
             this.path = "";
             this.size = size;
             this.percentage = percentage;
             this.section = section;
-            this.prefered_position = StorageItemPosition.ANYWHERE;
+            this.prefered_position = StorageItemPosition.SECOND;
         }
 
         public StorageItem.available(uint64 size, double percentage, int section = 0)
