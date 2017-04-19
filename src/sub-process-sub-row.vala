@@ -57,9 +57,6 @@ namespace Usage
                     else
                         max_usage = false;
                     break;
-                case ProcessListBoxType.NETWORK:
-                    load_label.set_label(Utils.format_size_speed_values(process.get_net_all()));
-                    break;
             }
         }
 

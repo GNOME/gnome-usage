@@ -17,8 +17,7 @@ namespace Usage
             {
                 new ProcessorSubView(),
                 new MemorySubView(),
-                new DiskSubView(),
-                new NetworkSubView()
+                new DiskSubView()
             };
 
             search_bar = new Gtk.SearchBar();

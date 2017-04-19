@@ -12,9 +12,6 @@ namespace Usage
         uint64 x_cpu_last_used;
         uint last_processor;
         uint64 mem_usage;
-        uint64 net_download;
-        uint64 net_upload;
-        uint64 net_all;
         HashTable<Pid?, Process>? sub_processes;
         bool alive;
         ProcessStatus status;
@@ -31,9 +28,6 @@ namespace Usage
             this.x_cpu_last_used = 0;
             this.last_processor = 0;
             this.mem_usage = 0;
-            this.net_download = 0;
-            this.net_upload = 0;
-            this.net_all = 0;
             this.sub_processes = null;
             this.alive = true;
             this.status = ProcessStatus.SLEEPING;
@@ -47,9 +41,6 @@ namespace Usage
             this.cpu_last_used = process.get_cpu_last_used();
             this.x_cpu_last_used = process.get_x_cpu_last_used();
             this.mem_usage = process.get_mem_usage();
-            this.net_download = process.get_net_download();
-            this.net_upload = process.get_net_upload();
-            this.net_all = process.get_net_all();
             this.alive = process.get_alive();
             this.status = process.get_status();
         }
@@ -152,36 +143,6 @@ namespace Usage
         public void set_mem_usage(uint64 mem_usage)
         {
             this.mem_usage = mem_usage;
-        }
-
-        public uint64 get_net_download()
-        {
-            return net_download;
-        }
-
-        public void set_net_download(uint64 net_download)
-        {
-            this.net_download = net_download;
-        }
-
-        public uint64 get_net_upload()
-        {
-            return net_upload;
-        }
-
-        public void set_net_upload(uint64 net_upload)
-        {
-            this.net_upload = net_upload;
-        }
-
-        public uint64 get_net_all()
-        {
-            return net_all;
-        }
-
-        public void set_net_all(uint64 net_all)
-        {
-            this.net_all = net_all;
         }
 
         public HashTable<Pid?, Process>? get_sub_processes()

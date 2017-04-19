@@ -151,25 +151,6 @@ namespace Usage
                     else
                         max_usage = false;
                     break;
-                case ProcessListBoxType.NETWORK:
-                    if(group)
-                    {
-                        string values_string = "";
-                        var values = new GLib.List<uint64?>();
-                        foreach(Process sub_process in process.get_sub_processes().get_values())
-                            values.insert_sorted((uint64) sub_process.get_net_all(), sort);
-
-                         foreach(uint64 value in values)
-                            values_string += "   " + Utils.format_size_speed_values(value);
-
-                        title_label.label += " (" + process.get_sub_processes().size().to_string() + ")";
-                        load_label.set_label(values_string);
-                    }
-                    else
-                    {
-                        load_label.set_label(Utils.format_size_speed_values(process.get_net_all()));
-                    }
-                    break;
             }
 
             set_styles();

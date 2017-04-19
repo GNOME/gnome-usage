@@ -19,10 +19,6 @@ vala_sources = [
     'memory-graph.vala',
     'memory-monitor.vala',
     'memory-sub-view.vala',
-    'network-graph-table.vala',
-    'network-graph.vala',
-    'network-monitor.vala',
-    'network-sub-view.vala',
     'performance-view.vala',
     'pie-chart.vala',
     'power-view.vala',
@@ -52,7 +48,6 @@ vala_args = [
     '--pkg=rg',
     '--pkg=egg',
     '--pkg=better',
-    '--pkg=netinfo',
     '--pkg=libgtop-2.0',
     '--pkg=config',
     '--pkg=posix',
@@ -65,5 +60,5 @@ usage = executable('gnome-usage',
                      include_directories : include_directories('/usr/include/libgtop-2.0'),
                      vala_args: vala_args,
                      install: true,
-                     dependencies : [glib, gobject, gio, gtk, rg, egg, math, gtop, netinfo])
+                     dependencies : [glib, gobject, gio, gtk, rg, egg, math, gtop])
 

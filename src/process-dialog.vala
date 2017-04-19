@@ -10,8 +10,6 @@ namespace Usage
         GraphBlock processor_graph_block;
         GraphBlock memory_graph_block;
         GraphBlock disk_graph_block;
-        GraphBlock downloads_graph_block;
-        GraphBlock uploads_graph_block;
 
     	public ProcessDialog(Pid pid, string app_name, string process)
     	{
@@ -39,15 +37,10 @@ namespace Usage
 
             processor_graph_block = new GraphBlock(GraphBlockType.PROCESSOR, _("Processor"), this.title);
             memory_graph_block = new GraphBlock(GraphBlockType.MEMORY, _("Memory"), this.title);
-            disk_graph_block = new GraphBlock(GraphBlockType.DISK, _("Disk I/O"), this.title);
-            downloads_graph_block = new GraphBlock(GraphBlockType.NETWORK, _("Downloads"), this.title, false);
-            uploads_graph_block = new GraphBlock(GraphBlockType.NETWORK, _("Uploads"), this.title, false);
 
             grid.attach(processor_graph_block, 0, 0, 1, 1);
             grid.attach(memory_graph_block, 1, 0, 1, 1);
             grid.attach(disk_graph_block, 2, 0, 1, 1);
-            grid.attach(downloads_graph_block, 0, 1, 1, 1);
-            grid.attach(uploads_graph_block, 1, 1, 1, 1);
             content.add(grid);
             content.show_all();
 
@@ -69,8 +62,6 @@ namespace Usage
             ProcessStatus process_status = ProcessStatus.DEAD;
             int app_cpu_load = 0;
             uint64 app_memory_usage = 0;
-            uint64 app_net_download = 0;
-            uint64 app_net_upload = 0;
 
             if(data != null)
             {
@@ -80,15 +71,11 @@ namespace Usage
                 processor_other = int.max(processor_other, 0);
                 processor_graph_block.update(app_cpu_load, processor_other, 100, (int) data.get_last_processor());
                 process_status = data.get_status();
-                app_net_download = data.get_net_download();
-                app_net_upload = data.get_net_upload();
             }
             else
                 processor_graph_block.update(0, (int) monitor.cpu_load, 100);
 
             memory_graph_block.update(app_memory_usage, monitor.ram_usage, monitor.ram_total);
-            downloads_graph_block.update(app_net_download, monitor.net_download - app_net_download, monitor.net_download);
-            uploads_graph_block.update(app_net_upload, monitor.net_upload - app_net_upload, monitor.net_upload);
             headerbar.set_process_state(process_status);
             return true;
     	}

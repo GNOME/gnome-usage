@@ -2,8 +2,7 @@ namespace Usage
 {
     public enum ProcessListBoxType {
         PROCESSOR,
-        MEMORY,
-        NETWORK
+        MEMORY
     }
 
     public class ProcessListBox : Gtk.ListBox
@@ -69,8 +68,6 @@ namespace Usage
                     	return (int) ((uint64) (p_a.get_cpu_load() < p_b.get_cpu_load()) - (uint64) (p_a.get_cpu_load() > p_b.get_cpu_load()));
                 	case ProcessListBoxType.MEMORY:
                     	return (int) ((uint64) (p_a.get_mem_usage() < p_b.get_mem_usage()) - (uint64) (p_a.get_mem_usage() > p_b.get_mem_usage()));
-                	case ProcessListBoxType.NETWORK:
-                    	return (int) ((uint64) (p_a.get_net_all() < p_b.get_net_all()) - (uint64) (p_a.get_net_all() > p_b.get_net_all()));
             	}
             };
 
@@ -88,10 +85,6 @@ namespace Usage
                         break;
                     case ProcessListBoxType.MEMORY:
                         foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes())
-                            model.insert_sorted(process, processcmp);
-                        break;
-                    case ProcessListBoxType.NETWORK:
-                        foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_net_processes())
                             model.insert_sorted(process, processcmp);
                         break;
                 }

@@ -9,18 +9,13 @@ namespace Usage
         public uint64 ram_total { get; private set; }
         public uint64 swap_usage { get; private set; }
         public uint64 swap_total { get; private set; }
-        public uint64 net_download { get; private set; }
-        public uint64 net_upload { get; private set; }
-        public uint64 net_usage { get; private set; }
 
         private CpuMonitor cpu_monitor;
         private MemoryMonitor memory_monitor;
-        private NetworkMonitor network_monitor;
 
         private HashTable<Pid?, Process> process_table;
         private HashTable<string, Process> cpu_process_table;
         private HashTable<string, Process> ram_process_table;
-        private HashTable<string, Process> net_process_table;
 
 		private int process_mode = GTop.EXCLUDE_SYSTEM;
 		private GLib.List<AppInfo> apps_info;
@@ -55,16 +50,6 @@ namespace Usage
             return ram_process_table[cmdline];
         }
 
-        public List<unowned Process> get_net_processes()
-        {
-            return net_process_table.get_values();
-        }
-
-        public unowned Process get_net_process(string cmdline)
-        {
-            return net_process_table[cmdline];
-        }
-
         public unowned GLib.List<AppInfo> get_apps_info()
         {
             return apps_info;
@@ -76,12 +61,10 @@ namespace Usage
 
             cpu_monitor = new CpuMonitor();
             memory_monitor = new MemoryMonitor();
-            network_monitor = new NetworkMonitor();
 
             process_table = new HashTable<Pid?, Process>(int_hash, int_equal);
             cpu_process_table = new HashTable<string, Process>(str_hash, str_equal);
             ram_process_table = new HashTable<string, Process>(str_hash, str_equal);
-            net_process_table = new HashTable<string, Process>(str_hash, str_equal);
 
             var settings = (GLib.Application.get_default() as Application).settings;
             apps_info = AppInfo.get_all();
@@ -99,7 +82,6 @@ namespace Usage
         {
             cpu_monitor.update();
             memory_monitor.update();
-            network_monitor.update();
 
             cpu_load = cpu_monitor.get_cpu_load();
             x_cpu_load = cpu_monitor.get_x_cpu_load();
@@ -107,9 +89,6 @@ namespace Usage
             ram_total = memory_monitor.get_ram_total();
             swap_usage = memory_monitor.get_swap_usage();
             swap_total = memory_monitor.get_swap_total();
-            net_download = network_monitor.get_net_download();
-            net_upload = network_monitor.get_net_upload();
-            net_usage = network_monitor.get_net_usage();
 
             foreach(unowned Process process in process_table.get_values())
             {
@@ -118,7 +97,6 @@ namespace Usage
 
             set_alive_false(ref cpu_process_table);
             set_alive_false(ref ram_process_table);
-            set_alive_false(ref net_process_table);
 
             GTop.Proclist proclist;
             var pids = GTop.get_proclist (out proclist, process_mode);
@@ -141,7 +119,6 @@ namespace Usage
                     get_process_status(ref process);
                     cpu_monitor.update_process(ref process);
                     memory_monitor.update_process(ref process);
-                    network_monitor.update_process(ref process);
                 }
             }
 
@@ -169,14 +146,6 @@ namespace Usage
                     process_table_temp.insert(process.get_pid(), process);
             }
             update_processes(process_table_temp, ref ram_process_table);
-
-            process_table_temp.remove_all();
-            foreach(unowned Process process in process_table.get_values())
-            {
-                if(process.get_net_all() >= 1)
-                    process_table_temp.insert(process.get_pid(), process);
-            }
-            update_processes(process_table_temp, ref net_process_table);
 
             return true;
         }
@@ -374,9 +343,6 @@ namespace Usage
                 {
                     double cpu_load = 0;
                     uint64 mem_usage = 0;
-                    uint64 net_all = 0;
-                    uint64 net_download = 0;
-                    uint64 net_upload = 0;
                     foreach(unowned Process sub_process in process.get_sub_processes().get_values())
                     {
                         if (sub_process.get_alive() == false)
@@ -385,16 +351,10 @@ namespace Usage
                     	{
                     		cpu_load += sub_process.get_cpu_load();
                         	mem_usage += sub_process.get_mem_usage();
-                        	net_all += sub_process.get_net_all();
-                        	net_download += sub_process.get_net_download();
-                        	net_upload += sub_process.get_net_upload();
                     	}
                     }
                     process.set_cpu_load(cpu_load);
                     process.set_mem_usage(mem_usage);
-                    process.set_net_all(net_all);
-                    process.set_net_download(net_download);
-                    process.set_net_upload(net_upload);
 
                     if(process.get_sub_processes().length == 1) //tranform to process
                     {
