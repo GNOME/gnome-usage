@@ -20,7 +20,7 @@ A nice way to view information about use of system resources, like memory and di
 In terminal run ```gnome-usage``` command or run Usage from app launcher.
 
 ##Dependencies
-- [libnetinfo >= 0.3.1](https://github.com/kaegi/netinfo-ffi)
+- [libnetinfo-ffi >= 0.3.1](https://github.com/kaegi/netinfo-ffi)
 - libgtop >= 2.34.2
 
 ##Compilation:
@@ -31,6 +31,10 @@ ninja-build #or ninja
 sudo ninja-build install #or sudo ninja install
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/local/bin/gnome-usage
 ```
+
+###netinfo-ffi dependency
+RPM packages for libnetinfo-ffi you can get from [Fedora Copr](https://copr.fedorainfracloud.org/coprs/pstetka/gnome-usage/packages/)
+or compile yourself from [GitHub](https://github.com/kaegi/netinfo-ffi).
 
 ##License
 Code is under GNU GPLv3 license.
