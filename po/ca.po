@@ -1,0 +1,170 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-23 07:19+0100\n"
+"PO-Revision-Date: 2017-03-22 20:58+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:76
+#: ../src/window.vala:15
+msgid "Usage"
+msgstr "Ús"
+
+#: ../data/org.gnome.Usage.desktop:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com "
+"ara memòria o espai en disc."
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: ../data/org.gnome.Usage.desktop:8
+msgid "application-default-icon"
+msgstr "application-default-icon"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.Usage.desktop:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Monitor;Sistema;Procés;CPU;Memòria;Xarxa;Història;Ús;Rendiment;Tasca;Gestor;"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:1
+msgid "A list of processes which we don’t want killed"
+msgstr ""
+
+#: ../data/org.gnome.Usage.gschema.xml.h:2
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+
+#: ../src/application.vala:49
+msgid "About"
+msgstr "Quant a"
+
+#: ../src/application.vala:52
+msgid "Quit"
+msgstr "Surt"
+
+#: ../src/application.vala:77
+msgid "View current application and monitor system state"
+msgstr "Visualitza els processos actuals i supervisa l'estat del sistema"
+
+#: ../src/application.vala:80
+msgid "Websites"
+msgstr "Llocs web"
+
+#: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
+#: ../src/process-dialog.vala:40
+msgid "Processor"
+msgstr "Processador"
+
+#: ../src/cpu-sub-view.vala:37
+msgid "No applications using processor."
+msgstr "Cap aplicació utilitzant el processador"
+
+#: ../src/data-view.vala:8
+msgid "Data"
+msgstr "Dades"
+
+#: ../src/graph-block.vala:45
+msgid "Others"
+msgstr "Altres"
+
+#: ../src/graph-block.vala:47 ../src/storage-item.vala:78
+msgid "Available"
+msgstr "Disponible"
+
+#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:11
+#: ../src/process-dialog.vala:41
+msgid "Memory"
+msgstr "Memòria"
+
+#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
+msgid "Disk I/O"
+msgstr "E/S del disc"
+
+#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:11
+msgid "Network"
+msgstr "Xarxa"
+
+#: ../src/memory-sub-view.vala:37
+msgid "No applications using memory."
+msgstr "Cap aplicació utilitza la memòria."
+
+#: ../src/network-sub-view.vala:36
+msgid "No applications using network."
+msgstr "Cap aplicació utilitza la xarxa."
+
+#: ../src/performance-view.vala:12
+msgid "Performance"
+msgstr "Rendiment"
+
+#: ../src/power-view.vala:8
+msgid "Power"
+msgstr "Energia"
+
+#: ../src/process-dialog.vala:43
+msgid "Downloads"
+msgstr "Baixades"
+
+#: ../src/process-dialog.vala:44
+msgid "Uploads"
+msgstr "Pujades"
+
+#: ../src/process-dialog.vala:54
+msgid "Stop"
+msgstr "Atura't"
+
+#: ../src/process-dialog.vala:147
+msgid "Running"
+msgstr "En execució"
+
+#: ../src/process-dialog.vala:150
+msgid "Sleeping"
+msgstr "Dormint"
+
+#: ../src/process-dialog.vala:153
+msgid "Dead"
+msgstr "Mort"
+
+#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
+msgid "Storage 1"
+msgstr "Emmagatzematge 1"
+
+#: ../src/storage-analyzer.vala:68
+msgid "Storage 2"
+msgstr "Emmagatzematge 2"
+
+#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:63
+msgid "Trash"
+msgstr "Paperera"
+
+#: ../src/storage-analyzer.vala:305
+msgid "Operating System"
+msgstr "Sistema Operatiu"
+
+#: ../src/storage-analyzer.vala:314
+msgid "Home"
+msgstr "Inici"
+
+#: ../src/storage-view.vala:10
+msgid "Storage"
+msgstr "Emmagatzematge"
+
+#: ../src/storage-view.vala:26
+msgid "No content here"
+msgstr "Cap contingut aquí"
