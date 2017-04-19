@@ -16,8 +16,7 @@ namespace Usage
             sub_views = new View[]
             {
                 new ProcessorSubView(),
-                new MemorySubView(),
-                new DiskSubView()
+                new MemorySubView()
             };
 
             search_bar = new Gtk.SearchBar();

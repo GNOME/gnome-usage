@@ -23,8 +23,7 @@ namespace Usage
 
             buttons = {
                 new GraphSwitcherButton.processor(_("Processor")),
-                new GraphSwitcherButton.memory(_("Memory")),
-                new GraphSwitcherButton.disk(_("Disk I/O"))
+                new GraphSwitcherButton.memory(_("Memory"))
             };
 
     	    foreach(Gtk.ToggleButton button in buttons)

@@ -9,7 +9,6 @@ namespace Usage
     	string process;
         GraphBlock processor_graph_block;
         GraphBlock memory_graph_block;
-        GraphBlock disk_graph_block;
 
     	public ProcessDialog(Pid pid, string app_name, string process)
     	{
@@ -40,7 +39,6 @@ namespace Usage
 
             grid.attach(processor_graph_block, 0, 0, 1, 1);
             grid.attach(memory_graph_block, 1, 0, 1, 1);
-            grid.attach(disk_graph_block, 2, 0, 1, 1);
             content.add(grid);
             content.show_all();
 
