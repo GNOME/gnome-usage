@@ -55,7 +55,6 @@ usage = executable('gnome-usage',
                      vala_sources,
                      resources,
                      c_args : [ '-DVERSION="' + meson.project_version() + '"', '-DGETTEXT_PACKAGE="gnome-usage"', '-DGNOMELOCALEDIR="' + get_option('prefix') + '/' + get_option('localedir') + '"' ],
-                     include_directories : include_directories('/usr/include/libgtop-2.0'),
                      vala_args: vala_args,
                      install: true,
                      dependencies : [glib, gobject, gio, gtk, rg, egg, math, gtop])
