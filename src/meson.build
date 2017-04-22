@@ -42,7 +42,7 @@ vala_sources = [
     'better-box.c']
 
 vala_args = [
-    '--gresources=../data/org.gnome.Usage.gresource.xml',
+    '--gresources=' + meson.source_root() + '/data/org.gnome.Usage.gresource.xml',
     '--pkg=rg',
     '--pkg=egg',
     '--pkg=better',
