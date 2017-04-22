@@ -1,7 +1,9 @@
+using Gtk;
 using Posix;
 
 namespace Usage
 {
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/process-dialog.ui")]
 	public class ProcessDialog : Gtk.Dialog
 	{
 	    ProcessDialogHeaderBar headerbar;
@@ -10,37 +12,26 @@ namespace Usage
         GraphBlock processor_graph_block;
         GraphBlock memory_graph_block;
 
+        [GtkChild]
+        private Gtk.Box content;
+
     	public ProcessDialog(Pid pid, string app_name, string process)
     	{
-    	    Object(use_header_bar: 1);
-    	    set_modal(true);
+            Object();
     	    set_transient_for((GLib.Application.get_default() as Application).get_window());
-    	    set_position(Gtk.WindowPosition.CENTER);
-    	    set_resizable(false);
     	    this.pid = pid;
     		this.title = app_name;
     		this.process = process;
-    		this.border_width = 5;
-    		set_default_size (900, 350);
     		create_widgets();
     	}
 
     	private void create_widgets()
     	{
-    		Gtk.Box content = get_content_area() as Gtk.Box;
-
-            Gtk.Grid grid = new Gtk.Grid();
-            grid.margin_top = 20;
-            grid.margin_start = 20;
-            grid.margin_end = 20;
-
             processor_graph_block = new GraphBlock(GraphBlockType.PROCESSOR, _("Processor"), this.title);
             memory_graph_block = new GraphBlock(GraphBlockType.MEMORY, _("Memory"), this.title);
 
-            grid.attach(processor_graph_block, 0, 0, 1, 1);
-            grid.attach(memory_graph_block, 1, 0, 1, 1);
-            content.add(grid);
-            content.show_all();
+            content.add(processor_graph_block);
+            content.add(memory_graph_block);
 
             var stop_button = new Gtk.Button.with_label(_("Stop"));
             stop_button.get_style_context().add_class ("destructive-action");
