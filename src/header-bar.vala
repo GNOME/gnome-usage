@@ -1,3 +1,5 @@
+using Gtk;
+
 namespace Usage
 {
     public enum HeaderBarMode
@@ -8,19 +10,28 @@ namespace Usage
         POWER
     }
 
-	public class HeaderBar : Gtk.HeaderBar
-	{
-	    private Gtk.StackSwitcher stack_switcher;
-	    private Gtk.ToggleButton? performance_search_button;
-	    private bool active_performance_search_btn = false;
-	    private Gtk.Button? storage_back_button;
-	    private Gtk.Button? storage_rescan_button;
-	    private Gtk.Button? storage_select_button;
-	    private Gtk.Button? storage_cancel_button;
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/header-bar.ui")]
+    public class HeaderBar : Gtk.HeaderBar
+    {
+        [GtkChild]
+        private Gtk.StackSwitcher stack_switcher;
+
+        [GtkChild]
+        private Gtk.ToggleButton performance_search_button;
+
+        [GtkChild]
+        private Gtk.Button storage_back_button;
+
+        [GtkChild]
+        private Gtk.Button storage_rescan_button;
+
+        [GtkChild]
+        private Gtk.Button storage_select_button;
+
+        [GtkChild]
+        private Gtk.Button storage_cancel_button;
+
 	    private Gtk.MenuButton? storage_selection_menu;
-	    private bool show_storage_back_btn = false;
-	    private bool show_storage_rescan_btn = false;
-	    private bool show_storage_select_btn = false;
 	    private string title_text = "";
 	    private HeaderBarMode mode;
 
@@ -32,13 +43,9 @@ namespace Usage
 	    public HeaderBar(Gtk.Stack stack)
 	    {
 	        mode = HeaderBarMode.PERFORMANCE;
-	        show_close_button = true;
-	        stack_switcher = new Gtk.StackSwitcher();
-            stack_switcher.halign = Gtk.Align.CENTER;
             stack_switcher.set_stack(stack);
 
             set_mode(HeaderBarMode.PERFORMANCE);
-            show_all();
 	    }
 
 	    public void set_mode(HeaderBarMode mode)
@@ -46,21 +53,15 @@ namespace Usage
             switch(this.mode)
             {
                 case HeaderBarMode.PERFORMANCE:
-                    remove_widget(performance_search_button);
-                    performance_search_button = null;
+                    performance_search_button.hide ();
                     break;
                 case HeaderBarMode.DATA:
                     break;
                 case HeaderBarMode.STORAGE:
-                    remove_widget(storage_back_button);
-                    remove_widget(storage_rescan_button);
-                    remove_widget(storage_select_button);
-                    remove_widget(storage_cancel_button);
-                    storage_rescan_button = null;
-                    storage_back_button = null;
-                    storage_select_button = null;
-                    storage_select_button = null;
-                    storage_cancel_button = null;
+                    storage_back_button.hide ();
+                    storage_rescan_button.hide ();
+                    storage_select_button.hide ();
+                    storage_cancel_button.hide ();
                     break;
                 case HeaderBarMode.POWER:
                     break;
@@ -70,15 +71,8 @@ namespace Usage
             {
                 case HeaderBarMode.PERFORMANCE:
                     show_stack_switcher();
-                    performance_search_button = new Gtk.ToggleButton();
-                    performance_search_button.set_image(new Gtk.Image.from_icon_name("system-search-symbolic", Gtk.IconSize.BUTTON));
-                    performance_search_button.set_active(active_performance_search_btn);
-                    performance_search_button.toggled.connect(() => {
-                        active_performance_search_btn = performance_search_button.active;
-                        ((PerformanceView) (GLib.Application.get_default() as Application).get_window().get_views()[0]).set_search_mode(performance_search_button.active);
-                    });
+
                     performance_search_button.show();
-                    pack_end(performance_search_button);
                     break;
                 case HeaderBarMode.DATA:
                     show_stack_switcher();
@@ -88,38 +82,10 @@ namespace Usage
                         show_stack_switcher();
                     else
                         show_title();
-                    storage_back_button = new Gtk.Button.from_icon_name("go-previous-symbolic");
-                    storage_back_button.clicked.connect(() => {
-                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().on_back_button_clicked();
-                    });
-                    show_storage_back_button(show_storage_back_btn);
 
-                    storage_rescan_button = new Gtk.Button.from_icon_name("view-refresh-symbolic");
-                    storage_rescan_button.clicked.connect(() => {
-                        show_stack_switcher();
-                        show_storage_select_button(false);
-                        show_storage_rescan_button(false);
-                        show_storage_back_button(false);
-                        (GLib.Application.get_default() as Application).get_storage_analyzer().create_cache.begin(true);
-                        ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().reload();
-                    });
+                    storage_rescan_button.show ();
+                    storage_select_button.show ();
 
-                    storage_select_button = new Gtk.Button.from_icon_name("emblem-ok-symbolic");
-                    storage_select_button.clicked.connect(() => {
-                        show_storage_selection_mode(true);
-                    });
-                    show_storage_select_button(show_storage_select_btn);
-                    show_storage_rescan_button(show_storage_rescan_btn);
-
-                    storage_cancel_button = new Gtk.Button.with_label(_("Cancel"));
-                    storage_cancel_button.clicked.connect(() => {
-                        show_storage_selection_mode(false);
-                    });
-
-                    pack_start(storage_back_button);
-                    pack_end(storage_select_button);
-                    pack_end(storage_rescan_button);
-                    pack_end(storage_cancel_button);
                     break;
                 case HeaderBarMode.POWER:
                     show_stack_switcher();
@@ -127,6 +93,39 @@ namespace Usage
             }
             this.mode = mode;
 	    }
+
+        [GtkCallback]
+        private void on_performance_search_button_toggled () {
+            /* TODO: Implement a saner way of toggling this mode. */
+            ((PerformanceView) (GLib.Application.get_default() as Application).get_window().get_views()[0]).set_search_mode(performance_search_button.active);
+        }
+
+        [GtkCallback]
+        private void on_storage_back_button_clicked () {
+            ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().on_back_button_clicked();
+        }
+
+        [GtkCallback]
+        private void on_storage_rescan_button_clicked () {
+            stack_switcher.show ();
+
+            storage_select_button.hide ();
+            storage_rescan_button.hide ();
+
+            storage_back_button.hide ();
+            (GLib.Application.get_default() as Application).get_storage_analyzer().create_cache.begin(true);
+            ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().reload();
+        }
+
+        [GtkCallback]
+        private void on_storage_cancel_button_clicked () {
+            show_storage_selection_mode(false);
+        }
+
+        [GtkCallback]
+        private void on_storage_select_button_clicked () {
+            show_storage_selection_mode(true);
+        }
 
 	    public void change_selected_items(uint count)
 	    {
@@ -162,50 +161,17 @@ namespace Usage
 
         public void show_storage_back_button(bool show)
         {
-            if(show)
-            {
-                if(storage_back_button != null)
-                    storage_back_button.show();
-                show_storage_back_btn = true;
-            }
-            else
-            {
-                if(storage_back_button != null)
-                    storage_back_button.hide();
-                show_storage_back_btn = false;
-            }
+            storage_back_button.visible = show;
         }
 
         public void show_storage_rescan_button(bool show)
         {
-            if(show)
-            {
-                if(storage_rescan_button != null)
-                    storage_rescan_button.show();
-                show_storage_rescan_btn = true;
-            }
-            else
-            {
-                if(storage_rescan_button != null)
-                    storage_rescan_button.hide();
-                show_storage_rescan_btn = false;
-            }
+            storage_rescan_button.visible = show;
         }
 
         public void show_storage_select_button(bool show)
         {
-            if(show)
-            {
-                if(storage_select_button != null)
-                    storage_select_button.show();
-                show_storage_select_btn = true;
-            }
-            else
-            {
-                if(storage_select_button != null)
-                    storage_select_button.hide();
-                show_storage_select_btn = false;
-            }
+            storage_select_button.visible = show;
         }
 
         public void action_on_search()
@@ -226,8 +192,8 @@ namespace Usage
         {
             if(show)
             {
-                show_storage_rescan_button(false);
-                show_storage_select_button(false);
+                storage_rescan_button.hide ();
+                storage_select_button.hide ();
                 storage_back_button.hide();
                 storage_cancel_button.show();
                 ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).show_action_bar(true);
@@ -258,11 +224,10 @@ namespace Usage
             }
             else
             {
-                if(show_storage_back_btn)
-                    storage_back_button.show();
+                storage_back_button.show ();
 
-                show_storage_rescan_button(true);
-                show_storage_select_button(true);
+                storage_rescan_button.show ();
+                storage_select_button.show ();
                 storage_cancel_button.hide();
                 storage_selection_menu = null;
                 if(title_text == "")
@@ -286,11 +251,5 @@ namespace Usage
         {
             ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().unselect_all_rows();
         }
-
-        private void remove_widget(Gtk.Widget? widget)
-        {
-            if(widget != null)
-                remove(widget);
-        }
-	}
+    }
 }

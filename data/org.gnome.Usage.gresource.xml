@@ -3,5 +3,6 @@
     <gresource prefix="/org/gnome/Usage">
         <file compressed="true">interface/adwaita.css</file>
         <file compressed="true">interface/adwaita-dark.css</file>
+        <file preprocess="xml-stripblanks">ui/header-bar.ui</file>
     </gresource>
 </gresources>
