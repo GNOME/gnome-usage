@@ -40,13 +40,16 @@ namespace Usage
            { "select-none", select_none },
         };
 
-	    public HeaderBar(Gtk.Stack stack)
+        public HeaderBar ()
 	    {
 	        mode = HeaderBarMode.PERFORMANCE;
-            stack_switcher.set_stack(stack);
 
             set_mode(HeaderBarMode.PERFORMANCE);
 	    }
+
+        public void set_stack (Gtk.Stack stack) {
+            stack_switcher.set_stack(stack);
+        }
 
 	    public void set_mode(HeaderBarMode mode)
 	    {
