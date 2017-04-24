@@ -3,7 +3,7 @@
 data/org.gnome.Usage.desktop
 data/org.gnome.Usage.gschema.xml
 [type: gettext/glade]data/ui/header-bar.ui
-[type: gettext/glade]data/ui/performance-dialog.ui
+[type: gettext/glade]data/ui/performance-view.ui
 [type: gettext/glade]data/ui/process-dialog.ui
 [type: gettext/glade]data/ui/window.ui
 src/application.vala
