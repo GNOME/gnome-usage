@@ -99,8 +99,7 @@ namespace Usage
             	translator_credits: _("translator-credits"),
             	website: "https://wiki.gnome.org/Apps/Usage",
             	website_label: _("Websites"),
-            	version: Config.VERSION, //messon
-            	//version: Constants.VERSION, //autovala
+            	version: Config.VERSION,
             	license_type: License.GPL_3_0);
         }
 
