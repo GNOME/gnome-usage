@@ -56,7 +56,7 @@ namespace Usage
                 no_process_label.hide();
             });
 
-            var better_box = new Better.Box();
+            var better_box = new BetterBox();
             better_box.max_width_request = 600;
             better_box.halign = Gtk.Align.CENTER;
             better_box.orientation = Gtk.Orientation.HORIZONTAL;
