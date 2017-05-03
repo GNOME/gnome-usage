@@ -1,5 +1,6 @@
 vala_sources = [
     'application.vala',
+    'better-box.vala',
     'color-rectangle.vala',
     'cpu-graph-table.vala',
     'cpu-graph.vala',
