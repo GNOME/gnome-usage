@@ -39,14 +39,12 @@ vala_sources = [
     'system-monitor.vala',
     'utils.vala',
     'view.vala',
-    'window.vala',
-    'better-box.c']
+    'window.vala']
 
 vala_args = [
     '--gresources=' + meson.source_root() + '/data/org.gnome.Usage.gresource.xml',
     '--pkg=rg',
     '--pkg=egg',
-    '--pkg=better',
     '--pkg=libgtop-2.0',
     '--pkg=config',
     '--pkg=posix',
