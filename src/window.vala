@@ -1,19 +1,18 @@
 namespace Usage
 {
-    [GtkTemplate (ui = "/org/gnome/Usage/ui/window.ui")]
     public class Window : Gtk.ApplicationWindow
     {
-        [GtkChild]
         private Usage.HeaderBar header_bar;
-
-        [GtkChild]
-        private Gtk.Stack stack;
-
         private View[] views;
 
 		public Window(Gtk.Application application)
         {
             GLib.Object(application : application);
+
+            this.set_default_size(950, 600);
+            this.set_size_request(930, 300);
+            this.window_position = Gtk.WindowPosition.CENTER;
+            this.set_title(_("Usage"));
 
             load_css();
             Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect(() =>
@@ -21,7 +20,9 @@ namespace Usage
                 load_css();
             });
 
-            header_bar.set_stack (stack);
+			var stack = new Gtk.Stack();
+			header_bar = new Usage.HeaderBar(stack);
+			set_titlebar(header_bar);
 
             views = new View[]
             {
@@ -53,6 +54,8 @@ namespace Usage
                     header_bar.set_mode(HeaderBarMode.POWER);
                 }
             });
+
+            this.add(stack);
         }
 
         public Usage.HeaderBar get_header_bar()
