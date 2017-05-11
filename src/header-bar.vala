@@ -26,6 +26,7 @@ namespace Usage
     {
         PERFORMANCE,
         STORAGE,
+        STORAGE_SELECTION,
     }
 
     [GtkTemplate (ui = "/org/gnome/Usage/ui/header-bar.ui")]
@@ -49,25 +50,25 @@ namespace Usage
         [GtkChild]
         private Gtk.Button storage_cancel_button;
 
-	    private Gtk.MenuButton? storage_selection_menu;
-	    private string title_text = "";
-	    private HeaderBarMode mode;
+        private Gtk.MenuButton? storage_selection_menu;
+        private string title_text = "";
+        private HeaderBarMode mode;
 
-	    const GLib.ActionEntry[] select_action_entries = {
+        const GLib.ActionEntry[] select_action_entries = {
            { "select-all", select_all },
            { "select-none", select_none },
         };
 
-	    public HeaderBar(Gtk.Stack stack)
-	    {
-	        mode = HeaderBarMode.PERFORMANCE;
+        public HeaderBar(Gtk.Stack stack)
+        {
+            mode = HeaderBarMode.PERFORMANCE;
             stack_switcher.set_stack(stack);
 
             set_mode(HeaderBarMode.PERFORMANCE);
-	    }
+        }
 
-	    public void set_mode(HeaderBarMode mode)
-	    {
+        public void set_mode(HeaderBarMode mode)
+        {
             switch(this.mode)
             {
                 case HeaderBarMode.PERFORMANCE:
@@ -79,28 +80,60 @@ namespace Usage
                     storage_select_button.hide ();
                     storage_cancel_button.hide ();
                     break;
+                case HeaderBarMode.STORAGE_SELECTION:
+                    storage_cancel_button.hide ();
+                    storage_selection_menu = null;
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).show_action_bar(false);
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().set_select_mode(false);
+                    this.get_style_context().remove_class("selection-mode");
+                    this.show_close_button = true;
+                    break;
             }
 
             switch(mode)
             {
                 case HeaderBarMode.PERFORMANCE:
                     show_stack_switcher();
-
                     performance_search_button.show();
                     break;
                 case HeaderBarMode.STORAGE:
-                    if(title_text == "")
-                        show_stack_switcher();
-                    else
-                        show_title();
+                    show_stack_switcher();
+                    storage_rescan_button.show();
+                    storage_select_button.show();
+                    if(title_text != "")
+                        storage_back_button.show();
+                    break;
+                case HeaderBarMode.STORAGE_SELECTION:
+                    storage_cancel_button.show();
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).show_action_bar(true);
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().set_select_mode(true);
 
-                    storage_rescan_button.show ();
-                    storage_select_button.show ();
+                    var menu = new GLib.Menu ();
+                    var item = new GLib.MenuItem (_("Select all"), "headerbar.select-all");
+                    item.set_attribute("accel", "s", "<Primary>a");
+                    menu.append_item(item);
 
+                    item = new GLib.MenuItem (_("Select None"), "headerbar.select-none");
+                    menu.append_item(item);
+
+                    storage_selection_menu = new Gtk.MenuButton();
+                    storage_selection_menu.get_style_context().add_class("selection-menu");
+                    storage_selection_menu.set_menu_model(menu);
+
+                    var action_group = new GLib.SimpleActionGroup ();
+                    action_group.add_action_entries (select_action_entries, this);
+                    storage_selection_menu.get_popover().insert_action_group ("headerbar", action_group);
+
+                    storage_selection_menu.show();
+                    set_custom_title(storage_selection_menu);
+                    change_selected_items(0);
+
+                    this.get_style_context().add_class("selection-mode");
+                    this.show_close_button = false;
                     break;
             }
             this.mode = mode;
-	    }
+        }
 
         [GtkCallback]
         private void on_performance_search_button_toggled () {
@@ -115,71 +148,75 @@ namespace Usage
 
         [GtkCallback]
         private void on_storage_rescan_button_clicked () {
-            stack_switcher.show ();
+            storage_select_button.sensitive = false;
+            storage_rescan_button.sensitive = false;
+            storage_back_button.sensitive = false;
 
-            storage_select_button.hide ();
-            storage_rescan_button.hide ();
-
-            storage_back_button.hide ();
             StorageAnalyzer.get_default().create_cache.begin(true);
             ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().reload();
         }
 
         [GtkCallback]
         private void on_storage_cancel_button_clicked () {
-            show_storage_selection_mode(false);
+            set_mode(HeaderBarMode.STORAGE);
         }
 
         [GtkCallback]
         private void on_storage_select_button_clicked () {
-            show_storage_selection_mode(true);
+            set_mode(HeaderBarMode.STORAGE_SELECTION);
         }
 
-	    public void change_selected_items(uint count)
-	    {
-	        if(storage_selection_menu != null)
-	        {
-	            if(count > 0)
+        public void change_selected_items(uint count)
+        {
+            if(storage_selection_menu != null)
+            {
+                if(count > 0)
                     storage_selection_menu.label = ngettext ("%u selected", "%u selected", count).printf (count);
                 else
                     storage_selection_menu.label = _("Click on items to select them");
-	        }
-	    }
+            }
+        }
 
-	    public HeaderBarMode get_mode()
-	    {
-	        return mode;
-	    }
+        public HeaderBarMode get_mode()
+        {
+            return mode;
+        }
 
-	    public void show_title()
-	    {
-	        set_custom_title(null);
+        public void show_title()
+        {
+            set_custom_title(null);
             set_title(title_text);
-	    }
+        }
 
-	    public void set_title_text(string title)
+        public void set_title_text(string title)
         {
             this.title_text = title;
         }
 
-	    public void show_stack_switcher()
+        public void show_stack_switcher()
         {
             set_custom_title(stack_switcher);
         }
 
         public void show_storage_back_button(bool show)
         {
-            storage_back_button.visible = show;
+            if(mode == HeaderBarMode.STORAGE)
+                storage_back_button.visible = show;
         }
 
-        public void show_storage_rescan_button(bool show)
+        public void set_sensitive_storage_back_button(bool sensitive)
         {
-            storage_rescan_button.visible = show;
+            storage_back_button.sensitive = sensitive;
         }
 
-        public void show_storage_select_button(bool show)
+        public void set_sensitive_storage_rescan_button(bool sensitive)
         {
-            storage_select_button.visible = show;
+            storage_rescan_button.sensitive = sensitive;
+        }
+
+        public void set_sensitive_storage_select_button(bool sensitive)
+        {
+            storage_select_button.sensitive = sensitive;
         }
 
         public void action_on_search()
@@ -194,63 +231,9 @@ namespace Usage
             }
         }
 
-        public void show_storage_selection_mode(bool show)
-        {
-            if(show)
-            {
-                storage_rescan_button.hide ();
-                storage_select_button.hide ();
-                storage_back_button.hide();
-                storage_cancel_button.show();
-                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).show_action_bar(true);
-                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().set_select_mode(true);
-
-                var menu = new GLib.Menu ();
-                var item = new GLib.MenuItem (_("Select all"), "headerbar.select-all");
-                item.set_attribute("accel", "s", "<Primary>a");
-                menu.append_item(item);
-
-                item = new GLib.MenuItem (_("Select None"), "headerbar.select-none");
-                menu.append_item(item);
-
-                storage_selection_menu = new Gtk.MenuButton();
-                storage_selection_menu.get_style_context().add_class("selection-menu");
-                storage_selection_menu.set_menu_model(menu);
-
-                var action_group = new GLib.SimpleActionGroup ();
-                action_group.add_action_entries (select_action_entries, this);
-                storage_selection_menu.get_popover().insert_action_group ("headerbar", action_group);
-
-                storage_selection_menu.show();
-                set_custom_title(storage_selection_menu);
-                change_selected_items(0);
-
-                this.get_style_context().add_class("selection-mode");
-                this.show_close_button = false;
-            }
-            else
-            {
-                storage_back_button.show ();
-
-                storage_rescan_button.show ();
-                storage_select_button.show ();
-                storage_cancel_button.hide();
-                storage_selection_menu = null;
-                if(title_text == "")
-                    show_stack_switcher();
-                else
-                    show_title();
-                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).show_action_bar(false);
-                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().set_select_mode(false);
-                this.get_style_context().remove_class("selection-mode");
-                this.show_close_button = true;
-            }
-        }
-
         private void select_all()
         {
             ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().select_all_rows();
-
         }
 
         private void select_none()

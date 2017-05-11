@@ -97,9 +97,9 @@ namespace Usage
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().set_title_text(actual_name);
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_title();
                 if(actual_parent_type == StorageItemType.TRASHFILE || actual_parent_type == StorageItemType.TRASHSUBFILE)
-                    (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(false);
+                    (GLib.Application.get_default() as Application).get_window().get_header_bar().set_sensitive_storage_select_button(false);
                 else
-                    (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(true);
+                    (GLib.Application.get_default() as Application).get_window().get_header_bar().set_sensitive_storage_select_button(true);
             }
         }
 
@@ -120,9 +120,10 @@ namespace Usage
                         }
                     }
 
-                    header_bar.show_storage_rescan_button(true);
+                    header_bar.set_sensitive_storage_rescan_button(true);
+                    header_bar.set_sensitive_storage_back_button(true);
                     if(actual_parent_type != StorageItemType.TRASHFILE && actual_parent_type != StorageItemType.TRASHSUBFILE)
-                        (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(true);
+                        (GLib.Application.get_default() as Application).get_window().get_header_bar().set_sensitive_storage_select_button(true);
 
                     loaded();
                     this.show();
@@ -277,7 +278,7 @@ namespace Usage
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().set_title_text(actual_name);
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_title();
                 if(actual_parent_type == StorageItemType.TRASHFILE || actual_parent_type == StorageItemType.TRASHSUBFILE)
-                    (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(false);
+                    (GLib.Application.get_default() as Application).get_window().get_header_bar().set_sensitive_storage_select_button(false);
 
                 if(root)
                     color = storage_row.get_color();

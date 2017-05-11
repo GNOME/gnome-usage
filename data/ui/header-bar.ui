@@ -33,6 +33,7 @@
     <child>
       <object class="GtkButton" id="storage_rescan_button">
         <property name="visible">False</property>
+        <property name="sensitive">False</property>
         <property name="no-show-all">True</property>
         <signal name="clicked" handler="on_storage_rescan_button_clicked"/>
 
@@ -80,6 +81,7 @@
     <child>
       <object class="GtkButton" id="storage_select_button">
         <property name="visible">False</property>
+        <property name="sensitive">False</property>
         <property name="no-show-all">True</property>
         <signal name="clicked" handler="on_storage_select_button_clicked"/>
 

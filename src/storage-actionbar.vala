@@ -276,7 +276,7 @@ namespace Usage
 
         private void hide_selection_mode()
         {
-            (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_selection_mode(false);
+            (GLib.Application.get_default() as Application).get_window().get_header_bar().set_mode(HeaderBarMode.STORAGE);
         }
-	}
+    }
 }
