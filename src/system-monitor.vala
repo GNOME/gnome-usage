@@ -230,9 +230,16 @@ namespace Usage
             for(int i = 0; i < 2; i++)
             {
                 if(args[i] != null)
+                {
                     secure_arguments[i] = args[i];
+                }
                 else
+                {
                     secure_arguments[i] = "";
+                    if (i == 0)
+                        secure_arguments[1] = "";
+                    break;
+                }
             }
 
             for (int i = 0; i < secure_arguments.length; i++)
