@@ -18,6 +18,7 @@ vala_sources = [
     'memory-graph.vala',
     'memory-monitor.vala',
     'memory-sub-view.vala',
+    'monitor.vala',
     'performance-view.vala',
     'pie-chart.vala',
     'power-view.vala',

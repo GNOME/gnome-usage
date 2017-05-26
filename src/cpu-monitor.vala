@@ -20,7 +20,7 @@
 
 namespace Usage
 {
-    public class CpuMonitor
+    public class CpuMonitor : Monitor
     {
         private double cpu_load;
         private double[] x_cpu_load;

@@ -20,7 +20,7 @@
 
 namespace Usage
 {
-    public class MemoryMonitor
+    public class MemoryMonitor : Monitor
     {
         private uint64 ram_usage;
         private uint64 ram_total;
