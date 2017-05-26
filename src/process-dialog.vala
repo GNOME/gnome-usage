@@ -61,11 +61,11 @@ namespace Usage
 
             Timeout.add((GLib.Application.get_default() as Application).settings.list_update_pie_charts_UI, update);
             update();
-    	}
+        }
 
-    	private bool update()
-    	{
-    	    SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
+        private bool update()
+        {
+            SystemMonitor monitor = SystemMonitor.get_default();
             unowned Process data = monitor.get_process_by_pid(pid);
 
             ProcessStatus process_status = ProcessStatus.DEAD;

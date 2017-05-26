@@ -37,10 +37,20 @@ namespace Usage
         private HashTable<string, Process> cpu_process_table;
         private HashTable<string, Process> ram_process_table;
 
-		private int process_mode = GTop.EXCLUDE_SYSTEM;
-		private GLib.List<AppInfo> apps_info;
+        private int process_mode = GTop.EXCLUDE_SYSTEM;
+        private GLib.List<AppInfo> apps_info;
 
-		public List<unowned Process> get_processes()
+        private static SystemMonitor system_monitor;
+
+        public static SystemMonitor get_default()
+        {
+            if (system_monitor == null)
+                system_monitor = new SystemMonitor ();
+
+            return system_monitor;
+        }
+
+        public List<unowned Process> get_processes()
         {
             return process_table.get_values();
         }

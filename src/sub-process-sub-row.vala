@@ -32,11 +32,11 @@ namespace Usage
             this.type = type;
             this.process = process;
 
-			var row_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-			row_box.margin = 10;
-        	load_label = new Gtk.Label(null);
-        	load_label.ellipsize = Pango.EllipsizeMode.END;
-        	load_label.max_width_chars = 30;
+            var row_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            row_box.margin = 10;
+            load_label = new Gtk.Label(null);
+            load_label.ellipsize = Pango.EllipsizeMode.END;
+            load_label.max_width_chars = 30;
 
             var icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
             icon.width_request = 24;
@@ -69,7 +69,7 @@ namespace Usage
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
-                    SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
+                    SystemMonitor monitor = SystemMonitor.get_default();
                     load_label.set_label(Utils.format_size_values(process.get_mem_usage()));
 
                     if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= 90)

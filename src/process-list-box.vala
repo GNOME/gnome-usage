@@ -94,24 +94,25 @@ namespace Usage
             bind_model(null, null);
             model.remove_all();
 
+            SystemMonitor system_monitor = SystemMonitor.get_default();
             if(search_text == "")
             {
                 switch(type)
                 {
                     default:
                     case ProcessListBoxType.PROCESSOR:
-                        foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_cpu_processes())
+                        foreach(unowned Process process in system_monitor.get_cpu_processes())
                             model.insert_sorted(process, processcmp);
                         break;
                     case ProcessListBoxType.MEMORY:
-                        foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes())
+                        foreach(unowned Process process in system_monitor.get_ram_processes())
                             model.insert_sorted(process, processcmp);
                         break;
                 }
             }
             else
             {
-                foreach(unowned Process process in (GLib.Application.get_default() as Application).get_system_monitor().get_ram_processes()) //because ram contains all processes
+                foreach(unowned Process process in system_monitor.get_ram_processes()) //because ram contains all processes
                 {
                     if(process.get_display_name().down().contains(search_text.down()) || process.get_cmdline().down().contains(search_text.down()))
                         model.insert_sorted(process, processcmp);

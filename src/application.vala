@@ -26,7 +26,6 @@ namespace Usage
     {
         public Settings settings;
         private Window window;
-        private SystemMonitor monitor;
         private StorageAnalyzer storage_analyzer;
 
         private const GLib.ActionEntry app_entries[] =
@@ -40,13 +39,7 @@ namespace Usage
         {
             application_id = "org.gnome.Usage";
             settings = new Settings();
-            monitor = new SystemMonitor();
             storage_analyzer = new StorageAnalyzer();
-        }
-
-        public SystemMonitor get_system_monitor()
-        {
-            return monitor;
         }
 
         public StorageAnalyzer get_storage_analyzer()

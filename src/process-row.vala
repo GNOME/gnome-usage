@@ -83,8 +83,8 @@ namespace Usage
         private Gtk.Image load_icon(string display_name)
         {
             Gtk.Image icon = null;
-        	foreach (AppInfo app_info in (GLib.Application.get_default() as Application).get_system_monitor().get_apps_info())
-        	{
+            foreach (AppInfo app_info in SystemMonitor.get_default().get_apps_info())
+            {
                 if(app_info.get_display_name() == display_name)
                 {
                     if(app_info.get_icon() != null)
@@ -148,7 +148,7 @@ namespace Usage
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
-                    SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
+                    SystemMonitor monitor = SystemMonitor.get_default();
 
                     if(group)
                     {

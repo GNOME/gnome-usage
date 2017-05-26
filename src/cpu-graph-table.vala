@@ -58,7 +58,7 @@ namespace Usage {
             Rg.TableIter iter;
             push (out iter, get_monotonic_time ());
 
-            SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
+            SystemMonitor monitor = SystemMonitor.get_default();
 
             for (int i = 0; i < get_num_processors(); i++)
             {
@@ -112,7 +112,7 @@ namespace Usage {
             Rg.TableIter iter;
             push (out iter, get_monotonic_time ());
 
-            SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
+            SystemMonitor monitor = SystemMonitor.get_default();
             double most_used_core = monitor.x_cpu_load[0];
 
             for (int i = 1; i < get_num_processors(); i++)

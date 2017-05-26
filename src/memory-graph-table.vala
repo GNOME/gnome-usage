@@ -50,7 +50,7 @@ namespace Usage {
             Rg.TableIter iter;
             push (out iter, get_monotonic_time ());
 
-            SystemMonitor monitor = (GLib.Application.get_default() as Application).get_system_monitor();
+            SystemMonitor monitor = SystemMonitor.get_default();
             double ram_usage = 0;
             if(monitor.ram_total != 0)
                 ram_usage = (((double) monitor.ram_usage / monitor.ram_total) * 100);

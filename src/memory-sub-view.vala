@@ -58,7 +58,7 @@ namespace Usage
             no_process_label.set_use_markup(true);
             no_process_label.get_style_context().add_class("dim-label");
 
-            (GLib.Application.get_default() as Application).get_system_monitor().cpu_processes_ready.connect(() =>
+            SystemMonitor.get_default().cpu_processes_ready.connect(() =>
             {
                 memory_box.pack_start(process_list_box, false, false, 0);
                 memory_box.pack_start(no_process_label, true, true, 0);
