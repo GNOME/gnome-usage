@@ -122,7 +122,7 @@ namespace Usage
 
             foreach(unowned Process process in process_table.get_values())
             {
-                process.set_alive(false);
+                process.alive = false;
             }
 
             set_alive_false(ref cpu_process_table);
@@ -145,8 +145,8 @@ namespace Usage
                 else
                 {
                     Process process = process_table[pids[i]];
-                    process.set_alive(true);
-                    get_process_status(ref process);
+                    process.alive = true;
+                    update_process_status(ref process);
                     cpu_monitor.update_process(ref process);
                     memory_monitor.update_process(ref process);
                 }
@@ -154,26 +154,26 @@ namespace Usage
 
             foreach(unowned Process process in process_table.get_values())
             {
-                if (process.get_alive() == false)
+                if (!process.alive)
                 {
-                    process.set_status(ProcessStatus.DEAD);
-                    process_table.remove (process.get_pid());
+                    process.status = ProcessStatus.DEAD;
+                    process_table.remove (process.pid);
                 }
             }
 
             var process_table_temp = new HashTable<Pid?, Process>(int_hash, int_equal);
             foreach(unowned Process process in process_table.get_values())
             {
-                if(process.get_cpu_load() >= 1)
-                    process_table_temp.insert(process.get_pid(), process);
+                if(process.cpu_load >= 1)
+                    process_table_temp.insert(process.pid, process);
             }
             update_processes(process_table_temp, ref cpu_process_table);
 
             process_table_temp.remove_all();
             foreach(unowned Process process in process_table.get_values())
             {
-                if(process.get_mem_usage() >= 1)
-                    process_table_temp.insert(process.get_pid(), process);
+                if(process.mem_usage >= 1)
+                    process_table_temp.insert(process.pid, process);
             }
             update_processes(process_table_temp, ref ram_process_table);
 
@@ -275,44 +275,44 @@ namespace Usage
             return cmd;
         }
 
-        private void get_process_status (ref Process process)
+        private void update_process_status (ref Process process)
         {
             GTop.ProcState proc_state;
-            GTop.get_proc_state (out proc_state, process.get_pid());
+            GTop.get_proc_state (out proc_state, process.pid);
 
             switch(proc_state.state)
             {
                 case GTop.PROCESS_RUNNING:
                 case GTop.PROCESS_UNINTERRUPTIBLE:
-                    process.set_status(ProcessStatus.RUNNING);
+                    process.status = ProcessStatus.RUNNING;
                     break;
                 case GTop.PROCESS_SWAPPING:
                 case GTop.PROCESS_INTERRUPTIBLE:
                 case GTop.PROCESS_STOPPED:
-                    process.set_status(ProcessStatus.SLEEPING);
+                    process.status = ProcessStatus.SLEEPING;
                     break;
                 case GTop.PROCESS_DEAD:
                 case GTop.PROCESS_ZOMBIE:
                 default:
-                    process.set_status(ProcessStatus.DEAD);
+                    process.status = ProcessStatus.DEAD;
                     break;
             }
 
-            if(process.get_cpu_load() > 0)
-                process.set_status(ProcessStatus.RUNNING);
+            if(process.cpu_load > 0)
+                process.status = ProcessStatus.RUNNING;
         }
 
         private void set_alive_false(ref HashTable<string, Process> process_table)
         {
             foreach(unowned Process process in process_table.get_values())
             {
-                if(process.get_sub_processes() == null)
-                    process.set_alive(false);
+                if(process.sub_processes == null)
+                    process.alive = false;
                 else
                 {
-                    foreach(unowned Process sub_process in process.get_sub_processes().get_values())
+                    foreach(unowned Process sub_process in process.sub_processes.get_values())
                     {
-                        sub_process.set_alive(false);
+                        sub_process.alive = false;
                     }
                 }
             }
@@ -322,91 +322,90 @@ namespace Usage
         {
             foreach(unowned Process process_it in from_table.get_values())
             {
-                if(process_it.get_cmdline() in to_table) //subprocess or update process
+                if(process_it.cmdline in to_table) //subprocess or update process
                 {
-                    if(to_table[process_it.get_cmdline()].get_sub_processes() != null) //subprocess
+                    if(to_table[process_it.cmdline].sub_processes != null) //subprocess
                     {
-                        if(process_it.get_pid() in to_table[process_it.get_cmdline()].get_sub_processes()) //update subprocess
+                        if(process_it.pid in to_table[process_it.cmdline].sub_processes) //update subprocess
                         {
-                            unowned Process process = to_table[process_it.get_cmdline()].get_sub_processes()[process_it.get_pid()];
+                            unowned Process process = to_table[process_it.cmdline].sub_processes[process_it.pid];
                             process.update_from_process(process_it);
                         }
                         else //add subrow
                         {
-                            var process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter(), process_it.get_display_name());
+                            var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name);
                             process.update_from_process(process_it);
-                            to_table[process.get_cmdline()].get_sub_processes().insert(process.get_pid(), (owned) process);
+                            to_table[process.cmdline].sub_processes.insert(process.pid, (owned) process);
                         }
                     }
                     else //update process or transform to group and add subrow
                     {
-                        if(process_it.get_pid() == to_table[process_it.get_cmdline()].get_pid()) //update process
+                        if(process_it.pid == to_table[process_it.cmdline].pid) //update process
                         {
-                            unowned Process process = to_table[process_it.get_cmdline()];
+                            unowned Process process = to_table[process_it.cmdline];
                             process.update_from_process(process_it);
                         }
                         else //transform to group and add subrow
                         {
-                            to_table[process_it.get_cmdline()].set_sub_processes(new HashTable<Pid?, Process>(int_hash, int_equal));
-                            unowned Process process = to_table[process_it.get_cmdline()];
+                            to_table[process_it.cmdline].sub_processes = new HashTable<Pid?, Process>(int_hash, int_equal);
+                            unowned Process process = to_table[process_it.cmdline];
 
-                            var sub_process_one = new Process(process.get_pid(), process.get_cmdline(), process.get_cmdline_parameter(), process.get_display_name());
+                            var sub_process_one = new Process(process.pid, process.cmdline, process.cmdline_parameter, process.display_name);
                             sub_process_one.update_from_process(process);
-                            to_table[process_it.get_cmdline()].get_sub_processes().insert(sub_process_one.get_pid(), (owned) sub_process_one);
-                            process.set_cmdline_parameter("");
+                            to_table[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
 
-                            var sub_process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter(), process_it.get_display_name());
+                            var sub_process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name);
                             sub_process.update_from_process(process_it);
-                            to_table[process_it.get_cmdline()].get_sub_processes().insert(process_it.get_pid(), (owned) sub_process);
+                            to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) sub_process);
                         }
                     }
                 }
                 else //add process
                 {
-                     var process = new Process(process_it.get_pid(), process_it.get_cmdline(), process_it.get_cmdline_parameter(), process_it.get_display_name());
+                     var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name);
                      process.update_from_process(process_it);
-                     to_table.insert(process.get_cmdline(), (owned) process);
+                     to_table.insert(process.cmdline, (owned) process);
                 }
             }
 
             foreach(unowned Process process in to_table.get_values())
             {
-                if(process.get_sub_processes() == null)
+                if(process.sub_processes == null)
                 {
-                    if(process.get_alive() == false)
-                        to_table.remove (process.get_cmdline());
+                    if(!process.alive)
+                        to_table.remove (process.cmdline);
                 }
                 else
                 {
                     double cpu_load = 0;
                     uint64 mem_usage = 0;
-                    foreach(unowned Process sub_process in process.get_sub_processes().get_values())
+                    foreach(unowned Process sub_process in process.sub_processes.get_values())
                     {
-                        if (sub_process.get_alive() == false)
-                            process.get_sub_processes().remove(sub_process.get_pid());
-                    	else
-                    	{
-                    		cpu_load += sub_process.get_cpu_load();
-                        	mem_usage += sub_process.get_mem_usage();
-                    	}
-                    }
-                    process.set_cpu_load(cpu_load);
-                    process.set_mem_usage(mem_usage);
-
-                    if(process.get_sub_processes().length == 1) //tranform to process
-                    {
-                        foreach(unowned Process sub_process in process.get_sub_processes().get_values()) //only one
+                        if (!sub_process.alive)
+                            process.sub_processes.remove(sub_process.pid);
+                        else
                         {
-                            process.set_sub_processes(null);
+                            cpu_load += sub_process.cpu_load;
+                            mem_usage += sub_process.mem_usage;
+                        }
+                    }
+                    process.cpu_load = cpu_load;
+                    process.mem_usage = mem_usage;
+
+                    if(process.sub_processes.length == 1) //tranform to process
+                    {
+                        foreach(unowned Process sub_process in process.sub_processes.get_values()) //only one
+                        {
+                            process.sub_processes = null;
                             process = sub_process;
                         }
                     }
-                    else if(process.get_sub_processes().length == 0)
+                    else if(process.sub_processes.length == 0)
                     {
-                        process.set_sub_processes(null);
-                        process.set_alive(false);
-                        process.set_status(ProcessStatus.DEAD);
-                        to_table.remove(process.get_cmdline());
+                        process.sub_processes = null;
+                        process.alive = false;
+                        process.status = ProcessStatus.DEAD;
+                        to_table.remove(process.cmdline);
                     }
                 }
             }

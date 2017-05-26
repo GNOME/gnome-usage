@@ -49,7 +49,7 @@ namespace Usage
                 if(opened_row != process_row)
                 {
                     process_row.activate();
-                    if(process_row.process.get_sub_processes() != null)
+                    if(process_row.process.sub_processes != null)
                         opened_row = process_row;
                     else
                         opened_row = null;
@@ -62,7 +62,7 @@ namespace Usage
             {
                 if(child != null)
                 {
-                    focused_row_cmdline = ((ProcessRow) child).process.get_cmdline();
+                    focused_row_cmdline = ((ProcessRow) child).process.cmdline;
                     //GLib.stdout.printf("focused: " + focused_row_cmdline+ "\n");
                 }
             });
@@ -78,18 +78,18 @@ namespace Usage
 
         public bool update()
         {
-        	CompareDataFunc<Process> processcmp = (a, b) => {
-            	Process p_a = (Process) a;
-            	Process p_b = (Process) b;
+            CompareDataFunc<Process> processcmp = (a, b) => {
+                Process p_a = (Process) a;
+                Process p_b = (Process) b;
 
-            	switch(type)
-            	{
-                	default:
-                	case ProcessListBoxType.PROCESSOR:
-                    	return (int) ((uint64) (p_a.get_cpu_load() < p_b.get_cpu_load()) - (uint64) (p_a.get_cpu_load() > p_b.get_cpu_load()));
-                	case ProcessListBoxType.MEMORY:
-                    	return (int) ((uint64) (p_a.get_mem_usage() < p_b.get_mem_usage()) - (uint64) (p_a.get_mem_usage() > p_b.get_mem_usage()));
-            	}
+                switch(type)
+                {
+                    default:
+                    case ProcessListBoxType.PROCESSOR:
+                        return (int) ((uint64) (p_a.cpu_load < p_b.cpu_load) - (uint64) (p_a.cpu_load > p_b.cpu_load));
+                    case ProcessListBoxType.MEMORY:
+                        return (int) ((uint64) (p_a.mem_usage < p_b.mem_usage) - (uint64) (p_a.mem_usage > p_b.mem_usage));
+                }
             };
 
             bind_model(null, null);
@@ -115,7 +115,7 @@ namespace Usage
             {
                 foreach(unowned Process process in system_monitor.get_ram_processes()) //because ram contains all processes
                 {
-                    if(process.get_display_name().down().contains(search_text.down()) || process.get_cmdline().down().contains(search_text.down()))
+                    if(process.display_name.down().contains(search_text.down()) || process.cmdline.down().contains(search_text.down()))
                         model.insert_sorted(process, processcmp);
                 }
             }
@@ -138,7 +138,7 @@ namespace Usage
             bool opened = false;
 
             if(opened_row != null)
-                if(process.get_cmdline() == opened_row.process.get_cmdline())
+                if(process.cmdline == opened_row.process.cmdline)
                     opened = true;
 
             var row = new ProcessRow(process, type, opened);
@@ -147,7 +147,7 @@ namespace Usage
 
             if(focused_row_cmdline != null)
             {
-                if(process.get_cmdline() == focused_row_cmdline)
+                if(process.cmdline == focused_row_cmdline)
                 {
                     //row.grab_focus(); TODO not working
                     //GLib.stdout.printf("grab focus for: " + focused_row_cmdline+ "\n");

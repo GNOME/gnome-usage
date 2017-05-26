@@ -75,12 +75,12 @@ namespace Usage
 
             if(data != null)
             {
-                app_cpu_load = (int) data.get_cpu_load();
-                app_memory_usage = data.get_mem_usage();
-                int processor_other = (int) monitor.x_cpu_load[data.get_last_processor()] - app_cpu_load;
+                app_cpu_load = (int) data.cpu_load;
+                app_memory_usage = data.mem_usage;
+                int processor_other = (int) monitor.x_cpu_load[data.last_processor] - app_cpu_load;
                 processor_other = int.max(processor_other, 0);
-                processor_graph_block.update(app_cpu_load, processor_other, 100, (int) data.get_last_processor());
-                process_status = data.get_status();
+                processor_graph_block.update(app_cpu_load, processor_other, 100, (int) data.last_processor);
+                process_status = data.status;
             }
             else
                 processor_graph_block.update(0, (int) monitor.cpu_load, 100);

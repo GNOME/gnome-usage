@@ -63,15 +63,15 @@ namespace Usage
                 {
                     default:
                     case ProcessListBoxType.PROCESSOR:
-                        return (int) ((uint64) (p_a.get_cpu_load() < p_b.get_cpu_load()) - (uint64) (p_a.get_cpu_load() > p_b.get_cpu_load()));
+                        return (int) ((uint64) (p_a.cpu_load < p_b.cpu_load) - (uint64) (p_a.cpu_load > p_b.cpu_load));
                     case ProcessListBoxType.MEMORY:
-                        return (int) ((uint64) (p_a.get_mem_usage() < p_b.get_mem_usage()) - (uint64) (p_a.get_mem_usage() > p_b.get_mem_usage()));
+                        return (int) ((uint64) (p_a.mem_usage < p_b.mem_usage) - (uint64) (p_a.mem_usage > p_b.mem_usage));
                 }
             };
 
-           if(parent_process.get_sub_processes() != null)
+           if(parent_process.sub_processes != null)
            {
-               foreach(unowned Process process in parent_process.get_sub_processes().get_values())
+               foreach(unowned Process process in parent_process.sub_processes.get_values())
                {
                    model.insert_sorted(process, processcmp);
                }
