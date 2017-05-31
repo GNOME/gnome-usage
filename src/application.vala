@@ -90,17 +90,26 @@ namespace Usage
 
         private void on_about(GLib.SimpleAction action, GLib.Variant? parameter)
         {
-            string[] authors = {"Petr Štětka"};
+            string[] authors = {
+                "Petr Štětka <pstetka@redhat.com>"
+            };
+            string[] artists = {
+                "Allan Day <aday@gnome.org>",
+                "Jon McCann <jmccann@redhat.com>",
+                "Jakub Steiner <jsteiner@redhat.com>"
+            };
 
             Gtk.show_about_dialog (window,
+                logo_icon_name: "org.gnome.Usage",
                 program_name: _("Usage"),
                 comments: _("A nice way to view information about use of system resources, like memory and disk space."),
-            	authors: authors,
-            	translator_credits: _("translator-credits"),
-            	website: "https://wiki.gnome.org/Apps/Usage",
-            	website_label: _("Websites"),
-            	version: Config.VERSION,
-            	license_type: License.GPL_3_0);
+                authors: authors,
+                artists: artists,
+                translator_credits: _("translator-credits"),
+                website: "https://wiki.gnome.org/Apps/Usage",
+                website_label: _("Websites"),
+                version: Config.VERSION,
+                license_type: License.GPL_3_0);
         }
 
         private void on_quit(GLib.SimpleAction action, GLib.Variant? parameter)
