@@ -1,4 +1,4 @@
-#GNOME Usage
+# GNOME Usage
 
 A nice way to view information about use of system resources, like memory and disk space.
 
@@ -16,13 +16,13 @@ A nice way to view information about use of system resources, like memory and di
 - [ ] Disk usage (What library we can use?)
 - [ ] Data view - 0%
 
-##Run
+## Run
 In terminal run ```gnome-usage``` command or run Usage from app launcher.
 
-##Dependencies
+## Dependencies
 - libgtop >= 2.34.2
 
-##Compilation:
+## Compilation:
 ```
 cd gnome-usage
 meson build && cd build
@@ -30,10 +30,10 @@ ninja-build #or ninja
 sudo ninja-build install #or sudo ninja install
 ```
 
-##License
+## License
 Code is under GNU GPLv3 license.
 
-##Screenshots:
+## Screenshots:
 More screenshots is in screenshots subdirectory (However screenshots may not be current).
 
 ![Screenshot](screenshots/screenshot11.png?raw=true )
