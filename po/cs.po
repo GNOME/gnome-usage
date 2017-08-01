@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-05-31 12:30+0000\n"
+"POT-Creation-Date: 2017-08-01 12:22+0000\n"
 "PO-Revision-Date: 2017-02-01 12:05+0100\n"
 "Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -235,7 +235,7 @@ msgstr "Kapacita"
 
 #: ../src/storage-analyzer.vala:638
 msgid "Home"
-msgstr ""
+msgstr "Domovská složka"
 
 #: ../src/storage-item.vala:104
 msgid "Trash"
@@ -277,4 +277,3 @@ msgstr "Úložiště"
 #: ../src/storage-view.vala:53
 msgid "No content here"
 msgstr "Není zde žádný obsah"
-
