@@ -20,70 +20,56 @@
 
 namespace Usage
 {
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/process-row.ui")]
     public class ProcessRow : Gtk.ListBoxRow
     {
-        Gtk.Label load_label;
-        Gtk.Label title_label;
-        Gtk.Revealer revealer;
-        SubProcessListBox sub_process_list_box;
         ProcessListBoxType type;
-        bool group;
+
+        [GtkChild]
+        private Gtk.Image icon;
+
+        [GtkChild]
+        private Gtk.Label title_label;
+
+        [GtkChild]
+        private Gtk.Label load_label;
+
+        [GtkChild]
+        private Gtk.Revealer revealer;
+
+        [GtkChild]
+        private SubProcessListBox sub_process_list_box;
 
         public Process process { get; private set; }
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
+        public bool group {
+            get {
+                return process.get_sub_processes() != null;
+            }
+        }
+
+        private const int MAX_CPU_USAGE_LIMIT = 90;
+        private const int MAX_MEMORY_USAGE_LIMIT = 90;
 
         public ProcessRow(Process process, ProcessListBoxType type, bool opened = false)
         {
             this.type = type;
-            showing_details = opened;
             this.process = process;
+            showing_details = opened;
 
-            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            box.margin = 0;
-			var row_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-			row_box.margin = 10;
-        	load_label = new Gtk.Label(null);
-        	load_label.ellipsize = Pango.EllipsizeMode.END;
-        	load_label.max_width_chars = 30;
-
-            Gtk.Image icon = load_icon(process.get_display_name());
-            icon.margin_left = 10;
-            icon.margin_right = 10;
-
-            title_label = new Gtk.Label(process.get_display_name());
-            row_box.pack_start(icon, false, false, 0);
-            row_box.pack_start(title_label, false, true, 5);
-            row_box.pack_end(load_label, false, true, 10);
-            box.pack_start(row_box, false, true, 0);
-
-            if(process.get_sub_processes() != null)
-            {
-                group = true;
-                sub_process_list_box = new SubProcessListBox();
-                sub_process_list_box.init(process, type);
-                revealer = new Gtk.Revealer();
-                revealer.add(sub_process_list_box);
-                box.pack_end(revealer, false, true, 0);
-
-                if(opened)
-                    show_details();
-            }
-            else
-                group = false;
-
+            load_icon(process.get_display_name());
+            sub_process_list_box.init(process, type);
             update();
 
-            this.add(box);
-            show_all();
-
-            if(opened && group)
+            if(group && opened)
                 show_details();
+
+            update_title_label();
         }
 
-        private Gtk.Image load_icon(string display_name)
+        private void load_icon(string display_name)
         {
-            Gtk.Image icon = null;
             foreach (AppInfo app_info in SystemMonitor.get_default().get_apps_info())
             {
                 if(app_info.get_display_name() == display_name)
@@ -97,7 +83,7 @@ namespace Usage
                             try
                             {
                                 var pixbuf = icon_info.load_icon();
-                                icon = new Gtk.Image.from_pixbuf(pixbuf);
+                                icon.pixbuf = pixbuf;
                             }
                             catch(Error e) {
                                 GLib.stderr.printf ("Could not load icon for application %s: %s\n", display_name, e.message);
@@ -106,19 +92,35 @@ namespace Usage
                         }
                     }
                 }
-        	}
+            }
 
-        	if(icon == null)
+            if(icon.pixbuf == null)
             {
-                icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
+                icon.set_from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
                 icon.width_request = 24;
                 icon.height_request = 24;
             }
-
-        	return icon;
         }
 
         private void update()
+        {
+            update_load_label();
+            check_max_usage();
+            set_styles();
+
+            if(!showing_details)
+                update_title_label();
+        }
+
+        private void update_title_label()
+        {
+            if(group)
+                title_label.label = process.get_display_name() + " (" + process.get_sub_processes().size().to_string() + ")";
+            else
+                title_label.label = process.get_display_name();
+        }
+
+        private void update_load_label()
         {
             CompareFunc<uint64?> sort = (a, b) => {
                 return (int) ((uint64) (a < b) - (uint64) (a > b));
@@ -137,20 +139,12 @@ namespace Usage
                         foreach(uint64 value in values)
                             values_string += "   " + value.to_string() + " %";
 
-                        title_label.label += " (" + process.get_sub_processes().size().to_string() + ")";
-                        load_label.set_label(values_string);
+                        load_label.label = values_string;
                     }
                     else
-                        load_label.set_label(((int) process.get_cpu_load()).to_string() + " %");
-
-                    if(process.get_cpu_load() >= 90)
-                        max_usage = true;
-                    else
-                        max_usage = false;
+                        load_label.label = ((int) process.get_cpu_load()).to_string() + " %";
                     break;
                 case ProcessListBoxType.MEMORY:
-                    SystemMonitor monitor = SystemMonitor.get_default();
-
                     if(group)
                     {
                         string values_string = "";
@@ -161,20 +155,34 @@ namespace Usage
                         foreach(uint64 value in values)
                             values_string += "   " + Utils.format_size_values(value);
 
-                        title_label.label += " (" + process.get_sub_processes().size().to_string() + ")";
-                        load_label.set_label(values_string);
+                        load_label.label = values_string;
                     }
                     else
-                        load_label.set_label(Utils.format_size_values(process.get_mem_usage()));
+                        load_label.label = Utils.format_size_values(process.get_mem_usage());
+                    break;
+            }
+        }
 
-                    if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= 90)
+        private void check_max_usage()
+        {
+            switch(type)
+            {
+                case ProcessListBoxType.PROCESSOR:
+                    if(process.get_cpu_load() >= MAX_CPU_USAGE_LIMIT)
+                        max_usage = true;
+                    else
+                        max_usage = false;
+                    break;
+
+                case ProcessListBoxType.MEMORY:
+                    SystemMonitor monitor = SystemMonitor.get_default();
+
+                    if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= MAX_MEMORY_USAGE_LIMIT)
                         max_usage = true;
                     else
                         max_usage = false;
                     break;
             }
-
-            set_styles();
         }
 
         private void hide_details()
