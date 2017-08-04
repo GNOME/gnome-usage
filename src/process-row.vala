@@ -60,7 +60,8 @@ namespace Usage
             if(process.get_sub_processes() != null)
             {
                 group = true;
-                sub_process_list_box = new SubProcessListBox(process, type);
+                sub_process_list_box = new SubProcessListBox();
+                sub_process_list_box.init(process, type);
                 revealer = new Gtk.Revealer();
                 revealer.add(sub_process_list_box);
                 box.pack_end(revealer, false, true, 0);
