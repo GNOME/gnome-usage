@@ -20,59 +20,62 @@
 
 namespace Usage
 {
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/sub-process-sub-row.ui")]
     public class SubProcessSubRow : Gtk.ListBoxRow
     {
-        Gtk.Label load_label;
         ProcessListBoxType type;
+
+        [GtkChild]
+        private Gtk.Image icon;
+
+        [GtkChild]
+        private Gtk.Label title_label;
+
+        [GtkChild]
+        private Gtk.Label load_label;
+
         public Process process { get; private set; }
         public bool max_usage { get; private set; }
+
+        private const int MAX_CPU_USAGE_LIMIT = 90;
+        private const int MAX_MEMORY_USAGE_LIMIT = 90;
 
         public SubProcessSubRow(Process process, ProcessListBoxType type)
         {
             this.type = type;
             this.process = process;
 
-            var row_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            row_box.margin = 10;
-            load_label = new Gtk.Label(null);
-            load_label.ellipsize = Pango.EllipsizeMode.END;
-            load_label.max_width_chars = 30;
-
-            var icon = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
-            icon.width_request = 24;
-            icon.height_request = 24;
-            icon.margin_left = 10;
-            icon.margin_right = 10;
-            var title_label = new Gtk.Label(process.get_cmdline());
-            row_box.pack_start(icon, false, false, 0);
-            row_box.pack_start(title_label, false, true, 5);
-            row_box.pack_end(load_label, false, true, 10);
-            this.add(row_box);
+            icon.set_from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
+            title_label.label = process.get_display_name();
 
             notify["max-usage"].connect (() => {
                 set_styles();
             });
             update();
-            show_all();
         }
 
         private void update()
         {
+            update_load_label();
+        }
+
+        private void update_load_label()
+        {
             switch(type)
             {
                 case ProcessListBoxType.PROCESSOR:
-                    load_label.set_label(((uint64) process.get_cpu_load()).to_string() + " %");
+                    load_label.label = ((uint64) process.get_cpu_load()).to_string() + " %";
 
-                    if(process.get_cpu_load() >= 90)
+                    if(process.get_cpu_load() >= MAX_CPU_USAGE_LIMIT)
                         max_usage = true;
                     else
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
                     SystemMonitor monitor = SystemMonitor.get_default();
-                    load_label.set_label(Utils.format_size_values(process.get_mem_usage()));
+                    load_label.label = Utils.format_size_values(process.get_mem_usage());
 
-                    if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= 90)
+                    if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= MAX_MEMORY_USAGE_LIMIT)
                         max_usage = true;
                     else
                         max_usage = false;
