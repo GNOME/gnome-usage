@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright © YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Мирослав Николић <miroslavnikolic@rocketmail.com>, 2017.
 msgid ""
@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-06 14:45+0000\n"
-"PO-Revision-Date: 2017-03-13 14:53+0200\n"
+"POT-Creation-Date: 2017-06-27 22:25+0000\n"
+"PO-Revision-Date: 2017-08-13 16:41+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -19,19 +19,23 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:74
-#: ../src/window.vala:15
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:104
+#: ../src/window.vala:35
 msgid "Usage"
 msgstr "Коришћење"
 
-#: ../data/org.gnome.Usage.desktop:4 ../src/application.vala:75
-msgid "View current application and monitor system state"
-msgstr "Прегледајте тренутни програм и пратите стање система"
+#: ../data/org.gnome.Usage.desktop:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Погодан начин за преглед података о коришћењу ресурса система, као што је "
+"меморија и простор на диску"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: ../data/org.gnome.Usage.desktop:8
-msgid "application-default-icon"
-msgstr "application-default-icon"
+msgid "org.gnome.Usage"
+msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: ../data/org.gnome.Usage.desktop:13
@@ -51,120 +55,255 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Овај списак се користи за издвајање процеса које корисник не може зауставити."
 
-#: ../src/application.vala:48
+#: ../data/ui/header-bar.ui.h:1 ../src/storage-actionbar.vala:108
+#: ../src/storage-row.vala:393
+msgid "Cancel"
+msgstr "Откажи"
+
+#: ../src/application.vala:69
 msgid "About"
 msgstr "Подаци"
 
-#: ../src/application.vala:51
+#: ../src/application.vala:72
 msgid "Quit"
 msgstr "Изађи"
 
-#: ../src/application.vala:78
+#: ../src/application.vala:105
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Погодан начин за преглед података о коришћењу ресурса система, као што је "
+"меморија и простор на диску."
+
+#: ../src/application.vala:108
+msgid "translator-credits"
+msgstr ""
+"Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"\n"
+"http://prevod.org — превод на српски језик."
+
+#: ../src/application.vala:110
 msgid "Websites"
 msgstr "Веб сајтови"
 
-#: ../src/cpu-sub-view.vala:9 ../src/graph-stack-switcher.vala:25
-#: ../src/process-dialog.vala:40
+#: ../src/cpu-sub-view.vala:31 ../src/graph-stack-switcher.vala:45
+#: ../src/process-dialog.vala:50
 msgid "Processor"
 msgstr "Процесор"
 
-#: ../src/cpu-sub-view.vala:35
+#: ../src/cpu-sub-view.vala:57
 msgid "No applications using processor."
 msgstr "Ниједан програм не користи процесор."
 
-#: ../src/data-view.vala:8
+#: ../src/data-view.vala:28
 msgid "Data"
 msgstr "Подаци"
 
-#: ../src/graph-block.vala:45
+#: ../src/graph-block.vala:65
 msgid "Others"
 msgstr "Остало"
 
-#: ../src/graph-block.vala:47 ../src/storage-item.vala:80
+#: ../src/graph-block.vala:67 ../src/storage-item.vala:140
 msgid "Available"
 msgstr "Доступан"
 
-#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:9
-#: ../src/process-dialog.vala:41
+#: ../src/graph-stack-switcher.vala:46 ../src/memory-sub-view.vala:31
+#: ../src/process-dialog.vala:51
 msgid "Memory"
 msgstr "Меморија"
 
-#: ../src/graph-stack-switcher.vala:27 ../src/process-dialog.vala:42
-msgid "Disk I/O"
-msgstr "У/И диска"
+#: ../src/header-bar.vala:155
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "%u изабрана"
+msgstr[1] "%u изабране"
+msgstr[2] "%u изабраних"
+msgstr[3] "једна изабрана"
 
-#: ../src/graph-stack-switcher.vala:28 ../src/network-sub-view.vala:9
-msgid "Network"
-msgstr "Мрежа"
+#: ../src/header-bar.vala:157
+msgid "Click on items to select them"
+msgstr "Кликните на ставке да их изаберете"
 
-#: ../src/memory-sub-view.vala:35
+#: ../src/header-bar.vala:223
+#| msgid "Select"
+msgid "Select all"
+msgstr "Изабери све"
+
+#: ../src/header-bar.vala:227
+#| msgid "Select"
+msgid "Select None"
+msgstr "Поништи избор"
+
+#: ../src/memory-sub-view.vala:57
 msgid "No applications using memory."
 msgstr "Ниједан програм не користи меморију."
 
-#: ../src/network-sub-view.vala:34
-msgid "No applications using network."
-msgstr "Ниједан програм не користи мрежу."
-
-#: ../src/performance-view.vala:10
+#: ../src/performance-view.vala:45
 msgid "Performance"
 msgstr "Учинак"
 
-#: ../src/power-view.vala:8
+#: ../src/power-view.vala:28
 msgid "Power"
 msgstr "Напајање"
 
-#: ../src/process-dialog.vala:43
-msgid "Downloads"
-msgstr "Преузимања"
-
-#: ../src/process-dialog.vala:44
-msgid "Uploads"
-msgstr "Отпремања"
-
-#: ../src/process-dialog.vala:54
+#: ../src/process-dialog.vala:56
 msgid "Stop"
 msgstr "Заустави"
 
-#: ../src/process-dialog.vala:147
+#: ../src/process-dialog.vala:143
 msgid "Running"
 msgstr "Ради"
 
-#: ../src/process-dialog.vala:150
+#: ../src/process-dialog.vala:146
 msgid "Sleeping"
 msgstr "Спава"
 
-#: ../src/process-dialog.vala:153
+#: ../src/process-dialog.vala:149
 msgid "Dead"
 msgstr "Мртав"
 
-#: ../src/storage-analyzer.vala:64 ../src/storage-analyzer.vala:75
+#. common
+#: ../src/storage-actionbar.vala:35 ../src/storage-row.vala:274
+msgid "Move to"
+msgstr "Премести у"
+
+#: ../src/storage-actionbar.vala:37 ../src/storage-row.vala:278
+msgid "Delete"
+msgstr "Обриши"
+
+#: ../src/storage-actionbar.vala:40
+msgid "Move to Trash"
+msgstr "Премести у смеће"
+
+#. root
+#: ../src/storage-actionbar.vala:47
+msgid "Empty folder"
+msgstr "Испразни фасциклу"
+
+#. trash
+#: ../src/storage-actionbar.vala:52 ../src/storage-row.vala:263
+msgid "Restore"
+msgstr "Поврати"
+
+#: ../src/storage-actionbar.vala:54 ../src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Обриши из смећа"
+
+#: ../src/storage-actionbar.vala:107 ../src/storage-row.vala:392
+msgid "Select destination folder"
+msgstr "Изаберите фасциклу одредишта"
+
+#: ../src/storage-actionbar.vala:110 ../src/storage-row.vala:395
+msgid "Select"
+msgstr "Изабери"
+
+#: ../src/storage-actionbar.vala:160
+#, c-format
+msgid "Are you sure you want to permanently delete this items %s?"
+msgstr "ДА ли сигурно желите трајно да обришете ове ставке „%s“?"
+
+#: ../src/storage-actionbar.vala:161
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Ако обришете ове ставке, биће трајно изгубљене."
+
+#: ../src/storage-actionbar.vala:211 ../src/storage-row.vala:342
+msgid "Empty all items from Trash?"
+msgstr "Да избацим све ставке из смећа?"
+
+#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:343
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Све ставке из смећа биће трајно обрисане."
+
+#: ../src/storage-actionbar.vala:234 ../src/storage-row.vala:322
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "Да избацим све ставке из „%s“?"
+
+#: ../src/storage-actionbar.vala:235 ../src/storage-row.vala:323
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "Све ставке у „%s“ биће премештене у смеће."
+
+#: ../src/storage-analyzer.vala:85
 msgid "Storage 1"
 msgstr "1. смештај"
 
-#: ../src/storage-analyzer.vala:68
+#: ../src/storage-analyzer.vala:89
 msgid "Storage 2"
 msgstr "2. смештај"
 
-#: ../src/storage-analyzer.vala:271 ../src/storage-item.vala:65
-msgid "Trash"
-msgstr "Смеће"
+#: ../src/storage-analyzer.vala:96
+msgid "Capacity"
+msgstr "Капацитет"
 
-#: ../src/storage-analyzer.vala:305
-#| msgid "Operation System"
-msgid "Operating System"
-msgstr "Оперативни систем"
-
-#: ../src/storage-analyzer.vala:314
+#: ../src/storage-analyzer.vala:638
 msgid "Home"
 msgstr "Почетна"
 
-#: ../src/storage-view.vala:10
+#: ../src/storage-item.vala:104
+msgid "Trash"
+msgstr "Смеће"
+
+#: ../src/storage-item.vala:128
+msgid "Operating System"
+msgstr "Оперативни систем"
+
+#: ../src/storage-row.vala:248
+msgid "Empty"
+msgstr "Испразни"
+
+#: ../src/storage-row.vala:253
+#| msgid "Trash"
+msgid "Empty Trash"
+msgstr "Испразни смеће"
+
+#: ../src/storage-row.vala:273 ../src/storage-row.vala:367
+msgid "Rename"
+msgstr "Преименуј"
+
+#: ../src/storage-row.vala:277
+msgid "Move to trash"
+msgstr "Премести у смеће"
+
+#: ../src/storage-row.vala:439
+#, c-format
+msgid "Are you sure you want to permanently delete %s?"
+msgstr "Да ли сигурно желите трајно да обришете „%s“?"
+
+#: ../src/storage-row.vala:440
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Ако обришете неку ставку, биће трајно изгубљена."
+
+#: ../src/storage-view.vala:32
 msgid "Storage"
 msgstr "Смештај"
 
-#: ../src/storage-view.vala:26
+#: ../src/storage-view.vala:53
 msgid "No content here"
 msgstr "Овде нема садржаја"
+
+#~ msgid "View current application and monitor system state"
+#~ msgstr "Прегледајте тренутни програм и пратите стање система"
+
+#~ msgid "application-default-icon"
+#~ msgstr "application-default-icon"
+
+#~ msgid "Disk I/O"
+#~ msgstr "У/И диска"
+
+#~ msgid "Network"
+#~ msgstr "Мрежа"
+
+#~ msgid "No applications using network."
+#~ msgstr "Ниједан програм не користи мрежу."
+
+#~ msgid "Downloads"
+#~ msgstr "Преузимања"
+
+#~ msgid "Uploads"
+#~ msgstr "Отпремања"
 
 #~ msgid "Cannot locate property %s in class %s"
 #~ msgstr "Не могу да нађем својство „%s“ у класи „%s“"
@@ -200,9 +339,6 @@ msgstr "Овде нема садржаја"
 #~ msgid "Open"
 #~ msgstr "Отвори"
 
-#~ msgid "Select"
-#~ msgstr "Изабери"
-
 #~ msgid "Create"
 #~ msgstr "Направи"
 
@@ -211,9 +347,6 @@ msgstr "Овде нема садржаја"
 
 #~ msgid "Browse…"
 #~ msgstr "Разгледај…"
-
-#~ msgid "Cancel"
-#~ msgstr "Откажи"
 
 #~ msgid "Search"
 #~ msgstr "Тражи"
