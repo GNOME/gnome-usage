@@ -59,22 +59,22 @@ namespace Usage
             {
                 case StorageItemType.SYSTEM:
                     icon = new ColorRectangle.new_from_css("system");
-                    color = ((ColorRectangle) icon).get_color();
+                    color = (icon as ColorRectangle).color;
                     selectable = false;
                     break;
                 case StorageItemType.TRASH:
                     check_button = new Gtk.CheckButton();
                     icon = new ColorRectangle.new_from_css("trash");
-                    color = ((ColorRectangle) icon).get_color();
+                    color = (icon as ColorRectangle).color;
                     break;
                 case StorageItemType.USER:
                     check_button = new Gtk.CheckButton();
                     icon = new ColorRectangle.new_from_css("user");
-                    color = ((ColorRectangle) icon).get_color();
+                    color = (icon as ColorRectangle).color;
                     break;
                 case StorageItemType.AVAILABLE:
                     icon = new ColorRectangle.new_from_css("available-storage");
-                    color = ((ColorRectangle) icon).get_color();
+                    color = (icon as ColorRectangle).color;
                     selectable = false;
                     break;
                 case StorageItemType.STORAGE:

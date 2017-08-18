@@ -24,39 +24,22 @@ namespace Usage {
 
     public class ColorRectangle : Gtk.DrawingArea
     {
-        Gdk.RGBA color;
+        public Gdk.RGBA color { get; set; }
+
         class construct
         {
             set_css_name("ColorRectangle");
         }
 
-        public Gdk.RGBA get_color()
-        {
-            return color;
-        }
-
-        public ColorRectangle.new_from_rgba(Gdk.RGBA color)
-        {
-            this.color = color;
-            init();
-        }
-
-        public ColorRectangle.new_from_css(string css_class)
-        {
-            get_style_context().add_class(css_class);
-            color = get_style_context().get_color(get_style_context().get_state());
-            init();
-        }
-
-        private void init()
+        construct
         {
             this.height_request = 17;
             this.width_request = 17;
             this.valign = Gtk.Align.CENTER;
             this.draw.connect ((context) =>
             {
-            	int height = this.get_allocated_height ();
-            	int width = this.get_allocated_width ();
+                int height = this.get_allocated_height ();
+                int width = this.get_allocated_width ();
 
                 double degrees = Math.PI / 180.0;
                 double x = 0;
@@ -72,8 +55,26 @@ namespace Usage {
 
                 Gdk.cairo_set_source_rgba (context, color);
                 context.fill();
-            	return true;
+                return true;
             });
+        }
+
+        public ColorRectangle.new_from_rgba(Gdk.RGBA color)
+        {
+            this.color = color;
+            queue_draw_area(0, 0, this.get_allocated_width(), this.get_allocated_height());
+        }
+
+        public ColorRectangle.new_from_css(string css_class)
+        {
+            set_color_from_css(css_class);
+        }
+
+        public void set_color_from_css(string css_class)
+        {
+            get_style_context().add_class(css_class);
+            color = get_style_context().get_color(get_style_context().get_state());
+            queue_draw_area(0, 0, this.get_allocated_width(), this.get_allocated_height());
         }
     }
 }
