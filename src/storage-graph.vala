@@ -208,7 +208,7 @@ namespace Usage
             var model = storage_list_box.get_model();
 
             var two_graphs = false;
-            if(storage_list_box.get_root() && (GLib.Application.get_default() as Application).get_storage_analyzer().get_separate_home())
+            if(storage_list_box.get_root() && StorageAnalyzer.get_default().get_separate_home())
                 two_graphs = true;
 
             double x = 0;

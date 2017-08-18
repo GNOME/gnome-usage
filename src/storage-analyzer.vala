@@ -36,6 +36,15 @@ namespace Usage
         private bool can_scan = true;
         private const string TRASH_PATH = "trash:///";
         private const string file_attributes = FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE;
+        private static StorageAnalyzer storage_analyzer;
+
+        public static StorageAnalyzer get_default ()
+        {
+            if (storage_analyzer == null)
+                storage_analyzer = new StorageAnalyzer ();
+
+            return storage_analyzer;
+        }
 
         private enum Operation
         {
@@ -812,7 +821,7 @@ namespace Usage
             }
         }
 
-        public StorageAnalyzer()
+        private StorageAnalyzer()
         {
             cache = false;
             cancellable = new Cancellable();

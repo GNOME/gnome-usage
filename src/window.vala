@@ -67,7 +67,7 @@ namespace Usage
                 else if(stack.visible_child_name == views[2].name)
                 {
                     header_bar.set_mode(HeaderBarMode.STORAGE);
-                    (GLib.Application.get_default() as Application).get_storage_analyzer().create_cache.begin();
+                    StorageAnalyzer.get_default().create_cache.begin();
                 }
                 else if(stack.visible_child_name == views[3].name)
                 {

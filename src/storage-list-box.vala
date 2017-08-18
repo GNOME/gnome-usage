@@ -54,7 +54,7 @@ namespace Usage
             actual_path = null;
             actual_name = null;
             actual_parent_type = null;
-            storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+            storage_analyzer = StorageAnalyzer.get_default();
 
             get_style_context().add_class("folders");
             color = get_style_context().get_color(get_style_context().get_state());

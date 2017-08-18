@@ -128,11 +128,11 @@ namespace Usage
             if(chooser.run() == Gtk.ResponseType.ACCEPT)
             {
             	Timeout.add(0, () => {
+                    var storage_analyzer = StorageAnalyzer.get_default();
                     foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().get_selected_rows())
                     {
                         StorageRow actual_storage_row = (StorageRow) row;
                         string destination = chooser.get_file().get_parse_name() + "/" + Path.get_basename(actual_storage_row.get_item_path());
-                        var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
                         storage_analyzer.move_file.begin(File.new_for_path(actual_storage_row.get_item_path()), File.new_for_path(destination), () => {
                             ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                         });
@@ -163,10 +163,10 @@ namespace Usage
             if(dialog.run() == Gtk.ResponseType.OK)
             {
             	Timeout.add(0, () => {
+                    var storage_analyzer = StorageAnalyzer.get_default();
                     foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().get_selected_rows())
                     {
                         StorageRow storage_row = (StorageRow) row;
-                        var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
                         storage_analyzer.delete_file.begin(storage_row.get_item_path(), () => {
                             ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                         });
@@ -186,8 +186,8 @@ namespace Usage
             Timeout.add(0, () => {
                 foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().get_selected_rows())
                 {
+                    var storage_analyzer = StorageAnalyzer.get_default();
                     StorageRow storage_row = (StorageRow) row;
-                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
                     storage_analyzer.trash_file.begin(storage_row.get_item_path(), () => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                     });
@@ -202,6 +202,7 @@ namespace Usage
         {
             Timeout.add(0, () => {
                 string folders = "";
+                var storage_analyzer = StorageAnalyzer.get_default();
                 foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().get_selected_rows())
                 {
                     StorageRow storage_row = (StorageRow) row;
@@ -213,7 +214,6 @@ namespace Usage
 
                         if(dialog.run() == Gtk.ResponseType.OK)
                         {
-                            var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
                             storage_analyzer.wipe_trash.begin(() => {
                                 ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                             });
@@ -239,7 +239,6 @@ namespace Usage
                         foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().get_selected_rows())
                         {
                             StorageRow storage_row = (StorageRow) row;
-                            var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
                             storage_analyzer.wipe_folder.begin(storage_row.get_item_path(), () => {
                                 ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                             });
@@ -257,10 +256,10 @@ namespace Usage
         private void restore_clicked()
         {
             Timeout.add(0, () => {
+                var storage_analyzer = StorageAnalyzer.get_default();
                 foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().get_selected_rows())
                 {
                     StorageRow storage_row = (StorageRow) row;
-                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
                     storage_analyzer.restore_trash_file.begin(storage_row.get_item_path(), () => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                     });
@@ -274,10 +273,10 @@ namespace Usage
         private void delete_from_trash_clicked()
         {
             Timeout.add(0, () => {
+                var storage_analyzer = StorageAnalyzer.get_default();
                 foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().get_selected_rows())
                 {
                     StorageRow storage_row = (StorageRow) row;
-                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
                     storage_analyzer.delete_trash_file.begin(storage_row.get_item_path(), () => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                     });

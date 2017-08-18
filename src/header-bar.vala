@@ -133,7 +133,7 @@ namespace Usage
             storage_rescan_button.hide ();
 
             storage_back_button.hide ();
-            (GLib.Application.get_default() as Application).get_storage_analyzer().create_cache.begin(true);
+            StorageAnalyzer.get_default().create_cache.begin(true);
             ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().reload();
         }
 

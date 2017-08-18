@@ -295,7 +295,7 @@ namespace Usage
         private void action_trash_restore()
         {
             Timeout.add(0, () => {
-                var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                var storage_analyzer = StorageAnalyzer.get_default();
                 storage_analyzer.restore_trash_file.begin(item_path, () => {
                     ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                 });
@@ -307,7 +307,7 @@ namespace Usage
         private void action_trash_delete()
         {
             Timeout.add(0, () => {
-                var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                var storage_analyzer = StorageAnalyzer.get_default();
                 storage_analyzer.delete_trash_file.begin(item_path, () => {
                     ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                 });
@@ -325,7 +325,7 @@ namespace Usage
             if(dialog.run() == Gtk.ResponseType.OK)
             {
             	Timeout.add(0, () => {
-                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    var storage_analyzer = StorageAnalyzer.get_default();
                     storage_analyzer.wipe_folder.begin(item_path, () => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                     });
@@ -345,7 +345,7 @@ namespace Usage
             if(dialog.run() == Gtk.ResponseType.OK)
             {
             	Timeout.add(0, () => {
-                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    var storage_analyzer = StorageAnalyzer.get_default();
                     storage_analyzer.wipe_trash.begin(() => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                     });
@@ -369,7 +369,7 @@ namespace Usage
             button.clicked.connect (() => {
             	Timeout.add(0, () => {
                     string destination = Path.get_dirname(item_path) + "/" + entry.get_text();
-                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    var storage_analyzer = StorageAnalyzer.get_default();
                     storage_analyzer.move_file.begin(File.new_for_path(item_path), File.new_for_path(destination), () => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                     });
@@ -410,7 +410,7 @@ namespace Usage
             {
             	Timeout.add(0, () => {
             	    string destination = chooser.get_file().get_parse_name() + "/" + Path.get_basename(item_path);
-                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    var storage_analyzer = StorageAnalyzer.get_default();
                     storage_analyzer.move_file.begin(File.new_for_path(item_path), File.new_for_path(destination), () => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                     });
@@ -424,7 +424,7 @@ namespace Usage
         private void action_move_to_trash()
         {
             Timeout.add(0, () => {
-                var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                var storage_analyzer = StorageAnalyzer.get_default();
                 storage_analyzer.trash_file.begin(item_path, () => {
                     ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                 });
@@ -442,7 +442,7 @@ namespace Usage
             if(dialog.run() == Gtk.ResponseType.OK)
             {
             	Timeout.add(0, () => {
-                    var storage_analyzer = (GLib.Application.get_default() as Application).get_storage_analyzer();
+                    var storage_analyzer = StorageAnalyzer.get_default();
                     storage_analyzer.delete_file.begin(item_path, () => {
                         ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().refresh();
                     });
