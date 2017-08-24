@@ -33,7 +33,7 @@ namespace Usage {
 
         public MemoryGraphTable ()
         {
-            var settings = (GLib.Application.get_default() as Application).settings;
+            var settings = Settings.get_default();
             set_timespan (settings.graph_timespan * 1000);
             set_max_samples (settings.graph_max_samples);
 

@@ -71,7 +71,7 @@ namespace Usage
             model = new ListStore(typeof(Process));
             bind_model(model, on_row_created);
 
-            var settings = (GLib.Application.get_default() as Application).settings;
+            var settings = Settings.get_default();
             Timeout.add(settings.list_update_interval_UI, update);
         }
 

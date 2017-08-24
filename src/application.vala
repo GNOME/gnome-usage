@@ -24,7 +24,6 @@ namespace Usage
 {
     public class Application : Gtk.Application
     {
-        public Settings settings;
         private Window window;
 
         private const GLib.ActionEntry app_entries[] =
@@ -37,7 +36,6 @@ namespace Usage
         public Application ()
         {
             application_id = "org.gnome.Usage";
-            settings = new Settings();
         }
 
         public Window? get_window()

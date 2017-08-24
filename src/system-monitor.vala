@@ -96,7 +96,7 @@ namespace Usage
             cpu_process_table = new HashTable<string, Process>(str_hash, str_equal);
             ram_process_table = new HashTable<string, Process>(str_hash, str_equal);
 
-            var settings = (GLib.Application.get_default() as Application).settings;
+            var settings = Settings.get_default();
             apps_info = AppInfo.get_all();
 
             update_data();

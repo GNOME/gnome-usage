@@ -30,5 +30,15 @@ namespace Usage {
         public uint list_update_interval_UI { get; set; default = 5000; }
         public uint list_update_pie_charts_UI { get; set; default = 1000; }
         public uint data_update_interval { get; set; default = 1000; }
+
+        private static Settings settings;
+
+        public static Settings get_default()
+        {
+            if (settings == null)
+                settings = new Settings ();
+
+            return settings;
+        }
     }
 }
