@@ -216,4 +216,15 @@ namespace GTop {
     }
     [CCode(array_length = false)]
     public MountEntry[] get_mountlist(out MountList mount_list, bool all_fs);
+
+    [CCode(cname = "glibtop_proc_io", cheader_filename = "glibtop/procio.h")]
+    public struct ProcIo {
+        uint64 flags;
+        uint64 disk_rchar;
+        uint64 disk_wchar;
+        uint64 disk_rbytes;
+        uint64 disk_wbytes;
+        uint64 reserved[10];
+    }
+    public void get_proc_io(out ProcIo proc_io, GLib.Pid pid);
 }
