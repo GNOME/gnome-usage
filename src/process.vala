@@ -36,6 +36,11 @@ namespace Usage
 
         public uint64 mem_usage { get; set; default = 0; }
 
+        public uint64 disk_read { get; set; default = 0; }
+        public uint64 disk_read_last { get; set; default = 0; }
+        public uint64 disk_write { get;  set; default = 0; }
+        public uint64 disk_write_last { get; set; default = 0; }
+
         public HashTable<Pid?, Process>? sub_processes { get; set; }
 
         public bool alive { get; set; default = true; }
@@ -60,6 +65,10 @@ namespace Usage
             this.mem_usage = process.mem_usage;
             this.alive = process.alive;
             this.status = process.status;
+            this.disk_read = process.disk_read;
+            this.disk_read_last = process.disk_read_last;
+            this.disk_write = process.disk_write;
+            this.disk_write_last = process.disk_write_last;
         }
     }
 

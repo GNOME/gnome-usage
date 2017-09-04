@@ -23,19 +23,25 @@ namespace Usage
     public class SystemMonitor : Object
     {
         public signal void cpu_processes_ready();
+        public signal void disk_processes_ready();
+
         public double cpu_load { get; private set; }
         public double[] x_cpu_load { get; private set; }
         public uint64 ram_usage { get; private set; }
         public uint64 ram_total { get; private set; }
         public uint64 swap_usage { get; private set; }
         public uint64 swap_total { get; private set; }
+        public uint64 disk_read { get; private set; }
+        public uint64 disk_write { get; private set; }
 
         private CpuMonitor cpu_monitor;
         private MemoryMonitor memory_monitor;
+        private DiskMonitor disk_monitor;
 
         private HashTable<Pid?, Process> process_table;
         private HashTable<string, Process> cpu_process_table;
         private HashTable<string, Process> ram_process_table;
+        private HashTable<string, Process> disk_process_table;
 
         private int process_mode = GTop.KERN_PROC_ALL;
         private GLib.List<AppInfo> apps_info;
@@ -80,6 +86,16 @@ namespace Usage
             return ram_process_table[cmdline];
         }
 
+        public List<unowned Process> get_disk_processes()
+        {
+            return disk_process_table.get_values();
+        }
+
+        public unowned Process get_disk_process(string cmdline)
+        {
+            return disk_process_table[cmdline];
+        }
+
         public unowned GLib.List<AppInfo> get_apps_info()
         {
             return apps_info;
@@ -100,10 +116,12 @@ namespace Usage
 
             cpu_monitor = new CpuMonitor();
             memory_monitor = new MemoryMonitor();
+            disk_monitor = new DiskMonitor();
 
             process_table = new HashTable<Pid?, Process>(int_hash, int_equal);
             cpu_process_table = new HashTable<string, Process>(str_hash, str_equal);
             ram_process_table = new HashTable<string, Process>(str_hash, str_equal);
+            disk_process_table = new HashTable<string, Process>(str_hash, str_equal);
 
             var settings = Settings.get_default();
             apps_info = AppInfo.get_all();
@@ -113,6 +131,7 @@ namespace Usage
             Timeout.add(settings.data_update_interval, () =>
             {
                 cpu_processes_ready();
+                disk_processes_ready();
                 return false;
             });
         }
@@ -121,6 +140,7 @@ namespace Usage
         {
             cpu_monitor.update();
             memory_monitor.update();
+            disk_monitor.update();
 
             cpu_load = cpu_monitor.get_cpu_load();
             x_cpu_load = cpu_monitor.get_x_cpu_load();
@@ -136,6 +156,7 @@ namespace Usage
 
             set_alive_false(ref cpu_process_table);
             set_alive_false(ref ram_process_table);
+            set_alive_false(ref disk_process_table);
 
             GTop.Proclist proclist;
             var pids = GTop.get_proclist (out proclist, process_mode);
@@ -150,6 +171,7 @@ namespace Usage
                     uint uid = get_uid(pids[i]);
                     var process = new Process(pids[i], cmdline, cmdline_parameter, display_name, uid);
                     cpu_monitor.update_process(ref process);
+                    disk_monitor.update_process(ref process);
                     process_table.insert (pids[i], (owned) process);
                 }
                 else
@@ -159,8 +181,12 @@ namespace Usage
                     update_process_status(ref process);
                     cpu_monitor.update_process(ref process);
                     memory_monitor.update_process(ref process);
+                    disk_monitor.update_process(ref process);
                 }
             }
+
+            disk_read = disk_monitor.get_read_bytes();
+            disk_write = disk_monitor.get_write_bytes();
 
             foreach(unowned Process process in process_table.get_values())
             {
@@ -186,6 +212,14 @@ namespace Usage
                     process_table_temp.insert(process.pid, process);
             }
             update_processes(process_table_temp, ref ram_process_table);
+
+            process_table_temp.remove_all();
+            foreach(unowned Process process in process_table.get_values())
+            {
+                if(process.disk_read >= 1 || process.disk_write >= 1)
+                    process_table_temp.insert(process.get_pid(), process);
+            }
+            update_processes(process_table_temp, ref disk_process_table);
 
             return true;
         }
@@ -396,6 +430,9 @@ namespace Usage
                 {
                     double cpu_load = 0;
                     uint64 mem_usage = 0;
+                    uint64 disk_read = 0;
+                    uint64 disk_write = 0;
+
                     foreach(unowned Process sub_process in process.sub_processes.get_values())
                     {
                         if (!sub_process.alive)
@@ -404,10 +441,14 @@ namespace Usage
                         {
                             cpu_load += sub_process.cpu_load;
                             mem_usage += sub_process.mem_usage;
+                            disk_read += sub_process.disk_read;
+                            disk_write += sub_process.disk_write;
                         }
                     }
                     process.cpu_load = cpu_load;
                     process.mem_usage = mem_usage;
+                    process.disk_read = disk_read;
+                    process.disk_write = disk_write;
 
                     if(process.sub_processes.length == 1) //tranform to process
                     {
