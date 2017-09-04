@@ -47,6 +47,9 @@ namespace Usage
 
         public override void activate()
         {
+            if (window != null)
+                return;
+
             window = new Window(this);
 
             // Create menu
