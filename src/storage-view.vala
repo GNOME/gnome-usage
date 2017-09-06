@@ -16,87 +16,58 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Felipe Borges <felipeborges@gnome.org>
  */
 
 namespace Usage
 {
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-view.ui")]
     public class StorageView : View
     {
         private StorageListBox storage_list_box;
-        private Gtk.Revealer revealer;
         private StorageActionBar action_bar;
+
+        [GtkChild]
+        private Gtk.Revealer revealer;
+
+        [GtkChild]
+        private Gtk.Stack stack;
+
+        [GtkChild]
+        private Gtk.ScrolledWindow scrolled_window;
+
+        [GtkChild]
+        private Gtk.Paned paned;
 
         public StorageView ()
         {
             name = "STORAGE";
             title = _("Storage");
 
+            /* It would be nice being able to this in the template file. */
             storage_list_box = new StorageListBox();
-            var scrolled_window = new Gtk.ScrolledWindow(null, null);
             scrolled_window.add(storage_list_box);
 
-            var spinner = new Gtk.Spinner();
-            spinner.active = true;
-            spinner.margin_top = 30;
-            spinner.margin_bottom = 20;
-
             var graph = new StorageGraph();
-            var paned = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
-            paned.position = 300;
-            paned.add2(spinner);
+            paned.add2(graph);
 
-            var center_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 12);
-            var image = new Gtk.Image.from_icon_name("folder-symbolic", Gtk.IconSize.DIALOG );
-            image.pixel_size = 128;
-            center_box.add(image);
-
-            Gtk.Label empty_label = new Gtk.Label("<span size='xx-large' font_weight='bold'>" + _("No content here") + "</span>");
-            empty_label.set_use_markup (true);
-            empty_label.margin_top = 10;
-            center_box.add(empty_label);
-            center_box.get_style_context().add_class("dim-label");
-            var empty_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            empty_box.set_center_widget(center_box);
-            empty_box.show_all();
+            action_bar = new StorageActionBar();
+            revealer.add(action_bar);
 
             storage_list_box.loading.connect(() =>
             {
-                paned.remove(empty_box);
-                paned.remove(scrolled_window);
-                paned.remove(graph);
-                paned.add2(spinner);
+                stack.set_visible_child_name("spinner");
             });
 
             storage_list_box.loaded.connect(() =>
             {
-                paned.add1(scrolled_window);
-                scrolled_window.show();
-
-                paned.remove(spinner);
-                paned.add2(graph);
-                graph.show();
+                stack.set_visible_child_name("content");
             });
 
             storage_list_box.empty.connect(() =>
             {
-                paned.remove(scrolled_window);
-                paned.remove(graph);
-                paned.remove(spinner);
-                paned.add2(empty_box);
-                empty_label.show();
+                stack.set_visible_child_name("empty");
             });
-
-            action_bar = new StorageActionBar();
-
-            revealer = new Gtk.Revealer();
-            revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_UP;
-            revealer.transition_duration = 400;
-            revealer.add(action_bar);
-
-            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            box.pack_start(paned, true);
-            box.pack_end(revealer, false);
-            add(box);
         }
 
         public StorageListBox get_storage_list_box()
