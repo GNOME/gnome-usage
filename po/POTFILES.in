@@ -5,6 +5,7 @@ data/org.gnome.Usage.gschema.xml
 [type: gettext/glade]data/ui/header-bar.ui
 [type: gettext/glade]data/ui/performance-view.ui
 [type: gettext/glade]data/ui/process-dialog.ui
+[type: gettext/glade]data/ui/storage-view.ui
 src/application.vala
 src/cpu-sub-view.vala
 src/data-view.vala
