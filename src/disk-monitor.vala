@@ -42,7 +42,7 @@ namespace Usage
         public void update_process(ref Process process)
         {
             GTop.ProcIo proc_io;
-            GTop.get_proc_io (out proc_io, process.get_pid());
+            GTop.get_proc_io (out proc_io, process.pid);
 
             process.disk_read = proc_io.disk_rbytes - process.disk_read_last;
             process.disk_read_last = proc_io.disk_rbytes;

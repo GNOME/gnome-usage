@@ -50,7 +50,8 @@ namespace Usage
             sub_views = new View[]
             {
                 new ProcessorSubView(),
-                new MemorySubView()
+                new MemorySubView(),
+                new DiskSubView()
             };
 
             foreach(var sub_view in sub_views)

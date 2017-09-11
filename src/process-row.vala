@@ -121,6 +121,9 @@ namespace Usage
                 case ProcessListBoxType.MEMORY:
                     load_label.label = Utils.format_size_values(process.mem_usage);
                     break;
+                case ProcessListBoxType.DISK:
+                    load_label.label = Utils.format_size_speed_values(process.disk_read + process.disk_write);
+                    break;
             }
         }
 
