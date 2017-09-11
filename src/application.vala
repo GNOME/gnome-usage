@@ -49,6 +49,7 @@ namespace Usage
             if (window != null)
                 return;
 
+            ensure_types();
             window = new Window(this);
 
             set_accels_for_action("app.quit", {"<Primary>q"});
@@ -61,6 +62,15 @@ namespace Usage
             base.startup();
             add_action_entries(app_entries, this);
             set_accels_for_action ("app.search", {"<Primary>f"});
+        }
+
+        private void ensure_types()
+        {
+            var disk_graph = typeof (Usage.DiskGraphBig);
+            disk_graph.ensure();
+
+            var disk_sub_view = typeof (Usage.DiskSubView);
+            disk_sub_view.ensure();
         }
 
         private void on_about(GLib.SimpleAction action, GLib.Variant? parameter)
