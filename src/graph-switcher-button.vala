@@ -36,6 +36,12 @@ namespace Usage
             child = createContent(memory_graph, label);
         }
 
+        public GraphSwitcherButton.disk(string label)
+        {
+            var disk_graph = new DiskGraph();
+            child = createContent(disk_graph, label);
+        }
+
         private Gtk.Box createContent(Dazzle.GraphView graph, string label_text)
         {
             graph.height_request = 80;
