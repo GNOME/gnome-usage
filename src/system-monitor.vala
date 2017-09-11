@@ -217,7 +217,7 @@ namespace Usage
             foreach(unowned Process process in process_table.get_values())
             {
                 if(process.disk_read >= 1 || process.disk_write >= 1)
-                    process_table_temp.insert(process.get_pid(), process);
+                    process_table_temp.insert(process.pid, process);
             }
             update_processes(process_table_temp, ref disk_process_table);
 

@@ -22,7 +22,8 @@ namespace Usage
 {
     public enum ProcessListBoxType {
         PROCESSOR,
-        MEMORY
+        MEMORY,
+        DISK
     }
 
     public class ProcessListBox : Gtk.ListBox
@@ -89,6 +90,10 @@ namespace Usage
                         return (int) ((uint64) (p_a.cpu_load < p_b.cpu_load) - (uint64) (p_a.cpu_load > p_b.cpu_load));
                     case ProcessListBoxType.MEMORY:
                         return (int) ((uint64) (p_a.mem_usage < p_b.mem_usage) - (uint64) (p_a.mem_usage > p_b.mem_usage));
+                    case ProcessListBoxType.DISK:
+                        var p_a_disk = p_a.disk_read + p_a.disk_write;
+                        var p_b_disk = p_b.disk_read + p_b.disk_write;
+                        return (int) ((uint64) (p_a_disk < p_b_disk) - (uint64) (p_a_disk > p_b_disk));
                 }
             };
 
@@ -107,6 +112,10 @@ namespace Usage
                         break;
                     case ProcessListBoxType.MEMORY:
                         foreach(unowned Process process in system_monitor.get_ram_processes())
+                            model.insert_sorted(process, processcmp);
+                        break;
+                    case ProcessListBoxType.DISK:
+                        foreach(unowned Process process in system_monitor.get_disk_processes())
                             model.insert_sorted(process, processcmp);
                         break;
                 }
