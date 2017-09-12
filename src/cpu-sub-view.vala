@@ -68,11 +68,7 @@ namespace Usage
 
             process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
 
-            var scrolled_window = new Gtk.ScrolledWindow(null, null);
-            scrolled_window.add(cpu_box);
-            scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
-
-            add(scrolled_window);
+            add(cpu_box);
         }
 
         public override void show_all() {

@@ -41,10 +41,16 @@
             </child>
 
             <child>
-              <object class="GtkStack" id="performance_stack">
+              <object class="GtkScrolledWindow" id="scrolled_window">
                 <property name="visible">True</property>
-                <property name="transition-type">slide-up-down</property>
                 <property name="vexpand">True</property>
+                <child>
+                  <object class="GtkBox" id="performance_content">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">30</property>
+                  </object>
+                </child>
               </object>
             </child>
           </object>

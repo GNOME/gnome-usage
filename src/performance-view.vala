@@ -29,13 +29,16 @@ namespace Usage
         private Gtk.Box switcher_box;
 
         [GtkChild]
-        private Gtk.Stack performance_stack;
+        private Gtk.Box performance_content;
 
         [GtkChild]
         private Gtk.SearchBar search_bar;
 
         [GtkChild]
         private Gtk.SearchEntry search_entry;
+
+        [GtkChild]
+        private Gtk.ScrolledWindow scrolled_window;
 
         View[] sub_views;
 
@@ -51,9 +54,9 @@ namespace Usage
             };
 
             foreach(var sub_view in sub_views)
-                performance_stack.add_titled(sub_view, sub_view.name, sub_view.name);
+                performance_content.pack_start(sub_view, true, true, 0);
 
-		    var stackSwitcher = new GraphStackSwitcher(performance_stack, sub_views);
+		    var stackSwitcher = new GraphStackSwitcher(scrolled_window, sub_views);
             switcher_box.add (stackSwitcher);
 
             show_all ();
