@@ -33,12 +33,12 @@ sudo ninja-build install #or sudo ninja install
 ## License
 Code is under GNU GPLv3 license.
 
-## Screenshots:
-More screenshots is in screenshots subdirectory (However screenshots may not be current).
+## Screenshots
+More screenshots are placed in the screenshots subdirectory (however screenshots may be outdated).
 
 ![Screenshot](screenshots/screenshot11.png?raw=true )
 
 ![Screenshot](screenshots/screenshot10.png?raw=true )
 
-## Design:
+## Design
 <img src="https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage-wires.png">
