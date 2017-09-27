@@ -77,6 +77,10 @@ namespace Usage
             unowned List<string>? path = path_history.last();
             unowned List<string>? name = name_history.last();
             unowned List<StorageItemType?>? parent = parent_type_history.last();
+
+            if(path == null)
+                return;
+
             actual_path = path.data;
             actual_name = name.data;
             actual_parent_type = parent.data;
