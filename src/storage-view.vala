@@ -26,9 +26,13 @@ namespace Usage
     {
         private StorageListBox storage_list_box;
         private StorageActionBar action_bar;
+        private StorageAnalyzer storage_analyzer;
 
         [GtkChild]
         private Gtk.Revealer revealer;
+
+        [GtkChild]
+        private Gtk.ProgressBar progress;
 
         [GtkChild]
         private Gtk.Stack stack;
@@ -48,6 +52,8 @@ namespace Usage
             storage_list_box = new StorageListBox();
             scrolled_window.add(storage_list_box);
 
+            storage_analyzer = StorageAnalyzer.get_default();
+
             var graph = new StorageGraph();
             paned.add2(graph);
 
@@ -56,7 +62,16 @@ namespace Usage
 
             storage_list_box.loading.connect(() =>
             {
-                stack.set_visible_child_name("spinner");
+                stack.set_visible_child_name("progress");
+                progress.fraction = 0;
+                progress.text = null;
+            });
+
+            storage_analyzer.cache_progress_update.connect((frac, path) =>
+            {
+                progress.fraction = frac;
+                var percent = (int) Math.round(frac * 100);
+                progress.text = "%i%% - %s".printf(percent, path);
             });
 
             storage_list_box.loaded.connect(() =>

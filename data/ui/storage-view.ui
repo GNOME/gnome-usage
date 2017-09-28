@@ -7,12 +7,15 @@
       <object class="GtkStack" id="stack">
         <property name="visible">True</property>
         <child>
-          <object class="GtkSpinner">
+          <object class="GtkProgressBar" id="progress">
             <property name="visible">True</property>
-            <property name="active">True</property>
+            <property name="valign">center</property>
+            <property name="margin">12</property>
+            <property name="show-text">true</property>
+            <property name="ellipsize">END</property>
           </object>
           <packing>
-            <property name="name">spinner</property>
+            <property name="name">progress</property>
           </packing>
         </child>
         <child>

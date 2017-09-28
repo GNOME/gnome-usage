@@ -25,6 +25,7 @@ namespace Usage
     public class StorageAnalyzer : Object
     {
         public signal void cache_complete();
+        public signal void cache_progress_update(double frac, string path);
         public bool cache { private set; get; }
 
         private bool separate_home = false;
@@ -570,7 +571,7 @@ namespace Usage
 
         private void scan_cache()
         {
-            var results_queue = new AsyncQueue<StorageResult>();
+            var msg_queue = new AsyncQueue<StorageMessage>();
             uint64 total_size;
             if(separate_home)
             {
@@ -583,20 +584,21 @@ namespace Usage
                 total_size = root.total;
             }
 
-            var desktop   = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DESKTOP)), ref cancellable, ref results_queue);
-            var documents = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DOCUMENTS)), ref cancellable, ref results_queue);
-            var downloads = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DOWNLOAD)), ref cancellable, ref results_queue);
-            var music     = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.MUSIC)), ref cancellable, ref results_queue);
-            var pictures  = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.PICTURES)), ref cancellable, ref results_queue);
-            var videos    = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.VIDEOS)), ref cancellable, ref results_queue);
-            var trash     = new StorageWorker(File.new_for_uri(TRASH_PATH), ref cancellable, ref results_queue);
-            var home      = new StorageWorker(File.new_for_path(Environment.get_home_dir()), ref cancellable, ref results_queue, exclude_from_home);
+            var desktop   = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DESKTOP)), ref cancellable, ref msg_queue);
+            var documents = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DOCUMENTS)), ref cancellable, ref msg_queue);
+            var downloads = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.DOWNLOAD)), ref cancellable, ref msg_queue);
+            var music     = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.MUSIC)), ref cancellable, ref msg_queue);
+            var pictures  = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.PICTURES)), ref cancellable, ref msg_queue);
+            var videos    = new StorageWorker(File.new_for_path(Environment.get_user_special_dir(UserDirectory.VIDEOS)), ref cancellable, ref msg_queue);
+            var trash     = new StorageWorker(File.new_for_uri(TRASH_PATH), ref cancellable, ref msg_queue);
+            var home      = new StorageWorker(File.new_for_path(Environment.get_home_dir()), ref cancellable, ref msg_queue, exclude_from_home);
 
             try {
                 ThreadPool<StorageWorker> threads = new ThreadPool<StorageWorker>.with_owned_data((worker) => {
                     worker.run();
-                }, (int) get_num_processors(), false);
+                }, -1, false);
 
+                int jobs_remaining = 8;
                 threads.add(home);
                 threads.add(desktop);
                 threads.add(documents);
@@ -605,16 +607,34 @@ namespace Usage
                 threads.add(pictures);
                 threads.add(videos);
                 threads.add(trash);
+
+                StorageMessage msg;
+                uint64 current_size = 0;
+                while ((msg = msg_queue.pop()) != null)
+                {
+                    if(msg.type == StorageMessageType.FINISH)
+                    {
+                        jobs_remaining--;
+                        if(jobs_remaining == 0)
+                        {
+                            break;
+                        }
+                    }
+                    else if(msg.type == StorageMessageType.SIZE_UPDATE)
+                    {
+                        current_size += msg.size;
+                        double frac = ((double) current_size) / ((double) total_size);
+                        cache_progress_update (frac, msg.path);
+                    }
+                    else if(msg.type == StorageMessageType.RESULT)
+                    {
+                        directory_size_table.insert (msg.path, msg.size);
+                    }
+                }
             }
             catch (ThreadError e)
             {
                 stderr.printf("%s", e.message);
-            }
-
-            StorageResult result;
-            while ((result = results_queue.try_pop()) != null)
-            {
-                directory_size_table.insert (result.path, result.size);
             }
         }
 

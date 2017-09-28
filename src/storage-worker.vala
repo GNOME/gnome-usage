@@ -20,25 +20,32 @@
 
 namespace Usage
 {
+    public enum StorageMessageType {
+        RESULT,
+        SIZE_UPDATE,
+        FINISH,
+    }
+
     [Compact]
-    public class StorageResult {
-        public string path;
+    public class StorageMessage {
+        public StorageMessageType type;
         public uint64 size;
+        public string? path;
     }
 
     public class StorageWorker
     {
-        private AsyncQueue<StorageResult> results_queue;
+        private AsyncQueue<StorageMessage> msg_queue;
         private File path;
         private string[] exclude_paths;
         private Cancellable cancellable;
 
-        public StorageWorker(File path, ref Cancellable cancellable, ref AsyncQueue<StorageResult> results_queue, string[]? exclude_paths = null)
+        public StorageWorker(File path, ref Cancellable cancellable, ref AsyncQueue<StorageMessage> msg_queue, string[]? exclude_paths = null)
         {
             this.path = path;
             this.cancellable = cancellable;
             this.exclude_paths = exclude_paths;
-            this.results_queue = results_queue;
+            this.msg_queue = msg_queue;
         }
 
         private uint64 get_directory(File file)
@@ -49,6 +56,7 @@ namespace Usage
             try {
                 FileEnumerator enumerator = file.enumerate_children(FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
                 FileInfo info;
+                Queue<File> to_recurse = new Queue<File>();
 
                 while((info = enumerator.next_file(null)) != null && cancellable.is_cancelled() == false)
                 {
@@ -57,7 +65,7 @@ namespace Usage
                         if(exclude_paths == null || !(file.resolve_relative_path(info.get_name()).get_path() in exclude_paths))
                         {
                             var child = file.get_child(info.get_name());
-                            size += get_directory(child);
+                            to_recurse.push_tail(child);
                         }
                     }
                     else if(info.get_file_type() == FileType.REGULAR)
@@ -65,15 +73,30 @@ namespace Usage
                         size += info.get_size();
                     }
                 }
+
+                if(size > 0)
+                {
+                    StorageMessage msg = new StorageMessage();
+                    msg.type = StorageMessageType.SIZE_UPDATE;
+                    msg.path = path;
+                    msg.size = size;
+                    msg_queue.push((owned) msg);
+                }
+
+                File child = null;
+                while ((child = to_recurse.pop_head()) != null) {
+                    size += get_directory(child);
+                }
             }
             catch (Error e) {
                 stderr.printf ("Error: %s\n", e.message);
             }
 
-            StorageResult result = new StorageResult();
+            StorageMessage result = new StorageMessage();
+            result.type = StorageMessageType.RESULT;
             result.path = path;
             result.size = size;
-            results_queue.push ((owned) result);
+            msg_queue.push ((owned) result);
 
             return size;
         }
@@ -81,6 +104,12 @@ namespace Usage
         public void run ()
         {
             get_directory(path);
+
+            // signal that we are finished
+            StorageMessage msg = new StorageMessage();
+            msg.type = StorageMessageType.FINISH;
+            msg_queue.push ((owned) msg);
+
         }
     }
 }
