@@ -5,7 +5,7 @@ cc = meson.get_compiler('c')
 glib = dependency('glib-2.0', version : '>=2.38')
 gobject = dependency('gobject-2.0')
 gio = dependency('gio-2.0')
-gtk = dependency('gtk+-3.0')
+gtk = dependency('gtk+-3.0', version : '>=3.20.10')
 gtop = dependency('libgtop-2.0', version : '>=2.34.2')
 math = cc.find_library('m')
 
