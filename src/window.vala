@@ -72,6 +72,9 @@ namespace Usage
             });
 
             this.add(stack);
+
+            stack.show();
+            header_bar.show();
         }
 
         public Usage.HeaderBar get_header_bar()

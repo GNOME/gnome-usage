@@ -57,6 +57,8 @@ namespace Usage
                     return false;
                 });
             }
+
+            show_all();
         }
 
         private int get_button_number(Gtk.Button button)

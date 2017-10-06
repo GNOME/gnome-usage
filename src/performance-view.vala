@@ -59,7 +59,7 @@ namespace Usage
 		    var stackSwitcher = new GraphStackSwitcher(scrolled_window, sub_views);
             switcher_box.add (stackSwitcher);
 
-            show_all ();
+            stackSwitcher.show_all();
         }
 
         [GtkCallback]
