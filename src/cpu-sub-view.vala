@@ -73,6 +73,7 @@ namespace Usage
             scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
 
             add(scrolled_window);
+            show_all();
         }
 
         public override void show_all() {

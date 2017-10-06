@@ -79,6 +79,8 @@ namespace Usage
                     }
                 });
             }
+
+            show_all();
         }
     }
 }

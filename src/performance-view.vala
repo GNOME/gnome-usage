@@ -56,7 +56,7 @@ namespace Usage
 		    var stackSwitcher = new GraphStackSwitcher(performance_stack, sub_views);
             switcher_box.add (stackSwitcher);
 
-            show_all ();
+            stackSwitcher.show_all();
         }
 
         [GtkCallback]

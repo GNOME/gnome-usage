@@ -50,6 +50,7 @@ namespace Usage
 
             var graph = new StorageGraph();
             paned.add2(graph);
+            graph.show();
 
             action_bar = new StorageActionBar();
             revealer.add(action_bar);
