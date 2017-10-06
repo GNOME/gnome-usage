@@ -75,6 +75,7 @@ namespace Usage
 
             process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
             add(memory_box);
+            show_all();
         }
 
         public override void show_all() {
