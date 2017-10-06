@@ -65,7 +65,7 @@ namespace Usage
             menu.append_section(null, menu_common);
 
             set_app_menu(menu);
-            window.show_all();
+            window.show();
         }
 
         protected override void startup()
