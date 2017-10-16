@@ -32,7 +32,7 @@ namespace Usage
             /* Memory */
             GTop.Mem mem;
             GTop.get_mem (out mem);
-            ram_usage = mem.used - mem.buffer - mem.cached;
+            ram_usage = mem.user;
             ram_total = mem.total;
 
             /* Swap */
