@@ -204,7 +204,7 @@ namespace Usage
             int height = this.get_allocated_height ();
             int width = this.get_allocated_width ();
 
-            var storage_list_box = ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box();
+            var storage_list_box = ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box();
             var model = storage_list_box.get_model();
 
             var two_graphs = false;

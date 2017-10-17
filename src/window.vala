@@ -20,6 +20,12 @@
 
 namespace Usage
 {
+    public enum Views
+    {
+        PERFORMANCE,
+        STORAGE,
+    }
+
     public class Window : Gtk.ApplicationWindow
     {
         private Usage.HeaderBar header_bar;
@@ -47,31 +53,21 @@ namespace Usage
             views = new View[]
             {
                 new PerformanceView(),
-                new DataView(),
                 new StorageView(),
-                new PowerView()
             };
 
             foreach(var view in views)
                 stack.add_titled(view, view.name, view.title);
 
             stack.notify.connect(() => {
-                if(stack.visible_child_name == views[0].name)
+                if(stack.visible_child_name == views[Views.PERFORMANCE].name)
                 {
                     header_bar.set_mode(HeaderBarMode.PERFORMANCE);
                 }
-                else if(stack.visible_child_name == views[1].name)
-                {
-                    header_bar.set_mode(HeaderBarMode.DATA);
-                }
-                else if(stack.visible_child_name == views[2].name)
+                else if(stack.visible_child_name == views[Views.STORAGE].name)
                 {
                     header_bar.set_mode(HeaderBarMode.STORAGE);
                     StorageAnalyzer.get_default().create_cache.begin();
-                }
-                else if(stack.visible_child_name == views[3].name)
-                {
-                    header_bar.set_mode(HeaderBarMode.POWER);
                 }
             });
 
