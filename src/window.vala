@@ -47,9 +47,7 @@ namespace Usage
             views = new View[]
             {
                 new PerformanceView(),
-                new DataView(),
-                new StorageView(),
-                new PowerView()
+                new StorageView()
             };
 
             foreach(var view in views)
@@ -60,18 +58,10 @@ namespace Usage
                 {
                     header_bar.set_mode(HeaderBarMode.PERFORMANCE);
                 }
-                else if(stack.visible_child_name == views[1].name)
-                {
-                    header_bar.set_mode(HeaderBarMode.DATA);
-                }
                 else if(stack.visible_child_name == views[2].name)
                 {
                     header_bar.set_mode(HeaderBarMode.STORAGE);
                     StorageAnalyzer.get_default().create_cache.begin();
-                }
-                else if(stack.visible_child_name == views[3].name)
-                {
-                    header_bar.set_mode(HeaderBarMode.POWER);
                 }
             });
 
