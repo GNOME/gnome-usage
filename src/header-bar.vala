@@ -102,10 +102,6 @@ namespace Usage
                         show_stack_switcher();
                     else
                         show_title();
-
-                    storage_rescan_button.show ();
-                    storage_select_button.show ();
-
                     break;
                 case HeaderBarMode.POWER:
                     show_stack_switcher();

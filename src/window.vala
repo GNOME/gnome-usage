@@ -67,7 +67,12 @@ namespace Usage
                 else if(stack.visible_child_name == views[2].name)
                 {
                     header_bar.set_mode(HeaderBarMode.STORAGE);
-                    StorageAnalyzer.get_default().create_cache.begin();
+                     StorageAnalyzer.get_default().create_cache.begin();
+                     /* reload() is called so that loading and loaded signals are emitted so that the reload and select buttons can be made visible 
+                     * These signals are emitted only in the reload()  
+                     */
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_storage_list_box().reload();
+
                 }
                 else if(stack.visible_child_name == views[3].name)
                 {
