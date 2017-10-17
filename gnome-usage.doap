@@ -10,9 +10,6 @@
   <category rdf:resource="http://api.gnome.org/doap-extensions#core" />
   <programming-language>Vala</programming-language>
   <homepage rdf:resource="https://wiki.gnome.org/Apps/Usage" />
-<!--
-  <download-page rdf:resource="https://download.gnome.org/sources/epiphany/" />
--->
   <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/gnome-usage/issues" />
   <maintainer>
     <foaf:Person>
