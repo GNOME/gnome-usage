@@ -1,0 +1,11 @@
+image: fedora:26
+stages:
+  - build
+before_script:
+  - dnf install -y gcc meson ninja-build gettext gtk-doc glib2-devel
+build-gnome-usage:
+  stage: build
+  script:
+  - meson _build .
+  - ninja -C _build
+  - ninja -C _build install
