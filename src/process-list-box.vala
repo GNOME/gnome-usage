@@ -29,13 +29,13 @@ namespace Usage
     {
         public bool empty { get; set; default = true; }
         public string search_text { get; set; default = ""; }
+        public ProcessListBoxType type = ProcessListBoxType.PROCESSOR;
 
         private const double APP_CPU_MIN_LOAD_LIMIT = 1;
         private const double APP_MEM_MIN_USAGE_LIMIT = 0;
         private ListStore model;
-        private ProcessListBoxType type;
 
-        public ProcessListBox(ProcessListBoxType type)
+        construct
         {
             set_selection_mode (Gtk.SelectionMode.NONE);
             set_header_func (update_header);

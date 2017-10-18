@@ -34,7 +34,8 @@ namespace Usage
             label.margin_top = 25;
             label.margin_bottom = 15;
 
-            process_list_box = new ProcessListBox(ProcessListBoxType.MEMORY);
+            process_list_box = new ProcessListBox();
+            process_list_box.type = ProcessListBoxType.MEMORY;
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
 
