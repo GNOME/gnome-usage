@@ -110,17 +110,16 @@ namespace Usage
             storage_analyzer.cache_complete.connect(() => {
                 storage_analyzer.prepare_items.begin(actual_path, color, actual_parent_type, (obj, res) => {
                     var header_bar = (GLib.Application.get_default() as Application).get_window().get_header_bar();
-                    if(root == false)
-                    {
-                        header_bar.show_storage_back_button(true);
-                        if(header_bar.get_mode() == HeaderBarMode.STORAGE)
-                        {
+                    if (header_bar.get_mode() == HeaderBarMode.STORAGE) {
+                        header_bar.show_storage_rescan_button(true);
+                        if (root == false) {
+                            header_bar.show_storage_back_button(true);
                             header_bar.set_title_text(actual_name);
                             header_bar.show_title();
                         }
                     }
 
-                    header_bar.show_storage_rescan_button(true);
+
                     if(actual_parent_type != StorageItemType.TRASHFILE && actual_parent_type != StorageItemType.TRASHSUBFILE)
                         (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(true);
 
