@@ -41,7 +41,8 @@ namespace Usage
             cpu_graph_box.width_request = 600;
             cpu_graph_box.valign = Gtk.Align.START;
 
-            process_list_box = new ProcessListBox(ProcessListBoxType.PROCESSOR);
+            process_list_box = new ProcessListBox();
+            process_list_box.type = ProcessListBoxType.PROCESSOR;
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
 
