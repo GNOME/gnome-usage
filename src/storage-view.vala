@@ -56,7 +56,6 @@ namespace Usage
 
             storage_list_box.loading.connect(() =>
             {
-                storage_list_box.set_loading_status(true);
                 stack.set_visible_child_name("spinner");
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(false);
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_rescan_button(false);
@@ -65,7 +64,6 @@ namespace Usage
 
             storage_list_box.loaded.connect(() =>
             {
-                storage_list_box.set_loading_status(false);
                 stack.set_visible_child_name("content");
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_select_button(true);
                 (GLib.Application.get_default() as Application).get_window().get_header_bar().show_storage_rescan_button(true);

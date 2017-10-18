@@ -36,8 +36,7 @@ namespace Usage
         private bool root = true;
         private StorageAnalyzer storage_analyzer;
         private Gdk.RGBA color;
-        private bool loading_status;
-
+        
         public StorageListBox()
         {
             set_selection_mode (Gtk.SelectionMode.NONE);
@@ -366,14 +365,6 @@ namespace Usage
             	separator.show();
         	    row.set_header(separator);
         	}
-        }
-        public void set_loading_status(bool status)
-        {
-            loading_status=status;
-        }
-        public bool get_loading_status()
-        {
-            return loading_status;
         }
     }
 }
