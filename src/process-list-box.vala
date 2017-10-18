@@ -29,15 +29,15 @@ namespace Usage
     {
         public bool empty { get; set; default = true; }
 
+        public ProcessListBoxType type = ProcessListBoxType.PROCESSOR;
+
         ListStore model;
         ProcessRow? opened_row = null;
         string focused_row_cmdline;
-        ProcessListBoxType type;
         string search_text = "";
 
-        public ProcessListBox(ProcessListBoxType type)
+        construct
         {
-            this.type = type;
             set_selection_mode (Gtk.SelectionMode.NONE);
             set_header_func (update_header);
             row_activated.connect((row) => {
