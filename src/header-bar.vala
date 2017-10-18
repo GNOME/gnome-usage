@@ -62,31 +62,22 @@ namespace Usage
 
 	    public HeaderBar(Gtk.Stack stack)
 	    {
-	        mode = HeaderBarMode.PERFORMANCE;
             stack_switcher.set_stack(stack);
-
             set_mode(HeaderBarMode.PERFORMANCE);
 	    }
 
+      public void hide_all_header_buttons()
+      {
+            performance_search_button.hide ();
+            storage_back_button.hide ();
+            storage_rescan_button.hide ();
+            storage_select_button.hide ();
+            storage_cancel_button.hide ();
+      }
+
 	    public void set_mode(HeaderBarMode mode)
 	    {
-            switch(this.mode)
-            {
-                case HeaderBarMode.PERFORMANCE:
-                    performance_search_button.hide ();
-                    break;
-                case HeaderBarMode.DATA:
-                    break;
-                case HeaderBarMode.STORAGE:
-                    storage_back_button.hide ();
-                    storage_rescan_button.hide ();
-                    storage_select_button.hide ();
-                    storage_cancel_button.hide ();
-                    break;
-                case HeaderBarMode.POWER:
-                    break;
-            }
-
+            hide_all_header_buttons();
             switch(mode)
             {
                 case HeaderBarMode.PERFORMANCE:
@@ -103,8 +94,15 @@ namespace Usage
                     else
                         show_title();
 
-                    storage_rescan_button.show ();
-                    storage_select_button.show ();
+                    var storage_analyzer = StorageAnalyzer.get_default();
+                    if (storage_analyzer.cache) {
+                      storage_rescan_button.show();
+                      storage_select_button.show();
+                    } else {
+                      storage_rescan_button.hide();
+                      storage_select_button.hide();
+                      storage_analyzer.create_cache.begin();
+                    }
 
                     break;
                 case HeaderBarMode.POWER:
