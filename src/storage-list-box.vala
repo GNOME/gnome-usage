@@ -156,11 +156,11 @@ namespace Usage
                 });
 
                 if(root)
-                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().show_root();
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views_list.STORAGE]).get_action_bar().show_root();
                 else if(actual_parent_type == StorageItemType.TRASH)
-                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().show_trash();
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views_list.STORAGE]).get_action_bar().show_trash();
                 else if(actual_parent_type != StorageItemType.TRASHFILE && actual_parent_type != StorageItemType.TRASHSUBFILE)
-                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().show_common();
+                    ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views_list.STORAGE]).get_action_bar().show_common();
 
                 on_selected_rows_changed();
             }
@@ -342,9 +342,9 @@ namespace Usage
         {
             (GLib.Application.get_default() as Application).get_window().get_header_bar().change_selected_items(get_selected_rows().length());
             if(get_selected_rows().length() > 0)
-                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().set_sensitive_all(true);
+                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views_list.STORAGE]).get_action_bar().set_sensitive_all(true);
             else
-                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[2]).get_action_bar().set_sensitive_all(false);
+                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views_list.STORAGE]).get_action_bar().set_sensitive_all(false);
         }
 
         private Gtk.Widget on_row_created(Object item)

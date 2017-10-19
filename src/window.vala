@@ -20,6 +20,12 @@
 
 namespace Usage
 {
+    public enum Views_list
+    {
+        PERFORMANCE,
+        STORAGE
+    }
+
     public class Window : Gtk.ApplicationWindow
     {
         private Usage.HeaderBar header_bar;
@@ -54,11 +60,11 @@ namespace Usage
                 stack.add_titled(view, view.name, view.title);
 
             stack.notify.connect(() => {
-                if(stack.visible_child_name == views[0].name)
+                if(stack.visible_child_name == views[Views_list.PERFORMANCE].name)
                 {
                     header_bar.set_mode(HeaderBarMode.PERFORMANCE);
                 }
-                else if(stack.visible_child_name == views[2].name)
+                else if(stack.visible_child_name == views[Views_list.STORAGE].name)
                 {
                     header_bar.set_mode(HeaderBarMode.STORAGE);
                     StorageAnalyzer.get_default().create_cache.begin();
