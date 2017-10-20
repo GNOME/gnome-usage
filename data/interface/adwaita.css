@@ -1,13 +1,12 @@
 list, graph-box {
-    border: 1px solid #d3d7cf;
+    border: 1px solid @borders;
 }
-
 list row {
     padding: 0;
 }
 
 list separator {
-    background: #dadada;
+    background: @borders;
 }
 
 list row.max {
@@ -21,11 +20,11 @@ list row.max:hover {
 }
 
 list row.opened {
-    background: #919191;
+    background: @wm_title ;
 }
 
 list row.opened:hover {
-    background: #919191;
+    background: @wm_title ;
 }
 
 subprocess-list row {
@@ -48,13 +47,13 @@ subprocess-list row.max:hover {
 }
 
 graph-stack-switcher {
-    background: #fafafa;
+    background: @theme_base_color;
 }
 
-graph-switcher-button {
+    graph-switcher-button {
     padding: 6px 10px;
     border-style: none;
-    background-color: #fafafa;
+    background-color: @theme_base_color;
     border-radius: 0;
 }
 
@@ -110,11 +109,10 @@ PieChart.used, ColorRectangle.used {
 }
 
 PieChart.others, ColorRectangle.others {
-    color: #707070;
+    color:  @insensitive_fg_color;
 }
-
 PieChart.available, ColorRectangle.available {
-    color: #fafafa;
+    color: @theme_base_color;
 }
 
 ColorRectangle.system, StorageGraph.system {
@@ -126,7 +124,7 @@ ColorRectangle.applications, StorageGraph.applications {
 }
 
 ColorRectangle.trash, StorageGraph.trash {
-    color: #ef2929;
+    color: @theme_fg_color;
 }
 
 ColorRectangle.user, StorageGraph.user {
@@ -142,5 +140,5 @@ row.folders, list.folders {
 }
 
 box.storage {
-    background-color: #ffffff
+    background-color: #ffffff;
 }
