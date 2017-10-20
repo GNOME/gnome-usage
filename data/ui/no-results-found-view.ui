@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.9 -->
+  <template class="UsageNoResultsFoundView" parent="UsageView">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkBox">
+        <property name="margin-top">40</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkImage">
+            <property name="margin">10</property>
+            <property name="icon-name">system-run-symbolic</property>
+            <property name="pixel-size">72</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <attributes>
+              <attribute name="font-desc" value="16"/>
+              <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+            </attributes>
+            <property name="label" translatable="yes">No results found</property>
+            <property name="margin">10</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <attributes>
+              <attribute name="font-desc" value="12"/>
+            </attributes>
+            <property name="label" translatable="yes">Try a different search</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
