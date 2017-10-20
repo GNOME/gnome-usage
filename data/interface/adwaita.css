@@ -1,13 +1,12 @@
 list, graph-box {
-    border: 1px solid #d3d7cf;
+    border: 1px solid alpha(@theme_fg_color, 0.2);
 }
-
 list row {
     padding: 0;
 }
 
 list separator {
-    background: #dadada;
+    background: alpha(@theme_fg_color, 0.2);
 }
 
 list row.max {
@@ -21,20 +20,20 @@ list row.max:hover {
 }
 
 list row.opened {
-    background: #919191;
+    background:alpha(@theme_fg_color, 0.2);
 }
 
 list row.opened:hover {
-    background: #919191;
+    background: alpha(@theme_fg_color, 0.3);
 }
 
 subprocess-list row {
     padding: 0;
-    background: #f2f2f2;
+    background: @theme_bg_color;
 }
 
 subprocess-list row:hover {
-    background: #e2e2e2;
+    background: alpha(@theme_fg_color, 0.3);
 }
 
 subprocess-list row.max {
@@ -47,32 +46,23 @@ subprocess-list row.max:hover {
     border: 1px solid #faa5a2;
 }
 
-graph-stack-switcher {
-    background: #fafafa;
-}
-
 graph-switcher-button {
     padding: 6px 10px;
     border-style: none;
-    background-color: #fafafa;
     border-radius: 0;
 }
 
 graph-switcher-button:hover {
-    background-color: #eaebea;
+    background-color: @theme_base_color;
 }
 
 graph-switcher-button:checked {
-    background-color: #dbdbdb;
+    background-color: alpha(@theme_fg_color, 0.2);
 }
 
 graph-switcher-button:active {
-    background-color: #dbdbdb;
+    background-color: alpha(@theme_fg_color, 0.2);
     box-shadow: inset 0 2px 2px -2px rgba(0, 0, 0, 0.2);
-}
-
-scrolledwindow {
-    background: #f1f2f1;
 }
 
 rg-graph.big {
@@ -110,11 +100,10 @@ PieChart.used, ColorRectangle.used {
 }
 
 PieChart.others, ColorRectangle.others {
-    color: #707070;
+    color:  @insensitive_fg_color;
 }
-
 PieChart.available, ColorRectangle.available {
-    color: #fafafa;
+    color: @theme_base_color;
 }
 
 ColorRectangle.system, StorageGraph.system {
@@ -126,7 +115,7 @@ ColorRectangle.applications, StorageGraph.applications {
 }
 
 ColorRectangle.trash, StorageGraph.trash {
-    color: #ef2929;
+    color: @theme_fg_color;
 }
 
 ColorRectangle.user, StorageGraph.user {
@@ -142,5 +131,5 @@ row.folders, list.folders {
 }
 
 box.storage {
-    background-color: #ffffff
+    background-color: #ffffff;
 }

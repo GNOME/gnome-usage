@@ -29,11 +29,6 @@ namespace Usage
 
         bool can_change = true;
 
-        class construct
-        {
-            set_css_name("graph-stack-switcher");
-        }
-
 		public GraphStackSwitcher(Gtk.Stack stack, View[] sub_views)
 		{
             Object(orientation: Gtk.Orientation.VERTICAL, spacing: 0);
