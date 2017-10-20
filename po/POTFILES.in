@@ -8,13 +8,11 @@ data/org.gnome.Usage.gschema.xml
 [type: gettext/glade]data/ui/storage-view.ui
 src/application.vala
 src/cpu-sub-view.vala
-src/data-view.vala
 src/graph-block.vala
 src/graph-stack-switcher.vala
 src/header-bar.vala
 src/memory-sub-view.vala
 src/performance-view.vala
-src/power-view.vala
 src/process-dialog.vala
 src/storage-actionbar.vala
 src/storage-analyzer.vala
