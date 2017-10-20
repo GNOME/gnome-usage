@@ -23,6 +23,7 @@ namespace Usage
     public class ProcessorSubView : View, SubView
     {
         private ProcessListBox process_list_box;
+        private NoResultsFoundBox no_process_box;
 
         public ProcessorSubView()
         {
@@ -49,31 +50,29 @@ namespace Usage
             spinner.margin_top = 30;
             spinner.margin_bottom = 20;
 
+            no_process_box = new NoResultsFoundBox();
+
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             cpu_box.pack_start(label, false, false, 0);
             cpu_box.pack_start(cpu_graph_box, false, false, 0);
             cpu_box.pack_start(spinner, true, true, 0);
-
-            var no_process_label = new Gtk.Label("<span font_desc=\"14.0\">" + _("No applications using processor.") + "</span>");
-            no_process_label.set_use_markup(true);
-            no_process_label.get_style_context().add_class("dim-label");
+            cpu_box.add(no_process_box);
 
             SystemMonitor.get_default().cpu_processes_ready.connect(() =>
             {
                 cpu_box.pack_start(process_list_box, false, false, 0);
-                cpu_box.pack_start(no_process_label, true, true, 0);
                 process_list_box.update();
                 cpu_box.remove(spinner);
             });
 
             process_list_box.empty.connect(() =>
             {
-                no_process_label.show();
+                no_process_box.show();
             });
 
             process_list_box.filled.connect(() =>
             {
-                no_process_label.hide();
+                no_process_box.hide();
             });
 
             var better_box = new BetterBox();
@@ -87,6 +86,11 @@ namespace Usage
             scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
 
             add(scrolled_window);
+        }
+
+        public override void show_all() {
+            base.show_all();
+            this.no_process_box.hide();
         }
 
         public void search_in_processes(string text)

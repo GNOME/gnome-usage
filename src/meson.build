@@ -18,6 +18,7 @@ vala_sources = [
     'memory-monitor.vala',
     'memory-sub-view.vala',
     'monitor.vala',
+    'no-results-found-box.vala',
     'performance-view.vala',
     'pie-chart.vala',
     'process-dialog.vala',
