@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.9 -->
+  <template class="UsageNoResultsFoundBox" parent="UsageView">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkBox">
+        <property name="margin-top">40</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkImage">
+            <property name="margin">10</property>
+            <property name="icon-name">system-run-symbolic</property>
+            <property name="pixel-size">72</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="no_process_title">
+            <property name="margin">10</property>
+            <property name="use-markup">TRUE</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="no_process_hint">
+            <property name="use-markup">TRUE</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

@@ -18,23 +18,20 @@
 
 namespace Usage
 {
-    public class NoResultsFoundBox : Gtk.Box
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/no-results-found-box.ui")]
+    public class NoResultsFoundBox : View
     {
+        [GtkChild]
+        Gtk.Label no_process_title;
+
+        [GtkChild]
+        Gtk.Label no_process_hint;
+
         public NoResultsFoundBox()
         {
-            orientation = Gtk.Orientation.VERTICAL;
-            Gtk.Image no_process_image = new Gtk.Image.from_icon_name("system-run-symbolic", Gtk.IconSize.DIALOG);
-
-            Gtk.Label no_process_title = new Gtk.Label("<span font_desc=\"16.0\"><b>" + _("Couldn't find any results") + "</b></span>");
-            no_process_title.set_use_markup(true);
-
-            Gtk.Label no_process_hint = new Gtk.Label("<span font_desc=\"12.0\">" + _("You can try searching something else.") + "</span>");
-            no_process_hint.set_use_markup(true);
+            no_process_title.set_label("<span font_desc=\"16.0\"><b>" + _("Couldn't find any results") + "</b></span>");
+            no_process_hint.set_label("<span font_desc=\"12.0\">" + _("You can try searching something else.") + "</span>");
             no_process_hint.get_style_context().add_class("dim-label");
-
-            pack_start(no_process_image, false, false, 10);
-            pack_start(no_process_title, false, false);
-            pack_start(no_process_hint);
         }
     }
 }
