@@ -89,9 +89,6 @@ namespace Usage
             string name_css = "adwaita.css";
             var settings = Gtk.Settings.get_for_screen(get_screen());
 
-            if(settings.gtk_application_prefer_dark_theme)
-                name_css = "adwaita-dark.css";
-
             var provider = new Gtk.CssProvider();
             Gtk.StyleContext.reset_widgets(get_screen());
             provider.load_from_resource("/org/gnome/Usage/interface/" + name_css);
