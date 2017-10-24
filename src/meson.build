@@ -18,7 +18,7 @@ vala_sources = [
     'memory-monitor.vala',
     'memory-sub-view.vala',
     'monitor.vala',
-    'no-results-found-box.vala',
+    'no-results-found-view.vala',
     'performance-view.vala',
     'pie-chart.vala',
     'process-dialog.vala',
@@ -57,4 +57,3 @@ usage = executable('gnome-usage',
                      vala_args: vala_args,
                      install: true,
                      dependencies : [glib, gobject, gio, gtk, rg, egg, math, gtop])
-

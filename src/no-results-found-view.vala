@@ -18,8 +18,8 @@
 
 namespace Usage
 {
-    [GtkTemplate (ui = "/org/gnome/Usage/ui/no-results-found-box.ui")]
-    public class NoResultsFoundBox : View
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/no-results-found-view.ui")]
+    public class NoResultsFoundView : View
     {
         [GtkChild]
         Gtk.Label no_process_title;
@@ -27,7 +27,7 @@ namespace Usage
         [GtkChild]
         Gtk.Label no_process_hint;
 
-        public NoResultsFoundBox()
+        public NoResultsFoundView()
         {
             no_process_title.set_label("<span font_desc=\"16.0\"><b>" + _("Couldn't find any results") + "</b></span>");
             no_process_hint.set_label("<span font_desc=\"12.0\">" + _("You can try searching something else.") + "</span>");
