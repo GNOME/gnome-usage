@@ -15,14 +15,24 @@
           </object>
         </child>
         <child>
-          <object class="GtkLabel" id="no_process_title">
+          <object class="GtkLabel">
+            <attributes>
+              <attribute name="font-desc" value="16"/>
+              <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+            </attributes>
+            <property name="label" translatable="yes">No results found</property>
             <property name="margin">10</property>
-            <property name="use-markup">TRUE</property>
           </object>
         </child>
         <child>
-          <object class="GtkLabel" id="no_process_hint">
-            <property name="use-markup">TRUE</property>
+          <object class="GtkLabel">
+            <attributes>
+              <attribute name="font-desc" value="12"/>
+            </attributes>
+            <property name="label" translatable="yes">Try a different search</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
         </child>
       </object>
