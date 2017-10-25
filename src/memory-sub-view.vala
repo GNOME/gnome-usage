@@ -65,15 +65,7 @@ namespace Usage
                 memory_box.remove(spinner);
             });
 
-            process_list_box.empty.connect(() =>
-            {
-                no_process_view.show();
-            });
-
-            process_list_box.filled.connect(() =>
-            {
-                no_process_view.hide();
-            });
+            process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
 
             var better_box = new BetterBox();
             better_box.max_width_request = 600;

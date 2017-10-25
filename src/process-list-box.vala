@@ -27,8 +27,7 @@ namespace Usage
 
     public class ProcessListBox : Gtk.ListBox
     {
-        public signal void empty();
-        public signal void filled();
+        public bool empty { get; set; default = true; }
 
         ListStore model;
         ProcessRow? opened_row = null;
@@ -73,6 +72,8 @@ namespace Usage
 
             var settings = Settings.get_default();
             Timeout.add(settings.list_update_interval_UI, update);
+
+            bind_property ("empty", this, "visible", BindingFlags.INVERT_BOOLEAN);
         }
 
         public bool update()
@@ -119,16 +120,7 @@ namespace Usage
                 }
             }
 
-            if(model.get_n_items() == 0)
-            {
-                this.hide();
-                empty();
-            }
-            else
-            {
-                this.show();
-                filled();
-            }
+            empty = (model.get_n_items() == 0);
 
             bind_model(model, on_row_created);
             return true;
