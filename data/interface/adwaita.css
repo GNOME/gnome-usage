@@ -1,12 +1,12 @@
 list, graph-box {
-    border: 1px solid @borders;
+    border: 1px solid alpha(@theme_fg_color, 0.2);
 }
 list row {
     padding: 0;
 }
 
 list separator {
-    background: @borders;
+    background: alpha(@theme_fg_color, 0.2);
 }
 
 list row.max {
@@ -20,20 +20,20 @@ list row.max:hover {
 }
 
 list row.opened {
-    background: @wm_title ;
+    background:alpha(@theme_fg_color, 0.2);
 }
 
 list row.opened:hover {
-    background: @wm_title ;
+    background: alpha(@theme_fg_color, 0.3);
 }
 
 subprocess-list row {
     padding: 0;
-    background: #f2f2f2;
+    background: alpha(@theme_fg_color, 0.2);
 }
 
 subprocess-list row:hover {
-    background: #e2e2e2;
+    background: alpha(@theme_fg_color, 0.3);
 }
 
 subprocess-list row.max {
@@ -58,20 +58,20 @@ graph-stack-switcher {
 }
 
 graph-switcher-button:hover {
-    background-color: #eaebea;
+    background-color: @theme_base_color;
 }
 
 graph-switcher-button:checked {
-    background-color: #dbdbdb;
+    background-color: alpha(@theme_fg_color, 0.2);
 }
 
 graph-switcher-button:active {
-    background-color: #dbdbdb;
+    background-color: alpha(@theme_fg_color, 0.2);
     box-shadow: inset 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 scrolledwindow {
-    background: #f1f2f1;
+    background: alpha(@theme_fg_color, 0.05);
 }
 
 rg-graph.big {
