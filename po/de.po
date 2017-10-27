@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-27 22:25+0000\n"
-"PO-Revision-Date: 2017-09-07 20:03+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2017-10-25 20:09+0000\n"
+"PO-Revision-Date: 2017-10-27 14:34+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -20,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.3\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:104
-#: ../src/window.vala:35
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:91
+#: ../src/window.vala:41
 msgid "Usage"
 msgstr "Auslastung"
 
@@ -62,44 +61,48 @@ msgstr ""
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ../src/application.vala:69
+#: ../data/ui/no-results-found-view.ui.h:1
+msgid "No results found"
+msgstr "Keine Ergebnisse gefunden"
+
+#: ../data/ui/no-results-found-view.ui.h:2
+msgid "Try a different search"
+msgstr "Andere Suche ausprobieren"
+
+#: ../data/ui/storage-view.ui.h:1
+msgid "No content here"
+msgstr "Kein Inhalt"
+
+#: ../src/application.vala:56
 msgid "About"
 msgstr "Info"
 
-#: ../src/application.vala:72
+#: ../src/application.vala:59
 msgid "Quit"
 msgstr "Beenden"
 
-#: ../src/application.vala:105
+#: ../src/application.vala:92
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr ""
 "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
-"Ressourcen, wie Arbeitsspeicher und Speicherplatz anzuzeigen"
+"Ressourcen, wie Arbeitsspeicher und Speicherplatz anzuzeigen."
 
-#: ../src/application.vala:108
+#: ../src/application.vala:95
 msgid "translator-credits"
 msgstr ""
 "Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Bernd Homuth <dev@hmt.im>"
 
-#: ../src/application.vala:110
+#: ../src/application.vala:97
 msgid "Websites"
 msgstr "Webseiten"
 
-#: ../src/cpu-sub-view.vala:31 ../src/graph-stack-switcher.vala:45
+#: ../src/cpu-sub-view.vala:32 ../src/graph-stack-switcher.vala:40
 #: ../src/process-dialog.vala:50
 msgid "Processor"
 msgstr "Prozessor"
-
-#: ../src/cpu-sub-view.vala:57
-msgid "No applications using processor."
-msgstr "Keine Anwendung nutzt den Prozessor."
-
-#: ../src/data-view.vala:28
-msgid "Data"
-msgstr "Daten"
 
 #: ../src/graph-block.vala:65
 msgid "Others"
@@ -109,55 +112,47 @@ msgstr "Andere"
 msgid "Available"
 msgstr "Verfügbar"
 
-#: ../src/graph-stack-switcher.vala:46 ../src/memory-sub-view.vala:31
+#: ../src/graph-stack-switcher.vala:41 ../src/memory-sub-view.vala:32
 #: ../src/process-dialog.vala:51
 msgid "Memory"
 msgstr "Speicher"
 
-#: ../src/header-bar.vala:155
+#: ../src/header-bar.vala:143
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u ausgewählt"
 msgstr[1] "%u ausgewählt"
 
-#: ../src/header-bar.vala:157
+#: ../src/header-bar.vala:145
 msgid "Click on items to select them"
 msgstr "Klicken Sie auf Objekte, um diese auszuwählen"
 
-#: ../src/header-bar.vala:223
+#: ../src/header-bar.vala:209
 msgid "Select all"
 msgstr "Alle auswählen"
 
-#: ../src/header-bar.vala:227
+#: ../src/header-bar.vala:213
 msgid "Select None"
 msgstr "Nichtds auswählen"
-
-#: ../src/memory-sub-view.vala:57
-msgid "No applications using memory."
-msgstr "Keine Anwendung nutzt den Speicher."
 
 #: ../src/performance-view.vala:45
 msgid "Performance"
 msgstr "Leistungsfähigkeit"
 
-#: ../src/power-view.vala:28
-msgid "Power"
-msgstr "Energie"
-
 #: ../src/process-dialog.vala:56
 msgid "Stop"
 msgstr "Stopp"
 
-#: ../src/process-dialog.vala:143
+#: ../src/process-dialog.vala:144
 msgid "Running"
 msgstr "Läuft"
 
-#: ../src/process-dialog.vala:146
+#: ../src/process-dialog.vala:147
 msgid "Sleeping"
 msgstr "Schläft"
 
-#: ../src/process-dialog.vala:149
+#: ../src/process-dialog.vala:150
 msgid "Dead"
 msgstr "Tot"
 
@@ -205,11 +200,11 @@ msgstr "Sind Sie sicher, dass Sie diese %s Objekte löschen wollen?"
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Wenn Sie diese Objekte löschen, gehen Sie dauerhaft verloren."
 
-#: ../src/storage-actionbar.vala:211 ../src/storage-row.vala:342
+#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Alle Objekte aus dem Papierkorb löschen?"
 
-#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:343
+#: ../src/storage-actionbar.vala:213 ../src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alle Objekte im Papierkorb werden dauerhaft gelöscht."
 
@@ -223,19 +218,19 @@ msgstr "Alle Objekte aus %s löschen?"
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Alle Objekte in %s werden in den Papierkorb verschoben."
 
-#: ../src/storage-analyzer.vala:85
+#: ../src/storage-analyzer.vala:94
 msgid "Storage 1"
 msgstr "Speicher 1"
 
-#: ../src/storage-analyzer.vala:89
+#: ../src/storage-analyzer.vala:98
 msgid "Storage 2"
 msgstr "Speicher 2"
 
-#: ../src/storage-analyzer.vala:96
+#: ../src/storage-analyzer.vala:105
 msgid "Capacity"
 msgstr "Kapazität"
 
-#: ../src/storage-analyzer.vala:638
+#: ../src/storage-analyzer.vala:647
 msgid "Home"
 msgstr "Persönlicher Ordner"
 
@@ -272,10 +267,6 @@ msgstr "Sind Sie sicher, das Sie %s dauerhaft löschen wollen?"
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Wenn Sie ein Objekt löschen, geht es dauerhaft verloren."
 
-#: ../src/storage-view.vala:32
+#: ../src/storage-view.vala:45
 msgid "Storage"
 msgstr "Speicher"
-
-#: ../src/storage-view.vala:53
-msgid "No content here"
-msgstr "Kein Inhalt"
