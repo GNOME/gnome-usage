@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-04 10:13+0200\n"
-"PO-Revision-Date: 2017-06-04 10:14+0200\n"
+"POT-Creation-Date: 2017-10-29 17:48+0100\n"
+"PO-Revision-Date: 2017-10-29 17:49+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:104
-#: ../src/window.vala:35
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:91
+#: ../src/window.vala:41
 msgid "Usage"
 msgstr "Monitor"
 
@@ -62,15 +62,27 @@ msgstr ""
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../src/application.vala:69
+#: ../data/ui/no-results-found-view.ui.h:1
+msgid "No results found"
+msgstr "Brak wyników"
+
+#: ../data/ui/no-results-found-view.ui.h:2
+msgid "Try a different search"
+msgstr "Proszę spróbować innych słów"
+
+#: ../data/ui/storage-view.ui.h:1
+msgid "No content here"
+msgstr "Nic tu nie ma"
+
+#: ../src/application.vala:56
 msgid "About"
 msgstr "O programie"
 
-#: ../src/application.vala:72
+#: ../src/application.vala:59
 msgid "Quit"
 msgstr "Zakończ"
 
-#: ../src/application.vala:105
+#: ../src/application.vala:92
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -78,28 +90,20 @@ msgstr ""
 "Wygodny sposób na wyświetlanie informacji o użyciu zasobów komputera, takich "
 "jak pamięć i miejsce na dysku."
 
-#: ../src/application.vala:108
+#: ../src/application.vala:95
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2017\n"
 "Aviary.pl <community-poland@mozilla.org>, 2017"
 
-#: ../src/application.vala:110
+#: ../src/application.vala:97
 msgid "Websites"
 msgstr "Strona WWW"
 
-#: ../src/cpu-sub-view.vala:31 ../src/graph-stack-switcher.vala:45
+#: ../src/cpu-sub-view.vala:32 ../src/graph-stack-switcher.vala:40
 #: ../src/process-dialog.vala:50
 msgid "Processor"
 msgstr "Procesor"
-
-#: ../src/cpu-sub-view.vala:57
-msgid "No applications using processor."
-msgstr "Żadne programy nie używają procesora."
-
-#: ../src/data-view.vala:28
-msgid "Data"
-msgstr "Dane"
 
 #: ../src/graph-block.vala:65
 msgid "Others"
@@ -109,12 +113,12 @@ msgstr "Pozostałe"
 msgid "Available"
 msgstr "Dostępne"
 
-#: ../src/graph-stack-switcher.vala:46 ../src/memory-sub-view.vala:31
+#: ../src/graph-stack-switcher.vala:41 ../src/memory-sub-view.vala:32
 #: ../src/process-dialog.vala:51
 msgid "Memory"
 msgstr "Pamięć"
 
-#: ../src/header-bar.vala:155
+#: ../src/header-bar.vala:143
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
@@ -122,43 +126,35 @@ msgstr[0] "Zaznaczono: %u"
 msgstr[1] "Zaznaczono: %u"
 msgstr[2] "Zaznaczono: %u"
 
-#: ../src/header-bar.vala:157
+#: ../src/header-bar.vala:145
 msgid "Click on items to select them"
 msgstr "Kliknięcie elementów zaznacza je"
 
-#: ../src/header-bar.vala:223
+#: ../src/header-bar.vala:209
 msgid "Select all"
 msgstr "Zaznacz wszystko"
 
-#: ../src/header-bar.vala:227
+#: ../src/header-bar.vala:213
 msgid "Select None"
 msgstr "Odznacz wszystko"
-
-#: ../src/memory-sub-view.vala:57
-msgid "No applications using memory."
-msgstr "Żadne programy nie używają pamięci."
 
 #: ../src/performance-view.vala:45
 msgid "Performance"
 msgstr "Wydajność"
 
-#: ../src/power-view.vala:28
-msgid "Power"
-msgstr "Zasilanie"
-
 #: ../src/process-dialog.vala:56
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: ../src/process-dialog.vala:143
+#: ../src/process-dialog.vala:144
 msgid "Running"
 msgstr "Uruchomione"
 
-#: ../src/process-dialog.vala:146
+#: ../src/process-dialog.vala:147
 msgid "Sleeping"
 msgstr "Uśpione"
 
-#: ../src/process-dialog.vala:149
+#: ../src/process-dialog.vala:150
 msgid "Dead"
 msgstr "Martwe"
 
@@ -206,11 +202,11 @@ msgstr "Na pewno trwale usunąć te elementy „%s”?"
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Usunięcie tych elementów spowoduje ich bezpowrotne utracenie."
 
-#: ../src/storage-actionbar.vala:211 ../src/storage-row.vala:342
+#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Usunąć wszystkie elementy z kosza?"
 
-#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:343
+#: ../src/storage-actionbar.vala:213 ../src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Wszystkie elementy w koszu zostaną trwale usunięte."
 
@@ -224,19 +220,19 @@ msgstr "Usunąć wszystkie elementy z „%s”?"
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Wszystkie elementy w „%s” zostaną przeniesione do kosza."
 
-#: ../src/storage-analyzer.vala:85
+#: ../src/storage-analyzer.vala:94
 msgid "Storage 1"
 msgstr "1. urządzenie do przechowywania danych"
 
-#: ../src/storage-analyzer.vala:89
+#: ../src/storage-analyzer.vala:98
 msgid "Storage 2"
 msgstr "2. urządzenie do przechowywania danych"
 
-#: ../src/storage-analyzer.vala:96
+#: ../src/storage-analyzer.vala:105
 msgid "Capacity"
 msgstr "Pojemność"
 
-#: ../src/storage-analyzer.vala:638
+#: ../src/storage-analyzer.vala:647
 msgid "Home"
 msgstr "Katalog domowy"
 
@@ -273,10 +269,6 @@ msgstr "Na pewno trwale usunąć „%s”?"
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Usunięcie elementu spowoduje jego bezpowrotne utracenie."
 
-#: ../src/storage-view.vala:32
+#: ../src/storage-view.vala:45
 msgid "Storage"
 msgstr "Urządzenia do przechowywania danych"
-
-#: ../src/storage-view.vala:53
-msgid "No content here"
-msgstr "Nic tu nie ma"
