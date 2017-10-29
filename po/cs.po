@@ -2,15 +2,15 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Zdeněk Hataš <zdenek.hatas@gmail.com>, 2017.
+# Marek Černocký <marek@manet.cz>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-01 12:22+0000\n"
-"PO-Revision-Date: 2017-02-01 12:05+0100\n"
-"Last-Translator: Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2017-10-25 20:09+0000\n"
+"PO-Revision-Date: 2017-10-29 08:53+0100\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:104
-#: ../src/window.vala:35
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:91
+#: ../src/window.vala:41
 msgid "Usage"
 msgstr "Využití"
 
@@ -61,15 +61,27 @@ msgstr ""
 msgid "Cancel"
 msgstr "Storno"
 
-#: ../src/application.vala:69
+#: ../data/ui/no-results-found-view.ui.h:1
+msgid "No results found"
+msgstr "Nebylo nic nalezeno"
+
+#: ../data/ui/no-results-found-view.ui.h:2
+msgid "Try a different search"
+msgstr "Zkuste hledat něco jiného"
+
+#: ../data/ui/storage-view.ui.h:1
+msgid "No content here"
+msgstr "Není zde žádný obsah"
+
+#: ../src/application.vala:56
 msgid "About"
 msgstr "O aplikaci"
 
-#: ../src/application.vala:72
+#: ../src/application.vala:59
 msgid "Quit"
 msgstr "Ukončit"
 
-#: ../src/application.vala:105
+#: ../src/application.vala:92
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -77,26 +89,18 @@ msgstr ""
 "Elegantní způsob, jak zobrazit informace o využití systémových prostředků, "
 "jako jsou operační paměť a místo na disku."
 
-#: ../src/application.vala:108
+#: ../src/application.vala:95
 msgid "translator-credits"
 msgstr "Zdeněk Hataš <zdenek.hatas@gmail.com>"
 
-#: ../src/application.vala:110
+#: ../src/application.vala:97
 msgid "Websites"
 msgstr "Webové stránky"
 
-#: ../src/cpu-sub-view.vala:31 ../src/graph-stack-switcher.vala:45
+#: ../src/cpu-sub-view.vala:32 ../src/graph-stack-switcher.vala:40
 #: ../src/process-dialog.vala:50
 msgid "Processor"
 msgstr "Procesor"
-
-#: ../src/cpu-sub-view.vala:57
-msgid "No applications using processor."
-msgstr "Žádná aplikace nevyužívá procesor."
-
-#: ../src/data-view.vala:28
-msgid "Data"
-msgstr "Data"
 
 #: ../src/graph-block.vala:65
 msgid "Others"
@@ -106,12 +110,12 @@ msgstr "Ostatní"
 msgid "Available"
 msgstr "Dostupné"
 
-#: ../src/graph-stack-switcher.vala:46 ../src/memory-sub-view.vala:31
+#: ../src/graph-stack-switcher.vala:41 ../src/memory-sub-view.vala:32
 #: ../src/process-dialog.vala:51
 msgid "Memory"
 msgstr "Paměť"
 
-#: ../src/header-bar.vala:155
+#: ../src/header-bar.vala:143
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
@@ -119,43 +123,35 @@ msgstr[0] "%u vybraný"
 msgstr[1] "%u vybrané"
 msgstr[2] "%u vybraných"
 
-#: ../src/header-bar.vala:157
+#: ../src/header-bar.vala:145
 msgid "Click on items to select them"
 msgstr "Položky vyberete kliknutím"
 
-#: ../src/header-bar.vala:223
+#: ../src/header-bar.vala:209
 msgid "Select all"
 msgstr "Vybrat vše"
 
-#: ../src/header-bar.vala:227
+#: ../src/header-bar.vala:213
 msgid "Select None"
 msgstr "Zrušit výběr"
-
-#: ../src/memory-sub-view.vala:57
-msgid "No applications using memory."
-msgstr "Žádná aplikace nevyužívá paměť."
 
 #: ../src/performance-view.vala:45
 msgid "Performance"
 msgstr "Výkon"
 
-#: ../src/power-view.vala:28
-msgid "Power"
-msgstr "Napájení"
-
 #: ../src/process-dialog.vala:56
 msgid "Stop"
 msgstr "Zastavit"
 
-#: ../src/process-dialog.vala:143
+#: ../src/process-dialog.vala:144
 msgid "Running"
 msgstr "Běžící"
 
-#: ../src/process-dialog.vala:146
+#: ../src/process-dialog.vala:147
 msgid "Sleeping"
 msgstr "Spící"
 
-#: ../src/process-dialog.vala:149
+#: ../src/process-dialog.vala:150
 msgid "Dead"
 msgstr "Mrtvé"
 
@@ -203,11 +199,11 @@ msgstr "Opravdu chcete trvale smazat tuto položky %s?"
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Pokdu tyto položky smažete, budou nenávratně ztraceny."
 
-#: ../src/storage-actionbar.vala:211 ../src/storage-row.vala:342
+#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Vyprázdnit z koše všechny položky?"
 
-#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:343
+#: ../src/storage-actionbar.vala:213 ../src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Všechny položky v koši budou trvale smazány."
 
@@ -221,19 +217,19 @@ msgstr "Smazat všechny položky ze složky %s"
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Všechny položky ze složky %s bodou přesunuty do koše."
 
-#: ../src/storage-analyzer.vala:85
+#: ../src/storage-analyzer.vala:94
 msgid "Storage 1"
 msgstr "Úložiště 1"
 
-#: ../src/storage-analyzer.vala:89
+#: ../src/storage-analyzer.vala:98
 msgid "Storage 2"
 msgstr "Úložiště 2"
 
-#: ../src/storage-analyzer.vala:96
+#: ../src/storage-analyzer.vala:105
 msgid "Capacity"
 msgstr "Kapacita"
 
-#: ../src/storage-analyzer.vala:638
+#: ../src/storage-analyzer.vala:647
 msgid "Home"
 msgstr "Domovská složka"
 
@@ -270,10 +266,18 @@ msgstr "Opravdu chcete trvale smazat %s?"
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Pokud položku smažete, bude trvale ztracena."
 
-#: ../src/storage-view.vala:32
+#: ../src/storage-view.vala:45
 msgid "Storage"
 msgstr "Úložiště"
 
-#: ../src/storage-view.vala:53
-msgid "No content here"
-msgstr "Není zde žádný obsah"
+#~ msgid "No applications using processor."
+#~ msgstr "Žádná aplikace nevyužívá procesor."
+
+#~ msgid "Data"
+#~ msgstr "Data"
+
+#~ msgid "No applications using memory."
+#~ msgstr "Žádná aplikace nevyužívá paměť."
+
+#~ msgid "Power"
+#~ msgstr "Napájení"
