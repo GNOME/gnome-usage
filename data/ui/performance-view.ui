@@ -44,7 +44,6 @@
               <object class="GtkStack" id="performance_stack">
                 <property name="visible">True</property>
                 <property name="transition-type">slide-up-down</property>
-                <property name="transition-duration">700</property>
                 <property name="vexpand">True</property>
               </object>
             </child>
