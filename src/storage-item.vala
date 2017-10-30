@@ -61,6 +61,26 @@ namespace Usage
         private int section;
         private Gdk.RGBA color;
 
+        private double start_angle_;
+        public double start_angle{
+            get{
+                return start_angle_;
+            }
+            set{
+                start_angle_ = value;
+            }
+        }
+        
+        private double final_angle_;
+        public double final_angle{
+            get{
+                return final_angle_;
+            }
+            set{
+                final_angle_ = value;
+            }
+        }
+
         public StorageItem.item(StorageItemType type, StorageItemType? parent, string name, string path, uint64 size, double percentage, int section = 0, StorageItemPosition prefered_position = StorageItemPosition.ANYWHERE)
         {
             this.type = type;

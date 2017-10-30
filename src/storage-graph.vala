@@ -22,9 +22,25 @@ using Gtk;
 
 namespace Usage
 {
+
     public class StorageGraph : Gtk.DrawingArea
     {
+        private double graph_radius;
         public const uint MIN_PERCENTAGE_SHOWN_FILES = 2;
+
+        private int? highlighted_item_ = null;
+        public int? highlighted_item {
+            set {
+                if (highlighted_item_ == value) {
+                    return;
+                }
+
+                highlighted_item_ = value;
+            }
+            get {
+                return highlighted_item_;
+            }
+        }
 
         class construct
         {
@@ -33,7 +49,9 @@ namespace Usage
 
         public StorageGraph()
         {
+            add_events(Gdk.EventMask.BUTTON_PRESS_MASK);
             this.draw.connect(draw_storage_graph);
+            this.button_press_event.connect(on_button_press_event);
         }
 
         public enum Circle
@@ -96,6 +114,10 @@ namespace Usage
                     final_angle = ratio * 2 * Math.PI - Math.PI / 2.0;
                     context.move_to (x, y);
                     Gdk.cairo_set_source_rgba (context, fill_color);
+                    
+                    item.start_angle = start_angle;
+                    item.final_angle = final_angle;
+
                     context.arc (x, y, radius, start_angle, final_angle);
                     if(item.get_percentage() == 100)
                         context.fill();
@@ -238,11 +260,64 @@ namespace Usage
                 radius -= radius / 3;
                 x = width / 2.0;
                 y = height / 2.0;
-
+               
+                graph_radius=radius;
+               
                 draw_circle(context, model, x, y, radius, 0, Circle.BASE);
             }
 
             return true;
+        }
+      protected  bool is_point_over_item (StorageItem item, double x, double y) {
+            Gtk.Allocation allocation;
+            get_allocation (out allocation);
+
+            x -= allocation.width / 2;
+            y -= allocation.height / 2;
+
+            var radius = Math.sqrt (x * x + y * y);
+            var angle = Math.atan2 (y, x);
+            angle = (angle > 0) ? angle : (angle + 2 * Math.PI);
+
+            return ((radius <= graph_radius) &&
+                    (angle >= item.start_angle) &&
+                    (angle <= (item.final_angle)));
+        }
+
+        
+
+        public bool highlight_item_at_point (double x, double y) {
+            var storage_list_box = 
+                ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box();
+            var model = storage_list_box.get_model();
+            for(int i = 0; i < model.get_n_items(); i++)
+            {   StorageItem item = (StorageItem) model.get_item(i);
+
+                if (is_point_over_item (item, x, y)) {
+                    highlighted_item = i;
+                    return true;
+                }
+            }
+
+            highlighted_item = null;
+            return false;
+        }
+
+         private bool on_button_press_event (Gdk.EventButton event) {
+            if (event.type == Gdk.EventType.BUTTON_PRESS) {
+                
+                switch (event.button) {
+                case Gdk.BUTTON_PRIMARY:
+                        if (highlight_item_at_point (event.x, event.y)) {
+                            var row = ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().get_row_at_index(highlighted_item) as StorageRow;
+                            ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().action_primary(row);
+                    }
+                    break;
+                }
+
+            }
+
+            return false;
         }
     }
 }

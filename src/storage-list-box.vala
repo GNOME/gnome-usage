@@ -261,7 +261,7 @@ namespace Usage
                 action_primary(storage_row);
         }
 
-        private void action_primary (StorageRow storage_row)
+        public void action_primary (StorageRow storage_row)
         {
             if(storage_row.get_item_type() != StorageItemType.STORAGE && storage_row.get_item_type() != StorageItemType.SYSTEM &&
                 storage_row.get_item_type() != StorageItemType.AVAILABLE && storage_row.get_item_type() != StorageItemType.FILE)
