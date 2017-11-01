@@ -218,7 +218,7 @@ namespace Usage
             }
             else
             {
-                var dialog = new ProcessDialog(process.pid, process.display_name, process.cmdline);
+                var dialog = new QuitProcessDialog(process.pid, process.display_name);
                 dialog.show_all();
             }
         }
