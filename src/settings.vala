@@ -22,7 +22,7 @@ using Gtk;
 
 namespace Usage {
 
-    public class Settings : Object
+    public class Settings : GLib.Settings
     {
         public uint graph_timespan { get; set; default = 15000;}
         public uint graph_max_samples { get; set; default = 20; }
@@ -39,6 +39,11 @@ namespace Usage {
                 settings = new Settings ();
 
             return settings;
+        }
+
+        public Settings()
+        {
+            Object(schema_id: "org.gnome.Usage");
         }
     }
 }
