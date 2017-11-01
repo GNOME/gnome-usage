@@ -73,15 +73,15 @@ namespace Usage
             GTop.ProcTime proc_time;
             GTop.ProcState proc_state;
 
-            GTop.get_proc_time (out proc_time, process.get_pid());
-            GTop.get_proc_state (out proc_state, process.get_pid());
+            GTop.get_proc_time (out proc_time, process.pid);
+            GTop.get_proc_state (out proc_state, process.pid);
 
-            process.set_last_processor(proc_state.last_processor);
-            double cpu_load = (((double) (proc_time.rtime - process.get_cpu_last_used())) / cpu_last_total_step) * 100 * get_num_processors();
+            process.last_processor = proc_state.last_processor;
+            double cpu_load = (((double) (proc_time.rtime - process.cpu_last_used)) / cpu_last_total_step) * 100 * get_num_processors();
             cpu_load = double.min(100, cpu_load);
-            process.set_cpu_load(cpu_load);
-            process.set_cpu_last_used(proc_time.rtime);
-            process.set_x_cpu_last_used(proc_time.xcpu_utime[process.get_last_processor()] + proc_time.xcpu_stime[process.get_last_processor()]);
+            process.cpu_load = cpu_load;
+            process.cpu_last_used = proc_time.rtime;
+            process.x_cpu_last_used = proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor];
         }
     }
 }

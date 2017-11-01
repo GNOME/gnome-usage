@@ -46,7 +46,7 @@ namespace Usage
             this.process = process;
 
             icon.set_from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
-            title_label.label = process.get_display_name();
+            title_label.label = process.display_name;
 
             notify["max-usage"].connect (() => {
                 set_styles();
@@ -64,18 +64,18 @@ namespace Usage
             switch(type)
             {
                 case ProcessListBoxType.PROCESSOR:
-                    load_label.label = ((uint64) process.get_cpu_load()).to_string() + " %";
+                    load_label.label = ((uint64) process.cpu_load).to_string() + " %";
 
-                    if(process.get_cpu_load() >= MAX_CPU_USAGE_LIMIT)
+                    if(process.cpu_load >= MAX_CPU_USAGE_LIMIT)
                         max_usage = true;
                     else
                         max_usage = false;
                     break;
                 case ProcessListBoxType.MEMORY:
                     SystemMonitor monitor = SystemMonitor.get_default();
-                    load_label.label = Utils.format_size_values(process.get_mem_usage());
+                    load_label.label = Utils.format_size_values(process.mem_usage);
 
-                    if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= MAX_MEMORY_USAGE_LIMIT)
+                    if((((double) process.mem_usage / monitor.ram_total) * 100) >= MAX_MEMORY_USAGE_LIMIT)
                         max_usage = true;
                     else
                         max_usage = false;
@@ -93,7 +93,7 @@ namespace Usage
 
         public new void activate()
         {
-            var dialog = new ProcessDialog(process.get_pid(), process.get_cmdline(), process.get_cmdline());
+            var dialog = new ProcessDialog(process.pid, process.cmdline, process.cmdline);
             dialog.show_all();
         }
     }

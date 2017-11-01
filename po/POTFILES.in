@@ -6,6 +6,7 @@ data/org.gnome.Usage.gschema.xml
 [type: gettext/glade]data/ui/no-results-found-view.ui
 [type: gettext/glade]data/ui/performance-view.ui
 [type: gettext/glade]data/ui/process-dialog.ui
+[type: gettext/glade]data/ui/storage-actionbar.ui
 [type: gettext/glade]data/ui/storage-view.ui
 src/application.vala
 src/cpu-sub-view.vala

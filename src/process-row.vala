@@ -45,7 +45,7 @@ namespace Usage
         public bool max_usage { get; private set; }
         public bool group {
             get {
-                return process.get_sub_processes() != null;
+                return process.sub_processes != null;
             }
         }
 
@@ -58,7 +58,7 @@ namespace Usage
             this.process = process;
             showing_details = opened;
 
-            load_icon(process.get_display_name());
+            load_icon(process.display_name);
             sub_process_list_box.init(process, type);
             update();
 
@@ -115,9 +115,9 @@ namespace Usage
         private void update_title_label()
         {
             if(group)
-                title_label.label = process.get_display_name() + " (" + process.get_sub_processes().size().to_string() + ")";
+                title_label.label = process.display_name + " (" + process.sub_processes.size().to_string() + ")";
             else
-                title_label.label = process.get_display_name();
+                title_label.label = process.display_name;
         }
 
         private void update_load_label()
@@ -133,8 +133,8 @@ namespace Usage
                     {
                         string values_string = "";
                         var values = new GLib.List<uint64?>();
-                        foreach(Process sub_process in process.get_sub_processes().get_values())
-                            values.insert_sorted((uint64) sub_process.get_cpu_load(), sort);
+                        foreach(Process sub_process in process.sub_processes.get_values())
+                            values.insert_sorted((uint64) sub_process.cpu_load, sort);
 
                         foreach(uint64 value in values)
                             values_string += "   " + value.to_string() + " %";
@@ -142,15 +142,15 @@ namespace Usage
                         load_label.label = values_string;
                     }
                     else
-                        load_label.label = ((int) process.get_cpu_load()).to_string() + " %";
+                        load_label.label = ((int) process.cpu_load).to_string() + " %";
                     break;
                 case ProcessListBoxType.MEMORY:
                     if(group)
                     {
                         string values_string = "";
                         var values = new GLib.List<uint64?>();
-                        foreach(Process sub_process in process.get_sub_processes().get_values())
-                            values.insert_sorted(sub_process.get_mem_usage(), sort);
+                        foreach(Process sub_process in process.sub_processes.get_values())
+                            values.insert_sorted(sub_process.mem_usage, sort);
 
                         foreach(uint64 value in values)
                             values_string += "   " + Utils.format_size_values(value);
@@ -158,7 +158,7 @@ namespace Usage
                         load_label.label = values_string;
                     }
                     else
-                        load_label.label = Utils.format_size_values(process.get_mem_usage());
+                        load_label.label = Utils.format_size_values(process.mem_usage);
                     break;
             }
         }
@@ -168,7 +168,7 @@ namespace Usage
             switch(type)
             {
                 case ProcessListBoxType.PROCESSOR:
-                    if(process.get_cpu_load() >= MAX_CPU_USAGE_LIMIT)
+                    if(process.cpu_load >= MAX_CPU_USAGE_LIMIT)
                         max_usage = true;
                     else
                         max_usage = false;
@@ -177,7 +177,7 @@ namespace Usage
                 case ProcessListBoxType.MEMORY:
                     SystemMonitor monitor = SystemMonitor.get_default();
 
-                    if((((double) process.get_mem_usage() / monitor.ram_total) * 100) >= MAX_MEMORY_USAGE_LIMIT)
+                    if((((double) process.mem_usage / monitor.ram_total) * 100) >= MAX_MEMORY_USAGE_LIMIT)
                         max_usage = true;
                     else
                         max_usage = false;
@@ -214,7 +214,7 @@ namespace Usage
             }
             else
             {
-                var dialog = new ProcessDialog(process.get_pid(), process.get_display_name(), process.get_cmdline());
+                var dialog = new ProcessDialog(process.pid, process.display_name, process.cmdline);
                 dialog.show_all();
             }
         }

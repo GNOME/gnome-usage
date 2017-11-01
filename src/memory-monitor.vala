@@ -65,9 +65,9 @@ namespace Usage
             GTop.ProcMem proc_mem;
 
             GTop.get_mem (out mem);
-            GTop.get_proc_mem (out proc_mem, process.get_pid());
+            GTop.get_proc_mem (out proc_mem, process.pid);
 
-            process.set_mem_usage(proc_mem.resident - proc_mem.share);
+            process.mem_usage = proc_mem.resident - proc_mem.share;
         }
     }
 }

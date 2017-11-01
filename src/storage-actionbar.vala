@@ -20,45 +20,26 @@
 
 namespace Usage
 {
-	public class StorageActionBar : Gtk.ActionBar
-	{
-	    private Gtk.Button move_to_button;
-	    private Gtk.Button delete_button;
-	    private Gtk.Button move_to_trash_button;
-	    private Gtk.Button empty_folder_button;
-	    private Gtk.Button restore_button;
-	    private Gtk.Button delete_from_trash_button;
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-actionbar.ui")]
+    public class StorageActionBar : Gtk.ActionBar
+    {
+        [GtkChild]
+        private Gtk.Button move_to_button;
 
-        public StorageActionBar()
-        {
-            //common
-            move_to_button = new Gtk.Button.with_label(_("Move to"));
-            move_to_button.clicked.connect(move_to_clicked);
-            delete_button = new Gtk.Button.with_label(_("Delete"));
-            delete_button.clicked.connect(delete_clicked);
-            delete_button.get_style_context().add_class ("destructive-action");
-            move_to_trash_button = new Gtk.Button.with_label(_("Move to Trash"));
-            move_to_trash_button.clicked.connect(move_to_trash_clicked);
-            this.pack_start(move_to_button);
-            this.pack_end(delete_button);
-            this.pack_end(move_to_trash_button);
+        [GtkChild]
+        private Gtk.Button delete_button;
 
-            //root
-            empty_folder_button = new Gtk.Button.with_label(_("Empty folder"));
-            empty_folder_button.clicked.connect(empty_folder_clicked);
-            this.pack_end(empty_folder_button);
+        [GtkChild]
+        private Gtk.Button move_to_trash_button;
 
-            //trash
-            restore_button = new Gtk.Button.with_label(_("Restore"));
-            restore_button.clicked.connect(restore_clicked);
-            delete_from_trash_button = new Gtk.Button.with_label(_("Delete from Trash"));
-            delete_from_trash_button.clicked.connect(delete_from_trash_clicked);
-            delete_from_trash_button.get_style_context().add_class ("destructive-action");
-            this.pack_start(restore_button);
-            this.pack_end(delete_from_trash_button);
+        [GtkChild]
+        private Gtk.Button empty_folder_button;
 
-            hide_all();
-        }
+        [GtkChild]
+        private Gtk.Button restore_button;
+
+        [GtkChild]
+        private Gtk.Button delete_from_trash_button;
 
         public void show_common()
         {
@@ -101,6 +82,7 @@ namespace Usage
             delete_from_trash_button.set_sensitive(sensitive);
         }
 
+        [GtkCallback]
         private void move_to_clicked()
         {
             Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog (
@@ -145,6 +127,7 @@ namespace Usage
             chooser.destroy();
         }
 
+        [GtkCallback]
         private void delete_clicked()
         {
             string files = "";
@@ -181,6 +164,7 @@ namespace Usage
 
         }
 
+        [GtkCallback]
         private void move_to_trash_clicked()
         {
             Timeout.add(0, () => {
@@ -198,6 +182,7 @@ namespace Usage
             });
         }
 
+        [GtkCallback]
         private void empty_folder_clicked()
         {
             Timeout.add(0, () => {
@@ -253,6 +238,7 @@ namespace Usage
             });
         }
 
+        [GtkCallback]
         private void restore_clicked()
         {
             Timeout.add(0, () => {
@@ -270,6 +256,7 @@ namespace Usage
             });
         }
 
+        [GtkCallback]
         private void delete_from_trash_clicked()
         {
             Timeout.add(0, () => {
