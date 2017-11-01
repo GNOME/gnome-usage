@@ -131,15 +131,17 @@ namespace Usage
                 case ProcessListBoxType.PROCESSOR:
                     if(group)
                     {
-                        string values_string = "";
+                        string value_string = "";
                         var values = new GLib.List<uint64?>();
                         foreach(Process sub_process in process.sub_processes.get_values())
                             values.insert_sorted((uint64) sub_process.cpu_load, sort);
 
+                        uint64 total_value = 0;
                         foreach(uint64 value in values)
-                            values_string += "   " + value.to_string() + " %";
+                            total_value += value;
 
-                        load_label.label = values_string;
+                        value_string = total_value.to_string() + " %";
+                        load_label.label = value_string;
                     }
                     else
                         load_label.label = ((int) process.cpu_load).to_string() + " %";
@@ -147,15 +149,17 @@ namespace Usage
                 case ProcessListBoxType.MEMORY:
                     if(group)
                     {
-                        string values_string = "";
+                        string value_string = "";
                         var values = new GLib.List<uint64?>();
                         foreach(Process sub_process in process.sub_processes.get_values())
                             values.insert_sorted(sub_process.mem_usage, sort);
 
+                        uint64 total_value = 0;
                         foreach(uint64 value in values)
-                            values_string += "   " + Utils.format_size_values(value);
+                            total_value += value;
 
-                        load_label.label = values_string;
+                        value_string += Utils.format_size_values(total_value);
+                        load_label.label = value_string;
                     }
                     else
                         load_label.label = Utils.format_size_values(process.mem_usage);
