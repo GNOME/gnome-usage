@@ -218,6 +218,10 @@ namespace Usage
             }
             else
             {
+                var settings = new GLib.Settings ("org.gnome.Usage");
+                if (process.cmdline in settings.get_strv ("unkillable-processes"))
+                    return;
+
                 var dialog = new QuitProcessDialog(process.pid, process.display_name);
                 dialog.show_all();
             }
