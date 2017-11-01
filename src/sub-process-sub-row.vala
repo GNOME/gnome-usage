@@ -93,7 +93,7 @@ namespace Usage
 
         public new void activate()
         {
-            var dialog = new ProcessDialog(process.pid, process.cmdline, process.cmdline);
+            var dialog = new QuitProcessDialog(process.pid, process.cmdline);
             dialog.show_all();
         }
     }
