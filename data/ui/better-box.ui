@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="UsageBetterBox" parent="GtkBox">
+    <property name="max_width_request">600</property>
+    <property name="orientation">horizontal</property>
+    <property name="halign">center</property>
+  </template>
+</interface>

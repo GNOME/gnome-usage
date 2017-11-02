@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="UsageProcessorSubView" parent="UsageView">
+    <property name="visible">True</property>
+
+    <child>
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="visible">True</property>
+
+        <child>
+          <object class="UsageBetterBox" id="better_box">
+            <property name="visible">True</property>
+
+            <child>
+              <object class="GtkBox" id="cpu_box">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+
+                <child>
+                  <object class="GtkLabel">
+                    <attributes>
+                      <attribute name="font-desc" value="14"/>
+                    </attributes>
+                    <property name="label" translatable="yes">Processor</property>
+                    <property name="margin-top">25</property>
+                    <property name="margin-bottom">25</property>
+                  </object>
+                  <packing>
+                    <property name="pack-type">start</property>
+                  </packing>
+                </child>
+
+                <child>
+                  <object class="GtkBox" id="graph_placeholder">
+                    <property name="orientation">vertical</property>
+                  </object>
+                  <packing>
+                    <property name="pack-type">start</property>
+                  </packing>
+                </child>
+
+                <child>
+                  <object class="GtkBox" id="process_list_placeholder">
+                    <property name="orientation">vertical</property>
+                  </object>
+                  <packing>
+                    <property name="pack-type">start</property>
+                  </packing>
+                </child>
+
+                <child>
+                  <object class="GtkSpinner" id="spinner">
+                    <property name="active">true</property>
+                    <property name="margin-top">30</property>
+                    <property name="margin-bottom">20</property>
+                  </object>
+                  <packing>
+                    <property name="pack-type">start</property>
+                    <property name="expand">true</property>
+                    <property name="fill">true</property>
+                  </packing>
+                </child>
+
+                <child>
+                  <object class="UsageNoResultsFoundView" id="no_process_view"/>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

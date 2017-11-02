@@ -20,6 +20,7 @@
 
 namespace Usage {
 
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/better-box.ui")]
     public class BetterBox : Gtk.Box
     {
         public int max_width_request { get; set;  default = -1; }

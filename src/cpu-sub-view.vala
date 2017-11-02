@@ -20,64 +20,53 @@
 
 namespace Usage
 {
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/cpu-sub-view.ui")]
     public class ProcessorSubView : View, SubView
     {
-        private ProcessListBox process_list_box;
+        [GtkChild]
+        private BetterBox better_box;
+
+        [GtkChild]
+        private Gtk.Box cpu_box;
+
+        [GtkChild]
+        private Gtk.Box graph_placeholder;
+
+        [GtkChild]
+        private Gtk.Box process_list_placeholder;
+
+        [GtkChild]
+        private Gtk.Spinner spinner;
+
+        [GtkChild]
         private NoResultsFoundView no_process_view;
+
+        private ProcessListBox process_list_box;
 
         public ProcessorSubView()
         {
-            name = "PROCESSOR";
-
-            var label = new Gtk.Label("<span font_desc=\"14.0\">" + _("Processor") + "</span>");
-            label.set_use_markup(true);
-            label.margin_top = 25;
-            label.margin_bottom = 15;
-
+            //TODO: Remove graph_placeholder; migrate to gtk+3 templates
             var cpu_graph = new CpuGraphBig();
             cpu_graph.hexpand = true;
             var cpu_graph_box = new GraphBox(cpu_graph);
             cpu_graph_box.height_request = 225;
             cpu_graph_box.width_request = 600;
             cpu_graph_box.valign = Gtk.Align.START;
+            graph_placeholder.add(cpu_graph_box);
 
+            //TODO: Remove process_list_placeholder; migrate to gtk+3 templates
             process_list_box = new ProcessListBox(ProcessListBoxType.PROCESSOR);
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
 
-            var spinner = new Gtk.Spinner();
-            spinner.active = true;
-            spinner.margin_top = 30;
-            spinner.margin_bottom = 20;
-
-            no_process_view = new NoResultsFoundView();
-
-            var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            cpu_box.pack_start(label, false, false, 0);
-            cpu_box.pack_start(cpu_graph_box, false, false, 0);
-            cpu_box.pack_start(spinner, true, true, 0);
-            cpu_box.add(no_process_view);
-
             SystemMonitor.get_default().cpu_processes_ready.connect(() =>
             {
-                cpu_box.pack_start(process_list_box, false, false, 0);
+                process_list_placeholder.pack_start(process_list_box, false, false, 0);
                 process_list_box.update();
                 cpu_box.remove(spinner);
             });
 
             process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
-
-            var better_box = new BetterBox();
-            better_box.max_width_request = 600;
-            better_box.halign = Gtk.Align.CENTER;
-            better_box.orientation = Gtk.Orientation.HORIZONTAL;
-            better_box.add(cpu_box);
-
-            var scrolled_window = new Gtk.ScrolledWindow(null, null);
-            scrolled_window.add(better_box);
-            scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
-
-            add(scrolled_window);
         }
 
         public override void show_all() {
