@@ -7,7 +7,7 @@
     <property name="resizable">False</property>
     <property name="message-type">question</property>
     <property name="text" translatable="yes" comments="Translators: This sentence is later suffixed with an application name. Example: 'Force Quit Videos?'">Force Quit %s?</property>
-    <property name="secondary-text">Usaved work might be lost.</property>
+    <property name="secondary-text">Unsaved work might be lost.</property>
 
     <child type="action">
       <object class="GtkButton" id="button_cancel">
