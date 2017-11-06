@@ -218,7 +218,7 @@ namespace Usage
             }
             else
             {
-                var settings = new GLib.Settings ("org.gnome.Usage");
+                var settings = Settings.get_default();
                 if (process.cmdline in settings.get_strv ("unkillable-processes"))
                     return;
 
