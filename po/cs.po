@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2017-10-25 20:09+0000\n"
-"PO-Revision-Date: 2017-10-29 08:53+0100\n"
+"POT-Creation-Date: 2017-11-06 17:46+0000\n"
+"PO-Revision-Date: 2017-11-06 21:17+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
-"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:91
 #: ../src/window.vala:41
@@ -56,8 +56,8 @@ msgstr ""
 "Tento seznam je používám pro filtrování procesů, které uživatele nesmí "
 "ukončit."
 
-#: ../data/ui/header-bar.ui.h:1 ../src/storage-actionbar.vala:108
-#: ../src/storage-row.vala:393
+#: ../data/ui/header-bar.ui.h:1 ../data/ui/quit-process-dialog.ui.h:5
+#: ../src/storage-actionbar.vala:90 ../src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Storno"
 
@@ -68,6 +68,44 @@ msgstr "Nebylo nic nalezeno"
 #: ../data/ui/no-results-found-view.ui.h:2
 msgid "Try a different search"
 msgstr "Zkuste hledat něco jiného"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: ../data/ui/quit-process-dialog.ui.h:3
+#, no-c-format
+msgid "Force Quit %s?"
+msgstr "Vynutit ukončení aplikace %s?"
+
+#: ../data/ui/quit-process-dialog.ui.h:4
+msgid "Unsaved work might be lost."
+msgstr "Můžete přijít o neuloženou práci."
+
+#: ../data/ui/quit-process-dialog.ui.h:6
+msgid "Force Quit"
+msgstr "Vynutit ukončení"
+
+#: ../data/ui/storage-actionbar.ui.h:1 ../src/storage-row.vala:274
+msgid "Move to"
+msgstr "Přesunout do"
+
+#: ../data/ui/storage-actionbar.ui.h:2 ../src/storage-row.vala:278
+msgid "Delete"
+msgstr "Smazat"
+
+#: ../data/ui/storage-actionbar.ui.h:3
+msgid "Move to Trash"
+msgstr "Přesunout do koše"
+
+#: ../data/ui/storage-actionbar.ui.h:4
+msgid "Empty folder"
+msgstr "Vysypat koš"
+
+#: ../data/ui/storage-actionbar.ui.h:5 ../src/storage-row.vala:263
+msgid "Restore"
+msgstr "Obnovit"
+
+#: ../data/ui/storage-actionbar.ui.h:6 ../src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Smazat z koše"
 
 #: ../data/ui/storage-view.ui.h:1
 msgid "No content here"
@@ -98,7 +136,6 @@ msgid "Websites"
 msgstr "Webové stránky"
 
 #: ../src/cpu-sub-view.vala:32 ../src/graph-stack-switcher.vala:40
-#: ../src/process-dialog.vala:50
 msgid "Processor"
 msgstr "Procesor"
 
@@ -111,7 +148,6 @@ msgid "Available"
 msgstr "Dostupné"
 
 #: ../src/graph-stack-switcher.vala:41 ../src/memory-sub-view.vala:32
-#: ../src/process-dialog.vala:51
 msgid "Memory"
 msgstr "Paměť"
 
@@ -139,80 +175,37 @@ msgstr "Zrušit výběr"
 msgid "Performance"
 msgstr "Výkon"
 
-#: ../src/process-dialog.vala:56
-msgid "Stop"
-msgstr "Zastavit"
-
-#: ../src/process-dialog.vala:144
-msgid "Running"
-msgstr "Běžící"
-
-#: ../src/process-dialog.vala:147
-msgid "Sleeping"
-msgstr "Spící"
-
-#: ../src/process-dialog.vala:150
-msgid "Dead"
-msgstr "Mrtvé"
-
-#. common
-#: ../src/storage-actionbar.vala:35 ../src/storage-row.vala:274
-msgid "Move to"
-msgstr "Přesunout do"
-
-#: ../src/storage-actionbar.vala:37 ../src/storage-row.vala:278
-msgid "Delete"
-msgstr "Smazat"
-
-#: ../src/storage-actionbar.vala:40
-msgid "Move to Trash"
-msgstr "Přesunout do koše"
-
-#. root
-#: ../src/storage-actionbar.vala:47
-msgid "Empty folder"
-msgstr "Vysypat koš"
-
-#. trash
-#: ../src/storage-actionbar.vala:52 ../src/storage-row.vala:263
-msgid "Restore"
-msgstr "Obnovit"
-
-#: ../src/storage-actionbar.vala:54 ../src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Smazat z koše"
-
-#: ../src/storage-actionbar.vala:107 ../src/storage-row.vala:392
+#: ../src/storage-actionbar.vala:89 ../src/storage-row.vala:392
 msgid "Select destination folder"
 msgstr "Vybrat cílovou složku"
 
-#: ../src/storage-actionbar.vala:110 ../src/storage-row.vala:395
+#: ../src/storage-actionbar.vala:92 ../src/storage-row.vala:395
 msgid "Select"
 msgstr "Vybrat"
 
-#: ../src/storage-actionbar.vala:160
+#: ../src/storage-actionbar.vala:143
 #, c-format
 msgid "Are you sure you want to permanently delete this items %s?"
 msgstr "Opravdu chcete trvale smazat tuto položky %s?"
 
-#: ../src/storage-actionbar.vala:161
+#: ../src/storage-actionbar.vala:144
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Pokdu tyto položky smažete, budou nenávratně ztraceny."
 
-#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:342
+#: ../src/storage-actionbar.vala:197 ../src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Vyprázdnit z koše všechny položky?"
 
-#: ../src/storage-actionbar.vala:213 ../src/storage-row.vala:343
+#: ../src/storage-actionbar.vala:198 ../src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Všechny položky v koši budou trvale smazány."
 
-#: ../src/storage-actionbar.vala:234 ../src/storage-row.vala:322
+#: ../src/storage-actionbar.vala:219 ../src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Smazat všechny položky ze složky %s"
 
-#: ../src/storage-actionbar.vala:235 ../src/storage-row.vala:323
+#: ../src/storage-actionbar.vala:220 ../src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Všechny položky ze složky %s bodou přesunuty do koše."
@@ -269,6 +262,18 @@ msgstr "Pokud položku smažete, bude trvale ztracena."
 #: ../src/storage-view.vala:45
 msgid "Storage"
 msgstr "Úložiště"
+
+#~ msgid "Stop"
+#~ msgstr "Zastavit"
+
+#~ msgid "Running"
+#~ msgstr "Běžící"
+
+#~ msgid "Sleeping"
+#~ msgstr "Spící"
+
+#~ msgid "Dead"
+#~ msgstr "Mrtvé"
 
 #~ msgid "No applications using processor."
 #~ msgstr "Žádná aplikace nevyužívá procesor."
