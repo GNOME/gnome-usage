@@ -11,7 +11,6 @@ src/graph-stack-switcher.c
 src/header-bar.c
 src/memory-sub-view.c
 src/performance-view.c
-src/process-dialog.c
 src/storage-actionbar.c
 src/storage-analyzer.c
 src/storage-item.c
