@@ -223,6 +223,7 @@ namespace Usage
                     return;
 
                 var dialog = new QuitProcessDialog(process.pid, process.display_name);
+                dialog.set_transient_for(get_toplevel() as Gtk.Window);
                 dialog.show_all();
             }
         }
