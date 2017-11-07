@@ -29,12 +29,9 @@ namespace Usage
         {
             name = "MEMORY";
 
-            var memory_graph = new MemoryGraphBig();
+            var memory_graph = new MemorySpeedometer();
+            memory_graph.margin_top = 30;
             memory_graph.hexpand = true;
-            var memory_graph_box = new GraphBox(memory_graph);
-            memory_graph_box.height_request = 225;
-            memory_graph_box.width_request = 600;
-            memory_graph_box.valign = Gtk.Align.START;
 
             process_list_box = new ProcessListBox(ProcessListBoxType.MEMORY);
             process_list_box.margin_bottom = 20;
@@ -48,7 +45,7 @@ namespace Usage
             no_process_view = new NoResultsFoundView();
 
             var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            memory_box.pack_start(memory_graph_box, false, false, 0);
+            memory_box.pack_start(memory_graph, false, false, 0);
             memory_box.pack_start(spinner, true, true, 0);
             memory_box.add(no_process_view);
 
