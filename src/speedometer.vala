@@ -23,7 +23,7 @@ using Gtk;
 namespace Usage
 {
     [GtkTemplate (ui = "/org/gnome/Usage/ui/speedometer.ui")]
-    public class Speedometer : Gtk.Bin
+    public class Speedometer : Buildable, Gtk.Bin
     {
         [GtkChild]
         private Gtk.Box content_area;
@@ -104,9 +104,14 @@ namespace Usage
             }
         }
 
-        public void add_child(Gtk.Widget child)
+        public void add_child(Builder builder, Object child, string? type)
         {
-            content_area.add(child);
+            /* This is a Vala bug. It will cause a "warning".
+            (content_area as Buildable).add_child(builder, child, type);*/
+            if (child is Gtk.Label)
+                content_area.add(child as Gtk.Widget);
+
+            base.add_child(builder, child, type);
         }
     }
 }
