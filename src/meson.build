@@ -16,6 +16,7 @@ vala_sources = [
     'memory-graph-table.vala',
     'memory-graph.vala',
     'memory-monitor.vala',
+    'memory-speedometer.vala',
     'memory-sub-view.vala',
     'monitor.vala',
     'no-results-found-view.vala',
