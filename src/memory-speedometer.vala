@@ -22,28 +22,41 @@ using Gtk;
 
 namespace Usage
 {
-    public class MemorySpeedometer : Usage.Speedometer
+    [GtkTemplate (ui = "/org/gnome/Usage/ui/memory-speedometer.ui")]
+    public class MemorySpeedometer : Gtk.Bin
     {
-        private double ram_usage { get; set; }
+        [GtkChild]
+        private Usage.Speedometer speedometer;
 
+        [GtkChild]
         private Gtk.Label label;
 
-        construct {
-            label = new Gtk.Label("0.0");
-            label.hexpand = true;
-            label.use_markup = true;
+        [GtkChild]
+        private Gtk.Label ram_used;
 
+        [GtkChild]
+        private Gtk.Label ram_available;
+
+        private double ram_usage { get; set; }
+
+        construct {
             var monitor = SystemMonitor.get_default();
             Timeout.add_seconds(1, () => {
-                ram_usage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
+                var percentage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
 
-                this.percentage = (int)ram_usage;
-                label.set_markup("<span size='20000'>%d%</span>".printf(this.percentage));
+                this.speedometer.percentage = (int)percentage;
+                label.label = "%d".printf((int)percentage) + "%";
+
+                var used = monitor.ram_usage/1000000000;
+                var available = (monitor.ram_total - monitor.ram_usage)/1000000000;
+
+                ram_used.label = "%.1f".printf(used) + " GB";
+                ram_available.label = "%.1f".printf(available) + " GB";
 
                 return true;
             });
 
-            this.add_child(label);
+            this.show_all();
         }        
     }
 }
