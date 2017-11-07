@@ -31,7 +31,6 @@ namespace Usage
 
             var memory_graph = new MemorySpeedometer();
             memory_graph.margin_top = 30;
-            memory_graph.hexpand = true;
 
             process_list_box = new ProcessListBox(ProcessListBoxType.MEMORY);
             process_list_box.margin_bottom = 20;
