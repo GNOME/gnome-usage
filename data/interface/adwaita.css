@@ -133,3 +133,26 @@ row.folders, list.folders {
 box.storage {
     background-color: #ffffff;
 }
+
+/* Speedometer */
+.speedometer-outter, .speedometer-inner, .speedometer-content-area {
+    border-radius: 50%;
+}
+
+.speedometer-outter {
+    background-color: #4a90d9;
+}
+
+.speedometer-inner {
+    margin: -1px;
+    animation-fill-mode: forwards;
+    animation-duration: 200ms;
+    animation-timing-function: ease-in-out;
+    background: linear-gradient(90deg, transparent 50%, white 50%),
+                linear-gradient(90deg, white 50%, transparent 50%);
+}
+
+.speedometer-content-area {
+    background-color: @theme_bg_color;
+    margin: 5px;
+}
