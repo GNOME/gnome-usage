@@ -56,6 +56,27 @@
                 <property name="position">3</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkBox" id="user_tag_box">
+                <property name="visible">False</property>
+                <property name="can_focus">False</property>
+                <property name="margin_right">10</property>
+                <style>
+                  <class name="tag"/>
+                </style>
+                <child>
+                  <object class="GtkLabel" id="user_tag_label">
+                    <property name="visible">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack_type">end</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>

@@ -32,7 +32,15 @@ namespace Usage
         private Gtk.Label title_label;
 
         [GtkChild]
+        private Gtk.Box user_tag_box;
+
+        [GtkChild]
+        private Gtk.Label user_tag_label;
+
+        [GtkChild]
         private Gtk.Label load_label;
+
+        private Act.User user;
 
         public Process process { get; private set; }
         public bool max_usage { get; private set; }
@@ -45,13 +53,22 @@ namespace Usage
         private const int MAX_CPU_USAGE_LIMIT = 90;
         private const int MAX_MEMORY_USAGE_LIMIT = 90;
 
+        private const string CSS_TAG_USER = "tag-user";
+        private const string CSS_TAG_ROOT = "tag-root";
+        private const string CSS_TAG_SYSTEM = "tag-system";
+
         public ProcessRow(Process process, ProcessListBoxType type, bool opened = false)
         {
             this.type = type;
             this.process = process;
+            this.user = Act.UserManager.get_default().get_user_by_id(process.uid);
 
             load_icon(process.display_name);
             update();
+
+            this.user.notify["is-loaded"].connect(() => {
+                update_user_tag();
+            });
         }
 
         private void load_icon(string display_name)
@@ -68,6 +85,7 @@ namespace Usage
         private void update()
         {
             update_load_label();
+            update_user_tag();
             check_max_usage();
             set_styles();
 
@@ -92,6 +110,65 @@ namespace Usage
                     load_label.label = Utils.format_size_values(process.mem_usage);
                     break;
             }
+        }
+
+        private void update_user_tag()
+        {
+            remove_user_tag();
+            if(user.is_loaded)
+            {
+                create_user_tag();
+            }
+        }
+
+        private void remove_user_tag()
+        {
+            user_tag_box.visible = false;
+            user_tag_box.get_style_context().remove_class(CSS_TAG_USER);
+            user_tag_box.get_style_context().remove_class(CSS_TAG_ROOT);
+            user_tag_box.get_style_context().remove_class(CSS_TAG_SYSTEM);
+        }
+
+        private void create_user_tag()
+        {
+            user_tag_box.visible = true;
+            user_tag_label.label = user.real_name;
+
+            string class_name = "";
+            if(is_regular_user())
+            {
+                class_name = CSS_TAG_USER;
+            }
+            else if(is_root_user())
+            {
+                class_name = CSS_TAG_ROOT;
+            }
+            else if(is_system_user())
+            {
+                class_name = CSS_TAG_SYSTEM;
+            }
+            user_tag_box.get_style_context().add_class(class_name);
+
+            if(is_logged_in())
+            {
+                user_tag_box.visible = false;
+            }
+        }
+
+        private bool is_regular_user(){
+            return user.is_local_account();
+        }
+
+        private bool is_root_user(){
+            return user.uid == 0;
+        }
+
+        private bool is_system_user(){
+            return !is_regular_user() && !is_root_user();
+        }
+
+        private bool is_logged_in(){
+            return user.user_name == GLib.Environment.get_user_name();
         }
 
         private void check_max_usage()

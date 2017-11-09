@@ -37,7 +37,7 @@ namespace Usage
         private HashTable<string, Process> cpu_process_table;
         private HashTable<string, Process> ram_process_table;
 
-        private int process_mode = GTop.EXCLUDE_SYSTEM;
+        private int process_mode = GTop.KERN_PROC_ALL;
         private GLib.List<AppInfo> apps_info;
 
         private static SystemMonitor system_monitor;
@@ -147,7 +147,8 @@ namespace Usage
                     string cmdline_parameter;
                     string cmdline = get_full_process_cmd(pids[i], out cmdline_parameter);
                     string display_name = get_display_name(cmdline, cmdline_parameter);
-                    var process = new Process(pids[i], cmdline, cmdline_parameter, display_name);
+                    uint uid = get_uid(pids[i]);
+                    var process = new Process(pids[i], cmdline, cmdline_parameter, display_name, uid);
                     cpu_monitor.update_process(ref process);
                     process_table.insert (pids[i], (owned) process);
                 }
@@ -187,6 +188,13 @@ namespace Usage
             update_processes(process_table_temp, ref ram_process_table);
 
             return true;
+        }
+
+        private uint get_uid(Pid pid)
+        {
+            GTop.ProcUid procUid;
+            GTop.get_proc_uid(out procUid, pid);
+            return procUid.uid;
         }
 
 		private string get_display_name(string cmdline, string cmdline_parameter)
@@ -342,7 +350,7 @@ namespace Usage
                         }
                         else //add subrow
                         {
-                            var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name);
+                            var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, process_it.uid);
                             process.update_from_process(process_it);
                             to_table[process.cmdline].sub_processes.insert(process.pid, (owned) process);
                         }
@@ -359,11 +367,11 @@ namespace Usage
                             to_table[process_it.cmdline].sub_processes = new HashTable<Pid?, Process>(int_hash, int_equal);
                             unowned Process process = to_table[process_it.cmdline];
 
-                            var sub_process_one = new Process(process.pid, process.cmdline, process.cmdline_parameter, process.display_name);
+                            var sub_process_one = new Process(process.pid, process.cmdline, process.cmdline_parameter, process.display_name, process.uid);
                             sub_process_one.update_from_process(process);
                             to_table[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
 
-                            var sub_process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name);
+                            var sub_process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, process_it.uid);
                             sub_process.update_from_process(process_it);
                             to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) sub_process);
                         }
@@ -371,7 +379,7 @@ namespace Usage
                 }
                 else //add process
                 {
-                     var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name);
+                     var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, process_it.uid);
                      process.update_from_process(process_it);
                      to_table.insert(process.cmdline, (owned) process);
                 }
