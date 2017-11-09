@@ -145,7 +145,7 @@ namespace Usage
             if (process.cmdline in settings.get_strv ("unkillable-processes"))
                 return;
 
-            var dialog = new QuitProcessDialog(process.pid, process.display_name);
+            var dialog = new QuitProcessDialog(process);
             dialog.set_transient_for(get_toplevel() as Gtk.Window);
             dialog.show_all();
         }

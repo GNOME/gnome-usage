@@ -25,22 +25,34 @@ namespace Usage
     [GtkTemplate (ui = "/org/gnome/Usage/ui/quit-process-dialog.ui")]
     public class QuitProcessDialog : Gtk.MessageDialog
     {
-        Pid pid { set; get; }
+        private Process process;
 
-        public QuitProcessDialog(Pid pid, string app_name)
+        public QuitProcessDialog(Process process)
         {
-            this.pid = pid;
+            this.process = process;
 
-            this.text = this.text.printf(app_name);
+            this.text = this.text.printf(process.display_name);
         }
 
         [GtkCallback]
         private void on_force_quit_button_clicked ()
         {
-            debug ("Terminating %d", (int) this.pid);
-            Posix.kill(this.pid, Posix.SIGKILL);
+            if(this.process.sub_processes != null)
+            {
+                var sub_processes_pids = this.process.sub_processes.get_keys();
+                foreach(Pid pid in sub_processes_pids)
+                    kill(pid);
+            }
+
+            kill(this.process.pid);
 
             this.destroy();
+        }
+
+        private void kill (Pid pid)
+        {
+            debug ("Terminating %d", (int) pid);
+            Posix.kill(pid, Posix.SIGKILL);
         }
 
         [GtkCallback]
