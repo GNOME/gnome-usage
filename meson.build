@@ -9,6 +9,10 @@ gtk = dependency('gtk+-3.0', version : '>=3.20.10')
 gtop = dependency('libgtop-2.0', version : '>=2.34.0')
 math = cc.find_library('m')
 
+msgfmt = find_program('msgfmt')
+
+po_dir = join_paths(meson.source_root(), 'po')
+
 subdir('data')
 subdir('po')
 subdir('external')

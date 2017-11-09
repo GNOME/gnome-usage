@@ -14,3 +14,11 @@ install_data('icons/24x24/org.gnome.Usage.png', install_dir: join_paths([get_opt
 install_data('icons/32x32/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/32x32/apps']))
 install_data('icons/48x48/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/48x48/apps']))
 install_data('icons/512x512/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/512x512/apps']))
+
+custom_target('appdata-file',
+    input: 'org.gnome.Usage.appdata.xml.in',
+    output: 'org.gnome.Usage.appdata.xml',
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'metainfo'),
+    command: [ msgfmt, '--xml', '--template', '@INPUT@', '-d', po_dir, '-o', '@OUTPUT@' ],
+)
