@@ -36,8 +36,6 @@ vala_sources = [
     'storage-row.vala',
     'storage-view.vala',
     'storage-worker.vala',
-    'sub-process-list-box.vala',
-    'sub-process-sub-row.vala',
     'swap-speedometer.vala',
     'system-monitor.vala',
     'utils.vala',
