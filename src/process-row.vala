@@ -32,6 +32,9 @@ namespace Usage
         private Gtk.Label title_label;
 
         [GtkChild]
+        private Gtk.Label user_name_label;
+
+        [GtkChild]
         private Gtk.Label load_label;
 
         [GtkChild]
@@ -66,6 +69,7 @@ namespace Usage
                 show_details();
 
             update_title_label();
+            update_user_name_label();
         }
 
         private void load_icon(string display_name)
@@ -110,6 +114,11 @@ namespace Usage
 
             if(!showing_details)
                 update_title_label();
+        }
+
+        private void update_user_name_label()
+        {
+            user_name_label.label = process.user_name;
         }
 
         private void update_title_label()

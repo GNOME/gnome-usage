@@ -26,6 +26,7 @@ namespace Usage
         public string cmdline { get; private set; }
         public string cmdline_parameter { get; private set; } //Isn't parameters as "-p" etc, but parameter for running app, for ex. "--writer' with libreoffice, or "privacy" with gnome-control-center
         public string display_name { get; private set; }
+        public string user_name { get; private set; }
 
         public double cpu_load { get; set; default = 0; }
         public double x_cpu_load { get; set; default = 0; }
@@ -40,12 +41,13 @@ namespace Usage
         public bool alive { get; set; default = true; }
         public ProcessStatus status { get; set; default = ProcessStatus.SLEEPING; }
 
-        public Process(Pid pid, string cmdline, string cmdline_parameter, string display_name)
+        public Process(Pid pid, string cmdline, string cmdline_parameter, string display_name, string user_name)
         {
             this.pid = pid;
             this.cmdline = cmdline;
             this.cmdline_parameter = cmdline_parameter;
             this.display_name = display_name;
+            this.user_name = user_name;
         }
 
         public void update_from_process(Process process)
