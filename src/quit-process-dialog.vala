@@ -29,6 +29,8 @@ namespace Usage
 
         public QuitProcessDialog(Pid pid, string app_name)
         {
+            this.pid = pid;
+
             this.text = this.text.printf(app_name);
         }
 
