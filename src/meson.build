@@ -46,6 +46,7 @@ vala_args = [
     '--pkg=rg',
     '--pkg=egg',
     '--pkg=libgtop-2.0',
+    '--pkg=accountsservice',
     '--pkg=config',
     '--pkg=posix',
     '--vapidir=' + meson.current_source_dir() + '/vapis']
@@ -56,4 +57,4 @@ usage = executable('gnome-usage',
                      c_args : [ '-DVERSION="' + meson.project_version() + '"', '-DGETTEXT_PACKAGE="gnome-usage"', '-DGNOMELOCALEDIR="' + get_option('prefix') + '/' + get_option('localedir') + '"' ],
                      vala_args: vala_args,
                      install: true,
-                     dependencies : [glib, gobject, gio, gtk, rg, egg, math, gtop])
+                     dependencies : [glib, gobject, gio, gtk, rg, egg, math, gtop, accountsservice])
