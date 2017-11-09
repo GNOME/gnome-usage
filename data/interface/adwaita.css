@@ -140,7 +140,7 @@ box.storage {
 }
 
 .speedometer-outter {
-    background-color: #4a90d9;
+    background-color: @theme_selected_bg_color;
 }
 
 .speedometer-inner {
@@ -148,8 +148,8 @@ box.storage {
     animation-fill-mode: forwards;
     animation-duration: 200ms;
     animation-timing-function: ease-in-out;
-    background: linear-gradient(90deg, transparent 50%, white 50%),
-                linear-gradient(90deg, white 50%, transparent 50%);
+    background: linear-gradient(90deg, transparent 50%, @theme_base_color 50%),
+                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
 }
 
 .speedometer-content-area {

@@ -69,24 +69,24 @@ namespace Usage
             {
                 css += """
                   from {
-                    background: linear-gradient(%ddeg, transparent 50%, white 50%),
-                                linear-gradient(90deg, white 50%, transparent 50%);
+                    background: linear-gradient(%ddeg, transparent 50%, @theme_base_color 50%),
+                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
                   }
                   to {
-                    background: linear-gradient(%ddeg, transparent 50%, white 50%),
-                                linear-gradient(90deg, white 50%, transparent 50%);
+                    background: linear-gradient(%ddeg, transparent 50%, @theme_base_color 50%),
+                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
                   }""".printf((int)old_angle, (int)new_angle);
             }
             else
             {
                 css += """
                   from {
-                    background: linear-gradient(%ddeg, transparent 50%, #4a90d9 50%),
-                                linear-gradient(90deg, white 50%, transparent 50%);
+                    background: linear-gradient(%ddeg, transparent 50%, @theme_selected_bg_color 50%),
+                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
                   }
                   to {
-                    background: linear-gradient(%ddeg, transparent 50%, #4a90d9 50%),
-                                linear-gradient(90deg, white 50%, transparent 50%);
+                    background: linear-gradient(%ddeg, transparent 50%, @theme_selected_bg_color 50%),
+                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
                   }""".printf((int)old_angle-180, (int)new_angle-180);
             }
 
