@@ -34,14 +34,7 @@ namespace Usage
         [GtkChild]
         private Gtk.Label load_label;
 
-        [GtkChild]
-        private Gtk.Revealer revealer;
-
-        [GtkChild]
-        private SubProcessListBox sub_process_list_box;
-
         public Process process { get; private set; }
-        public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
         public bool group {
             get {
@@ -56,16 +49,9 @@ namespace Usage
         {
             this.type = type;
             this.process = process;
-            showing_details = opened;
 
             load_icon(process.display_name);
-            sub_process_list_box.init(process, type);
             update();
-
-            if(group && opened)
-                show_details();
-
-            update_title_label();
         }
 
         private void load_icon(string display_name)
@@ -108,12 +94,6 @@ namespace Usage
             check_max_usage();
             set_styles();
 
-            if(!showing_details)
-                update_title_label();
-        }
-
-        private void update_title_label()
-        {
             if(group)
                 title_label.label = process.display_name + " (" + process.sub_processes.size().to_string() + ")";
             else
@@ -129,40 +109,10 @@ namespace Usage
             switch(type)
             {
                 case ProcessListBoxType.PROCESSOR:
-                    if(group)
-                    {
-                        string value_string = "";
-                        var values = new GLib.List<uint64?>();
-                        foreach(Process sub_process in process.sub_processes.get_values())
-                            values.insert_sorted((uint64) sub_process.cpu_load, sort);
-
-                        uint64 total_value = 0;
-                        foreach(uint64 value in values)
-                            total_value += value;
-
-                        value_string = total_value.to_string() + " %";
-                        load_label.label = value_string;
-                    }
-                    else
-                        load_label.label = ((int) process.cpu_load).to_string() + " %";
+                    load_label.label = ((int) process.cpu_load).to_string() + " %";
                     break;
                 case ProcessListBoxType.MEMORY:
-                    if(group)
-                    {
-                        string value_string = "";
-                        var values = new GLib.List<uint64?>();
-                        foreach(Process sub_process in process.sub_processes.get_values())
-                            values.insert_sorted(sub_process.mem_usage, sort);
-
-                        uint64 total_value = 0;
-                        foreach(uint64 value in values)
-                            total_value += value;
-
-                        value_string += Utils.format_size_values(total_value);
-                        load_label.label = value_string;
-                    }
-                    else
-                        load_label.label = Utils.format_size_values(process.mem_usage);
+                    load_label.label = Utils.format_size_values(process.mem_usage);
                     break;
             }
         }
@@ -189,48 +139,20 @@ namespace Usage
             }
         }
 
-        private void hide_details()
-        {
-            showing_details = false;
-            revealer.set_reveal_child(false);
-            load_label.visible = true;
-            get_style_context().remove_class("opened");
-        }
-
-        private void show_details()
-        {
-            showing_details = true;
-            revealer.set_reveal_child(true);
-            load_label.visible = false;
-            get_style_context().add_class("opened");
-        }
-
         public new void activate()
         {
-            if(group)
-            {
-                if(showing_details)
-                    hide_details();
-                else
-                    show_details();
+            var settings = Settings.get_default();
+            if (process.cmdline in settings.get_strv ("unkillable-processes"))
+                return;
 
-                set_styles();
-            }
-            else
-            {
-                var settings = Settings.get_default();
-                if (process.cmdline in settings.get_strv ("unkillable-processes"))
-                    return;
-
-                var dialog = new QuitProcessDialog(process.pid, process.display_name);
-                dialog.set_transient_for(get_toplevel() as Gtk.Window);
-                dialog.show_all();
-            }
+            var dialog = new QuitProcessDialog(process.pid, process.display_name);
+            dialog.set_transient_for(get_toplevel() as Gtk.Window);
+            dialog.show_all();
         }
 
         private void set_styles()
         {
-            if(max_usage == true && showing_details == false)
+            if(max_usage)
                 get_style_context().add_class("max");
             else
                 get_style_context().remove_class("max");

@@ -9,7 +9,5 @@
         <file preprocess="xml-stripblanks">ui/storage-actionbar.ui</file>
         <file preprocess="xml-stripblanks">ui/storage-view.ui</file>
         <file preprocess="xml-stripblanks">ui/process-row.ui</file>
-        <file preprocess="xml-stripblanks">ui/sub-process-sub-row.ui</file>
-        <file preprocess="xml-stripblanks">ui/sub-process-list-box.ui</file>
     </gresource>
 </gresources>
