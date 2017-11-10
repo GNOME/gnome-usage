@@ -118,7 +118,7 @@ namespace Usage
 
         private void update_user_name_label()
         {
-            user_name_label.label = process.user_name;
+            user_name_label.label = process.user.real_name ?? "UNAVAILABLE";
         }
 
         private void update_title_label()
