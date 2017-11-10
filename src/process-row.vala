@@ -118,7 +118,29 @@ namespace Usage
 
         private void update_user_name_label()
         {
-            user_name_label.label = process.user.real_name ?? "UNAVAILABLE";
+            if(process.user.real_name != null)
+            {
+                if(process.user.is_local_account)
+                {
+                    if(process.user.is_logged_in())
+                    {
+                        user_name_label.label = "CURRENT USER";
+                    }
+                    else
+                    {
+                        user_name_label.label = process.user.real_name;
+                    }
+                }
+                else
+                {
+                    //user_name_label.label = process.user.real_name;
+                    user_name_label.label = "ROOT";
+                }
+            }
+            else
+            {
+                user_name_label.label = "UNAVAILABLE";
+            }
         }
 
         private void update_title_label()

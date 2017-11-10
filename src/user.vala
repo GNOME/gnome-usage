@@ -23,15 +23,25 @@ namespace Usage
     public class User : Object
     {
         public uint? uid { get; private set; }
+        public string? user_name { get; private set; }
         public string? real_name { get; private set; }
         public bool? is_local_account { get; private set; }
 
-        public User(uint? uid, string? real_name, bool? is_local_account)
+        public User(uint? uid, string? user_name, string? real_name, bool? is_local_account)
         {
             this.uid = uid;
+            this.user_name = user_name;
             this.real_name = real_name;
             this.is_local_account = is_local_account;
         }
 
+        public bool is_logged_in()
+        {
+            if(user_name != null)
+            {
+                return user_name == GLib.Environment.get_user_name();
+            }
+            return false;
+        }
     }
 }
