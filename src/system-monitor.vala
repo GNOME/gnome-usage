@@ -186,7 +186,7 @@ namespace Usage
             GTop.ProcUid procUid;
             GTop.get_proc_uid(out procUid, pid);
             Act.User user = Act.UserManager.get_default().get_user_by_id(procUid.uid);
-            return new User(user.get_uid(), user.get_real_name(), user.is_local_account());
+            return new User(user.get_uid(), user.get_user_name(), user.get_real_name(), user.is_local_account());
     }
 
 		private string get_display_name(string cmdline, string cmdline_parameter)

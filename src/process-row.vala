@@ -122,11 +122,19 @@ namespace Usage
             {
                 if(process.user.is_local_account)
                 {
-                    user_name_label.label = "CURRENT USER";
+                    if(process.user.is_logged_in())
+                    {
+                        user_name_label.label = "CURRENT USER";
+                    }
+                    else
+                    {
+                        user_name_label.label = process.user.real_name;
+                    }
                 }
                 else
                 {
-                    user_name_label.label = process.user.real_name;
+                    //user_name_label.label = process.user.real_name;
+                    user_name_label.label = "ROOT";
                 }
             }
             else
