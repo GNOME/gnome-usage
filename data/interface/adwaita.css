@@ -133,3 +133,22 @@ row.folders, list.folders {
 box.storage {
     background-color: #ffffff;
 }
+
+.tag {
+    border-style: none;
+    border-radius: 3px;
+    padding: 3px 6px;
+    color: white;
+}
+
+.tag.tag-root {
+    background-color: #EE2222;
+}
+
+.tag.tag-other-user {
+    background-color: #AEAEAE;
+}
+
+.tag.tag-unavailable {
+    background-color: orange;
+}

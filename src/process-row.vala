@@ -32,6 +32,9 @@ namespace Usage
         private Gtk.Label title_label;
 
         [GtkChild]
+        private Gtk.Box user_name_box;
+
+        [GtkChild]
         private Gtk.Label user_name_label;
 
         [GtkChild]
@@ -118,28 +121,33 @@ namespace Usage
 
         private void update_user_name_label()
         {
-            if(process.user.real_name != null)
+            if(process.user.real_name != null) // User info available
             {
-                if(process.user.is_local_account)
+                if(process.user.is_local_account) //  regular users
                 {
-                    if(process.user.is_logged_in())
+                    if(process.user.is_logged_in()) // current user
                     {
-                        user_name_label.label = "CURRENT USER";
+                        user_name_box.visible = false;
                     }
-                    else
+                    else // other regular users
                     {
+                        user_name_box.visible = true;
+                        user_name_box.get_style_context().add_class("tag-other-user");
                         user_name_label.label = process.user.real_name;
                     }
                 }
-                else
+                else // system users (marked as root)
                 {
-                    //user_name_label.label = process.user.real_name;
-                    user_name_label.label = "ROOT";
+                    user_name_box.visible = true;
+                    user_name_box.get_style_context().add_class("tag-root");
+                    user_name_label.label = "root";
                 }
             }
-            else
+            else // User info not available
             {
-                user_name_label.label = "UNAVAILABLE";
+                user_name_box.visible = true;
+                user_name_box.get_style_context().add_class("tag-unavailable");
+                user_name_label.label = "unavailable";
             }
         }
 
