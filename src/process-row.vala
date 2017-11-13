@@ -32,10 +32,10 @@ namespace Usage
         private Gtk.Label title_label;
 
         [GtkChild]
-        private Gtk.Box user_name_box;
+        private Gtk.Box user_tag_box;
 
         [GtkChild]
-        private Gtk.Label user_name_label;
+        private Gtk.Label user_tag_label;
 
         [GtkChild]
         private Gtk.Label load_label;
@@ -72,7 +72,7 @@ namespace Usage
                 show_details();
 
             update_title_label();
-            update_user_name_label();
+            update_user_tag();
         }
 
         private void load_icon(string display_name)
@@ -119,28 +119,27 @@ namespace Usage
                 update_title_label();
         }
 
-        private void update_user_name_label()
+        private void update_user_tag()
         {
-            if(process.user.real_name != null) // User info available
+            user_tag_box.visible = true;
+            if(process.user.is_available) // user info available
             {
-                if(process.user.is_local_account) //  regular users
+                if(process.user.is_local_account) // regular user
                 {
-                    process.user.bind_property("is_logged_in", user_name_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
-                    process.user.bind_property("real_name", user_name_label, "label", BindingFlags.SYNC_CREATE);
-                    user_name_box.get_style_context().add_class("tag-user");
+                    process.user.bind_property("is_logged_in", user_tag_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
+                    process.user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE);
+                    user_tag_box.get_style_context().add_class("tag-user");
                 }
-                else // system users (marked as root)
+                else // system user
                 {
-                    user_name_box.visible = true;
-                    user_name_box.get_style_context().add_class("tag-root");
-                    user_name_label.label = "root";
+                    user_tag_box.get_style_context().add_class("tag-root");
+                    user_tag_label.label = "root";
                 }
             }
-            else // User info not available
+            else // user info not available
             {
-                user_name_box.visible = true;
-                user_name_box.get_style_context().add_class("tag-unavailable");
-                user_name_label.label = "unavailable";
+                user_tag_box.get_style_context().add_class("tag-unavailable");
+                user_tag_label.label = "unavailable";
             }
         }
 

@@ -31,6 +31,11 @@ namespace Usage
                 return user_name != null && user_name == GLib.Environment.get_user_name();
             }
         }
+        public bool is_available {
+            get {
+                return real_name != null;
+            }
+        }
 
         public User(uint? uid, string? user_name, string? real_name, bool? is_local_account)
         {
