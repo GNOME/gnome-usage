@@ -126,11 +126,8 @@ namespace Usage
                 if(process.user.is_local_account) //  regular users
                 {
                     process.user.bind_property("is_logged_in", user_name_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
-                    if(!process.user.is_logged_in)
-                    {
-                        user_name_box.get_style_context().add_class("tag-other-user");
-                        user_name_label.label = process.user.real_name;
-                    }
+                    process.user.bind_property("real_name", user_name_label, "label", BindingFlags.SYNC_CREATE);
+                    user_name_box.get_style_context().add_class("tag-user");
                 }
                 else // system users (marked as root)
                 {
