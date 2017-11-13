@@ -56,7 +56,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="user_name_box">
+              <object class="GtkBox" id="user_tag_box">
                 <property name="visible">False</property>
                 <property name="can_focus">False</property>
                 <property name="margin_right">10</property>
@@ -64,7 +64,7 @@
                   <class name="tag"/>
                 </style>
                 <child>
-                  <object class="GtkLabel" id="user_name_label">
+                  <object class="GtkLabel" id="user_tag_label">
                     <property name="visible">True</property>
                   </object>
                 </child>
