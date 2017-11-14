@@ -15,6 +15,8 @@
         <child>
           <object class="UsageSpeedometer" id="speedometer">
             <property name="visible">True</property>
+            <property name="width_request">120</property>
+            <property name="height_request">120</property>
 
             <child>
               <object class="GtkLabel" id="label">
