@@ -29,9 +29,6 @@ namespace Usage
         {
             name = "MEMORY";
 
-            var memory_graph = new MemorySpeedometer();
-            memory_graph.margin_top = 30;
-
             process_list_box = new ProcessListBox(ProcessListBoxType.MEMORY);
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
@@ -43,8 +40,17 @@ namespace Usage
 
             no_process_view = new NoResultsFoundView();
 
+            var memory_graph = new MemorySpeedometer();
+            var swap_graph = new SwapSpeedometer();
+            swap_graph.valign = Gtk.Align.END;
+
+            var speedometers = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            speedometers.pack_start(memory_graph, false, false, 0);
+            speedometers.pack_end(swap_graph, false, false, 0);
+            speedometers.margin_top = 30;
+
             var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            memory_box.pack_start(memory_graph, false, false, 0);
+            memory_box.pack_start(speedometers, false, false, 0);
             memory_box.pack_start(spinner, true, true, 0);
             memory_box.add(no_process_view);
 
