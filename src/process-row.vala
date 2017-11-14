@@ -122,24 +122,16 @@ namespace Usage
         private void update_user_tag()
         {
             user_tag_box.visible = true;
-            if(process.user.is_available) // user info available
+            if(process.user.is_local_account) // regular user
             {
-                if(process.user.is_local_account) // regular user
-                {
-                    process.user.bind_property("is_logged_in", user_tag_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
-                    process.user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE);
-                    user_tag_box.get_style_context().add_class("tag-user");
-                }
-                else // system user
-                {
-                    user_tag_box.get_style_context().add_class("tag-root");
-                    user_tag_label.label = "root";
-                }
+                process.user.bind_property("is_logged_in", user_tag_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
+                process.user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE);
+                user_tag_box.get_style_context().add_class("tag-user");
             }
-            else // user info not available
+            else // system user
             {
-                user_tag_box.get_style_context().add_class("tag-unavailable");
-                user_tag_label.label = "unavailable";
+                user_tag_box.get_style_context().add_class("tag-root");
+                user_tag_label.label = "root";
             }
         }
 
