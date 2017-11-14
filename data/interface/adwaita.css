@@ -141,8 +141,8 @@ box.storage {
     color: @theme_base_color;
 }
 
-.tag.tag-root {
-    background-color: red;
+.tag.tag-system {
+    background-color: orange;
 }
 
 .tag.tag-user {
