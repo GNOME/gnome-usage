@@ -41,7 +41,7 @@
         </child>
 
         <child>
-          <object class="GtkBox">
+          <object class="GtkBox" id="ram_used_box">
             <property name="halign">center</property>
             <property name="spacing">10</property>
             <child>
@@ -65,7 +65,7 @@
         </child>
 
         <child>
-          <object class="GtkBox">
+          <object class="GtkBox" id="ram_available_box">
             <property name="halign">center</property>
             <property name="spacing">10</property>
             <child>
@@ -96,6 +96,13 @@
     <widgets>
       <widget name="ram_used_label"/>
       <widget name="ram_available_label"/>
+    </widgets>
+  </object>
+
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="ram_available_box"/>
+      <widget name="ram_used_box"/>
     </widgets>
   </object>
 
