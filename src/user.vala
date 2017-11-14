@@ -27,9 +27,15 @@ namespace Usage
         public string user_name { get { return _user.get_user_name(); }}
         public string real_name { get { return _user.get_real_name(); }}
         public bool is_local_account { get { return _user.is_local_account(); }}
+        public bool is_loaded { get { return _user.is_loaded; }}
         public bool is_logged_in {
             get {
                 return user_name == GLib.Environment.get_user_name();
+            }
+        }
+        public bool is_root {
+            get {
+                return uid == 0;
             }
         }
 

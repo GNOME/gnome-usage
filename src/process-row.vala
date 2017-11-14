@@ -121,17 +121,28 @@ namespace Usage
 
         private void update_user_tag()
         {
+            if(!process.user.is_loaded) // prevent displaying a tag before user is loaded
+            {
+                return;
+            }
+
             user_tag_box.visible = true;
+            process.user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE);
             if(process.user.is_local_account) // regular user
             {
                 process.user.bind_property("is_logged_in", user_tag_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
-                process.user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE);
                 user_tag_box.get_style_context().add_class("tag-user");
             }
             else // system user
             {
-                user_tag_box.get_style_context().add_class("tag-root");
-                user_tag_label.label = "root";
+                if(process.user.is_root) // root user
+                {
+                    user_tag_box.get_style_context().add_class("tag-root");
+                }
+                else // other system user
+                {
+                    user_tag_box.get_style_context().add_class("tag-system");
+                }
             }
         }
 
