@@ -47,16 +47,15 @@ namespace Usage
                 this.speedometer.percentage = (int)percentage;
                 label.label = "%d".printf((int)percentage) + "%";
 
-                var used = monitor.ram_usage/1000000000;
-                var available = (monitor.ram_total - monitor.ram_usage)/1000000000;
+                var available = (monitor.ram_total - monitor.ram_usage);
 
-                ram_used.label = "%.1f".printf(used) + " GB";
-                ram_available.label = "%.1f".printf(available) + " GB";
+                ram_used.label = Utils.format_size_values(monitor.ram_usage);
+                ram_available.label = Utils.format_size_values(available);
 
                 return true;
             });
 
             this.show_all();
-        }        
+        }
     }
 }

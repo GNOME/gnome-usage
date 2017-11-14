@@ -36,8 +36,6 @@ namespace Usage
                 return _percentage;
             }
             set {
-                
-
                 on_percentage_changed(_percentage, value);
 
                 _percentage = value;
