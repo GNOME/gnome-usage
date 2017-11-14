@@ -37,7 +37,7 @@ namespace Usage
         private HashTable<string, Process> cpu_process_table;
         private HashTable<string, Process> ram_process_table;
 
-        private int process_mode = GTop.EXCLUDE_SYSTEM;
+        private int process_mode = GTop.KERN_PROC_ALL;
         private GLib.List<AppInfo> apps_info;
 
         private static SystemMonitor system_monitor;

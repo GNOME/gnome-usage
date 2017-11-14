@@ -130,7 +130,14 @@ namespace Usage
             }
             else // system user
             {
-                user_tag_box.get_style_context().add_class("tag-system");
+                if(process.user.is_root) // root user
+                {
+                    user_tag_box.get_style_context().add_class("tag-root");
+                }
+                else // other system user
+                {
+                    user_tag_box.get_style_context().add_class("tag-system");
+                }
             }
         }
 

@@ -32,6 +32,11 @@ namespace Usage
                 return user_name == GLib.Environment.get_user_name();
             }
         }
+        public bool is_root {
+            get {
+                return uid == 0;
+            }
+        }
 
         public User(Act.User user)
         {
