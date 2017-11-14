@@ -186,7 +186,7 @@ namespace Usage
             GTop.ProcUid procUid;
             GTop.get_proc_uid(out procUid, pid);
             Act.User user = Act.UserManager.get_default().get_user_by_id(procUid.uid);
-            return new User(user.get_uid(), user.get_user_name(), user.get_real_name(), user.is_local_account());
+            return new User(user);
     }
 
 		private string get_display_name(string cmdline, string cmdline_parameter)
@@ -342,8 +342,7 @@ namespace Usage
                         }
                         else //add subrow
                         {
-                            User user = get_user(process_it.pid);
-                            var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, user);
+                            var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, process_it.user);
                             process.update_from_process(process_it);
                             to_table[process.cmdline].sub_processes.insert(process.pid, (owned) process);
                         }
@@ -360,13 +359,11 @@ namespace Usage
                             to_table[process_it.cmdline].sub_processes = new HashTable<Pid?, Process>(int_hash, int_equal);
                             unowned Process process = to_table[process_it.cmdline];
 
-                            User user = get_user(process.pid);
-                            var sub_process_one = new Process(process.pid, process.cmdline, process.cmdline_parameter, process.display_name, user);
+                            var sub_process_one = new Process(process.pid, process.cmdline, process.cmdline_parameter, process.display_name, process.user);
                             sub_process_one.update_from_process(process);
                             to_table[process_it.cmdline].sub_processes.insert(sub_process_one.pid, (owned) sub_process_one);
 
-                            user = get_user(process_it.pid);
-                            var sub_process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, user);
+                            var sub_process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, process_it.user);
                             sub_process.update_from_process(process_it);
                             to_table[process_it.cmdline].sub_processes.insert(process_it.pid, (owned) sub_process);
                         }
@@ -374,8 +371,7 @@ namespace Usage
                 }
                 else //add process
                 {
-                     User user = get_user(process_it.pid);
-                     var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, user);
+                     var process = new Process(process_it.pid, process_it.cmdline, process_it.cmdline_parameter, process_it.display_name, process_it.user);
                      process.update_from_process(process_it);
                      to_table.insert(process.cmdline, (owned) process);
                 }
