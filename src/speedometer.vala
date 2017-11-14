@@ -47,6 +47,9 @@ namespace Usage
             Gtk.StyleContext.add_provider_for_screen(get_screen(),
                                                      css_provider,
                                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            bind_property("width-request", content_area, "width-request", BindingFlags.BIDIRECTIONAL);
+            bind_property("height-request", content_area, "height-request", BindingFlags.BIDIRECTIONAL);
         }
 
         private void on_percentage_changed(int old_value, int new_value)
