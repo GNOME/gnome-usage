@@ -46,6 +46,7 @@ namespace Usage
         [GtkChild]
         private SubProcessListBox sub_process_list_box;
 
+        private User user;
         public Process process { get; private set; }
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
@@ -72,7 +73,7 @@ namespace Usage
                 show_details();
 
             update_title_label();
-            update_user_tag();
+            update_user();
         }
 
         private void load_icon(string display_name)
@@ -119,23 +120,34 @@ namespace Usage
                 update_title_label();
         }
 
+        private void update_user()
+        {
+            user = new User(process.uid);
+            if(user.available)
+            {
+                update_user_tag();
+            }
+            else
+            {
+                user.notify["available"].connect(() => {
+                    update_user_tag();
+                });
+            }
+        }
+
         private void update_user_tag()
         {
-            if(!process.user.is_loaded) // prevent displaying a tag before user is loaded
-            {
-                return;
-            }
-
             user_tag_box.visible = true;
-            process.user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE);
-            if(process.user.is_local_account) // regular user
+            user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE );
+
+            if(user.is_local_account) // regular user
             {
-                process.user.bind_property("is_logged_in", user_tag_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
+                user.bind_property("is_logged_in", user_tag_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
                 user_tag_box.get_style_context().add_class("tag-user");
             }
             else // system user
             {
-                if(process.user.is_root) // root user
+                if(user.is_root) // root user
                 {
                     user_tag_box.get_style_context().add_class("tag-root");
                 }
