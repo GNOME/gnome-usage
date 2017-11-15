@@ -53,7 +53,6 @@ namespace Usage
         public User(uint uid)
         {
             this.uid = uid;
-            message(Act.UserManager.get_default().is_loaded.to_string());
 
             if(user_manager_available)
             {
