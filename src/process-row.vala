@@ -121,6 +121,11 @@ namespace Usage
 
         private void update_user_tag()
         {
+            if(!process.user.is_loaded) // prevent displaying a tag before user is loaded
+            {
+                return;
+            }
+
             user_tag_box.visible = true;
             process.user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE);
             if(process.user.is_local_account) // regular user
