@@ -37,7 +37,6 @@ vala_sources = [
     'sub-process-list-box.vala',
     'sub-process-sub-row.vala',
     'system-monitor.vala',
-    'user.vala',
     'utils.vala',
     'view.vala',
     'window.vala']

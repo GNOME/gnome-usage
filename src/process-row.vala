@@ -46,7 +46,7 @@ namespace Usage
         [GtkChild]
         private SubProcessListBox sub_process_list_box;
 
-        private User user;
+        private Act.User user;
         public Process process { get; private set; }
         public bool showing_details { get; private set; }
         public bool max_usage { get; private set; }
@@ -122,39 +122,58 @@ namespace Usage
 
         private void update_user()
         {
-            user = new User(process.uid);
-            if(user.available)
+            if(user == null)
             {
-                update_user_tag();
+                user = Act.UserManager.get_default().get_user_by_id(process.uid);
+
+                user.changed.connect(() => {
+                    update_user();
+                });
+            }
+
+            if(user.is_loaded)
+            {
+                update_user_tag(true);
             }
             else
             {
-                user.notify["available"].connect(() => {
-                    update_user_tag();
-                });
+                update_user_tag(false);
             }
         }
 
-        private void update_user_tag()
+        private void update_user_tag(bool is_user_loaded)
         {
-            user_tag_box.visible = true;
-            user.bind_property("real_name", user_tag_label, "label", BindingFlags.SYNC_CREATE );
+            if(is_user_loaded) // create user tag
+            {
+                user_tag_box.visible = true;
+                user_tag_label.label = user.real_name;
 
-            if(user.is_local_account) // regular user
-            {
-                user.bind_property("is_logged_in", user_tag_box, "visible", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
-                user_tag_box.get_style_context().add_class("tag-user");
+                if(user.is_local_account()) // regular user
+                {
+                    if(user.user_name == GLib.Environment.get_user_name()) // checks whether user is currently logged in
+                    {
+                        user_tag_box.visible = false;
+                    }
+                    user_tag_box.get_style_context().add_class("tag-user");
+                }
+                else // system user
+                {
+                    if(user.uid == 0) // root user
+                    {
+                        user_tag_box.get_style_context().add_class("tag-root");
+                    }
+                    else // other system user
+                    {
+                        user_tag_box.get_style_context().add_class("tag-system");
+                    }
+                }
             }
-            else // system user
+            else // remove user tag
             {
-                if(user.is_root) // root user
-                {
-                    user_tag_box.get_style_context().add_class("tag-root");
-                }
-                else // other system user
-                {
-                    user_tag_box.get_style_context().add_class("tag-system");
-                }
+                user_tag_box.visible = false;
+                user_tag_box.get_style_context().remove_class("tag-user");
+                user_tag_box.get_style_context().remove_class("tag-root");
+                user_tag_box.get_style_context().remove_class("tag-system");
             }
         }
 
