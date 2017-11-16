@@ -73,7 +73,7 @@ namespace Usage
                 show_details();
 
             update_title_label();
-            update_user();
+            update_user_tag();
         }
 
         private void load_icon(string display_name)
@@ -120,60 +120,54 @@ namespace Usage
                 update_title_label();
         }
 
-        private void update_user()
+        private void update_user_tag()
         {
             if(user == null)
             {
                 user = Act.UserManager.get_default().get_user_by_id(process.uid);
-
                 user.changed.connect(() => {
-                    update_user();
+                    update_user_tag();
                 });
             }
 
+            remove_user_tag();
             if(user.is_loaded)
             {
-                update_user_tag(true);
-            }
-            else
-            {
-                update_user_tag(false);
+                update_user_tag();
             }
         }
 
-        private void update_user_tag(bool is_user_loaded)
+        private void remove_user_tag()
         {
-            if(is_user_loaded) // create user tag
-            {
-                user_tag_box.visible = true;
-                user_tag_label.label = user.real_name;
+            user_tag_box.visible = false;
+            user_tag_box.get_style_context().remove_class("tag-user");
+            user_tag_box.get_style_context().remove_class("tag-root");
+            user_tag_box.get_style_context().remove_class("tag-system");
+        }
 
-                if(user.is_local_account()) // regular user
-                {
-                    if(user.user_name == GLib.Environment.get_user_name()) // checks whether user is currently logged in
-                    {
-                        user_tag_box.visible = false;
-                    }
-                    user_tag_box.get_style_context().add_class("tag-user");
-                }
-                else // system user
-                {
-                    if(user.uid == 0) // root user
-                    {
-                        user_tag_box.get_style_context().add_class("tag-root");
-                    }
-                    else // other system user
-                    {
-                        user_tag_box.get_style_context().add_class("tag-system");
-                    }
-                }
-            }
-            else // remove user tag
+        private void update_user_tag()
+        {
+            user_tag_box.visible = true;
+            user_tag_label.label = user.real_name;
+
+            if(user.is_local_account()) // regular user
             {
-                user_tag_box.visible = false;
-                user_tag_box.get_style_context().remove_class("tag-user");
-                user_tag_box.get_style_context().remove_class("tag-root");
-                user_tag_box.get_style_context().remove_class("tag-system");
+                if(user.user_name == GLib.Environment.get_user_name()) // checks whether user is currently logged in
+                {
+                    user_tag_box.visible = false;
+                }
+                user_tag_box.get_style_context().add_class("tag-user");
+            }
+            else // system user
+            {
+                if(user.uid == 0) // root user
+                {
+                    user_tag_box.get_style_context().add_class("tag-root");
+                }
+                else // other system user
+                {
+                    user_tag_box.get_style_context().add_class("tag-system");
+                }
             }
         }
 
