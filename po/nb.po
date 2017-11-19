@@ -1,0 +1,253 @@
+# Norwegian Bokmål translation for gnome-usage.
+# Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Kjartan Maraas <kmaraas@gnome.org>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2017-11-15 19:08+0000\n"
+"PO-Revision-Date: 2017-11-19 17:34+0100\n"
+"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"Language-Team: Norwegian Bokmål <nb@li.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:91
+#: ../src/window.vala:41
+msgid "Usage"
+msgstr "Bruk"
+
+#: ../data/org.gnome.Usage.desktop:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: ../data/org.gnome.Usage.desktop:8
+msgid "org.gnome.Usage"
+msgstr "org.gnome.Usage"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.Usage.desktop:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr "Overvåk;System;Prosess;CPU;Minne;Nettverk;Historikk;Bruk;Ytelse;Oppgaveliste;"
+
+#: ../data/org.gnome.Usage.gschema.xml.h:1
+msgid "A list of processes which we don’t want killed"
+msgstr ""
+
+#: ../data/org.gnome.Usage.gschema.xml.h:2
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+
+#: ../data/ui/header-bar.ui.h:1 ../data/ui/quit-process-dialog.ui.h:5
+#: ../src/storage-actionbar.vala:90 ../src/storage-row.vala:393
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../data/ui/no-results-found-view.ui.h:1
+msgid "No results found"
+msgstr "Fant ingen resultater"
+
+#: ../data/ui/no-results-found-view.ui.h:2
+msgid "Try a different search"
+msgstr "Prøv et annet søk"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: ../data/ui/quit-process-dialog.ui.h:3
+#, no-c-format
+msgid "Force Quit %s?"
+msgstr ""
+
+#: ../data/ui/quit-process-dialog.ui.h:4
+msgid "Unsaved work might be lost."
+msgstr ""
+
+#: ../data/ui/quit-process-dialog.ui.h:6
+msgid "Force Quit"
+msgstr ""
+
+#: ../data/ui/storage-actionbar.ui.h:1 ../src/storage-row.vala:274
+msgid "Move to"
+msgstr "Flytt til"
+
+#: ../data/ui/storage-actionbar.ui.h:2 ../src/storage-row.vala:278
+msgid "Delete"
+msgstr "Slett"
+
+#: ../data/ui/storage-actionbar.ui.h:3
+msgid "Move to Trash"
+msgstr "Flytt til papirkurv"
+
+#: ../data/ui/storage-actionbar.ui.h:4
+msgid "Empty folder"
+msgstr "Tom mappe"
+
+#: ../data/ui/storage-actionbar.ui.h:5 ../src/storage-row.vala:263
+msgid "Restore"
+msgstr "Gjenopprett"
+
+#: ../data/ui/storage-actionbar.ui.h:6 ../src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Slett fra papirkurv"
+
+#: ../data/ui/storage-view.ui.h:1
+msgid "No content here"
+msgstr ""
+
+#: ../src/application.vala:56
+msgid "About"
+msgstr "Om"
+
+#: ../src/application.vala:59
+msgid "Quit"
+msgstr "Avslutt"
+
+#: ../src/application.vala:92
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+
+#: ../src/application.vala:95
+msgid "translator-credits"
+msgstr "Kjartan Maraas <kmaraas@gnome.org>"
+
+#: ../src/application.vala:97
+msgid "Websites"
+msgstr "Nettsteder"
+
+#: ../src/cpu-sub-view.vala:32 ../src/graph-stack-switcher.vala:40
+msgid "Processor"
+msgstr "Prosessor"
+
+#: ../src/graph-block.vala:65
+msgid "Others"
+msgstr "Annet"
+
+#: ../src/graph-block.vala:67 ../src/storage-item.vala:140
+msgid "Available"
+msgstr "Tilgjengelig"
+
+#: ../src/graph-stack-switcher.vala:41
+msgid "Memory"
+msgstr "Minne"
+
+#: ../src/header-bar.vala:143
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "%u valgt"
+msgstr[1] "%u valgt"
+
+#: ../src/header-bar.vala:145
+msgid "Click on items to select them"
+msgstr "Klikk på oppføringer for å velge dem"
+
+#: ../src/header-bar.vala:209
+msgid "Select all"
+msgstr "Velg alle"
+
+#: ../src/header-bar.vala:213
+msgid "Select None"
+msgstr "Velg ingen"
+
+#: ../src/performance-view.vala:45
+msgid "Performance"
+msgstr "Ytelse"
+
+#: ../src/storage-actionbar.vala:89 ../src/storage-row.vala:392
+msgid "Select destination folder"
+msgstr ""
+
+#: ../src/storage-actionbar.vala:92 ../src/storage-row.vala:395
+msgid "Select"
+msgstr "Velg"
+
+#: ../src/storage-actionbar.vala:143
+#, c-format
+msgid "Are you sure you want to permanently delete this items %s?"
+msgstr ""
+
+#: ../src/storage-actionbar.vala:144
+msgid "If you delete these items, they will be permanently lost."
+msgstr ""
+
+#: ../src/storage-actionbar.vala:197 ../src/storage-row.vala:342
+msgid "Empty all items from Trash?"
+msgstr ""
+
+#: ../src/storage-actionbar.vala:198 ../src/storage-row.vala:343
+msgid "All items in the Trash will be permanently deleted."
+msgstr ""
+
+#: ../src/storage-actionbar.vala:219 ../src/storage-row.vala:322
+#, c-format
+msgid "Empty all items from %s?"
+msgstr ""
+
+#: ../src/storage-actionbar.vala:220 ../src/storage-row.vala:323
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr ""
+
+#: ../src/storage-analyzer.vala:94
+msgid "Storage 1"
+msgstr "Lagring 1"
+
+#: ../src/storage-analyzer.vala:98
+msgid "Storage 2"
+msgstr "Lagring 2"
+
+#: ../src/storage-analyzer.vala:105
+msgid "Capacity"
+msgstr "Kapasitet"
+
+#: ../src/storage-analyzer.vala:647
+msgid "Home"
+msgstr "Hjem"
+
+#: ../src/storage-item.vala:104
+msgid "Trash"
+msgstr "Papirkurv"
+
+#: ../src/storage-item.vala:128
+msgid "Operating System"
+msgstr "Operativsystem"
+
+#: ../src/storage-row.vala:248
+msgid "Empty"
+msgstr "Tøm"
+
+#: ../src/storage-row.vala:253
+msgid "Empty Trash"
+msgstr "Tøm papirkurv"
+
+#: ../src/storage-row.vala:273 ../src/storage-row.vala:367
+msgid "Rename"
+msgstr "Endre navn"
+
+#: ../src/storage-row.vala:277
+msgid "Move to trash"
+msgstr "Flytt til papirkurv"
+
+#: ../src/storage-row.vala:439
+#, c-format
+msgid "Are you sure you want to permanently delete %s?"
+msgstr ""
+
+#: ../src/storage-row.vala:440
+msgid "If you delete an item, it will be permanently lost."
+msgstr ""
+
+#: ../src/storage-view.vala:45
+msgid "Storage"
+msgstr "Lagring"
