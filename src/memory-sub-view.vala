@@ -50,6 +50,7 @@ namespace Usage
             speedometers.margin_top = 30;
 
             var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            memory_box.halign = Gtk.Align.CENTER;
             memory_box.pack_start(speedometers, false, false, 0);
             memory_box.pack_start(spinner, true, true, 0);
             memory_box.add(no_process_view);
@@ -63,14 +64,8 @@ namespace Usage
 
             process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
 
-            var better_box = new BetterBox();
-            better_box.max_width_request = 600;
-            better_box.halign = Gtk.Align.CENTER;
-            better_box.orientation = Gtk.Orientation.HORIZONTAL;
-            better_box.add(memory_box);
-
             var scrolled_window = new Gtk.ScrolledWindow(null, null);
-            scrolled_window.add(better_box);
+            scrolled_window.add(memory_box);
             scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
 
             add(scrolled_window);

@@ -53,6 +53,7 @@ namespace Usage
             no_process_view = new NoResultsFoundView();
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            cpu_box.halign = Gtk.Align.CENTER;
             cpu_box.pack_start(label, false, false, 0);
             cpu_box.pack_start(cpu_graph_box, false, false, 0);
             cpu_box.pack_start(spinner, true, true, 0);
@@ -67,14 +68,8 @@ namespace Usage
 
             process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
 
-            var better_box = new BetterBox();
-            better_box.max_width_request = 600;
-            better_box.halign = Gtk.Align.CENTER;
-            better_box.orientation = Gtk.Orientation.HORIZONTAL;
-            better_box.add(cpu_box);
-
             var scrolled_window = new Gtk.ScrolledWindow(null, null);
-            scrolled_window.add(better_box);
+            scrolled_window.add(cpu_box);
             scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
 
             add(scrolled_window);
