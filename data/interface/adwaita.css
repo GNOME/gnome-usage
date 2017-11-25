@@ -145,11 +145,9 @@ box.storage {
 
 .speedometer-inner {
     margin: -1px;
-    animation-fill-mode: forwards;
-    animation-duration: 200ms;
-    animation-timing-function: ease-in-out;
     background: linear-gradient(90deg, transparent 50%, @theme_base_color 50%),
                 linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
+    transition: background 1s ease-in-out;
 }
 
 .speedometer-content-area {

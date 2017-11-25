@@ -73,15 +73,10 @@ namespace Usage
             }
 
             var css =
-            @"@keyframes speedometer_keyframes-$(old_value)-$(new_value) {
-                from {
-                    background: linear-gradient($(old_angle)deg, transparent 50%, $filling_color 50%),
-                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
-                } to {
-                    background: linear-gradient($(new_angle)deg, transparent 50%, $filling_color 50%),
-                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
-                  }
-            } .speedometer-inner { animation-name: speedometer_keyframes-$(old_value)-$(new_value); }";
+            @".speedometer-inner {
+                background: linear-gradient($(new_angle)deg, transparent 50%, $filling_color 50%),
+                            linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
+            }";
 
             try
             {
