@@ -39,7 +39,7 @@ namespace Usage
                 return _percentage;
             }
             set {
-                on_percentage_changed(_percentage, value);
+                on_percentage_changed(value);
 
                 _percentage = value;
             }
@@ -54,20 +54,16 @@ namespace Usage
             bind_property("height-request", content_area, "height-request", BindingFlags.BIDIRECTIONAL);
         }
 
-        private void on_percentage_changed(int old_value, int new_value)
+        private void on_percentage_changed(int new_value)
         {
             if (new_value <= 0 && new_value >= 100)
                 return;
 
-            double old_angle, new_angle;
-
-            old_angle = 90 + (360 * (old_value/100.0));
-            new_angle = 90 + (360 * (new_value/100.0));
+            double new_angle = 90 + (360 * (new_value/100.0));
             var filling_color = "@theme_base_color";
 
             if (new_value > 50)
             {
-                old_angle -= 180;
                 new_angle -= 180;
                 filling_color = "@theme_selected_bg_color";
             }
