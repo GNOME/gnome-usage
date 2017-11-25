@@ -63,39 +63,25 @@ namespace Usage
 
             old_angle = 90 + (360 * (old_value/100.0));
             new_angle = 90 + (360 * (new_value/100.0));
+            var filling_color = "@theme_base_color";
 
-            var css = """
-                @keyframes speedometer_keyframes-%d {
-            """.printf(new_value);
-
-            if (new_value < 50)
+            if (new_value > 50)
             {
-                css += """
-                  from {
-                    background: linear-gradient(%ddeg, transparent 50%, @theme_base_color 50%),
-                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
-                  }
-                  to {
-                    background: linear-gradient(%ddeg, transparent 50%, @theme_base_color 50%),
-                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
-                  }""".printf((int)old_angle, (int)new_angle);
-            }
-            else
-            {
-                css += """
-                  from {
-                    background: linear-gradient(%ddeg, transparent 50%, @theme_selected_bg_color 50%),
-                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
-                  }
-                  to {
-                    background: linear-gradient(%ddeg, transparent 50%, @theme_selected_bg_color 50%),
-                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
-                  }""".printf((int)old_angle-180, (int)new_angle-180);
+                old_angle -= 180;
+                new_angle -= 180;
+                filling_color = "@theme_selected_bg_color";
             }
 
-            css += """
-            } .speedometer-inner { animation-name: speedometer_keyframes-%d; }
-            """.printf(new_value);
+            var css =
+            @"@keyframes speedometer_keyframes-$(old_value)-$(new_value) {
+                from {
+                    background: linear-gradient($(old_angle)deg, transparent 50%, $filling_color 50%),
+                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
+                } to {
+                    background: linear-gradient($(new_angle)deg, transparent 50%, $filling_color 50%),
+                                linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
+                  }
+            } .speedometer-inner { animation-name: speedometer_keyframes-$(old_value)-$(new_value); }";
 
             try
             {
