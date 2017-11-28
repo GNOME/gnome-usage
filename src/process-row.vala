@@ -59,10 +59,15 @@ namespace Usage
         private const int MAX_CPU_USAGE_LIMIT = 90;
         private const int MAX_MEMORY_USAGE_LIMIT = 90;
 
+        private const string CSS_TAG_USER = "tag-user";
+        private const string CSS_TAG_ROOT = "tag-root";
+        private const string CSS_TAG_SYSTEM = "tag-system";
+
         public ProcessRow(Process process, ProcessListBoxType type, bool opened = false)
         {
             this.type = type;
             this.process = process;
+            this.user = Act.UserManager.get_default().get_user_by_id(process.uid);
             showing_details = opened;
 
             load_icon(process.display_name);
@@ -73,7 +78,10 @@ namespace Usage
                 show_details();
 
             update_title_label();
-            update_user_tag();
+
+            this.user.notify["is-loaded"].connect(() => {
+                update_user_tag();
+            });
         }
 
         private void load_icon(string display_name)
@@ -116,20 +124,14 @@ namespace Usage
             check_max_usage();
             set_styles();
 
+            update_user_tag();
+
             if(!showing_details)
                 update_title_label();
         }
 
         private void update_user_tag()
         {
-            if(user == null)
-            {
-                user = Act.UserManager.get_default().get_user_by_id(process.uid);
-                user.changed.connect(() => {
-                    update_user_tag();
-                });
-            }
-
             remove_user_tag();
             if(user.is_loaded)
             {
@@ -140,9 +142,9 @@ namespace Usage
         private void remove_user_tag()
         {
             user_tag_box.visible = false;
-            user_tag_box.get_style_context().remove_class("tag-user");
-            user_tag_box.get_style_context().remove_class("tag-root");
-            user_tag_box.get_style_context().remove_class("tag-system");
+            user_tag_box.get_style_context().remove_class(CSS_TAG_USER);
+            user_tag_box.get_style_context().remove_class(CSS_TAG_ROOT);
+            user_tag_box.get_style_context().remove_class(CSS_TAG_SYSTEM);
         }
 
         private void create_user_tag()
@@ -150,25 +152,41 @@ namespace Usage
             user_tag_box.visible = true;
             user_tag_label.label = user.real_name;
 
-            if(user.is_local_account()) // regular user
+            string class_name = "";
+            if(is_regular_user())
             {
-                if(user.user_name == GLib.Environment.get_user_name()) // checks whether user is currently logged in
-                {
-                    user_tag_box.visible = false;
-                }
-                user_tag_box.get_style_context().add_class("tag-user");
+                class_name = CSS_TAG_USER;
             }
-            else // system user
+            else if(is_root_user())
             {
-                if(user.uid == 0) // root user
-                {
-                    user_tag_box.get_style_context().add_class("tag-root");
-                }
-                else // other system user
-                {
-                    user_tag_box.get_style_context().add_class("tag-system");
-                }
+                class_name = CSS_TAG_ROOT;
             }
+            else if(is_system_user())
+            {
+                class_name = CSS_TAG_SYSTEM;
+            }
+            user_tag_box.get_style_context().add_class(class_name);
+
+            if(is_logged_in())
+            {
+                user_tag_box.visible = false;
+            }
+        }
+
+        private bool is_regular_user(){
+            return user.is_local_account();
+        }
+
+        private bool is_root_user(){
+            return user.uid == 0;
+        }
+
+        private bool is_system_user(){
+            return !is_regular_user() && !is_root_user();
+        }
+
+        private bool is_logged_in(){
+            return user.user_name == GLib.Environment.get_user_name();
         }
 
         private void update_title_label()
