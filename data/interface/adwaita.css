@@ -147,7 +147,7 @@ box.storage {
     margin: -1px;
     background: linear-gradient(90deg, transparent 50%, @theme_base_color 50%),
                 linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
-    transition: background 1s ease-in-out;
+    transition: background 200ms ease-in-out;
 }
 
 .speedometer-content-area {
