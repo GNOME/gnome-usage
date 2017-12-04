@@ -56,34 +56,13 @@ namespace Usage
 
         private void load_icon(string display_name)
         {
-            foreach (AppInfo app_info in SystemMonitor.get_default().get_apps_info())
-            {
-                if(app_info.get_display_name() == display_name)
-                {
-                    if(app_info.get_icon() != null)
-                    {
-                        var icon_theme = new Gtk.IconTheme();
-                        var icon_info = icon_theme.lookup_by_gicon_for_scale(app_info.get_icon(), 24, 1, Gtk.IconLookupFlags.FORCE_SIZE);
-                        if(icon_info != null)
-                        {
-                            try
-                            {
-                                var pixbuf = icon_info.load_icon();
-                                icon.pixbuf = pixbuf;
-                            }
-                            catch(Error e) {
-                                GLib.stderr.printf ("Could not load icon for application %s: %s\n", display_name, e.message);
-                            }
+            var app_info = SystemMonitor.get_default().get_app_info(display_name);
+            var app_icon = (app_info == null) ? null : app_info.get_icon();
 
-                        }
-                    }
-                }
-            }
-
-            if(icon.pixbuf == null)
-            {
-                icon.set_from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
-            }
+            if (app_info == null || app_icon == null)
+                icon.gicon = new GLib.ThemedIcon("system-run-symbolic");
+            else
+                icon.gicon = app_icon;
         }
 
         private void update()
