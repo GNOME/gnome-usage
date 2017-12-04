@@ -83,8 +83,6 @@ namespace Usage
             if(icon.pixbuf == null)
             {
                 icon.set_from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON);
-                icon.width_request = 24;
-                icon.height_request = 24;
             }
         }
 
