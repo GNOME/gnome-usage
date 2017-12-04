@@ -85,6 +85,15 @@ namespace Usage
             return apps_info;
         }
 
+        public AppInfo? get_app_info(string desktop_id)
+        {
+            foreach(var app_info in apps_info)
+                if (app_info.get_display_name() == desktop_id)
+                    return app_info;
+
+            return null;
+        }
+
         public SystemMonitor()
         {
             GTop.init();
