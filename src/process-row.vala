@@ -132,7 +132,13 @@ namespace Usage
         private void create_user_tag()
         {
             user_tag_box.visible = true;
-            user_tag_label.label = user.real_name;
+
+            var tag_label = user.real_name.split(" ");
+            if (user.real_name.contains("User for") ||
+                user.real_name.contains("Default user for"))
+                user_tag_label.label = tag_label[tag_label.length - 1];
+            else
+                user_tag_label.label = user.real_name;
 
             string class_name = "";
             if(is_regular_user())
