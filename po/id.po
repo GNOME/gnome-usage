@@ -6,25 +6,40 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-05-31 12:30+0000\n"
-"PO-Revision-Date: 2017-06-18 14:33+0700\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2017-11-19 23:01+0000\n"
+"PO-Revision-Date: 2017-11-30 13:12+0700\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:104
-#: ../src/window.vala:35
+#: data/org.gnome.Usage.appdata.xml.in:5
+msgid "GNOME Usage"
+msgstr "GNOME Pemakaian"
+
+#: data/org.gnome.Usage.appdata.xml.in:6
+msgid "A nice way to view information about use of system resources"
+msgstr ""
+"Cara yang baik untuk melihat informasi tentang penggunaan sumber daya sistem"
+
+#: data/org.gnome.Usage.appdata.xml.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+"Aplikasi GNOME 3 sederhana untuk memantau dan menganalisis sumber daya "
+"sistem seperti pemrosesan, memori, dan penyimpanan."
+
+#: data/org.gnome.Usage.desktop:3 src/application.vala:91 src/window.vala:41
 msgid "Usage"
 msgstr "Pemakaian"
 
-#: ../data/org.gnome.Usage.desktop:4
+#: data/org.gnome.Usage.desktop:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -33,12 +48,12 @@ msgstr ""
 "sistem, seperti memori dan ruang diska"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: ../data/org.gnome.Usage.desktop:8
+#: data/org.gnome.Usage.desktop:8
 msgid "org.gnome.Usage"
 msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: ../data/org.gnome.Usage.desktop:13
+#: data/org.gnome.Usage.desktop:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -46,30 +61,79 @@ msgstr ""
 "Monitor;Sistem;Proses;CPU;Memori;Jaringan;Riwayat;Pemakaian;Performa;Tugas;"
 "Pengelola;"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:1
+#: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Daftar proses yang tidak ingin kita dibunuh"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:2
+#: data/org.gnome.Usage.gschema.xml:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Daftar ini digunakan untuk menyaring proses yang pengguna tidak bisa "
 "hentikan."
 
-#: ../data/ui/header-bar.ui.h:1 ../src/storage-actionbar.vala:108
-#: ../src/storage-row.vala:393
+#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Batal"
 
-#: ../src/application.vala:69
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "Hasil tak ditemukan"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "Coba pencarian berbeda"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "Keluar Paksa &s?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "Pekerjaan yang belum disimpan bisa hilang."
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "Keluar Paksa"
+
+#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
+msgid "Move to"
+msgstr "Pindah ke"
+
+#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
+msgid "Delete"
+msgstr "Hapus"
+
+#: data/ui/storage-actionbar.ui:33
+msgid "Move to Trash"
+msgstr "Pindahkan ke Tong Sampah"
+
+#: data/ui/storage-actionbar.ui:45
+msgid "Empty folder"
+msgstr "Kosongkan folder"
+
+#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
+msgid "Restore"
+msgstr "Kembalikan"
+
+#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Hapus dari Tong Sampah"
+
+#: data/ui/storage-view.ui:63
+msgid "No content here"
+msgstr "Tidak ada konten di sini"
+
+#: src/application.vala:56
 msgid "About"
 msgstr "Tentang"
 
-#: ../src/application.vala:72
+#: src/application.vala:59
 msgid "Quit"
 msgstr "Keluar"
 
-#: ../src/application.vala:105
+#: src/application.vala:92
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -77,204 +141,163 @@ msgstr ""
 "Cara yang baik untuk melihat informasi tentang penggunaan sumber daya "
 "sistem, seperti memori dan ruang diska."
 
-#: ../src/application.vala:108
+#: src/application.vala:95
 msgid "translator-credits"
 msgstr "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017."
 
-#: ../src/application.vala:110
+#: src/application.vala:97
 msgid "Websites"
 msgstr "Situs Web"
 
-#: ../src/cpu-sub-view.vala:31 ../src/graph-stack-switcher.vala:45
-#: ../src/process-dialog.vala:50
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Prosesor"
 
-#: ../src/cpu-sub-view.vala:57
-msgid "No applications using processor."
-msgstr "Tidak ada aplikasi yang menggunakan prosesor."
-
-#: ../src/data-view.vala:28
-msgid "Data"
-msgstr "Data"
-
-#: ../src/graph-block.vala:65
+#: src/graph-block.vala:65
 msgid "Others"
 msgstr "Lainnya"
 
-#: ../src/graph-block.vala:67 ../src/storage-item.vala:140
+#: src/graph-block.vala:67 src/storage-item.vala:140
 msgid "Available"
 msgstr "Tersedia"
 
-#: ../src/graph-stack-switcher.vala:46 ../src/memory-sub-view.vala:31
-#: ../src/process-dialog.vala:51
+#: src/graph-stack-switcher.vala:41
 msgid "Memory"
 msgstr "Memori"
 
-#: ../src/header-bar.vala:155
+#: src/header-bar.vala:143
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u dipilih"
 
-#: ../src/header-bar.vala:157
+#: src/header-bar.vala:145
 msgid "Click on items to select them"
 msgstr "Klik pada butir untuk memilihnya"
 
-#: ../src/header-bar.vala:223
+#: src/header-bar.vala:209
 msgid "Select all"
 msgstr "Pilih semua"
 
-#: ../src/header-bar.vala:227
+#: src/header-bar.vala:213
 msgid "Select None"
 msgstr "Pilih Tak Satupun"
 
-#: ../src/memory-sub-view.vala:57
-msgid "No applications using memory."
-msgstr "Tidak ada aplikasi yang menggunakan memori."
-
-#: ../src/performance-view.vala:45
+#: src/performance-view.vala:45
 msgid "Performance"
 msgstr "Performa"
 
-#: ../src/power-view.vala:28
-msgid "Power"
-msgstr "Daya"
-
-#: ../src/process-dialog.vala:56
-msgid "Stop"
-msgstr "Berhenti"
-
-#: ../src/process-dialog.vala:143
-msgid "Running"
-msgstr "Berjalan"
-
-#: ../src/process-dialog.vala:146
-msgid "Sleeping"
-msgstr "Tidur"
-
-#: ../src/process-dialog.vala:149
-msgid "Dead"
-msgstr "Mati"
-
-#. common
-#: ../src/storage-actionbar.vala:35 ../src/storage-row.vala:274
-msgid "Move to"
-msgstr "Pindah ke"
-
-#: ../src/storage-actionbar.vala:37 ../src/storage-row.vala:278
-msgid "Delete"
-msgstr "Hapus"
-
-#: ../src/storage-actionbar.vala:40
-msgid "Move to Trash"
-msgstr "Pindahkan ke Tong Sampah"
-
-#. root
-#: ../src/storage-actionbar.vala:47
-msgid "Empty folder"
-msgstr "Kosongkan folder"
-
-#. trash
-#: ../src/storage-actionbar.vala:52 ../src/storage-row.vala:263
-msgid "Restore"
-msgstr "Kembalikan"
-
-#: ../src/storage-actionbar.vala:54 ../src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Hapus dari Tong Sampah"
-
-#: ../src/storage-actionbar.vala:107 ../src/storage-row.vala:392
+#: src/storage-actionbar.vala:89 src/storage-row.vala:392
 msgid "Select destination folder"
 msgstr "Pilih folder tujuan"
 
-#: ../src/storage-actionbar.vala:110 ../src/storage-row.vala:395
+#: src/storage-actionbar.vala:92 src/storage-row.vala:395
 msgid "Select"
 msgstr "Pilih"
 
-#: ../src/storage-actionbar.vala:160
+#: src/storage-actionbar.vala:143
 #, c-format
 msgid "Are you sure you want to permanently delete this items %s?"
 msgstr "Anda yakin akan menghapus permanen \"%s\"?"
 
-#: ../src/storage-actionbar.vala:161
+#: src/storage-actionbar.vala:144
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Jika Anda menghapus butir-butir ini, mereka akan hilang selamanya."
 
-#: ../src/storage-actionbar.vala:211 ../src/storage-row.vala:342
+#: src/storage-actionbar.vala:197 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Kosongkan semua item dari Tempat Sampah?"
 
-#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:343
+#: src/storage-actionbar.vala:198 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Semua item dalam Tong Sampah akan dihapus secara permanen."
 
-#: ../src/storage-actionbar.vala:234 ../src/storage-row.vala:322
+#: src/storage-actionbar.vala:219 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Kosongkan semua item dari %s?"
 
-#: ../src/storage-actionbar.vala:235 ../src/storage-row.vala:323
+#: src/storage-actionbar.vala:220 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Semua item di %s akan dipindahkan ke Tong Sampah."
 
-#: ../src/storage-analyzer.vala:85
+#: src/storage-analyzer.vala:94
 msgid "Storage 1"
 msgstr "Penyimpanan 1"
 
-#: ../src/storage-analyzer.vala:89
+#: src/storage-analyzer.vala:98
 msgid "Storage 2"
 msgstr "Penyimpanan 2"
 
-#: ../src/storage-analyzer.vala:96
+#: src/storage-analyzer.vala:105
 msgid "Capacity"
 msgstr "Kapasitas"
 
-#: ../src/storage-analyzer.vala:638
+#: src/storage-analyzer.vala:647
 msgid "Home"
 msgstr "Beranda"
 
-#: ../src/storage-item.vala:104
+#: src/storage-item.vala:104
 msgid "Trash"
 msgstr "Tong Sampah"
 
-#: ../src/storage-item.vala:128
+#: src/storage-item.vala:128
 msgid "Operating System"
 msgstr "Sistem Operasi"
 
-#: ../src/storage-row.vala:248
+#: src/storage-row.vala:248
 msgid "Empty"
 msgstr "Kosong"
 
-#: ../src/storage-row.vala:253
+#: src/storage-row.vala:253
 msgid "Empty Trash"
 msgstr "Kosongkan Tong Sampah"
 
-#: ../src/storage-row.vala:273 ../src/storage-row.vala:367
+#: src/storage-row.vala:273 src/storage-row.vala:367
 msgid "Rename"
 msgstr "Ubah Nama"
 
-#: ../src/storage-row.vala:277
+#: src/storage-row.vala:277
 msgid "Move to trash"
 msgstr "Pindahkan ke tong sampah"
 
-#: ../src/storage-row.vala:439
+#: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
 msgstr "Anda yakin akan menghapus permanen \"%s\"?"
 
-#: ../src/storage-row.vala:440
+#: src/storage-row.vala:440
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Jika Anda menghapus suatu butir, itu akan hilang selamanya."
 
-#: ../src/storage-view.vala:32
+#: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Penyimpanan"
 
-#: ../src/storage-view.vala:53
-msgid "No content here"
-msgstr "Tidak ada konten di sini"
+#~ msgid "No applications using processor."
+#~ msgstr "Tidak ada aplikasi yang menggunakan prosesor."
+
+#~ msgid "Data"
+#~ msgstr "Data"
+
+#~ msgid "No applications using memory."
+#~ msgstr "Tidak ada aplikasi yang menggunakan memori."
+
+#~ msgid "Power"
+#~ msgstr "Daya"
+
+#~ msgid "Stop"
+#~ msgstr "Berhenti"
+
+#~ msgid "Running"
+#~ msgstr "Berjalan"
+
+#~ msgid "Sleeping"
+#~ msgstr "Tidur"
+
+#~ msgid "Dead"
+#~ msgstr "Mati"
 
 #~ msgid "application-default-icon"
 #~ msgstr "application-default-icon"
