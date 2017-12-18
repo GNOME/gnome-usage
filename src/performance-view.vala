@@ -38,7 +38,7 @@ namespace Usage
         private Gtk.SearchEntry search_entry;
 
         [GtkChild]
-        private Gtk.ScrolledWindow scrolled_window;
+        private AnimatedScrolledWindow scrolled_window;
 
         View[] sub_views;
 

@@ -22,8 +22,8 @@ namespace Usage
 {
     public class GraphStackSwitcher : Gtk.Box
     {
-        Gtk.Adjustment vadjustment;
         View[] sub_views;
+        AnimatedScrolledWindow scrolled_window;
 
         GraphSwitcherButton[] buttons;
 
@@ -32,15 +32,14 @@ namespace Usage
             set_css_name("graph-stack-switcher");
         }
 
-
-        public GraphStackSwitcher(Gtk.ScrolledWindow scrolled_window, View[] sub_views)
+        public GraphStackSwitcher(AnimatedScrolledWindow scrolled_window, View[] sub_views)
         {
             Object(orientation: Gtk.Orientation.VERTICAL, spacing: 0);
 
             this.sub_views = sub_views;
-            this.vadjustment = scrolled_window.get_vadjustment();
+            this.scrolled_window = scrolled_window;
 
-            this.vadjustment.value_changed.connect(on_scroll_changed);
+            scrolled_window.scroll_changed.connect(on_scroll_changed);
 
             buttons = {
                 new GraphSwitcherButton.processor(_("Processor")),
@@ -76,20 +75,17 @@ namespace Usage
             Gtk.Allocation alloc;
 
             this.sub_views[button_number].get_allocation(out alloc);
-
-            this.vadjustment.set_value(alloc.y);
+            scrolled_window.animated_scroll_vertically(alloc.y);
         }
 
-        private void on_scroll_changed(Gtk.Adjustment adjustment)
+        private void on_scroll_changed(double y)
         {
             Gtk.Allocation alloc;
-            var active_button = 0;
 
             this.sub_views[1].get_allocation(out alloc);
-            active_button = (adjustment.get_value() < alloc.y) ? 0 : 1;
+            var button_number = (y < alloc.y) ? 0 : 1;
 
-            this.buttons[active_button].set_active(true);
+            buttons[button_number].set_active(true);
         }
     }
 }
-
