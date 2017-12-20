@@ -42,7 +42,6 @@ vala_sources = [
     'window.vala']
 
 vala_args = [
-    '--gresources=' + meson.source_root() + '/data/org.gnome.Usage.gresource.xml',
     '--pkg=rg',
     '--pkg=egg',
     '--pkg=libgtop-2.0',

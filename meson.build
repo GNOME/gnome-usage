@@ -15,6 +15,7 @@ gtop = dependency('libgtop-2.0', version : '>=2.34.0')
 accountsservice = dependency('accountsservice', version: '>= 0.6.40')
 math = cc.find_library('m')
 
+gnome = import('gnome')
 i18n = import('i18n')
 
 po_dir = join_paths(meson.source_root(), 'po')

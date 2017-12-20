@@ -1,9 +1,23 @@
-gnome_module = import('gnome')
+resource_data = files(
+  'interface/adwaita.css',
+  'ui/header-bar.ui',
+  'ui/memory-speedometer.ui',
+  'ui/no-results-found-view.ui',
+  'ui/performance-view.ui',
+  'ui/process-row.ui',
+  'ui/quit-process-dialog.ui',
+  'ui/speedometer.ui',
+  'ui/storage-actionbar.ui',
+  'ui/storage-view.ui',
+  'ui/swap-speedometer.ui'
+)
 
-resources = gnome_module.compile_resources('org.gnome.Usage',
-                                           'org.gnome.Usage.gresource.xml',
-                                           source_dir: 'data',
-                                           c_name: 'resources')
+resources = gnome.compile_resources(
+  'org.gnome.Usage',
+  'org.gnome.Usage.gresource.xml',
+  c_name: 'resources',
+  dependencies: resource_data
+)
 
 install_data('org.gnome.Usage.gschema.xml', install_dir : get_option('datadir') + '/glib-2.0/schemas/')
 
