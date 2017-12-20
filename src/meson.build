@@ -41,19 +41,26 @@ vala_sources = [
     'view.vala',
     'window.vala']
 
-vala_args = [
-    '--pkg=rg',
-    '--pkg=egg',
-    '--pkg=libgtop-2.0',
-    '--pkg=accountsservice',
-    '--pkg=config',
-    '--pkg=posix',
-    '--vapidir=' + meson.current_source_dir() + '/vapis']
+deps = [
+  accountsservice,
+  egg,
+  gio,
+  glib,
+  gobject,
+  gtk,
+  gtop,
+  math,
+  rg,
+  valac.find_library('config', dirs: vapi_dir),
+  valac.find_library('egg', dirs: vapi_dir),
+  valac.find_library('posix'),
+  valac.find_library('rg', dirs: vapi_dir)
+]
 
 usage = executable('gnome-usage',
                      vala_sources,
                      resources,
                      c_args : [ '-DVERSION="' + meson.project_version() + '"', '-DGETTEXT_PACKAGE="gnome-usage"', '-DGNOMELOCALEDIR="' + get_option('prefix') + '/' + get_option('localedir') + '"' ],
-                     vala_args: vala_args,
+                     vala_args: '--vapidir=' + vapi_dir,
                      install: true,
-                     dependencies : [glib, gobject, gio, gtk, rg, egg, math, gtop, accountsservice])
+                     dependencies: deps)

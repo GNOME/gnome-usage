@@ -6,6 +6,7 @@ project(
 )
 
 cc = meson.get_compiler('c')
+valac = meson.get_compiler('vala')
 
 glib = dependency('glib-2.0', version : '>=2.38')
 gobject = dependency('gobject-2.0')
@@ -19,6 +20,7 @@ gnome = import('gnome')
 i18n = import('i18n')
 
 po_dir = join_paths(meson.source_root(), 'po')
+vapi_dir = join_paths (meson.source_root (), 'vapi')
 
 subdir('data')
 subdir('po')
