@@ -12,29 +12,35 @@ resource_data = files(
   'ui/swap-speedometer.ui'
 )
 
+gresource = 'org.gnome.Usage'
+
 resources = gnome.compile_resources(
-  'org.gnome.Usage',
-  'org.gnome.Usage.gresource.xml',
+  gresource,
+  gresource + '.gresource.xml',
   c_name: 'resources',
   dependencies: resource_data
 )
 
 install_data('org.gnome.Usage.gschema.xml', install_dir : get_option('datadir') + '/glib-2.0/schemas/')
 
+desktop = 'org.gnome.Usage.desktop'
+
 i18n.merge_file(
-  'desktop-file',
+  desktop,
   type: 'desktop',
-  input: 'org.gnome.Usage.desktop.in',
-  output: 'org.gnome.Usage.desktop',
+  input: desktop + '.in',
+  output: desktop,
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(get_option('datadir'), 'applications')
 )
 
+appdata = 'org.gnome.Usage.appdata.xml'
+
 i18n.merge_file(
-  'appdata-file',
-  input: 'org.gnome.Usage.appdata.xml.in',
-  output: 'org.gnome.Usage.appdata.xml',
+  appdata,
+  input: appdata + '.in',
+  output: appdata,
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(get_option('datadir'), 'metainfo')
