@@ -17,13 +17,6 @@ i18n.merge_file(
   install_dir: join_paths(get_option('datadir'), 'applications')
 )
 
-install_data('icons/16x16/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/16x16/apps']))
-install_data('icons/22x22/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/22x22/apps']))
-install_data('icons/24x24/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/24x24/apps']))
-install_data('icons/32x32/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/32x32/apps']))
-install_data('icons/48x48/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/48x48/apps']))
-install_data('icons/512x512/org.gnome.Usage.png', install_dir: join_paths([get_option('datadir'), 'icons/hicolor/512x512/apps']))
-
 i18n.merge_file(
   'appdata-file',
   input: 'org.gnome.Usage.appdata.xml.in',
@@ -31,4 +24,9 @@ i18n.merge_file(
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(get_option('datadir'), 'metainfo')
+)
+
+install_subdir(
+  'icons/hicolor',
+  install_dir: join_paths(get_option('datadir'), 'icons')
 )
