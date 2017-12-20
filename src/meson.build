@@ -57,10 +57,17 @@ deps = [
   valac.find_library('rg', dirs: vapi_dir)
 ]
 
-usage = executable('gnome-usage',
-                     vala_sources,
-                     resources,
-                     c_args : [ '-DVERSION="' + meson.project_version() + '"', '-DGETTEXT_PACKAGE="gnome-usage"', '-DGNOMELOCALEDIR="' + get_option('prefix') + '/' + get_option('localedir') + '"' ],
-                     vala_args: '--vapidir=' + vapi_dir,
-                     install: true,
-                     dependencies: deps)
+c_args = [
+  '-DVERSION="@0@"'.format(meson.project_version()),
+  '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+  '-DGNOMELOCALEDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('localedir')))
+]
+
+executable(
+  meson.project_name(),
+  vala_sources + resources,
+  dependencies: deps,
+  c_args: c_args,
+  vala_args: '--vapidir=' + vapi_dir,
+  install: true
+)
