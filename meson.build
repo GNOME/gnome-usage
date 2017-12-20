@@ -27,4 +27,7 @@ subdir('po')
 subdir('external')
 subdir('src')
 
-meson.add_install_script ('build-aux/meson/postinstall.sh')
+meson.add_install_script(
+  join_paths('build-aux', 'meson', 'postinstall.sh'),
+  join_paths(get_option('prefix'), get_option('datadir'))
+)
