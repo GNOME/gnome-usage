@@ -42,12 +42,13 @@ namespace Usage
         construct {
             var monitor = SystemMonitor.get_default();
             Timeout.add_seconds(1, () => {
-                var percentage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
+                var available = (monitor.swap_total - monitor.swap_usage);
+                var percentage = 0.0;
+                if (available > 0)
+                    percentage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
 
                 this.speedometer.percentage = (int)percentage;
                 label.label = "%d".printf((int)percentage) + "%";
-
-                var available = (monitor.swap_total - monitor.swap_usage);
 
                 swap_used.label = Utils.format_size_values(monitor.swap_usage);
                 swap_available.label = Utils.format_size_values(available);
