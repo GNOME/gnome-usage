@@ -1,15 +1,14 @@
 # Brazilian Portuguese translation for gnome-usage.
-# Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
+# Copyright (C) 2018 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2017.
 # Enrico Nicoletto <liverig@gmail.com>, 2017.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-05-31 12:30+0000\n"
-"PO-Revision-Date: 2017-06-25 12:23-0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2017-11-19 23:01+0000\n"
+"PO-Revision-Date: 2018-01-09 10:34-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -20,12 +19,31 @@ msgstr ""
 "X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:104
-#: ../src/window.vala:35
+#: data/org.gnome.Usage.appdata.xml.in:5
+#| msgid "Usage"
+msgid "GNOME Usage"
+msgstr "Uso do GNOME"
+
+#: data/org.gnome.Usage.appdata.xml.in:6
+#| msgid ""
+#| "A nice way to view information about use of system resources, like memory "
+#| "and disk space"
+msgid "A nice way to view information about use of system resources"
+msgstr "Uma forma legal de ver informações sobre o uso dos recursos do sistema"
+
+#: data/org.gnome.Usage.appdata.xml.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+"Um aplicativo simples do GNOME 3 para monitorar e analisar recursos do "
+"sistema, como processamento, memória e armazenamento."
+
+#: data/org.gnome.Usage.desktop:3 src/application.vala:91 src/window.vala:41
 msgid "Usage"
 msgstr "Uso"
 
-#: ../data/org.gnome.Usage.desktop:4
+#: data/org.gnome.Usage.desktop:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -34,42 +52,91 @@ msgstr ""
 "memória e espaço em disco"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: ../data/org.gnome.Usage.desktop:8
+#: data/org.gnome.Usage.desktop:8
 msgid "org.gnome.Usage"
 msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: ../data/org.gnome.Usage.desktop:13
+#: data/org.gnome.Usage.desktop:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
 msgstr ""
-"Monitor;Sistema;Processo;CPU;Memória;Rede;História;Uso;Desempenho;"
-"Performance;Tarefa;Gerenciar;"
+"Monitor;Sistema;Processo;CPU;Memória;Rede;História;Uso;Desempenho;Performance"
+";Tarefa;Gerenciar;"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:1
+#: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Uma lista de processos que não desejamos matar"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:2
+#: data/org.gnome.Usage.gschema.xml:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Essa lista é usada para filtrar quais processos o usuário não pode parar."
 
-#: ../data/ui/header-bar.ui.h:1 ../src/storage-actionbar.vala:108
-#: ../src/storage-row.vala:393
+#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/application.vala:69
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "Nenhum resultado localizado"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "Tente uma pesquisa diferente"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "Fechar forçado o %s?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "Trabalho não salvo pode ser perdido."
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "Fechar forçado"
+
+#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
+msgid "Move to"
+msgstr "Mover para"
+
+#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
+msgid "Delete"
+msgstr "Excluir"
+
+#: data/ui/storage-actionbar.ui:33
+msgid "Move to Trash"
+msgstr "Mover para a lixeira"
+
+#: data/ui/storage-actionbar.ui:45
+msgid "Empty folder"
+msgstr "Esvaziar pasta"
+
+#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
+msgid "Restore"
+msgstr "Restaurar"
+
+#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Excluir da lixeira"
+
+#: data/ui/storage-view.ui:63
+msgid "No content here"
+msgstr "Nenhum conteúdo aqui"
+
+#: src/application.vala:56
 msgid "About"
 msgstr "Sobre"
 
-#: ../src/application.vala:72
+#: src/application.vala:59
 msgid "Quit"
 msgstr "Sair"
 
-#: ../src/application.vala:105
+#: src/application.vala:92
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -77,207 +144,166 @@ msgstr ""
 "Uma forma legal de ver informações sobre o uso dos recursos do sistema, como "
 "memória e espaço em disco."
 
-#: ../src/application.vala:108
+#: src/application.vala:95
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>, 2017\n"
-"Rafael Fontenelle <rafaelff@gnome.org>, 2017"
+"Rafael Fontenelle <rafaelff@gnome.org>, 2017, 2018"
 
-#: ../src/application.vala:110
+#: src/application.vala:97
 msgid "Websites"
 msgstr "Sites"
 
-#: ../src/cpu-sub-view.vala:31 ../src/graph-stack-switcher.vala:45
-#: ../src/process-dialog.vala:50
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Processador"
 
-#: ../src/cpu-sub-view.vala:57
-msgid "No applications using processor."
-msgstr "Nenhum aplicativo usando o processador."
-
-#: ../src/data-view.vala:28
-msgid "Data"
-msgstr "Dados"
-
-#: ../src/graph-block.vala:65
+#: src/graph-block.vala:65
 msgid "Others"
 msgstr "Outros"
 
-#: ../src/graph-block.vala:67 ../src/storage-item.vala:140
+#: src/graph-block.vala:67 src/storage-item.vala:140
 msgid "Available"
 msgstr "Disponível"
 
-#: ../src/graph-stack-switcher.vala:46 ../src/memory-sub-view.vala:31
-#: ../src/process-dialog.vala:51
+#: src/graph-stack-switcher.vala:41
 msgid "Memory"
 msgstr "Memória"
 
-#: ../src/header-bar.vala:155
+#: src/header-bar.vala:143
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u selecionado"
 msgstr[1] "%u selecionados"
 
-#: ../src/header-bar.vala:157
+#: src/header-bar.vala:145
 msgid "Click on items to select them"
 msgstr "Clique nos itens para selecioná-los"
 
-#: ../src/header-bar.vala:223
+#: src/header-bar.vala:209
 msgid "Select all"
 msgstr "Selecionar todos"
 
-#: ../src/header-bar.vala:227
+#: src/header-bar.vala:213
 msgid "Select None"
 msgstr "Desmarcar seleção"
 
-#: ../src/memory-sub-view.vala:57
-msgid "No applications using memory."
-msgstr "Nenhum aplicativo usando a memória."
-
-#: ../src/performance-view.vala:45
+#: src/performance-view.vala:45
 msgid "Performance"
 msgstr "Desempenho"
 
-#: ../src/power-view.vala:28
-msgid "Power"
-msgstr "Energia"
-
-#: ../src/process-dialog.vala:56
-msgid "Stop"
-msgstr "Parar"
-
-#: ../src/process-dialog.vala:143
-msgid "Running"
-msgstr "Em execução"
-
-#: ../src/process-dialog.vala:146
-msgid "Sleeping"
-msgstr "Suspenso"
-
-#: ../src/process-dialog.vala:149
-msgid "Dead"
-msgstr "Morto"
-
-#. common
-#: ../src/storage-actionbar.vala:35 ../src/storage-row.vala:274
-msgid "Move to"
-msgstr "Mover para"
-
-#: ../src/storage-actionbar.vala:37 ../src/storage-row.vala:278
-msgid "Delete"
-msgstr "Excluir"
-
-#: ../src/storage-actionbar.vala:40
-msgid "Move to Trash"
-msgstr "Mover para a lixeira"
-
-#. root
-#: ../src/storage-actionbar.vala:47
-msgid "Empty folder"
-msgstr "Esvaziar pasta"
-
-#. trash
-#: ../src/storage-actionbar.vala:52 ../src/storage-row.vala:263
-msgid "Restore"
-msgstr "Restaurar"
-
-#: ../src/storage-actionbar.vala:54 ../src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Excluir da lixeira"
-
-#: ../src/storage-actionbar.vala:107 ../src/storage-row.vala:392
+#: src/storage-actionbar.vala:89 src/storage-row.vala:392
 msgid "Select destination folder"
 msgstr "Selecionar pasta de destino"
 
-#: ../src/storage-actionbar.vala:110 ../src/storage-row.vala:395
+#: src/storage-actionbar.vala:92 src/storage-row.vala:395
 msgid "Select"
 msgstr "Selecionar"
 
-#: ../src/storage-actionbar.vala:160
+#: src/storage-actionbar.vala:143
 #, c-format
 msgid "Are you sure you want to permanently delete this items %s?"
 msgstr "Você tem certeza de que deseja excluir permanentemente esses itens %s?"
 
-#: ../src/storage-actionbar.vala:161
+#: src/storage-actionbar.vala:144
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Se você excluir estes itens, eles serão permanentemente excluídos."
 
-#: ../src/storage-actionbar.vala:211 ../src/storage-row.vala:342
+#: src/storage-actionbar.vala:197 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Esvaziar todos os itens da lixeira?"
 
-#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:343
+#: src/storage-actionbar.vala:198 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Todos os itens da lixeira serão excluídos permanentemente."
 
-#: ../src/storage-actionbar.vala:234 ../src/storage-row.vala:322
+#: src/storage-actionbar.vala:219 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Esvaziar todos os itens de %s?"
 
-#: ../src/storage-actionbar.vala:235 ../src/storage-row.vala:323
+#: src/storage-actionbar.vala:220 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Todos os itens de %s serão movidos para a lixeira."
 
-#: ../src/storage-analyzer.vala:85
+#: src/storage-analyzer.vala:94
 msgid "Storage 1"
 msgstr "Armazenamento 1"
 
-#: ../src/storage-analyzer.vala:89
+#: src/storage-analyzer.vala:98
 msgid "Storage 2"
 msgstr "Armazenamento 2"
 
-#: ../src/storage-analyzer.vala:96
+#: src/storage-analyzer.vala:105
 msgid "Capacity"
 msgstr "Capacidade"
 
-#: ../src/storage-analyzer.vala:638
+#: src/storage-analyzer.vala:647
 msgid "Home"
 msgstr "Home"
 
-#: ../src/storage-item.vala:104
+#: src/storage-item.vala:104
 msgid "Trash"
 msgstr "Lixeira"
 
-#: ../src/storage-item.vala:128
+#: src/storage-item.vala:128
 msgid "Operating System"
 msgstr "Sistema operacional"
 
-#: ../src/storage-row.vala:248
+#: src/storage-row.vala:248
 msgid "Empty"
 msgstr "Vazia"
 
-#: ../src/storage-row.vala:253
+#: src/storage-row.vala:253
 msgid "Empty Trash"
 msgstr "Esvaziar lixeira"
 
-#: ../src/storage-row.vala:273 ../src/storage-row.vala:367
+#: src/storage-row.vala:273 src/storage-row.vala:367
 msgid "Rename"
 msgstr "Renomear"
 
-#: ../src/storage-row.vala:277
+#: src/storage-row.vala:277
 msgid "Move to trash"
 msgstr "Mover para a lixeira"
 
-#: ../src/storage-row.vala:439
+#: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
 msgstr "Você tem certeza de que deseja excluir permanentemente %s?"
 
-#: ../src/storage-row.vala:440
+#: src/storage-row.vala:440
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Se você excluir um item, ele será permanentemente excluído."
 
-#: ../src/storage-view.vala:32
+#: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Armazenamento"
 
-#: ../src/storage-view.vala:53
-msgid "No content here"
-msgstr "Nenhum conteúdo aqui"
+#~ msgid "No applications using processor."
+#~ msgstr "Nenhum aplicativo usando o processador."
+
+#~ msgid "Data"
+#~ msgstr "Dados"
+
+#~ msgid "No applications using memory."
+#~ msgstr "Nenhum aplicativo usando a memória."
+
+#~ msgid "Power"
+#~ msgstr "Energia"
+
+#~ msgid "Stop"
+#~ msgstr "Parar"
+
+#~ msgid "Running"
+#~ msgstr "Em execução"
+
+#~ msgid "Sleeping"
+#~ msgstr "Suspenso"
+
+#~ msgid "Dead"
+#~ msgstr "Morto"
 
 #~ msgid "application-default-icon"
 #~ msgstr "application-default-icon"
