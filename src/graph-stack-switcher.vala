@@ -25,9 +25,7 @@ namespace Usage
         Gtk.Stack stack;
         View[] sub_views;
 
-        Gtk.ToggleButton[] buttons;
-
-        bool can_change = true;
+        GraphSwitcherButton[] buttons;
 
 		public GraphStackSwitcher(Gtk.Stack stack, View[] sub_views)
 		{
@@ -41,44 +39,29 @@ namespace Usage
                 new GraphSwitcherButton.memory(_("Memory"))
             };
 
-    	    foreach(Gtk.ToggleButton button in buttons)
+            foreach(GraphSwitcherButton button in buttons)
             {
                 this.pack_start(button, false, true, 0);
-            }
 
-    	    buttons[0].set_active (true);
+                button.button_release_event.connect(() => {
+                    var button_number = get_button_number(button);
+                    this.stack.set_visible_child_name(this.sub_views[button_number].name);
 
-            foreach(Gtk.ToggleButton button in buttons)
-            {
-                button.toggled.connect (() => {
-                    if(can_change)
-                    {
-                        if (button.active)
-                        {
-                            can_change = false;
-
-                            int i = 0;
-                            int button_number = 0;
-                            foreach(Gtk.ToggleButton btn in buttons)
-                            {
-                                if(btn != button)
-                                    btn.active = false;
-                                else
-                                    button_number = i;
-                                i++;
-                            }
-                            this.stack.set_visible_child_name(this.sub_views[button_number].name);
-
-                            can_change = true;
-                        } else
-                        {
-                            can_change = false;
-                            button.active = true;
-                            can_change = true;
-                        }
-                    }
+                    return false;
                 });
             }
         }
+
+        private int get_button_number(Gtk.Button button)
+        {
+            for(int i = 0; i < buttons.length; i++)
+            {
+                if(buttons[i] == button)
+                    return i;
+            }
+
+            return 0;
+        }
+
     }
 }

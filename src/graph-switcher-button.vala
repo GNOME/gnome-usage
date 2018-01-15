@@ -20,8 +20,10 @@
 
 namespace Usage
 {
-    public class GraphSwitcherButton : Gtk.ToggleButton
+    public class GraphSwitcherButton : Gtk.RadioButton
     {
+        private static Gtk.RadioButton? _group = null;
+
         public GraphSwitcherButton.processor(string label)
         {
             Rg.Graph processor_graph = new CpuGraphMostUsed();
@@ -54,9 +56,18 @@ namespace Usage
             return box;
         }
 
-        class construct
+        construct
         {
-            set_css_name("graph-switcher-button");
+            if(_group == null)
+                _group = this;
+            else
+                join_group(_group);
+
+            set_mode(false);
+
+            var context = get_style_context();
+            context.add_class("flat");
+            context.add_class("graph-switcher");
         }
     }
 }
