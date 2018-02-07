@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-27 22:25+0000\n"
-"PO-Revision-Date: 2017-09-01 09:54+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2017-11-19 23:01+0000\n"
+"PO-Revision-Date: 2018-02-07 20:34+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -17,14 +16,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:104
-#: ../src/window.vala:35
+#: data/org.gnome.Usage.appdata.xml.in:5
+#, fuzzy
+#| msgid "Usage"
+msgid "GNOME Usage"
+msgstr "Käyttötiedot"
+
+#: data/org.gnome.Usage.appdata.xml.in:6
+#, fuzzy
+#| msgid ""
+#| "A nice way to view information about use of system resources, like memory "
+#| "and disk space"
+msgid "A nice way to view information about use of system resources"
+msgstr ""
+"Mukava tapa seurata järjestelmän resurssien, esimerkiksi muistin ja "
+"levytilan, käyttöä"
+
+#: data/org.gnome.Usage.appdata.xml.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+
+#: data/org.gnome.Usage.desktop:3 src/application.vala:91 src/window.vala:41
 msgid "Usage"
 msgstr "Käyttötiedot"
 
-#: ../data/org.gnome.Usage.desktop:4
+#: data/org.gnome.Usage.desktop:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -33,12 +53,12 @@ msgstr ""
 "levytilan, käyttöä"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: ../data/org.gnome.Usage.desktop:8
+#: data/org.gnome.Usage.desktop:8
 msgid "org.gnome.Usage"
 msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: ../data/org.gnome.Usage.desktop:13
+#: data/org.gnome.Usage.desktop:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -46,30 +66,79 @@ msgstr ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:1
+#: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Luettelo prosesseist, joita ei haluta tapettavan"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:2
+#: data/org.gnome.Usage.gschema.xml:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Tätä luettelo käytetään lähteenä sille, mitä prosesseja käyttäjä ei voi "
 "pysäyttää."
 
-#: ../data/ui/header-bar.ui.h:1 ../src/storage-actionbar.vala:108
-#: ../src/storage-row.vala:393
+#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Peru"
 
-#: ../src/application.vala:69
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "Tuloksia ei löytynyt"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "Yritä eri hakuehtoja"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "Pakotetaanko sovelluksen %s lopetus?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "Tallentamattomat työt saattavat kadota."
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "Pakota lopetus"
+
+#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
+msgid "Move to"
+msgstr "Siirrä"
+
+#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
+msgid "Delete"
+msgstr "Poista"
+
+#: data/ui/storage-actionbar.ui:33
+msgid "Move to Trash"
+msgstr "Siirrä roskakoriin"
+
+#: data/ui/storage-actionbar.ui:45
+msgid "Empty folder"
+msgstr ""
+
+#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
+msgid "Restore"
+msgstr "Palauta"
+
+#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Poista roskakorista"
+
+#: data/ui/storage-view.ui:63
+msgid "No content here"
+msgstr "Ei sisältöä"
+
+#: src/application.vala:56
 msgid "About"
 msgstr "Tietoja"
 
-#: ../src/application.vala:72
+#: src/application.vala:59
 msgid "Quit"
 msgstr "Lopeta"
 
-#: ../src/application.vala:105
+#: src/application.vala:92
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -77,209 +146,166 @@ msgstr ""
 "Mukava tapa seurata järjestelmän resurssien, esimerkiksi muistin ja "
 "levytilan, käyttöä."
 
-#: ../src/application.vala:108
+#: src/application.vala:95
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: ../src/application.vala:110
+#: src/application.vala:97
 msgid "Websites"
 msgstr "Verkkosivustot"
 
-#: ../src/cpu-sub-view.vala:31 ../src/graph-stack-switcher.vala:45
-#: ../src/process-dialog.vala:50
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Suoritin"
 
-#: ../src/cpu-sub-view.vala:57
-msgid "No applications using processor."
-msgstr "Mikään sovellus ei käytä suoritinta."
-
-#: ../src/data-view.vala:28
-msgid "Data"
-msgstr "Tiedot"
-
-#: ../src/graph-block.vala:65
+#: src/graph-block.vala:65
 msgid "Others"
 msgstr "Muut"
 
-#: ../src/graph-block.vala:67 ../src/storage-item.vala:140
+#: src/graph-block.vala:67 src/storage-item.vala:140
 msgid "Available"
 msgstr "Käytettävissä"
 
-#: ../src/graph-stack-switcher.vala:46 ../src/memory-sub-view.vala:31
-#: ../src/process-dialog.vala:51
+#: src/graph-stack-switcher.vala:41
 msgid "Memory"
 msgstr "Muisti"
 
-#: ../src/header-bar.vala:155
+#: src/header-bar.vala:143
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u valittu"
 msgstr[1] "%u valittu"
 
-#: ../src/header-bar.vala:157
+#: src/header-bar.vala:145
 msgid "Click on items to select them"
 msgstr "Napsauta kohteita valitaksesi ne"
 
-#: ../src/header-bar.vala:223
-#| msgid "Select"
+#: src/header-bar.vala:209
 msgid "Select all"
 msgstr "Valitse kaikki"
 
-#: ../src/header-bar.vala:227
-#| msgid "Select"
+#: src/header-bar.vala:213
 msgid "Select None"
 msgstr "Älä valitse mitään"
 
-#: ../src/memory-sub-view.vala:57
-msgid "No applications using memory."
-msgstr "Mikään sovellus ei käytä muistia."
-
-#: ../src/performance-view.vala:45
+#: src/performance-view.vala:45
 msgid "Performance"
 msgstr "Suorituskyky"
 
-#: ../src/power-view.vala:28
-msgid "Power"
-msgstr "Virrankäyttö"
-
-#: ../src/process-dialog.vala:56
-msgid "Stop"
-msgstr "Pysäytä"
-
-#: ../src/process-dialog.vala:143
-msgid "Running"
-msgstr "Käynnissä"
-
-#: ../src/process-dialog.vala:146
-msgid "Sleeping"
-msgstr "Nukkuu"
-
-#: ../src/process-dialog.vala:149
-msgid "Dead"
-msgstr "Kuollut"
-
-#. common
-#: ../src/storage-actionbar.vala:35 ../src/storage-row.vala:274
-msgid "Move to"
-msgstr "Siirrä"
-
-#: ../src/storage-actionbar.vala:37 ../src/storage-row.vala:278
-msgid "Delete"
-msgstr "Poista"
-
-#: ../src/storage-actionbar.vala:40
-msgid "Move to Trash"
-msgstr "Siirrä roskakoriin"
-
-#. root
-#: ../src/storage-actionbar.vala:47
-msgid "Empty folder"
-msgstr ""
-
-#. trash
-#: ../src/storage-actionbar.vala:52 ../src/storage-row.vala:263
-msgid "Restore"
-msgstr "Palauta"
-
-#: ../src/storage-actionbar.vala:54 ../src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Poista roskakorista"
-
-#: ../src/storage-actionbar.vala:107 ../src/storage-row.vala:392
+#: src/storage-actionbar.vala:89 src/storage-row.vala:392
 msgid "Select destination folder"
 msgstr "Valitse kohdekansio"
 
-#: ../src/storage-actionbar.vala:110 ../src/storage-row.vala:395
+#: src/storage-actionbar.vala:92 src/storage-row.vala:395
 msgid "Select"
 msgstr "Valitse"
 
-#: ../src/storage-actionbar.vala:160
+#: src/storage-actionbar.vala:143
 #, c-format
 msgid "Are you sure you want to permanently delete this items %s?"
 msgstr ""
 
-#: ../src/storage-actionbar.vala:161
+#: src/storage-actionbar.vala:144
 msgid "If you delete these items, they will be permanently lost."
 msgstr ""
 
-#: ../src/storage-actionbar.vala:211 ../src/storage-row.vala:342
+#: src/storage-actionbar.vala:197 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Poistetaanko kaikki kohteet roskakorista?"
 
-#: ../src/storage-actionbar.vala:212 ../src/storage-row.vala:343
+#: src/storage-actionbar.vala:198 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Kaikki roskakorissa olevat kohteet poistetaan pysyvästi."
 
-#: ../src/storage-actionbar.vala:234 ../src/storage-row.vala:322
+#: src/storage-actionbar.vala:219 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr ""
 
-#: ../src/storage-actionbar.vala:235 ../src/storage-row.vala:323
+#: src/storage-actionbar.vala:220 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr ""
 
-#: ../src/storage-analyzer.vala:85
+#: src/storage-analyzer.vala:94
 msgid "Storage 1"
 msgstr "Tallennustila 1"
 
-#: ../src/storage-analyzer.vala:89
+#: src/storage-analyzer.vala:98
 msgid "Storage 2"
 msgstr "Tallennustila 2"
 
-#: ../src/storage-analyzer.vala:96
+#: src/storage-analyzer.vala:105
 msgid "Capacity"
 msgstr "Kapasiteetti"
 
-#: ../src/storage-analyzer.vala:638
+#: src/storage-analyzer.vala:647
 msgid "Home"
 msgstr "Koti"
 
-#: ../src/storage-item.vala:104
+#: src/storage-item.vala:104
 msgid "Trash"
 msgstr "Roskakori"
 
-#: ../src/storage-item.vala:128
+#: src/storage-item.vala:128
 msgid "Operating System"
 msgstr "Käyttöjärjestelmä"
 
-#: ../src/storage-row.vala:248
+#: src/storage-row.vala:248
 msgid "Empty"
 msgstr ""
 
-#: ../src/storage-row.vala:253
+#: src/storage-row.vala:253
 #, fuzzy
 #| msgid "Trash"
 msgid "Empty Trash"
 msgstr "Roskakori"
 
-#: ../src/storage-row.vala:273 ../src/storage-row.vala:367
+#: src/storage-row.vala:273 src/storage-row.vala:367
 msgid "Rename"
 msgstr "Nimeä uudelleen"
 
-#: ../src/storage-row.vala:277
+#: src/storage-row.vala:277
 msgid "Move to trash"
 msgstr "Siirrä roskakoriin"
 
-#: ../src/storage-row.vala:439
+#: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
 msgstr "Haluatko varmasti poistaa kohteen %s pysyvästi?"
 
-#: ../src/storage-row.vala:440
+#: src/storage-row.vala:440
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Jos poistat kohteen, se menetetään pysyvästi."
 
-#: ../src/storage-view.vala:32
+#: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Tallennustila"
 
-#: ../src/storage-view.vala:53
-msgid "No content here"
-msgstr "Ei sisältöä"
+#~ msgid "No applications using processor."
+#~ msgstr "Mikään sovellus ei käytä suoritinta."
+
+#~ msgid "Data"
+#~ msgstr "Tiedot"
+
+#~ msgid "No applications using memory."
+#~ msgstr "Mikään sovellus ei käytä muistia."
+
+#~ msgid "Power"
+#~ msgstr "Virrankäyttö"
+
+#~ msgid "Stop"
+#~ msgstr "Pysäytä"
+
+#~ msgid "Running"
+#~ msgstr "Käynnissä"
+
+#~ msgid "Sleeping"
+#~ msgstr "Nukkuu"
+
+#~ msgid "Dead"
+#~ msgstr "Kuollut"
 
 #~ msgid "View current application and monitor system state"
 #~ msgstr ""
