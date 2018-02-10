@@ -140,7 +140,7 @@ namespace Usage
             }
 
             var dialog = new Gtk.MessageDialog ((GLib.Application.get_default() as Application).get_window(), Gtk.DialogFlags.MODAL,
-                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, _("Are you sure you want to permanently delete this items %s?").printf(files));
+                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, _("Are you sure you want to permanently delete these items %s?").printf(files));
             dialog.secondary_text = _("If you delete these items, they will be permanently lost.");
 
             if(dialog.run() == Gtk.ResponseType.OK)
