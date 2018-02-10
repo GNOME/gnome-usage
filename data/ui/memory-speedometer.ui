@@ -35,7 +35,7 @@
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="label">RAM</property>
+            <property name="label" translatable="yes">RAM</property>
             <attributes>
               <attribute name="weight" value="bold"/>
             </attributes>
@@ -50,7 +50,7 @@
               <object class="GtkLabel" id="ram_used_label">
                 <property name="visible">True</property>
                 <property name="xalign">1.0</property>
-                <property name="label">Used</property>
+                <property name="label" translatable="yes">Used</property>
                 <style>
                   <class name="dim-label"/>
                 </style>
@@ -74,7 +74,7 @@
               <object class="GtkLabel" id="ram_available_label">
                 <property name="visible">True</property>
                 <property name="xalign">1.0</property>
-                <property name="label">Available</property>
+                <property name="label" translatable="yes">Available</property>
                 <style>
                   <class name="dim-label"/>
                 </style>
