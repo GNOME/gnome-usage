@@ -130,17 +130,19 @@ namespace Usage
         [GtkCallback]
         private void delete_clicked()
         {
-            string files = "";
+            //string files = "";
+            int number_of_files=0;
             foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().get_selected_rows())
             {
-                StorageRow storage_row = (StorageRow) row;
-                if(files != "")
+                /*StorageRow storage_row = (StorageRow) row;
+                //if(files != "")
                     files += ", ";
-                files += storage_row.get_item_name();
+                files += storage_row.get_item_name();*/
+                number_of_files += 1;
             }
-
+            //Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
             var dialog = new Gtk.MessageDialog ((GLib.Application.get_default() as Application).get_window(), Gtk.DialogFlags.MODAL,
-                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, _("Are you sure you want to permanently delete these items %s?").printf(files));
+                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, ngettext ("Are you sure you want to permanently delete the selected item?", "Are you sure you want to permanently delete the %d selected items?", number_of_files));
             dialog.secondary_text = _("If you delete these items, they will be permanently lost.");
 
             if(dialog.run() == Gtk.ResponseType.OK)
