@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Usage
 Comment=A nice way to view information about use of system resources, like memory and disk space
-Categories=GNOME;GTK;
+Categories=GNOME;GTK;System;Monitor;
 Exec=gnome-usage
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 Icon=org.gnome.Usage

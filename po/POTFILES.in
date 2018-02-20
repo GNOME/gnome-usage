@@ -4,11 +4,13 @@ data/org.gnome.Usage.appdata.xml.in
 data/org.gnome.Usage.desktop.in
 data/org.gnome.Usage.gschema.xml
 data/ui/header-bar.ui
+data/ui/memory-speedometer.ui
 data/ui/no-results-found-view.ui
 data/ui/performance-view.ui
 data/ui/quit-process-dialog.ui
 data/ui/storage-actionbar.ui
 data/ui/storage-view.ui
+data/ui/swap-speedometer.ui
 src/application.vala
 src/cpu-sub-view.vala
 src/graph-block.vala
