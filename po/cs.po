@@ -2,14 +2,14 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Zdeněk Hataš <zdenek.hatas@gmail.com>, 2017.
-# Marek Černocký <marek@manet.cz>, 2017.
+# Marek Černocký <marek@manet.cz>, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2017-11-19 23:01+0000\n"
-"PO-Revision-Date: 2017-11-20 09:43+0100\n"
+"POT-Creation-Date: 2018-02-12 10:43+0000\n"
+"PO-Revision-Date: 2018-02-21 09:14+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -36,11 +36,11 @@ msgstr ""
 "Jednoduchá aplikace pro GNOME 3 ke sledování a analýze systémových "
 "prostředků, jako jsou procesor, paměť nebo úložiště."
 
-#: data/org.gnome.Usage.desktop:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
 msgid "Usage"
 msgstr "Využití"
 
-#: data/org.gnome.Usage.desktop:4
+#: data/org.gnome.Usage.desktop.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -49,12 +49,12 @@ msgstr ""
 "jako jsou operační paměť a místo na disku."
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop:8
+#: data/org.gnome.Usage.desktop.in:8
 msgid "org.gnome.Usage"
 msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop:13
+#: data/org.gnome.Usage.desktop.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -76,6 +76,19 @@ msgstr ""
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Storno"
+
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "Operační paměť"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Použito"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "Dostupné"
 
 #: data/ui/no-results-found-view.ui:23
 msgid "No results found"
@@ -126,6 +139,10 @@ msgstr "Smazat z koše"
 msgid "No content here"
 msgstr "Není zde žádný obsah"
 
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Odkládací prostor"
+
 #: src/application.vala:56
 msgid "About"
 msgstr "O aplikaci"
@@ -157,10 +174,6 @@ msgstr "Procesor"
 #: src/graph-block.vala:65
 msgid "Others"
 msgstr "Ostatní"
-
-#: src/graph-block.vala:67 src/storage-item.vala:140
-msgid "Available"
-msgstr "Dostupné"
 
 #: src/graph-stack-switcher.vala:41
 msgid "Memory"
@@ -247,7 +260,7 @@ msgstr "Koš"
 
 #: src/storage-item.vala:128
 msgid "Operating System"
-msgstr "Operační sysstém"
+msgstr "Operační systém"
 
 #: src/storage-row.vala:248
 msgid "Empty"
@@ -277,27 +290,3 @@ msgstr "Pokud položku smažete, bude trvale ztracena."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Úložiště"
-
-#~ msgid "Stop"
-#~ msgstr "Zastavit"
-
-#~ msgid "Running"
-#~ msgstr "Běžící"
-
-#~ msgid "Sleeping"
-#~ msgstr "Spící"
-
-#~ msgid "Dead"
-#~ msgstr "Mrtvé"
-
-#~ msgid "No applications using processor."
-#~ msgstr "Žádná aplikace nevyužívá procesor."
-
-#~ msgid "Data"
-#~ msgstr "Data"
-
-#~ msgid "No applications using memory."
-#~ msgstr "Žádná aplikace nevyužívá paměť."
-
-#~ msgid "Power"
-#~ msgstr "Napájení"
