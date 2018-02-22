@@ -1,14 +1,14 @@
 # Spanish translation for gnome-usage.
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2017.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2017-11-19 23:01+0000\n"
-"PO-Revision-Date: 2017-11-20 12:32+0100\n"
+"POT-Creation-Date: 2018-02-12 10:43+0000\n"
+"PO-Revision-Date: 2018-02-22 13:20+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -19,14 +19,10 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.6\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
-#| msgid "Usage"
 msgid "GNOME Usage"
 msgstr "Uso de GNOME"
 
 #: data/org.gnome.Usage.appdata.xml.in:6
-#| msgid ""
-#| "A nice way to view information about use of system resources, like memory "
-#| "and disk space"
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Una buena manera de ver información sobre el uso de los recursos del sistema"
@@ -39,11 +35,12 @@ msgstr ""
 "Una sencilla aplicación de GNOME 3 para monitorizar y a analizar los "
 "recursos del sistema como el procesador, la memoria y el almacenamiento."
 
-#: data/org.gnome.Usage.desktop:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91
+#: src/window.vala:41
 msgid "Usage"
 msgstr "Uso"
 
-#: data/org.gnome.Usage.desktop:4
+#: data/org.gnome.Usage.desktop.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -52,12 +49,12 @@ msgstr ""
 "sistema, como la memoria y el espacio en disco."
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop:8
+#: data/org.gnome.Usage.desktop.in:8
 msgid "org.gnome.Usage"
 msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop:13
+#: data/org.gnome.Usage.desktop.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -78,6 +75,19 @@ msgstr ""
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Usada"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "Disponible"
 
 #: data/ui/no-results-found-view.ui:23
 msgid "No results found"
@@ -128,6 +138,10 @@ msgstr "Eliminar de la papelera"
 msgid "No content here"
 msgstr "No hay contenido"
 
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Intercambio"
+
 #: src/application.vala:56
 msgid "About"
 msgstr "Acerca de"
@@ -159,10 +173,6 @@ msgstr "Procesador"
 #: src/graph-block.vala:65
 msgid "Others"
 msgstr "Otros"
-
-#: src/graph-block.vala:67 src/storage-item.vala:140
-msgid "Available"
-msgstr "Disponible"
 
 #: src/graph-stack-switcher.vala:41
 msgid "Memory"
