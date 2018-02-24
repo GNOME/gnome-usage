@@ -31,7 +31,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git://git.gnome.org/libgtop"
+                    "url": "https://gitlab.gnome.org/gnome/libgtop"
                 }
             ]
         },
@@ -42,7 +42,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git://git.gnome.org/gnome-usage"
+                    "url": "https://gitlab.gnome.org/gnome/gnome-usage"
                 }
             ]
         }
