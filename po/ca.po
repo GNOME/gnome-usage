@@ -226,7 +226,7 @@ msgstr "Paperera"
 
 #: src/storage-item.vala:128
 msgid "Operating System"
-msgstr "Sistema Operatiu"
+msgstr "Sistema operatiu"
 
 #: src/storage-row.vala:248
 msgid "Empty"
