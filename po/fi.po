@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2017-11-19 23:01+0000\n"
-"PO-Revision-Date: 2018-02-07 20:34+0200\n"
+"POT-Creation-Date: 2018-02-12 10:43+0000\n"
+"PO-Revision-Date: 2018-03-03 22:20+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -19,20 +19,12 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
-#, fuzzy
-#| msgid "Usage"
 msgid "GNOME Usage"
 msgstr "Käyttötiedot"
 
 #: data/org.gnome.Usage.appdata.xml.in:6
-#, fuzzy
-#| msgid ""
-#| "A nice way to view information about use of system resources, like memory "
-#| "and disk space"
 msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Mukava tapa seurata järjestelmän resurssien, esimerkiksi muistin ja "
-"levytilan, käyttöä"
+msgstr "Mukava tapa seurata järjestelmän resurssien käyttöä"
 
 #: data/org.gnome.Usage.appdata.xml.in:8
 msgid ""
@@ -40,11 +32,11 @@ msgid ""
 "processing, memory, and storage."
 msgstr ""
 
-#: data/org.gnome.Usage.desktop:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
 msgid "Usage"
 msgstr "Käyttötiedot"
 
-#: data/org.gnome.Usage.desktop:4
+#: data/org.gnome.Usage.desktop.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -53,12 +45,12 @@ msgstr ""
 "levytilan, käyttöä"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop:8
+#: data/org.gnome.Usage.desktop.in:8
 msgid "org.gnome.Usage"
 msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop:13
+#: data/org.gnome.Usage.desktop.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -80,6 +72,19 @@ msgstr ""
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Peru"
+
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "Keskusmuisti"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Käytetty"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "Käytettävissä"
 
 #: data/ui/no-results-found-view.ui:23
 msgid "No results found"
@@ -116,7 +121,7 @@ msgstr "Siirrä roskakoriin"
 
 #: data/ui/storage-actionbar.ui:45
 msgid "Empty folder"
-msgstr ""
+msgstr "Tyhjä kansio"
 
 #: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
 msgid "Restore"
@@ -129,6 +134,10 @@ msgstr "Poista roskakorista"
 #: data/ui/storage-view.ui:63
 msgid "No content here"
 msgstr "Ei sisältöä"
+
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Swap"
 
 #: src/application.vala:56
 msgid "About"
@@ -161,10 +170,6 @@ msgstr "Suoritin"
 #: src/graph-block.vala:65
 msgid "Others"
 msgstr "Muut"
-
-#: src/graph-block.vala:67 src/storage-item.vala:140
-msgid "Available"
-msgstr "Käytettävissä"
 
 #: src/graph-stack-switcher.vala:41
 msgid "Memory"
@@ -254,13 +259,11 @@ msgstr "Käyttöjärjestelmä"
 
 #: src/storage-row.vala:248
 msgid "Empty"
-msgstr ""
+msgstr "Tyhjä"
 
 #: src/storage-row.vala:253
-#, fuzzy
-#| msgid "Trash"
 msgid "Empty Trash"
-msgstr "Roskakori"
+msgstr "Tyhjennä roskakori"
 
 #: src/storage-row.vala:273 src/storage-row.vala:367
 msgid "Rename"
