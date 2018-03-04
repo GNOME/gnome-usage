@@ -34,6 +34,12 @@ namespace Usage
             child = createContent(memory_graph, label);
         }
 
+        public GraphSwitcherButton.network(string label)
+        {   //this is kept temporarily for testing NetworkGraph has to be implemented
+            Rg.Graph network_graph = new NetworkGraph();
+            child = createContent(memory_graph, "network");
+        }
+
         private Gtk.Box createContent(Rg.Graph graph, string label_text)
         {
             graph.height_request = 80;

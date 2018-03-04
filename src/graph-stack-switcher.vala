@@ -39,6 +39,7 @@ namespace Usage
             buttons = {
                 new GraphSwitcherButton.processor(_("Processor")),
                 new GraphSwitcherButton.memory(_("Memory"))
+                new GraphSwitcherButton.network(_("Network"))
             };
 
     	    foreach(Gtk.ToggleButton button in buttons)
@@ -68,9 +69,21 @@ namespace Usage
                                 i++;
                             }
                             this.stack.set_visible_child_name(this.sub_views[button_number].name);
+                            /* todo : store the network subview in a var rather than indexing the array*/
+                            if( !strcmp (this.sub_views[button_number].name, "Network"))
+                            {
+                                //emit the signal start-capture;
+                                this.sub_views[button_number].network_stats_activate();
+                            }
+                            else
+                            {
+                                //*TODO* hard coded the network subview for the timebeing
+                                this.sub_views[2].network_stats_deactivate();
+                            }
 
                             can_change = true;
-                        } else
+                        } 
+                        else
                         {
                             can_change = false;
                             button.active = true;
