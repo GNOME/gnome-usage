@@ -32,10 +32,12 @@ namespace Usage
 
         private CpuMonitor cpu_monitor;
         private MemoryMonitor memory_monitor;
+        private NetworkMonitor network_monitor;
 
         private HashTable<Pid?, Process> process_table;
         private HashTable<string, Process> cpu_process_table;
         private HashTable<string, Process> ram_process_table;
+        private HashTable<Pid?, Process> network_process_table;
 
         private int process_mode = GTop.KERN_PROC_ALL;
         private GLib.List<AppInfo> apps_info;
@@ -80,6 +82,16 @@ namespace Usage
             return ram_process_table[cmdline];
         }
 
+        public List<unowned Process> get_network_processes()
+        {
+            return network_process_table.get_values();
+        }
+
+        public unowned Process get_network_process(Pid pid)
+        {
+            return network_process_table[pid];
+        }
+
         public unowned GLib.List<AppInfo> get_apps_info()
         {
             return apps_info;
@@ -97,14 +109,14 @@ namespace Usage
         public SystemMonitor()
         {
             GTop.init();
-
             cpu_monitor = new CpuMonitor();
             memory_monitor = new MemoryMonitor();
+            network_monitor = new NetworkMonitor();
 
             process_table = new HashTable<Pid?, Process>(int_hash, int_equal);
             cpu_process_table = new HashTable<string, Process>(str_hash, str_equal);
             ram_process_table = new HashTable<string, Process>(str_hash, str_equal);
-
+            network_process_table = new HashTable<Pid, Process>(int_hash, int_equal);
             var settings = Settings.get_default();
             apps_info = AppInfo.get_all();
 
@@ -115,6 +127,25 @@ namespace Usage
                 cpu_processes_ready();
                 return false;
             });
+            Timeout.add(settings.data_update_interval, set_network_stats);
+
+        }
+        public bool set_network_stats()
+        {   
+            // the stats are collected in HashTable
+            network_monitor.update();
+            HashTable<int, stats> temp_stats = network_monitor.get_network_table();
+            //create Process instances out of the temp_stats
+            network_monitor.foreach ((key, val) => {
+                Process temp = new Process((Pid)key,"","","","");
+                temp.bytes_sent = ((stats)val).bytes_sent;
+                temp.bytes_recv = ((stats)val).bytes_recv;
+                //insert this into network_process_table
+                network_process_table.insert(key,temp);
+            });
+            //free the stats
+            network_monitor.free_network_stats();
+            return true;
         }
 
 		public bool update_data()

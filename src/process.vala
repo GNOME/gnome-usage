@@ -36,6 +36,9 @@ namespace Usage
 
         public uint64 mem_usage { get; set; default = 0; }
 
+        public double bytes_sent {get; set; default = 0; }
+        public double bytes_recv {get; set; default = 0; }
+
         public HashTable<Pid?, Process>? sub_processes { get; set; }
 
         public bool alive { get; set; default = true; }
@@ -60,6 +63,8 @@ namespace Usage
             this.mem_usage = process.mem_usage;
             this.alive = process.alive;
             this.status = process.status;
+            this.bytes_sent = process.bytes_sent;
+            this.bytes_recv = process.bytes_recv;
         }
     }
 
