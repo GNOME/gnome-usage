@@ -1,23 +1,23 @@
 # Hungarian translation for gnome-usage.
-# Copyright (C) 2017 Free Software Foundation, Inc.
+# Copyright (C) 2017, 2018 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Balázs Úr <urbalazs@gmail.com>, 2017.
+# Balázs Úr <urbalazs at gmail dot com>, 2017, 2018.
 # Gabor Kelemen <kelemeng at ubuntu dot com>, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-01-14 13:01+0000\n"
-"PO-Revision-Date: 2018-01-28 22:41+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"POT-Creation-Date: 2018-02-12 10:43+0000\n"
+"PO-Revision-Date: 2018-03-04 22:03+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -77,6 +77,19 @@ msgstr ""
 msgid "Cancel"
 msgstr "Mégse"
 
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Használt"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "Elérhető"
+
 #: data/ui/no-results-found-view.ui:23
 msgid "No results found"
 msgstr "Nincs találat"
@@ -126,6 +139,10 @@ msgstr "Törlés a Kukából"
 msgid "No content here"
 msgstr "Itt nincs tartalom"
 
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Cserehely"
+
 #: src/application.vala:56
 msgid "About"
 msgstr "Névjegy"
@@ -157,10 +174,6 @@ msgstr "Processzor"
 #: src/graph-block.vala:65
 msgid "Others"
 msgstr "Egyebek"
-
-#: src/graph-block.vala:67 src/storage-item.vala:140
-msgid "Available"
-msgstr "Elérhető"
 
 #: src/graph-stack-switcher.vala:41
 msgid "Memory"
@@ -277,47 +290,3 @@ msgstr "Ha töröl egy elemet, akkor az véglegesen elvész."
 msgid "Storage"
 msgstr "Tároló"
 
-#~ msgid "No applications using processor."
-#~ msgstr "Nincs processzort használó alkalmazás."
-
-#~ msgid "Data"
-#~ msgstr "Adat"
-
-#~ msgid "No applications using memory."
-#~ msgstr "Nincs memóriát használó alkalmazás."
-
-#~ msgid "Power"
-#~ msgstr "Energia"
-
-#~ msgid "Stop"
-#~ msgstr "Leállítás"
-
-#~ msgid "Running"
-#~ msgstr "Fut"
-
-#~ msgid "Sleeping"
-#~ msgstr "Alszik"
-
-#~ msgid "Dead"
-#~ msgstr "Halott"
-
-#~ msgid "application-default-icon"
-#~ msgstr "application-default-icon"
-
-#~ msgid "View current application and monitor system state"
-#~ msgstr "A jelenlegi alkalmazás megtekintése és a rendszerállapot figyelése"
-
-#~ msgid "Disk I/O"
-#~ msgstr "Lemez I/O"
-
-#~ msgid "Network"
-#~ msgstr "Hálózat"
-
-#~ msgid "No applications using network."
-#~ msgstr "Nincs hálózatot használó alkalmazás."
-
-#~ msgid "Downloads"
-#~ msgstr "Letöltések"
-
-#~ msgid "Uploads"
-#~ msgstr "Feltöltések"
