@@ -1,14 +1,15 @@
 # Swedish translation for gnome-usage.
-# Copyright © 2017 gnome-usage's COPYRIGHT HOLDER
+# Copyright © 2017, 2018 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2017.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2017-10-31 18:20+0000\n"
-"PO-Revision-Date: 2017-11-05 22:24+0100\n"
+"POT-Creation-Date: 2018-02-12 10:43+0000\n"
+"PO-Revision-Date: 2018-03-05 12:39+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -16,14 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../src/application.vala:91
-#: ../src/window.vala:41
+#: data/org.gnome.Usage.appdata.xml.in:5
+msgid "GNOME Usage"
+msgstr "GNOME Användning"
+
+#: data/org.gnome.Usage.appdata.xml.in:6
+msgid "A nice way to view information about use of system resources"
+msgstr "Ett trevligt sätt att se information om användning av systemresurser"
+
+#: data/org.gnome.Usage.appdata.xml.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+"Ett enkelt GNOME 3-program för att övervaka och analysera systemresurser så "
+"som processorkraft, minne och lagring."
+
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
 msgid "Usage"
 msgstr "Användning"
 
-#: ../data/org.gnome.Usage.desktop:4
+#: data/org.gnome.Usage.desktop.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -32,12 +48,12 @@ msgstr ""
 "minne och diskutrymme"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: ../data/org.gnome.Usage.desktop:8
+#: data/org.gnome.Usage.desktop.in:8
 msgid "org.gnome.Usage"
 msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: ../data/org.gnome.Usage.desktop:13
+#: data/org.gnome.Usage.desktop.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -45,65 +61,95 @@ msgstr ""
 "Skärm;System;Process;CPU;Minne;Nätverk;Historik;Användning;Prestanda;Uppgift;"
 "Hanterare;"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:1
+#: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
 msgstr "En lista över processer vi inte vill döda"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:2
+#: data/org.gnome.Usage.gschema.xml:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Listan används för att filtrera vilka processer användaren inte kan stoppa."
 
-#: ../data/ui/header-bar.ui.h:1 ../src/storage-actionbar.vala:90
-#: ../src/storage-row.vala:393
+#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../data/ui/no-results-found-view.ui.h:1
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Använt"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "Tillgängligt"
+
+#: data/ui/no-results-found-view.ui:23
 msgid "No results found"
 msgstr "Inga resultat hittades"
 
-#: ../data/ui/no-results-found-view.ui.h:2
+#: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Försök med en annan sökning"
 
-#: ../data/ui/storage-actionbar.ui.h:1 ../src/storage-row.vala:274
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "Tvinga %s att avsluta?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "Osparat arbete kan gå förlorat."
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "Tvinga avslut"
+
+#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
 msgid "Move to"
 msgstr "Flytta till"
 
-#: ../data/ui/storage-actionbar.ui.h:2 ../src/storage-row.vala:278
+#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
 msgid "Delete"
 msgstr "Ta bort"
 
-#: ../data/ui/storage-actionbar.ui.h:3
+#: data/ui/storage-actionbar.ui:33
 msgid "Move to Trash"
 msgstr "Flytta till papperskorgen"
 
-#: ../data/ui/storage-actionbar.ui.h:4
+#: data/ui/storage-actionbar.ui:45
 msgid "Empty folder"
 msgstr "Töm mapp"
 
-#: ../data/ui/storage-actionbar.ui.h:5 ../src/storage-row.vala:263
+#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
 msgid "Restore"
 msgstr "Återställ"
 
-#: ../data/ui/storage-actionbar.ui.h:6 ../src/storage-row.vala:266
+#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
 msgid "Delete from Trash"
 msgstr "Ta bort från papperskorgen"
 
-#: ../data/ui/storage-view.ui.h:1
+#: data/ui/storage-view.ui:63
 msgid "No content here"
 msgstr "Inget innehåll här"
 
-#: ../src/application.vala:56
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Växlingsutrymme"
+
+#: src/application.vala:56
 msgid "About"
 msgstr "Om"
 
-#: ../src/application.vala:59
+#: src/application.vala:59
 msgid "Quit"
 msgstr "Avsluta"
 
-#: ../src/application.vala:92
+#: src/application.vala:92
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -111,160 +157,150 @@ msgstr ""
 "Ett trevligt sätt att se information om användning av systemresurser så som "
 "minne och diskutrymme."
 
-#: ../src/application.vala:95
+#: src/application.vala:95
 msgid "translator-credits"
 msgstr "Josef Andersson <josef.andersson@fripost.org>, 2016, 2017"
 
-#: ../src/application.vala:97
+#: src/application.vala:97
 msgid "Websites"
 msgstr "Webbplatser"
 
-#: ../src/cpu-sub-view.vala:32 ../src/graph-stack-switcher.vala:40
-#: ../src/process-dialog.vala:50
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Processor"
 
-#: ../src/graph-block.vala:65
+#: src/graph-block.vala:65
 msgid "Others"
 msgstr "Andra"
 
-#: ../src/graph-block.vala:67 ../src/storage-item.vala:140
-msgid "Available"
-msgstr "Tillgängliga"
-
-#: ../src/graph-stack-switcher.vala:41 ../src/memory-sub-view.vala:32
-#: ../src/process-dialog.vala:51
+#: src/graph-stack-switcher.vala:41
 msgid "Memory"
 msgstr "Minne"
 
-#: ../src/header-bar.vala:143
+#: src/header-bar.vala:143
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u markerat"
 msgstr[1] "%u markerade"
 
-#: ../src/header-bar.vala:145
+#: src/header-bar.vala:145
 msgid "Click on items to select them"
 msgstr "Klicka på objekt för att markera dem"
 
-#: ../src/header-bar.vala:209
+#: src/header-bar.vala:209
 msgid "Select all"
 msgstr "Välj alla"
 
-#: ../src/header-bar.vala:213
+#: src/header-bar.vala:213
 msgid "Select None"
 msgstr "Välj inget"
 
-#: ../src/performance-view.vala:45
+#: src/performance-view.vala:45
 msgid "Performance"
 msgstr "Prestanda"
 
-#: ../src/process-dialog.vala:56
-msgid "Stop"
-msgstr "Stoppade"
-
-#: ../src/process-dialog.vala:144
-msgid "Running"
-msgstr "Körande"
-
-#: ../src/process-dialog.vala:147
-msgid "Sleeping"
-msgstr "Vilande"
-
-#: ../src/process-dialog.vala:150
-msgid "Dead"
-msgstr "Döda"
-
-#: ../src/storage-actionbar.vala:89 ../src/storage-row.vala:392
+#: src/storage-actionbar.vala:89 src/storage-row.vala:392
 msgid "Select destination folder"
 msgstr "Välj målmapp"
 
-#: ../src/storage-actionbar.vala:92 ../src/storage-row.vala:395
+#: src/storage-actionbar.vala:92 src/storage-row.vala:395
 msgid "Select"
 msgstr "Välj"
 
 # TODO: Very strange grammar *delete this items %s*
-#: ../src/storage-actionbar.vala:143
+#: src/storage-actionbar.vala:143
 #, c-format
 msgid "Are you sure you want to permanently delete this items %s?"
 msgstr "Är du säker på att du permanent vill ta bort dessa objekt %s?"
 
-#: ../src/storage-actionbar.vala:144
+#: src/storage-actionbar.vala:144
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Om du tar bort dessa objekt är de borta för alltid."
 
-#: ../src/storage-actionbar.vala:197 ../src/storage-row.vala:342
+#: src/storage-actionbar.vala:197 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Töm alla objekt i papperskorgen?"
 
-#: ../src/storage-actionbar.vala:198 ../src/storage-row.vala:343
+#: src/storage-actionbar.vala:198 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alla objekt i papperskorgen kommer att tas bort permanent."
 
-#: ../src/storage-actionbar.vala:219 ../src/storage-row.vala:322
+#: src/storage-actionbar.vala:219 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Töm alla objekt från %s?"
 
-#: ../src/storage-actionbar.vala:220 ../src/storage-row.vala:323
+#: src/storage-actionbar.vala:220 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Alla objekt i %s kommer att flyttas till papperskorgen."
 
-#: ../src/storage-analyzer.vala:94
+#: src/storage-analyzer.vala:94
 msgid "Storage 1"
 msgstr "Lagring 1"
 
-#: ../src/storage-analyzer.vala:98
+#: src/storage-analyzer.vala:98
 msgid "Storage 2"
 msgstr "Lagring 2"
 
-#: ../src/storage-analyzer.vala:105
+#: src/storage-analyzer.vala:105
 msgid "Capacity"
 msgstr "Kapacitet"
 
-#: ../src/storage-analyzer.vala:647
+#: src/storage-analyzer.vala:647
 msgid "Home"
 msgstr "Hem"
 
-#: ../src/storage-item.vala:104
+#: src/storage-item.vala:104
 msgid "Trash"
 msgstr "Flytta till Papperskorg"
 
-#: ../src/storage-item.vala:128
+#: src/storage-item.vala:128
 msgid "Operating System"
 msgstr "Operativsystem"
 
 # Verb
-#: ../src/storage-row.vala:248
+#: src/storage-row.vala:248
 msgid "Empty"
 msgstr "Töm"
 
-#: ../src/storage-row.vala:253
+#: src/storage-row.vala:253
 msgid "Empty Trash"
 msgstr "Töm papperskorg"
 
-#: ../src/storage-row.vala:273 ../src/storage-row.vala:367
+#: src/storage-row.vala:273 src/storage-row.vala:367
 msgid "Rename"
 msgstr "Byt namn"
 
-#: ../src/storage-row.vala:277
+#: src/storage-row.vala:277
 msgid "Move to trash"
 msgstr "Flytta till papperskorgen"
 
-#: ../src/storage-row.vala:439
+#: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
 msgstr "Är du säker på att du permanent vill ta bort %s?"
 
-#: ../src/storage-row.vala:440
+#: src/storage-row.vala:440
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Om du tar bort ett objekt är det borta för alltid."
 
-#: ../src/storage-view.vala:45
+#: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Lagring"
+
+#~ msgid "Stop"
+#~ msgstr "Stoppade"
+
+#~ msgid "Running"
+#~ msgstr "Körande"
+
+#~ msgid "Sleeping"
+#~ msgstr "Vilande"
+
+#~ msgid "Dead"
+#~ msgstr "Döda"
 
 #~ msgid "No applications using processor."
 #~ msgstr "Inga program använder processor."
