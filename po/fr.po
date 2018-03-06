@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-03-05 11:41+0000\n"
-"PO-Revision-Date: 2018-03-05 20:37+0100\n"
+"POT-Creation-Date: 2018-03-06 14:29+0000\n"
+"PO-Revision-Date: 2018-03-06 23:01+0100\n"
 "Last-Translator: Alain Lojewski <allomervan@gmail.com>, 2018\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
-msgstr "Usage de GNOME"
+msgstr "Utilisation de GNOME"
 
 #: data/org.gnome.Usage.appdata.xml.in:6
 msgid "A nice way to view information about use of system resources"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
 msgid "Usage"
-msgstr "Usage"
+msgstr "Utilisation"
 
 #: data/org.gnome.Usage.desktop.in:4
 msgid ""
@@ -60,7 +60,7 @@ msgid ""
 "Manager;"
 msgstr ""
 "surveiller;système;processus;traitement;processeur;mémoire;réseau;historique;"
-"usage;performance;tâche;gestionaire;"
+"utilisation;performance;tâche;gestionaire;"
 
 #: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
