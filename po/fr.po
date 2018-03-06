@@ -1,0 +1,291 @@
+# French translation for gnome-usage.
+# Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# JeanDeLaMouche <urgau@numericable.fr>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2018-03-05 11:41+0000\n"
+"PO-Revision-Date: 2018-03-05 20:37+0100\n"
+"Last-Translator: Alain Lojewski <allomervan@gmail.com>, 2018\n"
+"Language-Team: French <gnomefr@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#: data/org.gnome.Usage.appdata.xml.in:5
+msgid "GNOME Usage"
+msgstr "Usage de GNOME"
+
+#: data/org.gnome.Usage.appdata.xml.in:6
+msgid "A nice way to view information about use of system resources"
+msgstr ""
+"Un bon moyen d’afficher les informations sur l’utilisation des ressources "
+"système"
+
+#: data/org.gnome.Usage.appdata.xml.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+"Une application GNOME 3 simple pour surveiller et analyser les ressources "
+"système telles que le traitement, la mémoire et le stockage."
+
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+msgid "Usage"
+msgstr "Usage"
+
+#: data/org.gnome.Usage.desktop.in:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Un bon moyen d’afficher les informations sur l’utilisation des ressources "
+"système, telles que la mémoire et l’espace disque"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Usage.desktop.in:8
+msgid "org.gnome.Usage"
+msgstr "org.gnome.Usage"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"surveiller;système;processus;traitement;processeur;mémoire;réseau;historique;"
+"usage;performance;tâche;gestionaire;"
+
+#: data/org.gnome.Usage.gschema.xml:5
+msgid "A list of processes which we don’t want killed"
+msgstr "Une liste de processus que nous ne voulons pas tuer"
+
+#: data/org.gnome.Usage.gschema.xml:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Cette liste sert à filtrer les processus que l’utilisateur ne peut pas "
+"arrêter."
+
+#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: src/storage-actionbar.vala:90 src/storage-row.vala:393
+msgid "Cancel"
+msgstr "Annuler"
+
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Utilisée"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "Disponible"
+
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "Aucun résultat trouvé"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "Essayez une recherche différente"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "Forcer à quitter %s ?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "Le travail non enregistré peut être perdu."
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "Forcer à quitter"
+
+#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
+msgid "Move to"
+msgstr "Déplacer vers"
+
+#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
+msgid "Delete"
+msgstr "Supprimer"
+
+#: data/ui/storage-actionbar.ui:33
+msgid "Move to Trash"
+msgstr "Mettre à la corbeille"
+
+#: data/ui/storage-actionbar.ui:45
+msgid "Empty folder"
+msgstr "Dossier vide"
+
+#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
+msgid "Restore"
+msgstr "Restaurer"
+
+#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Supprimer de la corbeille"
+
+#: data/ui/storage-view.ui:63
+msgid "No content here"
+msgstr "Aucun contenu ici"
+
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Partition d’échange"
+
+#: src/application.vala:56
+msgid "About"
+msgstr "À propos"
+
+#: src/application.vala:59
+msgid "Quit"
+msgstr "Fermer"
+
+#: src/application.vala:92
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Un bon moyen d’afficher les informations sur l’utilisation des ressources "
+"système, telles que la mémoire et l’espace disque."
+
+#: src/application.vala:95
+msgid "translator-credits"
+msgstr "Urgau <urgau@numericable.fr>"
+
+#: src/application.vala:97
+msgid "Websites"
+msgstr "Sites Web"
+
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+msgid "Processor"
+msgstr "Processeur"
+
+#: src/graph-block.vala:65
+msgid "Others"
+msgstr "Autres"
+
+#: src/graph-stack-switcher.vala:41
+msgid "Memory"
+msgstr "Mémoire"
+
+#: src/header-bar.vala:143
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "%u sélectionné"
+msgstr[1] "%u sélectionnés"
+
+#: src/header-bar.vala:145
+msgid "Click on items to select them"
+msgstr "Cliquez sur les éléments pour les sélectionner"
+
+#: src/header-bar.vala:209
+msgid "Select all"
+msgstr "Tout sélectionner"
+
+#: src/header-bar.vala:213
+msgid "Select None"
+msgstr "Ne rien sélectionner"
+
+#: src/performance-view.vala:45
+msgid "Performance"
+msgstr "Performance"
+
+#: src/storage-actionbar.vala:89 src/storage-row.vala:392
+msgid "Select destination folder"
+msgstr "Sélectionner le dossier de destination"
+
+#: src/storage-actionbar.vala:92 src/storage-row.vala:395
+msgid "Select"
+msgstr "Sélectionner"
+
+#: src/storage-actionbar.vala:143
+#, c-format
+msgid "Are you sure you want to permanently delete this items %s?"
+msgstr "Êtes-vous sûr de vouloir supprimer définitivement ces éléments %s ?"
+
+#: src/storage-actionbar.vala:144
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Si vous supprimez ces éléments, ils seront définitivement perdus."
+
+#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+msgid "Empty all items from Trash?"
+msgstr "Vider tous les éléments de la corbeille ?"
+
+#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Tous les éléments de la corbeille seront définitivement supprimés."
+
+#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "Vider tous les éléments de %s ?"
+
+#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "Tous les éléments dans %s seront déplacés dans la corbeille."
+
+#: src/storage-analyzer.vala:94
+msgid "Storage 1"
+msgstr "Stockage 1"
+
+#: src/storage-analyzer.vala:98
+msgid "Storage 2"
+msgstr "Stockage 2"
+
+#: src/storage-analyzer.vala:105
+msgid "Capacity"
+msgstr "Capacité"
+
+#: src/storage-analyzer.vala:647
+msgid "Home"
+msgstr "Dossier personnel"
+
+#: src/storage-item.vala:104
+msgid "Trash"
+msgstr "Corbeille"
+
+#: src/storage-item.vala:128
+msgid "Operating System"
+msgstr "Système d’exploitation"
+
+#: src/storage-row.vala:248
+msgid "Empty"
+msgstr "Vider"
+
+#: src/storage-row.vala:253
+msgid "Empty Trash"
+msgstr "Vider la corbeille"
+
+#: src/storage-row.vala:273 src/storage-row.vala:367
+msgid "Rename"
+msgstr "Renommer"
+
+#: src/storage-row.vala:277
+msgid "Move to trash"
+msgstr "Déplacer dans la corbeille"
+
+#: src/storage-row.vala:439
+#, c-format
+msgid "Are you sure you want to permanently delete %s?"
+msgstr "Êtes-vous sûr de vouloir supprimer définitivement %s ?"
+
+#: src/storage-row.vala:440
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Si vous supprimez un élément, il sera définitivement perdu."
+
+#: src/storage-view.vala:45
+msgid "Storage"
+msgstr "Stockage"
