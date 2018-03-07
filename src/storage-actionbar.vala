@@ -130,17 +130,25 @@ namespace Usage
         [GtkCallback]
         private void delete_clicked()
         {
-            string files = "";
-            foreach (Gtk.ListBoxRow row in ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().get_selected_rows())
+                      
+            uint number_of_files = ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box().get_selected_rows().length();
+            string display_message = "";
+            
+            if(number_of_files == 1)
             {
-                StorageRow storage_row = (StorageRow) row;
-                if(files != "")
-                    files += ", ";
-                files += storage_row.get_item_name();
+                //In case of single file, fetch file name
+                var row = (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE];
+                StorageRow storage_row = (StorageRow) ((StorageView) row).get_storage_list_box().get_selected_rows();
+                string filename = storage_row.get_item_name();
+                //Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
+                display_message = _("Are you sure you want to permanently delete \"%s\" ?").printf(filename);
             }
+            else
+                //Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
+                display_message = ngettext("Are you sure you want to permanently delete the %d selected items?", "Are you sure you want to permanently delete the %d selected items?", (int)number_of_files).printf((int)number_of_files);
 
             var dialog = new Gtk.MessageDialog ((GLib.Application.get_default() as Application).get_window(), Gtk.DialogFlags.MODAL,
-                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, _("Are you sure you want to permanently delete this items %s?").printf(files));
+                Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, display_message);
             dialog.secondary_text = _("If you delete these items, they will be permanently lost.");
 
             if(dialog.run() == Gtk.ResponseType.OK)
@@ -160,8 +168,6 @@ namespace Usage
                 });
             }
             dialog.destroy();
-
-
         }
 
         [GtkCallback]
