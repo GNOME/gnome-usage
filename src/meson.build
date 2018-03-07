@@ -49,7 +49,6 @@ deps = [
   gtk_dep,
   libegg_dep,
   librg_dep,
-  dependency('accountsservice', version: '>= 0.6.40'),
   dependency('libgtop-2.0', version : '>= 2.34.0'),
   cc.find_library('m'),
   valac.find_library('config', dirs: vapi_dir),
