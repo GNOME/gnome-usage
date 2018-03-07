@@ -274,7 +274,7 @@ namespace Usage
                             section.append (_("Move to"), "row.move");
                             menu.append_section (null, section);
                             section = new GLib.Menu ();
-                            section.append (_("Move to trash"), "row.move-to-trash");
+                            section.append (_("Move to Trash"), "row.move-to-trash");
                             section.append (_("Delete"), "row.delete");
                             menu.append_section (null, section);
                             break;
