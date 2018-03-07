@@ -34,11 +34,13 @@ sudo ninja-build install #or sudo ninja install
 Code is under GNU GPLv3 license.
 
 ## Screenshots
-More screenshots are placed in the screenshots subdirectory (however screenshots may be outdated).
+Screenshots are placed in the screenshots subdirectory (however screenshots may be outdated).
 
-![Screenshot](screenshots/screenshot11.png?raw=true )
+![Screenshot](screenshots/screenshot-performance-view.png?raw=true )
 
-![Screenshot](screenshots/screenshot10.png?raw=true )
+![Screenshot](screenshots/screenshot-performance-memory-view.png?raw=true )
+
+![Screenshot](screenshots/screenshot-storage-view.png?raw=true )
 
 ## Design
-<img src="https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage-wires.png">
+<img src="https://raw.githubusercontent.com/gnome-design-team/gnome-mockups/master/usage/usage-storage.png">
