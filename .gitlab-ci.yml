@@ -3,7 +3,7 @@ stages:
   - build
 before_script:
   - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel
-                   desktop-file-utils accountsservice-devel
+                   desktop-file-utils
 build-gnome-usage:
   stage: build
   script:
