@@ -80,4 +80,24 @@ namespace Usage
             return (field + (((255 - field) / 100) * percentage)) / 255;
         }
     }
+
+    public enum UserAccountType {
+        STANDARD,
+        ADMINISTRATOR,
+    }
+
+    [DBus (name = "org.freedesktop.Accounts")]
+    public interface Fdo.Accounts : Object {
+        public abstract async string FindUserById (int64 id) throws IOError;
+    }
+
+    [DBus (name = "org.freedesktop.Accounts.User")]
+    public interface Fdo.AccountsUser : Object {
+        public abstract bool SystemAccount { get; }
+        public abstract bool LocalAccount { get; }
+        public abstract int32 AccountType { get; }
+        public abstract string RealName { owned get; }
+        public abstract string UserName { owned get; }
+        public abstract uint64 Uid { get; }
+    }
 }
