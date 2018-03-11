@@ -116,6 +116,7 @@ namespace Usage
                     case ProcessListBoxType.NETWORK:
                         foreach(unowned Process process in system_monitor.get_network_processes())
                             model.insert_sorted(process, processcmp);
+                        break;
                 }
             }
             else
