@@ -38,7 +38,7 @@ namespace Usage
 
             buttons = {
                 new GraphSwitcherButton.processor(_("Processor")),
-                new GraphSwitcherButton.memory(_("Memory"))
+                new GraphSwitcherButton.memory(_("Memory")),
                 new GraphSwitcherButton.network(_("Network"))
             };
 
@@ -70,7 +70,7 @@ namespace Usage
                             }
                             this.stack.set_visible_child_name(this.sub_views[button_number].name);
                             /* todo : store the network subview in a var rather than indexing the array*/
-                            if( !strcmp (this.sub_views[button_number].name, "Network"))
+                            if( strcmp (this.sub_views[button_number].name, "NETWORK") == 0)
                             {
                                 //emit the signal start-capture;
                                 this.sub_views[button_number].network_stats_activate();
