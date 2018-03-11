@@ -28,6 +28,8 @@ namespace Usage
         {
             visible = true;
         }
+        public signal void network_stats_activate();
+        public signal void network_stats_deactivate();
     }
 
     public interface SubView {

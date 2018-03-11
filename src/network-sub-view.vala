@@ -3,8 +3,6 @@ namespace Usage
 
     public class NetworkSubView : View, SubView
     {
-        public signal void network_stats_activate();
-        public signal void network_stats_deactivate();
         private ProcessListBox process_list_box;
         private NoResultsFoundView no_process_view;
         public static NetStats netstats_dbus;
@@ -15,7 +13,7 @@ namespace Usage
             try{
                 netstats_dbus = Bus.get_proxy_sync (BusType.SYSTEM,
                                                    "org.gnome.GTop.NetStats",
-                                                   "/org/gnome/GTop/NetStats"); //pls CHECK obj path
+                                                   "/var/run/dbus/system_bus_socket"); //pls CHECK obj path
             }catch(IOError e) {
                 stderr.printf ("%s\n", e.message);
             }

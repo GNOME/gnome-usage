@@ -6,10 +6,10 @@ namespace Usage
        /* private double bytes_sent;
         private double bytes_recv;
         private PID pid;*/
-        private HashTable<int, stats> network_process_table;
+        private HashTable<int, stats?> network_process_table;
         public void update()
         {   
-            network_process_table = new HashTable<int, stats>(int_hash, int_equal);
+            network_process_table = new HashTable<int, stats?>(int_hash, int_equal);
             try
             {
                network_process_table = NetworkSubView.netstats_dbus.get_stats();
@@ -25,7 +25,7 @@ namespace Usage
 
         }
 
-        public HashTable<int, stats> get_network_table()
+        public HashTable<int, stats?> get_network_table()
         {
             return network_process_table;
         }
