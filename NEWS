@@ -1,3 +1,28 @@
+3.28.0 - Mar 12, 2018
+=====================
+
+  - Consume AccountsService data over DBus
+  - Added/updated/fixed translations:
+    - Hungarian
+    - Swedish
+    - French
+    - Friulian
+    - Italian
+
+Dependencies changed:
+
+ - accountsservice (dropped)
+
+All contributors to this release:
+
+Alexandre Franke <afranke@gnome.org>
+Anders Jonsson <anders.jonsson@norsjovallen.se>
+Balázs Úr <balazs@urbalazs.hu>
+Fabio Tomat <f.t.public@gmail.com>
+Felipe Borges <felipeborges@gnome.org>
+Gianvito Cavasoli <gianvito@gmx.it>
+Julien Hardelin <jhardlin@orange.fr>
+
 3.27.92 - Mar 04, 2018
 ======================
 
