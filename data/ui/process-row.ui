@@ -43,21 +43,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="load_label">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="ellipsize">end</property>
-                <property name="max_width_chars">30</property>
-                <property name="margin_right">10</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack_type">end</property>
-                <property name="position">3</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkBox" id="user_tag_box">
                 <property name="visible">False</property>
                 <property name="can_focus">False</property>
@@ -68,6 +53,49 @@
                 <child>
                   <object class="GtkLabel" id="user_tag_label">
                     <property name="visible">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack_type">start</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="process_details_box">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_right">10</property>
+                <child>
+                  <object class="GtkLabel" id="load_label">
+                    <property name="visible">True</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkImage" id="icon_transmit">
+                    <property name="margin">10</property>
+                    <property name="icon-name">network-transmit-symbolic</property>
+                    <property name="pixel-size">24</property>
+                    <property name="visible">False</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="load_label_net_incoming">
+                    <property name="visible">False</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkImage" id="icon_receive">
+                    <property name="margin">10</property>
+                    <property name="icon-name">network-receive-symbolic</property>
+                    <property name="pixel-size">24</property>
+                    <property name="visible">False</property>
                   </object>
                 </child>
               </object>

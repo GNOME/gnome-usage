@@ -35,9 +35,9 @@ namespace Usage
         }
 
         public GraphSwitcherButton.network(string label)
-        {   //this is kept temporarily for testing NetworkGraph has to be implemented
-            Rg.Graph network_graph = new MemoryGraph();
-            child = createContent(network_graph, "network");
+        {   //NetworkGraph is TODO
+            Rg.Graph network_graph = new NetworkGraph();
+            child = createContent(network_graph, label);
         }
 
         private Gtk.Box createContent(Rg.Graph graph, string label_text)
