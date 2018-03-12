@@ -38,9 +38,25 @@ namespace Usage
         private Gtk.Label user_tag_label;
 
         [GtkChild]
+        private Gtk.Box process_details_box;
+
+        [GtkChild]
         private Gtk.Label load_label;
 
+<<<<<<< HEAD
         private Fdo.AccountsUser user;
+=======
+        [GtkChild]
+        private Gtk.Label load_label_net_incoming;
+
+        [GtkChild]
+        private Gtk.Image icon_transmit;
+
+        [GtkChild]
+        private Gtk.Image icon_receive;
+
+        private Act.User user;
+>>>>>>> Add network processes to subview
 
         public Process process { get; private set; }
         public bool max_usage { get; private set; }
@@ -120,6 +136,14 @@ namespace Usage
                     break;
                 case ProcessListBoxType.MEMORY:
                     load_label.label = Utils.format_size_values(process.mem_usage);
+                    break;
+                case ProcessListBoxType.NETWORK:
+
+                    load_label.label = "%.2f".printf(process.bytes_sent) + " kbps";
+                    load_label_net_incoming.label = "%.2f".printf(process.bytes_recv) + " kbps";
+                    load_label_net_incoming.visible= true;
+                    icon_receive.visible = true;
+                    icon_transmit.visible = true;
                     break;
             }
         }

@@ -33,7 +33,7 @@ namespace Usage
         ListStore model;
         ProcessRow? opened_row = null;
         string focused_row_cmdline;
-        ProcessListBoxType type;
+        public ProcessListBoxType type;
         string search_text = "";
 
         public ProcessListBox(ProcessListBoxType type)
