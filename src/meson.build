@@ -51,6 +51,7 @@ deps = [
   libegg_dep,
   librg_dep,
   libgtop_dep,
+  tracker_dep,
   cc.find_library('m'),
   valac.find_library('config', dirs: vapi_dir),
   valac.find_library('egg', dirs: vapi_dir),
