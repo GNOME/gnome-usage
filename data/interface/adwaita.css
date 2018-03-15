@@ -66,9 +66,8 @@ graph-switcher-button:active {
 }
 
 rg-graph.big {
-    background-color: #ffffff;
     background-size: 57px 57px;
-    background-image: repeating-linear-gradient(0deg, #e6e6e6, #e6e6e6 1px, transparent 1px, transparent 57px);
+    background-image: repeating-linear-gradient(0deg, alpha(@theme_fg_color, 0.2), alpha(@theme_fg_color, 0.2) 1px, transparent 1px, transparent 57px);
 }
 
 rg-graph.line {
