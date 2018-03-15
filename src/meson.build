@@ -49,7 +49,7 @@ deps = [
   gtk_dep,
   libegg_dep,
   librg_dep,
-  dependency('libgtop-2.0', version : '>= 2.34.0'),
+  libgtop_dep,
   cc.find_library('m'),
   valac.find_library('config', dirs: vapi_dir),
   valac.find_library('egg', dirs: vapi_dir),
