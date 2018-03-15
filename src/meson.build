@@ -49,7 +49,7 @@ deps = [
   glib_dep,
   gobject_dep,
   gtk_dep,
-  dependency('libgtop-2.0', version : '>= 2.34.0'),
+  libgtop_dep,
   libdazzle_dep,
   cc.find_library('m'),
   valac.find_library('config', dirs: vapi_dir),
