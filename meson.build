@@ -14,6 +14,7 @@ gio_dep = dependency('gio-2.0')
 gtk_dep = dependency('gtk+-3.0', version : '>=3.20.10')
 libdazzle_dep = dependency('libdazzle-1.0', version : '>=3.30')
 libgtop_dep = dependency('libgtop-2.0', version : '>= 2.34.0')
+tracker_dep = dependency('tracker-sparql-2.0')
 
 gnome = import('gnome')
 i18n = import('i18n')
