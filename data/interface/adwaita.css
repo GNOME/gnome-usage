@@ -10,13 +10,11 @@ list separator {
 }
 
 list row.max {
-    background: #fabbbb;
-    border: 1px solid #faa5a2;
+    background: alpha(red, 0.3);
 }
 
 list row.max:hover {
-    background: #faa5a2;
-    border: 1px solid #faa5a2;
+    background: alpha(red, 0.4);
 }
 
 list row.opened {
