@@ -131,26 +131,8 @@ namespace Usage
 
         }
         public bool set_network_stats()
-        {   
-            // the stats are collected in HashTable
+        {
             network_monitor.update();
-            HashTable<int, stats?> temp_stats = network_monitor.get_network_table();
-            //create Process instances out of the temp_stats
-            network_monitor.get_network_table().foreach ((key, val) => {
-                Process proc_global = process_table[(Pid)key];
-                if(proc_global != null)
-                {
-                    Process temp = new Process((Pid)key,proc_global.cmdline,proc_global.cmdline_parameter,proc_global.display_name,proc_global.uid);
-                    if(temp != null)
-                    {
-                        temp.bytes_sent = ((stats)val).bytes_sent;
-                        temp.bytes_recv = ((stats)val).bytes_recv;
-                        //insert this into network_process_table
-                        network_process_table.insert(key,temp);}
-                    }
-                });
-            //free the stats 
-            network_monitor.free_network_table();
             return true;
         }
 
