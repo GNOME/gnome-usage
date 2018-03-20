@@ -38,9 +38,6 @@ namespace Usage
         private Gtk.Label user_tag_label;
 
         [GtkChild]
-        private Gtk.Box process_details_box;
-
-        [GtkChild]
         private Gtk.Label load_label;
 
         [GtkChild]
