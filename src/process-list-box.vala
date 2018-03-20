@@ -90,14 +90,10 @@ namespace Usage
                         return (int) ((uint64) (p_a.cpu_load < p_b.cpu_load) - (uint64) (p_a.cpu_load > p_b.cpu_load));
                     case ProcessListBoxType.MEMORY:
                         return (int) ((uint64) (p_a.mem_usage < p_b.mem_usage) - (uint64) (p_a.mem_usage > p_b.mem_usage));
-                    //considering only recv bytes , (subject to change) 
-                    case ProcessListBoxType.NETWORK:
-                        return (int) ((uint64) (p_a.bytes_recv < p_b.bytes_recv) - (uint64) (p_a.bytes_recv > p_b.bytes_recv));
                 }
             };
 
             bind_model(null, null);
-            model.remove_all();
 
             SystemMonitor system_monitor = SystemMonitor.get_default();
             if(search_text == "")
@@ -106,15 +102,17 @@ namespace Usage
                 {
                     default:
                     case ProcessListBoxType.PROCESSOR:
+                        model.remove_all();
                         foreach(unowned Process process in system_monitor.get_cpu_processes())
                             model.insert_sorted(process, processcmp);
                         break;
                     case ProcessListBoxType.MEMORY:
+                        model.remove_all();
                         foreach(unowned Process process in system_monitor.get_ram_processes())
                             model.insert_sorted(process, processcmp);
                         break;
                     case ProcessListBoxType.NETWORK:
-                            model = NetworkMonitor.get_network_model();
+                        model = NetworkMonitor.get_network_model();
                         break;
                 }
             }
