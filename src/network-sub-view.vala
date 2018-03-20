@@ -15,7 +15,7 @@ namespace Usage
                                                    "org.gnome.GTop.NetStats",
                                                    "/org/gnome/GTop/netstats"); //pls CHECK obj path
             }catch(IOError e) {
-                stderr.printf ("%s\n", e.message);
+                warning ("%s\n", e.message);
             }
             this.network_stats_activate.connect(on_net_stats_activate);
             this.network_stats_deactivate.connect(on_net_stats_deactivate);
@@ -57,23 +57,23 @@ namespace Usage
             {
                 this.netstats_dbus.set_capture_status();
             }catch(IOError e) {
-                stderr.printf ("%s\n", e.message);
+                warning ("%s\n", e.message);
             }
             try
             {
                 this.netstats_dbus.init_capture();
             }catch(IOError e) {
-                stderr.printf ("%s\n", e.message);
+                warning ("%s\n", e.message);
             }
         }
 
         public void on_net_stats_deactivate ()
         {
             try
-            {   
+            {
                 this.netstats_dbus.reset_capture_status();
             }catch(IOError e) {
-                stderr.printf ("%s\n", e.message);
+                warning ("%s\n", e.message);
             }
         }
     }

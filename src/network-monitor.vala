@@ -24,7 +24,7 @@ namespace Usage
            {
                 network_process_table = NetworkSubView.netstats_dbus.get_stats();
            }catch(IOError e){
-               stderr.printf ("%s\n",e.message);
+               warning ("%s\n",e.message);
            }
            if(network_process_table.size() != 0)
                 network_model.remove_all();
