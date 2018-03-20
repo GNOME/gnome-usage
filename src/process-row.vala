@@ -122,9 +122,8 @@ namespace Usage
                     load_label.label = Utils.format_size_values(process.mem_usage);
                     break;
                 case ProcessListBoxType.NETWORK:
-
-                    load_label.label = "%.2f".printf(process.bytes_sent) + " kbps";
-                    load_label_net_incoming.label = "%.2f".printf(process.bytes_recv) + " kbps";
+                    load_label.label = "%.2f".printf(process.net_stats.bytes_sent) + " kbps";
+                    load_label_net_incoming.label = "%.2f".printf(process.net_stats.bytes_recv) + " kbps";
                     load_label_net_incoming.visible= true;
                     icon_receive.visible = true;
                     icon_transmit.visible = true;
