@@ -20,6 +20,18 @@
 
 namespace Usage
 {
+    public class NetStats_details
+    {
+        public double bytes_sent {get; set; default = 0; }
+        public double bytes_recv {get; set; default = 0; }
+        public NetStats_details(double sent, double recv)
+        {
+            bytes_sent = sent;
+            bytes_recv = recv;
+        }
+
+    }
+
     public class Process : Object
     {
         public Pid pid { get; private set; }
@@ -36,8 +48,7 @@ namespace Usage
 
         public uint64 mem_usage { get; set; default = 0; }
 
-        public double bytes_sent {get; set; default = 0; }
-        public double bytes_recv {get; set; default = 0; }
+        public NetStats_details net_stats;
 
         public HashTable<Pid?, Process>? sub_processes { get; set; }
 
@@ -63,8 +74,11 @@ namespace Usage
             this.mem_usage = process.mem_usage;
             this.alive = process.alive;
             this.status = process.status;
-            this.bytes_sent = process.bytes_sent;
-            this.bytes_recv = process.bytes_recv;
+            if(net_stats != null)
+            {
+                this.net_stats.bytes_sent = process.net_stats.bytes_sent;
+                this.net_stats.bytes_recv = process.net_stats.bytes_recv;
+            }
         }
     }
 

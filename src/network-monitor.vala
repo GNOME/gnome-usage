@@ -18,7 +18,7 @@ namespace Usage
             CompareDataFunc<Process> processcmp = (a, b) => {
                 Process p_a = (Process) a;
                 Process p_b = (Process) b;
-                return (int) ((uint64) (p_a.bytes_recv < p_b.bytes_recv) - (uint64) (p_a.bytes_recv > p_b.bytes_recv));
+                return (int) ((uint64) (p_a.net_stats.bytes_recv < p_b.net_stats.bytes_recv) - (uint64) (p_a.net_stats.bytes_recv > p_b.net_stats.bytes_recv));
                 };
             try
            {
@@ -35,8 +35,7 @@ namespace Usage
                     Process temp = new Process((Pid)key,proc_global.cmdline,proc_global.cmdline_parameter,proc_global.display_name,proc_global.uid);
                     if(temp != null)
                     {
-                        temp.bytes_sent = ((stats)val).bytes_sent;
-                        temp.bytes_recv = ((stats)val).bytes_recv;
+                        temp.net_stats = new NetStats_details(((stats)val).bytes_sent, ((stats)val).bytes_recv);
                         network_model.insert_sorted(temp, processcmp);
                     }
                 }
