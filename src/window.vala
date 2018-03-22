@@ -53,7 +53,7 @@ namespace Usage
             views = new View[]
             {
                 new PerformanceView(),
-                new StorageView(),
+                new NewStorageView(),
             };
 
             foreach(var view in views)

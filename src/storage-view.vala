@@ -27,16 +27,12 @@ namespace Usage
         private StorageListBox storage_list_box;
         private StorageActionBar action_bar;
 
-        [GtkChild]
         private Gtk.Revealer revealer;
 
-        [GtkChild]
         private Gtk.Stack stack;
 
-        [GtkChild]
         private Gtk.ScrolledWindow scrolled_window;
 
-        [GtkChild]
         private Gtk.Paned paned;
 
         public StorageView ()
