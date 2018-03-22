@@ -1,6 +1,6 @@
 {
     "app-id": "org.gnome.Usage",
-    "runtime": "org.gnome.Platform",
+    "runtime": "org.gnome.Sdk",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
     "command": "gnome-usage",
@@ -39,6 +39,20 @@
                 {
                     "type": "git",
                     "url": "https://git.gnome.org/browse/tracker"
+                }
+            ]
+        },
+        {
+            "name" : "libdazzle",
+            "config-opts" : [
+                "--libdir=/app/lib",
+                "--buildtype=debugoptimized"
+            ],
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/gnome/libdazzle"
                 }
             ]
         },
