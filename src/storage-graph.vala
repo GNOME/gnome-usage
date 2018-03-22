@@ -24,6 +24,15 @@ namespace Usage
 {
     public class StorageGraph : Gtk.DrawingArea
     {
+        private GLib.ListStore _model;
+        public GLib.ListStore model {
+            set {
+                _model = value;
+                this.draw.connect(draw_storage_graph);
+                this.queue_draw ();
+            }
+            get { return _model; }
+        }
         public const uint MIN_PERCENTAGE_SHOWN_FILES = 2;
 
         class construct
@@ -33,7 +42,6 @@ namespace Usage
 
         public StorageGraph()
         {
-            this.draw.connect(draw_storage_graph);
         }
 
         public enum Circle
@@ -48,63 +56,35 @@ namespace Usage
             double start_angle = 0;
             double final_angle = - Math.PI / 2.0;
             double ratio = 0;
-            var fill_color = Gdk.RGBA();
             var background_color = get_toplevel().get_style_context().get_background_color(get_toplevel().get_style_context().get_state());
 
             for(int i = 0; i < model.get_n_items(); i++)
             {
-                StorageItem item = (StorageItem) model.get_item(i);
-                if(item.get_percentage() > 0 && item.get_item_type() != StorageItemType.STORAGE && item.get_section() == section)
-                {
+                var item = model.get_item(i) as StorageViewItem;
+                //StorageViewRow item = (StorageViewRow) model.get_item(i);
+                //if(item.percentage > 0)
+                //{
                     var style_context = get_style_context();
-                    switch(item.get_item_type())
-                    {
-                        case StorageItemType.SYSTEM:
-                            style_context.add_class("system");
-                            fill_color = style_context.get_color(style_context.get_state());
-                            style_context.remove_class("system");
-                            break;
-                        case StorageItemType.TRASH:
-                            style_context.add_class("trash");
-                            fill_color = style_context.get_color(style_context.get_state());
-                            style_context.remove_class("trash");
-                            break;
-                        case StorageItemType.USER:
-                            style_context.add_class("user");
-                            fill_color = style_context.get_color(style_context.get_state());
-                            style_context.remove_class("user");
-                            break;
-                        case StorageItemType.AVAILABLE:
-                            style_context.add_class("available-storage");
-                            fill_color = style_context.get_color(style_context.get_state());
-                            style_context.remove_class("available-storage");
-                            break;
-                        case StorageItemType.DOCUMENTS:
-                        case StorageItemType.DOWNLOADS:
-                        case StorageItemType.DESKTOP:
-                        case StorageItemType.MUSIC:
-                        case StorageItemType.PICTURES:
-                        case StorageItemType.VIDEOS:
-                        case StorageItemType.DIRECTORY:
-                        case StorageItemType.FILE:
-                            fill_color = item.get_color();
-                            break;
-                    }
+                    style_context.add_class(item.style_class);
+                    var base_color = style_context.get_background_color(style_context.get_state());
+                    style_context.remove_class(item.style_class);
+
+                    Gdk.RGBA fill_color = generate_color(base_color, i, model.get_n_items ());
                     context.set_line_width (2.0);
                     start_angle = final_angle;
-                    ratio = ratio + ((double) item.get_percentage() / 100);
+                    ratio = ratio + ((double) item.percentage / 100);
                     final_angle = ratio * 2 * Math.PI - Math.PI / 2.0;
                     context.move_to (x, y);
                     Gdk.cairo_set_source_rgba (context, fill_color);
                     context.arc (x, y, radius, start_angle, final_angle);
-                    if(item.get_percentage() == 100)
+                    if(item.percentage == 100)
                         context.fill();
                     else
                         context.fill_preserve();
                     Gdk.cairo_set_source_rgba (context, background_color);
                     context.stroke();
 
-                    if(item.get_percentage() > MIN_PERCENTAGE_SHOWN_FILES)
+                    if(item.percentage > MIN_PERCENTAGE_SHOWN_FILES)
                     {
                         double midle_angle = start_angle + (final_angle - start_angle) / 2;
                         midle_angle += Math.PI / 2;
@@ -166,10 +146,10 @@ namespace Usage
                         }
                         space -= SIDE_MARGIN;
                         x_text += SIDE_MARGIN;
-                        draw_text(context, item.get_name(), x_text, y_text, quadrant, space);
+                        draw_text(context, item.name, x_text, y_text, quadrant, space);
                     }
                 }
-            }
+            //}
         }
 
         private void draw_text(Cairo.Context context, string text, double x, double y, CornerType start_corner, double width)
@@ -204,45 +184,55 @@ namespace Usage
             int height = this.get_allocated_height ();
             int width = this.get_allocated_width ();
 
-            var storage_list_box = ((StorageView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE]).get_storage_list_box();
-            var model = storage_list_box.get_model();
-
-            var two_graphs = false;
-            if(storage_list_box.get_root() && StorageAnalyzer.get_default().get_separate_home())
-                two_graphs = true;
-
             double x = 0;
             double y = 0;
             double radius = 0;
-            if(two_graphs)
-            {
-                double border = 5.5;
-                radius = int.min (width, height) / 3.5;
-                x = width / 1.8;
-                x -= x / border;
-                y = height / 2.1;
-                y -= y / border;
-                draw_circle(context, model, x, y, radius, 0, Circle.HOME);
 
-                border = 1.75;
-                radius = int.min (width, height) / 11.0;
-                x = width / 2.0;
-                x += x / border;
-                y = height / 1.9;
-                y += y / border;
-                draw_circle(context, model, x, y, radius, 1, Circle.ROOT);
-            }
-            else
-            {
-                radius = int.min (width, height) / 2.0;
-                radius -= radius / 3;
-                x = width / 2.0;
-                y = height / 2.0;
+            radius = int.min (width, height) / 2.0;
+            radius -= radius / 3;
+            x = width / 2.0;
+            y = height / 2.0;
 
-                draw_circle(context, model, x, y, radius, 0, Circle.BASE);
-            }
+            draw_circle(context, model, x, y, radius, 0, Circle.HOME);
 
             return true;
         }
+
+        private Gdk.RGBA generate_color(Gdk.RGBA default_color, uint order, uint all_color, bool reverse = false)
+        {
+            if(order >= all_color)
+                order = all_color - 1;
+
+            order += 1;
+
+            double step = 100 / all_color;
+            if(all_color % 2 == 1)
+            {
+                if((all_color / 2) + 1 == order)
+                    return default_color;
+                else
+                    step = 100 / (all_color - 1);
+            }
+
+            if(order > (all_color / 2))
+            {
+                if(all_color % 2 == 1)
+                    order -= 1;
+                double percentage = step * (order - (all_color/2));
+                if(reverse)
+                    return Utils.color_lighter(default_color, percentage);
+                else
+                    return Utils.color_darker(default_color, percentage);
+            }
+            else
+            {
+                double percentage = step * ((all_color/2) - (order-1));
+                if(reverse)
+                    return Utils.color_darker(default_color, percentage);
+                else
+                    return Utils.color_lighter(default_color, percentage);
+            }
+        }
+
     }
 }

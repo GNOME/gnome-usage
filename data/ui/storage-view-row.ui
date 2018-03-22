@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.9 -->
+  <template class="UsageStorageViewRow" parent="GtkListBoxRow">
+    <property name="visible">True</property>
+    <style>
+      <class name="storage-row"/>
+    </style>
+
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="spacing">10</property>
+        <property name="margin">10</property>
+
+        <child>
+          <object class="GtkBox" id="tag">
+            <property name="visible">True</property>
+            <property name="width-request">15</property>
+            <property name="height-request">15</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <style>
+              <class name="row-tag"/>
+              <class name="circular"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack-type">start</property>
+          </packing>
+        </child>
+
+        <child>
+          <object class="GtkLabel" id="title">
+            <property name="visible">True</property>
+            <property name="ellipsize">middle</property>
+          </object>
+          <packing>
+            <property name="pack-type">start</property>
+          </packing>
+        </child>
+
+        <child>
+          <object class="GtkLabel" id="size_label">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+
+      </object>
+    </child>
+  </template>
+</interface>
