@@ -34,6 +34,11 @@ namespace Usage
 
         public uint64 mem_usage { get; set; default = 0; }
 
+        public uint64 disk_read { get; set; default = 0; }
+        public uint64 disk_read_last { get; set; default = 0; }
+        public uint64 disk_write { get;  set; default = 0; }
+        public uint64 disk_write_last { get; set; default = 0; }
+
         public bool mark_as_updated { get; set; default = true; }
         public ProcessStatus status { get; private set; default = ProcessStatus.SLEEPING; }
 

@@ -21,5 +21,4 @@
 public interface Monitor
 {
     public abstract void update ();
-    public abstract void update_process (ref Usage.Process process);
 }

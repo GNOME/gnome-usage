@@ -22,19 +22,25 @@ namespace Usage
 {
     public class SystemMonitor : Object
     {
-        public bool process_list_ready { get; private set; default = false; }
+        public bool cpu_process_list_ready { get; private set; default = false; }
+        public bool disk_process_list_ready { get; private set; default = false; }
         public double cpu_load { get; private set; }
         public double[] x_cpu_load { get; private set; }
         public uint64 ram_usage { get; private set; }
         public uint64 ram_total { get; private set; }
         public uint64 swap_usage { get; private set; }
         public uint64 swap_total { get; private set; }
+        public uint64 disk_read { get; private set; }
+        public uint64 disk_write { get; private set; }
+
         public bool group_system_apps { get; set; default = true; }
 
         private CpuMonitor cpu_monitor;
         private MemoryMonitor memory_monitor;
+        private DiskMonitor disk_monitor;
 
         private HashTable<string, AppItem> app_table;
+        private bool first_update = true;
         private int process_mode = GTop.KERN_PROC_ALL;
         private static SystemMonitor system_monitor;
 
@@ -63,6 +69,7 @@ namespace Usage
 
             cpu_monitor = new CpuMonitor();
             memory_monitor = new MemoryMonitor();
+            disk_monitor = new DiskMonitor();
 
             app_table = new HashTable<string, AppItem>(str_hash, str_equal);
             var settings = Settings.get_default();
@@ -79,7 +86,6 @@ namespace Usage
         {
             var settings = Settings.get_default();
             app_table.remove_all();
-            process_list_ready = false;
 
             if(group_system_apps) {
                 var system = new AppItem.system();
@@ -89,7 +95,12 @@ namespace Usage
             update_data();
             Timeout.add(settings.data_update_interval, () =>
             {
-                process_list_ready = true;
+                cpu_process_list_ready = true;
+                return false;
+            });
+            Timeout.add(settings.data_update_interval*2, () =>
+            {
+                disk_process_list_ready = true;
                 return false;
             });
         }
@@ -98,6 +109,7 @@ namespace Usage
         {
             cpu_monitor.update();
             memory_monitor.update();
+            disk_monitor.update();
 
             cpu_load = cpu_monitor.get_cpu_load();
             x_cpu_load = cpu_monitor.get_x_cpu_load();
@@ -149,6 +161,10 @@ namespace Usage
             foreach(var app in app_table.get_values())
                 app.remove_processes();
 
+            disk_read = disk_monitor.read_bytes;
+            disk_write = disk_monitor.write_bytes;
+            first_update = false;
+
             return true;
         }
 
@@ -156,6 +172,7 @@ namespace Usage
         {
             cpu_monitor.update_process(ref process);
             memory_monitor.update_process(ref process);
+            disk_monitor.update_process(ref process, first_update);
             process.update_status();
         }
 
