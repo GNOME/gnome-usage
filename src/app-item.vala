@@ -8,6 +8,8 @@ namespace Usage
         public uint representative_uid { get; private set; }
         public double cpu_load { get; private set; }
         public uint64 mem_usage { get; private set; }
+        public uint64 disk_read { get; private set; }
+        public uint64 disk_write { get; private set; }
         public Fdo.AccountsUser? user { get; private set; default = null; }
 
         private static HashTable<string, AppInfo>? apps_info;
@@ -85,6 +87,8 @@ namespace Usage
         public void remove_processes() {
             cpu_load = 0;
             mem_usage = 0;
+            disk_read = 0;
+            disk_write = 0;
 
             foreach(var process in processes.get_values()) {
                 if(!process.mark_as_updated)
@@ -92,6 +96,8 @@ namespace Usage
                 else {
                     cpu_load += process.cpu_load;
                     mem_usage += process.mem_usage;
+                    disk_read += process.disk_read;
+                    disk_write += process.disk_write;
                 }
             }
 
