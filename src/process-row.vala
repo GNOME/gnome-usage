@@ -50,8 +50,6 @@ namespace Usage
         [GtkChild]
         private Gtk.Image icon_receive;
 
-        private Act.User user;
-
         public Process process { get; private set; }
         public bool max_usage { get; private set; }
         public bool group {
