@@ -1,8 +1,8 @@
 namespace Usage
 {
 	public struct stats{
-		double bytes_sent;
-		double bytes_recv;
+		uint32 bytes_sent;
+		uint32 bytes_recv;
 	}
 	[DBus (name = "org.gnome.GTop.NetStats")]
 	public interface NetStats : Object

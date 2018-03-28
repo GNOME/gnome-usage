@@ -24,10 +24,10 @@ namespace Usage
     {
         public double bytes_sent {get; set; default = 0; }
         public double bytes_recv {get; set; default = 0; }
-        public NetStats_details(double sent, double recv)
+        public NetStats_details(uint32 sent, uint32 recv)
         {
-            bytes_sent = sent;
-            bytes_recv = recv;
+            bytes_sent = (double)sent/(1024*5);
+            bytes_recv = (double)recv/(1024*5);
         }
 
     }
