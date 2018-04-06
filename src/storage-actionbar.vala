@@ -140,12 +140,12 @@ namespace Usage
                 var row = (GLib.Application.get_default() as Application).get_window().get_views()[Views.STORAGE];
                 StorageRow storage_row = (StorageRow) ((StorageView) row).get_storage_list_box().get_selected_rows();
                 string filename = storage_row.get_item_name();
-                //Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
-                display_message = _("Are you sure you want to permanently delete \"%s\" ?").printf(filename);
+                //Translators: %s is the name of the file to be deleted.
+                display_message = _("Are you sure you want to permanently delete “%s”?").printf(filename);
             }
             else
-                //Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
-                display_message = ngettext("Are you sure you want to permanently delete the %d selected items?", "Are you sure you want to permanently delete the %d selected items?", (int)number_of_files).printf((int)number_of_files);
+                //Translators: %d is the number of files to be deleted.
+                display_message = ngettext("Are you sure you want to permanently delete %d selected item?", "Are you sure you want to permanently delete %d selected items?", (int)number_of_files).printf((int)number_of_files);
 
             var dialog = new Gtk.MessageDialog ((GLib.Application.get_default() as Application).get_window(), Gtk.DialogFlags.MODAL,
                 Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, display_message);
