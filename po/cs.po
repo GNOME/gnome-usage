@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-02-12 10:43+0000\n"
-"PO-Revision-Date: 2018-02-21 09:14+0100\n"
+"POT-Creation-Date: 2018-04-06 08:27+0000\n"
+"PO-Revision-Date: 2018-04-18 07:28+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -119,7 +119,7 @@ msgstr "Přesunout do"
 msgid "Delete"
 msgstr "Smazat"
 
-#: data/ui/storage-actionbar.ui:33
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
 msgid "Move to Trash"
 msgstr "Přesunout do koše"
 
@@ -211,29 +211,40 @@ msgstr "Vybrat cílovou složku"
 msgid "Select"
 msgstr "Vybrat"
 
-#: src/storage-actionbar.vala:143
-#, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Opravdu chcete trvale smazat tuto položky %s?"
-
+#. Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
 #: src/storage-actionbar.vala:144
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\" ?"
+msgstr "Opravdu chcete trvale smazat „%s“?"
+
+#. Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
+#: src/storage-actionbar.vala:148
+#, c-format
+msgid "Are you sure you want to permanently delete the %d selected items?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] "Opravdu chcete trvale smazat %d vybranou položku?"
+msgstr[1] "Opravdu chcete trvale smazat %d vybrané položky?"
+msgstr[2] "Opravdu chcete trvale smazat %d vybraných položek?"
+
+#: src/storage-actionbar.vala:152
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Pokdu tyto položky smažete, budou nenávratně ztraceny."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Vyprázdnit z koše všechny položky?"
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Všechny položky v koši budou trvale smazány."
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Smazat všechny položky ze složky %s"
 
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Všechny položky ze složky %s bodou přesunuty do koše."
@@ -273,10 +284,6 @@ msgstr "Vysypat koš"
 #: src/storage-row.vala:273 src/storage-row.vala:367
 msgid "Rename"
 msgstr "Přejmenovat"
-
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Přesunout do koše"
 
 #: src/storage-row.vala:439
 #, c-format
