@@ -27,6 +27,8 @@ namespace Usage
 
         GraphSwitcherButton[] buttons;
 
+        private const int TOP_BOTTOM_TOLERANCE = 150;
+
         class construct
         {
             set_css_name("graph-stack-switcher");
@@ -83,10 +85,34 @@ namespace Usage
 
         private void on_scroll_changed(double y)
         {
-            Gtk.Allocation alloc;
+            var button_number = 0;
+            Gtk.Allocation container_alloc;
+            sub_views[0].parent.parent.get_allocation(out container_alloc);
 
-            this.sub_views[1].get_allocation(out alloc);
-            var button_number = (y < alloc.y) ? 0 : 1;
+            for(int i = 0; i < sub_views.length; i++)
+            {
+                Gtk.Allocation sub_view_alloc;
+                sub_views[i].get_allocation(out sub_view_alloc);
+
+                if(y + container_alloc.height / 2 < sub_view_alloc.y + sub_view_alloc.height)
+                {
+                    button_number = i;
+                    break;
+                }
+            }
+
+            var last_subview_number = sub_views.length - 1;
+            Gtk.Allocation last_subview_alloc;
+            sub_views[last_subview_number].get_allocation(out last_subview_alloc);
+
+            if(y < TOP_BOTTOM_TOLERANCE)
+            {
+                button_number = 0;
+            }
+            else if(y + container_alloc.height > last_subview_alloc.y + last_subview_alloc.height - TOP_BOTTOM_TOLERANCE)
+            {
+                button_number = last_subview_number;
+            }
 
             buttons[button_number].set_active(true);
         }
