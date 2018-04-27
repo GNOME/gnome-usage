@@ -30,7 +30,8 @@ namespace Usage
         {
           { "about", on_about },
           { "search", on_search },
-          { "quit", on_quit }
+          { "quit", on_quit },
+          { "filter-processes", on_activate_radio, "s", "'group-system'", change_filter_processes_state }
         };
 
         public Application ()
@@ -107,6 +108,17 @@ namespace Usage
         private void on_search(GLib.SimpleAction action, GLib.Variant? parameter)
         {
             window.get_header_bar().action_on_search();
+        }
+
+        private void on_activate_radio (GLib.SimpleAction action, GLib.Variant? state)
+        {
+            action.change_state(state);
+        }
+
+        private void change_filter_processes_state(GLib.SimpleAction action, GLib.Variant? state)
+        {
+            action.set_state(state);
+            //TODO here change filtering
         }
     }
 }
