@@ -64,6 +64,19 @@
     </child>
 
     <child>
+      <object class="GtkMenuButton" id="performance_filter_button">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="use_popover">True</property>
+        <property name="direction">none</property>
+        <property name="menu-model">performance-filter-menu</property>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+      </packing>
+    </child>
+
+    <child>
       <object class="GtkToggleButton" id="performance_search_button">
         <property name="visible">True</property>
         <signal name="toggled" handler="on_performance_search_button_toggled"/>
@@ -110,5 +123,20 @@
       </packing>
     </child>
   </template>
+
+  <menu id="performance-filter-menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Group system processes</attribute>
+        <attribute name="action">app.filter-processes</attribute>
+        <attribute name="target">group-system</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Show all processes</attribute>
+        <attribute name="action">app.filter-processes</attribute>
+        <attribute name="target">show-all</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>
 
