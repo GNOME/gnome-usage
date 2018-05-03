@@ -1,14 +1,14 @@
 # Turkish translation for gnome-usage.
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2017.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2017-12-21 18:10+0000\n"
-"PO-Revision-Date: 2017-12-28 09:08+0300\n"
+"POT-Creation-Date: 2018-03-12 17:08+0000\n"
+"PO-Revision-Date: 2018-03-15 10:53+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -75,6 +75,19 @@ msgstr ""
 msgid "Cancel"
 msgstr "İptal"
 
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Kullanılan"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "Uygun"
+
 #: data/ui/no-results-found-view.ui:23
 msgid "No results found"
 msgstr "Sonuç bulunamadı"
@@ -86,7 +99,7 @@ msgstr "Başka bir arama deneyin"
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
 msgid "Force Quit %s?"
-msgstr "%s’dan Çıkmaya Zorla?"
+msgstr "%s Uygulamasından Çıkmaya Zorla?"
 
 #: data/ui/quit-process-dialog.ui:10
 msgid "Unsaved work might be lost."
@@ -106,7 +119,7 @@ msgstr "Sil"
 
 #: data/ui/storage-actionbar.ui:33
 msgid "Move to Trash"
-msgstr "Çöp’e taşı"
+msgstr "Çöpe taşı"
 
 #: data/ui/storage-actionbar.ui:45
 msgid "Empty folder"
@@ -118,11 +131,15 @@ msgstr "Geri yükle"
 
 #: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
 msgid "Delete from Trash"
-msgstr "Çöp’ten sil"
+msgstr "Çöpten sil"
 
 #: data/ui/storage-view.ui:63
 msgid "No content here"
 msgstr "Burada içerik yok"
+
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Takas"
 
 #: src/application.vala:56
 msgid "About"
@@ -155,10 +172,6 @@ msgstr "İşlemci"
 #: src/graph-block.vala:65
 msgid "Others"
 msgstr "Diğerleri"
-
-#: src/graph-block.vala:67 src/storage-item.vala:140
-msgid "Available"
-msgstr "Uygun"
 
 #: src/graph-stack-switcher.vala:41
 msgid "Memory"
@@ -205,11 +218,11 @@ msgstr "Bu ögeleri silerseniz kalıcı olarak kaybedilecekler."
 
 #: src/storage-actionbar.vala:197 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
-msgstr "Tüm ögeleri Çöp’ten temizle?"
+msgstr "Tüm ögeleri çöpten temizle?"
 
 #: src/storage-actionbar.vala:198 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Çöp’teki tüm ögeler kalıcı olarak silinecek."
+msgstr "Çöpteki tüm ögeler kalıcı olarak silinecek."
 
 #: src/storage-actionbar.vala:219 src/storage-row.vala:322
 #, c-format
@@ -219,7 +232,7 @@ msgstr "Tüm ögeleri %s’den temizle?"
 #: src/storage-actionbar.vala:220 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
-msgstr "%s içindeki tüm ögeler Çöp’e taşınacak."
+msgstr "%s içindeki tüm ögeler çöpe taşınacak."
 
 #: src/storage-analyzer.vala:94
 msgid "Storage 1"
@@ -251,7 +264,7 @@ msgstr "Boşalt"
 
 #: src/storage-row.vala:253
 msgid "Empty Trash"
-msgstr "Çöp’ü Boşalt"
+msgstr "Çöpü boşalt"
 
 #: src/storage-row.vala:273 src/storage-row.vala:367
 msgid "Rename"
