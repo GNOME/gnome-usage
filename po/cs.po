@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-04-06 08:27+0000\n"
-"PO-Revision-Date: 2018-04-18 07:28+0200\n"
+"POT-Creation-Date: 2018-05-03 14:27+0000\n"
+"PO-Revision-Date: 2018-05-03 23:20+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -167,7 +167,7 @@ msgstr "Zdeněk Hataš <zdenek.hatas@gmail.com>"
 msgid "Websites"
 msgstr "Webové stránky"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Procesor"
 
@@ -175,7 +175,7 @@ msgstr "Procesor"
 msgid "Others"
 msgstr "Ostatní"
 
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Paměť"
 
@@ -199,7 +199,7 @@ msgstr "Vybrat vše"
 msgid "Select None"
 msgstr "Zrušit výběr"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Výkon"
 
@@ -211,16 +211,16 @@ msgstr "Vybrat cílovou složku"
 msgid "Select"
 msgstr "Vybrat"
 
-#. Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
+#. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
 #, c-format
-msgid "Are you sure you want to permanently delete \"%s\" ?"
+msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "Opravdu chcete trvale smazat „%s“?"
 
-#. Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
+#. Translators: %d is the number of files to be deleted.
 #: src/storage-actionbar.vala:148
 #, c-format
-msgid "Are you sure you want to permanently delete the %d selected items?"
+msgid "Are you sure you want to permanently delete the %d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %d selected items?"
 msgstr[0] "Opravdu chcete trvale smazat %d vybranou položku?"
