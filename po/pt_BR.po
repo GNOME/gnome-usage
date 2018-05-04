@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-02-12 10:43+0000\n"
-"PO-Revision-Date: 2018-02-20 21:24-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2018-05-03 14:27+0000\n"
+"PO-Revision-Date: 2018-05-04 10:46-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
@@ -117,7 +117,7 @@ msgstr "Mover para"
 msgid "Delete"
 msgstr "Excluir"
 
-#: data/ui/storage-actionbar.ui:33
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
 msgid "Move to Trash"
 msgstr "Mover para a lixeira"
 
@@ -167,7 +167,7 @@ msgstr ""
 msgid "Websites"
 msgstr "Sites"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Processador"
 
@@ -175,7 +175,7 @@ msgstr "Processador"
 msgid "Others"
 msgstr "Outros"
 
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Memória"
 
@@ -198,7 +198,7 @@ msgstr "Selecionar todos"
 msgid "Select None"
 msgstr "Desmarcar seleção"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Desempenho"
 
@@ -210,29 +210,46 @@ msgstr "Selecionar pasta de destino"
 msgid "Select"
 msgstr "Selecionar"
 
-#: src/storage-actionbar.vala:143
-#, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Você tem certeza de que deseja excluir permanentemente esses itens %s?"
-
+#. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
+#, c-format
+#| msgid "Are you sure you want to permanently delete %s?"
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Você tem certeza de que deseja excluir permanentemente “%s”?"
+
+#. Translators: %d is the number of files to be deleted.
+#: src/storage-actionbar.vala:148
+#, c-format
+#| msgid "Are you sure you want to permanently delete the %d selected items?"
+#| msgid_plural ""
+#| "Are you sure you want to permanently delete the %d selected items?"
+msgid "Are you sure you want to permanently delete the %d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] ""
+"Você tem certeza de que deseja excluir permanentemente o %d item selecionado?"
+msgstr[1] ""
+"Você tem certeza de que deseja excluir permanentemente os %d itens "
+"selecionados?"
+
+#: src/storage-actionbar.vala:152
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Se você excluir estes itens, eles serão permanentemente excluídos."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Esvaziar todos os itens da lixeira?"
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Todos os itens da lixeira serão excluídos permanentemente."
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Esvaziar todos os itens de %s?"
 
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Todos os itens de %s serão movidos para a lixeira."
@@ -273,10 +290,6 @@ msgstr "Esvaziar lixeira"
 msgid "Rename"
 msgstr "Renomear"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Mover para a lixeira"
-
 #: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
@@ -289,6 +302,13 @@ msgstr "Se você excluir um item, ele será permanentemente excluído."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Armazenamento"
+
+#~| msgid "Are you sure you want to permanently delete %s?"
+#~ msgid "Are you sure you want to permanently delete \"%s\" ?"
+#~ msgstr "Você tem certeza de que deseja excluir permanentemente \"%s\"?"
+
+#~ msgid "Move to trash"
+#~ msgstr "Mover para a lixeira"
 
 #~ msgid "No applications using processor."
 #~ msgstr "Nenhum aplicativo usando o processador."
