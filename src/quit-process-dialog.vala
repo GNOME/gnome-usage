@@ -52,7 +52,7 @@ namespace Usage
         private void kill (Pid pid)
         {
             debug ("Terminating %d", (int) pid);
-            Posix.kill(pid, Posix.SIGKILL);
+            Posix.kill(pid, Posix.Signal.KILL);
         }
 
         [GtkCallback]
