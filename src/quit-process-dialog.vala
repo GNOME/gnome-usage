@@ -16,6 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Felipe Borges <felipeborges@gnome.org>
+ *          Petr Štětka <pstetka@redhat.com>
  */
 
 using Gtk;
@@ -25,34 +26,19 @@ namespace Usage
     [GtkTemplate (ui = "/org/gnome/Usage/ui/quit-process-dialog.ui")]
     public class QuitProcessDialog : Gtk.MessageDialog
     {
-        private Process process;
+        private AppItem app;
 
-        public QuitProcessDialog(Process process)
+        public QuitProcessDialog(AppItem app)
         {
-            this.process = process;
-
-            this.text = this.text.printf(process.display_name);
+            this.app = app;
+            this.text = this.text.printf(app.display_name);
         }
 
         [GtkCallback]
         private void on_force_quit_button_clicked ()
         {
-            if(this.process.sub_processes != null)
-            {
-                var sub_processes_pids = this.process.sub_processes.get_keys();
-                foreach(Pid pid in sub_processes_pids)
-                    kill(pid);
-            }
-
-            kill(this.process.pid);
-
+            app.kill();
             this.destroy();
-        }
-
-        private void kill (Pid pid)
-        {
-            debug ("Terminating %d", (int) pid);
-            Posix.kill(pid, Posix.Signal.KILL);
         }
 
         [GtkCallback]
