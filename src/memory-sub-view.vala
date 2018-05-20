@@ -74,7 +74,7 @@ namespace Usage
 
         public void search_in_processes(string text)
         {
-            process_list_box.search(text);
+            process_list_box.search_text = text;
         }
     }
 }
