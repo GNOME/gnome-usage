@@ -1,5 +1,6 @@
 vala_sources = [
   'animated-scrolled-window.vala',
+  'app-item.vala',
   'application.vala',
   'color-rectangle.vala',
   'cpu-graph-table.vala',
