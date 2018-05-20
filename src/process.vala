@@ -25,7 +25,6 @@ namespace Usage
         public Pid pid { get; private set; }
         public string cmdline { get; private set; }
         public string cmdline_parameter { get; private set; } //Isn't parameters as "-p" etc, but parameter for running app, for ex. "--writer' with libreoffice, or "privacy" with gnome-control-center
-        public string display_name { get; private set; }
         public uint uid { get; private set; }
 
         public double cpu_load { get; set; default = 0; }
@@ -36,30 +35,51 @@ namespace Usage
 
         public uint64 mem_usage { get; set; default = 0; }
 
-        public HashTable<Pid?, Process>? sub_processes { get; set; }
+        public bool mark_as_updated { get; set; default = true; }
+        public ProcessStatus status { get; private set; default = ProcessStatus.SLEEPING; }
 
-        public bool alive { get; set; default = true; }
-        public ProcessStatus status { get; set; default = ProcessStatus.SLEEPING; }
-
-        public Process(Pid pid, string cmdline, string cmdline_parameter, string display_name, uint uid)
+        public Process(Pid pid, string cmdline, string cmdline_parameter)
         {
             this.pid = pid;
             this.cmdline = cmdline;
             this.cmdline_parameter = cmdline_parameter;
-            this.display_name = display_name;
-            this.uid = uid;
+            this.uid = _get_uid();
         }
 
-        public void update_from_process(Process process)
+        public void update_status ()
         {
-            this.last_processor = process.last_processor;
-            this.cpu_load = process.cpu_load;
-            this.x_cpu_load = process.x_cpu_load;
-            this.cpu_last_used = process.cpu_last_used;
-            this.x_cpu_last_used = process.x_cpu_last_used;
-            this.mem_usage = process.mem_usage;
-            this.alive = process.alive;
-            this.status = process.status;
+            GTop.ProcState proc_state;
+            GTop.get_proc_state (out proc_state, pid);
+
+            switch(proc_state.state)
+            {
+                case GTop.PROCESS_RUNNING:
+                case GTop.PROCESS_UNINTERRUPTIBLE:
+                    status = ProcessStatus.RUNNING;
+                    break;
+                case GTop.PROCESS_SWAPPING:
+                case GTop.PROCESS_INTERRUPTIBLE:
+                case GTop.PROCESS_STOPPED:
+                    status = ProcessStatus.SLEEPING;
+                    break;
+                case GTop.PROCESS_DEAD:
+                case GTop.PROCESS_ZOMBIE:
+                default:
+                    status = ProcessStatus.DEAD;
+                    break;
+            }
+
+            if(cpu_load > 0)
+                status = ProcessStatus.RUNNING;
+
+            mark_as_updated = true;
+        }
+
+        private uint _get_uid()
+        {
+            GTop.ProcUid procUid;
+            GTop.get_proc_uid(out procUid, pid);
+            return procUid.uid;
         }
     }
 
