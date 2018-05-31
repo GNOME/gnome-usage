@@ -53,13 +53,19 @@ namespace Usage
                 update();
             });
 
+            var system_monitor = SystemMonitor.get_default();
+            system_monitor.notify["process-list-ready"].connect (() => {
+                if(system_monitor.process_list_ready)
+                    update();
+            });
+
             var settings = Settings.get_default();
             Timeout.add(settings.list_update_interval_UI, update);
 
             bind_property ("empty", this, "visible", BindingFlags.INVERT_BOOLEAN);
         }
 
-        public bool update()
+        private bool update()
         {
             model.remove_all();
 
