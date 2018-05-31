@@ -118,7 +118,7 @@ namespace Usage
         private void change_filter_processes_state(GLib.SimpleAction action, GLib.Variant? state)
         {
             action.set_state(state);
-            //TODO here change filtering
+            SystemMonitor.get_default().group_system_apps = state.get_string() == "group-system" ? true : false;
         }
     }
 }
