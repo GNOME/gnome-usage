@@ -36,7 +36,7 @@ namespace Usage
             var spinner = new Gtk.Spinner();
             spinner.active = true;
             spinner.margin_top = 30;
-            spinner.margin_bottom = 20;
+            spinner.height_request = 250;
 
             no_process_view = new NoResultsFoundView();
 
@@ -55,15 +55,19 @@ namespace Usage
             memory_box.pack_start(spinner, true, true, 0);
             memory_box.add(no_process_view);
 
-            SystemMonitor.get_default().cpu_processes_ready.connect(() =>
-            {
-                memory_box.pack_start(process_list_box, false, false, 0);
-                process_list_box.update();
-                memory_box.remove(spinner);
+            var system_monitor = SystemMonitor.get_default();
+            system_monitor.notify["process-list-ready"].connect ((sender, property) => {
+                if(system_monitor.process_list_ready) {
+                    memory_box.pack_start(process_list_box, false, false, 0);
+                    memory_box.remove(spinner);
+                }
+                else {
+                    memory_box.pack_start(spinner, true, true, 0);
+                    memory_box.remove(process_list_box);
+                }
             });
 
             process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
-
             add(memory_box);
         }
 
