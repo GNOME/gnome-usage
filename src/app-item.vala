@@ -10,20 +10,42 @@ namespace Usage
         public uint64 mem_usage { get; private set; }
         public Fdo.AccountsUser? user { get; private set; default = null; }
 
-        private static GLib.List<AppInfo>? apps_info;
-        private AppInfo app_info = null;
+        private static HashTable<string, AppInfo>? apps_info;
+        private AppInfo? app_info = null;
+
+        public static void init() {
+            apps_info = new HashTable<string, AppInfo>(str_hash, str_equal);
+            var _apps_info = AppInfo.get_all();
+
+            foreach (AppInfo info in _apps_info) {
+                string cmd = info.get_commandline();
+                sanity_cmd(ref cmd);
+
+                if(cmd != null)
+                    apps_info.insert(cmd, info);
+            }
+        }
+
+        public static bool have_app_info(string cmdline) {
+            return apps_info.get(cmdline) != null ? true : false;
+        }
 
         public AppItem(Process process) {
-            display_name = find_display_name(process.cmdline, process.cmdline_parameter);
+            app_info = apps_info.get(process.cmdline);
             representative_cmdline = process.cmdline;
             representative_uid = process.uid;
-            processes = new HashTable<Pid?, Process>(int_hash, int_equal);
+            display_name = find_display_name();
             processes.insert(process.pid, process);
-
-            if(apps_info == null)
-                apps_info = AppInfo.get_all();
-
             load_user_account.begin();
+        }
+
+        public AppItem.system() {
+            display_name = _("System");
+            representative_cmdline = "system";
+        }
+
+        construct {
+            processes = new HashTable<Pid?, Process>(int_hash, int_equal);
         }
 
         public bool contains_process(Pid pid) {
@@ -80,48 +102,11 @@ namespace Usage
             processes.replace(process.pid, process);
         }
 
-        private string find_display_name(string cmdline, string cmdline_parameter) {
-            foreach (AppInfo info in apps_info)
-            {
-                string commandline = info.get_commandline();
-                if(commandline != null)
-                {
-                    for (int i = 0; i < commandline.length; i++)
-                    {
-                        if(commandline[i] == ' ' && commandline[i] == '%')
-                            commandline = commandline.substring(0, i);
-                    }
-
-                    commandline = Path.get_basename(commandline);
-                    string process_full_cmd = cmdline + " " + cmdline_parameter;
-                    if(commandline == process_full_cmd)
-                        app_info = info;
-                    else if(commandline.contains("google-" + cmdline + "-")) //Fix for Google Chrome naming
-                        app_info = info;
-
-                    if(app_info == null)
-                    {
-                        commandline = info.get_commandline();
-                        for (int i = 0; i < commandline.length; i++)
-                        {
-                            if(commandline[i] == ' ')
-                                commandline = commandline.substring(0, i);
-                        }
-
-                        if(info.get_commandline().has_prefix(commandline + " " + commandline + "://")) //Fix for Steam naming
-                            commandline = info.get_commandline();
-
-                        commandline = Path.get_basename(commandline);
-                        if(commandline == cmdline)
-                            app_info = info;
-                    }
-                }
-            }
-
+        private string find_display_name() {
             if(app_info != null)
                 return app_info.get_display_name();
             else
-                return cmdline;
+                return representative_cmdline;
         }
 
         private async void load_user_account() {
@@ -135,6 +120,28 @@ namespace Usage
                                                  user_account_path);
             } catch (Error e) {
                 warning ("Unable to obtain user account: %s", e.message);
+            }
+        }
+
+        private static void sanity_cmd(ref string? commandline) {
+            if(commandline != null) {
+                //flatpak
+                if(commandline.contains("flatpak run")) {
+                    var index = commandline.index_of("--command=") + 10;
+                    commandline = commandline.substring(index);
+                }
+
+                try {
+                    var rgx = new Regex("[^a-zA-Z0-9._-]");
+
+                    commandline = Path.get_basename(commandline.split(" ")[0]);
+                    commandline = rgx.replace(commandline, commandline.length, 0, "");
+                } catch (RegexError e) {
+                    warning ("Unable to obtain process command: %s", e.message);
+                }
+
+                if(commandline.contains("google-chrome-stable")) //Workaround for google-chrome
+                    commandline = "chrome";
             }
         }
     }

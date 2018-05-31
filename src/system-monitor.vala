@@ -22,13 +22,14 @@ namespace Usage
 {
     public class SystemMonitor : Object
     {
-        public signal void cpu_processes_ready();
+        public bool process_list_ready { get; private set; default = false; }
         public double cpu_load { get; private set; }
         public double[] x_cpu_load { get; private set; }
         public uint64 ram_usage { get; private set; }
         public uint64 ram_total { get; private set; }
         public uint64 swap_usage { get; private set; }
         public uint64 swap_total { get; private set; }
+        public bool group_system_apps { get; set; default = true; }
 
         private CpuMonitor cpu_monitor;
         private MemoryMonitor memory_monitor;
@@ -58,6 +59,7 @@ namespace Usage
         public SystemMonitor()
         {
             GTop.init();
+            AppItem.init();
 
             cpu_monitor = new CpuMonitor();
             memory_monitor = new MemoryMonitor();
@@ -65,11 +67,29 @@ namespace Usage
             app_table = new HashTable<string, AppItem>(str_hash, str_equal);
             var settings = Settings.get_default();
 
-            update_data();
+            init();
+            this.notify["group-system-apps"].connect ((sender, property) => {
+                init();
+            });
+
             Timeout.add(settings.data_update_interval, update_data);
+        }
+
+        private void init()
+        {
+            var settings = Settings.get_default();
+            app_table.remove_all();
+            process_list_ready = false;
+
+            if(group_system_apps) {
+                var system = new AppItem.system();
+                app_table.insert("system" , system);
+            }
+
+            update_data();
             Timeout.add(settings.data_update_interval, () =>
             {
-                cpu_processes_ready();
+                process_list_ready = true;
                 return false;
             });
         }
@@ -94,23 +114,26 @@ namespace Usage
 
             for(uint i = 0; i < proclist.number; i++)
             {
-                string cmdline_parameter;
-                string cmdline = get_full_process_cmd(pids[i], out cmdline_parameter);
+                string cmd = get_full_process_cmd(pids[i]);
+                string app_id = cmd;
 
-                if (!(cmdline in app_table))
+                if(group_system_apps && is_system_app(cmd))
+                    app_id = "system";
+
+                if (!(app_id in app_table))
                 {
-                    var process = new Process(pids[i], cmdline, cmdline_parameter);
+                    var process = new Process(pids[i], cmd);
                     update_process(ref process);
                     var app = new AppItem(process);
-                    app_table.insert (cmdline, (owned) app);
+                    app_table.insert (app_id, (owned) app);
                 }
                 else
                 {
-                    AppItem app = app_table[cmdline];
+                    AppItem app = app_table[app_id];
 
                     if (!app.contains_process(pids[i]))
                     {
-                        var process = new Process(pids[i], cmdline, cmdline_parameter);
+                        var process = new Process(pids[i], cmd);
                         update_process(ref process);
                         app.insert_process(process);
                     }
@@ -136,14 +159,31 @@ namespace Usage
             process.update_status();
         }
 
-        private string get_full_process_cmd (Pid pid, out string cmd_parameter)
+        private string? sanity_cmd(string commandline)
+        {
+            string? cmd = null;
+
+            if(commandline != null)
+            {
+                try {
+                    var rgx = new Regex("[^a-zA-Z0-9._-]");
+                    cmd = Path.get_basename(commandline.split(" ")[0]);
+                    cmd = rgx.replace(commandline, commandline.length, 0, "");
+                } catch (RegexError e) {
+                    warning ("Unable to obtain process command: %s", e.message);
+                }
+            }
+            return cmd;
+        }
+
+        private string get_full_process_cmd (Pid pid)
         {
             GTop.ProcArgs proc_args;
             GTop.ProcState proc_state;
             string[] args = GTop.get_proc_argv (out proc_args, pid, 0);
             GTop.get_proc_state (out proc_state, pid);
             string cmd = (string) proc_state.cmd;
-            cmd_parameter = "";
+            string cmd_parameter = "";
 
             var secure_arguments = new string[2];
 
@@ -178,11 +218,16 @@ namespace Usage
                     else
                         cmd_parameter = secure_arguments[0];
 
-                    return name;
+                    return sanity_cmd(name);
                 }
             }
 
-            return cmd;
+            return sanity_cmd(cmd);
+        }
+
+        private bool is_system_app(string cmdline)
+        {
+            return !AppItem.have_app_info(cmdline);
         }
     }
 }

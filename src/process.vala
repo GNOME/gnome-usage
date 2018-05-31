@@ -24,7 +24,6 @@ namespace Usage
     {
         public Pid pid { get; private set; }
         public string cmdline { get; private set; }
-        public string cmdline_parameter { get; private set; } //Isn't parameters as "-p" etc, but parameter for running app, for ex. "--writer' with libreoffice, or "privacy" with gnome-control-center
         public uint uid { get; private set; }
 
         public double cpu_load { get; set; default = 0; }
@@ -38,11 +37,10 @@ namespace Usage
         public bool mark_as_updated { get; set; default = true; }
         public ProcessStatus status { get; private set; default = ProcessStatus.SLEEPING; }
 
-        public Process(Pid pid, string cmdline, string cmdline_parameter)
+        public Process(Pid pid, string cmdline)
         {
             this.pid = pid;
             this.cmdline = cmdline;
-            this.cmdline_parameter = cmdline_parameter;
             this.uid = _get_uid();
         }
 
