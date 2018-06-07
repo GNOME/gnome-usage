@@ -1,7 +1,8 @@
-image: fedora:26
+image: fedora:28
 stages:
   - build
 before_script:
+  - dnf update -y
   - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel
                    desktop-file-utils
 build-gnome-usage:
