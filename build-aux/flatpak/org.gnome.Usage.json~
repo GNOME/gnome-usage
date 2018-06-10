@@ -1,0 +1,50 @@
+{
+    "app-id": "org.gnome.Usage",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "master",
+    "sdk": "org.gnome.Sdk",
+    "command": "gnome-usage",
+    "tags": ["devel"],
+    "desktop-file-name-prefix": "(Development) ",
+    "finish-args": [
+        "--share=ipc", "--socket=x11",
+        "--socket=wayland",
+        "--share=network",
+        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {
+            "V": "1"
+        }
+    },
+    "cleanup": ["/include", "/lib/pkgconfig",
+                "/share/pkgconfig", "/share/aclocal",
+                "/man", "/share/man", "/share/gtk-doc",
+                "/share/vala",
+                "*.la", "*.a"],
+    "modules": [
+        {
+            "name": "libgtop-2.0",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/gnome/libgtop"
+                }
+            ]
+        },
+        {
+            "buildsystem": "meson",
+            "builddir": true,
+            "name": "gnome-usage",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/gnome/gnome-usage"
+                }
+            ]
+        }
+    ]
+}
