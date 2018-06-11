@@ -110,13 +110,8 @@ public class Usage.TrackerController : GLib.Object {
         var worker = yield new TrackerWorker (connection, query);
 
         string n_uri = null;
-        while (yield worker.fetch_next (out n_uri, null)) {
-            try {
-                total += get_g_file_size (n_uri);
-            } catch (GLib.Error error) {
-                warning (error.message);
-            }
-        }
+        while (yield worker.fetch_next (out n_uri, null))
+            total += get_g_file_size (n_uri);
 
         return total;
     }
