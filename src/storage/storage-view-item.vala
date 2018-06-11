@@ -48,10 +48,11 @@ public class Usage.StorageViewItem : GLib.Object {
         uri = file.get_uri ();
 
         try {
-        var info = file.query_info (FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.TRASH_ORIG_PATH, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
-        name = info.get_name ();
-        size = info.get_size ();
-        type = info.get_file_type ();
+            var info = file.query_info (FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.TRASH_ORIG_PATH, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+
+            name = info.get_name ();
+            size = info.get_size ();
+            type = info.get_file_type ();
         } catch (GLib.Error error) {
             warning (error.message);
         }

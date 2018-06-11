@@ -71,14 +71,14 @@ public class Usage.NewStorageView : Usage.View {
 
         setup_header_label ();
         setup_mount_sizes ();
-        populate_view ();
+        populate_view.begin ();
     }
 
     private void on_row_activated (Gtk.ListBoxRow row) {
         var storage_row = row as StorageViewRow;
 
         if (storage_row.item.type == FileType.DIRECTORY) {
-            present_dir (storage_row.item.uri);        
+            present_dir.begin (storage_row.item.uri);        
         } else {
             graph.queue_draw ();
         }
