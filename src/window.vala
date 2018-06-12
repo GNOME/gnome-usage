@@ -67,7 +67,6 @@ namespace Usage
                 else if(stack.visible_child_name == views[Views.STORAGE].name)
                 {
                     header_bar.set_mode(HeaderBarMode.STORAGE);
-                    StorageAnalyzer.get_default().create_cache.begin();
                 }
             });
 
