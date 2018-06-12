@@ -159,7 +159,7 @@ ColorRectangle.available-storage, StorageGraph.available-storage {
     border-bottom: 1px solid @borders;    
 }
 
-.stack-children { background: #fafafa; } /* FIXME: Doesn't work with other themes. */
+.stack-children { background: alpha(@theme_fg_color, 0.07); }
 
 box.storage {
     background-color: #ffffff;
