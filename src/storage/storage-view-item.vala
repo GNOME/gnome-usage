@@ -77,6 +77,9 @@ public class Usage.StorageViewItem : GLib.Object {
                 case UserDirectory.MUSIC:
                     style_class = "music";
                     break;
+                case UserDirectory.DOWNLOAD:
+                    style_class = "downloads";
+                    break;
             }
         } else {
             switch (ontology) {
