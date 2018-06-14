@@ -40,6 +40,13 @@ namespace Usage
 
         public Window? get_window()
         {
+            application_id = g_application_get_application_id (G_APPLICATION (gtkapplication));
+            if (g_strcmp0 (application_id, "org.gnome.AppNameDevel") == 0)
+            {
+                GtkStyleContext *style_context;
+                style_context = gtk_widget_get_style_context (GTK_WIDGET (window));
+                gtk_style_context_add_class (style_context, "devel");
+            }
             return window;
         }
 

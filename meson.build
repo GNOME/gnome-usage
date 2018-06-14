@@ -28,3 +28,27 @@ meson.add_install_script(
   join_paths('build-aux', 'meson', 'postinstall.sh'),
   join_paths(get_option('prefix'), get_option('datadir'))
 )
+
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  name_suffix = ' (Development Snapshot)'
+else
+  profile = ''
+  name_suffix = ''
+endif
+
+application_id = 'org.gnome.Usage@0@'.format(profile)
+
+conf.set_quoted('PROFILE', profile)
+
+config_h = declare_dependency(
+  sources: vcs_tag(
+    command: ['git', 'rev-parse', '--short', 'HEAD'],
+    fallback: get_option('profile') != 'default'? 'devel' : 'stable',
+    input: configure_file(
+      output: 'config.h.in',
+      configuration: conf
+    ),
+    output: 'config.h'
+  )
+)

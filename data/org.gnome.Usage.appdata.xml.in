@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>org.gnome.Usage.desktop</id>
+  <id>@appid@.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>GNOME Usage</name>
   <summary>A nice way to view information about use of system resources</summary>
