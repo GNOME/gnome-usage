@@ -35,7 +35,7 @@ namespace Usage
 
         public Application ()
         {
-            application_id = "org.gnome.Usage";
+            application_id = Config.APPLICATION_ID;
         }
 
         public Window? get_window()

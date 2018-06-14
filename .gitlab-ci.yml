@@ -31,7 +31,6 @@ flatpak:
         - flatpak-builder --stop-at=${FLATPAK_MODULE} app ${MANIFEST_PATH}
         - flatpak build app meson --prefix=/app ${MESON_ARGS} _build
         - flatpak build app ninja -C _build install
-        - xvfb-run -a -s "-screen 0 1024x768x24" flatpak build app ninja -C _build test
         - flatpak-builder --finish-only --repo=repo app ${MANIFEST_PATH}
         - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${RUNTIME_REPO} org.gnome.Usage
     artifacts:

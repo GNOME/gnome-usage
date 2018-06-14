@@ -1,0 +1,3 @@
+DesktopId=@appid@.desktop
+BusName=@appid@
+ObjectPath=/org/gnome/AppName@profile@/SearchProvider

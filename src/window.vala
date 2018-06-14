@@ -90,6 +90,11 @@ namespace Usage
             Gtk.StyleContext.reset_widgets(get_screen());
             provider.load_from_resource("/org/gnome/Usage/interface/adwaita.css");
             Gtk.StyleContext.add_provider_for_screen(get_screen(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            if (application_id == "org.gnome.UsageDevel")
+            {
+                gtk_style_context_add_class (style_context, "devel");
+            }
         }
     }
 }

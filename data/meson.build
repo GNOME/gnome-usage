@@ -50,3 +50,72 @@ install_subdir(
   'icons/hicolor',
   install_dir: join_paths(get_option('datadir'), 'icons')
 )
+
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  name_suffix = ' (Development Snapshot)'
+else
+  profile = ''
+  name_suffix = ''
+endif
+
+application_id = 'org.gnome.Usage@0@'.format(profile)
+
+foreach icon_size: ['16x16', '22x22', '24x24', '32x32', '48x48', '512x512']
+  icondir = join_paths('icons', 'hicolor', icon_size, 'apps')
+
+  install_data(
+    join_paths(icondir, 'org.gnome.Usage.png'),
+    install_dir: join_paths(datadir, icondir),
+    rename: '@0@.png'.format(application_id)
+  )
+endforeach
+
+icondir = join_paths('icons', 'hicolor', 'symbolic', 'apps')
+
+install_data(
+  join_paths(icondir, 'org.gnome.Usage-symbolic.svg'),
+  install_dir: join_paths(datadir, icondir),
+  rename: '@0@-symbolic.svg'.format(application_id)
+)
+
+desktop_conf = configuration_data()
+desktop_conf.set('icon', application_id)
+desktop = i18n.merge_file(
+  'desktop',
+  input: configure_file(
+    input: files('org.gnome.Usage.desktop.in'),
+    output: 'org.gnome.Usage.desktop.in',
+    configuration: desktop_conf
+  ),
+  output: '@0@.desktop'.format(application_id),
+  install: true,
+  install_dir: desktopdir,
+  po_dir: po_dir,
+  type: 'desktop'
+)
+
+appdata_conf = configuration_data()
+appdata_conf.set('appid', application_id)
+appdata = i18n.merge_file(
+  'appdata',
+  input: configure_file(
+    input: files('org.gnome.Usage.appdata.xml.in'),
+    output: 'org.gnome.Usage.appdata.xml.in',
+    configuration: appdata_conf
+  ),
+  output: '@0@.appdata.xml'.format(application_id),
+  install: true,
+  install_dir: join_paths(datadir, 'metainfo'),
+  po_dir: po_dir
+)
+
+service_conf = configuration_data()
+service_conf.set('appid', application_id)
+service_conf.set('bindir', join_paths(prefix, bindir))
+configure_file(
+  input: 'org.gnome.Usage.service.in',
+  output: '@0@.service'.format(application_id),
+  configuration: service_conf,
+  install_dir: servicedir
+)
