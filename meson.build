@@ -18,6 +18,7 @@ i18n = import('i18n')
 
 po_dir = join_paths(meson.source_root(), 'po')
 vapi_dir = join_paths (meson.source_root (), 'vapi')
+datadir = 'data'
 
 subdir('data')
 subdir('po')
