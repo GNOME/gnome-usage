@@ -51,6 +51,16 @@ install_subdir(
   install_dir: join_paths(get_option('datadir'), 'icons')
 )
 
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  name_suffix = ' (Development Snapshot)'
+else
+  profile = ''
+  name_suffix = ''
+endif
+
+application_id = 'org.gnome.Usage@0@'.format(profile)
+
 foreach icon_size: ['16x16', '22x22', '24x24', '32x32', '48x48', '512x512']
   icondir = join_paths('icons', 'hicolor', icon_size, 'apps')
 
@@ -115,7 +125,7 @@ search_provider_conf.set('appid', application_id)
 search_provider_conf.set('profile', profile)
 configure_file(
   configuration: search_provider_conf,
-  input: files('org.gnome.AppName.search-provider.ini.in'),
+  input: files('org.gnome.Usage.search-provider.ini.in'),
   install_dir: join_paths(datadir, 'gnome-shell', 'search-providers'),
   output: '@0@.search-provider.ini'.format(application_id)
 )

@@ -1,0 +1,16 @@
+option(
+  'profile',
+  type: 'combo',
+  choices: [
+    'default',
+    'development'
+  ],
+  value: 'default'
+)
+
+option(
+  'datadir',
+  type: 'string',
+  value: 'data/',
+  description: 'Data directiry'
+)

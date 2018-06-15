@@ -55,7 +55,8 @@ deps = [
   valac.find_library('config', dirs: vapi_dir),
   valac.find_library('egg', dirs: vapi_dir),
   valac.find_library('posix'),
-  valac.find_library('rg', dirs: vapi_dir)
+  valac.find_library('rg', dirs: vapi_dir),
+  config_h
 ]
 
 c_args = [
