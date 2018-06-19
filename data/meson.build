@@ -9,6 +9,7 @@ resource_data = files(
   'ui/quit-process-dialog.ui',
   'ui/speedometer.ui',
   'ui/storage-actionbar.ui',
+  'ui/storage-row-popover.ui',
   'ui/storage-view.ui',
   'ui/swap-speedometer.ui'
 )
