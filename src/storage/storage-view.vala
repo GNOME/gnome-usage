@@ -42,7 +42,8 @@ public class Usage.NewStorageView : Usage.View {
     [GtkChild]
     private StorageGraph graph;
 
-    private StorageViewRow os_row = new StorageViewRow ();
+    private StorageViewItem os_item = new StorageViewItem ();
+    private StorageRowPopover row_popover = new StorageRowPopover();
 
     private UserDirectory[] xdg_folders = {
         UserDirectory.DOCUMENTS,
@@ -81,6 +82,8 @@ public class Usage.NewStorageView : Usage.View {
             listbox.pop();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
             present_dir.begin (storage_row.item.uri);
+        } else if (storage_row.item.custom_type != null) {
+            row_popover.present(storage_row);
         } else {
             graph.queue_draw ();
         }
@@ -153,11 +156,9 @@ public class Usage.NewStorageView : Usage.View {
             var used = total - free;
 
             if (dir == "/") {
-                os_row.label = _("Operating System");
-                os_row.tag_size = StorageViewRow.TagSize.BIG;
-                os_row.get_style_context ().add_class ("stack-children");
-                os_row.tag.get_style_context ().add_class ("os-tag");
-                os_row.size_label.label = Utils.format_size_values (used);
+                os_item.name = _("Operating System");
+                os_item.size = used;
+                os_item.custom_type = "os";
             }
 
             total_used_size += used;
@@ -183,6 +184,8 @@ public class Usage.NewStorageView : Usage.View {
             return;
 
         var model = new GLib.ListStore (typeof (StorageViewItem));
+        model.append(os_item);
+
         foreach (var dir in xdg_folders) {
             var file = File.new_for_uri (get_user_special_dir_path (dir));
             var item = new StorageViewItem.from_file (file);

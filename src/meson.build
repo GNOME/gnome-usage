@@ -29,6 +29,7 @@ vala_sources = [
   'settings.vala',
   'speedometer.vala',
   'storage/query-builder.vala',
+  'storage/storage-row-popover.vala',
   'storage/storage-view-item.vala',
   'storage/storage-view.vala',
   'storage/storage-view-row.vala',

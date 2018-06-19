@@ -102,6 +102,14 @@ public class Usage.StorageViewItem : GLib.Object {
             }
         }
 
+        if(custom_type != null) {
+            switch(custom_type) {
+                case "os":
+                    style_class = "os-tag";
+                    break;
+            }
+        }
+
         if (_style_class == null)
             style_class = "files";
     }
