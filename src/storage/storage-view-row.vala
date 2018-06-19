@@ -63,7 +63,10 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
 
         tag.get_style_context ().add_class (item.style_class);
 
-        if (item.type == FileType.DIRECTORY)
+        if (item.type == FileType.DIRECTORY || item.custom_type != null)
             tag.width_request = tag.height_request = 20;
+
+        if(item.custom_type == "up-folder")
+            get_style_context().add_class("up-folder");
     }
 }
