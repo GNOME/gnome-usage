@@ -191,3 +191,20 @@ ColorRectangle.available-storage, StorageGraph.available-storage {
 box.storage {
     background-color: #ffffff;
 }
+
+row.up-folder:not(:hover) {
+    background: @theme_base_color;
+}
+
+dzlstacklist list {
+    border-color: @borders;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+dzlstacklist list.stack-header {
+    padding-bottom: 1px;
+    margin: 0px;
+    border:none;
+}

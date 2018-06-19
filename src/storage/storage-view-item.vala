@@ -28,6 +28,7 @@ public class Usage.StorageViewItem : GLib.Object {
     public FileType type;
     public UserDirectory? dir;
     public string ontology;
+    public string? custom_type;
 
     private string _style_class = null;
     public string style_class {

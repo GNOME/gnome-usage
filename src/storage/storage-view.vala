@@ -77,8 +77,10 @@ public class Usage.NewStorageView : Usage.View {
     private void on_row_activated (Gtk.ListBoxRow row) {
         var storage_row = row as StorageViewRow;
 
-        if (storage_row.item.type == FileType.DIRECTORY) {
-            present_dir.begin (storage_row.item.uri);        
+        if(storage_row.item.custom_type == "up-folder") {
+            listbox.pop();
+        } else if (storage_row.item.type == FileType.DIRECTORY) {
+            present_dir.begin (storage_row.item.uri);
         } else {
             graph.queue_draw ();
         }
@@ -118,9 +120,10 @@ public class Usage.NewStorageView : Usage.View {
 
             var file = File.new_for_uri (uri);
             var item = new StorageViewItem.from_file (file);
-            var row = new StorageViewRow.from_item (item);
+            item.custom_type = "up-folder";
 
-            listbox.push (row, model, create_file_row);
+            model.insert(0, item);
+            listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
 
             graph.model = model;
         } catch (GLib.Error error) {
@@ -188,7 +191,7 @@ public class Usage.NewStorageView : Usage.View {
             model.append (item);
         }
 
-        listbox.push (os_row, model, create_file_row);
+        listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
         graph.model = model;
     }
 }
