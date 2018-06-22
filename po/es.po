@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-04-06 08:27+0000\n"
-"PO-Revision-Date: 2018-04-30 16:14+0200\n"
+"POT-Creation-Date: 2018-05-15 09:26+0000\n"
+"PO-Revision-Date: 2018-06-22 09:49+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -166,7 +166,7 @@ msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2017"
 msgid "Websites"
 msgstr "Sitios web"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Procesador"
 
@@ -174,7 +174,7 @@ msgstr "Procesador"
 msgid "Others"
 msgstr "Otros"
 
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Memoria"
 
@@ -197,7 +197,7 @@ msgstr "Seleccionar todo"
 msgid "Select None"
 msgstr "No seleccionar nada"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Rendimiento"
 
@@ -209,23 +209,24 @@ msgstr "Elegir carpeta de destino"
 msgid "Select"
 msgstr "Seleccionar"
 
-#. Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
+#. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
 #, c-format
 #| msgid "Are you sure you want to permanently delete %s?"
-msgid "Are you sure you want to permanently delete \"%s\" ?"
-msgstr "¿Está seguro de que quiere eliminar «%s» permanentemente?"
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "¿Está seguro de que quiere eliminar permanentemente «%s»?"
 
-#. Translators: %d is the number of files to be deleted. var msg = "Are you sure you want to permanently delete the %d selected item(s)?"
+#. Translators: %d is the number of files to be deleted.
 #: src/storage-actionbar.vala:148
 #, c-format
-#| msgid "Are you sure you want to permanently delete this items %s?"
-msgid "Are you sure you want to permanently delete the %d selected items?"
+#| msgid "Are you sure you want to permanently delete the %d selected items?"
+#| msgid_plural ""
+#| "Are you sure you want to permanently delete the %d selected items?"
+msgid "Are you sure you want to permanently delete the %d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %d selected items?"
 msgstr[0] ""
-"¿Está seguro de que quiere eliminar permanentemente los %d elementos "
-"seleccionados?"
+"¿Está seguro de que quiere eliminar permanentemente %d elemento seleccionado?"
 msgstr[1] ""
 "¿Está seguro de que quiere eliminar permanentemente los %d elementos "
 "seleccionados?"
@@ -300,6 +301,10 @@ msgstr "Si elimina un elemento, se perderá para siempre."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Almacenamiento"
+
+#~| msgid "Are you sure you want to permanently delete %s?"
+#~ msgid "Are you sure you want to permanently delete \"%s\" ?"
+#~ msgstr "¿Está seguro de que quiere eliminar «%s» permanentemente?"
 
 #~ msgid "Move to trash"
 #~ msgstr "Mover a la papelera"
