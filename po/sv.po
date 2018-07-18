@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-02-12 10:43+0000\n"
-"PO-Revision-Date: 2018-03-05 12:39+0100\n"
+"POT-Creation-Date: 2018-05-03 14:27+0000\n"
+"PO-Revision-Date: 2018-07-18 13:48+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -117,7 +117,7 @@ msgstr "Flytta till"
 msgid "Delete"
 msgstr "Ta bort"
 
-#: data/ui/storage-actionbar.ui:33
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
 msgid "Move to Trash"
 msgstr "Flytta till papperskorgen"
 
@@ -165,7 +165,7 @@ msgstr "Josef Andersson <josef.andersson@fripost.org>, 2016, 2017"
 msgid "Websites"
 msgstr "Webbplatser"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Processor"
 
@@ -173,7 +173,7 @@ msgstr "Processor"
 msgid "Others"
 msgstr "Andra"
 
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Minne"
 
@@ -196,7 +196,7 @@ msgstr "Välj alla"
 msgid "Select None"
 msgstr "Välj inget"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Prestanda"
 
@@ -208,30 +208,40 @@ msgstr "Välj målmapp"
 msgid "Select"
 msgstr "Välj"
 
-# TODO: Very strange grammar *delete this items %s*
-#: src/storage-actionbar.vala:143
-#, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Är du säker på att du permanent vill ta bort dessa objekt %s?"
-
+#. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
+#, c-format
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Är du säker på att du permanent vill ta bort ”%s”?"
+
+#. Translators: %d is the number of files to be deleted.
+#: src/storage-actionbar.vala:148
+#, c-format
+msgid "Are you sure you want to permanently delete the %d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] ""
+"Är du säker på att du permanent vill ta bort det markerade objektet?"
+msgstr[1] "Är du säker på att du permanent vill ta bort %d markerade objekt?"
+
+#: src/storage-actionbar.vala:152
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Om du tar bort dessa objekt är de borta för alltid."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Töm alla objekt i papperskorgen?"
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alla objekt i papperskorgen kommer att tas bort permanent."
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Töm alla objekt från %s?"
 
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Alla objekt i %s kommer att flyttas till papperskorgen."
@@ -273,10 +283,6 @@ msgstr "Töm papperskorg"
 msgid "Rename"
 msgstr "Byt namn"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Flytta till papperskorgen"
-
 #: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
@@ -289,6 +295,9 @@ msgstr "Om du tar bort ett objekt är det borta för alltid."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Lagring"
+
+#~ msgid "Move to trash"
+#~ msgstr "Flytta till papperskorgen"
 
 #~ msgid "Stop"
 #~ msgstr "Stoppade"
