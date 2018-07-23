@@ -62,24 +62,8 @@ PieChart.available, ColorRectangle.available {
     color: @theme_base_color;
 }
 
-ColorRectangle.system, StorageGraph.system {
-    color: #2e3436;
-}
-
-ColorRectangle.applications, StorageGraph.applications {
-    color: #4e9a06;
-}
-
-ColorRectangle.trash, StorageGraph.trash {
-    color: @theme_fg_color;
-}
-
-ColorRectangle.user, StorageGraph.user {
-    color: #ad7fa8;
-}
-
-ColorRectangle.available-storage, StorageGraph.available-storage {
-    color: #d3d7cf;
+StorageGraph {
+    color: @theme_base_color;
 }
 
 /* Speedometer */
