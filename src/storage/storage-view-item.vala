@@ -82,30 +82,33 @@ public class Usage.StorageViewItem : GLib.Object {
                     style_class = "downloads";
                     break;
             }
-        } else {
-            switch (ontology) {
-                case "nmm#MusicPiece":
-                    style_class = "music";
-                    break;
-                 case "nmm#Photo":
-                    style_class = "pictures";
-                    break;
-                 case "nmm#Video":
-                    style_class = "videos";
-                    break;
-                 case "nfo#PaginatedTextDocument":
-                 case "nfo#PlainTextDocument":
-                 case "nfo#FileDataObject":
-                 case "nfo#EBook":
-                    style_class = "documents";
-                    break;
-            }
+        }
+
+        switch (ontology) {
+            case "nmm#MusicPiece":
+                style_class = "music";
+                break;
+             case "nmm#Photo":
+                style_class = "pictures";
+                break;
+             case "nmm#Video":
+                style_class = "videos";
+                break;
+             case "nfo#PaginatedTextDocument":
+             case "nfo#PlainTextDocument":
+             case "nfo#FileDataObject":
+             case "nfo#EBook":
+                style_class = "documents";
+                break;
         }
 
         if(custom_type != null) {
             switch(custom_type) {
                 case "os":
                     style_class = "os-tag";
+                    break;
+                case "available-graph":
+                    style_class = "available-tag";
                     break;
             }
         }

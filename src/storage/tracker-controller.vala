@@ -32,7 +32,7 @@ public class Usage.TrackerController : GLib.Object {
         this.connection = connection;
     }
 
-    public async GLib.ListStore enumerate_children (string uri) throws GLib.Error {
+    public async GLib.ListStore enumerate_children (string uri, UserDirectory? dir) throws GLib.Error {
         var list = new GLib.ListStore (typeof (StorageViewItem));
 
         var query = query_builder.enumerate_children (uri);
@@ -52,6 +52,7 @@ public class Usage.TrackerController : GLib.Object {
                 var file = File.new_for_uri (n_uri);
                 var item = new StorageViewItem.from_file (file);
                 item.ontology = file_type;
+                item.dir = dir;
 
                 if (item.type == FileType.DIRECTORY) {
                     item.size = yield get_file_size (n_uri);
