@@ -69,4 +69,26 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         if(item.custom_type == "up-folder")
             get_style_context().add_class("up-folder");
     }
+
+    public void colorize(uint order, uint all_count) {
+        if(order == 0)
+            return;
+
+        var default_color = tag.get_style_context().get_background_color(get_style_context().get_state());
+        var result_color = Utils.generate_color(default_color, order, all_count, true);
+        var css_provider = new Gtk.CssProvider();
+        tag.get_style_context().add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        var css =
+        @".row-tag {
+            background: $result_color;
+        }";
+
+        try {
+            css_provider.load_from_data(css);
+        }
+        catch (GLib.Error error)    {
+            warning("Failed to color StorageViewRow: %s", error.message);
+        }
+    }
 }

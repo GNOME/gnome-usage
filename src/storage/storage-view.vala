@@ -23,6 +23,8 @@ using GTop;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-view.ui")]
 public class Usage.NewStorageView : Usage.View {
+    public const uint MIN_PERCENTAGE_SHOWN_FILES = 2;
+
     private Sparql.Connection connection;
     private TrackerController controller;
     private StorageQueryBuilder query_builder;
@@ -44,6 +46,12 @@ public class Usage.NewStorageView : Usage.View {
 
     private StorageViewItem os_item = new StorageViewItem ();
     private StorageRowPopover row_popover = new StorageRowPopover();
+    private uint storage_row_i = 0;
+    private uint? shown_rows_number = null;
+
+    private uint64 total_used_size = 0;
+    private uint64 total_free_size = 0;
+    private uint64 total_size = 0;
 
     private UserDirectory[] xdg_folders = {
         UserDirectory.DOCUMENTS,
@@ -69,6 +77,7 @@ public class Usage.NewStorageView : Usage.View {
 
     public NewStorageView () {
         listbox.row_activated.connect (on_row_activated);
+        graph.min_percentage_shown_files = MIN_PERCENTAGE_SHOWN_FILES;
 
         setup_header_label ();
         setup_mount_sizes ();
@@ -79,13 +88,14 @@ public class Usage.NewStorageView : Usage.View {
         var storage_row = row as StorageViewRow;
 
         if(storage_row.item.custom_type == "up-folder") {
+            shown_rows_number = null;
+            storage_row_i = 0;
             listbox.pop();
+            graph.model = (ListStore) listbox.get_model();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
-            present_dir.begin (storage_row.item.uri);
+            present_dir.begin (storage_row.item.uri, storage_row.item.dir);
         } else if (storage_row.item.custom_type != null) {
             row_popover.present(storage_row);
-        } else {
-            graph.queue_draw ();
         }
     }
 
@@ -94,41 +104,64 @@ public class Usage.NewStorageView : Usage.View {
     }
 
     private Gtk.Widget create_file_row (Object obj) {
+        var model = listbox.get_model();
         var item = obj as StorageViewItem;
-
         var row = new StorageViewRow.from_item (item);
         row.visible = true;
 
-        if (item.type == FileType.DIRECTORY) {
-            controller.get_file_size.begin (item.uri, (obj, res) => {
-                try {
-                    var size = controller.get_file_size.end (res);
-                    row.size_label.label = Utils.format_size_values (size);
-                } catch (GLib.Error error) {
-                    warning (error.message);
-                }
-            });
+        if(item.custom_type == "available-graph")
+            return new Gtk.ListBoxRow();
+
+        if(shown_rows_number == null) {
+            shown_rows_number = 0;
+
+            for(int i = 0; i < model.get_n_items(); i++) {
+                if((model.get_item(i) as StorageViewItem).percentage > MIN_PERCENTAGE_SHOWN_FILES)
+                    shown_rows_number = shown_rows_number + 1;
+            }
+
+            if(shown_rows_number <= 3) {
+                shown_rows_number = model.get_n_items();
+            }
         }
 
+        if(listbox.get_depth() > 1)
+            row.colorize(storage_row_i, shown_rows_number);
+
+        storage_row_i++;
         row.show_all ();
+
         return row;
     }
 
-    private async void present_dir (string uri) {
+    private async void present_dir (string uri, UserDirectory? dir) {
         if (connection == null)
             return;
 
         try {
-            var model = yield controller.enumerate_children (uri);
+            var model = yield controller.enumerate_children (uri, dir);
 
             var file = File.new_for_uri (uri);
             var item = new StorageViewItem.from_file (file);
             item.custom_type = "up-folder";
+            item.dir = dir;
+            controller.get_file_size.begin (item.uri, (obj, res) => {
+                try {
+                    item.size = controller.get_file_size.end (res);
+                    item.percentage = item.size * 100 / (double) total_size;
+                    model.insert(0, item);
 
-            model.insert(0, item);
-            listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
+                    shown_rows_number = null;
+                    storage_row_i = 0;
 
-            graph.model = model;
+                    listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
+                    graph.model = model;
+                } catch (GLib.Error error) {
+                    warning (error.message);
+                }
+            });
+
+
         } catch (GLib.Error error) {
             critical ("Failed to query the store: %s", error.message);
         }
@@ -139,8 +172,8 @@ public class Usage.NewStorageView : Usage.View {
     }
 
     private void setup_mount_sizes () {
-        uint64 total_used_size = 0;
-        uint64 total_free_size = 0;
+        total_used_size = 0;
+        total_free_size = 0;
 
         MountList mount_list;
         MountEntry[] entries = GTop.get_mountlist (out mount_list, false);
@@ -165,7 +198,9 @@ public class Usage.NewStorageView : Usage.View {
             total_free_size += free;
         }
 
-        var total_size = total_used_size + total_free_size;
+        os_item.percentage = os_item.size * 100 / (double) total_used_size;
+        total_size = total_used_size + total_free_size;
+
         var total_used_percentage = ((double) total_used_size / total_size) * 100;
         var total_free_percentage = ((double) total_free_size / total_size) * 100;
 
@@ -191,10 +226,24 @@ public class Usage.NewStorageView : Usage.View {
             var item = new StorageViewItem.from_file (file);
             item.dir = dir;
 
-            model.append (item);
+            controller.get_file_size.begin (item.uri, (obj, res) => {
+                try {
+                    item.size = controller.get_file_size.end (res);
+                    item.percentage = item.size * 100 / (double) total_size;
+                    model.insert (1, item);
+                } catch (GLib.Error error) {
+                    warning (error.message);
+                }
+            });
         }
 
         listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
         graph.model = model;
+
+        var available_graph_item = new StorageViewItem ();
+        available_graph_item.size = total_free_size;
+        available_graph_item.custom_type = "available-graph";
+        available_graph_item.percentage = available_graph_item.size * 100 / (double) total_size;
+        graph.model.append(available_graph_item);
     }
 }

@@ -50,6 +50,32 @@ namespace Usage
                 return value.to_string() + " B/s";
         }
 
+        public static Gdk.RGBA generate_color(Gdk.RGBA default_color, uint order, uint all_count, bool reverse = false)
+        {
+            double step = 100 / (double) all_count;
+            uint half_count = all_count / 2;
+
+            if(order >= all_count)
+                order = all_count - 1;
+
+            if(order > (all_count / 2))
+            {
+                double percentage = step * (order - half_count);
+                if(reverse)
+                    return Utils.color_lighter(default_color, percentage);
+                else
+                    return Utils.color_darker(default_color, percentage);
+            }
+            else
+            {
+                double percentage = step * (half_count - (order-1));
+                if(reverse)
+                    return Utils.color_darker(default_color, percentage);
+                else
+                    return Utils.color_lighter(default_color, percentage);
+            }
+        }
+
         public static Gdk.RGBA color_darker(Gdk.RGBA color, double percentage)
         {
             color.red = color_field_darker(color.red, percentage);
