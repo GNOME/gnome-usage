@@ -96,6 +96,8 @@ public class Usage.NewStorageView : Usage.View {
             present_dir.begin (storage_row.item.uri, storage_row.item.dir);
         } else if (storage_row.item.custom_type != null) {
             row_popover.present(storage_row);
+        } else {
+            AppInfo.launch_default_for_uri(storage_row.item.uri, null);
         }
     }
 
