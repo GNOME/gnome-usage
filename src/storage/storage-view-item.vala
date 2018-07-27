@@ -45,6 +45,12 @@ public class Usage.StorageViewItem : GLib.Object {
         }
     }
 
+    public bool show_check_button {
+        get {
+           return _show_check_button ();
+        }
+    }
+
     public StorageViewItem.from_file (File file) {
         uri = file.get_uri ();
 
@@ -115,5 +121,40 @@ public class Usage.StorageViewItem : GLib.Object {
 
         if (_style_class == null)
             style_class = "files";
+    }
+
+    private bool _show_check_button () {
+        if(custom_type != null) {
+            switch(custom_type) {
+                case "os":
+                case "available-graph":
+                case "up-folder":
+                    return false;
+            }
+        }
+
+        if (dir != null) {
+            switch (dir) {
+                case UserDirectory.PICTURES:
+                case UserDirectory.VIDEOS:
+                case UserDirectory.DOCUMENTS:
+                case UserDirectory.MUSIC:
+                case UserDirectory.DOWNLOAD:
+                    return true;
+            }
+        }
+
+        switch (ontology) {
+            case "nmm#MusicPiece":
+            case "nmm#Photo":
+            case "nmm#Video":
+            case "nfo#PaginatedTextDocument":
+            case "nfo#PlainTextDocument":
+            case "nfo#FileDataObject":
+            case "nfo#EBook":
+                return true;
+        }
+
+        return false;
     }
 }

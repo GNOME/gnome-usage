@@ -47,6 +47,7 @@ namespace Usage
             });
 
 			var stack = new Gtk.Stack();
+            stack.visible = true;
 			header_bar = new Usage.HeaderBar(stack);
 			set_titlebar(header_bar);
 
