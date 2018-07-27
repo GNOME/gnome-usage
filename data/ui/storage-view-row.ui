@@ -41,6 +41,17 @@
         </child>
 
         <child>
+          <object class="GtkCheckButton" id="check_button">
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+
+        <child>
           <object class="GtkLabel" id="size_label">
             <property name="visible">True</property>
           </object>

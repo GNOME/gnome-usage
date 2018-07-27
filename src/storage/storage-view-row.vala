@@ -33,6 +33,9 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
     private Gtk.Label title;
 
     [GtkChild]
+    public Gtk.CheckButton check_button;
+
+    [GtkChild]
     public Gtk.Label size_label;
 
     [GtkChild]
@@ -62,6 +65,7 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         size_label.label = Utils.format_size_values (item.size);
 
         tag.get_style_context ().add_class (item.style_class);
+        check_button.visible = item.show_check_button;
 
         if (item.type == FileType.DIRECTORY || item.custom_type != null)
             tag.width_request = tag.height_request = 20;

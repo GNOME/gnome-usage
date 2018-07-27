@@ -53,7 +53,7 @@ namespace Usage
 
             set_accels_for_action("app.quit", {"<Primary>q"});
 
-            window.show_all();
+            window.show();
         }
 
         protected override void startup()

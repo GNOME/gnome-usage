@@ -129,7 +129,6 @@ public class Usage.NewStorageView : Usage.View {
             row.colorize(storage_row_i, shown_rows_number);
 
         storage_row_i++;
-        row.show_all ();
 
         return row;
     }
