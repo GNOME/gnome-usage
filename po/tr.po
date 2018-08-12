@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-03-12 17:02+0000\n"
-"PO-Revision-Date: 2018-03-15 10:54+0300\n"
+"POT-Creation-Date: 2018-05-15 09:26+0000\n"
+"PO-Revision-Date: 2018-08-11 11:02+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -58,8 +58,8 @@ msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
 msgstr ""
-"Gözlemci;Sistem;İşlem;Süreç;CPU;MİB;İşlemci;Bellek;Ağ;Geçmiş;Kullanım;"
-"Performans;Görev;Yönetici;"
+"Gözlemci;İzleyici;Sistem;İşlem;Süreç;CPU;MİB;İşlemci;Bellek;Ağ;Geçmiş;"
+"Kullanım;Performans;Görev;Yönetici;"
 
 #: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
@@ -117,7 +117,7 @@ msgstr "Şuraya taşı"
 msgid "Delete"
 msgstr "Sil"
 
-#: data/ui/storage-actionbar.ui:33
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
 msgid "Move to Trash"
 msgstr "Çöpe taşı"
 
@@ -165,7 +165,7 @@ msgstr "Emin Tufan Çetin <etcetin@gmail.com>"
 msgid "Websites"
 msgstr "Web siteleri"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "İşlemci"
 
@@ -173,7 +173,7 @@ msgstr "İşlemci"
 msgid "Others"
 msgstr "Diğerleri"
 
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Bellek"
 
@@ -195,7 +195,7 @@ msgstr "Tümünü seç"
 msgid "Select None"
 msgstr "Hiçbirini seçme"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Performans"
 
@@ -207,29 +207,40 @@ msgstr "Hedef klasörü seç"
 msgid "Select"
 msgstr "Seç"
 
-#: src/storage-actionbar.vala:143
-#, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "%s Bu ögeleri kalıcı olarak silmek istediğinizden emin misiniz?"
-
+#. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
+#, c-format
+#| msgid "Are you sure you want to permanently delete %s?"
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "“%s” dosyasını kalıcı olarak silmek istediğinizden emin misiniz?"
+
+#. Translators: %d is the number of files to be deleted.
+#: src/storage-actionbar.vala:148
+#, c-format
+#| msgid "Are you sure you want to permanently delete this items %s?"
+msgid "Are you sure you want to permanently delete the %d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] "%d seçili ögeyi kalıcı olarak silmek istediğinizden emin misiniz?"
+
+#: src/storage-actionbar.vala:152
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Bu ögeleri silerseniz kalıcı olarak kaybedilecekler."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Tüm ögeleri çöpten temizle?"
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Çöpteki tüm ögeler kalıcı olarak silinecek."
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Tüm ögeleri %s’den temizle?"
 
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "%s içindeki tüm ögeler çöpe taşınacak."
@@ -270,14 +281,10 @@ msgstr "Çöpü boşalt"
 msgid "Rename"
 msgstr "Yeniden adlandır"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Çöpe taşı"
-
 #: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
-msgstr "%s’i kalıcı olarak silmek istediğinizden emin misiniz?"
+msgstr "%sʼi kalıcı olarak silmek istediğinizden emin misiniz?"
 
 #: src/storage-row.vala:440
 msgid "If you delete an item, it will be permanently lost."
@@ -286,3 +293,6 @@ msgstr "Ögeyi silerseniz kalıcı olarak kaybedilecektir."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Depolama"
+
+#~ msgid "Move to trash"
+#~ msgstr "Çöpe taşı"
