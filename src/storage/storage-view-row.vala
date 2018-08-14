@@ -56,7 +56,13 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         }
     }
 
-    public StorageViewItem item; 
+    public bool selected {
+        get { return check_button.active; }
+    }
+
+    public signal void check_button_toggled();
+
+    public StorageViewItem item;
 
     public StorageViewRow.from_item (StorageViewItem item) {
         this.item = item;
@@ -66,6 +72,9 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
 
         tag.get_style_context ().add_class (item.style_class);
         check_button.visible = item.show_check_button;
+        check_button.toggled.connect(() => {
+            check_button_toggled();
+        });
 
         if (item.type == FileType.DIRECTORY || item.custom_type != null)
             tag.width_request = tag.height_request = 20;

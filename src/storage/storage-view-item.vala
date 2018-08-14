@@ -51,18 +51,21 @@ public class Usage.StorageViewItem : GLib.Object {
         }
     }
 
-    public StorageViewItem.from_file (File file) {
-        uri = file.get_uri ();
+    public static StorageViewItem? from_file(File file) {
+        var item = new StorageViewItem();
+        item.uri = file.get_uri ();
 
         try {
             var info = file.query_info (FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.TRASH_ORIG_PATH, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
 
-            name = info.get_name ();
-            size = info.get_size ();
-            type = info.get_file_type ();
+            item.name = info.get_name ();
+            item.size = info.get_size ();
+            item.type = info.get_file_type ();
         } catch (GLib.Error error) {
-            warning (error.message);
+            return null;
         }
+
+        return item;
     }
 
     private void setup_tag_style () {

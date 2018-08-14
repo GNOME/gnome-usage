@@ -50,7 +50,11 @@ public class Usage.TrackerController : GLib.Object {
         while (yield worker.fetch_next (out n_uri, out file_type)) {
             try {
                 var file = File.new_for_uri (n_uri);
-                var item = new StorageViewItem.from_file (file);
+                var item = StorageViewItem.from_file (file);
+
+                if(item == null)
+                    continue;
+
                 item.ontology = file_type;
                 item.dir = dir;
 
@@ -89,10 +93,8 @@ public class Usage.TrackerController : GLib.Object {
 
             return info.get_size ();
         } catch (GLib.Error error) {
-            warning (error.message);
+             return 0;
         }
-
-        return 0;
     }
 
     public async uint64 get_file_size (string uri) throws GLib.Error {

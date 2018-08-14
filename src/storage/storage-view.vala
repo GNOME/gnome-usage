@@ -16,6 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Felipe Borges <felipeborges@gnome.org>
+ *          Petr Štětka <pstetka@redhat.com>
  */
 
 using Tracker;
@@ -24,10 +25,6 @@ using GTop;
 [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-view.ui")]
 public class Usage.NewStorageView : Usage.View {
     public const uint MIN_PERCENTAGE_SHOWN_FILES = 2;
-
-    private Sparql.Connection connection;
-    private TrackerController controller;
-    private StorageQueryBuilder query_builder;
 
     [GtkChild]
     private Gtk.Label header_label;
@@ -44,10 +41,18 @@ public class Usage.NewStorageView : Usage.View {
     [GtkChild]
     private StorageGraph graph;
 
+    [GtkChild]
+    private StorageActionBar actionbar;
+
+    private Sparql.Connection connection;
+    private TrackerController controller;
+    private StorageQueryBuilder query_builder;
+
     private StorageViewItem os_item = new StorageViewItem ();
     private StorageRowPopover row_popover = new StorageRowPopover();
     private uint storage_row_i = 0;
     private uint? shown_rows_number = null;
+    private uint need_refresh_depth = 0;
 
     private uint64 total_used_size = 0;
     private uint64 total_free_size = 0;
@@ -61,6 +66,10 @@ public class Usage.NewStorageView : Usage.View {
         UserDirectory.VIDEOS,
     };
 
+    private List<StorageViewItem> selected_items = new List<StorageViewItem> ();
+    private Queue<List> selected_items_stack = new Queue<List> ();
+    private Queue<StorageViewItem> actual_item = new Queue<StorageViewItem> ();
+
     construct {
         name = "STORAGE";
         title = _("Storage");
@@ -73,6 +82,23 @@ public class Usage.NewStorageView : Usage.View {
 
         query_builder = new StorageQueryBuilder ();
         controller = new TrackerController (connection);
+
+        actionbar.refresh_listbox.connect(() => {
+            var item = actual_item.peek_head();
+
+            stack_listbox_up();
+            clear_selected_items();
+
+            if(listbox.get_depth() >= 1) {
+                selected_items_stack.push_head((owned) selected_items);
+                actual_item.push_head(item);
+                present_dir.begin (item.uri, item.dir);
+            }
+            else
+                populate_view.begin ();
+
+            need_refresh_depth = listbox.get_depth();
+        });
     }
 
     public NewStorageView () {
@@ -88,16 +114,43 @@ public class Usage.NewStorageView : Usage.View {
         var storage_row = row as StorageViewRow;
 
         if(storage_row.item.custom_type == "up-folder") {
-            shown_rows_number = null;
-            storage_row_i = 0;
-            listbox.pop();
-            graph.model = (ListStore) listbox.get_model();
+            stack_listbox_up();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
+            selected_items_stack.push_head((owned) selected_items);
+            actual_item.push_head(storage_row.item);
+            clear_selected_items();
             present_dir.begin (storage_row.item.uri, storage_row.item.dir);
         } else if (storage_row.item.custom_type != null) {
             row_popover.present(storage_row);
         } else {
-            AppInfo.launch_default_for_uri(storage_row.item.uri, null);
+            try {
+                AppInfo.launch_default_for_uri(storage_row.item.uri, null);
+            } catch (GLib.Error error) {
+                warning (error.message);
+            }
+        }
+    }
+
+    private void stack_listbox_up() {
+        shown_rows_number = null;
+        storage_row_i = 0;
+        selected_items = selected_items_stack.pop_head();
+        actual_item.pop_head();
+        refresh_actionbar();
+        listbox.pop();
+        graph.model = (ListStore) listbox.get_model();
+
+        if(need_refresh_depth >= listbox.get_depth()) {
+            var item = actual_item.peek_head();
+            need_refresh_depth -= 1;
+
+            clear_selected_items();
+            listbox.pop();
+
+            if(listbox.get_depth() == 0)
+                populate_view.begin ();
+            else
+                present_dir.begin (item.uri, item.dir);
         }
     }
 
@@ -110,6 +163,18 @@ public class Usage.NewStorageView : Usage.View {
         var item = obj as StorageViewItem;
         var row = new StorageViewRow.from_item (item);
         row.visible = true;
+
+        if(selected_items.find(item) != null)
+            row.check_button.active = true;
+
+        row.check_button_toggled.connect(() => {
+            if(row.selected)
+                selected_items.append(row.item);
+            else
+                selected_items.remove(row.item);
+
+            refresh_actionbar();
+        });
 
         if(item.custom_type == "available-graph")
             return new Gtk.ListBoxRow();
@@ -143,7 +208,7 @@ public class Usage.NewStorageView : Usage.View {
             var model = yield controller.enumerate_children (uri, dir);
 
             var file = File.new_for_uri (uri);
-            var item = new StorageViewItem.from_file (file);
+            var item = StorageViewItem.from_file (file);
             item.custom_type = "up-folder";
             item.dir = dir;
             controller.get_file_size.begin (item.uri, (obj, res) => {
@@ -224,13 +289,14 @@ public class Usage.NewStorageView : Usage.View {
 
         foreach (var dir in xdg_folders) {
             var file = File.new_for_uri (get_user_special_dir_path (dir));
-            var item = new StorageViewItem.from_file (file);
+            var item = StorageViewItem.from_file (file);
             item.dir = dir;
 
             controller.get_file_size.begin (item.uri, (obj, res) => {
                 try {
                     item.size = controller.get_file_size.end (res);
                     item.percentage = item.size * 100 / (double) total_size;
+                    item.custom_type = "root_item";
                     model.insert (1, item);
                 } catch (GLib.Error error) {
                     warning (error.message);
@@ -246,5 +312,19 @@ public class Usage.NewStorageView : Usage.View {
         available_graph_item.custom_type = "available-graph";
         available_graph_item.percentage = available_graph_item.size * 100 / (double) total_size;
         graph.model.append(available_graph_item);
+    }
+
+    private void refresh_actionbar() {
+        actionbar.update_selected_items(selected_items);
+
+        if(selected_items.length() == 0)
+            actionbar.hide();
+        else
+            actionbar.show();
+    }
+
+    private void clear_selected_items() {
+        selected_items = new List<StorageViewItem>();
+        refresh_actionbar();
     }
 }
