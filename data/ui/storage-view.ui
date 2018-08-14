@@ -54,6 +54,12 @@
                     </style>
                   </object>
                 </child>
+
+                <child>
+                  <object class="UsageStorageActionBar" id="actionbar">
+                  </object>
+                </child>
+
               </object>
             </child>
             <child>
