@@ -316,6 +316,7 @@ public class Usage.NewStorageView : Usage.View {
 
     private void refresh_actionbar() {
         actionbar.update_selected_items(selected_items);
+        graph.update_selected_items(selected_items);
 
         if(selected_items.length() == 0)
             actionbar.hide();
