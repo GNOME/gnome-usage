@@ -24,7 +24,11 @@ namespace Usage
 {
     public class StorageGraph : Gtk.DrawingArea
     {
+        private unowned List<StorageViewItem> selected_items;
         private GLib.ListStore _model;
+        private uint64 selected_size = 0;
+        private bool root { private set; get; }
+
         public GLib.ListStore model {
             set {
                 _model = value;
@@ -43,8 +47,8 @@ namespace Usage
             }
             get { return _model; }
         }
+
         public uint min_percentage_shown_files { set; get; }
-        private bool root { private set; get; }
 
         class construct
         {
@@ -56,6 +60,17 @@ namespace Usage
             HOME,
             ROOT,
             BASE
+        }
+
+        public void update_selected_items(List<StorageViewItem> selected_items) {
+            this.selected_items = selected_items;
+
+            uint64 size = 0;
+            foreach(var item in selected_items)
+                size += item.size;
+
+            selected_size = size;
+            this.queue_draw();
         }
 
         private void draw_circle(Cairo.Context context, GLib.ListStore model, double x, double y, double radius, int section, Circle circle)
@@ -79,7 +94,8 @@ namespace Usage
                 for(int i = 0; i < model.get_n_items(); i++)
                 {
                     var item = model.get_item(i) as StorageViewItem;
-                    if(item.custom_type == "up-folder")
+                    var item_radius = radius;
+                    if(item.custom_type == "up-folder" || item.size == 0)
                         continue;
 
                     var style_context = get_style_context();
@@ -91,6 +107,9 @@ namespace Usage
 
                     if(!root)
                         fill_color = Utils.generate_color(base_color, i, shown_items_number, true);
+
+                    if(selected_items.find(item) != null)
+                        item_radius += radius / 6;
 
                     context.set_line_width (2.0);
                     start_angle = final_angle;
@@ -106,7 +125,8 @@ namespace Usage
 
                     context.move_to (x, y);
                     Gdk.cairo_set_source_rgba (context, fill_color);
-                    context.arc (x, y, radius, start_angle, final_angle);
+                    context.arc (x, y, item_radius, start_angle, final_angle);
+                    context.line_to (x, y);
                     context.fill_preserve();
                     Gdk.cairo_set_source_rgba (context, foreground_color);
                     context.stroke();
@@ -142,9 +162,39 @@ namespace Usage
             y = height / 2.0;
 
             draw_circle(context, model, x, y, radius, 0, Circle.BASE);
+            draw_selected_size_text(context);
 
             return true;
         }
 
+        private void draw_selected_size_text(Cairo.Context context)
+        {
+            if(selected_size == 0)
+                return;
+
+            var layout = create_pango_layout (null);
+            var text = Utils.format_size_values(selected_size);
+
+            int height = get_allocated_height ();
+            int width = get_allocated_width ();
+            double radius = int.min (width, height) / 22;
+
+            var text_color = get_toplevel().get_style_context().get_color(get_toplevel().get_style_context().get_state());
+            var text_color_string = "#%02x%02x%02x".printf(
+                (uint)(Math.round(text_color.red*255)),
+                (uint)(Math.round(text_color.green*255)),
+                (uint)(Math.round(text_color.blue*255))).up();
+
+            var markup = "<span foreground='" + text_color_string + "' font='" + radius.to_string() + "'><b>" + text + "</b></span>";
+            layout.set_markup (markup, -1);
+
+            Pango.Rectangle layout_rect;
+            layout.get_pixel_extents (null, out layout_rect);
+            layout.set_alignment(Pango.Alignment.CENTER);
+
+            var x = (width - layout_rect.width) / 2;
+            var y = (height - layout_rect.height) / 2;
+            get_style_context().render_layout (context, x, y, layout);
+        }
     }
 }
