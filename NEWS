@@ -1,3 +1,48 @@
+3.30.0 - Sep 25, 2018
+=====================
+
+  - Support better Adwaita dark
+  - Fix error message grammar/typos
+  - Fix compatibility with newer Vala
+  - Use proper POSIX API in quit-process-dialog
+  - Fix CI
+  - Add scrolling animation to performance view
+  - Update screenshots
+  - Added/updated/fixed translations:
+    - Slovak
+    - Hungarian
+    - Croatian
+    - Indonesian
+    - Turkish
+    - German
+    - Swedish
+    - Spanish
+    - Chinese (Taiwan)
+    - British English
+    - Polish
+    - Brazilian Portuguese
+    - Czech
+
+All contributors to this release:
+
+Aditya <manglik.aditya@gmail.com>
+Anders Jonsson <anders.jonsson@norsjovallen.se>
+Balázs Úr <balazs@urbalazs.hu>
+Bruce Cowan <bruce@bcowan.eu>
+Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+Dušan Kazik <prescott66@gmail.com>
+Emin Tufan Çetin <etcetin@gmail.com>
+Felipe Borges <felipeborges@gnome.org>
+gogo <trebelnik2@gmail.com>
+Kukuh Syafaat <kukuhsyafaat@gnome.org>
+Marek Černocký <marek@manet.cz>
+Mario Blättermann <mario.blaettermann@gmail.com>
+Petr Štětka <pstetka@redhat.com>
+Piotr Drąg <piotrdrag@gmail.com>
+Rafael Fontenelle <rafaelff@gnome.org>
+Rasmus Thomsen <cogitri@exherbo.org>
+Yi-Jyun Pan <pan93412@gmail.com>
+
 3.28.0 - Mar 12, 2018
 =====================
 
