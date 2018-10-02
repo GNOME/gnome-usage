@@ -51,6 +51,16 @@
           </packing>
         </child>
 
+         <child>
+          <object class="GtkSpinner" id="spinner">
+            <property name="active">True</property>
+            <property name="visible">False</property>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+
         <child>
           <object class="GtkLabel" id="size_label">
             <property name="visible">True</property>

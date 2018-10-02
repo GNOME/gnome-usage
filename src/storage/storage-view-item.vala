@@ -20,6 +20,7 @@
 
 public class Usage.StorageViewItem : GLib.Object {
     public double percentage { set; get; }
+    public bool loaded { get; set; default = false; }
 
     public string uri;
     public string name;
