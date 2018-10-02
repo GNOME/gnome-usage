@@ -4,86 +4,66 @@
   <template class="UsageNewStorageView" parent="UsageView">
     <property name="visible">True</property>
     <child>
-      <object class="GtkStack" id="stack">
+      <object class="GtkPaned">
         <property name="visible">True</property>
+        <property name="orientation">horizontal</property>
+        <property name="position">360</property>
         <child>
-          <object class="GtkPaned">
+          <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="orientation">horizontal</property>
-            <property name="position">360</property>
+            <property name="orientation">vertical</property>
+            <style><class name="view"/></style>
             <child>
-              <object class="GtkBox">
+              <object class="GtkLabel" id="header_label">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
-                <style><class name="view"/></style>
-
-                <child>
-                  <object class="GtkLabel" id="header_label">
-                    <property name="visible">True</property>
-                    <property name="halign">start</property>
-                    <property name="margin">10</property>
-                    <property name="label" translatable="yes">Home Partition</property>
-                    <attributes>
-                      <attribute name="weight" value="bold"/>
-                    </attributes>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="UsageStorageViewRow" id="used_row">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">Used</property>
-                    <property name="tag_size">1</property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="UsageStorageViewRow" id="available_row">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">Available</property>
-                    <property name="tag_size">1</property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="DzlStackList" id="listbox">
-                    <property name="visible">True</property>
-                    <property name="vexpand">True</property>
-                    <style>
-                      <class name="storage-list"/>
-                    </style>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="UsageStorageActionBar" id="actionbar">
-                  </object>
-                </child>
-
+                <property name="halign">start</property>
+                <property name="margin">10</property>
+                <property name="label" translatable="yes">Home Partition</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
               </object>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="UsageStorageViewRow" id="used_row">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Used</property>
+                <property name="tag_size">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="UsageStorageViewRow" id="available_row">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Available</property>
+                <property name="tag_size">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="DzlStackList" id="listbox">
                 <property name="visible">True</property>
                 <property name="vexpand">True</property>
-                <child>
-                  <object class="UsageStorageGraph" id="graph">
-                    <property name="visible">True</property>
-                    <property name="expand">True</property>
-                  </object>
-                </child>
+                <style>
+                  <class name="storage-list"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="UsageStorageActionBar" id="actionbar">
               </object>
             </child>
           </object>
         </child>
         <child>
-          <object class="GtkSpinner">
+          <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="active">True</property>
+            <property name="vexpand">True</property>
+            <child>
+              <object class="UsageStorageGraph" id="graph">
+                <property name="visible">True</property>
+                <property name="expand">True</property>
+              </object>
+            </child>
           </object>
-          <packing>
-            <property name="name">spinner</property>
-          </packing>
         </child>
       </object>
     </child>
