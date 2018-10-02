@@ -50,8 +50,8 @@ public class Usage.NewStorageView : Usage.View {
 
     private StorageViewItem os_item = new StorageViewItem ();
     private StorageRowPopover row_popover = new StorageRowPopover();
-    private uint storage_row_i = 0;
-    private uint? shown_rows_number = null;
+    private Cancellable cancellable = new Cancellable();
+
     private uint need_refresh_depth = 0;
 
     private uint64 total_used_size = 0;
@@ -69,6 +69,7 @@ public class Usage.NewStorageView : Usage.View {
     private List<StorageViewItem> selected_items = new List<StorageViewItem> ();
     private Queue<List> selected_items_stack = new Queue<List> ();
     private Queue<StorageViewItem> actual_item = new Queue<StorageViewItem> ();
+    private HashTable<StorageViewItem, StorageViewRow> rows_table = new HashTable<StorageViewItem, StorageViewRow> (direct_hash, direct_equal);
 
     construct {
         name = "STORAGE";
@@ -82,6 +83,7 @@ public class Usage.NewStorageView : Usage.View {
 
         query_builder = new StorageQueryBuilder ();
         controller = new TrackerController (connection);
+        controller.refresh_model.connect(refresh_listbox);
 
         actionbar.refresh_listbox.connect(() => {
             var item = actual_item.peek_head();
@@ -113,9 +115,13 @@ public class Usage.NewStorageView : Usage.View {
     private void on_row_activated (Gtk.ListBoxRow row) {
         var storage_row = row as StorageViewRow;
 
+        cancellable.cancel();
+        cancellable = new Cancellable();
+
         if(storage_row.item.custom_type == "up-folder") {
             stack_listbox_up();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
+            rows_table.remove_all();
             selected_items_stack.push_head((owned) selected_items);
             actual_item.push_head(storage_row.item);
             clear_selected_items();
@@ -132,17 +138,21 @@ public class Usage.NewStorageView : Usage.View {
     }
 
     private void stack_listbox_up() {
-        shown_rows_number = null;
-        storage_row_i = 0;
         selected_items = selected_items_stack.pop_head();
         actual_item.pop_head();
         refresh_actionbar();
         listbox.pop();
-        graph.model = (ListStore) listbox.get_model();
+
+        var first_item = listbox.get_model().get_item(0) as StorageViewItem;
+        var refresh = false;
 
         if(need_refresh_depth >= listbox.get_depth()) {
-            var item = actual_item.peek_head();
             need_refresh_depth -= 1;
+            refresh = true;
+        }
+
+        if(listbox.get_depth() > 1 && first_item.loaded == false || refresh) {
+            var item = actual_item.peek_head();
 
             clear_selected_items();
             listbox.pop();
@@ -152,6 +162,8 @@ public class Usage.NewStorageView : Usage.View {
             else
                 present_dir.begin (item.uri, item.dir);
         }
+        else
+            refresh_listbox();
     }
 
     private string get_user_special_dir_path (UserDirectory dir) {
@@ -159,7 +171,6 @@ public class Usage.NewStorageView : Usage.View {
     }
 
     private Gtk.Widget create_file_row (Object obj) {
-        var model = listbox.get_model();
         var item = obj as StorageViewItem;
         var row = new StorageViewRow.from_item (item);
         row.visible = true;
@@ -179,58 +190,66 @@ public class Usage.NewStorageView : Usage.View {
         if(item.custom_type == "available-graph")
             return new Gtk.ListBoxRow();
 
-        if(shown_rows_number == null) {
-            shown_rows_number = 0;
-
-            for(int i = 0; i < model.get_n_items(); i++) {
-                if((model.get_item(i) as StorageViewItem).percentage > MIN_PERCENTAGE_SHOWN_FILES)
-                    shown_rows_number = shown_rows_number + 1;
-            }
-
-            if(shown_rows_number <= 3) {
-                shown_rows_number = model.get_n_items();
-            }
-        }
-
-        if(listbox.get_depth() > 1)
-            row.colorize(storage_row_i, shown_rows_number);
-
-        storage_row_i++;
-
+        rows_table.insert(item, row);
         return row;
     }
 
+    public void refresh_listbox() {
+        var rows_number = 0;
+        var model = listbox.get_model();
+        graph.model = (ListStore) model;
+
+        if(listbox.get_depth() > 1) {
+            for(int i = 0; i < model.get_n_items(); i++) {
+                if((model.get_item(i) as StorageViewItem).percentage > MIN_PERCENTAGE_SHOWN_FILES)
+                    rows_number++;
+            }
+
+            if(rows_number < 3)
+                rows_number = 3;
+
+            for(int i = 0; i < model.get_n_items(); i++) {
+                var item = model.get_item(i) as StorageViewItem;
+                var row = rows_table.get(item);
+                row.colorize(i, rows_number);
+            }
+        }
+    }
+
     private async void present_dir (string uri, UserDirectory? dir) {
-        if (connection == null)
+        if (connection == null || cancellable.is_cancelled())
             return;
 
-        try {
-            var model = yield controller.enumerate_children (uri, dir);
+        var model = new GLib.ListStore (typeof (StorageViewItem));
+        var file = File.new_for_uri (uri);
+        var item = StorageViewItem.from_file (file);
+        item.custom_type = "up-folder";
+        item.dir = dir;
 
-            var file = File.new_for_uri (uri);
-            var item = StorageViewItem.from_file (file);
-            item.custom_type = "up-folder";
-            item.dir = dir;
-            controller.get_file_size.begin (item.uri, (obj, res) => {
-                try {
-                    item.size = controller.get_file_size.end (res);
-                    item.percentage = item.size * 100 / (double) total_size;
-                    model.insert(0, item);
+        controller.set_model(model);
+        controller.enumerate_children.begin(uri, dir, cancellable, (obj, res) => {
+            try {
+                item.loaded = controller.enumerate_children.end(res);
+            } catch (GLib.Error error) {
+                warning(error.message);
+            }
+        });
 
-                    shown_rows_number = null;
-                    storage_row_i = 0;
+        controller.get_file_size.begin (item.uri, (obj, res) => {
+            try {
+                item.size = controller.get_file_size.end (res);
+            } catch (GLib.Error error) {
+                warning(error.message);
+            }
 
-                    listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
-                    graph.model = model;
-                } catch (GLib.Error error) {
-                    warning (error.message);
-                }
-            });
+            item.percentage = item.size * 100 / (double) total_size;
+            model.insert(0, item);
 
+            listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
 
-        } catch (GLib.Error error) {
-            critical ("Failed to query the store: %s", error.message);
-        }
+            if(!cancellable.is_cancelled())
+                graph.model = model;
+        });
     }
 
     private void setup_header_label () {
@@ -298,6 +317,7 @@ public class Usage.NewStorageView : Usage.View {
                     item.percentage = item.size * 100 / (double) total_size;
                     item.custom_type = "root_item";
                     model.insert (1, item);
+                    refresh_listbox();
                 } catch (GLib.Error error) {
                     warning (error.message);
                 }
@@ -305,13 +325,12 @@ public class Usage.NewStorageView : Usage.View {
         }
 
         listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
-        graph.model = model;
 
         var available_graph_item = new StorageViewItem ();
         available_graph_item.size = total_free_size;
         available_graph_item.custom_type = "available-graph";
         available_graph_item.percentage = available_graph_item.size * 100 / (double) total_size;
-        graph.model.append(available_graph_item);
+        model.append(available_graph_item);
     }
 
     private void refresh_actionbar() {
