@@ -39,6 +39,9 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
     public Gtk.Label size_label;
 
     [GtkChild]
+    public Gtk.Spinner spinner;
+
+    [GtkChild]
     public Gtk.Box tag;
 
     public enum TagSize {
@@ -63,6 +66,7 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
     public signal void check_button_toggled();
 
     public StorageViewItem item;
+    public Gdk.RGBA default_color;
 
     public StorageViewRow.from_item (StorageViewItem item) {
         this.item = item;
@@ -79,18 +83,34 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         if (item.type == FileType.DIRECTORY || item.custom_type != null)
             tag.width_request = tag.height_request = 20;
 
-        if(item.custom_type == "up-folder")
+        if(item.custom_type == "up-folder") {
             get_style_context().add_class("up-folder");
+
+            if(!item.loaded) {
+                spinner.visible = true;
+                size_label.visible = false;
+            }
+
+            item.notify["loaded"].connect(() => {
+                if(item.loaded) {
+                    spinner.visible = false;
+                    size_label.visible = true;
+                }
+            });
+        }
+
+        default_color = tag.get_style_context().get_background_color(get_style_context().get_state());
     }
 
     public void colorize(uint order, uint all_count) {
         if(order == 0)
             return;
 
-        var default_color = tag.get_style_context().get_background_color(get_style_context().get_state());
         var result_color = Utils.generate_color(default_color, order, all_count, true);
         var css_provider = new Gtk.CssProvider();
         tag.get_style_context().add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        title.label = item.name + " - " + Math.round(item.percentage).to_string() + "%";
 
         var css =
         @".row-tag {
