@@ -110,8 +110,6 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         var css_provider = new Gtk.CssProvider();
         tag.get_style_context().add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        title.label = item.name + " - " + Math.round(item.percentage).to_string() + "%";
-
         var css =
         @".row-tag {
             background: $result_color;
