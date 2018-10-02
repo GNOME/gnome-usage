@@ -78,17 +78,24 @@ namespace Usage
             double start_angle = 0;
             double final_angle = - Math.PI / 2.0;
             double ratio = 0;
-            uint shown_items_number = 0;
+            uint shown_items_number = 1;
             var background_color = get_toplevel().get_style_context().get_background_color(get_toplevel().get_style_context().get_state());
             var foreground_color = get_style_context().get_color(get_style_context().get_state());
 
-            for(int i = 0; i < model.get_n_items(); i++) {
-                if((model.get_item(i) as StorageViewItem).percentage > min_percentage_shown_files)
+            for(int i = 1; i < model.get_n_items(); i++) {
+                var item = (model.get_item(i) as StorageViewItem);
+
+                if(i > 0 && i < 3 && (item.percentage < min_percentage_shown_files)) {
+                    shown_items_number = model.get_n_items();
+                    continue;
+                }
+
+                if(item.percentage > min_percentage_shown_files)
                     shown_items_number = shown_items_number + 1;
             }
 
-            if(shown_items_number <= 3)
-                shown_items_number = model.get_n_items();
+            if(shown_items_number < 3)
+                shown_items_number = 3;
 
             if(shown_items_number > 1) {
                 for(int i = 0; i < model.get_n_items(); i++)
