@@ -295,6 +295,7 @@ public class Usage.NewStorageView : Usage.View {
         available_graph_item.custom_type = "available-graph";
         available_graph_item.percentage = available_graph_item.size * 100 / (double) total_size;
         model.append(available_graph_item);
+        graph.model = model;
     }
 
     private void refresh_actionbar() {
