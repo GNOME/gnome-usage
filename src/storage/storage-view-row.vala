@@ -66,19 +66,23 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
     public signal void check_button_toggled();
 
     public StorageViewItem item;
-    public Gdk.RGBA default_color;
 
     public StorageViewRow.from_item (StorageViewItem item) {
         this.item = item;
 
-        title.label = item.name;    
-        size_label.label = Utils.format_size_values (item.size);
+        var tag_style_context = tag.get_style_context();
+        tag_style_context.add_class (item.style_class);
+        item.color = tag_style_context.get_background_color(tag_style_context.get_state());
 
-        tag.get_style_context ().add_class (item.style_class);
         check_button.visible = item.show_check_button;
         check_button.toggled.connect(() => {
             check_button_toggled();
         });
+
+        item.notify.connect(() => {
+            set_up();
+        });
+        set_up();
 
         if (item.type == FileType.DIRECTORY || item.custom_type != null)
             tag.width_request = tag.height_request = 20;
@@ -98,21 +102,21 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
                 }
             });
         }
-
-        default_color = tag.get_style_context().get_background_color(get_style_context().get_state());
     }
 
-    public void colorize(uint order, uint all_count) {
-        if(order == 0)
-            return;
+    private void set_up() {
+        title.label = item.name;
+        size_label.label = Utils.format_size_values (item.size);
+        change_color(item.color);
+    }
 
-        var result_color = Utils.generate_color(default_color, order, all_count, true);
+    private void change_color(Gdk.RGBA color) {
         var css_provider = new Gtk.CssProvider();
         tag.get_style_context().add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         var css =
         @".row-tag {
-            background: $result_color;
+            background: $color;
         }";
 
         try {

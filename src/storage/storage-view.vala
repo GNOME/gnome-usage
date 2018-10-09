@@ -69,7 +69,6 @@ public class Usage.NewStorageView : Usage.View {
     private List<StorageViewItem> selected_items = new List<StorageViewItem> ();
     private Queue<List> selected_items_stack = new Queue<List> ();
     private Queue<StorageViewItem> actual_item = new Queue<StorageViewItem> ();
-    private HashTable<StorageViewItem, StorageViewRow> rows_table = new HashTable<StorageViewItem, StorageViewRow> (direct_hash, direct_equal);
 
     construct {
         name = "STORAGE";
@@ -83,7 +82,6 @@ public class Usage.NewStorageView : Usage.View {
 
         query_builder = new StorageQueryBuilder ();
         controller = new TrackerController (connection);
-        controller.refresh_model.connect(refresh_listbox);
 
         actionbar.refresh_listbox.connect(() => {
             var item = actual_item.peek_head();
@@ -94,7 +92,7 @@ public class Usage.NewStorageView : Usage.View {
             if(listbox.get_depth() >= 1) {
                 selected_items_stack.push_head((owned) selected_items);
                 actual_item.push_head(item);
-                present_dir.begin (item.uri, item.dir);
+                present_dir.begin (item.uri, item.dir, cancellable);
             }
             else
                 populate_view.begin ();
@@ -121,11 +119,10 @@ public class Usage.NewStorageView : Usage.View {
         if(storage_row.item.custom_type == "up-folder") {
             stack_listbox_up();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
-            rows_table.remove_all();
             selected_items_stack.push_head((owned) selected_items);
             actual_item.push_head(storage_row.item);
             clear_selected_items();
-            present_dir.begin (storage_row.item.uri, storage_row.item.dir);
+            present_dir.begin (storage_row.item.uri, storage_row.item.dir, cancellable);
         } else if (storage_row.item.custom_type != null) {
             row_popover.present(storage_row);
         } else {
@@ -160,10 +157,10 @@ public class Usage.NewStorageView : Usage.View {
             if(listbox.get_depth() == 0)
                 populate_view.begin ();
             else
-                present_dir.begin (item.uri, item.dir);
+                present_dir.begin (item.uri, item.dir, cancellable);
         }
         else
-            refresh_listbox();
+            graph.model = (ListStore) listbox.get_model();
     }
 
     private string get_user_special_dir_path (UserDirectory dir) {
@@ -190,33 +187,11 @@ public class Usage.NewStorageView : Usage.View {
         if(item.custom_type == "available-graph")
             return new Gtk.ListBoxRow();
 
-        rows_table.insert(item, row);
+        graph.model = (ListStore) listbox.get_model();
         return row;
     }
 
-    public void refresh_listbox() {
-        var rows_number = 0;
-        var model = listbox.get_model();
-        graph.model = (ListStore) model;
-
-        if(listbox.get_depth() > 1) {
-            for(int i = 0; i < model.get_n_items(); i++) {
-                if((model.get_item(i) as StorageViewItem).percentage > MIN_PERCENTAGE_SHOWN_FILES)
-                    rows_number++;
-            }
-
-            if(rows_number < 3)
-                rows_number = 3;
-
-            for(int i = 0; i < model.get_n_items(); i++) {
-                var item = model.get_item(i) as StorageViewItem;
-                var row = rows_table.get(item);
-                row.colorize(i, rows_number);
-            }
-        }
-    }
-
-    private async void present_dir (string uri, UserDirectory? dir) {
+    private async void present_dir (string uri, UserDirectory? dir, Cancellable cancellable) {
         if (connection == null || cancellable.is_cancelled())
             return;
 
@@ -225,31 +200,21 @@ public class Usage.NewStorageView : Usage.View {
         var item = StorageViewItem.from_file (file);
         item.custom_type = "up-folder";
         item.dir = dir;
+        model.insert(0, item);
 
         controller.set_model(model);
         controller.enumerate_children.begin(uri, dir, cancellable, (obj, res) => {
-            try {
-                item.loaded = controller.enumerate_children.end(res);
-            } catch (GLib.Error error) {
-                warning(error.message);
-            }
-        });
-
-        controller.get_file_size.begin (item.uri, (obj, res) => {
-            try {
-                item.size = controller.get_file_size.end (res);
-            } catch (GLib.Error error) {
-                warning(error.message);
-            }
-
-            item.percentage = item.size * 100 / (double) total_size;
-            model.insert(0, item);
-
-            listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
-
-            if(!cancellable.is_cancelled())
+            if(!cancellable.is_cancelled()) {
+                var up_folder_item = model.get_item(0) as StorageViewItem;
+                up_folder_item.size = controller.enumerate_children.end(res);
+                up_folder_item.loaded = true;
                 graph.model = model;
+            }
         });
+
+        listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
+        if(!cancellable.is_cancelled())
+            graph.model = model;
     }
 
     private void setup_header_label () {
@@ -317,7 +282,6 @@ public class Usage.NewStorageView : Usage.View {
                     item.percentage = item.size * 100 / (double) total_size;
                     item.custom_type = "root_item";
                     model.insert (1, item);
-                    refresh_listbox();
                 } catch (GLib.Error error) {
                     warning (error.message);
                 }
