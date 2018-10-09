@@ -21,8 +21,6 @@
 using Tracker;
 
 public class Usage.TrackerController : GLib.Object {
-    public signal void refresh_model();
-
     private Sparql.Connection connection;
     private StorageQueryBuilder query_builder;
     private GLib.ListStore model;
@@ -39,21 +37,22 @@ public class Usage.TrackerController : GLib.Object {
         this.model = model;
     }
 
-    public async bool enumerate_children (string uri, UserDirectory? dir, Cancellable cancellable) throws GLib.Error {
+    public async uint64 enumerate_children (string uri, UserDirectory? dir, Cancellable cancellable) {
         var query = query_builder.enumerate_children (uri);
 
-        var worker = yield new TrackerWorker (connection, query);
-        string n_uri = null;
-        string file_type = null;
+        uint64 uri_size = 0;
+        try {
 
-        var parent = File.new_for_uri (uri);
-        uint64 parent_size = 1;
-        if (parent != null) {
-            parent_size = yield get_file_size (uri);
-        }
+            var worker = yield new TrackerWorker (connection, query);
+            string n_uri = null;
+            string file_type = null;
 
-        while (yield worker.fetch_next (out n_uri, out file_type)) {
-            try {
+            var parent = File.new_for_uri (uri);
+            uint64 parent_size = 1;
+            if (parent != null)
+                parent_size = yield get_file_size (uri);
+
+            while (yield worker.fetch_next (out n_uri, out file_type)) {
                 if(!cancellable.is_cancelled()) {
                     var file = File.new_for_uri (n_uri);
                     var item = StorageViewItem.from_file (file);
@@ -69,31 +68,30 @@ public class Usage.TrackerController : GLib.Object {
                     }
 
                     item.percentage = item.size*100/(double)parent_size;
+                    uri_size += item.size;
 
                     model.insert_sorted (item, (a, b) => {
                         var item_a = a as StorageViewItem;
                         var item_b = b as StorageViewItem;
 
-                        if (item_a.size > item_b.size) {
+                        if (item_a.custom_type == "up-folder" || item_a.size > item_b.size) {
                             return -1;
                         }
 
-                        if (item_b.size > item_a.size) {
+                        if (item_b.custom_type == "up-folder" || item_b.size > item_a.size) {
                             return 1;
                         }
 
                         return 0;
                     });
-
-                    refresh_model();
                 } else
-                    return false;
-            } catch (GLib.Error error) {
-                warning (error.message);
+                    return uri_size;
             }
+        } catch (GLib.Error error) {
+            warning (error.message);
         }
 
-        return true;
+        return uri_size;
     }
 
     private uint64 get_g_file_size (string uri) {

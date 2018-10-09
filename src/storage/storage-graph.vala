@@ -25,11 +25,11 @@ namespace Usage
     public class StorageGraph : Gtk.DrawingArea
     {
         private unowned List<StorageViewItem> selected_items;
-        private GLib.ListStore _model;
+        private unowned GLib.ListStore _model;
         private uint64 selected_size = 0;
         private bool root { private set; get; }
 
-        public GLib.ListStore model {
+        public unowned GLib.ListStore model {
             set {
                 _model = value;
                 this.draw.connect(draw_storage_graph);
@@ -73,7 +73,7 @@ namespace Usage
             this.queue_draw();
         }
 
-        private void draw_circle(Cairo.Context context, GLib.ListStore model, double x, double y, double radius, int section, Circle circle)
+        private void draw_circle(Cairo.Context context, double x, double y, double radius, int section, Circle circle)
         {
             double start_angle = 0;
             double final_angle = - Math.PI / 2.0;
@@ -94,10 +94,10 @@ namespace Usage
                     shown_items_number = shown_items_number + 1;
             }
 
-            if(shown_items_number < 3)
-                shown_items_number = 3;
-
             if(shown_items_number > 1) {
+                if(shown_items_number < 3)
+                    shown_items_number = 3;
+
                 for(int i = 0; i < model.get_n_items(); i++)
                 {
                     var item = model.get_item(i) as StorageViewItem;
@@ -112,8 +112,10 @@ namespace Usage
 
                     Gdk.RGBA fill_color = base_color;
 
-                    if(!root)
+                    if(!root) {
                         fill_color = Utils.generate_color(base_color, i, shown_items_number, true);
+                        item.color = fill_color;
+                    }
 
                     if(selected_items.find(item) != null)
                         item_radius += radius / 6;
@@ -168,7 +170,7 @@ namespace Usage
             x = width / 2.0;
             y = height / 2.0;
 
-            draw_circle(context, model, x, y, radius, 0, Circle.BASE);
+            draw_circle(context, x, y, radius, 0, Circle.BASE);
             draw_selected_size_text(context);
 
             return true;

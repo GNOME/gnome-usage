@@ -16,11 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Felipe Borges <felipeborges@gnome.org>
+ *          Petr Štětka <pstetka@redhat.com>
  */
 
 public class Usage.StorageViewItem : GLib.Object {
     public double percentage { set; get; }
     public bool loaded { get; set; default = false; }
+    public Gdk.RGBA color { get; set; }
 
     public string uri;
     public string name;
