@@ -26,17 +26,17 @@ namespace Usage
 
         public GraphSwitcherButton.processor(string label)
         {
-            Rg.Graph processor_graph = new CpuGraphMostUsed();
+            var processor_graph = new CpuGraphMostUsedCore();
             child = createContent(processor_graph, label);
         }
 
         public GraphSwitcherButton.memory(string label)
         {
-            Rg.Graph memory_graph = new MemoryGraph();
+            var memory_graph = new MemoryGraph();
             child = createContent(memory_graph, label);
         }
 
-        private Gtk.Box createContent(Rg.Graph graph, string label_text)
+        private Gtk.Box createContent(Dazzle.GraphView graph, string label_text)
         {
             graph.height_request = 80;
             graph.hexpand = true;

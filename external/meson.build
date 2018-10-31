@@ -1,2 +1,0 @@
-subdir('egg')
-subdir('rg')
