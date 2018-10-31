@@ -29,7 +29,7 @@ namespace Usage {
             set_css_name("graph-box");
         }
 
-        public GraphBox (Rg.Graph graph) {
+        public GraphBox (Dazzle.GraphView graph) {
             add(graph);
         }
     }
