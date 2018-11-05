@@ -22,6 +22,7 @@ vala_sources = [
   'no-results-found-view.vala',
   'performance-view.vala',
   'pie-chart.vala',
+  'primary-menu.vala',
   'process-list-box.vala',
   'process-row.vala',
   'process.vala',

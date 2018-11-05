@@ -49,9 +49,13 @@ namespace Usage
         [GtkChild]
         private Gtk.Button storage_cancel_button;
 
+        [GtkChild]
+        private Gtk.MenuButton primary_menu_button;
+
 	    private Gtk.MenuButton? storage_selection_menu;
 	    private string title_text = "";
 	    private HeaderBarMode mode;
+	    private Usage.PrimaryMenu menu;
 
 	    const GLib.ActionEntry[] select_action_entries = {
            { "select-all", select_all },
@@ -61,7 +65,9 @@ namespace Usage
 	    public HeaderBar(Gtk.Stack stack)
 	    {
 	        mode = HeaderBarMode.PERFORMANCE;
+	        menu = new Usage.PrimaryMenu();
             stack_switcher.set_stack(stack);
+            this.primary_menu_button.set_popover(menu);
 
             set_mode(HeaderBarMode.PERFORMANCE);
 	    }
