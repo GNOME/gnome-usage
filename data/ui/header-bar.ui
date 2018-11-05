@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.9 -->
+  <!-- interface-requires gtk+ 3.12 -->
 
   <template class="UsageHeaderBar" parent="GtkHeaderBar">
     <property name="visible">False</property>
@@ -28,6 +28,21 @@
       <object class="GtkStackSwitcher" id="stack_switcher">
         <property name="visible">True</property>
       </object>
+    </child>
+
+    <child>
+      <object class="GtkMenuButton" id="primary_menu_button">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="icon-name">open-menu-symbolic</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="pack-type">end</property>
+      </packing>
     </child>
 
     <child>
@@ -96,3 +111,4 @@
     </child>
   </template>
 </interface>
+
