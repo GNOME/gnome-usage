@@ -50,21 +50,8 @@ namespace Usage
 
             window = new Window(this);
 
-            // Create menu
-            GLib.Menu menu_preferences = new GLib.Menu();
-            GLib.Menu menu_common = new GLib.Menu();
-            var item = new GLib.MenuItem (_("About"), "app.about");
-            menu_common.append_item(item);
+            set_accels_for_action("app.quit", {"<Primary>q"});
 
-            item = new GLib.MenuItem (_("Quit"), "app.quit");
-            item.set_attribute("accel", "s", "<Primary>q");
-            menu_common.append_item(item);
-
-            GLib.Menu menu = new GLib.Menu();
-            menu.append_section(null, menu_preferences);
-            menu.append_section(null, menu_common);
-
-            set_app_menu(menu);
             window.show_all();
         }
 
