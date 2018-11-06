@@ -34,7 +34,7 @@ namespace Usage
             label.margin_top = 25;
             label.margin_bottom = 15;
 
-            var cpu_graph = new CpuGraphBig();
+            var cpu_graph = new CpuGraph();
             cpu_graph.hexpand = true;
             var cpu_graph_box = new GraphBox(cpu_graph);
             cpu_graph_box.height_request = 225;
