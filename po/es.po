@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-05-15 09:26+0000\n"
-"PO-Revision-Date: 2018-06-22 09:49+0200\n"
+"POT-Creation-Date: 2018-11-05 17:14+0000\n"
+"PO-Revision-Date: 2018-11-15 12:03+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -35,8 +35,7 @@ msgstr ""
 "Una sencilla aplicación de GNOME 3 para monitorizar y a analizar los "
 "recursos del sistema como el procesador, la memoria y el almacenamiento."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91
-#: src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:78 src/window.vala:41
 msgid "Usage"
 msgstr "Uso"
 
@@ -71,7 +70,7 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Esta lista se usa para filtrar qué procesos no puede el usuario detener."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Cancelar"
@@ -96,6 +95,10 @@ msgstr "No se encontraron resultados"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Pruebe a hacer una búsqueda diferente"
+
+#: data/ui/primary-menu.ui:13
+msgid "_About Usage"
+msgstr "_Acerca de Uso de GNOME"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -142,15 +145,7 @@ msgstr "No hay contenido"
 msgid "Swap"
 msgstr "Intercambio"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "Acerca de"
-
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Salir"
-
-#: src/application.vala:92
+#: src/application.vala:79
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -158,11 +153,11 @@ msgstr ""
 "Una buena manera de ver información sobre el uso de los recursos del "
 "sistema, como la memoria y el espacio en disco."
 
-#: src/application.vala:95
+#: src/application.vala:82
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2017"
 
-#: src/application.vala:97
+#: src/application.vala:84
 msgid "Websites"
 msgstr "Sitios web"
 
@@ -178,22 +173,22 @@ msgstr "Otros"
 msgid "Memory"
 msgstr "Memoria"
 
-#: src/header-bar.vala:143
+#: src/header-bar.vala:149
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u seleccionado"
 msgstr[1] "%u seleccionados"
 
-#: src/header-bar.vala:145
+#: src/header-bar.vala:151
 msgid "Click on items to select them"
 msgstr "Pulse en los elementos para seleccionarlos"
 
-#: src/header-bar.vala:209
+#: src/header-bar.vala:215
 msgid "Select all"
 msgstr "Seleccionar todo"
 
-#: src/header-bar.vala:213
+#: src/header-bar.vala:219
 msgid "Select None"
 msgstr "No seleccionar nada"
 
@@ -212,16 +207,12 @@ msgstr "Seleccionar"
 #. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
 #, c-format
-#| msgid "Are you sure you want to permanently delete %s?"
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "¿Está seguro de que quiere eliminar permanentemente «%s»?"
 
 #. Translators: %d is the number of files to be deleted.
 #: src/storage-actionbar.vala:148
 #, c-format
-#| msgid "Are you sure you want to permanently delete the %d selected items?"
-#| msgid_plural ""
-#| "Are you sure you want to permanently delete the %d selected items?"
 msgid "Are you sure you want to permanently delete the %d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %d selected items?"
@@ -301,6 +292,12 @@ msgstr "Si elimina un elemento, se perderá para siempre."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Almacenamiento"
+
+#~ msgid "About"
+#~ msgstr "Acerca de"
+
+#~ msgid "Quit"
+#~ msgstr "Salir"
 
 #~| msgid "Are you sure you want to permanently delete %s?"
 #~ msgid "Are you sure you want to permanently delete \"%s\" ?"
