@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-05-03 14:27+0000\n"
-"PO-Revision-Date: 2018-07-06 14:17+0700\n"
+"POT-Creation-Date: 2018-11-05 17:14+0000\n"
+"PO-Revision-Date: 2018-11-15 23:30+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Aplikasi GNOME 3 sederhana untuk memantau dan menganalisis sumber daya "
 "sistem seperti pemrosesan, memori, dan penyimpanan."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:78 src/window.vala:41
 msgid "Usage"
 msgstr "Pemakaian"
 
@@ -71,7 +71,7 @@ msgstr ""
 "Daftar ini digunakan untuk menyaring proses yang pengguna tidak bisa "
 "hentikan."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Batal"
@@ -96,6 +96,10 @@ msgstr "Hasil tak ditemukan"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Coba pencarian berbeda"
+
+#: data/ui/primary-menu.ui:13
+msgid "_About Usage"
+msgstr "Tent_ang Pemakaian"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -142,15 +146,7 @@ msgstr "Tidak ada konten di sini"
 msgid "Swap"
 msgstr "Swap"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "Tentang"
-
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Keluar"
-
-#: src/application.vala:92
+#: src/application.vala:79
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -158,11 +154,11 @@ msgstr ""
 "Cara yang baik untuk melihat informasi tentang penggunaan sumber daya "
 "sistem, seperti memori dan ruang diska."
 
-#: src/application.vala:95
+#: src/application.vala:82
 msgid "translator-credits"
 msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018."
 
-#: src/application.vala:97
+#: src/application.vala:84
 msgid "Websites"
 msgstr "Situs Web"
 
@@ -178,21 +174,21 @@ msgstr "Lainnya"
 msgid "Memory"
 msgstr "Memori"
 
-#: src/header-bar.vala:143
+#: src/header-bar.vala:149
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u dipilih"
 
-#: src/header-bar.vala:145
+#: src/header-bar.vala:151
 msgid "Click on items to select them"
 msgstr "Klik pada butir untuk memilihnya"
 
-#: src/header-bar.vala:209
+#: src/header-bar.vala:215
 msgid "Select all"
 msgstr "Pilih semua"
 
-#: src/header-bar.vala:213
+#: src/header-bar.vala:219
 msgid "Select None"
 msgstr "Pilih Tak Satupun"
 
@@ -292,6 +288,12 @@ msgstr "Jika Anda menghapus suatu butir, itu akan hilang selamanya."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Penyimpanan"
+
+#~ msgid "About"
+#~ msgstr "Tentang"
+
+#~ msgid "Quit"
+#~ msgstr "Keluar"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\" ?"
 #~ msgstr "Anda yakin akan menghapus permanen \"%s\"?"
