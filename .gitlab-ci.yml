@@ -24,7 +24,7 @@ build-gnome-usage-flatpak:
     MANIFEST_PATH: "org.gnome.Usage.json"
     MESON_ARGS: "-Dprofile=development"
     RUNTIME_REPO: "https://sdk.gnome.org/gnome-nightly.flatpakrepo"
-    FLATPAK_MODULE: "org.gnome.Usage"
+    FLATPAK_MODULE: "org.gnome.usage"
     DBUS_ID: "org.gnome.Usage"
   script:
     - flatpak-builder --stop-at=${FLATPAK_MODULE} app ${MANIFEST_PATH}
