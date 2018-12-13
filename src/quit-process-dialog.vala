@@ -22,6 +22,12 @@ using Gtk;
 
 namespace Usage
 {
+    public enum TerminateSignals
+    {
+        SIGKILL,
+        SIGTERM
+    }
+
     [GtkTemplate (ui = "/org/gnome/Usage/ui/quit-process-dialog.ui")]
     public class QuitProcessDialog : Gtk.MessageDialog
     {
@@ -51,8 +57,21 @@ namespace Usage
 
         private void kill (Pid pid)
         {
+            var settings = Settings.get_default();
+            int terminate_signal;
+
+            switch(settings.get_enum("terminate-signal-processes")) {
+                case TerminateSignals.SIGKILL:
+                    terminate_signal = Posix.Signal.KILL;
+                    break;
+                case TerminateSignals.SIGTERM:
+                default:
+                    terminate_signal = Posix.Signal.TERM;
+                    break;
+            }
+
             debug ("Terminating %d", (int) pid);
-            Posix.kill(pid, Posix.Signal.KILL);
+            Posix.kill(pid, terminate_signal);
         }
 
         [GtkCallback]

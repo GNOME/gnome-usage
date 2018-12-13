@@ -1,9 +1,19 @@
 <schemalist>
+    <enum id="org.gnome.Usage.TerminateSignals">
+        <value nick="SIGKILL" value="0" />
+        <value nick="SIGTERM" value="1" />
+    </enum>
+
     <schema id="org.gnome.Usage" path="/org/gnome/Usage/" gettext-domain="gnome-usage">
         <key name="unkillable-processes" type="as">
             <default>['gnome-shell', 'gdm-x-session', 'gdm-wayland-session', 'gdm', 'systemd', 'gdm-session-worker', 'pulseaudio', 'Xorg']</default>
             <summary>A list of processes which we don’t want killed</summary>
             <description>This list is used for filtering which processes the user can’t stop.</description>
+        </key>
+        <key name="terminate-signal-processes" enum="org.gnome.Usage.TerminateSignals">
+            <default>'SIGKILL'</default>
+            <summary>Terminate signal</summary>
+            <description>The signal for terminating processes</description>
         </key>
     </schema>
 </schemalist>
