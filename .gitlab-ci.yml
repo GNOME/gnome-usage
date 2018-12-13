@@ -4,7 +4,7 @@ stages:
 before_script:
   - dnf update -y
   - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel
-                   desktop-file-utils
+                   desktop-file-utils libdazzle
 build-gnome-usage:
   stage: build
   script:
