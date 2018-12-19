@@ -23,8 +23,6 @@ using Gtk;
 namespace Usage {
     [GtkTemplate (ui="/org/gnome/Usage/ui/primary-menu.ui")]
     public class PrimaryMenu : Gtk.Popover {
-        [GtkChild]
-        private Gtk.ModelButton about_usage_button;
 
         [GtkChild]
         private Gtk.Box performance_container;
