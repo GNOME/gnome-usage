@@ -88,7 +88,7 @@ namespace Usage
 
     [DBus (name = "org.freedesktop.Accounts")]
     public interface Fdo.Accounts : Object {
-        public abstract async string FindUserById (int64 id) throws IOError;
+        public abstract async string FindUserById (int64 id) throws GLib.Error;
     }
 
     [DBus (name = "org.freedesktop.Accounts.User")]
