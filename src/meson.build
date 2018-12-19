@@ -8,8 +8,6 @@ vala_sources = [
   'cpu-monitor.vala',
   'cpu-sub-view.vala',
   'gnome-usage.vala',
-  'graph-block-row.vala',
-  'graph-block.vala',
   'graph-box.vala',
   'graph-stacked-renderer.vala',
   'graph-stack-switcher.vala',
