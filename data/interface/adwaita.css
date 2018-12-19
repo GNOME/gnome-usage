@@ -17,33 +17,6 @@ list row.max:hover {
     background: alpha(@error_color, 0.4);
 }
 
-list row.opened {
-    background:alpha(@theme_fg_color, 0.2);
-}
-
-list row.opened:hover {
-    background: alpha(@theme_fg_color, 0.3);
-}
-
-subprocess-list row {
-    padding: 0;
-    background: @theme_bg_color;
-}
-
-subprocess-list row:hover {
-    background: alpha(@theme_fg_color, 0.3);
-}
-
-subprocess-list row.max {
-    background: #fabbbb;
-    border: 1px solid #faa5a2;
-}
-
-subprocess-list row.max:hover {
-    background: #faa5a2;
-    border: 1px solid #faa5a2;
-}
-
 button.graph-switcher {
     border-style: none;
     border-radius: 0;
