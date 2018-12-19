@@ -26,8 +26,22 @@ namespace Usage {
         [GtkChild]
         private Gtk.ModelButton about_usage_button;
 
-        public PrimaryMenu() {
+        [GtkChild]
+        private Gtk.Box performance_container;
 
+        public HeaderBarMode mode { get; set; }
+
+        public PrimaryMenu() {
+            notify["mode"].connect ((sender, property) => {
+                switch(mode) {
+                    case HeaderBarMode.PERFORMANCE:
+                        performance_container.show();
+                        break;
+                    case HeaderBarMode.STORAGE:
+                        performance_container.hide();
+                        break;
+                }
+            });
         }
     }
 }
