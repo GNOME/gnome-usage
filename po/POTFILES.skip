@@ -1,9 +1,6 @@
 # List of source files that should *not* be translated.
 # Please keep this file sorted alphabetically.
-external/egg/egg-animation.c
-external/egg/egg-date-time.c
-external/egg/egg-file-chooser-entry.c
-external/egg/egg-search-bar.c
+src/app-item.c
 src/application.c
 src/cpu-sub-view.c
 src/graph-block.c
