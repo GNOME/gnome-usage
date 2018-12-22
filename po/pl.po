@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-11-05 17:14+0000\n"
-"PO-Revision-Date: 2018-11-11 13:33+0100\n"
+"POT-Creation-Date: 2018-12-20 19:35+0000\n"
+"PO-Revision-Date: 2018-12-22 12:53+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Prosty program dla środowiska GNOME 3 do monitorowania i analizowania "
 "zasobów komputera, takich jak procesor, pamięć i miejsce na dysku."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:78 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Monitor"
 
@@ -98,9 +98,17 @@ msgstr "Brak wyników"
 msgid "Try a different search"
 msgstr "Proszę spróbować innych słów"
 
-#: data/ui/primary-menu.ui:13
+#: data/ui/primary-menu.ui:14
 msgid "_About Usage"
 msgstr "_O programie"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Grupowanie procesów systemowych"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Wszystkie procesy"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -147,7 +155,11 @@ msgstr "Nic tu nie ma"
 msgid "Swap"
 msgstr "Pamięć wymiany"
 
-#: src/application.vala:79
+#: src/app-item.vala:43
+msgid "System"
+msgstr "System"
+
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -155,13 +167,13 @@ msgstr ""
 "Wygodny sposób na wyświetlanie informacji o użyciu zasobów komputera, takich "
 "jak pamięć i miejsce na dysku."
 
-#: src/application.vala:82
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2017-2018\n"
 "Aviary.pl <community-poland@mozilla.org>, 2017-2018"
 
-#: src/application.vala:84
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Strona WWW"
 
