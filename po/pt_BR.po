@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-11-05 17:14+0000\n"
-"PO-Revision-Date: 2018-11-22 06:58-0200\n"
+"POT-Creation-Date: 2018-12-20 19:35+0000\n"
+"PO-Revision-Date: 2018-12-25 14:47-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Um aplicativo simples do GNOME 3 para monitorar e analisar recursos do "
 "sistema, como processamento, memória e armazenamento."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:78 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Uso"
 
@@ -96,9 +96,17 @@ msgstr "Nenhum resultado localizado"
 msgid "Try a different search"
 msgstr "Tente uma pesquisa diferente"
 
-#: data/ui/primary-menu.ui:13
+#: data/ui/primary-menu.ui:14
 msgid "_About Usage"
 msgstr "_Sobre Uso"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Agrupar processos de sistema"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Mostrar todos os processos"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -145,7 +153,11 @@ msgstr "Nenhum conteúdo aqui"
 msgid "Swap"
 msgstr "Swap"
 
-#: src/application.vala:79
+#: src/app-item.vala:43
+msgid "System"
+msgstr "Sistema"
+
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -153,13 +165,13 @@ msgstr ""
 "Uma forma legal de ver informações sobre o uso dos recursos do sistema, como "
 "memória e espaço em disco."
 
-#: src/application.vala:82
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>, 2017, 2018\n"
 "Rafael Fontenelle <rafaelff@gnome.org>, 2017, 2018"
 
-#: src/application.vala:84
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Sites"
 
