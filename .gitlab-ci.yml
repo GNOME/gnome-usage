@@ -1,13 +1,45 @@
-image: fedora:29
 stages:
   - build
-before_script:
-  - dnf update -y
-  - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel
-                   desktop-file-utils libdazzle-devel
-build-gnome-usage:
+
+variables:
+  BUNDLE: "org.gnome.Usage.Devel.flatpak"
+
+
+
+build:
+  before_script:
+    - dnf update -y
+    - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel 
+                     desktop-file-utils libdazzle-devel
+  image: fedora:29
   stage: build
   script:
   - meson _build .
   - ninja -C _build
   - ninja -C _build install
+
+build-flatpak:
+  image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master
+  stage: build
+  variables:
+    MANIFEST_PATH: "org.gnome.Usage.json"
+    MESON_ARGS: ""
+    RUNTIME_REPO: "https://sdk.gnome.org/gnome-nightly.flatpakrepo"
+    FLATPAK_MODULE: "gnome-usage"
+    DBUS_ID: "org.gnome.Usage"
+  script:
+    - flatpak-builder --stop-at=${FLATPAK_MODULE} app ${MANIFEST_PATH}
+    - flatpak build app meson --prefix=/app ${MESON_ARGS} _build
+    - flatpak build app ninja -C _build install
+    - flatpak-builder --finish-only --repo=repo app ${MANIFEST_PATH}
+    - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${RUNTIME_REPO} ${DBUS_ID}
+
+  artifacts:
+    paths:
+      - ${BUNDLE}
+      - _build/meson-logs/meson-log.txt
+    expire_in: 7 days
+  cache:
+    paths:
+      - .flatpak-builder/downloads
+      - .flatpak-builder/git
