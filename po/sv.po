@@ -1,15 +1,15 @@
 # Swedish translation for gnome-usage.
-# Copyright © 2017, 2018 gnome-usage's COPYRIGHT HOLDER
+# Copyright © 2017, 2018, 2019 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2017.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-05-03 14:27+0000\n"
-"PO-Revision-Date: 2018-07-18 13:48+0200\n"
+"POT-Creation-Date: 2019-01-03 18:03+0000\n"
+"PO-Revision-Date: 2019-01-07 22:43+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -35,7 +35,7 @@ msgstr ""
 "Ett enkelt GNOME 3-program för att övervaka och analysera systemresurser så "
 "som processorkraft, minne och lagring."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Användning"
 
@@ -70,7 +70,7 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Listan används för att filtrera vilka processer användaren inte kan stoppa."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Avbryt"
@@ -84,7 +84,7 @@ msgid "Used"
 msgstr "Använt"
 
 #: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: src/storage-item.vala:140
 msgid "Available"
 msgstr "Tillgängligt"
 
@@ -95,6 +95,18 @@ msgstr "Inga resultat hittades"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Försök med en annan sökning"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_Om Användning"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Gruppera systemprocesser"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Visa alla processer"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -141,15 +153,11 @@ msgstr "Inget innehåll här"
 msgid "Swap"
 msgstr "Växlingsutrymme"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "Om"
+#: src/app-item.vala:43
+msgid "System"
+msgstr "System"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Avsluta"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -157,11 +165,11 @@ msgstr ""
 "Ett trevligt sätt att se information om användning av systemresurser så som "
 "minne och diskutrymme."
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr "Josef Andersson <josef.andersson@fripost.org>, 2016, 2017"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Webbplatser"
 
@@ -169,30 +177,26 @@ msgstr "Webbplatser"
 msgid "Processor"
 msgstr "Processor"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Andra"
-
 #: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Minne"
 
-#: src/header-bar.vala:143
+#: src/header-bar.vala:149
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u markerat"
 msgstr[1] "%u markerade"
 
-#: src/header-bar.vala:145
+#: src/header-bar.vala:151
 msgid "Click on items to select them"
 msgstr "Klicka på objekt för att markera dem"
 
-#: src/header-bar.vala:209
+#: src/header-bar.vala:215
 msgid "Select all"
 msgstr "Välj alla"
 
-#: src/header-bar.vala:213
+#: src/header-bar.vala:219
 msgid "Select None"
 msgstr "Välj inget"
 
@@ -295,6 +299,15 @@ msgstr "Om du tar bort ett objekt är det borta för alltid."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Lagring"
+
+#~ msgid "About"
+#~ msgstr "Om"
+
+#~ msgid "Quit"
+#~ msgstr "Avsluta"
+
+#~ msgid "Others"
+#~ msgstr "Andra"
 
 #~ msgid "Move to trash"
 #~ msgstr "Flytta till papperskorgen"
