@@ -2,14 +2,14 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Zdeněk Hataš <zdenek.hatas@gmail.com>, 2017.
-# Marek Černocký <marek@manet.cz>, 2017, 2018.
+# Marek Černocký <marek@manet.cz>, 2017, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-05-03 14:27+0000\n"
-"PO-Revision-Date: 2018-05-03 23:20+0200\n"
+"POT-Creation-Date: 2019-01-03 18:03+0000\n"
+"PO-Revision-Date: 2019-01-07 11:30+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
-msgstr "Využití v GNOME"
+msgstr "Využití GNOME"
 
 #: data/org.gnome.Usage.appdata.xml.in:6
 msgid "A nice way to view information about use of system resources"
@@ -36,7 +36,7 @@ msgstr ""
 "Jednoduchá aplikace pro GNOME 3 ke sledování a analýze systémových "
 "prostředků, jako jsou procesor, paměť nebo úložiště."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Využití"
 
@@ -72,7 +72,7 @@ msgstr ""
 "Tento seznam je používám pro filtrování procesů, které uživatele nesmí "
 "ukončit."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Storno"
@@ -86,7 +86,7 @@ msgid "Used"
 msgstr "Použito"
 
 #: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: src/storage-item.vala:140
 msgid "Available"
 msgstr "Dostupné"
 
@@ -97,6 +97,18 @@ msgstr "Nebylo nic nalezeno"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Zkuste hledat něco jiného"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "O aplikaci Využití GNOME"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Seskupovat systémové procesy"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Zobrazovat všechny procesy"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -143,15 +155,11 @@ msgstr "Není zde žádný obsah"
 msgid "Swap"
 msgstr "Odkládací prostor"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "O aplikaci"
+#: src/app-item.vala:43
+msgid "System"
+msgstr "Systém"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Ukončit"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -159,11 +167,11 @@ msgstr ""
 "Elegantní způsob, jak zobrazit informace o využití systémových prostředků, "
 "jako jsou operační paměť a místo na disku."
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr "Zdeněk Hataš <zdenek.hatas@gmail.com>"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Webové stránky"
 
@@ -171,15 +179,11 @@ msgstr "Webové stránky"
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Ostatní"
-
 #: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Paměť"
 
-#: src/header-bar.vala:143
+#: src/header-bar.vala:149
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
@@ -187,15 +191,15 @@ msgstr[0] "%u vybraný"
 msgstr[1] "%u vybrané"
 msgstr[2] "%u vybraných"
 
-#: src/header-bar.vala:145
+#: src/header-bar.vala:151
 msgid "Click on items to select them"
 msgstr "Položky vyberete kliknutím"
 
-#: src/header-bar.vala:209
+#: src/header-bar.vala:215
 msgid "Select all"
 msgstr "Vybrat vše"
 
-#: src/header-bar.vala:213
+#: src/header-bar.vala:219
 msgid "Select None"
 msgstr "Zrušit výběr"
 
@@ -297,3 +301,12 @@ msgstr "Pokud položku smažete, bude trvale ztracena."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Úložiště"
+
+#~ msgid "About"
+#~ msgstr "O aplikaci"
+
+#~ msgid "Quit"
+#~ msgstr "Ukončit"
+
+#~ msgid "Others"
+#~ msgstr "Ostatní"
