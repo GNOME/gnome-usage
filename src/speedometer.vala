@@ -88,8 +88,11 @@ namespace Usage
         {
             /* This is a Vala bug. It will cause a "warning".
             (content_area as Buildable).add_child(builder, child, type);*/
-            if (child is Gtk.Label)
+            if (child is Gtk.Label) {
                 content_area.add(child as Gtk.Widget);
+
+                return;
+            }
 
             base.add_child(builder, child, type);
         }
