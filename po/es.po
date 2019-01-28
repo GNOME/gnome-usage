@@ -1,14 +1,14 @@
 # Spanish translation for gnome-usage.
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2017, 2018.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2017-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-11-05 17:14+0000\n"
-"PO-Revision-Date: 2018-11-15 12:03+0100\n"
+"POT-Creation-Date: 2019-01-03 18:03+0000\n"
+"PO-Revision-Date: 2019-01-28 15:05+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.31.0\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -35,7 +35,7 @@ msgstr ""
 "Una sencilla aplicación de GNOME 3 para monitorizar y a analizar los "
 "recursos del sistema como el procesador, la memoria y el almacenamiento."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:78 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Uso"
 
@@ -84,7 +84,7 @@ msgid "Used"
 msgstr "Usada"
 
 #: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: src/storage-item.vala:140
 msgid "Available"
 msgstr "Disponible"
 
@@ -96,9 +96,17 @@ msgstr "No se encontraron resultados"
 msgid "Try a different search"
 msgstr "Pruebe a hacer una búsqueda diferente"
 
-#: data/ui/primary-menu.ui:13
+#: data/ui/primary-menu.ui:14
 msgid "_About Usage"
 msgstr "_Acerca de Uso de GNOME"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Agrupar procesos del sistema"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Mostrar todos los procesos"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -145,7 +153,11 @@ msgstr "No hay contenido"
 msgid "Swap"
 msgstr "Intercambio"
 
-#: src/application.vala:79
+#: src/app-item.vala:43
+msgid "System"
+msgstr "Sistema"
+
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -153,21 +165,17 @@ msgstr ""
 "Una buena manera de ver información sobre el uso de los recursos del "
 "sistema, como la memoria y el espacio en disco."
 
-#: src/application.vala:82
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2017"
 
-#: src/application.vala:84
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Sitios web"
 
 #: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Procesador"
-
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Otros"
 
 #: src/graph-stack-switcher.vala:46
 msgid "Memory"
@@ -292,6 +300,9 @@ msgstr "Si elimina un elemento, se perderá para siempre."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Almacenamiento"
+
+#~ msgid "Others"
+#~ msgstr "Otros"
 
 #~ msgid "About"
 #~ msgstr "Acerca de"
