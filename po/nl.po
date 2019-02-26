@@ -2,15 +2,15 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Nathan Follens <nthn@unseen.is>, 2017-2018.
+# Nathan Follens <nthn@unseen.is>, 2017-2019.
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2017.
 # Justin van Steijn <jvs@fsfe.org>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-02-12 10:43+0000\n"
-"PO-Revision-Date: 2018-02-26 15:08+0100\n"
+"POT-Creation-Date: 2019-01-03 18:03+0000\n"
+"PO-Revision-Date: 2019-02-26 13:36+0100\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -38,7 +38,7 @@ msgstr ""
 "Een eenvoudige Gnome 3-toepassing om systeembronnen zoals processor, "
 "geheugen en opslag te monitoren en analyseren."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Gebruik"
 
@@ -75,7 +75,7 @@ msgstr ""
 "Deze lijst wordt gebruikt voor het filteren van processen die de gebruiker "
 "niet kan stoppen."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Annuleren"
@@ -89,7 +89,7 @@ msgid "Used"
 msgstr "Gebruikt"
 
 #: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: src/storage-item.vala:140
 msgid "Available"
 msgstr "Beschikbaar"
 
@@ -100,6 +100,18 @@ msgstr "Geen resultaten gevonden"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Probeer een andere zoekopdracht"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_Over Gebruik"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Systeemprocessen groeperen"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Alle processen tonen"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -122,7 +134,7 @@ msgstr "Verplaatsen naar"
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: data/ui/storage-actionbar.ui:33
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
 msgid "Move to Trash"
 msgstr "Verplaatsen naar prullenbak"
 
@@ -146,15 +158,11 @@ msgstr "Niets te zien"
 msgid "Swap"
 msgstr "Wisselgeheugen"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "Over"
+#: src/app-item.vala:43
+msgid "System"
+msgstr "Systeem"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Afsluiten"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -162,7 +170,7 @@ msgstr ""
 "Een leuke manier om informatie te bekijken over het gebruik van "
 "systeembronnen, zoals geheugen en schijfruimte."
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr ""
 "Nathan Follens <nthn@unseen.is>\n"
@@ -171,42 +179,38 @@ msgstr ""
 "\n"
 "Meer info over Gnome-NL http://nl.gnome.org"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Websites"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Processor"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Andere"
-
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Geheugen"
 
-#: src/header-bar.vala:143
+#: src/header-bar.vala:149
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u geselecteerd"
 msgstr[1] "%u geselecteerd"
 
-#: src/header-bar.vala:145
+#: src/header-bar.vala:151
 msgid "Click on items to select them"
 msgstr "Klik op items om ze te selecteren"
 
-#: src/header-bar.vala:209
+#: src/header-bar.vala:215
 msgid "Select all"
 msgstr "Alles selecteren"
 
-#: src/header-bar.vala:213
+#: src/header-bar.vala:219
 msgid "Select None"
 msgstr "Niets selecteren"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Prestaties"
 
@@ -218,30 +222,42 @@ msgstr "Doelmap selecteren"
 msgid "Select"
 msgstr "Selecteren"
 
-# This item? Taalfoutje. Gaat het hier om bestanden? - Hannie
-#: src/storage-actionbar.vala:143
-#, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Weet u zeker dat u de bestanden ‘%s’ voorgoed wilt verwijderen?"
-
+#. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
+#, c-format
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Weet u zeker dat u ‘%s’ voorgoed wilt verwijderen?"
+
+# This item? Taalfoutje. Gaat het hier om bestanden? - Hannie
+#. Translators: %d is the number of files to be deleted.
+#: src/storage-actionbar.vala:148
+#, c-format
+msgid "Are you sure you want to permanently delete the %d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] ""
+"Weet u zeker dat u het geselecteerde item voorgoed wilt verwijderen?"
+msgstr[1] ""
+"Weet u zeker dat u de %d geselecteerde items voorgoed wilt verwijderen?"
+
+#: src/storage-actionbar.vala:152
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Als u deze items verwijdert, gaan ze voorgoed verloren."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Alle items uit prullenbak verwijderen?"
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alle items in de prullenbak zullen voorgoed worden verwijderd."
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Alle items uit %s verwijderen?"
 
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Alle items in de map %s zullen naar de prullenbak worden verplaatst."
@@ -282,10 +298,6 @@ msgstr "Prullenbak legen"
 msgid "Rename"
 msgstr "Hernoemen"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Verplaatsen naar prullenbak"
-
 #: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
@@ -298,6 +310,18 @@ msgstr "Als u een item verwijdert, gaat het voorgoed verloren."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Opslag"
+
+#~ msgid "About"
+#~ msgstr "Over"
+
+#~ msgid "Quit"
+#~ msgstr "Afsluiten"
+
+#~ msgid "Others"
+#~ msgstr "Andere"
+
+#~ msgid "Move to trash"
+#~ msgstr "Verplaatsen naar prullenbak"
 
 #~ msgid "Stop"
 #~ msgstr "Stoppen"
