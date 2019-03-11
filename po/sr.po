@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-02-12 10:43+0000\n"
-"PO-Revision-Date: 2018-02-19 18:16+0100\n"
+"POT-Creation-Date: 2018-09-25 15:30+0000\n"
+"PO-Revision-Date: 2019-03-11 19:10+0100\n"
 "Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -119,7 +119,7 @@ msgstr "Премести у"
 msgid "Delete"
 msgstr "Обриши"
 
-#: data/ui/storage-actionbar.ui:33
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
 msgid "Move to Trash"
 msgstr "Премести у смеће"
 
@@ -171,7 +171,7 @@ msgstr ""
 msgid "Websites"
 msgstr "Веб сајтови"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Процесор"
 
@@ -179,7 +179,7 @@ msgstr "Процесор"
 msgid "Others"
 msgstr "Остало"
 
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Меморија"
 
@@ -204,7 +204,7 @@ msgstr "Изабери све"
 msgid "Select None"
 msgstr "Поништи избор"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Учинак"
 
@@ -216,29 +216,41 @@ msgstr "Изаберите фасциклу одредишта"
 msgid "Select"
 msgstr "Изабери"
 
-#: src/storage-actionbar.vala:143
-#, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Дa ли сигурно желите трајно да обришете ове ставке „%s“?"
-
+#. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
+#, c-format
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Да ли сигурно желите трајно да обришете „%s“?"
+
+#. Translators: %d is the number of files to be deleted.
+#: src/storage-actionbar.vala:148
+#, c-format
+msgid "Are you sure you want to permanently delete the %d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] "Дa ли сигурно желите трајно обрисати %d изабрану ставку?"
+msgstr[1] "Дa ли сигурно желите трајно обрисати %d изабране ставке?"
+msgstr[2] "Дa ли сигурно желите трајно обрисати %d изабраних ставки?"
+msgstr[3] "Дa ли сигурно желите трајно обрисати једну изабрану ставку?"
+
+#: src/storage-actionbar.vala:152
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Ако обришете ове ставке, биће трајно изгубљене."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Да избацим све ставке из смећа?"
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Све ставке из смећа биће трајно обрисане."
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Да избацим све ставке из „%s“?"
 
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Све ставке у „%s“ биће премештене у смеће."
@@ -279,10 +291,6 @@ msgstr "Испразни смеће"
 msgid "Rename"
 msgstr "Преименуј"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Премести у смеће"
-
 #: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
@@ -295,6 +303,9 @@ msgstr "Ако обришете неку ставку, биће трајно и�
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Складиште"
+
+#~ msgid "Move to trash"
+#~ msgstr "Премести у смеће"
 
 #~ msgid "No applications using processor."
 #~ msgstr "Ниједан програм не користи процесор."
