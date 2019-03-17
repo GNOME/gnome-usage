@@ -2,21 +2,22 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # JeanDeLaMouche <urgau@numericable.fr>, 2017.
+# Charles Monzat <charles.monzat@numericable.fr>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-03-06 14:29+0000\n"
-"PO-Revision-Date: 2018-03-06 23:01+0100\n"
-"Last-Translator: Alain Lojewski <allomervan@gmail.com>, 2018\n"
-"Language-Team: French <gnomefr@traduc.org>\n"
+"POT-Creation-Date: 2018-09-25 15:30+0000\n"
+"PO-Revision-Date: 2019-01-08 15:59+0100\n"
+"Last-Translator: Charles Monzat <charles.monzat@numericable.fr>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.0.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 3.30.0\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -60,7 +61,7 @@ msgid ""
 "Manager;"
 msgstr ""
 "surveiller;système;processus;traitement;processeur;mémoire;réseau;historique;"
-"utilisation;performance;tâche;gestionaire;"
+"utilisation;performance;tâche;gestionnaire;"
 
 #: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
@@ -119,7 +120,7 @@ msgstr "Déplacer vers"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: data/ui/storage-actionbar.ui:33
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
 msgid "Move to Trash"
 msgstr "Mettre à la corbeille"
 
@@ -167,7 +168,7 @@ msgstr "Urgau <urgau@numericable.fr>"
 msgid "Websites"
 msgstr "Sites Web"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Processeur"
 
@@ -175,7 +176,7 @@ msgstr "Processeur"
 msgid "Others"
 msgstr "Autres"
 
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Mémoire"
 
@@ -198,7 +199,7 @@ msgstr "Tout sélectionner"
 msgid "Select None"
 msgstr "Ne rien sélectionner"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Performance"
 
@@ -210,29 +211,43 @@ msgstr "Sélectionner le dossier de destination"
 msgid "Select"
 msgstr "Sélectionner"
 
-#: src/storage-actionbar.vala:143
-#, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Êtes-vous sûr de vouloir supprimer définitivement ces éléments %s ?"
-
+#. Translators: %s is the name of the file to be deleted.
 #: src/storage-actionbar.vala:144
+#, c-format
+#| msgid "Are you sure you want to permanently delete %s?"
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Voulez-vous vraiment supprimer définitivement « %s » ?"
+
+#. Translators: %d is the number of files to be deleted.
+#: src/storage-actionbar.vala:148
+#, c-format
+#| msgid "Are you sure you want to permanently delete this items %s?"
+msgid "Are you sure you want to permanently delete the %d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] ""
+"Voulez-vous vraiment supprimer définitivement l’élément sélectionné ?"
+msgstr[1] ""
+"Voulez-vous vraiment supprimer définitivement les %d éléments sélectionnés ?"
+
+#: src/storage-actionbar.vala:152
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Si vous supprimez ces éléments, ils seront définitivement perdus."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
 msgstr "Vider tous les éléments de la corbeille ?"
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Tous les éléments de la corbeille seront définitivement supprimés."
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
 #, c-format
 msgid "Empty all items from %s?"
 msgstr "Vider tous les éléments de %s ?"
 
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
 #, c-format
 msgid "All items in the %s will be moved to the Trash."
 msgstr "Tous les éléments dans %s seront déplacés dans la corbeille."
@@ -273,14 +288,10 @@ msgstr "Vider la corbeille"
 msgid "Rename"
 msgstr "Renommer"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Déplacer dans la corbeille"
-
 #: src/storage-row.vala:439
 #, c-format
 msgid "Are you sure you want to permanently delete %s?"
-msgstr "Êtes-vous sûr de vouloir supprimer définitivement %s ?"
+msgstr "Voulez-vous vraiment supprimer définitivement %s ?"
 
 #: src/storage-row.vala:440
 msgid "If you delete an item, it will be permanently lost."
@@ -289,3 +300,6 @@ msgstr "Si vous supprimez un élément, il sera définitivement perdu."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Stockage"
+
+#~ msgid "Move to trash"
+#~ msgstr "Déplacer dans la corbeille"
