@@ -29,6 +29,11 @@ namespace Usage
         {
             name = "MEMORY";
 
+            var label = new Gtk.Label("<span font_desc=\"14.0\">" + _("Memory") + "</span>");
+            label.set_use_markup(true);
+            label.margin_top = 25;
+            label.margin_bottom = 15;
+
             process_list_box = new ProcessListBox(ProcessListBoxType.MEMORY);
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
@@ -51,6 +56,7 @@ namespace Usage
 
             var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             memory_box.halign = Gtk.Align.CENTER;
+            memory_box.pack_start(label, false, false, 0);
             memory_box.pack_start(speedometers, false, false, 0);
             memory_box.pack_start(spinner, true, true, 0);
             memory_box.add(no_process_view);
