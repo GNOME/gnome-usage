@@ -82,8 +82,14 @@ namespace Usage
         {
             Gtk.Allocation alloc;
 
-            this.sub_views[1].get_allocation(out alloc);
-            var button_number = (y < alloc.y) ? 0 : 1;
+            var button_number = 0;
+            for(int i = 1; i < buttons.length; i++)
+            {
+                this.sub_views[i].get_allocation(out alloc);
+                if(y < alloc.y)
+                    break;
+                button_number = i;
+            }
 
             buttons[button_number].set_active(true);
         }
