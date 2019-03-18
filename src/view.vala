@@ -24,7 +24,7 @@ namespace Usage
     {
         public string title;
 
-        public View ()
+        protected View ()
         {
             visible = true;
         }
