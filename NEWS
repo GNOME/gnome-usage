@@ -1,3 +1,57 @@
+3.32.0 - Mar 20, 2019
+=====================
+
+  - Retire application menu
+  - Simplify the build scripts
+  - Drop RG and EGG libraries
+  - Use libdazzle
+  - Add filter processes option
+  - Support grouping system processes
+  - Add new application icon
+  - Added/updated/fixed translations:
+    - Polish
+    - Brazilian Portuguese
+    - Czech
+    - Swedish
+    - Finnish
+    - Spanish
+    - Hungarian
+    - Galician
+    - Turkish
+    - Danish
+    - Dutch
+    - Indonesian
+    - Italian
+    - Friulian
+    - Serbian
+    - Basque
+    - French
+
+All contributors to this release:
+
+Abderrahim Kitouni <akitouni@gnome.org>
+Anders Jonsson <anders.jonsson@norsjovallen.se>
+Asier Sarasua Garmendia <asier.sarasua@gmail.com>
+Ask Hjorth Larsen <asklarsen@gmail.com>
+Balázs Úr <balazs@urbalazs.hu>
+Charles Monzat <charles.monzat@free.fr>
+Christopher Davis <brainblasted@disroot.org>
+Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+Emin Tufan Çetin <etcetin@gmail.com>
+Fabio Tomat <f.t.public@gmail.com>
+Felipe Borges <felipeborges@gnome.org>
+Fran Dieguez <frandieguez@gnome.org>
+Gianvito Cavasoli <gianvito@gmx.it>
+Jiri Grönroos <jiri.gronroos@iki.fi>
+Kukuh Syafaat <kukuhsyafaat@gnome.org>
+Марко Костић <marko.m.kostic@gmail.com>
+Marek Cernocky <marek_cernocky@conel.cz>
+Petr Štětka <pstetka@redhat.com>
+Piotr Drąg <piotrdrag@gmail.com>
+Rafael Fontenelle <rafaelff@gnome.org>
+Rico Tzschichholz <ricotz@ubuntu.com>
+yodatak <mryodatak@gmail.com>
+
 3.30.0 - Sep 25, 2018
 =====================
 
