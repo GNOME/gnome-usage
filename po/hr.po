@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-05-03 14:27+0000\n"
-"PO-Revision-Date: 2018-09-02 21:55+0200\n"
+"POT-Creation-Date: 2019-03-25 10:46+0000\n"
+"PO-Revision-Date: 2019-03-26 20:20+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -35,7 +35,7 @@ msgstr ""
 "Jednostavna GNOME 3 aplikacija za nadgledanje i analizu resursa sustava "
 "poput pokrenutih procesa, memorije i diskovnog prostora."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Resursi"
 
@@ -46,11 +46,6 @@ msgid ""
 msgstr ""
 "Ugodan način za prikaz informacija o upotrebi resursa sustava, poput "
 "memorije i diskovnog prostora"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
@@ -70,7 +65,7 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Ovaj popis se koristi za prikaz procesa koje korisnik ne može zaustaviti."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Odustani"
@@ -84,7 +79,7 @@ msgid "Used"
 msgstr "Iskorišteno"
 
 #: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: src/storage-item.vala:140
 msgid "Available"
 msgstr "Dostupno"
 
@@ -95,6 +90,18 @@ msgstr "Nema pronađenih rezultata"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Pokušaj drugačiju pretragu"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_O Resursima"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Grupiraj procese sustava"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Prikaži sve procese"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -141,15 +148,11 @@ msgstr "Ovdje nema sadržaja"
 msgid "Swap"
 msgstr "Swap"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "O programu"
+#: src/app-item.vala:43
+msgid "System"
+msgstr "Sustav"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Zatvori"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -157,13 +160,13 @@ msgstr ""
 "Ugodan način za prikaz informacija o upotrebi resursa sustava, poput "
 "memorije i diskovnog prostora."
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  gogo https://launchpad.net/~trebelnik-stefina"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Web stranica"
 
@@ -171,15 +174,11 @@ msgstr "Web stranica"
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Ostalo"
-
 #: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Memorija"
 
-#: src/header-bar.vala:143
+#: src/header-bar.vala:149
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
@@ -187,15 +186,15 @@ msgstr[0] "%u odabrana"
 msgstr[1] "%u odabrane"
 msgstr[2] "%u odabrano"
 
-#: src/header-bar.vala:145
+#: src/header-bar.vala:151
 msgid "Click on items to select them"
 msgstr "Kliknite na stavku za odabir"
 
-#: src/header-bar.vala:209
+#: src/header-bar.vala:215
 msgid "Select all"
 msgstr "Odaberi sve"
 
-#: src/header-bar.vala:213
+#: src/header-bar.vala:219
 msgid "Select None"
 msgstr "Bez odabira"
 
@@ -297,6 +296,18 @@ msgstr "Ako obrišete stavku, biti će trajno izgubljena."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Pohrana"
+
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
+
+#~ msgid "About"
+#~ msgstr "O programu"
+
+#~ msgid "Quit"
+#~ msgstr "Zatvori"
+
+#~ msgid "Others"
+#~ msgstr "Ostalo"
 
 #~ msgid "Move to trash"
 #~ msgstr "Premjesti u smeće"
