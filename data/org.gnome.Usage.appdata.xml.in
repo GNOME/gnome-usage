@@ -27,6 +27,13 @@
   <project_group>GNOME</project_group>
   <url type="homepage">https://wiki.gnome.org/Apps/Usage</url>
   <update_contact>pstetka_at_redhat.com"</update_contact>
+  <releases>
+    <release version="3.32.0" date="2019-03-22">
+      <description>
+        <p>Boxes 3.32.0 is the latest stable release of GNOME Usage.</p>
+      </description>
+    </release>
+  </releases>
   <kudos>
     <kudo>AppMenu</kudo>
     <kudo>HiDpiIcon</kudo>
