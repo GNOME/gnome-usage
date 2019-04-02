@@ -23,7 +23,7 @@ using Tracker;
 using GTop;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-view.ui")]
-public class Usage.NewStorageView : Usage.View {
+public class Usage.StorageView : Usage.View {
     public const uint MIN_PERCENTAGE_SHOWN_FILES = 2;
 
     [GtkChild]
@@ -101,7 +101,7 @@ public class Usage.NewStorageView : Usage.View {
         });
     }
 
-    public NewStorageView () {
+    public StorageView () {
         listbox.row_activated.connect (on_row_activated);
         graph.min_percentage_shown_files = MIN_PERCENTAGE_SHOWN_FILES;
 
