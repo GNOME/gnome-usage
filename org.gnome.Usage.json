@@ -29,6 +29,7 @@
     "modules": [
         {
             "name": "tracker",
+            "buildsystem": "meson",
             "cleanup": [ "/bin", "/etc", "/libexec" ],
             "config-opts": [ "--disable-miner-apps", "--disable-static",
                              "--disable-tracker-extract", "--disable-tracker-needle",
