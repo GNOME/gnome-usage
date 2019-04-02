@@ -43,20 +43,6 @@
             ]
         },
         {
-            "name" : "libdazzle",
-            "config-opts" : [
-                "--libdir=/app/lib",
-                "--buildtype=debugoptimized"
-            ],
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/gnome/libdazzle"
-                }
-            ]
-        },
-        {
             "name": "libgtop-2.0",
             "sources": [
                 {
