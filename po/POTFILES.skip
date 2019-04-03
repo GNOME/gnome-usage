@@ -7,10 +7,8 @@ src/graph-stack-switcher.c
 src/header-bar.c
 src/memory-sub-view.c
 src/performance-view.c
-src/storage-actionbar.c
-src/storage-analyzer.c
-src/storage-item.c
-src/storage-row.c
-src/storage-view.c
+src/storage/storage-actionbar.c
+src/storage/storage-row-popover.c
+src/storage/storage-view.c
 src/utils.c
 src/window.c

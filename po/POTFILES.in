@@ -10,6 +10,7 @@ data/ui/performance-view.ui
 data/ui/primary-menu.ui
 data/ui/quit-process-dialog.ui
 data/ui/storage-actionbar.ui
+data/ui/storage-row-popover.ui
 data/ui/storage-view.ui
 data/ui/swap-speedometer.ui
 src/app-item.vala
@@ -19,10 +20,8 @@ src/graph-stack-switcher.vala
 src/header-bar.vala
 src/memory-sub-view.vala
 src/performance-view.vala
-src/storage-actionbar.vala
-src/storage-analyzer.vala
-src/storage-item.vala
-src/storage-row.vala
-src/storage-view.vala
+src/storage/storage-actionbar.vala
+src/storage/storage-row-popover.vala
+src/storage/storage-view.vala
 src/utils.vala
 src/window.vala
