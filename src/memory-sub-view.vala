@@ -39,11 +39,6 @@ namespace Usage
             process_list_box.margin_bottom = 20;
             process_list_box.margin_top = 30;
 
-            var spinner = new Gtk.Spinner();
-            spinner.active = true;
-            spinner.margin_top = 30;
-            spinner.height_request = 250;
-
             no_process_view = new NoResultsFoundView();
 
             var memory_graph = new MemorySpeedometer();
@@ -59,20 +54,8 @@ namespace Usage
             memory_box.halign = Gtk.Align.CENTER;
             memory_box.pack_start(label, false, false, 0);
             memory_box.pack_start(speedometers, false, false, 0);
-            memory_box.pack_start(spinner, true, true, 0);
+            memory_box.pack_start(process_list_box, false, false, 0);
             memory_box.add(no_process_view);
-
-            var system_monitor = SystemMonitor.get_default();
-            system_monitor.notify["process-list-ready"].connect ((sender, property) => {
-                if(system_monitor.process_list_ready) {
-                    memory_box.pack_start(process_list_box, false, false, 0);
-                    memory_box.remove(spinner);
-                }
-                else {
-                    memory_box.pack_start(spinner, true, true, 0);
-                    memory_box.remove(process_list_box);
-                }
-            });
 
             process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
             add(memory_box);
