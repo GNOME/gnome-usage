@@ -84,10 +84,10 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         });
         set_up();
 
-        if (item.type == FileType.DIRECTORY || item.custom_type != null)
+        if (item.type == FileType.DIRECTORY || item.custom_type != StorageViewType.NONE)
             tag.width_request = tag.height_request = 20;
 
-        if(item.custom_type == "up-folder") {
+        if(item.custom_type == StorageViewType.UP_FOLDER) {
             get_style_context().add_class("up-folder");
 
             if(!item.loaded) {

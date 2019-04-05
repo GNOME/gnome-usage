@@ -116,14 +116,14 @@ public class Usage.NewStorageView : Usage.View {
         cancellable.cancel();
         cancellable = new Cancellable();
 
-        if(storage_row.item.custom_type == "up-folder") {
+        if(storage_row.item.custom_type == StorageViewType.UP_FOLDER) {
             stack_listbox_up();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
             selected_items_stack.push_head((owned) selected_items);
             actual_item.push_head(storage_row.item);
             clear_selected_items();
             present_dir.begin (storage_row.item.uri, storage_row.item.dir, cancellable);
-        } else if (storage_row.item.custom_type != null) {
+        } else if (storage_row.item.custom_type != StorageViewType.NONE) {
             row_popover.present(storage_row);
         } else {
             try {
@@ -184,7 +184,7 @@ public class Usage.NewStorageView : Usage.View {
             refresh_actionbar();
         });
 
-        if(item.custom_type == "available-graph")
+        if(item.custom_type == StorageViewType.AVAILABLE_GRAPH)
             return new Gtk.ListBoxRow();
 
         graph.model = (ListStore) listbox.get_model();
@@ -198,7 +198,7 @@ public class Usage.NewStorageView : Usage.View {
         var model = new GLib.ListStore (typeof (StorageViewItem));
         var file = File.new_for_uri (uri);
         var item = StorageViewItem.from_file (file);
-        item.custom_type = "up-folder";
+        item.custom_type = StorageViewType.UP_FOLDER;
         item.dir = dir;
         model.insert(0, item);
 
@@ -241,7 +241,7 @@ public class Usage.NewStorageView : Usage.View {
             if (dir == "/") {
                 os_item.name = _("Operating System");
                 os_item.size = used;
-                os_item.custom_type = "os";
+                os_item.custom_type = StorageViewType.OS;
             }
 
             total_used_size += used;
@@ -280,7 +280,7 @@ public class Usage.NewStorageView : Usage.View {
                 try {
                     item.size = controller.get_file_size.end (res);
                     item.percentage = item.size * 100 / (double) total_size;
-                    item.custom_type = "root_item";
+                    item.custom_type = StorageViewType.ROOT_ITEM;
                     model.insert (1, item);
                 } catch (GLib.Error error) {
                     warning (error.message);
@@ -292,7 +292,7 @@ public class Usage.NewStorageView : Usage.View {
 
         var available_graph_item = new StorageViewItem ();
         available_graph_item.size = total_free_size;
-        available_graph_item.custom_type = "available-graph";
+        available_graph_item.custom_type = StorageViewType.AVAILABLE_GRAPH;
         available_graph_item.percentage = available_graph_item.size * 100 / (double) total_size;
         model.append(available_graph_item);
         graph.model = model;

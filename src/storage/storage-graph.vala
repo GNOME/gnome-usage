@@ -39,7 +39,7 @@ namespace Usage
                 for(int i = 0; i < value.get_n_items(); i++)
                 {
                     var item = model.get_item(i) as StorageViewItem;
-                    if(item.custom_type == "os") {
+                    if(item.custom_type == StorageViewType.OS) {
                         root = true;
                         break;
                     }
@@ -102,7 +102,7 @@ namespace Usage
                 {
                     var item = model.get_item(i) as StorageViewItem;
                     var item_radius = radius;
-                    if(item.custom_type == "up-folder" || item.size == 0)
+                    if(item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
                         continue;
 
                     var style_context = get_style_context();

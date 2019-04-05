@@ -74,11 +74,11 @@ public class Usage.TrackerController : GLib.Object {
                         var item_a = a as StorageViewItem;
                         var item_b = b as StorageViewItem;
 
-                        if (item_a.custom_type == "up-folder" || item_a.size > item_b.size) {
+                        if (item_a.custom_type == StorageViewType.UP_FOLDER || item_a.size > item_b.size) {
                             return -1;
                         }
 
-                        if (item_b.custom_type == "up-folder" || item_b.size > item_a.size) {
+                        if (item_b.custom_type == StorageViewType.UP_FOLDER || item_b.size > item_a.size) {
                             return 1;
                         }
 

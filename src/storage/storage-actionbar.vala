@@ -50,7 +50,7 @@ namespace Usage
 
             if(dialog.run() == Gtk.ResponseType.OK) {
                 foreach(var item in selected_items) {
-                    if(item.type == FileType.DIRECTORY && item.custom_type == "root_item")
+                    if(item.type == FileType.DIRECTORY && item.custom_type == StorageViewType.ROOT_ITEM)
                         delete_file(item.uri, false);
                     else
                         delete_file(item.uri, true);

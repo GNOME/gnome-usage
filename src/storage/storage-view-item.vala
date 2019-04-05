@@ -19,6 +19,14 @@
  *          Petr Štětka <pstetka@redhat.com>
  */
 
+public enum StorageViewType {
+    NONE,
+    OS,
+    UP_FOLDER,
+    AVAILABLE_GRAPH,
+    ROOT_ITEM
+}
+
 public class Usage.StorageViewItem : GLib.Object {
     public double percentage { set; get; }
     public bool loaded { get; set; default = false; }
@@ -31,7 +39,7 @@ public class Usage.StorageViewItem : GLib.Object {
     public FileType type;
     public UserDirectory? dir;
     public string ontology;
-    public string? custom_type;
+    public StorageViewType custom_type = StorageViewType.NONE;
 
     private string _style_class = null;
     public string style_class {
@@ -114,12 +122,12 @@ public class Usage.StorageViewItem : GLib.Object {
                 break;
         }
 
-        if(custom_type != null) {
+        if(custom_type != StorageViewType.NONE) {
             switch(custom_type) {
-                case "os":
+                case StorageViewType.OS:
                     style_class = "os-tag";
                     break;
-                case "available-graph":
+                case StorageViewType.AVAILABLE_GRAPH:
                     style_class = "available-tag";
                     break;
             }
@@ -130,11 +138,11 @@ public class Usage.StorageViewItem : GLib.Object {
     }
 
     private bool _show_check_button () {
-        if(custom_type != null) {
+        if(custom_type != StorageViewType.NONE) {
             switch(custom_type) {
-                case "os":
-                case "available-graph":
-                case "up-folder":
+                case StorageViewType.OS:
+                case StorageViewType.AVAILABLE_GRAPH:
+                case StorageViewType.UP_FOLDER:
                     return false;
             }
         }
