@@ -102,7 +102,6 @@ public class Usage.StorageView : Usage.View {
     }
 
     public StorageView () {
-        listbox.row_activated.connect (on_row_activated);
         graph.min_percentage_shown_files = MIN_PERCENTAGE_SHOWN_FILES;
 
         setup_header_label ();
@@ -110,6 +109,7 @@ public class Usage.StorageView : Usage.View {
         populate_view.begin ();
     }
 
+    [GtkCallback]
     private void on_row_activated (Gtk.ListBoxRow row) {
         var storage_row = row as StorageViewRow;
 

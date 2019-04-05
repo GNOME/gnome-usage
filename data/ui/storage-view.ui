@@ -42,6 +42,7 @@
               <object class="DzlStackList" id="listbox">
                 <property name="visible">True</property>
                 <property name="vexpand">True</property>
+                <signal name="row-activated" handler="on_row_activated"/>
                 <style>
                   <class name="storage-list"/>
                 </style>
