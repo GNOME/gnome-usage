@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-01-03 18:03+0000\n"
-"PO-Revision-Date: 2019-01-27 01:06+0100\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"POT-Creation-Date: 2019-04-03 16:33+0000\n"
+"PO-Revision-Date: 2019-04-08 08:53+0200\n"
+"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -48,11 +48,6 @@ msgstr ""
 "Remek eszköz a rendszer-erőforrások használatáról szóló információk "
 "megjelenítésére, mint például a memória és a lemezterület"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
 msgid ""
@@ -72,21 +67,17 @@ msgstr ""
 "Ez a lista használható annak szűréséhez, hogy mely folyamatokat nem tud a "
 "felhasználó leállítani."
 
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Mégse"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:30
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Használt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:37
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Elérhető"
 
@@ -119,37 +110,25 @@ msgstr "Erőltetetten kilép ebből: %s?"
 msgid "Unsaved work might be lost."
 msgstr "A mentetlen munka elveszhet."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Mégse"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Erőltetett kilépés"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Áthelyezés ide…"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete..."
+msgstr "Törlés…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Törlés"
+#: data/ui/storage-row-popover.ui:11
+msgid "label"
+msgstr "címke"
 
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Áthelyezés a Kukába"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Mappa ürítése"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Visszaállítás"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Törlés a Kukából"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Itt nincs tartalom"
+#: data/ui/storage-view.ui:21
+msgid "Home Partition"
+msgstr "Saját mappa partíciója"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
@@ -169,7 +148,7 @@ msgstr ""
 
 #: src/application.vala:83
 msgid "translator-credits"
-msgstr "Meskó Balázs <meskobalazs at fedoraproject dot org>"
+msgstr "Meskó Balázs <mesko.balazs at fsf dot hu>"
 
 #: src/application.vala:85
 msgid "Websites"
@@ -179,124 +158,120 @@ msgstr "Weboldalak"
 msgid "Processor"
 msgstr "Processzor"
 
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Memória"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u kiválasztva"
-msgstr[1] "%u kiválasztva"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Kattintson az elemekre a kijelölésükhöz"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Összes kijelölése"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Kijelölés megszüntetése"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Teljesítmény"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Válasszon célmappát"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Kiválasztás"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Biztosan véglegesen törölni akarja a következőt: „%s”?"
+msgid "%s selected"
+msgstr "%s kiválasztva"
 
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] "Biztosan véglegesen törölni akarja a kijelölt %d elemet?"
-msgstr[1] "Biztosan véglegesen törölni akarja a kijelölt %d elemet?"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Biztos, hogy végleg törli a kijelölt elemeket?"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Ha törli ezeket az elemeket, véglegesen elvesznek."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Törli az összes elemet a Kukából?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Az operációs rendszer fájljai a rendszer létfontosságú részei, és nem "
+"távolíthatóak el."
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "A Kukában lévő összes elem véglegesen törlésre kerül."
-
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Törli az összes elemet innen: %s?"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Az itt található összes elem a Kukába kerül: %s."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "1. tároló"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "2. tároló"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Kapacitás"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Saját mappa"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Kuka"
-
-#: src/storage-item.vala:128
-msgid "Operating System"
-msgstr "Operációs rendszer"
-
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Kiürítés"
-
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Kuka ürítése"
-
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Törlés"
-
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Biztosan végleg törli a következőt: %s?"
-
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Ha töröl egy elemet, akkor az véglegesen elvész."
-
-#: src/storage-view.vala:45
+#: src/storage/storage-view.vala:75
 msgid "Storage"
 msgstr "Tároló"
 
+#: src/storage/storage-view.vala:242
+msgid "Operating System"
+msgstr "Operációs rendszer"
+
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
+
+#~ msgid "Move to"
+#~ msgstr "Áthelyezés ide…"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Áthelyezés a Kukába"
+
+#~ msgid "Empty folder"
+#~ msgstr "Mappa ürítése"
+
+#~ msgid "Restore"
+#~ msgstr "Visszaállítás"
+
+#~ msgid "Delete from Trash"
+#~ msgstr "Törlés a Kukából"
+
+#~ msgid "No content here"
+#~ msgstr "Itt nincs tartalom"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Kattintson az elemekre a kijelölésükhöz"
+
+#~ msgid "Select all"
+#~ msgstr "Összes kijelölése"
+
+#~ msgid "Select None"
+#~ msgstr "Kijelölés megszüntetése"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Válasszon célmappát"
+
+#~ msgid "Select"
+#~ msgstr "Kiválasztás"
+
+#~ msgid "Are you sure you want to permanently delete “%s”?"
+#~ msgstr "Biztosan véglegesen törölni akarja a következőt: „%s”?"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Törli az összes elemet a Kukából?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "A Kukában lévő összes elem véglegesen törlésre kerül."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Törli az összes elemet innen: %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "Az itt található összes elem a Kukába kerül: %s."
+
+#~ msgid "Storage 1"
+#~ msgstr "1. tároló"
+
+#~ msgid "Storage 2"
+#~ msgstr "2. tároló"
+
+#~ msgid "Capacity"
+#~ msgstr "Kapacitás"
+
+#~ msgid "Home"
+#~ msgstr "Saját mappa"
+
+#~ msgid "Trash"
+#~ msgstr "Kuka"
+
+#~ msgid "Empty"
+#~ msgstr "Kiürítés"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Kuka ürítése"
+
+#~ msgid "Rename"
+#~ msgstr "Törlés"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Biztosan végleg törli a következőt: %s?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Ha töröl egy elemet, akkor az véglegesen elvész."
