@@ -26,6 +26,7 @@ namespace Usage
         AnimatedScrolledWindow scrolled_window;
 
         GraphSwitcherButton[] buttons;
+        private const int BOTTOM_TOLERANCE = 150;
 
         class construct
         {
@@ -83,16 +84,28 @@ namespace Usage
 
         private void on_scroll_changed(double y)
         {
-            Gtk.Allocation alloc;
-
             var button_number = 0;
-            for(int i = 1; i < buttons.length; i++)
-            {
-                this.sub_views[i].get_allocation(out alloc);
-                if(y < alloc.y)
+            Gtk.Allocation container_alloc;
+            sub_views[0].parent.parent.get_allocation(out container_alloc);
+
+            for(int i = 0; i < sub_views.length; i++) {
+                Gtk.Allocation sub_view_alloc;
+                sub_views[i].get_allocation(out sub_view_alloc);
+
+                if(y + container_alloc.height / 2 < sub_view_alloc.y + sub_view_alloc.height) {
+                    button_number = i;
                     break;
-                button_number = i;
+                }
             }
+
+            var last_subview_number = sub_views.length - 1;
+            Gtk.Allocation last_subview_alloc;
+            sub_views[last_subview_number].get_allocation(out last_subview_alloc);
+
+            if(y < BOTTOM_TOLERANCE)
+                button_number = 0;
+            else if(y + container_alloc.height > last_subview_alloc.y + last_subview_alloc.height - BOTTOM_TOLERANCE)
+                button_number = last_subview_number;
 
             buttons[button_number].set_active(true);
         }
