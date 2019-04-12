@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-01-03 18:03+0000\n"
-"PO-Revision-Date: 2019-02-28 14:09+0700\n"
+"POT-Creation-Date: 2019-04-03 16:33+0000\n"
+"PO-Revision-Date: 2019-04-12 17:14+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -47,11 +47,6 @@ msgstr ""
 "Cara yang baik untuk melihat informasi tentang penggunaan sumber daya "
 "sistem, seperti memori dan ruang diska"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
 msgid ""
@@ -71,21 +66,17 @@ msgstr ""
 "Daftar ini digunakan untuk menyaring proses yang pengguna tidak bisa "
 "hentikan."
 
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Batal"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:30
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Terpakai"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:37
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Tersedia"
 
@@ -118,37 +109,25 @@ msgstr "Keluar Paksa &s?"
 msgid "Unsaved work might be lost."
 msgstr "Pekerjaan yang belum disimpan bisa hilang."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Batal"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Keluar Paksa"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Pindah ke"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete..."
+msgstr "Hapus..."
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Hapus"
+#: data/ui/storage-row-popover.ui:11
+msgid "label"
+msgstr "label"
 
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Pindahkan ke Tong Sampah"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Kosongkan folder"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Kembalikan"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Hapus dari Tong Sampah"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Tidak ada konten di sini"
+#: data/ui/storage-view.ui:21
+msgid "Home Partition"
+msgstr "Partisi Home"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
@@ -178,124 +157,123 @@ msgstr "Situs Web"
 msgid "Processor"
 msgstr "Prosesor"
 
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Memori"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u dipilih"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Klik pada butir untuk memilihnya"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Pilih semua"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Pilih Tak Satupun"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Performa"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Pilih folder tujuan"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Pilih"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Apakah Anda yakin ingin menghapus \"%s\" secara permanen?"
+msgid "%s selected"
+msgstr "%s dipilih"
 
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] "Apakah Anda yakin ingin menghapus permanen %d butir yang dipilih?"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Apakah Anda yakin ingin menghapus permanen butir yang dipilih?"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Jika Anda menghapus butir-butir ini, mereka akan hilang selamanya."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Kosongkan semua item dari Tempat Sampah?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Berkas sistem operasi adalah bagian penting dari sistem Anda dan tidak dapat "
+"dihapus."
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Semua item dalam Tong Sampah akan dihapus secara permanen."
+#: src/storage/storage-view.vala:75
+msgid "Storage"
+msgstr "Penyimpanan"
 
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Kosongkan semua item dari %s?"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Semua item di %s akan dipindahkan ke Tong Sampah."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Penyimpanan 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Penyimpanan 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Kapasitas"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Beranda"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Tong Sampah"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:242
 msgid "Operating System"
 msgstr "Sistem Operasi"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Kosong"
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Kosongkan Tong Sampah"
+#~ msgid "Move to"
+#~ msgstr "Pindah ke"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Ubah Nama"
+#~ msgid "Move to Trash"
+#~ msgstr "Pindahkan ke Tong Sampah"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Anda yakin akan menghapus permanen \"%s\"?"
+#~ msgid "Empty folder"
+#~ msgstr "Kosongkan folder"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Jika Anda menghapus suatu butir, itu akan hilang selamanya."
+#~ msgid "Restore"
+#~ msgstr "Kembalikan"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Penyimpanan"
+#~ msgid "Delete from Trash"
+#~ msgstr "Hapus dari Tong Sampah"
+
+#~ msgid "No content here"
+#~ msgstr "Tidak ada konten di sini"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Klik pada butir untuk memilihnya"
+
+#~ msgid "Select all"
+#~ msgstr "Pilih semua"
+
+#~ msgid "Select None"
+#~ msgstr "Pilih Tak Satupun"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Pilih folder tujuan"
+
+#~ msgid "Select"
+#~ msgstr "Pilih"
+
+#~ msgid "Are you sure you want to permanently delete “%s”?"
+#~ msgstr "Apakah Anda yakin ingin menghapus \"%s\" secara permanen?"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Kosongkan semua item dari Tempat Sampah?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Semua item dalam Tong Sampah akan dihapus secara permanen."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Kosongkan semua item dari %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "Semua item di %s akan dipindahkan ke Tong Sampah."
+
+#~ msgid "Storage 1"
+#~ msgstr "Penyimpanan 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Penyimpanan 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Kapasitas"
+
+#~ msgid "Home"
+#~ msgstr "Beranda"
+
+#~ msgid "Trash"
+#~ msgstr "Tong Sampah"
+
+#~ msgid "Empty"
+#~ msgstr "Kosong"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Kosongkan Tong Sampah"
+
+#~ msgid "Rename"
+#~ msgstr "Ubah Nama"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Anda yakin akan menghapus permanen \"%s\"?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Jika Anda menghapus suatu butir, itu akan hilang selamanya."
 
 #~ msgid "Others"
 #~ msgstr "Lainnya"
