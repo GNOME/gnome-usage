@@ -1,15 +1,15 @@
 # Polish translation for gnome-usage.
-# Copyright © 2017-2018 the gnome-usage authors.
+# Copyright © 2017-2019 the gnome-usage authors.
 # This file is distributed under the same license as the gnome-usage package.
-# Piotr Drąg <piotrdrag@gmail.com>, 2017-2018.
-# Aviary.pl <community-poland@mozilla.org>, 2017-2018.
+# Piotr Drąg <piotrdrag@gmail.com>, 2017-2019.
+# Aviary.pl <community-poland@mozilla.org>, 2017-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-12-20 19:35+0000\n"
-"PO-Revision-Date: 2018-12-22 12:53+0100\n"
+"POT-Creation-Date: 2019-04-15 14:35+0000\n"
+"PO-Revision-Date: 2019-04-21 13:15+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -47,11 +47,6 @@ msgstr ""
 "Wygodny sposób na wyświetlanie informacji o użyciu zasobów komputera, takich "
 "jak pamięć i miejsce na dysku"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
 msgid ""
@@ -72,21 +67,17 @@ msgstr ""
 "Ta lista jest używana do filtrowania, których procesów użytkownik nie może "
 "zatrzymywać."
 
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Anuluj"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "Pamięć RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:30
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Używane"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:37
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Dostępne"
 
@@ -119,37 +110,21 @@ msgstr "Wymusić zakończenie programu „%s”?"
 msgid "Unsaved work might be lost."
 msgstr "Niezapisane zmiany mogą zostać utracone."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Anuluj"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Zakończ"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Przenieś do"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Usuń…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Usuń"
-
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Przenieś do kosza"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Usuń zawartość katalogu"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Przywróć"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Usuń z kosza"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Nic tu nie ma"
+#: data/ui/storage-view.ui:21
+msgid "Home Partition"
+msgstr "Partycja domowa"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
@@ -170,8 +145,8 @@ msgstr ""
 #: src/application.vala:83
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2017-2018\n"
-"Aviary.pl <community-poland@mozilla.org>, 2017-2018"
+"Piotr Drąg <piotrdrag@gmail.com>, 2017-2019\n"
+"Aviary.pl <community-poland@mozilla.org>, 2017-2019"
 
 #: src/application.vala:85
 msgid "Websites"
@@ -181,129 +156,39 @@ msgstr "Strona WWW"
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Pozostałe"
-
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Pamięć"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "Zaznaczono: %u"
-msgstr[1] "Zaznaczono: %u"
-msgstr[2] "Zaznaczono: %u"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Kliknięcie elementów zaznacza je"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Zaznacz wszystko"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Odznacz wszystko"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Wydajność"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Wybór katalogu docelowego"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Wybierz"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Na pewno trwale usunąć „%s”?"
+msgid "%s selected"
+msgstr "Zaznaczono: %s"
 
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] "Na pewno trwale usunąć %d zaznaczony element?"
-msgstr[1] "Na pewno trwale usunąć %d zaznaczone elementy?"
-msgstr[2] "Na pewno trwale usunąć %d zaznaczonych elementów?"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Na pewno trwale usunąć zaznaczone elementy?"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Usunięcie tych elementów spowoduje ich bezpowrotne utracenie."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Usunąć wszystkie elementy z kosza?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Pliki systemu operacyjnego są niezbędną częścią komputera i nie można ich "
+"usunąć."
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Wszystkie elementy w koszu zostaną trwale usunięte."
-
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Usunąć wszystkie elementy z „%s”?"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Wszystkie elementy w „%s” zostaną przeniesione do kosza."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "1. urządzenie do przechowywania danych"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "2. urządzenie do przechowywania danych"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Pojemność"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Katalog domowy"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Kosz"
-
-#: src/storage-item.vala:128
-msgid "Operating System"
-msgstr "System operacyjny"
-
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Usuń zawartość"
-
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Opróżnij kosz"
-
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Zmień nazwę"
-
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Na pewno trwale usunąć „%s”?"
-
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Usunięcie elementu spowoduje jego bezpowrotne utracenie."
-
-#: src/storage-view.vala:45
+#: src/storage/storage-view.vala:75
 msgid "Storage"
 msgstr "Urządzenia do przechowywania danych"
+
+#: src/storage/storage-view.vala:242
+msgid "Operating System"
+msgstr "System operacyjny"
