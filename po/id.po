@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-04-03 16:33+0000\n"
-"PO-Revision-Date: 2019-04-12 17:14+0700\n"
+"POT-Creation-Date: 2019-04-15 14:35+0000\n"
+"PO-Revision-Date: 2019-04-24 18:42+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -118,12 +118,8 @@ msgid "Force Quit"
 msgstr "Keluar Paksa"
 
 #: data/ui/storage-actionbar.ui:17
-msgid "Delete..."
-msgstr "Hapus..."
-
-#: data/ui/storage-row-popover.ui:11
-msgid "label"
-msgstr "label"
+msgid "Delete…"
+msgstr "Hapus…"
 
 #: data/ui/storage-view.ui:21
 msgid "Home Partition"
@@ -193,6 +189,9 @@ msgstr "Penyimpanan"
 #: src/storage/storage-view.vala:242
 msgid "Operating System"
 msgstr "Sistem Operasi"
+
+#~ msgid "label"
+#~ msgstr "label"
 
 #~ msgid "org.gnome.Usage"
 #~ msgstr "org.gnome.Usage"
