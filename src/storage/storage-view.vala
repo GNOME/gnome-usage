@@ -44,6 +44,9 @@ public class Usage.StorageView : Usage.View {
     [GtkChild]
     private StorageActionBar actionbar;
 
+    [GtkChild]
+    private NotificationBar notificationbar;
+
     private Sparql.Connection connection;
     private TrackerController controller;
     private StorageQueryBuilder query_builder;
@@ -265,11 +268,15 @@ public class Usage.StorageView : Usage.View {
     }
 
     private async void populate_view () {
+        var loading_notification = notificationbar.display_loading (_("Scanning directories"), null);
+
         if (connection == null)
             return;
 
         var model = new GLib.ListStore (typeof (StorageViewItem));
         model.append(os_item);
+
+        var items_loaded = 0;
 
         foreach (var dir in xdg_folders) {
             var file = File.new_for_uri (get_user_special_dir_path (dir));
@@ -282,6 +289,10 @@ public class Usage.StorageView : Usage.View {
                     item.percentage = item.size * 100 / (double) total_size;
                     item.custom_type = StorageViewType.ROOT_ITEM;
                     model.insert (1, item);
+
+                    items_loaded++;
+                    if(items_loaded == xdg_folders.length)
+                        loading_notification.dismiss();
                 } catch (GLib.Error error) {
                     warning (error.message);
                 }
