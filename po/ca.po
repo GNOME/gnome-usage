@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2017, 2018.
+# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2017, 2018, 2019
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2017-11-19 23:01+0000\n"
-"PO-Revision-Date: 2018-01-21 20:15+0100\n"
+"POT-Creation-Date: 2019-05-02 11:40+0000\n"
+"PO-Revision-Date: 2019-05-20 22:15+0200\n"
 "Last-Translator: Jordi Mas <jmas@softcatala.org>\n"
 "Language-Team: \n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
@@ -24,30 +24,37 @@ msgstr "Ús del GNOME"
 
 #: data/org.gnome.Usage.appdata.xml.in:6
 msgid "A nice way to view information about use of system resources"
-msgstr "Una manera atractiva de visualitzar la informació de l'ús dels recursos del sistema"
+msgstr ""
+"Una manera atractiva de visualitzar la informació de l'ús dels recursos del "
+"sistema"
 
 #: data/org.gnome.Usage.appdata.xml.in:8
-msgid "A simple GNOME 3 application to monitor and analyze system resources such as processing, memory, and storage."
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
 msgstr ""
-"Una aplicació simple del GNOME 3 per a fer un seguiment i analitzar els recursos del sistema com ara processament, memòria o emmagatzematge. "
+"Una aplicació simple del GNOME 3 per a fer un seguiment i analitzar els "
+"recursos del sistema com ara processament, memòria o emmagatzematge."
 
-#: data/org.gnome.Usage.desktop:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Ús"
 
-#: data/org.gnome.Usage.desktop:4
-msgid "A nice way to view information about use of system resources, like memory and disk space"
-msgstr "Una manera atractiva de visualitzar la informació de l'ús dels recursos, com ara memòria o espai en disc"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
+#: data/org.gnome.Usage.desktop.in:4
+msgid ""
+"A nice way to view information about use of system resources, like memory and "
+"disk space"
+msgstr ""
+"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com "
+"ara memòria o espai en disc"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop:13
-msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
-msgstr "Monitor;Sistema;Procés;CPU;Memòria;Xarxa;Història;Ús;Rendiment;Tasca;Gestor;"
+#: data/org.gnome.Usage.desktop.in:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Monitor;Sistema;Procés;CPU;Memòria;Xarxa;Història;Ús;Rendiment;Tasca;Gestor;"
 
 #: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
@@ -55,11 +62,23 @@ msgstr "Una llista de processos que no voleu que es puguin finalitzar"
 
 #: data/org.gnome.Usage.gschema.xml:6
 msgid "This list is used for filtering which processes the user can’t stop."
-msgstr "Aquesta llista s'utilitza per filtrar els processos que l'usuari no pot aturar"
+msgstr ""
+"Aquesta llista s'utilitza per filtrar els processos que l'usuari no pot "
+"aturar."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16 src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Cancel·la"
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Usades"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
+msgid "Available"
+msgstr "Disponible"
 
 #: data/ui/no-results-found-view.ui:23
 msgid "No results found"
@@ -68,6 +87,18 @@ msgstr "No hi ha resultats"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Proveu una cerca diferent"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_Quant a l'Ús"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Agrupa els processos del sistema"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Mostra tots els processos"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -78,184 +109,179 @@ msgstr "Força'n la sortida %s?"
 msgid "Unsaved work might be lost."
 msgstr "La feina que no s'ha desat es pot perdre."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Cancel·la"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Força'n la sortida"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Mou a"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Suprimeix…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Suprimeix"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Partició d'inici"
 
-#: data/ui/storage-actionbar.ui:33
-msgid "Move to Trash"
-msgstr "Mou a la paperera"
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Espai d'intercanvi"
 
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "La carpeta està buida"
+#: src/app-item.vala:43
+msgid "System"
+msgstr "Sistema"
 
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Restaura"
+#: src/application.vala:80
+msgid ""
+"A nice way to view information about use of system resources, like memory and "
+"disk space."
+msgstr ""
+"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com "
+"ara memòria o espai en disc."
 
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Suprimeix de la paperera"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Cap contingut aquí"
-
-#: src/application.vala:56
-msgid "About"
-msgstr "Quant a"
-
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Surt"
-
-#: src/application.vala:92
-msgid "A nice way to view information about use of system resources, like memory and disk space."
-msgstr "Una manera atractiva de visualitzar la informació de l'ús dels recursos, com ara memòria o espai en disc."
-
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Llocs web"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Processador"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Altres"
-
-#: src/graph-block.vala:67 src/storage-item.vala:140
-msgid "Available"
-msgstr "Disponible"
-
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Memòria"
 
-#: src/header-bar.vala:143
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u seleccionat"
-msgstr[1] "%u seleccionats"
-
-#: src/header-bar.vala:145
-msgid "Click on items to select them"
-msgstr "Feu clic als elements per seleccionar-los"
-
-#: src/header-bar.vala:209
-msgid "Select all"
-msgstr "Selecciona'ls tots"
-
-#: src/header-bar.vala:213
-msgid "Select None"
-msgstr "No seleccionis res"
-
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Rendiment"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Selecciona la carpeta de destinació"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Selecciona"
-
-#: src/storage-actionbar.vala:143
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Segur que voleu suprimir permanentment aquests elements %s?"
+msgid "%s selected"
+msgstr "%s seleccionat"
 
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Esteu segur que voleu suprimir permanentment els elements seleccionats?"
+
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Si suprimiu aquests elements, es perdran permanentment."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Voleu buidar tots els elements de la paperera?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Els fitxers del sistema operatiu són part essencial del sistema i no poden ser suprimits."
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Se suprimiran de forma permanent tots els elements de la paperera."
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Emmagatzematge"
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Voleu buidar tots els elements de %s?"
-
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Es mouran tots els elements de %s a la paperera."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Emmagatzematge 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Emmagatzematge 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Capacitat"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Inici"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Paperera"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Sistema operatiu"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Buida"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "S'estan escanejant els directoris..."
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Buida la paperera"
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Canvia de nom"
+#~ msgid "Move to"
+#~ msgstr "Mou a"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Mou a la paperera"
+#~ msgid "Move to Trash"
+#~ msgstr "Mou a la paperera"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Segur que voleu suprimir permanentment %s?"
+#~ msgid "Empty folder"
+#~ msgstr "La carpeta està buida"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Si suprimiu un element, es perdrà definitivament."
+#~ msgid "Restore"
+#~ msgstr "Restaura"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Emmagatzematge"
+#~ msgid "Delete from Trash"
+#~ msgstr "Suprimeix de la paperera"
+
+#~ msgid "No content here"
+#~ msgstr "Cap contingut aquí"
+
+#~ msgid "About"
+#~ msgstr "Quant a"
+
+#~ msgid "Quit"
+#~ msgstr "Surt"
+
+#~ msgid "Others"
+#~ msgstr "Altres"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Feu clic als elements per seleccionar-los"
+
+#~ msgid "Select all"
+#~ msgstr "Selecciona'ls tots"
+
+#~ msgid "Select None"
+#~ msgstr "No seleccionis res"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Selecciona la carpeta de destinació"
+
+#~ msgid "Select"
+#~ msgstr "Selecciona"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Voleu buidar tots els elements de la paperera?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Se suprimiran de forma permanent tots els elements de la paperera."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Voleu buidar tots els elements de %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "Es mouran tots els elements de %s a la paperera."
+
+#~ msgid "Storage 1"
+#~ msgstr "Emmagatzematge 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Emmagatzematge 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Capacitat"
+
+#~ msgid "Home"
+#~ msgstr "Inici"
+
+#~ msgid "Trash"
+#~ msgstr "Paperera"
+
+#~ msgid "Empty"
+#~ msgstr "Buida"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Buida la paperera"
+
+#~ msgid "Rename"
+#~ msgstr "Canvia de nom"
+
+#~ msgid "Move to trash"
+#~ msgstr "Mou a la paperera"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Segur que voleu suprimir permanentment %s?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Si suprimiu un element, es perdrà definitivament."
 
 #~ msgid "No applications using processor."
 #~ msgstr "Cap aplicació utilitzant el processador."
