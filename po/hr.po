@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-03-25 10:46+0000\n"
-"PO-Revision-Date: 2019-03-26 20:20+0100\n"
+"POT-Creation-Date: 2019-05-02 11:40+0000\n"
+"PO-Revision-Date: 2019-06-22 19:28+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -65,21 +65,17 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Ovaj popis se koristi za prikaz procesa koje korisnik ne može zaustaviti."
 
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Odustani"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Iskorišteno"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Dostupno"
 
@@ -112,37 +108,21 @@ msgstr "Prisilno zatvori %s?"
 msgid "Unsaved work might be lost."
 msgstr "Nespremljeni rad može biti izgubljen."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Odustani"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Prisilno zatvori"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Premjesti u"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Obriši…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Obriši"
-
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Premjesti u smeće"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Prazna mapa"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Vrati"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Obriši iz smeća"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Ovdje nema sadržaja"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Osobna particija"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
@@ -174,128 +154,124 @@ msgstr "Web stranica"
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Memorija"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u odabrana"
-msgstr[1] "%u odabrane"
-msgstr[2] "%u odabrano"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Kliknite na stavku za odabir"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Odaberi sve"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Bez odabira"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Performanse"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Odaberi odredišnu mapu"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Odaberi"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Sigurno želite trajno obrisati ”%s”?"
+msgid "%s selected"
+msgstr "%s odabrana"
 
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] "Sigurno želite trajno obrisati %d odabranu stavku?"
-msgstr[1] "Sigurno želite trajno obrisati %d odabrane stavke?"
-msgstr[2] "Sigurno želite trajno obrisati %d odabranih stavki?"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Sigurno želite trajno obrisati odabrane stavke?"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Ako obrišete ove stavke, biti će trajno izgubljene."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Želite li isprazniti sve stavke iz smeća?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Datoteke operativnog sustava ključan su dio vašeg sustava i ne mogu se "
+"ukloniti."
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Sve stavke u smeću biti će trajno obrisane."
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Pohrana"
 
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Želite li isprazniti sve stavke iz %s?"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Sve stavke u %s biti će premještene u smeće."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Pohrana 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Pohrana 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Kapacitet"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Osobna mapa"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Smeće"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Operativni sustav"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Isprazni"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Pretraživanje direktorija"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Isprazni smeće"
+#~ msgid "Move to"
+#~ msgstr "Premjesti u"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Preimenuj"
+#~ msgid "Move to Trash"
+#~ msgstr "Premjesti u smeće"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Sigurno želite trajno obrisati %s?"
+#~ msgid "Empty folder"
+#~ msgstr "Prazna mapa"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Ako obrišete stavku, biti će trajno izgubljena."
+#~ msgid "Restore"
+#~ msgstr "Vrati"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Pohrana"
+#~ msgid "Delete from Trash"
+#~ msgstr "Obriši iz smeća"
+
+#~ msgid "No content here"
+#~ msgstr "Ovdje nema sadržaja"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Kliknite na stavku za odabir"
+
+#~ msgid "Select all"
+#~ msgstr "Odaberi sve"
+
+#~ msgid "Select None"
+#~ msgstr "Bez odabira"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Odaberi odredišnu mapu"
+
+#~ msgid "Select"
+#~ msgstr "Odaberi"
+
+#~ msgid "Are you sure you want to permanently delete “%s”?"
+#~ msgstr "Sigurno želite trajno obrisati ”%s”?"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Želite li isprazniti sve stavke iz smeća?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Sve stavke u smeću biti će trajno obrisane."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Želite li isprazniti sve stavke iz %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "Sve stavke u %s biti će premještene u smeće."
+
+#~ msgid "Storage 1"
+#~ msgstr "Pohrana 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Pohrana 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Kapacitet"
+
+#~ msgid "Home"
+#~ msgstr "Osobna mapa"
+
+#~ msgid "Trash"
+#~ msgstr "Smeće"
+
+#~ msgid "Empty"
+#~ msgstr "Isprazni"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Isprazni smeće"
+
+#~ msgid "Rename"
+#~ msgstr "Preimenuj"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Sigurno želite trajno obrisati %s?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Ako obrišete stavku, biti će trajno izgubljena."
 
 #~ msgid "org.gnome.Usage"
 #~ msgstr "org.gnome.Usage"
