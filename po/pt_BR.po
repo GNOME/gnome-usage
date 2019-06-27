@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-04-03 16:33+0000\n"
-"PO-Revision-Date: 2019-04-05 09:24-0300\n"
+"POT-Creation-Date: 2019-05-02 11:40+0000\n"
+"PO-Revision-Date: 2019-06-27 04:51-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -70,12 +70,12 @@ msgstr ""
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:30
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Usado"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:37
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Disponível"
@@ -118,14 +118,11 @@ msgid "Force Quit"
 msgstr "Fechar forçado"
 
 #: data/ui/storage-actionbar.ui:17
-msgid "Delete..."
+#| msgid "Delete..."
+msgid "Delete…"
 msgstr "Excluir…"
 
-#: data/ui/storage-row-popover.ui:11
-msgid "label"
-msgstr "rótulo"
-
-#: data/ui/storage-view.ui:21
+#: data/ui/storage-view.ui:37
 msgid "Home Partition"
 msgstr "Partição Home"
 
@@ -169,15 +166,10 @@ msgstr "Desempenho"
 
 #: src/storage/storage-actionbar.vala:40
 #, c-format
-#| msgid "%u selected"
-#| msgid_plural "%u selected"
 msgid "%s selected"
 msgstr "%s selecionado"
 
 #: src/storage/storage-actionbar.vala:45
-#| msgid "Are you sure you want to permanently delete the %d selected item?"
-#| msgid_plural ""
-#| "Are you sure you want to permanently delete the %d selected items?"
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr ""
 "Você tem certeza de que deseja excluir permanentemente os itens selecionados?"
@@ -194,13 +186,20 @@ msgstr ""
 "Os arquivos do sistema operacional são uma parte essencial de seu sistema e "
 "não podem ser removidos."
 
-#: src/storage/storage-view.vala:75
+#: src/storage/storage-view.vala:78
 msgid "Storage"
 msgstr "Armazenamento"
 
-#: src/storage/storage-view.vala:242
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Sistema operacional"
+
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Varrendo diretórios"
+
+#~ msgid "label"
+#~ msgstr "rótulo"
 
 #~ msgid "org.gnome.Usage"
 #~ msgstr "org.gnome.Usage"
