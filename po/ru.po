@@ -1,0 +1,292 @@
+# Russian translation for gnome-usage.
+# Copyright (C) 2019 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# IgorPolyakov <igorpolyakov@protonmail.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage gnome-3-28\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2018-05-03 08:05+0000\n"
+"PO-Revision-Date: 2019-07-11 23:44+0300\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: IgorPolyakov <igorpolyakov@protonmail.com>\n"
+"Language-Team: \n"
+
+#: data/org.gnome.Usage.appdata.xml.in:5
+msgid "GNOME Usage"
+msgstr ""
+
+#: data/org.gnome.Usage.appdata.xml.in:6
+msgid "A nice way to view information about use of system resources"
+msgstr ""
+"Хороший способ просмотра информации об использовании системных ресурсов"
+
+#: data/org.gnome.Usage.appdata.xml.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+"Программа для мониторинга и анализа системных ресурсов, таких как процессы, "
+"оперативная память и дисковое пространство."
+
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+msgid "Usage"
+msgstr ""
+
+#: data/org.gnome.Usage.desktop.in:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Хороший способ просмотра информации об использовании системных ресурсов, "
+"таких как оперативная память и дисковое пространство"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Usage.desktop.in:8
+msgid "org.gnome.Usage"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Мониторинг;Система;Процесс;Процессор;Память;Сеть;История;Использование;"
+"Производительность;Задачи;Менеджер;"
+
+#: data/org.gnome.Usage.gschema.xml:5
+msgid "A list of processes which we don’t want killed"
+msgstr "Список процессов, которые мы не хотим убивать"
+
+#: data/org.gnome.Usage.gschema.xml:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Этот список используется для фильтрации процессов, которые пользователь не "
+"может остановить."
+
+#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: src/storage-actionbar.vala:90 src/storage-row.vala:393
+msgid "Cancel"
+msgstr "Отменить"
+
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "Оперативная память"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Использовано"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "Доступно"
+
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "Ничего не найдено"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "Попробуйте другой поиск"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "Принудительно завершить работу %s?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "Несохраненная работа может быть потеряна."
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "Принудительный выход"
+
+#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
+msgid "Move to"
+msgstr "Переместить в"
+
+#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
+msgid "Delete"
+msgstr "Удалить"
+
+#: data/ui/storage-actionbar.ui:33
+msgid "Move to Trash"
+msgstr "Переместить в корзину"
+
+#: data/ui/storage-actionbar.ui:45
+msgid "Empty folder"
+msgstr "Пустая папка"
+
+#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
+msgid "Restore"
+msgstr "Восстановить"
+
+#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Удалить из корзины"
+
+#: data/ui/storage-view.ui:63
+msgid "No content here"
+msgstr "Здесь ничего нет"
+
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Подкачка"
+
+#: src/application.vala:56
+msgid "About"
+msgstr "О приложении"
+
+#: src/application.vala:59
+msgid "Quit"
+msgstr "Выход"
+
+#: src/application.vala:92
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Хороший способ просмотра информации об использовании системных ресурсов, "
+"таких как оперативная память и дисковое пространство."
+
+#: src/application.vala:95
+msgid "translator-credits"
+msgstr "переводчики-авторы"
+
+#: src/application.vala:97
+msgid "Websites"
+msgstr "Веб-сайты"
+
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+msgid "Processor"
+msgstr "Использование ЦП"
+
+#: src/graph-block.vala:65
+msgid "Others"
+msgstr "Другое"
+
+#: src/graph-stack-switcher.vala:41
+msgid "Memory"
+msgstr "Использование памяти"
+
+#: src/header-bar.vala:143
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "выбран %u"
+msgstr[1] "выбрано %u"
+msgstr[2] "выбрано %u"
+
+#: src/header-bar.vala:145
+msgid "Click on items to select them"
+msgstr "Щёлкните на любом элементе чтобы выбрать его"
+
+#: src/header-bar.vala:209
+msgid "Select all"
+msgstr "Выбрать все"
+
+#: src/header-bar.vala:213
+msgid "Select None"
+msgstr "Выбрать Никакой"
+
+#: src/performance-view.vala:45
+msgid "Performance"
+msgstr "Производительность"
+
+#: src/storage-actionbar.vala:89 src/storage-row.vala:392
+msgid "Select destination folder"
+msgstr "Выберите конечную папку"
+
+#: src/storage-actionbar.vala:92 src/storage-row.vala:395
+msgid "Select"
+msgstr "Выбрать"
+
+#: src/storage-actionbar.vala:143
+#, c-format
+msgid "Are you sure you want to permanently delete this items %s?"
+msgstr "Вы уверены, что хотите окончательно удалить эти элемент %s?"
+
+#: src/storage-actionbar.vala:144
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Если вы удалите эти элементы, они будут потеряны безвозвратно."
+
+#: src/storage-actionbar.vala:197 src/storage-row.vala:342
+msgid "Empty all items from Trash?"
+msgstr "Очистить все элементы из корзины?"
+
+#: src/storage-actionbar.vala:198 src/storage-row.vala:343
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Все элементы в корзине будут удалены без возможности восстановления."
+
+#: src/storage-actionbar.vala:219 src/storage-row.vala:322
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "Очистить все элементы из %s?"
+
+#: src/storage-actionbar.vala:220 src/storage-row.vala:323
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "Все элементы в %s будут перемещены в корзину."
+
+#: src/storage-analyzer.vala:94
+msgid "Storage 1"
+msgstr "Хранилище 1"
+
+#: src/storage-analyzer.vala:98
+msgid "Storage 2"
+msgstr "Хранилище 2"
+
+#: src/storage-analyzer.vala:105
+msgid "Capacity"
+msgstr "Всего"
+
+#: src/storage-analyzer.vala:647
+msgid "Home"
+msgstr "Домашняя папка"
+
+#: src/storage-item.vala:104
+msgid "Trash"
+msgstr "Корзина"
+
+#: src/storage-item.vala:128
+msgid "Operating System"
+msgstr "Операционная система"
+
+#: src/storage-row.vala:248
+msgid "Empty"
+msgstr "Очистить"
+
+#: src/storage-row.vala:253
+msgid "Empty Trash"
+msgstr "Очистить корзину"
+
+#: src/storage-row.vala:273 src/storage-row.vala:367
+msgid "Rename"
+msgstr "Переименовать"
+
+#: src/storage-row.vala:277
+msgid "Move to trash"
+msgstr "Переместить в корзину"
+
+#: src/storage-row.vala:439
+#, c-format
+msgid "Are you sure you want to permanently delete %s?"
+msgstr "Вы уверены, что хотите безвозвратно удалить %s?"
+
+#: src/storage-row.vala:440
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Если вы удалите элемент, он будет потерян безвозвратно."
+
+#: src/storage-view.vala:45
+msgid "Storage"
+msgstr "Хранилище"
