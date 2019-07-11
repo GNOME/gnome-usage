@@ -2,20 +2,20 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Andika Triwidada <atriwidada@gnome.org>, 2018
-#
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-04-15 14:35+0000\n"
-"PO-Revision-Date: 2019-04-24 18:42+0700\n"
+"POT-Creation-Date: 2019-05-02 11:40+0000\n"
+"PO-Revision-Date: 2019-07-11 14:55+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
@@ -70,12 +70,12 @@ msgstr ""
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:30
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Terpakai"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:37
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Tersedia"
@@ -121,7 +121,7 @@ msgstr "Keluar Paksa"
 msgid "Delete…"
 msgstr "Hapus…"
 
-#: data/ui/storage-view.ui:21
+#: data/ui/storage-view.ui:37
 msgid "Home Partition"
 msgstr "Partisi Home"
 
@@ -182,13 +182,17 @@ msgstr ""
 "Berkas sistem operasi adalah bagian penting dari sistem Anda dan tidak dapat "
 "dihapus."
 
-#: src/storage/storage-view.vala:75
+#: src/storage/storage-view.vala:78
 msgid "Storage"
 msgstr "Penyimpanan"
 
-#: src/storage/storage-view.vala:242
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Sistem Operasi"
+
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Memindai direktori"
 
 #~ msgid "label"
 #~ msgstr "label"
