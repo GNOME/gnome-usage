@@ -33,6 +33,7 @@ namespace Usage
 
         private CpuMonitor cpu_monitor;
         private MemoryMonitor memory_monitor;
+        private GameMode.PidList gamemode_pids;
 
         private HashTable<string, AppItem> app_table;
         private int process_mode = GTop.KERN_PROC_ALL;
@@ -63,6 +64,7 @@ namespace Usage
 
             cpu_monitor = new CpuMonitor();
             memory_monitor = new MemoryMonitor();
+            gamemode_pids = new GameMode.PidList();
 
             app_table = new HashTable<string, AppItem>(str_hash, str_equal);
             var settings = Settings.get_default();
@@ -157,6 +159,7 @@ namespace Usage
             cpu_monitor.update_process(ref process);
             memory_monitor.update_process(ref process);
             process.update_status();
+            process.gamemode = gamemode_pids.contains((int) process.pid);
         }
 
         private string? sanity_cmd(string commandline)

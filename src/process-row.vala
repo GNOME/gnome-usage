@@ -40,6 +40,9 @@ namespace Usage
         private Gtk.Box user_tag_box;
 
         [GtkChild]
+        private Gtk.Image gamemode;
+
+        [GtkChild]
         private Gtk.Label user_tag_label;
 
         [GtkChild]
@@ -52,6 +55,7 @@ namespace Usage
             this.type = type;
             this.app = app;
             this.icon.gicon = app.get_icon();
+            this.app.bind_property("gamemode", gamemode, "visible", BindingFlags.SYNC_CREATE);
             update();
         }
 
