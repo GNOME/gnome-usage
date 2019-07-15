@@ -9,6 +9,7 @@ namespace Usage
         public double cpu_load { get; private set; }
         public uint64 mem_usage { get; private set; }
         public Fdo.AccountsUser? user { get; private set; default = null; }
+        public bool gamemode {get; private set; }
 
         private static HashTable<string, AppInfo>? apps_info;
         private AppInfo? app_info = null;
@@ -37,6 +38,7 @@ namespace Usage
             display_name = find_display_name();
             processes.insert(process.pid, process);
             load_user_account.begin();
+            gamemode = process.gamemode;
         }
 
         public AppItem.system() {
@@ -85,6 +87,7 @@ namespace Usage
         public void remove_processes() {
             cpu_load = 0;
             mem_usage = 0;
+            int games = 0;
 
             foreach(var process in processes.get_values()) {
                 if(!process.mark_as_updated)
@@ -93,8 +96,11 @@ namespace Usage
                     cpu_load += process.cpu_load;
                     mem_usage += process.mem_usage;
                 }
+                if(process.gamemode)
+                    games++;
             }
 
+            gamemode = games > 0;
             cpu_load = double.min(100, cpu_load);
         }
 
