@@ -57,6 +57,22 @@
                 <property name="position">3</property>
               </packing>
             </child>
+	    <child>
+              <object class="GtkImage" id="gamemode">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">10</property>
+                <property name="margin_right">10</property>
+                <property name="pixel_size">24</property>
+                <property name="icon_name">applications-games-symbolic</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+		<property name="pack_type">end</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
             <child>
               <object class="GtkBox" id="user_tag_box">
                 <property name="visible">False</property>
