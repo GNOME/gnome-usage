@@ -34,6 +34,8 @@ namespace Usage
 
         public uint64 mem_usage { get; set; default = 0; }
 
+        public bool gamemode { get; set; }
+
         public bool mark_as_updated { get; set; default = true; }
         public ProcessStatus status { get; private set; default = ProcessStatus.SLEEPING; }
 
