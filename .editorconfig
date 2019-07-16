@@ -1,0 +1,40 @@
+# top-most EditorConfig file
+root = true
+
+# Unix style
+[*]
+end_of_line = lf
+trim_trailing_whitespace = true
+charset = utf-8
+
+[*.{vala,vapi}]
+indent_style = space
+indent_size = 4
+
+[*.ui]
+indent_style = space
+indent_size = 2
+
+[*.css]
+indent_style = space
+indent_size = 4
+
+[*.xml.in]
+indent_style = space
+indent_size = 2
+
+[*.gschema.xml]
+indent_style = space
+indent_size = 4
+
+[*.gresource.xml]
+indent_style = space
+indent_size = 4
+
+[meson.build]
+indent_style = space
+indent_size = 2
+
+[.gitlab-ci.yml]
+indent_style = space
+indent_size = 2
