@@ -28,7 +28,7 @@ namespace Usage
         }
 
         public static bool have_app_info(string cmdline) {
-            return apps_info.get(cmdline) != null ? true : false;
+            return apps_info.get(cmdline) != null;
         }
 
         public AppItem(Process process) {
