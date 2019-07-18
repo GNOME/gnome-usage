@@ -20,7 +20,7 @@ namespace Usage
 
             foreach (AppInfo info in _apps_info) {
                 string cmd = info.get_commandline();
-                sanity_cmd(ref cmd);
+                sanitize_cmd(ref cmd);
 
                 if(cmd != null)
                     apps_info.insert(cmd, info);
@@ -129,26 +129,24 @@ namespace Usage
             }
         }
 
-        private static void sanity_cmd(ref string? commandline) {
-            if(commandline != null) {
-                //flatpak
-                if(commandline.contains("flatpak run")) {
-                    var index = commandline.index_of("--command=") + 10;
-                    commandline = commandline.substring(index);
-                }
+        private static void sanitize_cmd(ref string? commandline) {
+            if (commandline == null)
+                return;
 
-                try {
-                    var rgx = new Regex("[^a-zA-Z0-9._-]");
-
-                    commandline = Path.get_basename(commandline.split(" ")[0]);
-                    commandline = rgx.replace(commandline, commandline.length, 0, "");
-                } catch (RegexError e) {
-                    warning ("Unable to obtain process command: %s", e.message);
-                }
-
-                if(commandline.contains("google-chrome-stable")) //Workaround for google-chrome
-                    commandline = "chrome";
+            // flatpak: parse the command line of the containerized program
+            if (commandline.contains("flatpak run")) {
+                var index = commandline.index_of ("--command=") + 10;
+                commandline = commandline.substring (index);
             }
+
+            // TODO: unify this with the logic in get_full_process_cmd
+            commandline = Process.first_component (commandline);
+            commandline = Path.get_basename (commandline);
+            commandline = Process.sanitize_name (commandline);
+
+            // Workaround for google-chrome
+            if (commandline.contains ("google-chrome-stable"))
+                commandline = "chrome";
         }
     }
 }
