@@ -33,12 +33,15 @@ namespace Usage
         }
 
         public static AppInfo? app_info_for_process (Process p) {
-            string? cmdline = p.cmdline;
+            AppInfo? info = null;
 
-            if (cmdline == null)
-                return null;
+            if (p.cmdline != null)
+                info = apps_info[p.cmdline];
 
-            return apps_info[cmdline];
+            if (info == null && p.app_id != null)
+                info = appid_map[p.app_id];
+
+            return info;
         }
 
         public static bool have_app_info (Process p) {
