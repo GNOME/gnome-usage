@@ -25,6 +25,7 @@ namespace Usage
         public Pid pid { get; private set; }
         public string cmdline { get; private set; }
         public uint uid { get; private set; }
+        public uint64 start_time { get; set; default = 0; }
 
         public double cpu_load { get; set; default = 0; }
         public double x_cpu_load { get; set; default = 0; }
