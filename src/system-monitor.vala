@@ -183,22 +183,11 @@ namespace Usage
                 if (!name.has_prefix (cmd))
                     continue;
 
-                name = first_component (name);
+                name = Process.first_component (name);
                 return Process.sanitize_name (name);
             }
 
             return Process.sanitize_name (cmd);
-        }
-
-        private string first_component (string str) {
-
-            for (int i = 0; i < str.length; i++) {
-                if (str[i] == ' ') {
-                    return str.substring(0, i);
-                }
-            }
-
-            return str;
         }
 
         private bool is_system_app(string cmdline)

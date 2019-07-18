@@ -98,6 +98,17 @@ namespace Usage
 
             return result;
         }
+
+        public static string first_component (string str) {
+
+            for (int i = 0; i < str.length; i++) {
+                if (str[i] == ' ') {
+                    return str.substring(0, i);
+                }
+            }
+
+            return str;
+        }
     }
 
     public enum ProcessStatus
