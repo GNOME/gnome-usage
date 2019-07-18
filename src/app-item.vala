@@ -15,15 +15,16 @@ namespace Usage
         private AppInfo? app_info = null;
 
         public static void init() {
-            apps_info = new HashTable<string, AppInfo>(str_hash, str_equal);
-            var _apps_info = AppInfo.get_all();
+            apps_info = new HashTable<string, AppInfo> (str_hash, str_equal);
+            var _apps_info = AppInfo.get_all ();
 
             foreach (AppInfo info in _apps_info) {
-                string cmd = info.get_commandline();
-                sanitize_cmd(ref cmd);
+                string cmd = info.get_commandline ();
+                if (cmd == null)
+                    continue;
 
-                if(cmd != null)
-                    apps_info.insert(cmd, info);
+                sanitize_cmd (ref cmd);
+                apps_info.insert (cmd, info);
             }
         }
 
