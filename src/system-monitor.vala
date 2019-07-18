@@ -185,7 +185,6 @@ namespace Usage
             string[] args = GTop.get_proc_argv (out proc_args, pid, 0);
             GTop.get_proc_state (out proc_state, pid);
             string cmd = (string) proc_state.cmd;
-            string cmd_parameter = "";
 
             var secure_arguments = new string[2];
 
@@ -215,10 +214,6 @@ namespace Usage
                         if(name[j] == ' ')
                             name = name.substring(0, j);
                     }
-                    if(i == 0)
-                        cmd_parameter = secure_arguments[1];
-                    else
-                        cmd_parameter = secure_arguments[0];
 
                     return sanitize_name(name);
                 }
