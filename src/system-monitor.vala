@@ -178,43 +178,32 @@ namespace Usage
             return result;
         }
 
-        private string get_full_process_cmd (Pid pid)
-        {
+        private string get_full_process_cmd (Pid pid) {
             GTop.ProcArgs proc_args;
             GTop.ProcState proc_state;
             string[] args = GTop.get_proc_argv (out proc_args, pid, 0);
             GTop.get_proc_state (out proc_state, pid);
             string cmd = (string) proc_state.cmd;
 
-            var secure_arguments = new string[2];
+            /* cmd is most likely a truncated version, therefore
+             * we check the first two arguments of the full argv
+             * vector if they match cmd and if so, use that */
+            for (int i = 0; i < 2; i++) {
+                if (args[i] == null)
+                    continue;
 
-            for(int i = 0; i < 2; i++)
-            {
-                if(args[i] != null)
-                {
-                    secure_arguments[i] = args[i];
-                }
-                else
-                {
-                    secure_arguments[i] = "";
-                    if (i == 0)
-                        secure_arguments[1] = "";
-                    break;
-                }
+                /* TODO: this will fail if args[i] is a commandline,
+                 * i.e. composed of multiple segments and one of the
+                 * later ones is a unix path */
+                var name = Path.get_basename (args[i]);
+                if (!name.has_prefix (cmd))
+                    continue;
+
+                name = first_component (name);
+                return sanitize_name (name);
             }
 
-            for (int i = 0; i < secure_arguments.length; i++)
-            {
-                var name = Path.get_basename(secure_arguments[i]);
-
-                if (name.has_prefix(cmd))
-                {
-                    name = first_component (name);
-                    return sanitize_name(name);
-                }
-            }
-
-            return sanitize_name(cmd);
+            return sanitize_name (cmd);
         }
 
         private string first_component (string str) {
