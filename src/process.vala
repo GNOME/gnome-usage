@@ -81,6 +81,23 @@ namespace Usage
             GTop.get_proc_uid(out procUid, pid);
             return procUid.uid;
         }
+
+        /* static utility methods */
+        public static string? sanitize_name (string name) {
+            string? result = null;
+
+            if (name == null)
+                return null;
+
+            try {
+                var rgx = new Regex ("[^a-zA-Z0-9._-]");
+                result = rgx.replace (name, name.length, 0, "");
+            } catch (RegexError e) {
+                warning ("Unable to sanitize name: %s", e.message);
+            }
+
+            return result;
+        }
     }
 
     public enum ProcessStatus

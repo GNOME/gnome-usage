@@ -162,22 +162,6 @@ namespace Usage
             process.gamemode = gamemode_pids.contains((int) process.pid);
         }
 
-        private string? sanitize_name (string name) {
-            string? result = null;
-
-            if (name == null)
-                return null;
-
-            try {
-                var rgx = new Regex ("[^a-zA-Z0-9._-]");
-                result = rgx.replace (name, name.length, 0, "");
-            } catch (RegexError e) {
-                warning ("Unable to sanitize name: %s", e.message);
-            }
-
-            return result;
-        }
-
         private string get_full_process_cmd (Pid pid) {
             GTop.ProcArgs proc_args;
             GTop.ProcState proc_state;
@@ -200,10 +184,10 @@ namespace Usage
                     continue;
 
                 name = first_component (name);
-                return sanitize_name (name);
+                return Process.sanitize_name (name);
             }
 
-            return sanitize_name (cmd);
+            return Process.sanitize_name (cmd);
         }
 
         private string first_component (string str) {
