@@ -201,11 +201,7 @@ namespace Usage
         }
 
         private void process_added (Process p) {
-            string cmd = p.cmdline;
-            string app_id = cmd;
-
-            if (group_system_apps && is_system_app (cmd))
-                app_id = "system";
+            string app_id = get_app_id_for_process (p);
 
             AppItem? item = app_table[app_id];
 
@@ -220,17 +216,23 @@ namespace Usage
         }
 
         private void process_removed (Process p) {
-            string cmd = p.cmdline;
+            string app_id = get_app_id_for_process (p);
 
-            if (group_system_apps && is_system_app (cmd))
-                cmd = "system";
-
-            AppItem? item = app_table[cmd];
+            AppItem? item = app_table[app_id];
 
             if (item != null)
                 item.remove_process (p);
 
             process_table.remove (p.pid);
+        }
+
+        private string get_app_id_for_process (Process p) {
+
+            if (!AppItem.have_app_info (p.cmdline) && group_system_apps) {
+                return "system";
+            }
+
+            return p.cmdline;
         }
 
         private void update_process(ref Process process)
@@ -239,11 +241,6 @@ namespace Usage
             memory_monitor.update_process(ref process);
             process.update_status();
             process.gamemode = gamemode_pids.contains((int) process.pid);
-        }
-
-        private bool is_system_app(string cmdline)
-        {
-            return !AppItem.have_app_info(cmdline);
         }
 
         public static void sort_pids (void *pids, size_t elm, size_t length)
