@@ -90,22 +90,8 @@ namespace Usage
                 app_table.insert("system" , system);
             }
 
-            // TODO: duplicated code, with process added
             foreach (var p in process_table.get_values ()) {
-                string cmd = p.cmdline;
-                string app_id = cmd;
-
-                if (group_system_apps && is_system_app (cmd))
-                    app_id = "system";
-
-                AppItem? item = app_table[app_id];
-
-                if (item == null) {
-                    item = new AppItem (p);
-                    app_table.insert (app_id, item);
-                } else if (! item.contains_process (p.pid)) {
-                    item.insert_process (p);
-                }
+                process_added (p);
             }
 
             update_data();
