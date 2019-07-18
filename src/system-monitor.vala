@@ -116,7 +116,7 @@ namespace Usage
 
             for(uint i = 0; i < proclist.number; i++)
             {
-                string cmd = get_full_process_cmd(pids[i]);
+                string cmd = Process.get_full_process_cmd(pids[i]);
                 string app_id = cmd;
 
                 if(group_system_apps && is_system_app(cmd))
@@ -160,34 +160,6 @@ namespace Usage
             memory_monitor.update_process(ref process);
             process.update_status();
             process.gamemode = gamemode_pids.contains((int) process.pid);
-        }
-
-        private string get_full_process_cmd (Pid pid) {
-            GTop.ProcArgs proc_args;
-            GTop.ProcState proc_state;
-            string[] args = GTop.get_proc_argv (out proc_args, pid, 0);
-            GTop.get_proc_state (out proc_state, pid);
-            string cmd = (string) proc_state.cmd;
-
-            /* cmd is most likely a truncated version, therefore
-             * we check the first two arguments of the full argv
-             * vector if they match cmd and if so, use that */
-            for (int i = 0; i < 2; i++) {
-                if (args[i] == null)
-                    continue;
-
-                /* TODO: this will fail if args[i] is a commandline,
-                 * i.e. composed of multiple segments and one of the
-                 * later ones is a unix path */
-                var name = Path.get_basename (args[i]);
-                if (!name.has_prefix (cmd))
-                    continue;
-
-                name = Process.first_component (name);
-                return Process.sanitize_name (name);
-            }
-
-            return Process.sanitize_name (cmd);
         }
 
         private bool is_system_app(string cmdline)
