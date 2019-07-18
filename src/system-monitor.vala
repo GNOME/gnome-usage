@@ -225,10 +225,12 @@ namespace Usage
         }
 
         private string get_app_id_for_procses (Process p) {
+            AppInfo? info = AppItem.app_info_for_process (p);
 
-            if (!AppItem.have_app_info (p) && group_system_apps) {
+            if (info != null)
+                return info.get_id();
+            else if (group_system_apps)
                 return "system";
-            }
 
             return p.cmdline;
         }
