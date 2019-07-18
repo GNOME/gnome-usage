@@ -172,7 +172,7 @@ namespace Usage
                     var rgx = new Regex("[^a-zA-Z0-9._-]");
                     cmd = rgx.replace(commandline, commandline.length, 0, "");
                 } catch (RegexError e) {
-                    warning ("Unable to obtain process command: %s", e.message);
+                    warning ("Unable to sanitize command line: %s", e.message);
                 }
             }
             return cmd;
