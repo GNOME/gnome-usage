@@ -172,9 +172,12 @@ namespace Usage
                     j++; /* let o := old[j] catch up */
                 } else if (n < o) {
                     /* new process */
+                    var p = new Process ((GLib.Pid) n);
+                    update_process (ref p); // state, time
+
                     debug ("process added: %u\n", n);
 
-                    process_added ((GLib.Pid) n);
+                    process_added (p);
                     added++;
 
                     i++; /* let n := pids[i] catch up */
@@ -190,10 +193,12 @@ namespace Usage
                     if (ptime.start_time != p.start_time) {
                         debug ("start time mismtach: %u\n", n);
                         process_removed (p);
-                        process_added ((GLib.Pid) n);
-                    } else {
-                        update_process (ref p);
+
+                        p = new Process ((GLib.Pid) n);
+                        process_added (p);
                     }
+
+                    update_process (ref p);
 
                     i++; j++; /* both indices move */
                 }
@@ -209,10 +214,7 @@ namespace Usage
             return true;
         }
 
-        private void process_added (GLib.Pid pid) {
-            var p = new Process (pid);
-            update_process (ref p); // state, time
-
+        private void process_added (Process p) {
             string cmd = p.cmdline;
             string app_id = cmd;
 
