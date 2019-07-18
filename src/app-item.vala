@@ -28,17 +28,22 @@ namespace Usage
             }
         }
 
-        public static bool have_app_info (Process p) {
+        public static AppInfo? app_info_for_process (Process p) {
             string? cmdline = p.cmdline;
 
             if (cmdline == null)
-                return false;
+                return null;
 
-            return apps_info[cmdline] != null;
+            return apps_info[cmdline];
+        }
+
+        public static bool have_app_info (Process p) {
+            AppInfo? info = app_info_for_process (p);
+            return info != null;
         }
 
         public AppItem(Process process) {
-            app_info = apps_info.get(process.cmdline);
+            app_info = app_info_for_process (process);
             representative_cmdline = process.cmdline;
             representative_uid = process.uid;
             display_name = find_display_name();
