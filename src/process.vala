@@ -40,6 +40,9 @@ namespace Usage
         public bool mark_as_updated { get; set; default = true; }
         public ProcessStatus status { get; private set; default = ProcessStatus.SLEEPING; }
 
+        private string? _app_id = null;
+        private bool _app_id_checked = false;
+
         public Process(Pid pid)
         {
             this.pid = pid;
@@ -83,6 +86,15 @@ namespace Usage
             return procUid.uid;
         }
 
+        public string? app_id {
+            get {
+                if (!_app_id_checked)
+                    _app_id = read_app_id (pid);
+
+                return _app_id;
+            }
+        }
+
         /* static pid related methods */
         public static string get_full_process_cmd (Pid pid) {
             GTop.ProcArgs proc_args;
@@ -110,6 +122,65 @@ namespace Usage
             }
 
             return Process.sanitize_name (cmd);
+        }
+
+        public static string? read_app_id (Pid pid) {
+            KeyFile? kf = read_flatpak_info (pid);
+
+            if (kf == null)
+                return null;
+
+            string? name = null;
+            try {
+                if (kf.has_key ("Application", "name")) {
+                    name = kf.get_string ("Application", "name");
+                    // TODO: find a better way to match desktop ids
+                    //  and flatpak ids
+                    name += ".desktop";
+                }
+            } catch (Error e) {
+                warning (@"Failed to parse faltpak info for: $pid");
+            }
+
+            return name;
+        }
+
+        public static KeyFile? read_flatpak_info (Pid pid) {
+            string path = "/proc/%u/root".printf ((uint) pid);
+            int flags = Posix.O_RDONLY | StopGap.O_CLOEXEC | Posix.O_NOCTTY;
+
+            int root = StopGap.openat (StopGap.AT_FDCWD, path, flags | Posix.O_NONBLOCK | StopGap.O_DIRECTORY);
+
+            if (root == -1)
+                return null;
+
+            int fd = StopGap.openat (root, ".flatpak-info", flags);
+
+            Posix.close (root);
+
+            if (fd == -1)
+                return null;
+
+            KeyFile kf = new KeyFile ();
+
+            try {
+                string? data = null;
+                size_t len;
+
+                // TODO use MappedFile.from_fd, requires vala 0.46
+                IOChannel ch = new IOChannel.unix_new (fd);
+                ch.set_close_on_unref (true);
+
+                var status = ch.read_to_end (out data, out len);
+                if (status != IOStatus.NORMAL)
+                    return null;
+
+                kf.load_from_data (data, len, 0);
+            } catch (Error e) {
+                return null;
+            }
+
+            return kf;
         }
 
         /* static utility methods */
