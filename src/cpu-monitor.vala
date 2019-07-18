@@ -82,6 +82,7 @@ namespace Usage
             process.cpu_load = cpu_load;
             process.cpu_last_used = proc_time.rtime;
             process.x_cpu_last_used = proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor];
+            process.start_time = proc_time.start_time;
         }
     }
 }
