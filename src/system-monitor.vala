@@ -209,17 +209,23 @@ namespace Usage
 
                 if (name.has_prefix(cmd))
                 {
-                    for (int j = 0; j < name.length; j++)
-                    {
-                        if(name[j] == ' ')
-                            name = name.substring(0, j);
-                    }
-
+                    name = first_component (name);
                     return sanitize_name(name);
                 }
             }
 
             return sanitize_name(cmd);
+        }
+
+        private string first_component (string str) {
+
+            for (int i = 0; i < str.length; i++) {
+                if (str[i] == ' ') {
+                    return str.substring(0, i);
+                }
+            }
+
+            return str;
         }
 
         private bool is_system_app(string cmdline)
