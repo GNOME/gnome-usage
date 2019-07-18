@@ -105,6 +105,10 @@ namespace Usage
             cpu_load = double.min(100, cpu_load);
         }
 
+        public void remove_process (Process process) {
+            processes.remove (process.pid);
+        }
+
         public void replace_process(Process process) {
             processes.replace(process.pid, process);
         }
