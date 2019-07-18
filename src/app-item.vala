@@ -12,13 +12,17 @@ namespace Usage
         public bool gamemode {get; private set; }
 
         private static HashTable<string, AppInfo>? apps_info;
+        private static HashTable<string, AppInfo>? appid_map;
         private AppInfo? app_info = null;
 
         public static void init() {
             apps_info = new HashTable<string, AppInfo>(str_hash, str_equal);
+            appid_map = new HashTable<string, AppInfo>(str_hash, str_equal);
             var _apps_info = AppInfo.get_all();
 
             foreach (AppInfo info in _apps_info) {
+                appid_map.insert (info.get_id(), info);
+
                 string cmd = info.get_commandline();
                 if (cmd == null)
                     continue;
