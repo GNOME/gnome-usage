@@ -92,7 +92,7 @@ namespace Usage
 
             // TODO: duplicated code, with process added
             foreach (var p in process_table.get_values ()) {
-                string cmd = Process.get_full_process_cmd (p.pid); // args, state
+                string cmd = p.cmdline;
                 string app_id = cmd;
 
                 if (group_system_apps && is_system_app (cmd))
@@ -210,14 +210,14 @@ namespace Usage
         }
 
         private void process_added (GLib.Pid pid) {
-            string cmd = Process.get_full_process_cmd (pid); // args, state
+            var p = new Process (pid);
+            update_process (ref p); // state, time
+
+            string cmd = p.cmdline;
             string app_id = cmd;
 
             if (group_system_apps && is_system_app (cmd))
                 app_id = "system";
-
-            var p = new Process (pid, cmd);
-            update_process (ref p); // state, time
 
             AppItem? item = app_table[app_id];
 
@@ -232,7 +232,7 @@ namespace Usage
         }
 
         private void process_removed (Process p) {
-            string cmd = Process.get_full_process_cmd (p.pid);
+            string cmd = p.cmdline;
 
             if (group_system_apps && is_system_app (cmd))
                 cmd = "system";

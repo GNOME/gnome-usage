@@ -40,10 +40,10 @@ namespace Usage
         public bool mark_as_updated { get; set; default = true; }
         public ProcessStatus status { get; private set; default = ProcessStatus.SLEEPING; }
 
-        public Process(Pid pid, string cmdline)
+        public Process(Pid pid)
         {
             this.pid = pid;
-            this.cmdline = cmdline;
+            this.cmdline = get_full_process_cmd (pid);
             this.uid = _get_uid();
         }
 
