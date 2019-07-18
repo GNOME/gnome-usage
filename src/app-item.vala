@@ -20,10 +20,11 @@ namespace Usage
 
             foreach (AppInfo info in _apps_info) {
                 string cmd = info.get_commandline();
-                sanitize_cmd(ref cmd);
+                if (cmd == null)
+                    continue;
 
-                if(cmd != null)
-                    apps_info.insert(cmd, info);
+                sanitize_cmd (ref cmd);
+                apps_info.insert(cmd, info);
             }
         }
 
