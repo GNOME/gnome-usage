@@ -226,7 +226,7 @@ namespace Usage
 
         private string get_app_id_for_procses (Process p) {
 
-            if (!AppItem.have_app_info (p.cmdline) && group_system_apps) {
+            if (!AppItem.have_app_info (p) && group_system_apps) {
                 return "system";
             }
 

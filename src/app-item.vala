@@ -28,8 +28,13 @@ namespace Usage
             }
         }
 
-        public static bool have_app_info(string cmdline) {
-            return apps_info.get(cmdline) != null;
+        public static bool have_app_info (Process p) {
+            string? cmdline = p.cmdline;
+
+            if (cmdline == null)
+                return false;
+
+            return apps_info[cmdline] != null;
         }
 
         public AppItem(Process process) {
