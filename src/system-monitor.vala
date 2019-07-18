@@ -162,20 +162,20 @@ namespace Usage
             process.gamemode = gamemode_pids.contains((int) process.pid);
         }
 
-        private string? sanity_cmd(string commandline)
-        {
-            string? cmd = null;
+        private string? sanitize_name (string name) {
+            string? result = null;
 
-            if(commandline != null)
-            {
-                try {
-                    var rgx = new Regex("[^a-zA-Z0-9._-]");
-                    cmd = rgx.replace(commandline, commandline.length, 0, "");
-                } catch (RegexError e) {
-                    warning ("Unable to sanitize command line: %s", e.message);
-                }
+            if (name == null)
+                return null;
+
+            try {
+                var rgx = new Regex ("[^a-zA-Z0-9._-]");
+                result = rgx.replace (name, name.length, 0, "");
+            } catch (RegexError e) {
+                warning ("Unable to sanitize name: %s", e.message);
             }
-            return cmd;
+
+            return result;
         }
 
         private string get_full_process_cmd (Pid pid)
@@ -220,11 +220,11 @@ namespace Usage
                     else
                         cmd_parameter = secure_arguments[0];
 
-                    return sanity_cmd(name);
+                    return sanitize_name(name);
                 }
             }
 
-            return sanity_cmd(cmd);
+            return sanitize_name(cmd);
         }
 
         private bool is_system_app(string cmdline)
