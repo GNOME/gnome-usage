@@ -50,6 +50,7 @@ vala_sources = [
 
 deps = [
   gio_dep,
+  gio_unix_dep,
   glib_dep,
   gobject_dep,
   gtk_dep,
@@ -58,6 +59,7 @@ deps = [
   libdazzle_dep,
   cc.find_library('m'),
   valac.find_library('config', dirs: vapi_dir),
+  valac.find_library('stopgap', dirs: vapi_dir),
   valac.find_library('posix')
 ]
 

@@ -36,6 +36,7 @@ namespace Usage
         private GameMode.PidList gamemode_pids;
 
         private HashTable<string, AppItem> app_table;
+        private HashTable<GLib.Pid, Process> process_table;
         private int process_mode = GTop.KERN_PROC_ALL;
         private static SystemMonitor system_monitor;
 
@@ -67,6 +68,7 @@ namespace Usage
             gamemode_pids = new GameMode.PidList();
 
             app_table = new HashTable<string, AppItem>(str_hash, str_equal);
+            process_table = new HashTable<GLib.Pid, Process>(direct_hash, direct_equal);
             var settings = Settings.get_default();
 
             init();
@@ -86,6 +88,10 @@ namespace Usage
             if(group_system_apps) {
                 var system = new AppItem.system();
                 app_table.insert("system" , system);
+            }
+
+            foreach (var p in process_table.get_values ()) {
+                process_added (p);
             }
 
             update_data();
@@ -108,50 +114,127 @@ namespace Usage
             swap_usage = memory_monitor.get_swap_usage();
             swap_total = memory_monitor.get_swap_total();
 
-            GTop.Proclist proclist;
-            var pids = GTop.get_proclist (out proclist, process_mode);
-
-            foreach(var app in app_table.get_values())
+            foreach (var app in app_table.get_values ())
                 app.mark_as_not_updated();
 
-            for(uint i = 0; i < proclist.number; i++)
-            {
-                string cmd = get_full_process_cmd(pids[i]);
-                string app_id = cmd;
+            /* Try to find the difference between the old list of pids,
+             * and the new ones, i.e. the one that got added and removed */
+            GTop.Proclist proclist;
+            var pids = GTop.get_proclist (out proclist, process_mode);
+            intptr[] old = (intptr[]) process_table.get_keys_as_array ();
 
-                if(group_system_apps && is_system_app(cmd))
-                    app_id = "system";
+            size_t new_len = (size_t) proclist.number;
+            size_t old_len = process_table.length;
 
-                if (!(app_id in app_table))
-                {
-                    var process = new Process(pids[i], cmd);
-                    update_process(ref process);
-                    var app = new AppItem(process);
-                    app_table.insert (app_id, (owned) app);
-                }
-                else
-                {
-                    AppItem app = app_table[app_id];
+            sort_pids (pids, sizeof (GLib.Pid), new_len);
+            sort_pids (old, sizeof (intptr), old_len);
 
-                    if (!app.contains_process(pids[i]))
-                    {
-                        var process = new Process(pids[i], cmd);
-                        update_process(ref process);
-                        app.insert_process(process);
+            debug ("new_len: %lu, old_len: %lu\n", new_len, old_len);
+            uint removed = 0;
+            uint added = 0;
+            for (size_t i = 0, j = 0; i < new_len || j < old_len; ) {
+                uint32 n = i < new_len ? pids[i] : uint32.MAX;
+                uint32 o = j < old_len ? (uint32) old[j] : uint32.MAX;
+
+                /* pids: [ 1, 3, 4 ]
+                 * old:  [ 1, 2, 4, 5 ] → 2,5 removed, 3 added
+                 * i [for pids]: 0  |   1   |   1   |   2  |   3
+                 * j [for old]:  0  |   1   |   2   |   2  |   3
+                 * n = pids[i]:  1  |   3   |   3   |   4  |  MAX [oob]
+                 * o = old[j]:   1  |   2   |   4   |   4  |   5
+                 *               =  | n > o | n < o |   =  | n > o
+                 * increment:   i,j |   j   |   i   |  i,j |   j
+                 * Process op:  chk |  del  |  add  |  chk |  del
+                 */
+
+                if (n > o) {
+                    /* delete to process not in the new array */
+                    Process p = process_table[(GLib.Pid) o];
+                    debug ("process removed: %u\n", o);
+
+                    process_removed (p);
+                    removed++;
+
+                    j++; /* let o := old[j] catch up */
+                } else if (n < o) {
+                    /* new process */
+                    var p = new Process ((GLib.Pid) n);
+                    update_process (ref p); // state, time
+
+                    debug ("process added: %u\n", n);
+
+                    process_added (p);
+                    added++;
+
+                    i++; /* let n := pids[i] catch up */
+                } else {
+                    /* equal pids, might have rolled over though
+                     * better check, match start time */
+                    Process p = process_table[(GLib.Pid) n];
+
+                    GTop.ProcTime ptime;
+                    GTop.get_proc_time (out ptime, p.pid);
+
+                    /* no match: -> old removed, new added */
+                    if (ptime.start_time != p.start_time) {
+                        debug ("start time mismtach: %u\n", n);
+                        process_removed (p);
+
+                        p = new Process ((GLib.Pid) n);
+                        process_added (p);
                     }
-                    else
-                    {
-                        var process = app.get_process_by_pid(pids[i]);
-                        update_process(ref process);
-                        app.replace_process(process);
-                    }
+
+                    update_process (ref p);
+
+                    i++; j++; /* both indices move */
                 }
             }
 
-            foreach(var app in app_table.get_values())
-                app.remove_processes();
+            foreach (var app in app_table.get_values ())
+                app.remove_processes ();
+
+            debug ("removed: %u, added: %u\n", removed, added);
+            debug ("app table size: %u\n", app_table.length);
+            debug ("process table size: %u\n", process_table.length);
 
             return true;
+        }
+
+        private void process_added (Process p) {
+            string app_id = get_app_id_for_process (p);
+
+            AppItem? item = app_table[app_id];
+
+            if (item == null) {
+                item = new AppItem (p);
+                app_table.insert (app_id, item);
+            } else if (! item.contains_process (p.pid)) {
+                item.insert_process (p);
+            }
+
+            process_table.insert (p.pid, p);
+        }
+
+        private void process_removed (Process p) {
+            string app_id = get_app_id_for_process (p);
+
+            AppItem? item = app_table[app_id];
+
+            if (item != null)
+                item.remove_process (p);
+
+            process_table.remove (p.pid);
+        }
+
+        private string get_app_id_for_process (Process p) {
+            AppInfo? info = AppItem.app_info_for_process (p);
+
+            if (info != null)
+                return info.get_id ();
+            else if (group_system_apps)
+                return "system";
+
+            return p.cmdline;
         }
 
         private void update_process(ref Process process)
@@ -162,75 +245,11 @@ namespace Usage
             process.gamemode = gamemode_pids.contains((int) process.pid);
         }
 
-        private string? sanity_cmd(string commandline)
+        public static void sort_pids (void *pids, size_t elm, size_t length)
         {
-            string? cmd = null;
-
-            if(commandline != null)
-            {
-                try {
-                    var rgx = new Regex("[^a-zA-Z0-9._-]");
-                    cmd = Path.get_basename(commandline.split(" ")[0]);
-                    cmd = rgx.replace(commandline, commandline.length, 0, "");
-                } catch (RegexError e) {
-                    warning ("Unable to obtain process command: %s", e.message);
-                }
-            }
-            return cmd;
-        }
-
-        private string get_full_process_cmd (Pid pid)
-        {
-            GTop.ProcArgs proc_args;
-            GTop.ProcState proc_state;
-            string[] args = GTop.get_proc_argv (out proc_args, pid, 0);
-            GTop.get_proc_state (out proc_state, pid);
-            string cmd = (string) proc_state.cmd;
-            string cmd_parameter = "";
-
-            var secure_arguments = new string[2];
-
-            for(int i = 0; i < 2; i++)
-            {
-                if(args[i] != null)
-                {
-                    secure_arguments[i] = args[i];
-                }
-                else
-                {
-                    secure_arguments[i] = "";
-                    if (i == 0)
-                        secure_arguments[1] = "";
-                    break;
-                }
-            }
-
-            for (int i = 0; i < secure_arguments.length; i++)
-            {
-                var name = Path.get_basename(secure_arguments[i]);
-
-                if (name.has_prefix(cmd))
-                {
-                    for (int j = 0; j < name.length; j++)
-                    {
-                        if(name[j] == ' ')
-                            name = name.substring(0, j);
-                    }
-                    if(i == 0)
-                        cmd_parameter = secure_arguments[1];
-                    else
-                        cmd_parameter = secure_arguments[0];
-
-                    return sanity_cmd(name);
-                }
-            }
-
-            return sanity_cmd(cmd);
-        }
-
-        private bool is_system_app(string cmdline)
-        {
-            return !AppItem.have_app_info(cmdline);
+            Posix.qsort (pids, length, elm, (a, b) => {
+                    return (*(GLib.Pid *) a) - (* (GLib.Pid *) b);
+                });
         }
     }
 }

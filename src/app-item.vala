@@ -12,27 +12,53 @@ namespace Usage
         public bool gamemode {get; private set; }
 
         private static HashTable<string, AppInfo>? apps_info;
+        private static HashTable<string, AppInfo>? appid_map;
         private AppInfo? app_info = null;
 
         public static void init() {
-            apps_info = new HashTable<string, AppInfo>(str_hash, str_equal);
-            var _apps_info = AppInfo.get_all();
+            apps_info = new HashTable<string, AppInfo> (str_hash, str_equal);
+            appid_map = new HashTable<string, AppInfo> (str_hash, str_equal);
+
+            var _apps_info = AppInfo.get_all ();
 
             foreach (AppInfo info in _apps_info) {
-                string cmd = info.get_commandline();
-                sanity_cmd(ref cmd);
+                GLib.DesktopAppInfo? dai = info as GLib.DesktopAppInfo;
 
-                if(cmd != null)
-                    apps_info.insert(cmd, info);
+                if (dai != null) {
+                    string id = dai.get_string ("X-Flatpak");
+                    if (id != null)
+                        appid_map.insert (id, info);
+                }
+
+                string cmd = info.get_commandline ();
+
+                if (cmd == null)
+                    continue;
+
+                sanitize_cmd (ref cmd);
+                apps_info.insert (cmd, info);
             }
         }
 
-        public static bool have_app_info(string cmdline) {
-            return apps_info.get(cmdline) != null ? true : false;
+        public static AppInfo? app_info_for_process (Process p) {
+            AppInfo? info = null;
+
+            if (p.cmdline != null)
+                info = apps_info[p.cmdline];
+
+            if (info == null && p.app_id != null)
+                info = appid_map[p.app_id];
+
+            return info;
+        }
+
+        public static bool have_app_info (Process p) {
+            AppInfo? info = app_info_for_process (p);
+            return info != null;
         }
 
         public AppItem(Process process) {
-            app_info = apps_info.get(process.cmdline);
+            app_info = app_info_for_process (process);
             representative_cmdline = process.cmdline;
             representative_uid = process.uid;
             display_name = find_display_name();
@@ -104,6 +130,10 @@ namespace Usage
             cpu_load = double.min(100, cpu_load);
         }
 
+        public void remove_process (Process process) {
+            processes.remove (process.pid);
+        }
+
         public void replace_process(Process process) {
             processes.replace(process.pid, process);
         }
@@ -129,26 +159,24 @@ namespace Usage
             }
         }
 
-        private static void sanity_cmd(ref string? commandline) {
-            if(commandline != null) {
-                //flatpak
-                if(commandline.contains("flatpak run")) {
-                    var index = commandline.index_of("--command=") + 10;
-                    commandline = commandline.substring(index);
-                }
+        private static void sanitize_cmd(ref string? commandline) {
+            if (commandline == null)
+                return;
 
-                try {
-                    var rgx = new Regex("[^a-zA-Z0-9._-]");
-
-                    commandline = Path.get_basename(commandline.split(" ")[0]);
-                    commandline = rgx.replace(commandline, commandline.length, 0, "");
-                } catch (RegexError e) {
-                    warning ("Unable to obtain process command: %s", e.message);
-                }
-
-                if(commandline.contains("google-chrome-stable")) //Workaround for google-chrome
-                    commandline = "chrome";
+            // flatpak: parse the command line of the containerized program
+            if (commandline.contains("flatpak run")) {
+                var index = commandline.index_of ("--command=") + 10;
+                commandline = commandline.substring (index);
             }
+
+            // TODO: unify this with the logic in get_full_process_cmd
+            commandline = Process.first_component (commandline);
+            commandline = Path.get_basename (commandline);
+            commandline = Process.sanitize_name (commandline);
+
+            // Workaround for google-chrome
+            if (commandline.contains ("google-chrome-stable"))
+                commandline = "chrome";
         }
     }
 }
