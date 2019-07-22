@@ -50,6 +50,7 @@ vala_sources = [
 
 deps = [
   gio_dep,
+  gio_unix_dep,
   glib_dep,
   gobject_dep,
   gtk_dep,
