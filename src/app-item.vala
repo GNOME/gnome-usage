@@ -21,7 +21,13 @@ namespace Usage
             var _apps_info = AppInfo.get_all();
 
             foreach (AppInfo info in _apps_info) {
-                appid_map.insert (info.get_id(), info);
+                GLib.DesktopAppInfo? dai = info as GLib.DesktopAppInfo;
+
+                if (dai != null) {
+                    string id = dai.get_string ("X-Flatpak");
+                    if (id != null)
+                        appid_map.insert (id, info);
+                }
 
                 string cmd = info.get_commandline();
                 if (cmd == null)

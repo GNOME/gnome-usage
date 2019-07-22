@@ -132,12 +132,8 @@ namespace Usage
 
             string? name = null;
             try {
-                if (kf.has_key ("Application", "name")) {
+                if (kf.has_key ("Application", "name"))
                     name = kf.get_string ("Application", "name");
-                    // TODO: find a better way to match desktop ids
-                    //  and flatpak ids
-                    name += ".desktop";
-                }
             } catch (Error e) {
                 warning (@"Failed to parse faltpak info for: $pid");
             }
