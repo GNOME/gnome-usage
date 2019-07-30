@@ -81,6 +81,63 @@ namespace Usage
             GTop.get_proc_uid(out procUid, pid);
             return procUid.uid;
         }
+
+        /* static pid related methods */
+        public static string get_full_process_cmd (Pid pid) {
+            GTop.ProcArgs proc_args;
+            GTop.ProcState proc_state;
+            string[] args = GTop.get_proc_argv (out proc_args, pid, 0);
+            GTop.get_proc_state (out proc_state, pid);
+            string cmd = (string) proc_state.cmd;
+
+            /* cmd is most likely a truncated version, therefore
+             * we check the first two arguments of the full argv
+             * vector if they match cmd and if so, use that */
+            for (int i = 0; i < 2; i++) {
+                if (args[i] == null)
+                    continue;
+
+                /* TODO: this will fail if args[i] is a commandline,
+                 * i.e. composed of multiple segments and one of the
+                 * later ones is a unix path */
+                var name = Path.get_basename (args[i]);
+                if (!name.has_prefix (cmd))
+                    continue;
+
+                name = Process.first_component (name);
+                return Process.sanitize_name (name);
+            }
+
+            return Process.sanitize_name (cmd);
+        }
+
+        /* static utility methods */
+        public static string? sanitize_name (string name) {
+            string? result = null;
+
+            if (name == null)
+                return null;
+
+            try {
+                var rgx = new Regex ("[^a-zA-Z0-9._-]");
+                result = rgx.replace (name, name.length, 0, "");
+            } catch (RegexError e) {
+                warning ("Unable to sanitize name: %s", e.message);
+            }
+
+            return result;
+        }
+
+        public static string first_component (string str) {
+
+            for (int i = 0; i < str.length; i++) {
+                if (str[i] == ' ') {
+                    return str.substring(0, i);
+                }
+            }
+
+            return str;
+        }
     }
 
     public enum ProcessStatus

@@ -116,7 +116,7 @@ namespace Usage
 
             for(uint i = 0; i < proclist.number; i++)
             {
-                string cmd = get_full_process_cmd(pids[i]);
+                string cmd = Process.get_full_process_cmd(pids[i]);
                 string app_id = cmd;
 
                 if(group_system_apps && is_system_app(cmd))
@@ -160,72 +160,6 @@ namespace Usage
             memory_monitor.update_process(ref process);
             process.update_status();
             process.gamemode = gamemode_pids.contains((int) process.pid);
-        }
-
-        private string? sanity_cmd(string commandline)
-        {
-            string? cmd = null;
-
-            if(commandline != null)
-            {
-                try {
-                    var rgx = new Regex("[^a-zA-Z0-9._-]");
-                    cmd = Path.get_basename(commandline.split(" ")[0]);
-                    cmd = rgx.replace(commandline, commandline.length, 0, "");
-                } catch (RegexError e) {
-                    warning ("Unable to obtain process command: %s", e.message);
-                }
-            }
-            return cmd;
-        }
-
-        private string get_full_process_cmd (Pid pid)
-        {
-            GTop.ProcArgs proc_args;
-            GTop.ProcState proc_state;
-            string[] args = GTop.get_proc_argv (out proc_args, pid, 0);
-            GTop.get_proc_state (out proc_state, pid);
-            string cmd = (string) proc_state.cmd;
-            string cmd_parameter = "";
-
-            var secure_arguments = new string[2];
-
-            for(int i = 0; i < 2; i++)
-            {
-                if(args[i] != null)
-                {
-                    secure_arguments[i] = args[i];
-                }
-                else
-                {
-                    secure_arguments[i] = "";
-                    if (i == 0)
-                        secure_arguments[1] = "";
-                    break;
-                }
-            }
-
-            for (int i = 0; i < secure_arguments.length; i++)
-            {
-                var name = Path.get_basename(secure_arguments[i]);
-
-                if (name.has_prefix(cmd))
-                {
-                    for (int j = 0; j < name.length; j++)
-                    {
-                        if(name[j] == ' ')
-                            name = name.substring(0, j);
-                    }
-                    if(i == 0)
-                        cmd_parameter = secure_arguments[1];
-                    else
-                        cmd_parameter = secure_arguments[0];
-
-                    return sanity_cmd(name);
-                }
-            }
-
-            return sanity_cmd(cmd);
         }
 
         private bool is_system_app(string cmdline)
