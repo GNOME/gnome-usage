@@ -1,3 +1,35 @@
+3.33.2 - Jul 30, 2019
+=====================
+
+  - Add support for GameMode
+  - Support for correctly identfying Flatpaks (specifically Steam)
+  - Add an EditorConfig file
+  - Introduce the new Storage panel
+  - Added/updated/fixed translations:
+    - Russian
+    - Croatian
+    - Hungarian
+    - Brazilian Portuguese
+    - Indonesian
+    - Spanish
+    - Catalan
+    - Polish
+
+All contributors to this release:
+
+Balázs Meskó <meskobalazs@fedoraproject.org>
+Daniel Mustieles <daniel.mustieles@gmail.com>
+Christian Kellner <christian@kellner.me>
+Felipe Borges <felipeborges@gnome.org>
+Goran Vidović <trebelnik2@gmail.com>
+Igor Polyakov <igorpolyakov@protonmail.com>
+Jordi Mas <jmas@softcatala.org>
+Kukuh Syafaat <kukuhsyafaat@gnome.org>
+Petr Štětka <pstetka@redhat.com>
+Piotr Drąg <piotrdrag@gmail.com>
+Rafael Fontenelle <rafaelff@gnome.org>
+Veerasamy Sevagen <sevagenv@gmail.com>
+
 3.32.0 - Mar 20, 2019
 =====================
 
