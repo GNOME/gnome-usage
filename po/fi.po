@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-01-03 18:03+0000\n"
-"PO-Revision-Date: 2019-01-16 20:08+0200\n"
+"POT-Creation-Date: 2019-05-02 11:40+0000\n"
+"PO-Revision-Date: 2019-08-18 17:41+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -46,11 +46,6 @@ msgstr ""
 "Mukava tapa seurata järjestelmän resurssien, esimerkiksi muistin ja "
 "levytilan, käyttöä"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
 msgid ""
@@ -70,21 +65,17 @@ msgstr ""
 "Tätä luettelo käytetään lähteenä sille, mitä prosesseja käyttäjä ei voi "
 "pysäyttää."
 
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Peru"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "Keskusmuisti"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Käytetty"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Käytettävissä"
 
@@ -117,37 +108,21 @@ msgstr "Pakotetaanko sovelluksen %s lopetus?"
 msgid "Unsaved work might be lost."
 msgstr "Tallentamattomat työt saattavat kadota."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Peru"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Pakota lopetus"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Siirrä"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Poista…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Poista"
-
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Siirrä roskakoriin"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Tyhjä kansio"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Palauta"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Poista roskakorista"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Ei sisältöä"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Kotiosio"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
@@ -177,127 +152,121 @@ msgstr "Verkkosivustot"
 msgid "Processor"
 msgstr "Suoritin"
 
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Muisti"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u valittu"
-msgstr[1] "%u valittu"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Napsauta kohteita valitaksesi ne"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Valitse kaikki"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Älä valitse mitään"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Suorituskyky"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Valitse kohdekansio"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Valitse"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Haluatko varmasti poistaa kohteen “%s” pysyvästi?"
+msgid "%s selected"
+msgstr "%s valittu"
 
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, fuzzy, c-format
-#| msgid "Are you sure you want to permanently delete %s?"
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] "Haluatko varmasti poistaa kohteen %s pysyvästi?"
-msgstr[1] "Haluatko varmasti poistaa kohteen %s pysyvästi?"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Haluatko varmasti poistaa valitut kohteet?"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
+msgstr "Jos poistat nämä kohteet, ne katoavat pysyvästi.."
+
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
 msgstr ""
+"Käyttöjärjestelmän tiedostot ovat järjestelmän oleellisia osia, eikä niitä "
+"voi poistaa."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Poistetaanko kaikki kohteet roskakorista?"
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Tallennustila"
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Kaikki roskakorissa olevat kohteet poistetaan pysyvästi."
-
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr ""
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr ""
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Tallennustila 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Tallennustila 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Kapasiteetti"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Koti"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Roskakori"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Käyttöjärjestelmä"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Tyhjä"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Läpikäydään kansioita"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Tyhjennä roskakori"
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Nimeä uudelleen"
+#~ msgid "Move to"
+#~ msgstr "Siirrä"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Haluatko varmasti poistaa kohteen %s pysyvästi?"
+#~ msgid "Move to Trash"
+#~ msgstr "Siirrä roskakoriin"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Jos poistat kohteen, se menetetään pysyvästi."
+#~ msgid "Empty folder"
+#~ msgstr "Tyhjä kansio"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Tallennustila"
+#~ msgid "Restore"
+#~ msgstr "Palauta"
+
+#~ msgid "Delete from Trash"
+#~ msgstr "Poista roskakorista"
+
+#~ msgid "No content here"
+#~ msgstr "Ei sisältöä"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Napsauta kohteita valitaksesi ne"
+
+#~ msgid "Select all"
+#~ msgstr "Valitse kaikki"
+
+#~ msgid "Select None"
+#~ msgstr "Älä valitse mitään"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Valitse kohdekansio"
+
+#~ msgid "Select"
+#~ msgstr "Valitse"
+
+#~ msgid "Are you sure you want to permanently delete “%s”?"
+#~ msgstr "Haluatko varmasti poistaa kohteen “%s” pysyvästi?"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Poistetaanko kaikki kohteet roskakorista?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Kaikki roskakorissa olevat kohteet poistetaan pysyvästi."
+
+#~ msgid "Storage 1"
+#~ msgstr "Tallennustila 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Tallennustila 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Kapasiteetti"
+
+#~ msgid "Home"
+#~ msgstr "Koti"
+
+#~ msgid "Trash"
+#~ msgstr "Roskakori"
+
+#~ msgid "Empty"
+#~ msgstr "Tyhjä"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Tyhjennä roskakori"
+
+#~ msgid "Rename"
+#~ msgstr "Nimeä uudelleen"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Haluatko varmasti poistaa kohteen %s pysyvästi?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Jos poistat kohteen, se menetetään pysyvästi."
 
 #~ msgid "About"
 #~ msgstr "Tietoja"
