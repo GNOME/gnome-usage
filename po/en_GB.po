@@ -1,22 +1,23 @@
 # British English translation for gnome-usage.
 # Copyright (C) 2018 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Bruce Cowan <bruce@bcowan.eu>, 2018.
+# Zander Brown <zbrown@gnome.org>, 2019.
+# Bruce Cowan <bruce@bcowan.me.uk>, 2018-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-28\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-05-03 08:05+0000\n"
-"PO-Revision-Date: 2018-05-15 10:22+0100\n"
-"Language-Team: British English <en_GB@li.org>\n"
+"POT-Creation-Date: 2019-08-18 14:42+0000\n"
+"PO-Revision-Date: 2019-08-27 18:10+0100\n"
+"Last-Translator: Bruce Cowan <bruce@bcowan.me.uk>\n"
+"Language-Team: English - United Kingdom <en_GB@li.org>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: Bruce Cowan <bruce@bcowan.me.uk>\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Gtranslator 3.32.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -34,7 +35,7 @@ msgstr ""
 "A simple GNOME 3 application to monitor and analyse system resources such as "
 "processing, memory, and storage."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Usage"
 
@@ -45,11 +46,6 @@ msgid ""
 msgstr ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
@@ -68,21 +64,17 @@ msgstr "A list of processes which we don’t want killed"
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr "This list is used for filtering which processes the user can’t stop."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Cancel"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Used"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Available"
 
@@ -94,6 +86,18 @@ msgstr "No results found"
 msgid "Try a different search"
 msgstr "Try a different search"
 
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_About Usage"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Group system processes"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Show all processes"
+
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
 msgid "Force Quit %s?"
@@ -103,51 +107,31 @@ msgstr "Force Quit %s?"
 msgid "Unsaved work might be lost."
 msgstr "Unsaved work might be lost."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Cancel"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Force Quit"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Move to"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Delete…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Delete"
-
-#: data/ui/storage-actionbar.ui:33
-msgid "Move to Trash"
-msgstr "Move to Wastebasket"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Empty folder"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Restore"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Delete from Wastebasket"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "No content here"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Home Partition"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
 msgstr "Swap"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "About"
+#: src/app-item.vala:71
+msgid "System"
+msgstr "System"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Quit"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -155,133 +139,147 @@ msgstr ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
-msgstr "Bruce Cowan <bruce@bcowan.me.uk>"
+msgstr ""
+"Bruce Cowan <bruce@bcowan.me.uk>\n"
+"Zander Brown <zbrown@gnome.org>"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Websites"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Processor"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Others"
-
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Memory"
 
-#: src/header-bar.vala:143
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u selected"
-msgstr[1] "%u selected"
-
-#: src/header-bar.vala:145
-msgid "Click on items to select them"
-msgstr "Click on items to select them"
-
-#: src/header-bar.vala:209
-msgid "Select all"
-msgstr "Select all"
-
-#: src/header-bar.vala:213
-msgid "Select None"
-msgstr "Select None"
-
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Performance"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Select destination folder"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Select"
-
-#: src/storage-actionbar.vala:143
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Are you sure you want to permanently delete this items %s?"
+msgid "%s selected"
+msgstr "%s selected"
 
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Are you sure you want to permanently delete selected items?"
+
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "If you delete these items, they will be permanently lost."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Empty all items from Wastebasket?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "All items in the Wastebasket will be permanently deleted."
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Storage"
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Empty all items from %s?"
-
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "All items in the %s will be moved to the Wastebasket."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Storage 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Storage 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Capacity"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Home"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Wastebasket"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Operating System"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Empty"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Scanning directories"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Empty Wastebasket"
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Rename"
+#~ msgid "Move to"
+#~ msgstr "Move to"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Move to wastebasket"
+#~ msgid "Move to Trash"
+#~ msgstr "Move to Wastebasket"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Are you sure you want to permanently delete %s?"
+#~ msgid "Empty folder"
+#~ msgstr "Empty folder"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "If you delete an item, it will be permanently lost."
+#~ msgid "Restore"
+#~ msgstr "Restore"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Storage"
+#~ msgid "Delete from Trash"
+#~ msgstr "Delete from Wastebasket"
+
+#~ msgid "No content here"
+#~ msgstr "No content here"
+
+#~ msgid "About"
+#~ msgstr "About"
+
+#~ msgid "Quit"
+#~ msgstr "Quit"
+
+#~ msgid "Others"
+#~ msgstr "Others"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Click on items to select them"
+
+#~ msgid "Select all"
+#~ msgstr "Select all"
+
+#~ msgid "Select None"
+#~ msgstr "Select None"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Select destination folder"
+
+#~ msgid "Select"
+#~ msgstr "Select"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Empty all items from Wastebasket?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "All items in the Wastebasket will be permanently deleted."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Empty all items from %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "All items in the %s will be moved to the Wastebasket."
+
+#~ msgid "Storage 1"
+#~ msgstr "Storage 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Storage 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Capacity"
+
+#~ msgid "Home"
+#~ msgstr "Home"
+
+#~ msgid "Trash"
+#~ msgstr "Wastebasket"
+
+#~ msgid "Empty"
+#~ msgstr "Empty"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Empty Wastebasket"
+
+#~ msgid "Rename"
+#~ msgstr "Rename"
+
+#~ msgid "Move to trash"
+#~ msgstr "Move to wastebasket"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Are you sure you want to permanently delete %s?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "If you delete an item, it will be permanently lost."
