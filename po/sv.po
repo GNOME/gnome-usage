@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-01-03 18:03+0000\n"
-"PO-Revision-Date: 2019-01-07 22:43+0100\n"
+"POT-Creation-Date: 2019-05-02 11:40+0000\n"
+"PO-Revision-Date: 2019-08-29 12:49+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -47,11 +47,6 @@ msgstr ""
 "Ett trevligt sätt att se information om användning av systemresurser, så som "
 "minne och diskutrymme"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
 msgid ""
@@ -70,21 +65,17 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Listan används för att filtrera vilka processer användaren inte kan stoppa."
 
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Avbryt"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Använt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Tillgängligt"
 
@@ -117,37 +108,21 @@ msgstr "Tvinga %s att avsluta?"
 msgid "Unsaved work might be lost."
 msgstr "Osparat arbete kan gå förlorat."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Avbryt"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Tvinga avslut"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Flytta till"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Ta bort…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Ta bort"
-
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Flytta till papperskorgen"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Töm mapp"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Återställ"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Ta bort från papperskorgen"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Inget innehåll här"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Hempartition"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
@@ -177,128 +152,127 @@ msgstr "Webbplatser"
 msgid "Processor"
 msgstr "Processor"
 
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Minne"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u markerat"
-msgstr[1] "%u markerade"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Klicka på objekt för att markera dem"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Välj alla"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Välj inget"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Prestanda"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Välj målmapp"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Välj"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Är du säker på att du permanent vill ta bort ”%s”?"
+msgid "%s selected"
+msgstr "%s markerat"
 
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] ""
-"Är du säker på att du permanent vill ta bort det markerade objektet?"
-msgstr[1] "Är du säker på att du permanent vill ta bort %d markerade objekt?"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Är du säker på att du permanent vill ta bort markerade objekt?"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Om du tar bort dessa objekt är de borta för alltid."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Töm alla objekt i papperskorgen?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Operativsystemfiler är en nödvändig del av ditt system och kan inte tas bort."
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Alla objekt i papperskorgen kommer att tas bort permanent."
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Lagring"
 
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Töm alla objekt från %s?"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Alla objekt i %s kommer att flyttas till papperskorgen."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Lagring 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Lagring 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Kapacitet"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Hem"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Flytta till Papperskorg"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Operativsystem"
 
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Söker igenom kataloger"
+
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
+
+#~ msgid "Move to"
+#~ msgstr "Flytta till"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Flytta till papperskorgen"
+
+#~ msgid "Empty folder"
+#~ msgstr "Töm mapp"
+
+#~ msgid "Restore"
+#~ msgstr "Återställ"
+
+#~ msgid "Delete from Trash"
+#~ msgstr "Ta bort från papperskorgen"
+
+#~ msgid "No content here"
+#~ msgstr "Inget innehåll här"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Klicka på objekt för att markera dem"
+
+#~ msgid "Select all"
+#~ msgstr "Välj alla"
+
+#~ msgid "Select None"
+#~ msgstr "Välj inget"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Välj målmapp"
+
+#~ msgid "Select"
+#~ msgstr "Välj"
+
+#~ msgid "Are you sure you want to permanently delete “%s”?"
+#~ msgstr "Är du säker på att du permanent vill ta bort ”%s”?"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Töm alla objekt i papperskorgen?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Alla objekt i papperskorgen kommer att tas bort permanent."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Töm alla objekt från %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "Alla objekt i %s kommer att flyttas till papperskorgen."
+
+#~ msgid "Storage 1"
+#~ msgstr "Lagring 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Lagring 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Kapacitet"
+
+#~ msgid "Home"
+#~ msgstr "Hem"
+
+#~ msgid "Trash"
+#~ msgstr "Flytta till Papperskorg"
+
 # Verb
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Töm"
+#~ msgid "Empty"
+#~ msgstr "Töm"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Töm papperskorg"
+#~ msgid "Empty Trash"
+#~ msgstr "Töm papperskorg"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Byt namn"
+#~ msgid "Rename"
+#~ msgstr "Byt namn"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Är du säker på att du permanent vill ta bort %s?"
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Är du säker på att du permanent vill ta bort %s?"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Om du tar bort ett objekt är det borta för alltid."
-
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Lagring"
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Om du tar bort ett objekt är det borta för alltid."
 
 #~ msgid "About"
 #~ msgstr "Om"
