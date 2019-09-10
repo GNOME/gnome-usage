@@ -57,6 +57,7 @@ deps = [
   libgtop_dep,
   tracker_dep,
   libdazzle_dep,
+  libhandy_dep,
   cc.find_library('m'),
   valac.find_library('config', dirs: vapi_dir),
   valac.find_library('stopgap', dirs: vapi_dir),
@@ -74,6 +75,6 @@ executable(
   vala_sources + resources,
   dependencies: deps,
   c_args: c_args,
-  vala_args: '--vapidir=' + vapi_dir,
+  vala_args: vapi_dirs,
   install: true
 )
