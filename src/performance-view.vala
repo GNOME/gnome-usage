@@ -46,6 +46,7 @@ namespace Usage
         {
             name = "PERFORMANCE";
             title = _("Performance");
+            icon_name = "speedometer-symbolic";
 
             sub_views = new View[]
             {
