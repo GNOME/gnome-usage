@@ -23,6 +23,7 @@ namespace Usage
     public abstract class View : Gtk.Bin
     {
         public string title;
+        public string icon_name;
 
         protected View ()
         {
