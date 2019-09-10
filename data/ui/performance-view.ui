@@ -7,13 +7,16 @@
 
     <child>
 
-      <object class="GtkPaned" id="paned">
+      <object class="HdyLeaflet" id="leaflet">
         <property name="visible">True</property>
         <property name="orientation">horizontal</property>
+        <property name="mode-transition-type">slide</property>
+        <property name="visible-child">content_box</property>
 
         <child>
           <object class="GtkBox" id="switcher_box">
-            <property name="visible">True</property>
+            <property name="hexpand">False</property>
+            <property name="hexpand-set">True</property>
             <property name="width-request">200</property>
             <style>
               <class name="sidebar"/>
@@ -22,7 +25,7 @@
         </child>
 
         <child>
-          <object class="GtkBox">
+          <object class="GtkBox" id="content_box">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
 
