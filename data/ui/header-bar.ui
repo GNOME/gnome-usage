@@ -2,9 +2,10 @@
 <interface>
   <!-- interface-requires gtk+ 3.12 -->
 
-  <template class="UsageHeaderBar" parent="GtkHeaderBar">
+  <template class="UsageHeaderBar" parent="HdyHeaderBar">
     <property name="visible">True</property>
     <property name="show-close-button">True</property>
+    <property name="centering-policy">strict</property>
     <child type="title">
       <object class="GtkStackSwitcher" id="stack_switcher">
         <property name="visible">True</property>

@@ -29,7 +29,7 @@ namespace Usage
     }
 
     [GtkTemplate (ui = "/org/gnome/Usage/ui/header-bar.ui")]
-    public class HeaderBar : Gtk.HeaderBar
+    public class HeaderBar : Hdy.HeaderBar
     {
         [GtkChild]
         private Gtk.StackSwitcher stack_switcher;
