@@ -62,8 +62,10 @@ namespace Usage
                 new StorageView(),
             };
 
-            foreach(var view in views)
+            foreach(var view in views) {
                 stack.add_titled(view, view.name, view.title);
+                stack.child_set (view, "icon-name", view.icon_name, null);
+            }
 
             stack.notify.connect(() => {
                 if(stack.visible_child_name == views[Views.PERFORMANCE].name)
