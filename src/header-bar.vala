@@ -32,7 +32,13 @@ namespace Usage
     public class HeaderBar : Hdy.HeaderBar
     {
         [GtkChild]
-        private Gtk.StackSwitcher stack_switcher;
+        private Hdy.Squeezer squeezer;
+
+        [GtkChild]
+        private Hdy.ViewSwitcher view_switcher;
+
+        [GtkChild]
+        private Gtk.Label title_label;
 
         [GtkChild]
         private Gtk.Revealer performance_search_revealer;
@@ -47,15 +53,21 @@ namespace Usage
 	    private HeaderBarMode mode;
 	    private Usage.PrimaryMenu menu;
 
+	    public bool view_switcher_visible { get; private set; }
+
 	    public HeaderBar(Gtk.Stack stack)
 	    {
 	        mode = HeaderBarMode.PERFORMANCE;
 	        menu = new Usage.PrimaryMenu();
-            stack_switcher.set_stack(stack);
+            view_switcher.set_stack(stack);
             this.primary_menu_button.set_popover(menu);
 
             set_mode(HeaderBarMode.PERFORMANCE);
 	    }
+
+        construct {
+            update_view_switcher_visible ();
+        }
 
 	    public void set_mode(HeaderBarMode mode)
 	    {
@@ -71,16 +83,25 @@ namespace Usage
             switch(mode)
             {
                 case HeaderBarMode.PERFORMANCE:
-                    show_stack_switcher();
+                    show_view_switcher();
                     performance_search_revealer.reveal_child = true;
                     break;
                 case HeaderBarMode.STORAGE:
-                    show_stack_switcher();
+                    show_view_switcher();
                     break;
             }
             menu.mode = mode;
             this.mode = mode;
 	    }
+
+        private void update_view_switcher_visible () {
+            view_switcher_visible = squeezer.visible_child == view_switcher;
+        }
+
+        [GtkCallback]
+        private void on_squeezer_visible_child_changed () {
+            update_view_switcher_visible ();
+        }
 
         [GtkCallback]
         private void on_performance_search_button_toggled () {
@@ -95,18 +116,19 @@ namespace Usage
 
 	    public void show_title()
 	    {
-	        set_custom_title(null);
+            squeezer.set_child_enabled(view_switcher, false);
             set_title(title_text);
 	    }
 
 	    public void set_title_text(string title)
         {
             this.title_text = title;
+            title_label.label = title;
         }
 
-	    public void show_stack_switcher()
+	    public void show_view_switcher()
         {
-            set_custom_title(stack_switcher);
+            squeezer.set_child_enabled(view_switcher, true);
         }
 
         public void action_on_search()
