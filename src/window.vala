@@ -29,6 +29,7 @@ namespace Usage
     public class Window : Gtk.ApplicationWindow
     {
         private Usage.HeaderBar header_bar;
+        private Hdy.ViewSwitcherBar viewswitcher_bar;
         private View[] views;
 
 		public Window(Gtk.Application application)
@@ -48,8 +49,12 @@ namespace Usage
 
 			var stack = new Gtk.Stack();
             stack.visible = true;
+            stack.vexpand = true;
 			header_bar = new Usage.HeaderBar(stack);
 			set_titlebar(header_bar);
+            viewswitcher_bar = new Hdy.ViewSwitcherBar();
+            viewswitcher_bar.visible = true;
+            viewswitcher_bar.stack = stack;
 
             views = new View[]
             {
@@ -71,7 +76,11 @@ namespace Usage
                 }
             });
 
-            this.add(stack);
+            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            box.visible = true;
+            box.add(stack);
+            box.add(viewswitcher_bar);
+            this.add(box);
         }
 
         public Usage.HeaderBar get_header_bar()
