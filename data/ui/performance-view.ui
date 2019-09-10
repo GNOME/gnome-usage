@@ -10,7 +10,9 @@
       <object class="HdyLeaflet" id="leaflet">
         <property name="visible">True</property>
         <property name="orientation">horizontal</property>
-        <property name="mode-transition-type">slide</property>
+        <property name="can-swipe-back">True</property>
+        <property name="can-swipe-forward">True</property>
+        <property name="transition-type">under</property>
         <property name="visible-child">content_box</property>
 
         <child>
@@ -30,14 +32,22 @@
             <property name="orientation">vertical</property>
 
             <child>
-              <object class="GtkSearchBar" id="search_bar">
-                <property name="visible">True</property>
+              <object class="HdySearchBar" id="search_bar">
+                  <property name="visible">True</property>
 
                 <child>
-                  <object class="GtkSearchEntry" id="search_entry">
+                  <object class="HdyClamp">
                     <property name="visible">True</property>
-                    <property name="width-request">350</property>
-                    <signal name="search-changed" handler="on_search_entry_changed"/>
+                    <property name="hexpand">True</property>
+                    <property name="maximum-size">400</property>
+                    <property name="tightening-threshold">300</property>
+                    <child>
+                      <object class="GtkSearchEntry" id="search_entry">
+                        <property name="visible">True</property>
+                        <property name="hexpand">True</property>
+                        <signal name="search-changed" handler="on_search_entry_changed"/>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
