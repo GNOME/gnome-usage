@@ -55,7 +55,6 @@ namespace Usage
             speedometers.margin_top = 30;
 
             var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            memory_box.halign = Gtk.Align.CENTER;
             memory_box.pack_start(label, false, false, 0);
             memory_box.pack_start(speedometers, false, false, 0);
             memory_box.pack_start(spinner, true, true, 0);
