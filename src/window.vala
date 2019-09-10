@@ -55,6 +55,7 @@ namespace Usage
             viewswitcher_bar = new Hdy.ViewSwitcherBar();
             viewswitcher_bar.visible = true;
             viewswitcher_bar.stack = stack;
+            header_bar.bind_property ("view-switcher-visible", viewswitcher_bar, "reveal", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
 
             views = new View[]
             {
