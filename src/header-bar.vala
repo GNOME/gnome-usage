@@ -32,7 +32,7 @@ namespace Usage
     public class HeaderBar : Hdy.HeaderBar
     {
         [GtkChild]
-        private Gtk.StackSwitcher stack_switcher;
+        private Hdy.ViewSwitcherTitle view_switcher_title;
 
         [GtkChild]
         private Gtk.Revealer performance_search_revealer;
@@ -47,15 +47,21 @@ namespace Usage
 	    private HeaderBarMode mode;
 	    private Usage.PrimaryMenu menu;
 
+	    public bool title_visible { get; private set; }
+
 	    public HeaderBar(Gtk.Stack stack)
 	    {
 	        mode = HeaderBarMode.PERFORMANCE;
 	        menu = new Usage.PrimaryMenu();
-            stack_switcher.set_stack(stack);
+            view_switcher_title.set_stack(stack);
             this.primary_menu_button.set_popover(menu);
 
             set_mode(HeaderBarMode.PERFORMANCE);
 	    }
+
+        construct {
+            update_title_visible ();
+        }
 
 	    public void set_mode(HeaderBarMode mode)
 	    {
@@ -71,16 +77,23 @@ namespace Usage
             switch(mode)
             {
                 case HeaderBarMode.PERFORMANCE:
-                    show_stack_switcher();
                     performance_search_revealer.reveal_child = true;
                     break;
                 case HeaderBarMode.STORAGE:
-                    show_stack_switcher();
                     break;
             }
             menu.mode = mode;
             this.mode = mode;
 	    }
+
+        private void update_title_visible () {
+            title_visible = view_switcher_title.title_visible;
+        }
+
+        [GtkCallback]
+        private void on_title_visible_changed () {
+            update_title_visible ();
+        }
 
         [GtkCallback]
         private void on_performance_search_button_toggled () {
@@ -92,22 +105,6 @@ namespace Usage
 	    {
 	        return mode;
 	    }
-
-	    public void show_title()
-	    {
-	        set_custom_title(null);
-            set_title(title_text);
-	    }
-
-	    public void set_title_text(string title)
-        {
-            this.title_text = title;
-        }
-
-	    public void show_stack_switcher()
-        {
-            set_custom_title(stack_switcher);
-        }
 
         public void action_on_search()
         {

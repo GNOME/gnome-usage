@@ -7,8 +7,10 @@
     <property name="show-close-button">True</property>
     <property name="centering-policy">strict</property>
     <child type="title">
-      <object class="GtkStackSwitcher" id="stack_switcher">
+      <object class="HdyViewSwitcherTitle" id="view_switcher_title">
         <property name="visible">True</property>
+        <property name="title" translatable="yes">Usage</property>
+        <signal name="notify::title-visible" handler="on_title_visible_changed"/>
       </object>
     </child>
 
