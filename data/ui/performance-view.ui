@@ -28,6 +28,7 @@
           <object class="GtkBox" id="content_box">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
+            <property name="width-request">360</property>
 
             <child>
               <object class="HdySearchBar" id="search_bar">
