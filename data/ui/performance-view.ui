@@ -48,10 +48,20 @@
                 <property name="visible">True</property>
                 <property name="vexpand">True</property>
                 <child>
-                  <object class="GtkBox" id="performance_content">
+                  <object class="HdyColumn">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">30</property>
+                    <property name="margin-start">12</property>
+                    <property name="margin-end">12</property>
+                    <property name="expand">True</property>
+                    <property name="maximum-width">600</property>
+                    <property name="linear-growth-width">400</property>
+                    <child>
+                      <object class="GtkBox" id="performance_content">
+                        <property name="visible">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">30</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
