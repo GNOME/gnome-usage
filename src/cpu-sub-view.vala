@@ -53,7 +53,6 @@ namespace Usage
             no_process_view = new NoResultsFoundView();
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            cpu_box.halign = Gtk.Align.CENTER;
             cpu_box.pack_start(label, false, false, 0);
             cpu_box.pack_start(cpu_graph_box, false, false, 0);
             cpu_box.pack_start(spinner, true, true, 0);
