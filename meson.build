@@ -15,10 +15,16 @@ gio_unix_dep = dependency('gio-unix-2.0')
 gtk_dep = dependency('gtk+-3.0', version : '>=3.20.10')
 libdazzle_dep = dependency('libdazzle-1.0', version : '>=3.30')
 libgtop_dep = dependency('libgtop-2.0', version : '>= 2.34.0')
+libhandy_dep = dependency('libhandy-0.0', version : '>=0.0.10')
 tracker_dep = dependency('tracker-sparql-2.0')
 
 gnome = import('gnome')
 i18n = import('i18n')
+
+add_project_arguments (
+  '-DHANDY_USE_UNSTABLE_API',
+  language: 'c'
+)
 
 po_dir = join_paths(meson.source_root(), 'po')
 vapi_dir = join_paths (meson.source_root (), 'vapi')
