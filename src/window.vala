@@ -71,6 +71,8 @@ namespace Usage
                 }
             });
 
+            stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
+
             this.add(stack);
         }
 
