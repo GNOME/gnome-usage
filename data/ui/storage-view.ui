@@ -18,14 +18,19 @@
           </object>
         </child>
         <child>
-          <object class="GtkPaned">
+          <object class="HdyLeaflet" id="leaflet">
             <property name="visible">True</property>
             <property name="orientation">horizontal</property>
-            <property name="position">360</property>
+            <property name="can-swipe-back">True</property>
+            <property name="can-swipe-forward">True</property>
+            <property name="transition-type">over</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
+                <property name="hexpand">False</property>
+                <property name="hexpand-set">True</property>
                 <property name="orientation">vertical</property>
+                <property name="width-request">360</property>
                 <style>
                   <class name="view" />
                 </style>
@@ -70,9 +75,22 @@
               </object>
             </child>
             <child>
+              <object class="GtkSeparator">
+                <property name="visible">True</property>
+                <style>
+                  <class name="sidebar" />
+                </style>
+              </object>
+              <packing>
+                <property name="allow-visible">False</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
+                <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
+                <property name="width-request">360</property>
                 <child>
                   <object class="UsageStorageGraph" id="graph">
                     <property name="visible">True</property>
