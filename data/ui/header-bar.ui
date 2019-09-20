@@ -28,14 +28,22 @@
     </child>
 
     <child>
-      <object class="GtkToggleButton" id="performance_search_button">
+      <object class="GtkRevealer" id="performance_search_revealer">
         <property name="visible">True</property>
-        <signal name="toggled" handler="on_performance_search_button_toggled"/>
-
+        <!-- This allows the button to take space even when it is concealed, keeping the header bar's sizing homogeneous. -->
+        <property name="transition-duration">0</property>
+        <property name="transition-type">crossfade</property>
         <child>
-          <object class="GtkImage">
+          <object class="GtkToggleButton" id="performance_search_button">
             <property name="visible">True</property>
-            <property name="icon-name">system-search-symbolic</property>
+            <signal name="toggled" handler="on_performance_search_button_toggled"/>
+
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="icon-name">system-search-symbolic</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>
