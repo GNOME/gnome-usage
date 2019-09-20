@@ -35,6 +35,9 @@ namespace Usage
         private Gtk.StackSwitcher stack_switcher;
 
         [GtkChild]
+        private Gtk.Revealer performance_search_revealer;
+
+        [GtkChild]
         private Gtk.ToggleButton performance_search_button;
 
         [GtkChild]
@@ -59,7 +62,7 @@ namespace Usage
             switch(this.mode)
             {
                 case HeaderBarMode.PERFORMANCE:
-                    performance_search_button.hide ();
+                    performance_search_revealer.reveal_child = false;
                     break;
                 case HeaderBarMode.STORAGE:
                     break;
@@ -69,7 +72,7 @@ namespace Usage
             {
                 case HeaderBarMode.PERFORMANCE:
                     show_stack_switcher();
-                    performance_search_button.show();
+                    performance_search_revealer.reveal_child = true;
                     break;
                 case HeaderBarMode.STORAGE:
                     show_stack_switcher();
