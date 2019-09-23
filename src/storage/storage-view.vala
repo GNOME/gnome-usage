@@ -76,6 +76,7 @@ public class Usage.StorageView : Usage.View {
     construct {
         name = "STORAGE";
         title = _("Storage");
+        icon_name = "drive-harddisk-symbolic";
 
         try {
             connection = Sparql.Connection.get ();

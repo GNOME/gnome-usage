@@ -32,7 +32,7 @@ namespace Usage
         private Gtk.Box performance_content;
 
         [GtkChild]
-        private Gtk.SearchBar search_bar;
+        private Hdy.SearchBar search_bar;
 
         [GtkChild]
         private Gtk.SearchEntry search_entry;
@@ -46,6 +46,7 @@ namespace Usage
         {
             name = "PERFORMANCE";
             title = _("Performance");
+            icon_name = "speedometer-symbolic";
 
             sub_views = new View[]
             {

@@ -38,7 +38,6 @@ namespace Usage
             cpu_graph.hexpand = true;
             var cpu_graph_box = new GraphBox(cpu_graph);
             cpu_graph_box.height_request = 225;
-            cpu_graph_box.width_request = 600;
             cpu_graph_box.valign = Gtk.Align.START;
 
             process_list_box = new ProcessListBox(ProcessListBoxType.PROCESSOR);
@@ -53,7 +52,6 @@ namespace Usage
             no_process_view = new NoResultsFoundView();
 
             var cpu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            cpu_box.halign = Gtk.Align.CENTER;
             cpu_box.pack_start(label, false, false, 0);
             cpu_box.pack_start(cpu_graph_box, false, false, 0);
             cpu_box.pack_start(spinner, true, true, 0);

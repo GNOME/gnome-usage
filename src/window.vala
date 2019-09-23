@@ -29,6 +29,7 @@ namespace Usage
     public class Window : Gtk.ApplicationWindow
     {
         private Usage.HeaderBar header_bar;
+        private Hdy.ViewSwitcherBar viewswitcher_bar;
         private View[] views;
 
 		public Window(Gtk.Application application)
@@ -36,7 +37,6 @@ namespace Usage
             GLib.Object(application : application);
 
             this.set_default_size(950, 600);
-            this.set_size_request(930, 300);
             this.window_position = Gtk.WindowPosition.CENTER;
             this.set_title(_("Usage"));
 
@@ -47,9 +47,15 @@ namespace Usage
             });
 
 			var stack = new Gtk.Stack();
+            stack.set_size_request(360, 200);
             stack.visible = true;
+            stack.vexpand = true;
 			header_bar = new Usage.HeaderBar(stack);
 			set_titlebar(header_bar);
+            viewswitcher_bar = new Hdy.ViewSwitcherBar();
+            viewswitcher_bar.visible = true;
+            viewswitcher_bar.stack = stack;
+            header_bar.bind_property ("view-switcher-visible", viewswitcher_bar, "reveal", BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN);
 
             views = new View[]
             {
@@ -57,8 +63,10 @@ namespace Usage
                 new StorageView(),
             };
 
-            foreach(var view in views)
+            foreach(var view in views) {
                 stack.add_titled(view, view.name, view.title);
+                stack.child_set (view, "icon-name", view.icon_name, null);
+            }
 
             stack.notify.connect(() => {
                 if(stack.visible_child_name == views[Views.PERFORMANCE].name)
@@ -71,7 +79,11 @@ namespace Usage
                 }
             });
 
-            this.add(stack);
+            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            box.visible = true;
+            box.add(stack);
+            box.add(viewswitcher_bar);
+            this.add(box);
         }
 
         public Usage.HeaderBar get_header_bar()

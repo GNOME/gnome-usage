@@ -25,6 +25,8 @@ public static int main (string[] args)
     Intl.textdomain(Config.GETTEXT_PACKAGE);
     Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "utf-8");
 
+    Hdy.init(ref args);
+
     var application = new Usage.Application();
     return application.run(args);
 }

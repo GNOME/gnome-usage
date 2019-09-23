@@ -2,12 +2,29 @@
 <interface>
   <!-- interface-requires gtk+ 3.12 -->
 
-  <template class="UsageHeaderBar" parent="GtkHeaderBar">
+  <template class="UsageHeaderBar" parent="HdyHeaderBar">
     <property name="visible">True</property>
     <property name="show-close-button">True</property>
+    <property name="centering-policy">strict</property>
     <child type="title">
-      <object class="GtkStackSwitcher" id="stack_switcher">
+      <object class="HdySqueezer" id="squeezer">
         <property name="visible">True</property>
+        <property name="transition-type">crossfade</property>
+        <signal name="notify::visible-child" handler="on_squeezer_visible_child_changed"/>
+        <child>
+          <object class="HdyViewSwitcher" id="view_switcher">
+            <property name="visible">True</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="title_label">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Usage</property>
+            <style>
+              <class name="title"/>
+            </style>
+          </object>
+        </child>
       </object>
     </child>
 
@@ -27,14 +44,22 @@
     </child>
 
     <child>
-      <object class="GtkToggleButton" id="performance_search_button">
+      <object class="GtkRevealer" id="performance_search_revealer">
         <property name="visible">True</property>
-        <signal name="toggled" handler="on_performance_search_button_toggled"/>
-
+        <!-- This allows the button to take space even when it is concealed, keeping the header bar's sizing homogeneous. -->
+        <property name="transition-duration">0</property>
+        <property name="transition-type">crossfade</property>
         <child>
-          <object class="GtkImage">
+          <object class="GtkToggleButton" id="performance_search_button">
             <property name="visible">True</property>
-            <property name="icon-name">system-search-symbolic</property>
+            <signal name="toggled" handler="on_performance_search_button_toggled"/>
+
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="icon-name">system-search-symbolic</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>
