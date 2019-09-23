@@ -8,6 +8,8 @@ variables:
   BUNDLE: "org.gnome.Usage.Devel.flatpak"
 
 build:
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
   before_script:
     - dnf update -y
     - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel 
