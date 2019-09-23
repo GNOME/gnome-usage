@@ -14,6 +14,7 @@ build:
     - dnf update -y
     - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel 
                      desktop-file-utils libdazzle-devel tracker-devel
+                     redhat-rpm-config
   image: fedora:29
   stage: build
   script:
