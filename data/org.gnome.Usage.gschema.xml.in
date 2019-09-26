@@ -1,5 +1,5 @@
 <schemalist>
-    <schema id="org.gnome.Usage" path="/org/gnome/Usage/" gettext-domain="gnome-usage">
+    <schema id="@app-id@" path="/org/gnome/Usage/" gettext-domain="gnome-usage">
         <key name="unkillable-processes" type="as">
             <default>['gnome-shell', 'gdm-x-session', 'gdm-wayland-session', 'gdm', 'systemd', 'gdm-session-worker', 'pulseaudio', 'Xorg', 'system']</default>
             <summary>A list of processes which we don’t want killed</summary>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>org.gnome.Usage.desktop</id>
+  <id>@app-id@</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>GNOME Usage</name>
   <summary>A nice way to view information about use of system resources</summary>
@@ -40,6 +40,7 @@
     <kudo>HighContrast</kudo>
     <kudo>ModernToolkit</kudo>
   </kudos>
+  <launchable type="desktop-id">@app-id@.desktop</launchable>
   <project_license>GPL-3.0+</project_license>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-usage/issues</url>
   <url type="donation">http://www.gnome.org/friends/</url>

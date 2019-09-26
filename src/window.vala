@@ -40,6 +40,10 @@ namespace Usage
             this.window_position = Gtk.WindowPosition.CENTER;
             this.set_title(_("Usage"));
 
+            if(Config.PROFILE == "Devel") {
+                get_style_context().add_class("devel");
+            }
+
             load_css();
             Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect(() =>
             {
