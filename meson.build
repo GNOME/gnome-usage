@@ -23,6 +23,17 @@ i18n = import('i18n')
 po_dir = join_paths(meson.source_root(), 'po')
 vapi_dir = join_paths (meson.source_root (), 'vapi')
 
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  name_suffix = ' (Development)'
+else
+  profile = ''
+  name_suffix = ''
+endif
+
+application_id = 'org.gnome.Usage@0@'.format(profile)
+
+
 subdir('data')
 subdir('po')
 subdir('src')
