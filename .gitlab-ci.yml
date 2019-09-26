@@ -1,10 +1,11 @@
+include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
 stages:
   - build
+  - test
+  - deploy
 
 variables:
   BUNDLE: "org.gnome.Usage.Devel.flatpak"
-
-
 
 build:
   before_script:
@@ -18,28 +19,21 @@ build:
   - ninja -C _build
   - ninja -C _build install
 
-build-flatpak:
-  image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master
-  stage: build
+flatpak:
+  extends: '.flatpak'
   variables:
-    MANIFEST_PATH: "org.gnome.Usage.json"
-    MESON_ARGS: ""
-    RUNTIME_REPO: "https://sdk.gnome.org/gnome-nightly.flatpakrepo"
-    FLATPAK_MODULE: "gnome-usage"
-    DBUS_ID: "org.gnome.Usage"
-  script:
-    - flatpak-builder --stop-at=${FLATPAK_MODULE} app ${MANIFEST_PATH}
-    - flatpak build app meson --prefix=/app ${MESON_ARGS} _build
-    - flatpak build app ninja -C _build install
-    - flatpak-builder --finish-only --repo=repo app ${MANIFEST_PATH}
-    - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${RUNTIME_REPO} ${DBUS_ID}
+    MANIFEST_PATH: 'org.gnome.Usage.json'
+    RUNTIME_REPO: 'https://nightly.gnome.org/gnome-nightly.flatpakrepo'
+    FLATPAK_MODULE: 'gnome-usage'
+    APP_ID: 'org.gnome.Usage'
 
-  artifacts:
-    paths:
-      - ${BUNDLE}
-      - _build/meson-logs/meson-log.txt
-    expire_in: 7 days
-  cache:
-    paths:
-      - .flatpak-builder/downloads
-      - .flatpak-builder/git
+review:
+  dependencies:
+    - 'flatpak'
+  extends: '.review'
+
+stop_review:
+  extends: '.stop_review'
+
+nightly:
+  extends: '.publish_nightly'
