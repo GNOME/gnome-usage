@@ -1,5 +1,5 @@
 {
-    "app-id": "org.gnome.Usage",
+    "app-id": "org.gnome.UsageDevel",
     "runtime": "org.gnome.Sdk",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
@@ -68,7 +68,9 @@
         },
         {
             "buildsystem": "meson",
-            "builddir": true,
+            "config-opts": [
+            	"-Dprofile=development"
+            ],
             "name": "gnome-usage",
             "sources": [
                 {

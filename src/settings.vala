@@ -43,7 +43,7 @@ namespace Usage {
 
         public Settings()
         {
-            Object(schema_id: "org.gnome.Usage");
+            Object(schema_id: Config.APPLICATION_ID);
         }
     }
 }

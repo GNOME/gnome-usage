@@ -36,7 +36,7 @@ namespace Usage
 
         public Application ()
         {
-            application_id = "org.gnome.Usage";
+            application_id = Config.APPLICATION_ID;
         }
 
         public Window? get_window()
@@ -75,7 +75,7 @@ namespace Usage
             };
 
             Gtk.show_about_dialog (window,
-                logo_icon_name: "org.gnome.Usage",
+                logo_icon_name: Config.APPLICATION_ID,
                 program_name: _("Usage"),
                 comments: _("A nice way to view information about use of system resources, like memory and disk space."),
                 authors: authors,
