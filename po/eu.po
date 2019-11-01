@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: gnome-usage gnome-3-30\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-03-11 18:12+0000\n"
-"PO-Revision-Date: 2019-03-17 10:00+0100\n"
+"POT-Creation-Date: 2019-09-27 17:44+0000\n"
+"PO-Revision-Date: 2019-11-01 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -30,7 +30,7 @@ msgid ""
 "processing, memory, and storage."
 msgstr "Prozesuak, memoria, biltegiratzea eta sistemaren beste baliabide batzuk monitorizatu eta analizatzeko GNOME 3 aplikazio sinplea."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Erabilera"
 
@@ -39,11 +39,6 @@ msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
 msgstr "Sistema-baliabideak, esaterako memoria eta diskoko espazioa, nola erabiltzen ari diren ezagutzeko modu egokia"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
@@ -60,7 +55,7 @@ msgstr "Hil ez daitezen nahi ditugun prozesuen zerrenda"
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr "Erabiltzaileak gelditu ezingo dituen prozesuak iragazteko erabiliko da zerrenda hau."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Utzi"
@@ -74,7 +69,7 @@ msgid "Used"
 msgstr "Erabilita"
 
 #: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: src/storage-item.vala:140
 msgid "Available"
 msgstr "Erabilgarri"
 
@@ -85,6 +80,18 @@ msgstr "Ez da emaitzarik aurkitu"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Saiatu bestelako bilaketa"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "Erabilera aplikazioari _buruz"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Taldekatu sistema-prozesuak"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Erakutsi prozesu guztiak"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -131,25 +138,21 @@ msgstr "Ez dago edukirik hemen"
 msgid "Swap"
 msgstr "Trukatze-espazioa"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "Honi buruz"
+#: src/app-item.vala:43
+msgid "System"
+msgstr "Sistema"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Irten"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr "Sistema-baliabideak, esaterako memoria eta diskoko espazioa, nola erabiltzen ari diren ezagutzeko modu egokia."
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr "Asier Sarasua Garmendia <asier.sarasua@gmail.com>"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Webguneak"
 
@@ -157,32 +160,28 @@ msgstr "Webguneak"
 msgid "Processor"
 msgstr "Prozesadorea"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Bestelakoak"
-
 #: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Memoria"
 
-#: src/header-bar.vala:143
+#: src/header-bar.vala:149
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u hautatuta"
 msgstr[1] "%u hautatuta"
 
-#: src/header-bar.vala:145
+#: src/header-bar.vala:151
 msgid "Click on items to select them"
 msgstr "Egin klik elementuen gainean hautatzeko"
 
-#: src/header-bar.vala:209
+#: src/header-bar.vala:215
 msgid "Select all"
 msgstr "Hautatu dena"
 
-#: src/header-bar.vala:213
+#: src/header-bar.vala:219
 msgid "Select None"
-msgstr "Hautatu bat ere ez"
+msgstr "Ez hautatu ezer"
 
 #: src/performance-view.vala:48
 msgid "Performance"
@@ -200,7 +199,7 @@ msgstr "Hautatu"
 #: src/storage-actionbar.vala:144
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Ziur zaude “%s“ behin betiko ezabatu nahi duzula?"
+msgstr "Ziur zaude “%s” behin betiko ezabatu nahi duzula?"
 
 #. Translators: %d is the number of files to be deleted.
 #: src/storage-actionbar.vala:148
@@ -259,7 +258,7 @@ msgstr "Sistema eragilea"
 
 #: src/storage-row.vala:248
 msgid "Empty"
-msgstr "Hustu"
+msgstr "Hutsa"
 
 #: src/storage-row.vala:253
 msgid "Empty Trash"
@@ -281,3 +280,15 @@ msgstr "Elementu bat ezabatzen baduzu, betirako galduko duzu."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Biltegiratzea"
+
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
+
+#~ msgid "About"
+#~ msgstr "Honi buruz"
+
+#~ msgid "Quit"
+#~ msgstr "Irten"
+
+#~ msgid "Others"
+#~ msgstr "Bestelakoak"
