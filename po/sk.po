@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-03-12 17:08+0000\n"
-"PO-Revision-Date: 2018-03-16 22:20+0100\n"
+"POT-Creation-Date: 2019-11-01 10:09+0000\n"
+"PO-Revision-Date: 2020-01-13 10:39+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -16,18 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.4\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
+#: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
 msgstr "Využitie prostredia GNOME"
 
-#: data/org.gnome.Usage.appdata.xml.in:6
+#: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Elegantný spôsob zobrazenia informácií o využití systémových prostriedkov"
 
-#: data/org.gnome.Usage.appdata.xml.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
@@ -35,11 +35,12 @@ msgstr ""
 "Jednoduchá aplikácia prostredia GNOME 3 na sledovanie a analýzu systémových "
 "prostriedkov ako je procesor, pamäť a úložisko."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 src/application.vala:79
+#: src/window.vala:41
 msgid "Usage"
 msgstr "Využitie"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -47,13 +48,8 @@ msgstr ""
 "Elegantný spôsob zobrazenia informácií o využití systémových prostriedkov "
 "ako je pamäť a diskový priestor"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -61,31 +57,27 @@ msgstr ""
 "monitorovanie;sledovanie;systém;systému;proces;CPU;procesor;pamäť;sieť;"
 "história;využitie;výkon;úloha;správca;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Zoznam procesov, ktoré nebudú zabité"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Tento zoznam je použitý na filtrovanie procesov, ktoré používateľ nechce "
 "zastaviť."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Zrušiť"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Využité"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Dostupné"
 
@@ -97,6 +89,18 @@ msgstr "Nenašli sa žiadne výsledky"
 msgid "Try a different search"
 msgstr "Skúste vyhľadať niečo iné"
 
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_O aplikácii Využitie"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Zoskupiť systémové procesy"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Zobraziť všetky procesy"
+
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
 msgid "Force Quit %s?"
@@ -106,51 +110,31 @@ msgstr "Vynútiť ukončenie aplikácie %s?"
 msgid "Unsaved work might be lost."
 msgstr "Neuložená práca môže byť stratená."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Zrušiť"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Vynútiť ukončenie"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Presunúť do"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Odstrániť…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Odstrániť"
-
-#: data/ui/storage-actionbar.ui:33
-msgid "Move to Trash"
-msgstr "Presunúť do Koša"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Vyprázdniť priečinok"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Obnoviť"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Odstrániť z Koša"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Tu nie je žiadny obsah"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Domovský oddiel"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
 msgstr "Odkladací priestor"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "O aplikácii"
+#: src/app-item.vala:71
+msgid "System"
+msgstr "Systém"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Ukončiť"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -158,137 +142,148 @@ msgstr ""
 "Elegantný spôsob zobrazenia informácií o využití systémových prostriedkov "
 "ako je pamäť a diskový priestor."
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Webové stránky"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:40
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Iné"
-
-#: src/graph-stack-switcher.vala:41
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Pamäť"
 
-#: src/header-bar.vala:143
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u vybraných"
-msgstr[1] "%u vybraný"
-msgstr[2] "%u vybrané"
-
-#: src/header-bar.vala:145
-msgid "Click on items to select them"
-msgstr "Kliknutím na položky ich vyberiete"
-
-#: src/header-bar.vala:209
-msgid "Select all"
-msgstr "Vybrať všetko"
-
-#: src/header-bar.vala:213
-msgid "Select None"
-msgstr "Zrušiť výber"
-
-#: src/performance-view.vala:45
+#: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Výkon"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Výber cieľového priečinku"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Vybrať"
-
-#: src/storage-actionbar.vala:143
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Naozaj chcete natrvalo odstrániť tieto položky %s?"
+msgid "%s selected"
+msgstr "%s vybraných"
 
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Naozaj chcete natrvalo odstrániť vybrané položky?"
+
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Ak odstránite tieto položky, budú natrvalo stratené."
 
-#: src/storage-actionbar.vala:197 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Vyprázdniť všetky položky z Koša?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Súbory operačného systému sú základnou súčasťou vášho systému a nemôžu byť "
+"odstránené."
 
-#: src/storage-actionbar.vala:198 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Všetky položky v Koši budú natrvalo odstránené."
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Úložisko"
 
-#: src/storage-actionbar.vala:219 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Vyprázdniť všetky položky z %s?"
-
-#: src/storage-actionbar.vala:220 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Všetky položky v priečinku %s budú presunuté do Koša."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Úložisko č. 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Úložisko č. 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Kapacita"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Domovský priečinok"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Kôš"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Operačný systém"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Vyprázdniť"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Prehľadávajú sa adresáre"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Vyprázdniť Kôš"
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Premenovať"
+#~ msgid "Move to"
+#~ msgstr "Presunúť do"
 
-#: src/storage-row.vala:277
-msgid "Move to trash"
-msgstr "Presunúť do Koša"
+#~ msgid "Move to Trash"
+#~ msgstr "Presunúť do Koša"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Naozaj chcete natrvalo odstrániť %s?"
+#~ msgid "Empty folder"
+#~ msgstr "Vyprázdniť priečinok"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Ak položku odstránite, bude natrvalo stratená."
+#~ msgid "Restore"
+#~ msgstr "Obnoviť"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Úložisko"
+#~ msgid "Delete from Trash"
+#~ msgstr "Odstrániť z Koša"
+
+#~ msgid "No content here"
+#~ msgstr "Tu nie je žiadny obsah"
+
+#~ msgid "About"
+#~ msgstr "O aplikácii"
+
+#~ msgid "Quit"
+#~ msgstr "Ukončiť"
+
+#~ msgid "Others"
+#~ msgstr "Iné"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Kliknutím na položky ich vyberiete"
+
+#~ msgid "Select all"
+#~ msgstr "Vybrať všetko"
+
+#~ msgid "Select None"
+#~ msgstr "Zrušiť výber"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Výber cieľového priečinku"
+
+#~ msgid "Select"
+#~ msgstr "Vybrať"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Vyprázdniť všetky položky z Koša?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Všetky položky v Koši budú natrvalo odstránené."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Vyprázdniť všetky položky z %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "Všetky položky v priečinku %s budú presunuté do Koša."
+
+#~ msgid "Storage 1"
+#~ msgstr "Úložisko č. 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Úložisko č. 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Kapacita"
+
+#~ msgid "Home"
+#~ msgstr "Domovský priečinok"
+
+#~ msgid "Trash"
+#~ msgstr "Kôš"
+
+#~ msgid "Empty"
+#~ msgstr "Vyprázdniť"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Vyprázdniť Kôš"
+
+#~ msgid "Rename"
+#~ msgstr "Premenovať"
+
+#~ msgid "Move to trash"
+#~ msgstr "Presunúť do Koša"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Naozaj chcete natrvalo odstrániť %s?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Ak položku odstránite, bude natrvalo stratená."
 
 #~ msgid "No applications using processor."
 #~ msgstr "Žiadne aplikácie využívajúce procesor."
