@@ -2,15 +2,15 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Nathan Follens <nthn@unseen.is>, 2017-2019.
+# Nathan Follens <nthn@unseen.is>, 2017-2020.
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2017.
 # Justin van Steijn <jvs@fsfe.org>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-01-03 18:03+0000\n"
-"PO-Revision-Date: 2019-02-26 13:36+0100\n"
+"POT-Creation-Date: 2019-09-16 06:06+0000\n"
+"PO-Revision-Date: 2020-02-26 14:17+0100\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -50,11 +50,6 @@ msgstr ""
 "Een leuke manier om informatie te bekijken over het gebruik van "
 "systeembronnen, zoals geheugen en schijfruimte"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
 msgid ""
@@ -75,21 +70,17 @@ msgstr ""
 "Deze lijst wordt gebruikt voor het filteren van processen die de gebruiker "
 "niet kan stoppen."
 
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Annuleren"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Gebruikt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Beschikbaar"
 
@@ -122,43 +113,28 @@ msgstr "%s dwingen af te sluiten?"
 msgid "Unsaved work might be lost."
 msgstr "Niet-opgeslagen werk kan verloren gaan."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Annuleren"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Afsluiten dwingen"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Verplaatsen naar"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Verwijderen…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Verwijderen"
-
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Verplaatsen naar prullenbak"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Lege map"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Herstellen"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Uit prullenbak verwijderen"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Niets te zien"
+# Misschien gewoon 'Persoonlijke map' - Nathan
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Persoonlijke partitie"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
 msgstr "Wisselgeheugen"
 
-#: src/app-item.vala:43
+#: src/app-item.vala:71
 msgid "System"
 msgstr "Systeem"
 
@@ -187,129 +163,129 @@ msgstr "Websites"
 msgid "Processor"
 msgstr "Processor"
 
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Geheugen"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u geselecteerd"
-msgstr[1] "%u geselecteerd"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Klik op items om ze te selecteren"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Alles selecteren"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Niets selecteren"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Prestaties"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Doelmap selecteren"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Selecteren"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Weet u zeker dat u ‘%s’ voorgoed wilt verwijderen?"
+msgid "%s selected"
+msgstr "%s geselecteerd"
 
 # This item? Taalfoutje. Gaat het hier om bestanden? - Hannie
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] ""
-"Weet u zeker dat u het geselecteerde item voorgoed wilt verwijderen?"
-msgstr[1] ""
-"Weet u zeker dat u de %d geselecteerde items voorgoed wilt verwijderen?"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Weet u zeker dat u de geselecteerde items voorgoed wilt verwijderen?"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Als u deze items verwijdert, gaan ze voorgoed verloren."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Alle items uit prullenbak verwijderen?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Besturingssysteembestanden vormen een essentieel onderdeel van uw systeem en "
+"kunnen niet verwijderd worden."
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Alle items in de prullenbak zullen voorgoed worden verwijderd."
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Opslag"
 
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Alle items uit %s verwijderen?"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Alle items in de map %s zullen naar de prullenbak worden verplaatst."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Opslag 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Opslag 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Capaciteit"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Persoonlijke map"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Prullenbak"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Besturingssysteem"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Leeg"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Mappen worden gescand"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Prullenbak legen"
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Hernoemen"
+#~ msgid "Move to"
+#~ msgstr "Verplaatsen naar"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Weet u zeker dat u ‘%s’ voorgoed wilt verwijderen?"
+#~ msgid "Move to Trash"
+#~ msgstr "Verplaatsen naar prullenbak"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Als u een item verwijdert, gaat het voorgoed verloren."
+#~ msgid "Empty folder"
+#~ msgstr "Lege map"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Opslag"
+#~ msgid "Restore"
+#~ msgstr "Herstellen"
+
+#~ msgid "Delete from Trash"
+#~ msgstr "Uit prullenbak verwijderen"
+
+#~ msgid "No content here"
+#~ msgstr "Niets te zien"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Klik op items om ze te selecteren"
+
+#~ msgid "Select all"
+#~ msgstr "Alles selecteren"
+
+#~ msgid "Select None"
+#~ msgstr "Niets selecteren"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Doelmap selecteren"
+
+#~ msgid "Select"
+#~ msgstr "Selecteren"
+
+#~ msgid "Are you sure you want to permanently delete “%s”?"
+#~ msgstr "Weet u zeker dat u ‘%s’ voorgoed wilt verwijderen?"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Alle items uit prullenbak verwijderen?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Alle items in de prullenbak zullen voorgoed worden verwijderd."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Alle items uit %s verwijderen?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr ""
+#~ "Alle items in de map %s zullen naar de prullenbak worden verplaatst."
+
+#~ msgid "Storage 1"
+#~ msgstr "Opslag 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Opslag 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Capaciteit"
+
+#~ msgid "Home"
+#~ msgstr "Persoonlijke map"
+
+#~ msgid "Trash"
+#~ msgstr "Prullenbak"
+
+#~ msgid "Empty"
+#~ msgstr "Leeg"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Prullenbak legen"
+
+#~ msgid "Rename"
+#~ msgstr "Hernoemen"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Weet u zeker dat u ‘%s’ voorgoed wilt verwijderen?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Als u een item verwijdert, gaat het voorgoed verloren."
 
 #~ msgid "About"
 #~ msgstr "Over"
