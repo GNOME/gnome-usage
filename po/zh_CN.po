@@ -1,0 +1,366 @@
+# Chinese (China) translation for gnome-usage.
+# Copyright (C) 2017-2018 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Dingzhong Chen <wsxy162@@gmail.com>, 2017, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2018-05-03 14:27+0000\n"
+"PO-Revision-Date: 2018-09-07 11:20+0800\n"
+"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.1.1\n"
+
+#: data/org.gnome.Usage.appdata.xml.in:5
+msgid "GNOME Usage"
+msgstr "GNOME 使用情况"
+
+#: data/org.gnome.Usage.appdata.xml.in:6
+msgid "A nice way to view information about use of system resources"
+msgstr "查看系统资源使用信息的好方法"
+
+#: data/org.gnome.Usage.appdata.xml.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+"一个简单的 GNOME 3 应用程序，用于监视和分析系统资源，如处理器、内存和存储。"
+
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+msgid "Usage"
+msgstr "使用情况"
+
+#: data/org.gnome.Usage.desktop.in:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr "查看系统资源使用信息的好方法，如内存和磁盘空间"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Usage.desktop.in:8
+msgid "org.gnome.Usage"
+msgstr "org.gnome.Usage"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;监控;监视;系统;进程;处理;中央处理器;内存;网络;历史;使用情况;性能;任"
+"务;管理器;"
+
+#: data/org.gnome.Usage.gschema.xml:5
+msgid "A list of processes which we don’t want killed"
+msgstr "我们不想杀死的进程列表"
+
+#: data/org.gnome.Usage.gschema.xml:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr "此列表用于筛选出用户无法停止的进程。"
+
+#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: src/storage-actionbar.vala:90 src/storage-row.vala:393
+msgid "Cancel"
+msgstr "取消"
+
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "已用"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/graph-block.vala:67 src/storage-item.vala:140
+msgid "Available"
+msgstr "可用"
+
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "未找到结果"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "尝试不同的搜索"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "强制退出 %s？"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "可能会丢失未保存的工作。"
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "强制退出"
+
+#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
+msgid "Move to"
+msgstr "移到"
+
+#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
+msgid "Delete"
+msgstr "删除"
+
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
+msgid "Move to Trash"
+msgstr "移动到回收站"
+
+#: data/ui/storage-actionbar.ui:45
+msgid "Empty folder"
+msgstr "空文件夹"
+
+#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
+msgid "Restore"
+msgstr "恢复"
+
+#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "从回收站删除"
+
+#: data/ui/storage-view.ui:63
+msgid "No content here"
+msgstr "此处无内容"
+
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Swap"
+
+#: src/application.vala:56
+msgid "About"
+msgstr "关于"
+
+#: src/application.vala:59
+msgid "Quit"
+msgstr "退出"
+
+#: src/application.vala:92
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr "查看系统资源使用信息的好方法，如内存和磁盘空间。"
+
+#: src/application.vala:95
+msgid "translator-credits"
+msgstr "Dingzhong Chen <wsxy162@gmail.com>, 2018"
+
+#: src/application.vala:97
+msgid "Websites"
+msgstr "网站"
+
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+msgid "Processor"
+msgstr "处理器"
+
+#: src/graph-block.vala:65
+msgid "Others"
+msgstr "其他"
+
+#: src/graph-stack-switcher.vala:46
+msgid "Memory"
+msgstr "内存"
+
+#: src/header-bar.vala:143
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "已选中 %u 项"
+
+#: src/header-bar.vala:145
+msgid "Click on items to select them"
+msgstr "点击项目以选中它们"
+
+#: src/header-bar.vala:209
+msgid "Select all"
+msgstr "全部选择"
+
+#: src/header-bar.vala:213
+msgid "Select None"
+msgstr "全部不选"
+
+#: src/performance-view.vala:48
+msgid "Performance"
+msgstr "性能"
+
+#: src/storage-actionbar.vala:89 src/storage-row.vala:392
+msgid "Select destination folder"
+msgstr "选择目标文件夹"
+
+#: src/storage-actionbar.vala:92 src/storage-row.vala:395
+msgid "Select"
+msgstr "选择"
+
+#. Translators: %s is the name of the file to be deleted.
+#: src/storage-actionbar.vala:144
+#, c-format
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "您确定要永久删除“%s”？"
+
+#. Translators: %d is the number of files to be deleted.
+#: src/storage-actionbar.vala:148
+#, c-format
+msgid "Are you sure you want to permanently delete the %d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] "您确定要永久删除选中的 %d 个项目？"
+
+#: src/storage-actionbar.vala:152
+msgid "If you delete these items, they will be permanently lost."
+msgstr "如果您删除这些项目，它们将永久丢失。"
+
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
+msgid "Empty all items from Trash?"
+msgstr "清空回收站的所有项目？"
+
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
+msgid "All items in the Trash will be permanently deleted."
+msgstr "回收站中的所有项目将永久删除。"
+
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "清空 %s 的所有项目？"
+
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "%s 里的所有项目将移动到回收站。"
+
+#: src/storage-analyzer.vala:94
+msgid "Storage 1"
+msgstr "存储 1"
+
+#: src/storage-analyzer.vala:98
+msgid "Storage 2"
+msgstr "存储 2"
+
+#: src/storage-analyzer.vala:105
+msgid "Capacity"
+msgstr "容量"
+
+#: src/storage-analyzer.vala:647
+msgid "Home"
+msgstr "主文件夹"
+
+#: src/storage-item.vala:104
+msgid "Trash"
+msgstr "回收站"
+
+#: src/storage-item.vala:128
+msgid "Operating System"
+msgstr "操作系统"
+
+#: src/storage-row.vala:248
+msgid "Empty"
+msgstr "清空"
+
+#: src/storage-row.vala:253
+msgid "Empty Trash"
+msgstr "清空回收站"
+
+#: src/storage-row.vala:273 src/storage-row.vala:367
+msgid "Rename"
+msgstr "重命名"
+
+#: src/storage-row.vala:439
+#, c-format
+msgid "Are you sure you want to permanently delete %s?"
+msgstr "您确定要永久删除 %s？"
+
+#: src/storage-row.vala:440
+msgid "If you delete an item, it will be permanently lost."
+msgstr "如果您删除这个项目，它将永久丢失。"
+
+#: src/storage-view.vala:45
+msgid "Storage"
+msgstr "存储"
+
+#~ msgid "Move to trash"
+#~ msgstr "移动到回收站"
+
+#~ msgid "View current application and monitor system state"
+#~ msgstr "查看当前应用程序并监控系统状态"
+
+#~ msgid "application-default-icon"
+#~ msgstr "application-default-icon"
+
+#~ msgid "Just now"
+#~ msgstr "刚刚"
+
+#~ msgid "An hour ago"
+#~ msgstr "一小时前"
+
+#~ msgid "Yesterday"
+#~ msgstr "昨天"
+
+#~ msgid "About a year ago"
+#~ msgstr "约一年前"
+
+#~ msgid "About %u year ago"
+#~ msgid_plural "About %u years ago"
+#~ msgstr[0] "约 %u 年前"
+
+#~ msgid "Open"
+#~ msgstr "打开"
+
+#~ msgid "Create"
+#~ msgstr "创建"
+
+#~ msgid "Save"
+#~ msgstr "保存"
+
+#~ msgid "Browse…"
+#~ msgstr "浏览…"
+
+#~ msgid "Search"
+#~ msgstr "搜索"
+
+#~ msgid "No applications using processor."
+#~ msgstr "没有程序正在使用处理器。"
+
+#~ msgid "Data"
+#~ msgstr "数据"
+
+#~ msgid "No applications using memory."
+#~ msgstr "没有应用程序正在使用内存。"
+
+#~ msgid "Network"
+#~ msgstr "网络"
+
+#~ msgid "No applications using network."
+#~ msgstr "没有应用程序正在使用网络。"
+
+#~ msgid "Power"
+#~ msgstr "电源"
+
+#~ msgid "Disk I/O"
+#~ msgstr "磁盘 I/O"
+
+#~ msgid "Downloads"
+#~ msgstr "下载"
+
+#~ msgid "Uploads"
+#~ msgstr "上传"
+
+#~ msgid "Stop"
+#~ msgstr "停止"
+
+#~ msgid "Running"
+#~ msgstr "运行中"
+
+#~ msgid "Sleeping"
+#~ msgstr "睡眠中"
+
+#~ msgid "Dead"
+#~ msgstr "已死"
