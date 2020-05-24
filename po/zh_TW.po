@@ -7,26 +7,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-06-11 18:34+0000\n"
-"PO-Revision-Date: 2018-06-13 20:07+0800\n"
+"POT-Creation-Date: 2020-04-18 10:35+0000\n"
+"PO-Revision-Date: 2020-05-25 01:37+0800\n"
+"Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.3.1\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
+#: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
 msgstr "GNOME 用量"
 
-#: data/org.gnome.Usage.appdata.xml.in:6
+#: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr "以簡單的方式查看系統資源的使用資訊"
 
-#: data/org.gnome.Usage.appdata.xml.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
@@ -34,23 +34,19 @@ msgstr ""
 "一款簡單的 GNOME 3 程式，以監視與分析系統資源，例如處理程序、記憶體與儲存空"
 "間。"
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 src/application.vala:79
+#: src/window.vala:41
 msgid "Usage"
 msgstr "用量"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
 msgstr "以簡單的方式查看系統資源的使用資訊，例如記憶體或磁碟用量"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -59,29 +55,25 @@ msgstr ""
 "Manager;監視;系統;處理程序;進程;處理機;CPU;記憶體;RAM;網路;歷史記錄;用量;效"
 "能;工作進程;管理器;監視器;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "不希望終止的處理程序列表"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr "此列表用於篩選使用者無法停止的進程"
-
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "取消"
 
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "記憶體"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "已使用"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "可使用"
 
@@ -93,6 +85,18 @@ msgstr "找不到結果"
 msgid "Try a different search"
 msgstr "嘗試不同的搜尋方式"
 
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "關於《用量》(_A)"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "分組系統處理程序"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "顯示所有處理程序"
+
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
 msgid "Force Quit %s?"
@@ -102,57 +106,37 @@ msgstr "強制終止 %s？"
 msgid "Unsaved work might be lost."
 msgstr "未儲存的作業可能遺失。"
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "取消"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "強制終止"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "移動至"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "刪除…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "刪除"
-
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "移至垃圾桶"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "空的資料夾"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "復原"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "從垃圾桶刪除"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "這裡沒東西"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "家目錄分割區"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
 msgstr "Swap"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "關於"
+#: src/app-item.vala:71
+msgid "System"
+msgstr "系統"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "離開"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr "以簡單的方式查看系統資源的使用資訊，例如記憶體或磁碟用量。"
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr ""
 "如對翻譯有任何意見，請送一封電子郵件給\n"
@@ -161,133 +145,139 @@ msgstr ""
 "\n"
 "pan93412 <pan93412@gmail.com>, 2018"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "網站"
 
 #: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
-msgstr "處理機"
+msgstr "處理器"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "其他"
-
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "記憶體"
-
-#: src/header-bar.vala:143
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u 個已選取"
-
-#: src/header-bar.vala:145
-msgid "Click on items to select them"
-msgstr "點一下項目以選擇"
-
-#: src/header-bar.vala:209
-msgid "Select all"
-msgstr "選擇全部"
-
-#: src/header-bar.vala:213
-msgid "Select None"
-msgstr "沒有選取"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "效能"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "選擇目標資料夾"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "選擇"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "您確定要永久移除「%s」？"
+msgid "%s selected"
+msgstr "選取 %s 個"
 
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] "您確定要永久移除 %d 個已選取項目？"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "您確定要永久刪除選取的項目？"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "如果你移除這些項目，它們將永久消失。"
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "要清空垃圾桶的所有項目嗎？"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr "作業系統是系統的必要組成部分，且不可以移除。"
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "垃圾桶內的所有項目將會永久刪除。"
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "儲存空間"
 
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "從 %s 清空所有項目？"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "%s 中的所有項目將會被移至垃圾桶。"
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "儲存空間 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "儲存空間 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "容量"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "家目錄"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "垃圾桶"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "作業系統"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "清空"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "正在掃描目錄"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "清空垃圾桶"
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "重新命名"
+#~ msgid "Move to"
+#~ msgstr "移動至"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "您確定要永久刪除 %s？"
+#~ msgid "Move to Trash"
+#~ msgstr "移至垃圾桶"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "如果您移除一個項目，那該項目將永久消失。"
+#~ msgid "Empty folder"
+#~ msgstr "空的資料夾"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "儲存空間"
+#~ msgid "Restore"
+#~ msgstr "復原"
+
+#~ msgid "Delete from Trash"
+#~ msgstr "從垃圾桶刪除"
+
+#~ msgid "No content here"
+#~ msgstr "這裡沒東西"
+
+#~ msgid "About"
+#~ msgstr "關於"
+
+#~ msgid "Quit"
+#~ msgstr "離開"
+
+#~ msgid "Others"
+#~ msgstr "其他"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "點一下項目以選擇"
+
+#~ msgid "Select all"
+#~ msgstr "選擇全部"
+
+#~ msgid "Select None"
+#~ msgstr "沒有選取"
+
+#~ msgid "Select destination folder"
+#~ msgstr "選擇目標資料夾"
+
+#~ msgid "Select"
+#~ msgstr "選擇"
+
+#~ msgid "Are you sure you want to permanently delete “%s”?"
+#~ msgstr "您確定要永久移除「%s」？"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "要清空垃圾桶的所有項目嗎？"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "垃圾桶內的所有項目將會永久刪除。"
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "從 %s 清空所有項目？"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "%s 中的所有項目將會被移至垃圾桶。"
+
+#~ msgid "Storage 1"
+#~ msgstr "儲存空間 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "儲存空間 2"
+
+#~ msgid "Capacity"
+#~ msgstr "容量"
+
+#~ msgid "Home"
+#~ msgstr "家目錄"
+
+#~ msgid "Trash"
+#~ msgstr "垃圾桶"
+
+#~ msgid "Empty"
+#~ msgstr "清空"
+
+#~ msgid "Empty Trash"
+#~ msgstr "清空垃圾桶"
+
+#~ msgid "Rename"
+#~ msgstr "重新命名"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "您確定要永久刪除 %s？"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "如果您移除一個項目，那該項目將永久消失。"
