@@ -2,15 +2,14 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Matej Urbančič <mateju@svn.gnome.org>, 2017.
+# Matej Urbančič <mateju@svn.gnome.org>, 2017–2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"usage&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-05-03 12:38+0000\n"
-"PO-Revision-Date: 2017-05-09 21:28+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2020-05-24 17:38+0000\n"
+"PO-Revision-Date: 2020-06-05 08:48+0200\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -20,27 +19,39 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.3\n"
 
-#: ../data/org.gnome.Usage.desktop:3 ../data/ui/window.ui.h:1
-#: ../src/application.vala:76
+#: data/org.gnome.Usage.appdata.xml.in.in:5
+msgid "GNOME Usage"
+msgstr "Uporaba GNOME"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "A nice way to view information about use of system resources"
+msgstr "Učinkovit način za pregled podrobnosti o uporabi sistemskih virov"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+"Enostaven program GNOME za nadzor in preučevanje sistemskih virov, kot so "
+"procesorska moč, pomnilnik in prostor."
+
+#: data/org.gnome.Usage.desktop.in.in:3 src/application.vala:79
+#: src/window.vala:41
 msgid "Usage"
-msgstr "Uporaba"
+msgstr "Podrobnosti uporabe sistema"
 
-#: ../data/org.gnome.Usage.desktop:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
 msgstr ""
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: ../data/org.gnome.Usage.desktop:8
-#, fuzzy
-msgid "application-default-icon"
-msgstr "Le ikono programa"
+"Učinkovit način za pregled podrobnosti o uporabi sistemskih virov, kot sta "
+"pomnilnik in prostor na disku."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: ../data/org.gnome.Usage.desktop:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -48,246 +59,259 @@ msgstr ""
 "Nadzor;Sistem;Opravila;CPE;OPE;Pomnilnik;Omrežje;Zgodovina;Uporaba;Zmožnost;"
 "Naloge;Upravljalnik"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:1
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
-msgstr ""
+msgstr "Seznam procesov, ki jih ni priporočljivo zaustaviti"
 
-#: ../data/org.gnome.Usage.gschema.xml.h:2
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
+"Seznam se uporablja za filtriranje opravil, ki jih uporabnik ne more "
+"zaustaviti."
 
-#: ../data/ui/header-bar.ui.h:1 ../src/storage-actionbar.vala:88
-#: ../src/storage-row.vala:373
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Uporabljeno"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
+msgid "Available"
+msgstr "Razpoložljivo"
+
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "Ni najdenih zadetkov"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "Poskusite z drugačnim iskalnim nizom"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_O programu"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Skupinska sistemska opravila"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Pokaži vsa opravila"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "Ali želite vsiliti končanje %s?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "Neshranjeno delo bo morda izgubljeno."
+
+#: data/ui/quit-process-dialog.ui:16
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: ../src/application.vala:49
-msgid "About"
-msgstr "O programu"
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "Vsili končanje"
 
-#: ../src/application.vala:52
-msgid "Quit"
-msgstr "Končaj"
+#: data/ui/storage-actionbar.ui:17
+#| msgid "Delete"
+msgid "Delete…"
+msgstr "Izbriši …"
 
-#: ../src/application.vala:77
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Osebni razdelek (home)"
+
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Izmenjevalni razdelek"
+
+#: src/app-item.vala:71
+msgid "System"
+msgstr "Sistem"
+
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr ""
+"Učinkovit način za pregled podrobnosti o uporabi sistemskih virov, kot sta "
+"pomnilnik in prostor na disku."
 
-#: ../src/application.vala:79
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr ""
-"Matjaž Horvat <m@owca.info>\n"
-"Matic Žgur <mr.zgur@gmail.com>\n"
-"Andraž Tori <andraz.tori1@guest.arnes.si>\n"
-"Matej Urbančič <mateju@svn.gnome.org>"
+"Matej Urbančič <mateju@svn.gnome.org>\n"
+"Matjaž Horvat\n"
+"Matic Žgur\n"
+"Andraž Tori"
 
-#: ../src/application.vala:81
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Spletne strani"
 
-#: ../src/cpu-sub-view.vala:11 ../src/graph-stack-switcher.vala:25
-#: ../src/process-dialog.vala:30
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
 msgid "Processor"
 msgstr "Procesor"
 
-#: ../src/cpu-sub-view.vala:37
-#, fuzzy
-msgid "No applications using processor."
-msgstr "Procesor"
-
-#: ../src/data-view.vala:8
-msgid "Data"
-msgstr "Podatki"
-
-#: ../src/graph-block.vala:45
-msgid "Others"
-msgstr "Drugi"
-
-#: ../src/graph-block.vala:47 ../src/storage-item.vala:120
-msgid "Available"
-msgstr "Razpoložljivo"
-
-#: ../src/graph-stack-switcher.vala:26 ../src/memory-sub-view.vala:11
-#: ../src/process-dialog.vala:31
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Pomnilnik"
 
-#: ../src/header-bar.vala:138
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u izbranih"
-msgstr[1] "%u izbran"
-msgstr[2] "%u izbrana"
-msgstr[3] "%u izbrani"
-
-#: ../src/header-bar.vala:140
-msgid "Click on items to select them"
-msgstr "S klikom se predmeti izberejo"
-
-#: ../src/header-bar.vala:206
-msgid "Select all"
-msgstr "Izberi vse"
-
-#: ../src/header-bar.vala:210
-msgid "Select None"
-msgstr "Odstrani izbor"
-
-#: ../src/memory-sub-view.vala:37
-#, fuzzy
-msgid "No applications using memory."
-msgstr "_Pomnilnik:"
-
-#: ../src/performance-view.vala:25
-#, fuzzy
+#: src/performance-view.vala:48
 msgid "Performance"
-msgstr "Možnosti izvrševanja"
-
-#: ../src/power-view.vala:8
-msgid "Power"
-msgstr "Napajanje"
-
-#: ../src/process-dialog.vala:36
-msgid "Stop"
-msgstr "Zaustavi"
-
-#: ../src/process-dialog.vala:123
-msgid "Running"
-msgstr "Zagnano"
-
-#: ../src/process-dialog.vala:126
-msgid "Sleeping"
-msgstr "V pripravljenosti"
-
-#: ../src/process-dialog.vala:129
-#, fuzzy
-msgid "Dead"
-msgstr "<nedejavno>"
-
-#. common
-#: ../src/storage-actionbar.vala:15 ../src/storage-row.vala:254
-msgid "Move to"
-msgstr "Premakni na"
-
-#: ../src/storage-actionbar.vala:17 ../src/storage-row.vala:258
-msgid "Delete"
-msgstr "Delete"
-
-#: ../src/storage-actionbar.vala:20
-msgid "Move to Trash"
-msgstr "Premakni v smeti"
-
-#. root
-#: ../src/storage-actionbar.vala:27
-#, fuzzy
-msgid "Empty folder"
-msgstr ""
-"Mapa v »{1}» že obstaja in ni prazna.\n"
-"\n"
-"Mapo lahko prezrete, prepišete, dodate vsebino ali pa končate."
-
-#. trash
-#: ../src/storage-actionbar.vala:32 ../src/storage-row.vala:243
-msgid "Restore"
-msgstr "Obnovi"
-
-#: ../src/storage-actionbar.vala:34 ../src/storage-row.vala:246
-#, fuzzy
-msgid "Delete from Trash"
-msgstr "_Izbriši iz smeti"
-
-#: ../src/storage-actionbar.vala:87 ../src/storage-row.vala:372
-#, fuzzy
-msgid "Select destination folder"
-msgstr "Ciljno mesto ni mapa."
-
-#: ../src/storage-actionbar.vala:90 ../src/storage-row.vala:375
-msgid "Select"
-msgstr "Izbor"
-
-#: ../src/storage-actionbar.vala:140
-#, fuzzy, c-format
-msgid "Are you sure you want to permanently delete this items %s?"
-msgstr "Ali ste prepričani, da želite trajno izbrisati \"%s\"?"
-
-#: ../src/storage-actionbar.vala:141
-#, fuzzy
-msgid "If you delete these items, they will be permanently lost."
-msgstr "V primeru da sporočilce izbrišete, bo trajno izgubljeno."
-
-#: ../src/storage-actionbar.vala:191 ../src/storage-row.vala:322
-msgid "Empty all items from Trash?"
-msgstr "Ali naj se izbrišejo vsi predmeti iz smeti?"
-
-#: ../src/storage-actionbar.vala:192 ../src/storage-row.vala:323
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Vsi predmeti v smeteh bodo trajno izbrisani."
-
-#: ../src/storage-actionbar.vala:214 ../src/storage-row.vala:302
-#, fuzzy, c-format
-msgid "Empty all items from %s?"
-msgstr "Ali naj se izbrišejo vsi predmeti iz smeti?"
-
-#: ../src/storage-actionbar.vala:215 ../src/storage-row.vala:303
-#, fuzzy, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Izbriši vse predmete v smeteh"
-
-#: ../src/storage-analyzer.vala:65
-msgid "Storage 1"
-msgstr "Shramba 1"
-
-#: ../src/storage-analyzer.vala:69
-msgid "Storage 2"
-msgstr "Shramba 2"
-
-#: ../src/storage-analyzer.vala:76
-msgid "Capacity"
 msgstr "Zmogljivost"
 
-#: ../src/storage-analyzer.vala:618
-msgid "Home"
-msgstr "Osebna mapa"
+#: src/storage/storage-actionbar.vala:40
+#, c-format
+msgid "%s selected"
+msgstr "%s izbranih"
 
-#: ../src/storage-item.vala:84
-msgid "Trash"
-msgstr "Smeti"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Ali ste prepričani, da želite trajno izbrisati izbrane predmete?"
 
-#: ../src/storage-item.vala:108
+#: src/storage/storage-actionbar.vala:49
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Izbrisani predmeti, bodo trajno izgubljeni."
+
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Datoteke operacijskega sistema so nepogrešljivi del sistema in jih ni mogoče "
+"odstraniti."
+
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Prostor"
+
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Operacijski sistem"
 
-#: ../src/storage-row.vala:228
-msgid "Empty"
-msgstr "Prazno"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Poteka preiskovanje map"
 
-#: ../src/storage-row.vala:233
-msgid "Empty Trash"
-msgstr "Izprazni smeti"
+#~ msgid "application-default-icon"
+#~ msgstr "application-default-icon"
 
-#: ../src/storage-row.vala:253 ../src/storage-row.vala:347
-msgid "Rename"
-msgstr "Preimenuj"
+#~ msgid "About"
+#~ msgstr "O programu"
 
-#: ../src/storage-row.vala:257
-msgid "Move to trash"
-msgstr "Premakni v smeti"
+#~ msgid "Quit"
+#~ msgstr "Končaj"
 
-#: ../src/storage-row.vala:419
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Ali zares želite trajno izbrisati %s?"
+#~ msgid "No applications using processor."
+#~ msgstr "Ni programa, ki bi uporabljaj procesorsko moč."
 
-#: ../src/storage-row.vala:420
-msgid "If you delete an item, it will be permanently lost."
-msgstr "V primeru, da predmet izbrišete, bo trajno izgubljen."
+#~ msgid "Data"
+#~ msgstr "Podatki"
 
-#: ../src/storage-view.vala:12
-msgid "Storage"
-msgstr "Shramba"
+#~ msgid "Others"
+#~ msgstr "Drugi"
 
-#: ../src/storage-view.vala:33
-msgid "No content here"
-msgstr "Ni vsebine"
+#~ msgid "Click on items to select them"
+#~ msgstr "S klikom se predmeti izberejo"
+
+#~ msgid "Select all"
+#~ msgstr "Izberi vse"
+
+#~ msgid "Select None"
+#~ msgstr "Odstrani izbor"
+
+#~ msgid "No applications using memory."
+#~ msgstr "Ni programa, ki bi uporabljaj pomnilnik."
+
+#~ msgid "Power"
+#~ msgstr "Napajanje"
+
+#~ msgid "Stop"
+#~ msgstr "Zaustavi"
+
+#~ msgid "Running"
+#~ msgstr "Zagnano"
+
+#~ msgid "Sleeping"
+#~ msgstr "V pripravljenosti"
+
+#~ msgid "Dead"
+#~ msgstr "<nedejavno>"
+
+#~ msgid "Move to"
+#~ msgstr "Premakni na"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Premakni v smeti"
+
+#~ msgid "Empty folder"
+#~ msgstr "Prazna mapa"
+
+#~ msgid "Restore"
+#~ msgstr "Obnovi"
+
+#~ msgid "Delete from Trash"
+#~ msgstr "Izbriši iz smeti"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Izbor ciljne mape"
+
+#~ msgid "Select"
+#~ msgstr "Izbor"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Ali naj se izbrišejo vsi predmeti iz smeti?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Vsi predmeti v smeteh bodo trajno izbrisani."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Ali želite izprazniti %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "Vsi predmeti v %s bodo premaknjeni v smeti."
+
+#~ msgid "Storage 1"
+#~ msgstr "Shramba 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Shramba 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Skupna velikost"
+
+#~ msgid "Home"
+#~ msgstr "Osebna mapa"
+
+#~ msgid "Trash"
+#~ msgstr "Smeti"
+
+#~ msgid "Empty"
+#~ msgstr "Prazno"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Izprazni smeti"
+
+#~ msgid "Rename"
+#~ msgstr "Preimenuj"
+
+#~ msgid "Move to trash"
+#~ msgstr "Premakni v smeti"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Ali zares želite trajno izbrisati %s?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "V primeru, da predmet izbrišete, bo trajno izgubljen."
+
+#~ msgid "No content here"
+#~ msgstr "Ni vsebine"
