@@ -43,6 +43,7 @@
             "sources": [
                 {
                     "type": "git",
+                    "branch": "tracker-2.3",
                     "url": "https://gitlab.gnome.org/GNOME/tracker.git"
                 }
             ]
