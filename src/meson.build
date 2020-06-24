@@ -13,7 +13,6 @@ vala_sources = [
   'graph-stacked-renderer.vala',
   'graph-stack-switcher.vala',
   'graph-switcher-button.vala',
-  'header-bar.vala',
   'loading-notification.vala',
   'memory-graph-model.vala',
   'memory-graph.vala',

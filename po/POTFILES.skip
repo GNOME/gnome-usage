@@ -4,7 +4,6 @@ src/app-item.c
 src/application.c
 src/cpu-sub-view.c
 src/graph-stack-switcher.c
-src/header-bar.c
 src/memory-sub-view.c
 src/performance-view.c
 src/storage/storage-actionbar.c

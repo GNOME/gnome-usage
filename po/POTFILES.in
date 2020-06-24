@@ -3,7 +3,6 @@
 data/org.gnome.Usage.appdata.xml.in.in
 data/org.gnome.Usage.desktop.in.in
 data/org.gnome.Usage.gschema.xml.in
-data/ui/header-bar.ui
 data/ui/memory-speedometer.ui
 data/ui/no-results-found-view.ui
 data/ui/performance-view.ui
@@ -18,7 +17,6 @@ src/app-item.vala
 src/application.vala
 src/cpu-sub-view.vala
 src/graph-stack-switcher.vala
-src/header-bar.vala
 src/memory-sub-view.vala
 src/performance-view.vala
 src/storage/storage-actionbar.vala

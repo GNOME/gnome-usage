@@ -27,13 +27,29 @@ namespace Usage
         STORAGE,
     }
 
+    public enum HeaderBarMode
+    {
+        PERFORMANCE,
+        STORAGE,
+    }
+
     [GtkTemplate (ui = "/org/gnome/Usage/ui/window.ui")]
     public class Window : Gtk.ApplicationWindow
     {
         [GtkChild]
         private Gtk.Stack stack;
 
-        private Usage.HeaderBar header_bar;
+        [GtkChild]
+        private Gtk.Revealer performance_search_revealer;
+
+        [GtkChild]
+        private Gtk.ToggleButton performance_search_button;
+
+        [GtkChild]
+        private Gtk.MenuButton primary_menu_button;
+
+        private HeaderBarMode mode;
+        private Usage.PrimaryMenu menu;
 
         [GtkChild]
         private Hdy.ViewSwitcherBar view_switcher_bar;
@@ -54,9 +70,11 @@ namespace Usage
                 load_css();
             });
 
-			header_bar = new Usage.HeaderBar(stack);
-			set_titlebar(header_bar);
-            header_bar.bind_property ("title-visible", view_switcher_bar, "reveal", BindingFlags.SYNC_CREATE);
+            mode = HeaderBarMode.PERFORMANCE;
+            menu = new Usage.PrimaryMenu();
+            this.primary_menu_button.set_popover(menu);
+
+            set_mode(HeaderBarMode.PERFORMANCE);
 
             views = new View[]
             {
@@ -70,9 +88,39 @@ namespace Usage
             }
         }
 
+        public void set_mode(HeaderBarMode mode)
+        {
+            switch(this.mode)
+            {
+                case HeaderBarMode.PERFORMANCE:
+                    performance_search_revealer.reveal_child = false;
+                    break;
+                case HeaderBarMode.STORAGE:
+                    break;
+            }
+
+            switch(mode)
+            {
+                case HeaderBarMode.PERFORMANCE:
+                    performance_search_revealer.reveal_child = true;
+                    break;
+                case HeaderBarMode.STORAGE:
+                    break;
+            }
+            menu.mode = mode;
+            this.mode = mode;
+        }
+
         public void action_on_search()
         {
-            header_bar.action_on_search();
+            switch(mode)
+            {
+                case HeaderBarMode.PERFORMANCE:
+                    performance_search_button.set_active(!performance_search_button.get_active());
+                    break;
+                case HeaderBarMode.STORAGE:
+                    break;
+            }
         }
 
         public View[] get_views()
@@ -89,15 +137,21 @@ namespace Usage
         }
 
         [GtkCallback]
+        private void on_performance_search_button_toggled () {
+            /* TODO: Implement a saner way of toggling this mode. */
+            ((PerformanceView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.PERFORMANCE]).set_search_mode(performance_search_button.active);
+        }
+
+        [GtkCallback]
         private void on_visible_child_changed()
         {
             if(stack.visible_child_name == views[Views.PERFORMANCE].name)
             {
-                header_bar.set_mode(HeaderBarMode.PERFORMANCE);
+                set_mode(HeaderBarMode.PERFORMANCE);
             }
             else if(stack.visible_child_name == views[Views.STORAGE].name)
             {
-                header_bar.set_mode(HeaderBarMode.STORAGE);
+                set_mode(HeaderBarMode.STORAGE);
             }
         }
     }
