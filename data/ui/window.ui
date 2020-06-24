@@ -2,13 +2,17 @@
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <requires lib="libhandy" version="1.0"/>
-  <template class="UsageWindow" parent="GtkApplicationWindow">
+  <template class="UsageWindow" parent="HdyApplicationWindow">
     <property name="default-height">600</property>
     <property name="default-width">950</property>
     <property name="title" translatable="yes">Usage</property>
     <property name="visible">True</property>
     <property name="window-position">center</property>
-        <child type="titlebar">
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="visible">True</property>
+        <child>
           <object class="HdyHeaderBar" id="header_bar">
             <property name="centering-policy">strict</property>
             <property name="show-close-button">True</property>
@@ -59,10 +63,6 @@
             </child>
           </object>
         </child>
-    <child>
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <property name="visible">True</property>
         <child>
           <object class="GtkStack" id="stack">
             <property name="height-request">200</property>

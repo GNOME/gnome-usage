@@ -34,7 +34,7 @@ namespace Usage
     }
 
     [GtkTemplate (ui = "/org/gnome/Usage/ui/window.ui")]
-    public class Window : Gtk.ApplicationWindow
+    public class Window : Hdy.ApplicationWindow
     {
         [GtkChild]
         private Gtk.Stack stack;
