@@ -90,6 +90,11 @@ namespace Usage
             this.add(box);
         }
 
+        public void action_on_search()
+        {
+            header_bar.action_on_search();
+        }
+
         public Usage.HeaderBar get_header_bar()
         {
             return header_bar;
