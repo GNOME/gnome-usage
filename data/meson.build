@@ -11,7 +11,8 @@ resource_data = files(
   'ui/storage-actionbar.ui',
   'ui/storage-row-popover.ui',
   'ui/storage-view.ui',
-  'ui/swap-speedometer.ui'
+  'ui/swap-speedometer.ui',
+  'ui/window.ui',
 )
 
 gresource = 'org.gnome.Usage'
