@@ -97,7 +97,7 @@ namespace Usage
 
         private void on_search(GLib.SimpleAction action, GLib.Variant? parameter)
         {
-            window.get_header_bar().action_on_search();
+            window.action_on_search();
         }
 
         private void on_activate_radio (GLib.SimpleAction action, GLib.Variant? state)
