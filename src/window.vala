@@ -95,11 +95,6 @@ namespace Usage
             header_bar.action_on_search();
         }
 
-        public Usage.HeaderBar get_header_bar()
-        {
-            return header_bar;
-        }
-
         public View[] get_views()
         {
             return views;
