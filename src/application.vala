@@ -59,6 +59,9 @@ namespace Usage
         protected override void startup()
         {
             base.startup();
+
+            Hdy.init();
+
             add_action_entries(app_entries, this);
             set_accels_for_action ("app.search", {"<Primary>f"});
 
