@@ -11,3 +11,4 @@ src/storage/storage-row-popover.c
 src/storage/storage-view.c
 src/utils.c
 src/window.c
+subprojects/libhandy
