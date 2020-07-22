@@ -124,6 +124,43 @@ namespace Usage
             return Process.sanitize_name (cmd);
         }
 
+        public static string? read_cgroup (Pid pid) {
+            string path = "/proc/%u/cgroup".printf ((uint) pid);
+            int flags = Posix.O_RDONLY | StopGap.O_CLOEXEC | Posix.O_NOCTTY;
+
+            int fd = StopGap.openat (StopGap.AT_FDCWD, path, flags);
+
+            if (fd == -1)
+                return null;
+
+            try {
+                string? data = null;
+                string[] lines;
+                string? cgroup = null;
+                size_t len;
+
+                // TODO use MappedFile.from_fd, requires vala 0.46
+                IOChannel ch = new IOChannel.unix_new (fd);
+                ch.set_close_on_unref (true);
+
+                var status = ch.read_to_end (out data, out len);
+                if (status != IOStatus.NORMAL)
+                    return null;
+
+                lines = data.split("\n");
+
+                // Only do anything with cgroup v2
+                if (!lines[0].has_prefix("0::"))
+                    return null;
+
+                cgroup = lines[0][3:lines[0].length];
+
+                return cgroup;
+            } catch (Error e) {
+                return null;
+            }
+        }
+
         public static string? read_app_id (Pid pid) {
             KeyFile? kf = read_flatpak_info (pid);
 
