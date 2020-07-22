@@ -23,9 +23,18 @@ namespace Usage
 
             foreach (AppInfo info in _apps_info) {
                 GLib.DesktopAppInfo? dai = info as GLib.DesktopAppInfo;
+                string ?id = null;
 
                 if (dai != null) {
-                    string id = dai.get_string ("X-Flatpak");
+                    id = dai.get_string ("X-Flatpak");
+                    if (id != null)
+                        appid_map.insert (id, info);
+                }
+
+                if (id == null) {
+                    id = info.get_id();
+                    if (id != null && id.has_suffix (".desktop"))
+                        id = id[0:id.length - 8];
                     if (id != null)
                         appid_map.insert (id, info);
                 }
