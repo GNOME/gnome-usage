@@ -2,7 +2,7 @@ project(
   'gnome-usage', ['vala', 'c'],
   version: '3.33.2',
   license: 'GPL3',
-  meson_version: '>= 0.38.0'
+  meson_version: '>= 0.50.0'
 )
 
 cc = meson.get_compiler('c')
