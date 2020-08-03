@@ -4,9 +4,6 @@ stages:
   - test
   - deploy
 
-variables:
-  BUNDLE: "org.gnome.Usage.Devel.flatpak"
-
 build:
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
@@ -28,8 +25,8 @@ flatpak:
     MANIFEST_PATH: 'org.gnome.Usage.json'
     RUNTIME_REPO: 'https://nightly.gnome.org/gnome-nightly.flatpakrepo'
     FLATPAK_MODULE: 'gnome-usage'
+    BUNDLE: "org.gnome.Usage.Devel.flatpak"
     APP_ID: 'org.gnome.UsageDevel'
-    MESON_ARGS: '-Dprofile=development'
 
 nightly:
   extends: '.publish_nightly'
