@@ -1,3 +1,65 @@
+3.37.1 - Aug 04, 2020
+=====================
+
+  - Try getting the application ID from the desktop entry
+  - Add application lookup based on cgroup information
+  - Make the window fold itself when narrow to fit mobile phones
+  - Use an adaptive view switcher instead of a stack switcher
+  - Give icons to the pages to display in the view switcher
+  - Allow building a regular or a nightly .Devel Flatpak
+  - Build and publish nightlies in the CI
+  - Use the tracker-2.3 branch for Tracker in the Flatpak manifest
+  - Avoid explicitly setting cflags in the Flatpak manifest
+  - Added/updated/fixed translations:
+    - Basque
+    - British English
+    - Catalan
+    - Chinese (China)
+    - Chinese (Taiwan)
+    - Dutch
+    - Finnish
+    - French
+    - Greek
+    - Italian
+    - Romanian
+    - Serbian
+    - Slovak
+    - Slovenian
+    - Swedish
+    - Turkish
+    - Ukrainian
+
+Dependencies changed:
+
+ - libhandy 0.83.0 (added)
+ - meson 0.50.0 (bumped)
+
+All contributors to this release:
+
+Adrien Plazas <kekun.plazas@laposte.net>
+Anders Jonsson <anders.jonsson@norsjovallen.se>
+Asier Sarasua Garmendia <asier.sarasua@gmail.com>
+Benjamin Berg <bberg@redhat.com>
+Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
+Dušan Kazik <prescott66@gmail.com>
+Dz Chen <wsxy162@gmail.com>
+Efstathios Iosifidis <eiosifidis@gnome.org>
+Felipe Borges <felipeborges@gnome.org>
+Florentina Mușat <florentina.musat.28@gmail.com>
+Gianvito Cavasoli <gianvito@gmx.it>
+Jiri Grönroos <jiri.gronroos@iki.fi>
+Jordan Petridis <jpetridis@gnome.org>
+Jordi Mas <jmas@softcatala.org>
+Matej Urbančič <mateju@svn.gnome.org>
+Maxime Hardy <maxime.bonneau.hardy@gmail.com>
+Nathan Follens <nfollens@gnome.org>
+Piotr Drąg <piotrdrag@gmail.com>
+Sabri Ünal <libreajans@gmail.com>
+Yi-Jyun Pan <pan93412@gmail.com>
+Yuri Chornoivan <yurchor@ukr.net>
+Zander Brown <zbrown@gnome.org>
+Марко Костић <marko.m.kostic@gmail.com>
+
 3.33.2 - Jul 30, 2019
 =====================
 

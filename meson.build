@@ -1,6 +1,6 @@
 project(
   'gnome-usage', ['vala', 'c'],
-  version: '3.33.2',
+  version: '3.37.1',
   license: 'GPL3',
   meson_version: '>= 0.50.0'
 )
