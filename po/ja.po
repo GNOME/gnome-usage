@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2020-08-04 20:04+0000\n"
+"POT-Creation-Date: 2020-08-14 12:36+0000\n"
 "PO-Revision-Date: 2020-08-07 21:52+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -52,8 +52,8 @@ msgid ""
 "Manager;"
 msgstr ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;モニター;監視;システム;プロセス;メモリ;RAM;ネットワーク;履歴;使用量"
-";パフォーマンス;タスク;マネージャー;"
+"Manager;モニター;監視;システム;プロセス;メモリ;RAM;ネットワーク;履歴;使用量;"
+"パフォーマンス;タスク;マネージャー;"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -166,7 +166,7 @@ msgstr "%s 件選択"
 
 #: src/storage/storage-actionbar.vala:45
 msgid "Are you sure you want to permanently delete selected items?"
-msgstr "本当に選択したアイテムを完全に削除しますか?"
+msgstr "本当に選択したものを完全に削除しますか?"
 
 #: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
