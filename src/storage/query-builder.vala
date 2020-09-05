@@ -27,6 +27,6 @@ public class Usage.StorageQueryBuilder {
             filter = @"tracker:uri-is-parent ('$uri', ?uri)";
         }
 
-        return @"SELECT ?uri rdf:type(?u) { ?u nie:url ?uri . FILTER($filter) }";
+        return @"SELECT ?uri rdf:type(?u) FROM tracker:FileSystem { ?u nie:url ?uri . FILTER($filter) }";
     }
 }

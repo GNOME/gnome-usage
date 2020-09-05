@@ -10,7 +10,7 @@
         "--share=ipc", "--socket=x11",
         "--socket=wayland",
         "--share=network",
-        "--talk-name=org.freedesktop.Tracker1",
+        "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:FileSystem",
         "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
         "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
@@ -20,27 +20,6 @@
                 "/share/vala",
                 "*.la", "*.a"],
     "modules": [
-        {
-            "name": "tracker",
-            "buildsystem": "meson",
-            "cleanup": [ "/bin", "/etc", "/libexec" ],
-            "config-opts":[
-               "--libdir=lib",
-               "-Ddocs=false",
-               "-Dfunctional_tests=false",
-               "-Djournal=false",
-               "-Dnetwork_manager=disabled",
-               "-Dstemmer=disabled",
-               "-Dbash_completion=no",
-               "-Dsystemd_user_services=no"],
-            "sources": [
-                {
-                    "type": "git",
-                    "branch": "tracker-2.3",
-                    "url": "https://gitlab.gnome.org/GNOME/tracker.git"
-                }
-            ]
-        },
         {
             "name": "libgtop-2.0",
             "sources": [

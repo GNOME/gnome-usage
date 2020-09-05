@@ -79,9 +79,9 @@ public class Usage.StorageView : Usage.View {
         icon_name = "drive-harddisk-symbolic";
 
         try {
-            connection = Sparql.Connection.get ();
+            connection = Sparql.Connection.bus_new ("org.freedesktop.Tracker3.Miner.Files", null, null);
         } catch (GLib.Error error) {
-            critical ("Failed to connect to Tracker: %s", error.message);
+            critical ("Failed to connect to Tracker Miner FS: %s", error.message);
         }
 
         query_builder = new StorageQueryBuilder ();
