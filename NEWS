@@ -1,3 +1,23 @@
+3.38.0 - Sep 12, 2020
+=====================
+
+  - Port to Tracker 3.
+  - Added/updated/fixed translations:
+    - Japanese
+
+Dependencies changed:
+
+ - libhandy-1 1.0.0 (bumped)
+ - tracker-sparql-2.0 (dropped)
+ - tracker-sparql-3.0 (added)
+
+All contributors to this release:
+
+Adrien Plazas <kekun.plazas@laposte.net>
+Ryo Nakano <ryonakaknock3@gmail.com>
+Sam Thursfield <sam@afuera.me.uk>
+sicklylife <translation@sicklylife.jp>
+
 3.37.1 - Aug 04, 2020
 =====================
 
