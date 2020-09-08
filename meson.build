@@ -15,7 +15,7 @@ gio_unix_dep = dependency('gio-unix-2.0')
 gtk_dep = dependency('gtk+-3.0', version : '>=3.20.10')
 libdazzle_dep = dependency('libdazzle-1.0', version : '>=3.30')
 libgtop_dep = dependency('libgtop-2.0', version : '>= 2.34.0')
-libhandy_dep = dependency('libhandy-1', version : '>= 0.83.0', required: false)
+libhandy_dep = dependency('libhandy-1', version : '>= 1.0.0', required: false)
 tracker_dep = dependency('tracker-sparql-3.0')
 
 if not libhandy_dep.found()
