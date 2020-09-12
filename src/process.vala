@@ -106,7 +106,7 @@ namespace Usage
             /* cmd is most likely a truncated version, therefore
              * we check the first two arguments of the full argv
              * vector if they match cmd and if so, use that */
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < uint.min (args.length, 2); i++) {
                 if (args[i] == null)
                     continue;
 
