@@ -14,3 +14,4 @@ src/storage-row.c
 src/storage-view.c
 src/utils.c
 src/window.c
+subprojects/libhandy
