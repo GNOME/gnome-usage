@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2018-05-03 14:27+0000\n"
-"PO-Revision-Date: 2018-08-03 10:25+0200\n"
+"POT-Creation-Date: 2020-03-31 09:58+0000\n"
+"PO-Revision-Date: 2020-09-13 00:38+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.3\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -37,7 +37,7 @@ msgstr ""
 "Eine einfache GNOME3-Anwendung zum Überwachen und Analysieren von "
 "Systemressourcen wie Prozessor, Arbeits- und Festplattenspeicher."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:91 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
 msgid "Usage"
 msgstr "Auslastung"
 
@@ -48,11 +48,6 @@ msgid ""
 msgstr ""
 "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
 "Ressourcen, wie Arbeitsspeicher und Speicherplatz anzuzeigen"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
@@ -73,7 +68,7 @@ msgstr ""
 "Diese Liste wird zur Filterung der Prozesse verwendet, die der Benutzer "
 "nicht beenden kann."
 
-#: data/ui/header-bar.ui:72 data/ui/quit-process-dialog.ui:16
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -84,10 +79,10 @@ msgstr "Arbeitsspeicher"
 
 #: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
 msgid "Used"
-msgstr "Benutzt"
+msgstr "Belegt"
 
 #: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/graph-block.vala:67 src/storage-item.vala:140
+#: src/storage-item.vala:140
 msgid "Available"
 msgstr "Verfügbar"
 
@@ -98,6 +93,18 @@ msgstr "Keine Ergebnisse gefunden"
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
 msgstr "Andere Suche ausprobieren"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_Info zu Auslastung"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Systemprozesse gruppieren"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Alle Prozesse anzeigen"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -144,15 +151,11 @@ msgstr "Kein Inhalt"
 msgid "Swap"
 msgstr "Auslagerungsspeicher"
 
-#: src/application.vala:56
-msgid "About"
-msgstr "Info"
+#: src/app-item.vala:43
+msgid "System"
+msgstr "System"
 
-#: src/application.vala:59
-msgid "Quit"
-msgstr "Beenden"
-
-#: src/application.vala:92
+#: src/application.vala:80
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -160,13 +163,13 @@ msgstr ""
 "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
 "Ressourcen, wie Arbeitsspeicher und Speicherplatz anzuzeigen."
 
-#: src/application.vala:95
+#: src/application.vala:83
 msgid "translator-credits"
 msgstr ""
 "Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Bernd Homuth <dev@hmt.im>"
 
-#: src/application.vala:97
+#: src/application.vala:85
 msgid "Websites"
 msgstr "Webseiten"
 
@@ -174,30 +177,26 @@ msgstr "Webseiten"
 msgid "Processor"
 msgstr "Prozessor"
 
-#: src/graph-block.vala:65
-msgid "Others"
-msgstr "Andere"
-
 #: src/graph-stack-switcher.vala:46
 msgid "Memory"
 msgstr "Speicher"
 
-#: src/header-bar.vala:143
+#: src/header-bar.vala:149
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u ausgewählt"
 msgstr[1] "%u ausgewählt"
 
-#: src/header-bar.vala:145
+#: src/header-bar.vala:151
 msgid "Click on items to select them"
 msgstr "Klicken Sie auf Objekte, um diese auszuwählen"
 
-#: src/header-bar.vala:209
+#: src/header-bar.vala:215
 msgid "Select all"
 msgstr "Alle auswählen"
 
-#: src/header-bar.vala:213
+#: src/header-bar.vala:219
 msgid "Select None"
 msgstr "Nichtds auswählen"
 
@@ -298,3 +297,15 @@ msgstr "Wenn Sie ein Objekt löschen, geht es dauerhaft verloren."
 #: src/storage-view.vala:45
 msgid "Storage"
 msgstr "Speicher"
+
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
+
+#~ msgid "About"
+#~ msgstr "Info"
+
+#~ msgid "Quit"
+#~ msgstr "Beenden"
+
+#~ msgid "Others"
+#~ msgstr "Andere"
