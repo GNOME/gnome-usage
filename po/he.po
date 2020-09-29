@@ -1,0 +1,189 @@
+# Hebrew translation for gnome-usage.
+# Copyright (C) 2020 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2020-09-26 11:52+0000\n"
+"PO-Revision-Date: 2020-09-29 20:09+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"Language-Team: Hebrew <yoseforb@gmail.com>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 3.36.0\n"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:5
+msgid "GNOME Usage"
+msgstr "‏GNOME שימוש"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "A nice way to view information about use of system resources"
+msgstr "דרך נחמדה לצפות במידע על שימוש המערכת במשאבים"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr "יישום GNOME 3 פשוט להצגה ולניתוח משאבי מערכת כמו מעבד, זיכרון ואחסון."
+
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
+#: data/ui/window.ui:23 src/application.vala:85
+msgid "Usage"
+msgstr "שימוש"
+
+#: data/org.gnome.Usage.desktop.in.in:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr "דרך נחמדה לצפות במידע על שימוש במשאבי המערכת, כמו זיכרון ושימוש בכונן"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in.in:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"צג;מוניטור;מערכת;מעבד;CPU;זיכרון;רשת;היסטוריה;שימוש;משבים;ניצול;משימות;משימה;"
+"מנהל;ניהול;ביצועים;"
+
+#: data/org.gnome.Usage.gschema.xml.in:5
+msgid "A list of processes which we don’t want killed"
+msgstr "A list of processes which we don’t want killed"
+
+#: data/org.gnome.Usage.gschema.xml.in:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr "This list is used for filtering which processes the user can’t stop."
+
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "זיכרון גישה אקראית (RAM)"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
+#: data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "מנוצל"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
+#: data/ui/swap-speedometer.ui:75
+msgid "Available"
+msgstr "זמין"
+
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "לא נמצאו תוצאות"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "יש לנסות חיפוש שונה"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_על אודות שימוש"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "קיבוץ תהליכי מערכת"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "הצגת כל התהליכים"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "לכפות את סגירת %s?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "עבודה שלא נשמרה תאבד."
+
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "ביטול"
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "לכפות סגירה"
+
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "מחיקה…"
+
+#: data/ui/storage-view.ui:42
+msgid "Home Partition"
+msgstr "מחיצת בית"
+
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "תחלופה"
+
+#: src/app-item.vala:155
+msgid "System"
+msgstr "מערכת"
+
+#: src/application.vala:86
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr "דרך נחמדה לצפות במידע על שימוש במשאבי המערכת, כמו זיכרון ושימוש בכונן"
+
+#: src/application.vala:89
+msgid "translator-credits"
+msgstr ""
+"יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
+"\n"
+"<a href=\"https://l10n.gnome.org/teams/he/\">מיזם תרגום GNOME לעברית</a>"
+
+#: src/application.vala:91
+msgid "Websites"
+msgstr "אתר אינטרנט"
+
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+msgid "Processor"
+msgstr "מעבד"
+
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+msgid "Memory"
+msgstr "זיכרון"
+
+#: src/performance-view.vala:48
+msgid "Performance"
+msgstr "ביצועים"
+
+#: src/storage/storage-actionbar.vala:40
+#, c-format
+msgid "%s selected"
+msgstr "‏%s נבחר"
+
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "האם אכן ברצונך למחוק לצמיתות את הפריטים הנבחרים?"
+
+#: src/storage/storage-actionbar.vala:49
+msgid "If you delete these items, they will be permanently lost."
+msgstr "בחירה במחיקת פריטים אלו תוביל לאבדנם לצמיתות."
+
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr "קובצי מערכת ההפעלה הנם חלק חיוני של המערכת ואינם ניתנים למחיקה."
+
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "אחסון"
+
+#: src/storage/storage-view.vala:246
+msgid "Operating System"
+msgstr "מערכת הפעלה"
+
+#: src/storage/storage-view.vala:272
+msgid "Scanning directories"
+msgstr "סריקת תיקיות"
