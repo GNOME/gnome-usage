@@ -47,4 +47,8 @@
   <url type="help">https://gitlab.gnome.org/GNOME/gnome-usage/wikis/home</url>
   <url type="translate">https://wiki.gnome.org/TranslationProject</url>
   <translation type="gettext">gnome-usage</translation>
+  <custom>
+    <value key="Purism::form_factor">workstation</value>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
 </component>
