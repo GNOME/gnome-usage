@@ -2,14 +2,14 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Zdeněk Hataš <zdenek.hatas@gmail.com>, 2017.
-# Marek Černocký <marek@manet.cz>, 2017, 2018, 2019.
+# Marek Černocký <marek@manet.cz>, 2017, 2018, 2019, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-01-03 18:03+0000\n"
-"PO-Revision-Date: 2019-01-07 11:30+0100\n"
+"POT-Creation-Date: 2020-06-05 07:24+0000\n"
+"PO-Revision-Date: 2020-11-12 11:18+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -19,16 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
+#: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
 msgstr "Využití GNOME"
 
-#: data/org.gnome.Usage.appdata.xml.in:6
+#: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Elegantní způsob, jak zobrazit informace o využití systémových prostředků."
 
-#: data/org.gnome.Usage.appdata.xml.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
@@ -36,11 +36,12 @@ msgstr ""
 "Jednoduchá aplikace pro GNOME 3 ke sledování a analýze systémových "
 "prostředků, jako jsou procesor, paměť nebo úložiště."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 src/application.vala:79
+#: src/window.vala:41
 msgid "Usage"
 msgstr "Využití"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -48,13 +49,8 @@ msgstr ""
 "Elegantní způsob, jak zobrazit informace o využití systémových prostředků, "
 "jako jsou operační paměť a místo na disku."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -62,31 +58,27 @@ msgstr ""
 "monitor;monitorovat;sledování;sledovat;systém;proces;CPU;procesor;paměť;"
 "operační paměť;síť;historie;využití;vytížení;výkon;úloha;správce;správa;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Seznam všech procesů, které nechceme ukončit"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Tento seznam je používám pro filtrování procesů, které uživatele nesmí "
 "ukončit."
 
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Storno"
-
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "Operační paměť"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Použito"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Dostupné"
 
@@ -119,43 +111,27 @@ msgstr "Vynutit ukončení aplikace %s?"
 msgid "Unsaved work might be lost."
 msgstr "Můžete přijít o neuloženou práci."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Storno"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Vynutit ukončení"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Přesunout do"
+#: data/ui/storage-actionbar.ui:17
+msgid "Delete…"
+msgstr "Smazat…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Smazat"
-
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Přesunout do koše"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Vysypat koš"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Obnovit"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Smazat z koše"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Není zde žádný obsah"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Domovský oddíl"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
 msgstr "Odkládací prostor"
 
-#: src/app-item.vala:43
+#: src/app-item.vala:71
 msgid "System"
 msgstr "Systém"
 
@@ -179,134 +155,43 @@ msgstr "Webové stránky"
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Paměť"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u vybraný"
-msgstr[1] "%u vybrané"
-msgstr[2] "%u vybraných"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Položky vyberete kliknutím"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Vybrat vše"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Zrušit výběr"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Výkon"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Vybrat cílovou složku"
+#: src/storage/storage-actionbar.vala:40
+# c-format
+msgid "%s selected"
+msgstr "Vybrali jste %s"
 
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Vybrat"
+#: src/storage/storage-actionbar.vala:45
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Opravdu chcete trvale smazat vybrané položky?"
 
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
-#, c-format
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Opravdu chcete trvale smazat „%s“?"
-
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] "Opravdu chcete trvale smazat %d vybranou položku?"
-msgstr[1] "Opravdu chcete trvale smazat %d vybrané položky?"
-msgstr[2] "Opravdu chcete trvale smazat %d vybraných položek?"
-
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Pokdu tyto položky smažete, budou nenávratně ztraceny."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Vyprázdnit z koše všechny položky?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Soubory operačního systému jsou základní částí systému a nemohou být proto "
+"odstraněny."
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Všechny položky v koši budou trvale smazány."
-
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Smazat všechny položky ze složky %s"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Všechny položky ze složky %s bodou přesunuty do koše."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Úložiště 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Úložiště 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Kapacita"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Domovská složka"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Koš"
-
-#: src/storage-item.vala:128
-msgid "Operating System"
-msgstr "Operační systém"
-
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Vyprázdnit"
-
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Vysypat koš"
-
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Přejmenovat"
-
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Opravdu chcete trvale smazat %s?"
-
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Pokud položku smažete, bude trvale ztracena."
-
-#: src/storage-view.vala:45
+#: src/storage/storage-view.vala:78
 msgid "Storage"
 msgstr "Úložiště"
 
-#~ msgid "About"
-#~ msgstr "O aplikaci"
+#: src/storage/storage-view.vala:245
+msgid "Operating System"
+msgstr "Operační systém"
 
-#~ msgid "Quit"
-#~ msgstr "Ukončit"
-
-#~ msgid "Others"
-#~ msgstr "Ostatní"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Prozkoumávají se složky"
