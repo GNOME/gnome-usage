@@ -1,0 +1,314 @@
+# Romanian translation for gnome-usage.
+# Copyright (C) 2020 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Florentina Mușat <florentina.musat.28@gmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2021-01-12 14:56+0000\n"
+"PO-Revision-Date: 2021-01-24 21:11+0100\n"
+"Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
+"Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
+"%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: data/org.gnome.Usage.appdata.xml.in:5
+msgid "GNOME Usage"
+msgstr "Utilizare GNOME"
+
+#: data/org.gnome.Usage.appdata.xml.in:6
+msgid "A nice way to view information about use of system resources"
+msgstr ""
+"O metodă bună de a vizualiza informații despre utilizarea resurselor "
+"sistemului"
+
+#: data/org.gnome.Usage.appdata.xml.in:8
+msgid ""
+"A simple GNOME 3 application to monitor and analyze system resources such as "
+"processing, memory, and storage."
+msgstr ""
+"O aplicație GNOME 3 simplă pentru a monitoriza și analiza resursele "
+"sistemului precum procesarea, memoria și stocarea."
+
+#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+msgid "Usage"
+msgstr "Utilizare"
+
+#: data/org.gnome.Usage.desktop.in:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"O metodă bună de a vizualiza informații despre utilizarea resurselor "
+"sistemului, precum memoria și spațiul pe disc"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;Monitorizare;Sistem;Proces;Memorie;Rețea;Istoric;Utilizare;"
+"Performanță;Administrator;Sarcini;"
+
+#: data/org.gnome.Usage.gschema.xml:5
+msgid "A list of processes which we don’t want killed"
+msgstr "O listă a proceselor pe care nu dorim să le eliminăm"
+
+#: data/org.gnome.Usage.gschema.xml:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Această listă este utilizată pentru a filtra procesele pe care utilizatorul "
+"nu le poate opri."
+
+#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
+#: src/storage-actionbar.vala:90 src/storage-row.vala:393
+msgid "Cancel"
+msgstr "Anulează"
+
+#: data/ui/memory-speedometer.ui:38
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+msgid "Used"
+msgstr "Utilizat"
+
+#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
+#: src/storage-item.vala:140
+msgid "Available"
+msgstr "Disponibil"
+
+#: data/ui/no-results-found-view.ui:23
+msgid "No results found"
+msgstr "Nu s-au găsit rezultate"
+
+#: data/ui/no-results-found-view.ui:32
+msgid "Try a different search"
+msgstr "Încercați o altă căutare"
+
+#: data/ui/primary-menu.ui:14
+msgid "_About Usage"
+msgstr "_Despre utilizare"
+
+#: data/ui/primary-menu.ui:29
+msgid "Group system processes"
+msgstr "Procese de sistem de grup"
+
+#: data/ui/primary-menu.ui:37
+msgid "Show all processes"
+msgstr "Arată toate procesele"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/quit-process-dialog.ui:9
+msgid "Force Quit %s?"
+msgstr "Fortați ieșirea pentru %s?"
+
+#: data/ui/quit-process-dialog.ui:10
+msgid "Unsaved work might be lost."
+msgstr "Munca nesalvată poate fi pierdută."
+
+#: data/ui/quit-process-dialog.ui:24
+msgid "Force Quit"
+msgstr "Forțează ieșirea"
+
+#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
+msgid "Move to"
+msgstr "Mută la"
+
+#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
+msgid "Delete"
+msgstr "Șterge"
+
+#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
+msgid "Move to Trash"
+msgstr "Mută la Gunoi"
+
+#: data/ui/storage-actionbar.ui:45
+msgid "Empty folder"
+msgstr "Golește dosar"
+
+#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
+msgid "Restore"
+msgstr "Restaurează"
+
+#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
+msgid "Delete from Trash"
+msgstr "Șterge de la Gunoi"
+
+#: data/ui/storage-view.ui:63
+msgid "No content here"
+msgstr "Niciun conținut aici"
+
+#: data/ui/swap-speedometer.ui:36
+msgid "Swap"
+msgstr "Swap"
+
+#: src/app-item.vala:43
+msgid "System"
+msgstr "Sistem"
+
+#: src/application.vala:80
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"O metodă bună de a vizualiza informații despre utilizarea resurselor "
+"sistemului, precum memoria și spațiul pe disc."
+
+#: src/application.vala:83
+msgid "translator-credits"
+msgstr ""
+"Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, 2020"
+
+#: src/application.vala:85
+msgid "Websites"
+msgstr "Pagini web"
+
+#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+msgid "Processor"
+msgstr "Procesor"
+
+#: src/graph-stack-switcher.vala:46
+msgid "Memory"
+msgstr "Memorie"
+
+#: src/header-bar.vala:149
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "%u selectat"
+msgstr[1] "%u selectate"
+msgstr[2] "%u selectate"
+
+#: src/header-bar.vala:151
+msgid "Click on items to select them"
+msgstr "Clic pe elemente pentru a le selecta"
+
+#: src/header-bar.vala:215
+msgid "Select all"
+msgstr "Selectează tot"
+
+#: src/header-bar.vala:219
+msgid "Select None"
+msgstr "Deselectează tot"
+
+#: src/performance-view.vala:48
+msgid "Performance"
+msgstr "Performanță"
+
+#: src/storage-actionbar.vala:89 src/storage-row.vala:392
+msgid "Select destination folder"
+msgstr "Selectează dosarul destinație"
+
+#: src/storage-actionbar.vala:92 src/storage-row.vala:395
+msgid "Select"
+msgstr "Selectează"
+
+#. Translators: %s is the name of the file to be deleted.
+#: src/storage-actionbar.vala:144
+#, c-format
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Sigur doriți să ștergeți permanent „%s”?"
+
+#. Translators: %d is the number of files to be deleted.
+#: src/storage-actionbar.vala:148
+#, c-format
+msgid "Are you sure you want to permanently delete the %d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %d selected items?"
+msgstr[0] "Sigur doriți să ștergeți permanent %d element selectat?"
+msgstr[1] "Sigur doriți să ștergeți permanent %d elemente selectate?"
+msgstr[2] "Sigur doriți să ștergeți permanent %d de elemente selectate?"
+
+#: src/storage-actionbar.vala:152
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Dacă ștergeți aceste elemente, ele vor fi pierdute permanent."
+
+#: src/storage-actionbar.vala:203 src/storage-row.vala:342
+msgid "Empty all items from Trash?"
+msgstr "Golești toate elementele din Gunoi?"
+
+#: src/storage-actionbar.vala:204 src/storage-row.vala:343
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Toate elementele din Gunoi vor fi șterse permanent."
+
+#: src/storage-actionbar.vala:225 src/storage-row.vala:322
+#, c-format
+msgid "Empty all items from %s?"
+msgstr "Golești toate elementele din %s?"
+
+#: src/storage-actionbar.vala:226 src/storage-row.vala:323
+#, c-format
+msgid "All items in the %s will be moved to the Trash."
+msgstr "Toate elementele din %s vor fi mutate la Gunoi."
+
+#: src/storage-analyzer.vala:94
+msgid "Storage 1"
+msgstr "Stocare 1"
+
+#: src/storage-analyzer.vala:98
+msgid "Storage 2"
+msgstr "Stocare 2"
+
+#: src/storage-analyzer.vala:105
+msgid "Capacity"
+msgstr "Capacitate"
+
+#: src/storage-analyzer.vala:647
+msgid "Home"
+msgstr "Acasă"
+
+#: src/storage-item.vala:104
+msgid "Trash"
+msgstr "Gunoi"
+
+#: src/storage-item.vala:128
+msgid "Operating System"
+msgstr "Sistem de operare"
+
+#: src/storage-row.vala:248
+msgid "Empty"
+msgstr "Golește"
+
+#: src/storage-row.vala:253
+msgid "Empty Trash"
+msgstr "Golește Gunoi"
+
+#: src/storage-row.vala:273 src/storage-row.vala:367
+msgid "Rename"
+msgstr "Redenumește"
+
+#: src/storage-row.vala:439
+#, c-format
+msgid "Are you sure you want to permanently delete %s?"
+msgstr "Sigur doriți să ștergeți permanent %s?"
+
+#: src/storage-row.vala:440
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Dacă ștergeți un element, va fi pierdut permanent."
+
+#: src/storage-view.vala:45
+msgid "Storage"
+msgstr "Stocare"
+
+#~ msgid "Home Partition"
+#~ msgstr "Partiție personală"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Fișierele de sistem de operare sunt o parte esențială a sistemului și nu "
+#~ "pot fi eliminate."
+
+#~ msgid "Scanning directories"
+#~ msgstr "Se scanează directoare"
