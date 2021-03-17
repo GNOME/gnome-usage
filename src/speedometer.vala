@@ -26,10 +26,10 @@ namespace Usage
     public class Speedometer : Buildable, Gtk.Bin
     {
         [GtkChild]
-        private Gtk.Box inner;
+        private unowned Gtk.Box inner;
 
         [GtkChild]
-        private Gtk.Box content_area;
+        private unowned Gtk.Box content_area;
 
         private Gtk.CssProvider css_provider;
 

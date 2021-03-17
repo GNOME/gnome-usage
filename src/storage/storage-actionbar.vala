@@ -26,7 +26,7 @@ namespace Usage
         private unowned List<StorageViewItem> selected_items;
 
         [GtkChild]
-        private Gtk.Label size_label;
+        private unowned Gtk.Label size_label;
 
         public signal void refresh_listbox ();
 

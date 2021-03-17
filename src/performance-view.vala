@@ -26,19 +26,19 @@ namespace Usage
     public class PerformanceView : View
     {
         [GtkChild]
-        private Gtk.Box switcher_box;
+        private unowned Gtk.Box switcher_box;
 
         [GtkChild]
-        private Gtk.Box performance_content;
+        private unowned Gtk.Box performance_content;
 
         [GtkChild]
-        private Hdy.SearchBar search_bar;
+        private unowned Hdy.SearchBar search_bar;
 
         [GtkChild]
-        private Gtk.SearchEntry search_entry;
+        private unowned Gtk.SearchEntry search_entry;
 
         [GtkChild]
-        private AnimatedScrolledWindow scrolled_window;
+        private unowned AnimatedScrolledWindow scrolled_window;
 
         View[] sub_views;
 

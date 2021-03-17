@@ -26,16 +26,16 @@ namespace Usage
     public class SwapSpeedometer : Gtk.Bin
     {
         [GtkChild]
-        private Usage.Speedometer speedometer;
+        private unowned Usage.Speedometer speedometer;
 
         [GtkChild]
-        private Gtk.Label label;
+        private unowned Gtk.Label label;
 
         [GtkChild]
-        private Gtk.Label swap_used;
+        private unowned Gtk.Label swap_used;
 
         [GtkChild]
-        private Gtk.Label swap_available;
+        private unowned Gtk.Label swap_available;
 
         private double swap_usage { get; set; }
 

@@ -26,16 +26,16 @@ namespace Usage
     public class MemorySpeedometer : Gtk.Bin
     {
         [GtkChild]
-        private Usage.Speedometer speedometer;
+        private unowned Usage.Speedometer speedometer;
 
         [GtkChild]
-        private Gtk.Label label;
+        private unowned Gtk.Label label;
 
         [GtkChild]
-        private Gtk.Label ram_used;
+        private unowned Gtk.Label ram_used;
 
         [GtkChild]
-        private Gtk.Label ram_available;
+        private unowned Gtk.Label ram_available;
 
         private double ram_usage { get; set; }
 

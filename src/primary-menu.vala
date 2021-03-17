@@ -25,7 +25,7 @@ namespace Usage {
     public class PrimaryMenu : Gtk.Popover {
 
         [GtkChild]
-        private Gtk.Box performance_container;
+        private unowned Gtk.Box performance_container;
 
         public HeaderBarMode mode { get; set; }
 

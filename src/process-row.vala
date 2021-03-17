@@ -31,22 +31,22 @@ namespace Usage
         private const string CSS_TAG_SYSTEM = "tag-system";
 
         [GtkChild]
-        private Gtk.Image icon;
+        private unowned Gtk.Image icon;
 
         [GtkChild]
-        private Gtk.Label title_label;
+        private unowned Gtk.Label title_label;
 
         [GtkChild]
-        private Gtk.Box user_tag_box;
+        private unowned Gtk.Box user_tag_box;
 
         [GtkChild]
-        private Gtk.Image gamemode;
+        private unowned Gtk.Image gamemode;
 
         [GtkChild]
-        private Gtk.Label user_tag_label;
+        private unowned Gtk.Label user_tag_label;
 
         [GtkChild]
-        private Gtk.Label load_label;
+        private unowned Gtk.Label load_label;
 
         private ProcessListBoxType type;
 

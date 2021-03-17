@@ -27,25 +27,25 @@ public class Usage.StorageView : Usage.View {
     public const uint MIN_PERCENTAGE_SHOWN_FILES = 2;
 
     [GtkChild]
-    private Gtk.Label header_label;
+    private unowned Gtk.Label header_label;
 
     [GtkChild]
-    private StorageViewRow used_row;
+    private unowned StorageViewRow used_row;
 
     [GtkChild]
-    private StorageViewRow available_row;
+    private unowned StorageViewRow available_row;
 
     [GtkChild]
-    private Dazzle.StackList listbox;
+    private unowned Dazzle.StackList listbox;
 
     [GtkChild]
-    private StorageGraph graph;
+    private unowned StorageGraph graph;
 
     [GtkChild]
-    private StorageActionBar actionbar;
+    private unowned StorageActionBar actionbar;
 
     [GtkChild]
-    private NotificationBar notificationbar;
+    private unowned NotificationBar notificationbar;
 
     private Sparql.Connection connection;
     private TrackerController controller;

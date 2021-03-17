@@ -37,22 +37,22 @@ namespace Usage
     public class Window : Hdy.ApplicationWindow
     {
         [GtkChild]
-        private Gtk.Stack stack;
+        private unowned Gtk.Stack stack;
 
         [GtkChild]
-        private Gtk.Revealer performance_search_revealer;
+        private unowned Gtk.Revealer performance_search_revealer;
 
         [GtkChild]
-        private Gtk.ToggleButton performance_search_button;
+        private unowned Gtk.ToggleButton performance_search_button;
 
         [GtkChild]
-        private Gtk.MenuButton primary_menu_button;
+        private unowned Gtk.MenuButton primary_menu_button;
 
         private HeaderBarMode mode;
         private Usage.PrimaryMenu menu;
 
         [GtkChild]
-        private Hdy.ViewSwitcherBar view_switcher_bar;
+        private unowned Hdy.ViewSwitcherBar view_switcher_bar;
 
         private View[] views;
 

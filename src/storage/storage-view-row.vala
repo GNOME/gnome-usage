@@ -30,19 +30,19 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
     }
 
     [GtkChild]
-    private Gtk.Label title;
+    private unowned Gtk.Label title;
 
     [GtkChild]
-    public Gtk.CheckButton check_button;
+    public unowned Gtk.CheckButton check_button;
 
     [GtkChild]
-    public Gtk.Label size_label;
+    public unowned Gtk.Label size_label;
 
     [GtkChild]
-    public Gtk.Spinner spinner;
+    public unowned Gtk.Spinner spinner;
 
     [GtkChild]
-    public Gtk.Box tag;
+    public unowned Gtk.Box tag;
 
     public enum TagSize {
         SMALL,

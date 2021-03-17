@@ -28,7 +28,7 @@ namespace Usage {
         public delegate void DismissFunc ();
 
         [GtkChild]
-        private Gtk.Label message_label;
+        private unowned Gtk.Label message_label;
 
         public LoadingNotification (string message, owned DismissFunc? dismiss_func) {
             set_reveal_child (true);

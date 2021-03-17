@@ -22,7 +22,7 @@
 public class Usage.StorageRowPopover : Gtk.Popover {
 
     [GtkChild]
-    private Gtk.Label label;
+    private unowned Gtk.Label label;
 
     public void present (StorageViewRow row) {
         relative_to = row;
