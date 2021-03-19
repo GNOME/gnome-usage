@@ -1,3 +1,31 @@
+3.38.1 - Mar 19, 2021
+=====================
+
+  - Flag GtkBuilder children as unowned.
+  - Prevent reading beyond GTop's args.
+  - Prevent navigation to the storage separator.
+  - Prevent a double border in the performance sidebar.
+  - List compatible form-factors.
+  - Added/updated/fixed translations:
+    - Catalan
+    - Czech
+    - Friulian
+    - German
+    - Hebrew
+    - Portuguese
+
+All contributors to this release:
+
+Adrien Plazas <kekun.plazas@laposte.net>
+Christian Kirbach <Christian.Kirbach@gmail.com>
+Fabio Tomat <f.t.public@gmail.com>
+Jordi Mas <jmas@softcatala.org>
+Juliano de Souza Camargo <julianosc@protonmail.com>
+Marek Černocký <marek@manet.cz>
+Rasmus Thomsen <oss@cogitri.dev>
+Rico Tzschichholz <ricotz@ubuntu.com>
+Yosef Or Boczko <yoseforb@gnome.org>
+
 3.38.0 - Sep 12, 2020
 =====================
 
