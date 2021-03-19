@@ -177,3 +177,7 @@ dzlstacklist list.stack-header {
     margin: 0px;
     border:none;
 }
+
+leaflet > box.sidebar {
+    border: none;
+}

@@ -27,6 +27,18 @@
         </child>
 
         <child>
+          <object class="GtkSeparator">
+            <property name="visible">True</property>
+            <style>
+              <class name="sidebar" />
+            </style>
+          </object>
+          <packing>
+            <property name="navigatable">False</property>
+          </packing>
+        </child>
+
+        <child>
           <object class="GtkBox" id="content_box">
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
