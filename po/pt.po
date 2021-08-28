@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the gnome-usage package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2020.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2020-09-18 19:10+0000\n"
-"PO-Revision-Date: 2020-09-26 12:50+0100\n"
-"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
+"POT-Creation-Date: 2020-09-26 11:51+0000\n"
+"PO-Revision-Date: 2021-08-28 15:29+0100\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/org.gnome.Usage.appdata.xml.in:5
 msgid "GNOME Usage"
@@ -26,7 +27,8 @@ msgstr "Utilização GNOME"
 #: data/org.gnome.Usage.appdata.xml.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr ""
-"Um jeito fixe de ver informação acerca do uso dos recursos pelo sistema"
+"Uma forma agradável de ver informação sobre a utilização dos recursos do "
+"sistema"
 
 #: data/org.gnome.Usage.appdata.xml.in:8
 msgid ""
@@ -45,8 +47,8 @@ msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
 msgstr ""
-"Um jeito fixe de ver informação acerca do uso dos recursos pelo sistema, "
-"como memória e espaço em disco"
+"Uma forma agradável de ver informação sobre a utilização dos recursos do "
+"sistema, como memória e espaço em disco"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in:13
@@ -59,13 +61,13 @@ msgstr ""
 
 #: data/org.gnome.Usage.gschema.xml:5
 msgid "A list of processes which we don’t want killed"
-msgstr "Uma lista de processos que não deveriam ser aniquilados"
+msgstr "Uma lista de processos que não deveriam ser terminados"
 
 #: data/org.gnome.Usage.gschema.xml:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Esta lista é usada para filtragem de processos que o utilizador não pode "
-"aniquilar."
+"terminar."
 
 #: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
 #: src/storage-actionbar.vala:90 src/storage-row.vala:393
@@ -91,11 +93,11 @@ msgstr "Sem resultados"
 
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
-msgstr "Tente outro critério de procura"
+msgstr "Tente outro critério de pesquisa"
 
 #: data/ui/primary-menu.ui:14
 msgid "_About Usage"
-msgstr "_Acerca de Utilização"
+msgstr "_Acerca do Utilização"
 
 #: data/ui/primary-menu.ui:29
 msgid "Group system processes"
@@ -103,20 +105,20 @@ msgstr "Agrupar processos do sistema"
 
 #: data/ui/primary-menu.ui:37
 msgid "Show all processes"
-msgstr "Ver todos os processo"
+msgstr "Ver todos os processos"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
 msgid "Force Quit %s?"
-msgstr "Forçar o fechamento de %s?"
+msgstr "Forçar o terminar de %s?"
 
 #: data/ui/quit-process-dialog.ui:10
 msgid "Unsaved work might be lost."
-msgstr "As alterações não gravadas hão de serem perdidas."
+msgstr "As alterações não gravadas hão de ser perdidas."
 
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
-msgstr "Forçar o fechamento"
+msgstr "Forçar o terminar"
 
 #: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
 msgid "Move to"
@@ -159,12 +161,14 @@ msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr ""
-"Um jeito fixe de ver informação acerca do uso dos recursos pelo sistema, "
-"como memória e espaço em disco"
+"Uma forma agradável de ver informação sobre a utilização dos recursos do "
+"sistema, como memória e espaço em disco."
 
 #: src/application.vala:83
 msgid "translator-credits"
-msgstr "Juliano de Souza Camargo <julianosc@protonmail.com>"
+msgstr ""
+"Juliano de Souza Camargo <julianosc@protonmail.com>\n"
+"Hugo Carvalho <hugokarvalho@hotmail.com>"
 
 #: src/application.vala:85
 msgid "Websites"
@@ -191,7 +195,7 @@ msgstr "Clique nos itens para os selecionar"
 
 #: src/header-bar.vala:215
 msgid "Select all"
-msgstr "Selecionar todos"
+msgstr "Selecionar tudo"
 
 #: src/header-bar.vala:219
 msgid "Select None"
@@ -228,7 +232,7 @@ msgstr[1] ""
 
 #: src/storage-actionbar.vala:152
 msgid "If you delete these items, they will be permanently lost."
-msgstr "Caso elimine estes itens, eles hão de serem perdidos definitivamente."
+msgstr "Caso elimine estes itens, eles hão de ser perdidos definitivamente."
 
 #: src/storage-actionbar.vala:203 src/storage-row.vala:342
 msgid "Empty all items from Trash?"
