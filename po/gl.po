@@ -1,14 +1,14 @@
 # Galician translation for gnome-usage.
 # Copyright (C) 2018 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Fran Dieguez <frandieguez@gnome.org>, 2018-2019.
+# Fran Dieguez <frandieguez@gnome.org>, 2018-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-01-03 18:03+0000\n"
-"PO-Revision-Date: 2019-01-29 01:09+0100\n"
+"POT-Creation-Date: 2020-06-05 07:24+0000\n"
+"PO-Revision-Date: 2021-09-06 21:49+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -16,19 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 3.30.0\n"
+"X-Generator: Gtranslator 40.0\n"
 "X-Project-Style: gnome\n"
+"X-DL-Team: gl\n"
+"X-DL-Module: gnome-usage\n"
+"X-DL-Branch: master\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
+#: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
 msgstr "Uso de GNOME"
 
-#: data/org.gnome.Usage.appdata.xml.in:6
+#: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Unha forma sinxela de ver información sobre o uso dos recursos do sistema"
 
-#: data/org.gnome.Usage.appdata.xml.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
@@ -36,11 +41,12 @@ msgstr ""
 "Un aplicativo de GNOME 3 sinxelo para monitorizar e analizar os recursos do "
 "sistema como o procesamento, memoria e almacenamento."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 src/application.vala:79
+#: src/window.vala:41
 msgid "Usage"
 msgstr "Uso"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -48,13 +54,8 @@ msgstr ""
 "Unha forma sinxela de ver información sobre o uso dos recursos do sistema, "
 "como a memoria e o espazo en disco"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Usage.desktop.in:8
-msgid "org.gnome.Usage"
-msgstr "org.gnome.Usage"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -62,30 +63,26 @@ msgstr ""
 "Monitor;Sistema;Procesos;CPU;Memoria;Rede;Historial;Uso;Rendemento;Tarefas;"
 "Xestor;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Unha lista de procesos que non queremos matar"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Esta lista úsase para filtrar os procesos que o usuario non pode deter."
-
-#: data/ui/header-bar.ui:87 data/ui/quit-process-dialog.ui:16
-#: src/storage-actionbar.vala:90 src/storage-row.vala:393
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: data/ui/memory-speedometer.ui:38
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Usado"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/swap-speedometer.ui:75
-#: src/storage-item.vala:140
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Dispoñíbel"
 
@@ -118,43 +115,28 @@ msgstr "Forzar a saída de %s?"
 msgid "Unsaved work might be lost."
 msgstr "O traballo sen gardar perderase."
 
+#: data/ui/quit-process-dialog.ui:16
+msgid "Cancel"
+msgstr "Cancelar"
+
 #: data/ui/quit-process-dialog.ui:24
 msgid "Force Quit"
 msgstr "Forzar a saída"
 
-#: data/ui/storage-actionbar.ui:9 src/storage-row.vala:274
-msgid "Move to"
-msgstr "Mover a"
+#: data/ui/storage-actionbar.ui:17
+#| msgid "Delete"
+msgid "Delete…"
+msgstr "Eliminar…"
 
-#: data/ui/storage-actionbar.ui:18 src/storage-row.vala:278
-msgid "Delete"
-msgstr "Eliminar"
-
-#: data/ui/storage-actionbar.ui:33 src/storage-row.vala:277
-msgid "Move to Trash"
-msgstr "Mover ao lixo"
-
-#: data/ui/storage-actionbar.ui:45
-msgid "Empty folder"
-msgstr "Cartafol baleiro"
-
-#: data/ui/storage-actionbar.ui:57 src/storage-row.vala:263
-msgid "Restore"
-msgstr "Restaurar"
-
-#: data/ui/storage-actionbar.ui:66 src/storage-row.vala:266
-msgid "Delete from Trash"
-msgstr "Eliminar do lixo"
-
-#: data/ui/storage-view.ui:63
-msgid "No content here"
-msgstr "Non hai contidos aquí"
+#: data/ui/storage-view.ui:37
+msgid "Home Partition"
+msgstr "Partición do cartafol persoal"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
 msgstr "Intercambio"
 
-#: src/app-item.vala:43
+#: src/app-item.vala:71
 msgid "System"
 msgstr "Sistema"
 
@@ -178,131 +160,135 @@ msgstr "Sitios web"
 msgid "Processor"
 msgstr "Procesador"
 
-#: src/graph-stack-switcher.vala:46
+#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
 msgid "Memory"
 msgstr "Memoria"
-
-#: src/header-bar.vala:149
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u seleccionado"
-msgstr[1] "%u seleccionados"
-
-#: src/header-bar.vala:151
-msgid "Click on items to select them"
-msgstr "Prema nos elementos para seleccionalos"
-
-#: src/header-bar.vala:215
-msgid "Select all"
-msgstr "Seleccionar todos"
-
-#: src/header-bar.vala:219
-msgid "Select None"
-msgstr "Deseleccionar todos"
 
 #: src/performance-view.vala:48
 msgid "Performance"
 msgstr "Rendemento"
 
-#: src/storage-actionbar.vala:89 src/storage-row.vala:392
-msgid "Select destination folder"
-msgstr "Seleccionar o cartafol de destino"
-
-#: src/storage-actionbar.vala:92 src/storage-row.vala:395
-msgid "Select"
-msgstr "Seleccionar"
-
-#. Translators: %s is the name of the file to be deleted.
-#: src/storage-actionbar.vala:144
+#: src/storage/storage-actionbar.vala:40
 #, c-format
-#| msgid "Are you sure you want to permanently delete %s?"
-msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Está seguro que quere eliminar de forma permanente «%s»?"
+#| msgid "%u selected"
+#| msgid_plural "%u selected"
+msgid "%s selected"
+msgstr "%s seleccionado"
 
-#. Translators: %d is the number of files to be deleted.
-#: src/storage-actionbar.vala:148
-#, c-format
-#| msgid "Are you sure you want to permanently delete this items %s?"
-msgid "Are you sure you want to permanently delete the %d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %d selected items?"
-msgstr[0] ""
-"Ten certeza que quere eliminar de forma permanente %d elemento seleccionado?"
-msgstr[1] ""
-"Ten certeza que quere eliminar de forma permanente %d elementos "
+#: src/storage/storage-actionbar.vala:45
+#| msgid "Are you sure you want to permanently delete the %d selected item?"
+#| msgid_plural ""
+#| "Are you sure you want to permanently delete the %d selected items?"
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr ""
+"Ten certeza que quere eliminar de forma permanente os elementos "
 "seleccionados?"
 
-#: src/storage-actionbar.vala:152
+#: src/storage/storage-actionbar.vala:49
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Se elimina estos elementos, perderánse de forma permanente."
 
-#: src/storage-actionbar.vala:203 src/storage-row.vala:342
-msgid "Empty all items from Trash?"
-msgstr "Desea baleirar todos os elementos do Lixo?"
+#: src/storage/storage-row-popover.vala:32
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"Oso ficheiros do sistema operativo son unha parte esencial do seu sistema e "
+"non poden eliminarse."
 
-#: src/storage-actionbar.vala:204 src/storage-row.vala:343
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Eliminaranse todos os elementos do Lixo de forma permanente."
+#: src/storage/storage-view.vala:78
+msgid "Storage"
+msgstr "Almacenamento"
 
-#: src/storage-actionbar.vala:225 src/storage-row.vala:322
-#, c-format
-msgid "Empty all items from %s?"
-msgstr "Baleirar todos os elementos de %s?"
-
-#: src/storage-actionbar.vala:226 src/storage-row.vala:323
-#, c-format
-msgid "All items in the %s will be moved to the Trash."
-msgstr "Moveranse ao lixo todos os elementos de %s."
-
-#: src/storage-analyzer.vala:94
-msgid "Storage 1"
-msgstr "Almacenamento 1"
-
-#: src/storage-analyzer.vala:98
-msgid "Storage 2"
-msgstr "Almacenamento 2"
-
-#: src/storage-analyzer.vala:105
-msgid "Capacity"
-msgstr "Capacidade"
-
-#: src/storage-analyzer.vala:647
-msgid "Home"
-msgstr "Cartafol persoal"
-
-#: src/storage-item.vala:104
-msgid "Trash"
-msgstr "Lixo"
-
-#: src/storage-item.vala:128
+#: src/storage/storage-view.vala:245
 msgid "Operating System"
 msgstr "Sistema operativo"
 
-#: src/storage-row.vala:248
-msgid "Empty"
-msgstr "Baleirar"
+#: src/storage/storage-view.vala:271
+msgid "Scanning directories"
+msgstr "Analizando cartafoles"
 
-#: src/storage-row.vala:253
-msgid "Empty Trash"
-msgstr "Baleirar lixo"
+#~ msgid "org.gnome.Usage"
+#~ msgstr "org.gnome.Usage"
 
-#: src/storage-row.vala:273 src/storage-row.vala:367
-msgid "Rename"
-msgstr "Renomear"
+#~ msgid "Move to"
+#~ msgstr "Mover a"
 
-#: src/storage-row.vala:439
-#, c-format
-msgid "Are you sure you want to permanently delete %s?"
-msgstr "Está seguro que quere eliminar de forma permanente %s?"
+#~ msgid "Move to Trash"
+#~ msgstr "Mover ao lixo"
 
-#: src/storage-row.vala:440
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Se elimina un elemento, perderáse de forma permanente."
+#~ msgid "Empty folder"
+#~ msgstr "Cartafol baleiro"
 
-#: src/storage-view.vala:45
-msgid "Storage"
-msgstr "Almacenamento"
+#~ msgid "Restore"
+#~ msgstr "Restaurar"
+
+#~ msgid "Delete from Trash"
+#~ msgstr "Eliminar do lixo"
+
+#~ msgid "No content here"
+#~ msgstr "Non hai contidos aquí"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Prema nos elementos para seleccionalos"
+
+#~ msgid "Select all"
+#~ msgstr "Seleccionar todos"
+
+#~ msgid "Select None"
+#~ msgstr "Deseleccionar todos"
+
+#~ msgid "Select destination folder"
+#~ msgstr "Seleccionar o cartafol de destino"
+
+#~ msgid "Select"
+#~ msgstr "Seleccionar"
+
+#~| msgid "Are you sure you want to permanently delete %s?"
+#~ msgid "Are you sure you want to permanently delete “%s”?"
+#~ msgstr "Está seguro que quere eliminar de forma permanente «%s»?"
+
+#~ msgid "Empty all items from Trash?"
+#~ msgstr "Desea baleirar todos os elementos do Lixo?"
+
+#~ msgid "All items in the Trash will be permanently deleted."
+#~ msgstr "Eliminaranse todos os elementos do Lixo de forma permanente."
+
+#~ msgid "Empty all items from %s?"
+#~ msgstr "Baleirar todos os elementos de %s?"
+
+#~ msgid "All items in the %s will be moved to the Trash."
+#~ msgstr "Moveranse ao lixo todos os elementos de %s."
+
+#~ msgid "Storage 1"
+#~ msgstr "Almacenamento 1"
+
+#~ msgid "Storage 2"
+#~ msgstr "Almacenamento 2"
+
+#~ msgid "Capacity"
+#~ msgstr "Capacidade"
+
+#~ msgid "Home"
+#~ msgstr "Cartafol persoal"
+
+#~ msgid "Trash"
+#~ msgstr "Lixo"
+
+#~ msgid "Empty"
+#~ msgstr "Baleirar"
+
+#~ msgid "Empty Trash"
+#~ msgstr "Baleirar lixo"
+
+#~ msgid "Rename"
+#~ msgstr "Renomear"
+
+#~ msgid "Are you sure you want to permanently delete %s?"
+#~ msgstr "Está seguro que quere eliminar de forma permanente %s?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Se elimina un elemento, perderáse de forma permanente."
 
 #~ msgid "About"
 #~ msgstr "Sobre"
