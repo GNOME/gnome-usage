@@ -40,6 +40,14 @@
     <kudo>HighContrast</kudo>
     <kudo>ModernToolkit</kudo>
   </kudos>
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </recommends>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
   <project_license>GPL-3.0+</project_license>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-usage/issues</url>
