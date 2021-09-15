@@ -9,7 +9,7 @@ build:
     GIT_SUBMODULE_STRATEGY: recursive
   before_script:
     - dnf update -y
-    - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel 
+    - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel libhandy-devel
                      desktop-file-utils libdazzle-devel redhat-rpm-config
     - dnf install -y dnf-plugins-core && dnf copr enable -y ssssam/tracker3 && dnf install --nogpg -y tracker3-devel
 
