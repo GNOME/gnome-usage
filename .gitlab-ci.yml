@@ -13,7 +13,7 @@ build:
                      desktop-file-utils libdazzle-devel redhat-rpm-config
     - dnf install -y dnf-plugins-core && dnf copr enable -y ssssam/tracker3 && dnf install --nogpg -y tracker3-devel
 
-  image: fedora:32
+  image: fedora:34
   stage: build
   script:
   - meson _build .
