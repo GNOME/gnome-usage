@@ -41,8 +41,8 @@ namespace Usage {
 
             this.draw.connect ((context) =>
             {
-            	int height = this.get_allocated_height ();
-            	int width = this.get_allocated_width ();
+                int height = this.get_allocated_height ();
+                int width = this.get_allocated_width ();
 
                 double xc = width / 2.0;
                 double yc = height / 2.0;
@@ -79,7 +79,7 @@ namespace Usage {
                 Gdk.cairo_set_source_rgba (context, available);
                 context.arc (xc, yc, radius, angle1, angle2);
                 context.fill();
-            	return true;
+                return true;
             });
         }
 

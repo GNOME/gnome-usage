@@ -56,7 +56,7 @@ namespace Usage
 
         private View[] views;
 
-		public Window(Gtk.Application application)
+        public Window(Gtk.Application application)
         {
             GLib.Object(application : application);
 

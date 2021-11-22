@@ -200,19 +200,19 @@ namespace GTop {
     [CCode(cname = "glibtop_mountentry", cheader_filename = "glibtop/mountlist.h", destroy_function="g_free")]
     public struct MountEntry
     {
-    	uint64 dev;
-    	char devname[80];
-    	char mountdir[80];
-    	char type[80];
+        uint64 dev;
+        char devname[80];
+        char mountdir[80];
+        char type[80];
     }
 
     [CCode(cname = "glibtop_mountlist", cheader_filename = "glibtop/mountlist.h")]
     public struct MountList
     {
-    	uint64 flags;
-    	uint64 number;
-    	uint64 total;
-    	uint64 size;
+        uint64 flags;
+        uint64 number;
+        uint64 total;
+        uint64 size;
     }
     [CCode(array_length = false)]
     public MountEntry[] get_mountlist(out MountList mount_list, bool all_fs);

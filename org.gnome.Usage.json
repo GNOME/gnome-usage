@@ -57,7 +57,7 @@
         {
             "buildsystem": "meson",
             "config-opts": [
-            	"-Dprofile=development"
+                "-Dprofile=development"
             ],
             "name": "gnome-usage",
             "sources": [

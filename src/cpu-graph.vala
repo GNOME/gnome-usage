@@ -29,7 +29,7 @@ namespace Usage
     {
         private static CpuGraphModelMostUsedCore graph_model;
         private GraphStackedRenderer renderer;
-		private Gdk.RGBA line_color_max;
+        private Gdk.RGBA line_color_max;
         private Gdk.RGBA line_color_normal;
         private Gdk.RGBA color_max;
         private Gdk.RGBA color_normal;

@@ -122,10 +122,10 @@ StorageGraph {
 .used-tag {
     background-image:
         linear-gradient(90deg,
-			#737373 33%,
-			#ffe451 33%,
-			#ffe451 66%,
-			#ff002c 66%);
+                        #737373 33%,
+                        #ffe451 33%,
+                        #ffe451 66%,
+                        #ff002c 66%);
 }
 
 .available-tag { background: white; border: 1px solid @borders; }
