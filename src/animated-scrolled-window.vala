@@ -37,8 +37,7 @@ namespace Usage {
                 t = ease_out_cubic (t);
                 vadjustment.set_value(source + t * (target - source));
                 return true;
-            }
-            else {
+            } else {
                 vadjustment.set_value(target);
                 return false;
             }

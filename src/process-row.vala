@@ -93,11 +93,9 @@ namespace Usage {
             string class_name = "";
             if(app.user.LocalAccount) {
                 class_name = CSS_TAG_USER;
-            }
-            else if(app.user.AccountType == UserAccountType.ADMINISTRATOR) {
+            } else if(app.user.AccountType == UserAccountType.ADMINISTRATOR) {
                 class_name = CSS_TAG_ROOT;
-            }
-            else if(app.user.SystemAccount) {
+            } else if(app.user.SystemAccount) {
                 class_name = CSS_TAG_SYSTEM;
             }
 

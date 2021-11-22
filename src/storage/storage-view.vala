@@ -97,9 +97,9 @@ public class Usage.StorageView : Usage.View {
                 selected_items_stack.push_head((owned) selected_items);
                 actual_item.push_head(item);
                 present_dir.begin (item.uri, item.dir, cancellable);
-            }
-            else
+            } else {
                 populate_view.begin ();
+            }
 
             need_refresh_depth = listbox.get_depth();
         });
@@ -162,9 +162,9 @@ public class Usage.StorageView : Usage.View {
                 populate_view.begin ();
             else
                 present_dir.begin (item.uri, item.dir, cancellable);
-        }
-        else
+        } else {
             graph.model = (ListStore) listbox.get_model();
+        }
     }
 
     private string get_user_special_dir_path (UserDirectory dir) {

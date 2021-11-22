@@ -59,8 +59,7 @@ namespace Usage {
                 if(system_monitor.process_list_ready) {
                     cpu_box.pack_start(process_list_box, false, false, 0);
                     cpu_box.remove(spinner);
-                }
-                else {
+                } else {
                     cpu_box.pack_start(spinner, true, true, 0);
                     cpu_box.remove(process_list_box);
                 }

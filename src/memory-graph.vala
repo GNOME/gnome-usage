@@ -49,9 +49,9 @@ namespace Usage {
             if(graph_model == null) {
                 graph_model = new MemoryGraphModel();
                 set_model(graph_model);
-            }
-            else
+            } else {
                 set_model(graph_model);
+            }
 
             var renderer_ram = new GraphStackedRenderer();
             renderer_ram.column = MemoryGraphModel.COLUMN_RAM;

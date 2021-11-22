@@ -65,8 +65,7 @@ namespace Usage {
                     change_big_ram_usage = false;
                     change_small_ram_usage = true;
                 }
-            }
-            else {
+            } else {
                 if(change_small_ram_usage) {
                     small_ram_usage();
                     change_small_ram_usage = false;

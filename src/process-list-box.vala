@@ -94,8 +94,7 @@ namespace Usage {
                                 model.insert_sorted(app, app_cmp);
                         break;
                 }
-            }
-            else {
+            } else {
                 foreach(unowned AppItem app in system_monitor.get_apps()) {
                     if(app.display_name.down().contains(search_text.down()) || app.representative_cmdline.down().contains(search_text.down()))
                         model.insert_sorted(app, app_cmp);
@@ -111,9 +110,9 @@ namespace Usage {
         }
 
         private void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row) {
-            if(before_row == null)
+            if(before_row == null) {
                 row.set_header(null);
-            else {
+            } else {
                 var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
                 separator.get_style_context().add_class("list");
                 separator.show();

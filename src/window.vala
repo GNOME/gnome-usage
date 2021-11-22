@@ -132,8 +132,7 @@ namespace Usage {
         private void on_visible_child_changed() {
             if(stack.visible_child_name == views[Views.PERFORMANCE].name) {
                 set_mode(HeaderBarMode.PERFORMANCE);
-            }
-            else if(stack.visible_child_name == views[Views.STORAGE].name) {
+            } else if(stack.visible_child_name == views[Views.STORAGE].name) {
                 set_mode(HeaderBarMode.STORAGE);
             }
         }

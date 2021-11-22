@@ -75,9 +75,9 @@ namespace Usage {
             try {
                 string[] segments = systemd_unit.split ("-");
 
-                if (systemd_unit.has_suffix (".scope") && segments.length >= 2)
+                if (systemd_unit.has_suffix (".scope") && segments.length >= 2) {
                     escaped_id = segments[segments.length - 2];
-                else if (systemd_unit.has_suffix (".service") && segments.length >= 1) {
+                } else if (systemd_unit.has_suffix (".service") && segments.length >= 1) {
                     string tmp = segments[segments.length - 1];
                     /* Strip .service */
                     tmp = tmp[0:tmp.length-8];
@@ -197,9 +197,9 @@ namespace Usage {
             int games = 0;
 
             foreach(var process in processes.get_values()) {
-                if(!process.mark_as_updated)
+                if(!process.mark_as_updated) {
                     processes.remove(process.pid);
-                else {
+                } else {
                     cpu_load += process.cpu_load;
                     mem_usage += process.mem_usage;
                 }

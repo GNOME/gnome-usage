@@ -65,8 +65,7 @@ namespace Usage {
                         change_big_process_usage[i] = false;
                         change_small_process_usage[i] = true;
                     }
-                }
-                else {
+                } else {
                     if(change_small_process_usage[i]) {
                         small_process_usage(i);
                         change_small_process_usage[i] = false;
@@ -116,8 +115,7 @@ namespace Usage {
                     change_big_process_usage = false;
                     change_small_process_usage = true;
                 }
-            }
-            else {
+            } else {
                 if(change_small_process_usage) {
                     small_process_usage();
                     change_small_process_usage = false;

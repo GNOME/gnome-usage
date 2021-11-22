@@ -59,8 +59,7 @@ namespace Usage {
                     return Utils.color_lighter(default_color, percentage);
                 else
                     return Utils.color_darker(default_color, percentage);
-            }
-            else {
+            } else {
                 double percentage = step * (half_count - (order-1));
                 if(reverse)
                     return Utils.color_darker(default_color, percentage);
