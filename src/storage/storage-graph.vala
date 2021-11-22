@@ -25,9 +25,10 @@ namespace Usage {
         private unowned List<StorageViewItem> selected_items;
         private unowned GLib.ListStore _model;
         private uint64 selected_size = 0;
-        private bool root { private set; get; }
+        private bool root { get; private set; }
 
         public unowned GLib.ListStore model {
+            get { return _model; }
             set {
                 _model = value;
                 this.draw.connect(draw_storage_graph);
@@ -42,10 +43,9 @@ namespace Usage {
                     }
                 }
             }
-            get { return _model; }
         }
 
-        public uint min_percentage_shown_files { set; get; }
+        public uint min_percentage_shown_files { get; set; }
 
         class construct {
             set_css_name("StorageGraph");

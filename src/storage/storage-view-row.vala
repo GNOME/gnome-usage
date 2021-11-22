@@ -21,11 +21,11 @@
 [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-view-row.ui")]
 public class Usage.StorageViewRow : Gtk.ListBoxRow {
     public string label {
-        set {
-            title.label = value;
-        }
         get {
             return title.label;
+        }
+        set {
+            title.label = value;
         }
     }
 
@@ -49,13 +49,13 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         BIG,
     }
     public TagSize tag_size {
+        get {
+            return (tag.width_request == 20 ? TagSize.BIG : TagSize.SMALL);
+        }
         set {
             if (value == TagSize.BIG) {
                 tag.width_request = tag.height_request = 20;
             }
-        }
-        get {
-            return (tag.width_request == 20 ? TagSize.BIG : TagSize.SMALL);
         }
     }
 

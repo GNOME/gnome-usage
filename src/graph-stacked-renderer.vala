@@ -25,10 +25,10 @@ namespace Usage {
 
     public class GraphStackedRenderer : Object, GraphRenderer {
 
-        public uint column { set; get; }
-        public double line_width { set; get; default = 1.0; }
-        public Gdk.RGBA stroke_color_rgba { set; get; }
-        public Gdk.RGBA stacked_color_rgba { set; get; }
+        public uint column { get; set; }
+        public double line_width { get; set; default = 1.0; }
+        public Gdk.RGBA stroke_color_rgba { get; set; }
+        public Gdk.RGBA stacked_color_rgba { get; set; }
 
         public void render(GraphModel model, int64 x_begin, int64 x_end, double y_begin, double y_end, Context cr, RectangleInt area) {
             GraphModelIter iter;

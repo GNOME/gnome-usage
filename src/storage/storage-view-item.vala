@@ -28,7 +28,7 @@ public enum StorageViewType {
 }
 
 public class Usage.StorageViewItem : GLib.Object {
-    public double percentage { set; get; }
+    public double percentage { get; set; }
     public bool loaded { get; set; default = false; }
     public Gdk.RGBA color { get; set; }
 
@@ -43,9 +43,6 @@ public class Usage.StorageViewItem : GLib.Object {
 
     private string _style_class = null;
     public string style_class {
-        protected set {
-            _style_class = value;
-        }
         get {
             if (_style_class != null)
                 return _style_class;
@@ -53,6 +50,9 @@ public class Usage.StorageViewItem : GLib.Object {
             setup_tag_style ();
 
             return _style_class;
+        }
+        protected set {
+            _style_class = value;
         }
     }
 
