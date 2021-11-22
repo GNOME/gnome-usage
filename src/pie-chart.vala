@@ -47,7 +47,7 @@ namespace Usage {
                 double ratio;
                 double angle2 = - Math.PI / 2.0;
 
-                if(used_percentages > 0) {
+                if (used_percentages > 0) {
                     angle1 = - Math.PI / 2.0;
                     ratio = (double) used_percentages / 100;
                     angle2 = ratio * 2 * Math.PI - Math.PI / 2.0;
@@ -57,7 +57,7 @@ namespace Usage {
                     context.fill();
                 }
 
-                if(other_percentages > 0) {
+                if (other_percentages > 0) {
                     angle1 = angle2;
                     ratio = (double) other_percentages / 100;
                     angle2 = ratio * 2 * Math.PI - Math.PI / 2.0;

@@ -46,7 +46,7 @@ namespace Usage {
             color_normal = get_style_context().get_color(get_style_context().get_state());
             get_style_context().remove_class("stacked");
 
-            if(graph_model == null) {
+            if (graph_model == null) {
                 graph_model = new MemoryGraphModel();
                 set_model(graph_model);
             } else {

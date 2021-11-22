@@ -55,7 +55,7 @@ namespace Usage {
         public Window(Gtk.Application application) {
             GLib.Object(application : application);
 
-            if(Config.PROFILE == "Devel") {
+            if (Config.PROFILE == "Devel") {
                 get_style_context().add_class("devel");
             }
 
@@ -130,9 +130,9 @@ namespace Usage {
 
         [GtkCallback]
         private void on_visible_child_changed() {
-            if(stack.visible_child_name == views[Views.PERFORMANCE].name) {
+            if (stack.visible_child_name == views[Views.PERFORMANCE].name) {
                 set_mode(HeaderBarMode.PERFORMANCE);
-            } else if(stack.visible_child_name == views[Views.STORAGE].name) {
+            } else if (stack.visible_child_name == views[Views.STORAGE].name) {
                 set_mode(HeaderBarMode.STORAGE);
             }
         }

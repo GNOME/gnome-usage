@@ -68,7 +68,7 @@ namespace Usage {
                     break;
             }
 
-            if(cpu_load > 0)
+            if (cpu_load > 0)
                 status = ProcessStatus.RUNNING;
 
             mark_as_updated = true;

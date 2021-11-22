@@ -197,13 +197,13 @@ namespace Usage {
             int games = 0;
 
             foreach(var process in processes.get_values()) {
-                if(!process.mark_as_updated) {
+                if (!process.mark_as_updated) {
                     processes.remove(process.pid);
                 } else {
                     cpu_load += process.cpu_load;
                     mem_usage += process.mem_usage;
                 }
-                if(process.gamemode)
+                if (process.gamemode)
                     games++;
             }
 
@@ -220,7 +220,7 @@ namespace Usage {
         }
 
         private string find_display_name() {
-            if(app_info != null)
+            if (app_info != null)
                 return app_info.get_display_name();
             else
                 return representative_cmdline;

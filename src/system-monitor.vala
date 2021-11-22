@@ -78,7 +78,7 @@ namespace Usage {
             app_table.remove_all();
             process_list_ready = false;
 
-            if(group_system_apps) {
+            if (group_system_apps) {
                 var system = new AppItem.system();
                 app_table.insert("system" , system);
             }

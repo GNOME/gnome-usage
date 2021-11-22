@@ -21,26 +21,26 @@
 namespace Usage {
     public class Utils {
         public static string format_size_values(uint64 value) {
-            if(value >= 1000000000000)
+            if (value >= 1000000000000)
                 return "%.3f TB".printf((double) value / 1000000000000d);
-            else if(value >= 1000000000)
+            else if (value >= 1000000000)
                 return "%.1f GB".printf((double) value / 1000000000d);
-            else if(value >= 1000000)
+            else if (value >= 1000000)
                 return(value / 1000000).to_string() + " MB";
-            else if(value >= 1000)
+            else if (value >= 1000)
                 return (value / 1000).to_string() + " KB";
             else
                 return value.to_string() + " B";
         }
 
         public static string format_size_speed_values(uint64 value) {
-            if(value >= 1000000000000)
+            if (value >= 1000000000000)
                 return "%.3f TB/s".printf((double) value / 1000000000000d);
-            else if(value >= 1000000000)
+            else if (value >= 1000000000)
                 return "%.1f GB/s".printf((double) value / 1000000000d);
-            else if(value >= 1000000)
+            else if (value >= 1000000)
                 return "%.2f MB/s".printf((double) value / 1000000d);
-            else if(value >= 1000)
+            else if (value >= 1000)
                 return (value / 1000).to_string() + " KB/s";
             else
                 return value.to_string() + " B/s";
@@ -50,18 +50,18 @@ namespace Usage {
             double step = 100 / (double) all_count;
             uint half_count = all_count / 2;
 
-            if(order >= all_count)
+            if (order >= all_count)
                 order = all_count - 1;
 
-            if(order > (all_count / 2)) {
+            if (order > (all_count / 2)) {
                 double percentage = step * (order - half_count);
-                if(reverse)
+                if (reverse)
                     return Utils.color_lighter(default_color, percentage);
                 else
                     return Utils.color_darker(default_color, percentage);
             } else {
                 double percentage = step * (half_count - (order-1));
-                if(reverse)
+                if (reverse)
                     return Utils.color_darker(default_color, percentage);
                 else
                     return Utils.color_lighter(default_color, percentage);

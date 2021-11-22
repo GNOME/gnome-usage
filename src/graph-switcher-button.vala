@@ -52,7 +52,7 @@ namespace Usage {
         }
 
         construct {
-            if(_group == null)
+            if (_group == null)
                 _group = this;
             else
                 join_group(_group);

@@ -53,11 +53,11 @@ public class Usage.TrackerController : GLib.Object {
                 parent_size = yield get_file_size (uri);
 
             while (yield worker.fetch_next (out n_uri, out file_type)) {
-                if(!cancellable.is_cancelled()) {
+                if (!cancellable.is_cancelled()) {
                     var file = File.new_for_uri (n_uri);
                     var item = StorageViewItem.from_file (file);
 
-                    if(item == null)
+                    if (item == null)
                         continue;
 
                     item.ontology = file_type;

@@ -46,9 +46,9 @@ namespace Usage {
                 Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, display_message);
             dialog.secondary_text = _("If you delete these items, they will be permanently lost.");
 
-            if(dialog.run() == Gtk.ResponseType.OK) {
+            if (dialog.run() == Gtk.ResponseType.OK) {
                 foreach(var item in selected_items) {
-                    if(item.type == FileType.DIRECTORY && item.custom_type == StorageViewType.ROOT_ITEM)
+                    if (item.type == FileType.DIRECTORY && item.custom_type == StorageViewType.ROOT_ITEM)
                         delete_file(item.uri, false);
                     else
                         delete_file(item.uri, true);
@@ -63,7 +63,7 @@ namespace Usage {
             var type = file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
 
             try {
-                if(type == FileType.DIRECTORY) {
+                if (type == FileType.DIRECTORY) {
                     FileInfo info;
                     FileEnumerator enumerator = file.enumerate_children("standard::*", FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
 
@@ -73,7 +73,7 @@ namespace Usage {
                     }
                 }
 
-                if(delete_basefile)
+                if (delete_basefile)
                     file.delete();
             }
             catch (Error e) {

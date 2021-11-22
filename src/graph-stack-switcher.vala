@@ -56,7 +56,7 @@ namespace Usage {
 
         private int get_button_number(Gtk.Button button) {
             for(int i = 0; i < buttons.length; i++) {
-                if(buttons[i] == button)
+                if (buttons[i] == button)
                     return i;
             }
 
@@ -76,7 +76,7 @@ namespace Usage {
             var button_number = 0;
             for(int i = 1; i < buttons.length; i++) {
                 this.sub_views[i].get_allocation(out alloc);
-                if(y < alloc.y)
+                if (y < alloc.y)
                     break;
                 button_number = i;
             }

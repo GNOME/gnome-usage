@@ -35,9 +35,9 @@ namespace Usage {
                 this.queue_draw ();
                 root = false;
 
-                for(int i = 0; i < value.get_n_items(); i++) {
+                for (int i = 0; i < value.get_n_items(); i++) {
                     var item = model.get_item(i) as StorageViewItem;
-                    if(item.custom_type == StorageViewType.OS) {
+                    if (item.custom_type == StorageViewType.OS) {
                         root = true;
                         break;
                     }
@@ -76,26 +76,26 @@ namespace Usage {
             var background_color = get_toplevel().get_style_context().get_background_color(get_toplevel().get_style_context().get_state());
             var foreground_color = get_style_context().get_color(get_style_context().get_state());
 
-            for(int i = 1; i < model.get_n_items(); i++) {
+            for (int i = 1; i < model.get_n_items(); i++) {
                 var item = (model.get_item(i) as StorageViewItem);
 
-                if(i > 0 && i < 3 && (item.percentage < min_percentage_shown_files)) {
+                if (i > 0 && i < 3 && (item.percentage < min_percentage_shown_files)) {
                     shown_items_number = model.get_n_items();
                     continue;
                 }
 
-                if(item.percentage > min_percentage_shown_files)
+                if (item.percentage > min_percentage_shown_files)
                     shown_items_number = shown_items_number + 1;
             }
 
-            if(shown_items_number > 1) {
-                if(shown_items_number < 3)
+            if (shown_items_number > 1) {
+                if (shown_items_number < 3)
                     shown_items_number = 3;
 
-                for(int i = 0; i < model.get_n_items(); i++) {
+                for (int i = 0; i < model.get_n_items(); i++) {
                     var item = model.get_item(i) as StorageViewItem;
                     var item_radius = radius;
-                    if(item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
+                    if (item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
                         continue;
 
                     var style_context = get_style_context();
@@ -105,24 +105,24 @@ namespace Usage {
 
                     Gdk.RGBA fill_color = base_color;
 
-                    if(!root) {
+                    if (!root) {
                         fill_color = Utils.generate_color(base_color, i, shown_items_number, true);
                         item.color = fill_color;
                     }
 
-                    if(selected_items.find(item) != null)
+                    if (selected_items.find(item) != null)
                         item_radius += radius / 6;
 
                     context.set_line_width (2.0);
                     start_angle = final_angle;
 
-                    if(item.percentage < 0.3)
+                    if (item.percentage < 0.3)
                         ratio = ratio + ((double) 0.3 / 100);
                     else
                         ratio = ratio + ((double) item.percentage / 100);
 
                     final_angle = ratio * 2 * Math.PI - Math.PI / 2.0;
-                    if(final_angle >= (2 * Math.PI - Math.PI / 2.0))
+                    if (final_angle >= (2 * Math.PI - Math.PI / 2.0))
                         final_angle = 2 * Math.PI - Math.PI / 2.0;
 
                     context.move_to (x, y);
@@ -133,7 +133,7 @@ namespace Usage {
                     Gdk.cairo_set_source_rgba (context, foreground_color);
                     context.stroke();
 
-                    if(start_angle >= (2 * Math.PI - Math.PI / 2.0))
+                    if (start_angle >= (2 * Math.PI - Math.PI / 2.0))
                         break;
                 }
 
@@ -169,7 +169,7 @@ namespace Usage {
         }
 
         private void draw_selected_size_text(Cairo.Context context) {
-            if(selected_size == 0)
+            if (selected_size == 0)
                 return;
 
             var layout = create_pango_layout (null);

@@ -49,24 +49,24 @@ namespace Usage {
 
             SystemMonitor monitor = SystemMonitor.get_default();
             double ram_usage = 0;
-            if(monitor.ram_total != 0)
+            if (monitor.ram_total != 0)
                 ram_usage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
 
             double swap_usage = 0;
-            if(monitor.ram_total != 0)
+            if (monitor.ram_total != 0)
                 swap_usage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
 
             iter_set_value(iter, COLUMN_RAM, ram_usage);
             iter_set_value(iter, COLUMN_SWAP, swap_usage);
 
-            if(ram_usage >= 90) {
-                if(change_big_ram_usage) {
+            if (ram_usage >= 90) {
+                if (change_big_ram_usage) {
                     big_ram_usage();
                     change_big_ram_usage = false;
                     change_small_ram_usage = true;
                 }
             } else {
-                if(change_small_ram_usage) {
+                if (change_small_ram_usage) {
                     small_ram_usage();
                     change_small_ram_usage = false;
                     change_big_ram_usage = true;

@@ -59,7 +59,7 @@ namespace Usage {
 
             var system_monitor = SystemMonitor.get_default();
             system_monitor.notify["process-list-ready"].connect ((sender, property) => {
-                if(system_monitor.process_list_ready) {
+                if (system_monitor.process_list_ready) {
                     memory_box.pack_start(process_list_box, false, false, 0);
                     memory_box.remove(spinner);
                 } else {

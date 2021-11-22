@@ -59,14 +59,14 @@ namespace Usage {
             for (int i = 0; i < get_num_processors(); i++) {
                 iter_set_value(iter, i, monitor.x_cpu_load[i]);
 
-                if(monitor.x_cpu_load[i] >= 90) {
-                    if(change_big_process_usage[i]) {
+                if (monitor.x_cpu_load[i] >= 90) {
+                    if (change_big_process_usage[i]) {
                         big_process_usage(i);
                         change_big_process_usage[i] = false;
                         change_small_process_usage[i] = true;
                     }
                 } else {
-                    if(change_small_process_usage[i]) {
+                    if (change_small_process_usage[i]) {
                         small_process_usage(i);
                         change_small_process_usage[i] = false;
                         change_big_process_usage[i] = true;
@@ -103,20 +103,20 @@ namespace Usage {
             double most_used_core = monitor.x_cpu_load[0];
 
             for (int i = 1; i < get_num_processors(); i++) {
-                if(monitor.x_cpu_load[i] > most_used_core)
+                if (monitor.x_cpu_load[i] > most_used_core)
                     most_used_core = monitor.x_cpu_load[i];
             }
 
             iter_set_value(iter, 0, most_used_core);
 
-            if(most_used_core >= 90) {
-                if(change_big_process_usage) {
+            if (most_used_core >= 90) {
+                if (change_big_process_usage) {
                     big_process_usage();
                     change_big_process_usage = false;
                     change_small_process_usage = true;
                 }
             } else {
-                if(change_small_process_usage) {
+                if (change_small_process_usage) {
                     small_process_usage();
                     change_small_process_usage = false;
                     change_big_process_usage = true;

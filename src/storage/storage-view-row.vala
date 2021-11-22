@@ -87,16 +87,16 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         if (item.type == FileType.DIRECTORY || item.custom_type != StorageViewType.NONE)
             tag.width_request = tag.height_request = 20;
 
-        if(item.custom_type == StorageViewType.UP_FOLDER) {
+        if (item.custom_type == StorageViewType.UP_FOLDER) {
             get_style_context().add_class("up-folder");
 
-            if(!item.loaded) {
+            if (!item.loaded) {
                 spinner.visible = true;
                 size_label.visible = false;
             }
 
             item.notify["loaded"].connect(() => {
-                if(item.loaded) {
+                if (item.loaded) {
                     spinner.visible = false;
                     size_label.visible = true;
                 }

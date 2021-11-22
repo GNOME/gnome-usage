@@ -52,7 +52,7 @@ namespace Usage {
 
             var system_monitor = SystemMonitor.get_default();
             system_monitor.notify["process-list-ready"].connect (() => {
-                if(system_monitor.process_list_ready)
+                if (system_monitor.process_list_ready)
                     update();
             });
 
@@ -79,24 +79,24 @@ namespace Usage {
             };
 
             var system_monitor = SystemMonitor.get_default();
-            if(search_text == "") {
+            if (search_text == "") {
                 switch(type) {
                     default:
                     case ProcessListBoxType.PROCESSOR:
                         foreach(unowned AppItem app in system_monitor.get_apps()) {
-                            if(app.cpu_load > APP_CPU_MIN_LOAD_LIMIT)
+                            if (app.cpu_load > APP_CPU_MIN_LOAD_LIMIT)
                                 model.insert_sorted(app, app_cmp);
                         }
                         break;
                     case ProcessListBoxType.MEMORY:
                         foreach(unowned AppItem app in system_monitor.get_apps())
-                            if(app.mem_usage > APP_MEM_MIN_USAGE_LIMIT)
+                            if (app.mem_usage > APP_MEM_MIN_USAGE_LIMIT)
                                 model.insert_sorted(app, app_cmp);
                         break;
                 }
             } else {
                 foreach(unowned AppItem app in system_monitor.get_apps()) {
-                    if(app.display_name.down().contains(search_text.down()) || app.representative_cmdline.down().contains(search_text.down()))
+                    if (app.display_name.down().contains(search_text.down()) || app.representative_cmdline.down().contains(search_text.down()))
                         model.insert_sorted(app, app_cmp);
                 }
             }
@@ -110,7 +110,7 @@ namespace Usage {
         }
 
         private void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row) {
-            if(before_row == null) {
+            if (before_row == null) {
                 row.set_header(null);
             } else {
                 var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);

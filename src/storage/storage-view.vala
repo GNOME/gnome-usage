@@ -93,7 +93,7 @@ public class Usage.StorageView : Usage.View {
             stack_listbox_up();
             clear_selected_items();
 
-            if(listbox.get_depth() >= 1) {
+            if (listbox.get_depth() >= 1) {
                 selected_items_stack.push_head((owned) selected_items);
                 actual_item.push_head(item);
                 present_dir.begin (item.uri, item.dir, cancellable);
@@ -120,7 +120,7 @@ public class Usage.StorageView : Usage.View {
         cancellable.cancel();
         cancellable = new Cancellable();
 
-        if(storage_row.item.custom_type == StorageViewType.UP_FOLDER) {
+        if (storage_row.item.custom_type == StorageViewType.UP_FOLDER) {
             stack_listbox_up();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
             selected_items_stack.push_head((owned) selected_items);
@@ -147,18 +147,18 @@ public class Usage.StorageView : Usage.View {
         var first_item = listbox.get_model().get_item(0) as StorageViewItem;
         var refresh = false;
 
-        if(need_refresh_depth >= listbox.get_depth()) {
+        if (need_refresh_depth >= listbox.get_depth()) {
             need_refresh_depth -= 1;
             refresh = true;
         }
 
-        if(listbox.get_depth() > 1 && first_item.loaded == false || refresh) {
+        if (listbox.get_depth() > 1 && first_item.loaded == false || refresh) {
             var item = actual_item.peek_head();
 
             clear_selected_items();
             listbox.pop();
 
-            if(listbox.get_depth() == 0)
+            if (listbox.get_depth() == 0)
                 populate_view.begin ();
             else
                 present_dir.begin (item.uri, item.dir, cancellable);
@@ -176,11 +176,11 @@ public class Usage.StorageView : Usage.View {
         var row = new StorageViewRow.from_item (item);
         row.visible = true;
 
-        if(selected_items.find(item) != null)
+        if (selected_items.find(item) != null)
             row.check_button.active = true;
 
         row.check_button_toggled.connect(() => {
-            if(row.selected)
+            if (row.selected)
                 selected_items.append(row.item);
             else
                 selected_items.remove(row.item);
@@ -188,7 +188,7 @@ public class Usage.StorageView : Usage.View {
             refresh_actionbar();
         });
 
-        if(item.custom_type == StorageViewType.AVAILABLE_GRAPH)
+        if (item.custom_type == StorageViewType.AVAILABLE_GRAPH)
             return new Gtk.ListBoxRow();
 
         graph.model = (ListStore) listbox.get_model();
@@ -208,7 +208,7 @@ public class Usage.StorageView : Usage.View {
 
         controller.set_model(model);
         controller.enumerate_children.begin(uri, dir, cancellable, (obj, res) => {
-            if(!cancellable.is_cancelled()) {
+            if (!cancellable.is_cancelled()) {
                 var up_folder_item = model.get_item(0) as StorageViewItem;
                 up_folder_item.size = controller.enumerate_children.end(res);
                 up_folder_item.loaded = true;
@@ -217,7 +217,7 @@ public class Usage.StorageView : Usage.View {
         });
 
         listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
-        if(!cancellable.is_cancelled())
+        if (!cancellable.is_cancelled())
             graph.model = model;
     }
 
@@ -292,7 +292,7 @@ public class Usage.StorageView : Usage.View {
                     model.insert (1, item);
 
                     items_loaded++;
-                    if(items_loaded == xdg_folders.length)
+                    if (items_loaded == xdg_folders.length)
                         loading_notification.dismiss();
                 } catch (GLib.Error error) {
                     warning (error.message);
@@ -314,7 +314,7 @@ public class Usage.StorageView : Usage.View {
         actionbar.update_selected_items(selected_items);
         graph.update_selected_items(selected_items);
 
-        if(selected_items.length() == 0)
+        if (selected_items.length() == 0)
             actionbar.hide();
         else
             actionbar.show();
