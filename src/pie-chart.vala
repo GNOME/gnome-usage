@@ -22,25 +22,21 @@ using Gtk;
 
 namespace Usage {
 
-    public class PieChart : Gtk.DrawingArea
-    {
+    public class PieChart : Gtk.DrawingArea {
         int used_percentages = 0;
         int other_percentages = 0;
         Gdk.RGBA used_color;
         Gdk.RGBA others_color;
         Gdk.RGBA available;
 
-        class construct
-        {
+        class construct {
             set_css_name("PieChart");
         }
 
-        public PieChart()
-        {
+        public PieChart() {
             set_styles();
 
-            this.draw.connect ((context) =>
-            {
+            this.draw.connect ((context) => {
                 int height = this.get_allocated_height ();
                 int width = this.get_allocated_width ();
 
@@ -51,8 +47,7 @@ namespace Usage {
                 double ratio;
                 double angle2 = - Math.PI / 2.0;
 
-                if(used_percentages > 0)
-                {
+                if(used_percentages > 0) {
                     angle1 = - Math.PI / 2.0;
                     ratio = (double) used_percentages / 100;
                     angle2 = ratio * 2 * Math.PI - Math.PI / 2.0;
@@ -62,8 +57,7 @@ namespace Usage {
                     context.fill();
                 }
 
-                if(other_percentages > 0)
-                {
+                if(other_percentages > 0) {
                     angle1 = angle2;
                     ratio = (double) other_percentages / 100;
                     angle2 = ratio * 2 * Math.PI - Math.PI / 2.0;
@@ -83,8 +77,7 @@ namespace Usage {
             });
         }
 
-        private void set_styles()
-        {
+        private void set_styles() {
             var context = get_style_context();
             context.add_class("used");
             used_color = context.get_color(context.get_state());
@@ -94,8 +87,7 @@ namespace Usage {
             available = context.get_color(context.get_state());
         }
 
-        public void update(int used_percentages, int other_percentages)
-        {
+        public void update(int used_percentages, int other_percentages) {
             this.used_percentages = used_percentages;
             this.other_percentages = used_percentages + other_percentages;
             this.queue_draw();

@@ -18,22 +18,18 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
-    public class GraphStackSwitcher : Gtk.Box
-    {
+namespace Usage {
+    public class GraphStackSwitcher : Gtk.Box {
         View[] sub_views;
         AnimatedScrolledWindow scrolled_window;
 
         GraphSwitcherButton[] buttons;
 
-        class construct
-        {
+        class construct {
             set_css_name("graph-stack-switcher");
         }
 
-        public GraphStackSwitcher(AnimatedScrolledWindow scrolled_window, View[] sub_views)
-        {
+        public GraphStackSwitcher(AnimatedScrolledWindow scrolled_window, View[] sub_views) {
             Object(orientation: Gtk.Orientation.VERTICAL, spacing: 0);
 
             this.sub_views = sub_views;
@@ -46,8 +42,7 @@ namespace Usage
                 new GraphSwitcherButton.memory(_("Memory"))
             };
 
-            foreach(GraphSwitcherButton button in buttons)
-            {
+            foreach(GraphSwitcherButton button in buttons) {
                 this.pack_start(button, false, true, 0);
 
                 button.button_release_event.connect(() => {
@@ -59,10 +54,8 @@ namespace Usage
             }
         }
 
-        private int get_button_number(Gtk.Button button)
-        {
-            for(int i = 0; i < buttons.length; i++)
-            {
+        private int get_button_number(Gtk.Button button) {
+            for(int i = 0; i < buttons.length; i++) {
                 if(buttons[i] == button)
                     return i;
             }
@@ -70,21 +63,18 @@ namespace Usage
             return 0;
         }
 
-        private void scroll_to_view(int button_number)
-        {
+        private void scroll_to_view(int button_number) {
             Gtk.Allocation alloc;
 
             this.sub_views[button_number].get_allocation(out alloc);
             scrolled_window.animated_scroll_vertically(alloc.y);
         }
 
-        private void on_scroll_changed(double y)
-        {
+        private void on_scroll_changed(double y) {
             Gtk.Allocation alloc;
 
             var button_number = 0;
-            for(int i = 1; i < buttons.length; i++)
-            {
+            for(int i = 1; i < buttons.length; i++) {
                 this.sub_views[i].get_allocation(out alloc);
                 if(y < alloc.y)
                     break;

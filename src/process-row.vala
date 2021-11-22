@@ -18,11 +18,9 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
+namespace Usage {
     [GtkTemplate (ui = "/org/gnome/Usage/ui/process-row.ui")]
-    public class ProcessRow : Gtk.ListBoxRow
-    {
+    public class ProcessRow : Gtk.ListBoxRow {
         public AppItem app { get; private set; }
         public bool max_usage { get; private set; }
 
@@ -50,8 +48,7 @@ namespace Usage
 
         private ProcessListBoxType type;
 
-        public ProcessRow(AppItem app, ProcessListBoxType type)
-        {
+        public ProcessRow(AppItem app, ProcessListBoxType type) {
             this.type = type;
             this.app = app;
             this.icon.gicon = app.get_icon();
@@ -59,18 +56,15 @@ namespace Usage
             update();
         }
 
-        private void update()
-        {
+        private void update() {
             update_load_label();
             update_user_tag();
 
             title_label.label = app.display_name;
         }
 
-        private void update_load_label()
-        {
-            switch(type)
-            {
+        private void update_load_label() {
+            switch(type) {
                 case ProcessListBoxType.PROCESSOR:
                     load_label.label = ((int) app.cpu_load).to_string() + " %";
                     break;
@@ -80,8 +74,7 @@ namespace Usage
             }
         }
 
-        private void update_user_tag()
-        {
+        private void update_user_tag() {
             if (app.user == null)
                 return;
 
@@ -89,27 +82,22 @@ namespace Usage
             create_user_tag();
         }
 
-        private void remove_user_tag()
-        {
+        private void remove_user_tag() {
             user_tag_box.visible = false;
             user_tag_box.get_style_context().remove_class(CSS_TAG_USER);
             user_tag_box.get_style_context().remove_class(CSS_TAG_ROOT);
             user_tag_box.get_style_context().remove_class(CSS_TAG_SYSTEM);
         }
 
-        private void create_user_tag()
-        {
+        private void create_user_tag() {
             string class_name = "";
-            if(app.user.LocalAccount)
-            {
+            if(app.user.LocalAccount) {
                 class_name = CSS_TAG_USER;
             }
-            else if(app.user.AccountType == UserAccountType.ADMINISTRATOR)
-            {
+            else if(app.user.AccountType == UserAccountType.ADMINISTRATOR) {
                 class_name = CSS_TAG_ROOT;
             }
-            else if(app.user.SystemAccount)
-            {
+            else if(app.user.SystemAccount) {
                 class_name = CSS_TAG_SYSTEM;
             }
 
@@ -122,8 +110,7 @@ namespace Usage
             return app.user.UserName == GLib.Environment.get_user_name();
         }
 
-        public new void activate()
-        {
+        public new void activate() {
             var settings = Settings.get_default();
             if (app.representative_cmdline in settings.get_strv ("unkillable-processes"))
                 return;

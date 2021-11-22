@@ -24,8 +24,7 @@ namespace Usage {
 
     public class GraphBox : Gtk.Box {
 
-        class construct
-        {
+        class construct {
             set_css_name("graph-box");
         }
 

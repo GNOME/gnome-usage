@@ -20,11 +20,9 @@
 
 using Gtk;
 
-namespace Usage
-{
+namespace Usage {
     [GtkTemplate (ui = "/org/gnome/Usage/ui/speedometer.ui")]
-    public class Speedometer : Buildable, Gtk.Bin
-    {
+    public class Speedometer : Buildable, Gtk.Bin {
         [GtkChild]
         private unowned Gtk.Box inner;
 
@@ -54,16 +52,14 @@ namespace Usage
             bind_property("height-request", content_area, "height-request", BindingFlags.BIDIRECTIONAL);
         }
 
-        private void on_percentage_changed(int new_value)
-        {
+        private void on_percentage_changed(int new_value) {
             if (new_value <= 0 && new_value >= 100)
                 return;
 
             double new_angle = 90 + (360 * (new_value/100.0));
             var filling_color = "@theme_base_color";
 
-            if (new_value > 50)
-            {
+            if (new_value > 50) {
                 new_angle -= 180;
                 filling_color = "@theme_selected_bg_color";
             }
@@ -74,18 +70,15 @@ namespace Usage
                             linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
             }";
 
-            try
-            {
+            try {
                 css_provider.load_from_data(css);
             }
-            catch (GLib.Error error)
-            {
+            catch (GLib.Error error) {
                 warning("Failed to animate speedometer: %s", error.message);
             }
         }
 
-        public void add_child(Builder builder, Object child, string? type)
-        {
+        public void add_child(Builder builder, Object child, string? type) {
             /* This is a Vala bug. It will cause a "warning".
             (content_area as Buildable).add_child(builder, child, type);*/
             if (child is Gtk.Label) {

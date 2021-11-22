@@ -20,11 +20,9 @@
 
 using Gtk;
 
-namespace Usage
-{
+namespace Usage {
     [GtkTemplate (ui = "/org/gnome/Usage/ui/swap-speedometer.ui")]
-    public class SwapSpeedometer : Gtk.Bin
-    {
+    public class SwapSpeedometer : Gtk.Bin {
         [GtkChild]
         private unowned Usage.Speedometer speedometer;
 

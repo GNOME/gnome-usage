@@ -20,32 +20,22 @@
 
 using Gtk;
 
-namespace Usage
-{
-    public class Application : Gtk.Application
-    {
+namespace Usage {
+    public class Application : Gtk.Application {
         private Window window;
 
-        private const GLib.ActionEntry app_entries[] =
-        {
-          { "about", on_about },
-          { "search", on_search },
-          { "quit", on_quit },
-          { "filter-processes", on_activate_radio, "s", "'group-system'", change_filter_processes_state }
+        private const GLib.ActionEntry app_entries[] = { { "about", on_about }, { "search", on_search }, { "quit", on_quit }, { "filter-processes", on_activate_radio, "s", "'group-system'", change_filter_processes_state }
         };
 
-        public Application ()
-        {
+        public Application () {
             application_id = Config.APPLICATION_ID;
         }
 
-        public Window? get_window()
-        {
+        public Window? get_window() {
             return window;
         }
 
-        public override void activate()
-        {
+        public override void activate() {
             if (window != null)
                 return;
 
@@ -56,8 +46,7 @@ namespace Usage
             window.show();
         }
 
-        protected override void startup()
-        {
+        protected override void startup() {
             base.startup();
 
             Hdy.init();
@@ -69,8 +58,7 @@ namespace Usage
             icon_theme.add_resource_path ("/org/gnome/Usage/icons/hicolor");
         }
 
-        private void on_about(GLib.SimpleAction action, GLib.Variant? parameter)
-        {
+        private void on_about(GLib.SimpleAction action, GLib.Variant? parameter) {
             string[] authors = {
                 "Petr Štětka <pstetka@redhat.com>"
             };
@@ -93,23 +81,19 @@ namespace Usage
                 license_type: License.GPL_3_0);
         }
 
-        private void on_quit(GLib.SimpleAction action, GLib.Variant? parameter)
-        {
+        private void on_quit(GLib.SimpleAction action, GLib.Variant? parameter) {
             window.destroy();
         }
 
-        private void on_search(GLib.SimpleAction action, GLib.Variant? parameter)
-        {
+        private void on_search(GLib.SimpleAction action, GLib.Variant? parameter) {
             window.action_on_search();
         }
 
-        private void on_activate_radio (GLib.SimpleAction action, GLib.Variant? state)
-        {
+        private void on_activate_radio (GLib.SimpleAction action, GLib.Variant? state) {
             action.change_state(state);
         }
 
-        private void change_filter_processes_state(GLib.SimpleAction action, GLib.Variant? state)
-        {
+        private void change_filter_processes_state(GLib.SimpleAction action, GLib.Variant? state) {
             action.set_state(state);
             SystemMonitor.get_default().group_system_apps = state.get_string() == "group-system" ? true : false;
         }

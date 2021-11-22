@@ -18,15 +18,12 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
-    public abstract class View : Gtk.Bin
-    {
+namespace Usage {
+    public abstract class View : Gtk.Bin {
         public string title;
         public string icon_name;
 
-        protected View ()
-        {
+        protected View () {
             visible = true;
         }
     }

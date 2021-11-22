@@ -18,26 +18,21 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
-    public class GraphSwitcherButton : Gtk.RadioButton
-    {
+namespace Usage {
+    public class GraphSwitcherButton : Gtk.RadioButton {
         private static Gtk.RadioButton? _group = null;
 
-        public GraphSwitcherButton.processor(string label)
-        {
+        public GraphSwitcherButton.processor(string label) {
             var processor_graph = new CpuGraphMostUsedCore();
             child = createContent(processor_graph, label);
         }
 
-        public GraphSwitcherButton.memory(string label)
-        {
+        public GraphSwitcherButton.memory(string label) {
             var memory_graph = new MemoryGraph();
             child = createContent(memory_graph, label);
         }
 
-        private Gtk.Box createContent(Dazzle.GraphView graph, string label_text)
-        {
+        private Gtk.Box createContent(Dazzle.GraphView graph, string label_text) {
             graph.height_request = 80;
             graph.hexpand = true;
             var graph_box = new GraphBox(graph);
@@ -56,8 +51,7 @@ namespace Usage
             return box;
         }
 
-        construct
-        {
+        construct {
             if(_group == null)
                 _group = this;
             else

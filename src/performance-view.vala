@@ -20,11 +20,9 @@
 
 using Gtk;
 
-namespace Usage
-{
+namespace Usage {
     [GtkTemplate (ui = "/org/gnome/Usage/ui/performance-view.ui")]
-    public class PerformanceView : View
-    {
+    public class PerformanceView : View {
         [GtkChild]
         private unowned Gtk.Box switcher_box;
 
@@ -42,14 +40,12 @@ namespace Usage
 
         View[] sub_views;
 
-        public PerformanceView ()
-        {
+        public PerformanceView () {
             name = "PERFORMANCE";
             title = _("Performance");
             icon_name = "speedometer-symbolic";
 
-            sub_views = new View[]
-            {
+            sub_views = new View[] {
                 new ProcessorSubView(),
                 new MemorySubView()
             };
@@ -69,8 +65,7 @@ namespace Usage
                 ((SubView) sub_view).search_in_processes(search_entry.get_text());
         }
 
-        public void set_search_mode(bool enable)
-        {
+        public void set_search_mode(bool enable) {
             search_bar.set_search_mode(enable);
         }
     }

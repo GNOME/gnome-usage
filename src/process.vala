@@ -18,10 +18,8 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
-    public class Process : Object
-    {
+namespace Usage {
+    public class Process : Object {
         public Pid pid { get; private set; }
         public string cmdline { get; private set; }
         public uint uid { get; private set; }
@@ -43,20 +41,17 @@ namespace Usage
         private string? _app_id = null;
         private bool _app_id_checked = false;
 
-        public Process(Pid pid)
-        {
+        public Process(Pid pid) {
             this.pid = pid;
             this.cmdline = get_full_process_cmd (pid);
             this.uid = _get_uid();
         }
 
-        public void update_status ()
-        {
+        public void update_status () {
             GTop.ProcState proc_state;
             GTop.get_proc_state (out proc_state, pid);
 
-            switch(proc_state.state)
-            {
+            switch(proc_state.state) {
                 case GTop.PROCESS_RUNNING:
                 case GTop.PROCESS_UNINTERRUPTIBLE:
                     status = ProcessStatus.RUNNING;
@@ -79,8 +74,7 @@ namespace Usage
             mark_as_updated = true;
         }
 
-        private uint _get_uid()
-        {
+        private uint _get_uid() {
             GTop.ProcUid procUid;
             GTop.get_proc_uid(out procUid, pid);
             return procUid.uid;
@@ -245,8 +239,7 @@ namespace Usage
         }
     }
 
-    public enum ProcessStatus
-    {
+    public enum ProcessStatus {
         RUNNING,
         SLEEPING,
         DEAD

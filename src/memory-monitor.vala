@@ -18,17 +18,14 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
-    public class MemoryMonitor : Monitor
-    {
+namespace Usage {
+    public class MemoryMonitor : Monitor {
         private uint64 ram_usage;
         private uint64 ram_total;
         private uint64 swap_usage;
         private uint64 swap_total;
 
-        public void update()
-        {
+        public void update() {
             /* Memory */
             GTop.Mem mem;
             GTop.get_mem (out mem);
@@ -42,25 +39,20 @@ namespace Usage
             swap_total = swap.total;
         }
 
-        public uint64 get_ram_usage()
-        {
+        public uint64 get_ram_usage() {
             return ram_usage;
         }
-        public uint64 get_swap_usage()
-        {
+        public uint64 get_swap_usage() {
             return swap_usage;
         }
-        public uint64 get_ram_total()
-        {
+        public uint64 get_ram_total() {
             return ram_total;
         }
-        public uint64 get_swap_total()
-        {
+        public uint64 get_swap_total() {
             return swap_total;
         }
 
-        public void update_process(ref Process process)
-        {
+        public void update_process(ref Process process) {
             GTop.Mem mem;
             GTop.ProcMem proc_mem;
 

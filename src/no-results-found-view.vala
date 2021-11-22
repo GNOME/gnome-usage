@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Usage
-{
+namespace Usage {
     [GtkTemplate (ui = "/org/gnome/Usage/ui/no-results-found-view.ui")]
     public class NoResultsFoundView : View { }
 }

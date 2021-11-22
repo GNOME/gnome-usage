@@ -20,10 +20,8 @@
 
 using Gtk;
 
-namespace Usage
-{
-    public class StorageGraph : Gtk.DrawingArea
-    {
+namespace Usage {
+    public class StorageGraph : Gtk.DrawingArea {
         private unowned List<StorageViewItem> selected_items;
         private unowned GLib.ListStore _model;
         private uint64 selected_size = 0;
@@ -36,8 +34,7 @@ namespace Usage
                 this.queue_draw ();
                 root = false;
 
-                for(int i = 0; i < value.get_n_items(); i++)
-                {
+                for(int i = 0; i < value.get_n_items(); i++) {
                     var item = model.get_item(i) as StorageViewItem;
                     if(item.custom_type == StorageViewType.OS) {
                         root = true;
@@ -50,13 +47,11 @@ namespace Usage
 
         public uint min_percentage_shown_files { set; get; }
 
-        class construct
-        {
+        class construct {
             set_css_name("StorageGraph");
         }
 
-        public enum Circle
-        {
+        public enum Circle {
             HOME,
             ROOT,
             BASE
@@ -73,8 +68,7 @@ namespace Usage
             this.queue_draw();
         }
 
-        private void draw_circle(Cairo.Context context, double x, double y, double radius, int section, Circle circle)
-        {
+        private void draw_circle(Cairo.Context context, double x, double y, double radius, int section, Circle circle) {
             double start_angle = 0;
             double final_angle = - Math.PI / 2.0;
             double ratio = 0;
@@ -98,8 +92,7 @@ namespace Usage
                 if(shown_items_number < 3)
                     shown_items_number = 3;
 
-                for(int i = 0; i < model.get_n_items(); i++)
-                {
+                for(int i = 0; i < model.get_n_items(); i++) {
                     var item = model.get_item(i) as StorageViewItem;
                     var item_radius = radius;
                     if(item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
@@ -156,8 +149,7 @@ namespace Usage
             }
         }
 
-        private bool draw_storage_graph(Cairo.Context context)
-        {
+        private bool draw_storage_graph(Cairo.Context context) {
             int height = this.get_allocated_height ();
             int width = this.get_allocated_width ();
 
@@ -176,8 +168,7 @@ namespace Usage
             return true;
         }
 
-        private void draw_selected_size_text(Cairo.Context context)
-        {
+        private void draw_selected_size_text(Cairo.Context context) {
             if(selected_size == 0)
                 return;
 

@@ -18,10 +18,8 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
-    public class SystemMonitor : Object
-    {
+namespace Usage {
+    public class SystemMonitor : Object {
         public bool process_list_ready { get; private set; default = false; }
         public double cpu_load { get; private set; }
         public double[] x_cpu_load { get; private set; }
@@ -40,26 +38,22 @@ namespace Usage
         private int process_mode = GTop.KERN_PROC_ALL;
         private static SystemMonitor system_monitor;
 
-        public static SystemMonitor get_default()
-        {
+        public static SystemMonitor get_default() {
             if (system_monitor == null)
                 system_monitor = new SystemMonitor ();
 
             return system_monitor;
         }
 
-        public List<unowned AppItem> get_apps()
-        {
+        public List<unowned AppItem> get_apps() {
             return app_table.get_values();
         }
 
-        public unowned AppItem get_app_by_name(string name)
-        {
+        public unowned AppItem get_app_by_name(string name) {
             return app_table.get(name);
         }
 
-        public SystemMonitor()
-        {
+        public SystemMonitor() {
             GTop.init();
             AppItem.init();
 
@@ -79,8 +73,7 @@ namespace Usage
             Timeout.add(settings.data_update_interval, update_data);
         }
 
-        private void init()
-        {
+        private void init() {
             var settings = Settings.get_default();
             app_table.remove_all();
             process_list_ready = false;
@@ -95,15 +88,13 @@ namespace Usage
             }
 
             update_data();
-            Timeout.add(settings.data_update_interval, () =>
-            {
+            Timeout.add(settings.data_update_interval, () => {
                 process_list_ready = true;
                 return false;
             });
         }
 
-        private bool update_data()
-        {
+        private bool update_data() {
             cpu_monitor.update();
             memory_monitor.update();
 
@@ -237,16 +228,14 @@ namespace Usage
             return p.cmdline;
         }
 
-        private void update_process(ref Process process)
-        {
+        private void update_process(ref Process process) {
             cpu_monitor.update_process(ref process);
             memory_monitor.update_process(ref process);
             process.update_status();
             process.gamemode = gamemode_pids.contains((int) process.pid);
         }
 
-        public static void sort_pids (void *pids, size_t elm, size_t length)
-        {
+        public static void sort_pids (void *pids, size_t elm, size_t length) {
             Posix.qsort (pids, length, elm, (a, b) => {
                     return (*(GLib.Pid *) a) - (* (GLib.Pid *) b);
                 });

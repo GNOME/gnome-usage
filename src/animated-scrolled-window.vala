@@ -1,9 +1,7 @@
 using Gtk;
 
-namespace Usage
-{
-    public class AnimatedScrolledWindow : Gtk.ScrolledWindow
-    {
+namespace Usage {
+    public class AnimatedScrolledWindow : Gtk.ScrolledWindow {
         public signal void scroll_changed(double y);
         private const uint DURATION = 400;
 
@@ -13,8 +11,7 @@ namespace Usage
             });
         }
 
-        public void animated_scroll_vertically(int y)
-        {
+        public void animated_scroll_vertically(int y) {
             var clock = get_frame_clock();
             int64 start_time = clock.get_frame_time();
             int64 end_time = start_time + 1000 * DURATION;
@@ -25,8 +22,7 @@ namespace Usage
             tick_id = clock.update.connect(() => {
                 int64 now = clock.get_frame_time();
 
-                if (!animate_step (now, start_time, end_time, source, target))
-                {
+                if (!animate_step (now, start_time, end_time, source, target)) {
                     clock.disconnect(tick_id);
                     tick_id = 0;
                     clock.end_updating();
@@ -35,24 +31,20 @@ namespace Usage
             clock.begin_updating();
         }
 
-        private bool animate_step (int64 now, int64 start_time, int64 end_time, double source, double target)
-        {
-            if (now < end_time)
-            {
+        private bool animate_step (int64 now, int64 start_time, int64 end_time, double source, double target) {
+            if (now < end_time) {
                 double t = (now - start_time) / (double) (end_time - start_time);
                 t = ease_out_cubic (t);
                 vadjustment.set_value(source + t * (target - source));
                 return true;
             }
-            else
-            {
+            else {
                 vadjustment.set_value(target);
                 return false;
             }
         }
 
-        private double ease_out_cubic (double t)
-        {
+        private double ease_out_cubic (double t) {
             double p = t - 1;
             return p * p * p + 1;
         }

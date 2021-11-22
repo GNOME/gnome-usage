@@ -18,11 +18,9 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
+namespace Usage {
     [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-actionbar.ui")]
-    public class StorageActionBar : Gtk.ActionBar
-    {
+    public class StorageActionBar : Gtk.ActionBar {
         private unowned List<StorageViewItem> selected_items;
 
         [GtkChild]

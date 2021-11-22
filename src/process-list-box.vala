@@ -18,15 +18,13 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
+namespace Usage {
     public enum ProcessListBoxType {
         PROCESSOR,
         MEMORY
     }
 
-    public class ProcessListBox : Gtk.ListBox
-    {
+    public class ProcessListBox : Gtk.ListBox {
         public bool empty { get; set; default = true; }
         public string search_text { get; set; default = ""; }
 
@@ -35,8 +33,7 @@ namespace Usage
         private ListStore model;
         private ProcessListBoxType type;
 
-        public ProcessListBox(ProcessListBoxType type)
-        {
+        public ProcessListBox(ProcessListBoxType type) {
             set_selection_mode (Gtk.SelectionMode.NONE);
             set_header_func (update_header);
 
@@ -65,8 +62,7 @@ namespace Usage
             bind_property ("empty", this, "visible", BindingFlags.INVERT_BOOLEAN);
         }
 
-        private bool update()
-        {
+        private bool update() {
             model.remove_all();
 
             CompareDataFunc<AppItem> app_cmp = (a, b) => {
@@ -84,8 +80,7 @@ namespace Usage
 
             var system_monitor = SystemMonitor.get_default();
             if(search_text == "") {
-                switch(type)
-                {
+                switch(type) {
                     default:
                     case ProcessListBoxType.PROCESSOR:
                         foreach(unowned AppItem app in system_monitor.get_apps()) {

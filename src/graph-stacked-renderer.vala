@@ -41,8 +41,7 @@ namespace Usage {
 
                 cr.move_to (last_x, area.height);
 
-                while (GraphModel.iter_next (ref iter))
-                {
+                while (GraphModel.iter_next (ref iter)) {
                     double x = calc_x (iter, x_begin, x_end, area.width);
                     double y = calc_y (iter, y_begin, y_end, area.height, column);
 
@@ -67,8 +66,7 @@ namespace Usage {
 
                 cr.move_to (last_x, last_y);
 
-                while (GraphModel.iter_next (ref iter))
-                {
+                while (GraphModel.iter_next (ref iter)) {
                     double x = calc_x (iter, x_begin, x_end, area.width);
                     double y = calc_y (iter, y_begin, y_end, area.height, column);
 
@@ -94,8 +92,7 @@ namespace Usage {
             double y;
 
             var val = GraphModel.iter_get_value(iter, column);
-            switch (val.type())
-            {
+            switch (val.type()) {
                 case Type.DOUBLE:
                     y = val.get_double();
                     break;

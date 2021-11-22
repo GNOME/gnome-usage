@@ -22,8 +22,7 @@ using Gtk;
 
 namespace Usage {
 
-    public class Settings : GLib.Settings
-    {
+    public class Settings : GLib.Settings {
         public uint graph_timespan { get; set; default = 15000;}
         public uint graph_max_samples { get; set; default = 20; }
         public uint graph_update_interval { get { return 1000; }}
@@ -33,16 +32,14 @@ namespace Usage {
 
         private static Settings settings;
 
-        public static Settings get_default()
-        {
+        public static Settings get_default() {
             if (settings == null)
                 settings = new Settings ();
 
             return settings;
         }
 
-        public Settings()
-        {
+        public Settings() {
             Object(schema_id: Config.APPLICATION_ID);
         }
     }

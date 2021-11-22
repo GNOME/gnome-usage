@@ -20,23 +20,19 @@
 
 using Dazzle;
 
-namespace Usage
-{
-    public class MemoryGraph : GraphView
-    {
+namespace Usage {
+    public class MemoryGraph : GraphView {
         private static MemoryGraphModel graph_model;
         private Gdk.RGBA line_color_max;
         private Gdk.RGBA line_color_normal;
         private Gdk.RGBA color_max;
         private Gdk.RGBA color_normal;
 
-        class construct
-        {
+        class construct {
             set_css_name("rg-graph");
         }
 
-        public MemoryGraph ()
-        {
+        public MemoryGraph () {
             get_style_context().add_class("line_max");
             line_color_max = get_style_context().get_color(get_style_context().get_state());
             get_style_context().remove_class("line_max");
@@ -50,8 +46,7 @@ namespace Usage
             color_normal = get_style_context().get_color(get_style_context().get_state());
             get_style_context().remove_class("stacked");
 
-            if(graph_model == null)
-            {
+            if(graph_model == null) {
                 graph_model = new MemoryGraphModel();
                 set_model(graph_model);
             }

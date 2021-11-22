@@ -20,13 +20,11 @@
 
 using Dazzle;
 
-namespace Usage
-{
+namespace Usage {
     /**
      *  Graph showing most used core
     **/
-    public class CpuGraphMostUsedCore : GraphView
-    {
+    public class CpuGraphMostUsedCore : GraphView {
         private static CpuGraphModelMostUsedCore graph_model;
         private GraphStackedRenderer renderer;
         private Gdk.RGBA line_color_max;
@@ -34,13 +32,11 @@ namespace Usage
         private Gdk.RGBA color_max;
         private Gdk.RGBA color_normal;
 
-        class construct
-        {
+        class construct {
             set_css_name("rg-graph");
         }
 
-        public CpuGraphMostUsedCore ()
-        {
+        public CpuGraphMostUsedCore () {
             get_style_context().add_class("line_max");
             line_color_max = get_style_context().get_color(get_style_context().get_state());
             get_style_context().remove_class("line_max");
@@ -80,20 +76,17 @@ namespace Usage
     /**
      *  Graph showing all processor cores.
     **/
-    public class CpuGraph : GraphView
-    {
+    public class CpuGraph : GraphView {
         private static CpuGraphModel graph_model;
         private GraphLineRenderer[] renderers;
         private Gdk.RGBA line_color_max;
         private Gdk.RGBA line_color_normal;
 
-        class construct
-        {
+        class construct {
             set_css_name("rg-graph");
         }
 
-        public CpuGraph()
-        {
+        public CpuGraph() {
             get_style_context().add_class("line_max");
             line_color_max = get_style_context().get_color(get_style_context().get_state());
             get_style_context().remove_class("line_max");
@@ -108,8 +101,7 @@ namespace Usage
             set_model(graph_model);
 
             renderers = new GraphLineRenderer[get_num_processors()];
-            for(int i = 0; i < get_num_processors(); i++)
-            {
+            for(int i = 0; i < get_num_processors(); i++) {
                 renderers[i] = new GraphLineRenderer();
                 renderers[i].column = i;
                 renderers[i].stroke_color_rgba = line_color_normal;

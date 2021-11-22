@@ -19,23 +19,19 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
-    public enum Views
-    {
+namespace Usage {
+    public enum Views {
         PERFORMANCE,
         STORAGE,
     }
 
-    public enum HeaderBarMode
-    {
+    public enum HeaderBarMode {
         PERFORMANCE,
         STORAGE,
     }
 
     [GtkTemplate (ui = "/org/gnome/Usage/ui/window.ui")]
-    public class Window : Hdy.ApplicationWindow
-    {
+    public class Window : Hdy.ApplicationWindow {
         [GtkChild]
         private unowned Gtk.Stack stack;
 
@@ -56,8 +52,7 @@ namespace Usage
 
         private View[] views;
 
-        public Window(Gtk.Application application)
-        {
+        public Window(Gtk.Application application) {
             GLib.Object(application : application);
 
             if(Config.PROFILE == "Devel") {
@@ -65,8 +60,7 @@ namespace Usage
             }
 
             load_css();
-            Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect(() =>
-            {
+            Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect(() => {
                 load_css();
             });
 
@@ -76,8 +70,7 @@ namespace Usage
 
             set_mode(HeaderBarMode.PERFORMANCE);
 
-            views = new View[]
-            {
+            views = new View[] {
                 new PerformanceView(),
                 new StorageView(),
             };
@@ -88,10 +81,8 @@ namespace Usage
             }
         }
 
-        public void set_mode(HeaderBarMode mode)
-        {
-            switch(this.mode)
-            {
+        public void set_mode(HeaderBarMode mode) {
+            switch(this.mode) {
                 case HeaderBarMode.PERFORMANCE:
                     performance_search_revealer.reveal_child = false;
                     break;
@@ -99,8 +90,7 @@ namespace Usage
                     break;
             }
 
-            switch(mode)
-            {
+            switch(mode) {
                 case HeaderBarMode.PERFORMANCE:
                     performance_search_revealer.reveal_child = true;
                     break;
@@ -111,10 +101,8 @@ namespace Usage
             this.mode = mode;
         }
 
-        public void action_on_search()
-        {
-            switch(mode)
-            {
+        public void action_on_search() {
+            switch(mode) {
                 case HeaderBarMode.PERFORMANCE:
                     performance_search_button.set_active(!performance_search_button.get_active());
                     break;
@@ -123,13 +111,11 @@ namespace Usage
             }
         }
 
-        public View[] get_views()
-        {
+        public View[] get_views() {
             return views;
         }
 
-        private void load_css()
-        {
+        private void load_css() {
             var provider = new Gtk.CssProvider();
             Gtk.StyleContext.reset_widgets(get_screen());
             provider.load_from_resource("/org/gnome/Usage/interface/adwaita.css");
@@ -143,14 +129,11 @@ namespace Usage
         }
 
         [GtkCallback]
-        private void on_visible_child_changed()
-        {
-            if(stack.visible_child_name == views[Views.PERFORMANCE].name)
-            {
+        private void on_visible_child_changed() {
+            if(stack.visible_child_name == views[Views.PERFORMANCE].name) {
                 set_mode(HeaderBarMode.PERFORMANCE);
             }
-            else if(stack.visible_child_name == views[Views.STORAGE].name)
-            {
+            else if(stack.visible_child_name == views[Views.STORAGE].name) {
                 set_mode(HeaderBarMode.STORAGE);
             }
         }

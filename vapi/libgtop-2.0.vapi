@@ -198,8 +198,7 @@ namespace GTop {
     public void get_fsusage(out FsUsage fs_usage, string mount_dir);
 
     [CCode(cname = "glibtop_mountentry", cheader_filename = "glibtop/mountlist.h", destroy_function="g_free")]
-    public struct MountEntry
-    {
+    public struct MountEntry {
         uint64 dev;
         char devname[80];
         char mountdir[80];
@@ -207,8 +206,7 @@ namespace GTop {
     }
 
     [CCode(cname = "glibtop_mountlist", cheader_filename = "glibtop/mountlist.h")]
-    public struct MountList
-    {
+    public struct MountList {
         uint64 flags;
         uint64 number;
         uint64 total;

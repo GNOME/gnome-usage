@@ -18,15 +18,12 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage
-{
-    public class MemorySubView : View, SubView
-    {
+namespace Usage {
+    public class MemorySubView : View, SubView {
         private ProcessListBox process_list_box;
         private NoResultsFoundView no_process_view;
 
-        public MemorySubView()
-        {
+        public MemorySubView() {
             name = "MEMORY";
 
             var label = new Gtk.Label("<span font_desc=\"14.0\">" + _("Memory") + "</span>");
@@ -81,8 +78,7 @@ namespace Usage
             this.no_process_view.hide();
         }
 
-        public void search_in_processes(string text)
-        {
+        public void search_in_processes(string text) {
             process_list_box.search_text = text;
         }
     }

@@ -1,7 +1,5 @@
-namespace Usage
-{
-    public class AppItem : Object
-    {
+namespace Usage {
+    public class AppItem : Object {
         public HashTable<Pid?, Process>? processes { get; set; }
         public string display_name { get; private set; }
         public string representative_cmdline { get; private set; }
@@ -164,8 +162,7 @@ namespace Usage
             return processes.contains(pid);
         }
 
-        public Icon get_icon()
-        {
+        public Icon get_icon() {
             var app_icon = (app_info == null) ? null : app_info.get_icon();
 
             if (app_info == null || app_icon == null)

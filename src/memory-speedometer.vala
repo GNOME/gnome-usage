@@ -20,11 +20,9 @@
 
 using Gtk;
 
-namespace Usage
-{
+namespace Usage {
     [GtkTemplate (ui = "/org/gnome/Usage/ui/memory-speedometer.ui")]
-    public class MemorySpeedometer : Gtk.Bin
-    {
+    public class MemorySpeedometer : Gtk.Bin {
         [GtkChild]
         private unowned Usage.Speedometer speedometer;
 
