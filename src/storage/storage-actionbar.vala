@@ -32,7 +32,7 @@ namespace Usage {
             this.selected_items = selected_items;
 
             uint64 size = 0;
-            foreach(var item in selected_items) {
+            foreach (var item in selected_items) {
                 size += item.size;
             }
             size_label.label = _("%s selected").printf(Utils.format_size_values(size));
@@ -47,7 +47,7 @@ namespace Usage {
             dialog.secondary_text = _("If you delete these items, they will be permanently lost.");
 
             if (dialog.run() == Gtk.ResponseType.OK) {
-                foreach(var item in selected_items) {
+                foreach (var item in selected_items) {
                     if (item.type == FileType.DIRECTORY && item.custom_type == StorageViewType.ROOT_ITEM)
                         delete_file(item.uri, false);
                     else

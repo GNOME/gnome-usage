@@ -180,14 +180,14 @@ namespace Usage {
         }
 
         public void kill() {
-            foreach(var process in processes.get_values()) {
+            foreach (var process in processes.get_values()) {
                 debug ("Terminating %d", (int) process.pid);
                 Posix.kill(process.pid, Posix.Signal.KILL);
             }
         }
 
         public void mark_as_not_updated() {
-            foreach(var process in processes.get_values())
+            foreach (var process in processes.get_values())
                 process.mark_as_updated = false;
         }
 
@@ -196,7 +196,7 @@ namespace Usage {
             mem_usage = 0;
             int games = 0;
 
-            foreach(var process in processes.get_values()) {
+            foreach (var process in processes.get_values()) {
                 if (!process.mark_as_updated) {
                     processes.remove(process.pid);
                 } else {

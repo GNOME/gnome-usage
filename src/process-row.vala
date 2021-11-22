@@ -64,7 +64,7 @@ namespace Usage {
         }
 
         private void update_load_label() {
-            switch(type) {
+            switch (type) {
                 case ProcessListBoxType.PROCESSOR:
                     load_label.label = ((int) app.cpu_load).to_string() + " %";
                     break;

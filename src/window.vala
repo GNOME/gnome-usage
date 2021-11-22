@@ -75,14 +75,14 @@ namespace Usage {
                 new StorageView(),
             };
 
-            foreach(var view in views) {
+            foreach (var view in views) {
                 stack.add_titled(view, view.name, view.title);
                 stack.child_set (view, "icon-name", view.icon_name, null);
             }
         }
 
         public void set_mode(HeaderBarMode mode) {
-            switch(this.mode) {
+            switch (this.mode) {
                 case HeaderBarMode.PERFORMANCE:
                     performance_search_revealer.reveal_child = false;
                     break;
@@ -90,7 +90,7 @@ namespace Usage {
                     break;
             }
 
-            switch(mode) {
+            switch (mode) {
                 case HeaderBarMode.PERFORMANCE:
                     performance_search_revealer.reveal_child = true;
                     break;
@@ -102,7 +102,7 @@ namespace Usage {
         }
 
         public void action_on_search() {
-            switch(mode) {
+            switch (mode) {
                 case HeaderBarMode.PERFORMANCE:
                     performance_search_button.set_active(!performance_search_button.get_active());
                     break;

@@ -31,7 +31,7 @@ namespace Usage {
 
         public PrimaryMenu() {
             notify["mode"].connect ((sender, property) => {
-                switch(mode) {
+                switch (mode) {
                     case HeaderBarMode.PERFORMANCE:
                         performance_container.show();
                         break;

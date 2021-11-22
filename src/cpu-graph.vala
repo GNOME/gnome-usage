@@ -101,7 +101,7 @@ namespace Usage {
             set_model(graph_model);
 
             renderers = new GraphLineRenderer[get_num_processors()];
-            for(int i = 0; i < get_num_processors(); i++) {
+            for (int i = 0; i < get_num_processors(); i++) {
                 renderers[i] = new GraphLineRenderer();
                 renderers[i].column = i;
                 renderers[i].stroke_color_rgba = line_color_normal;

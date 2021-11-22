@@ -27,7 +27,7 @@ public class Usage.StorageRowPopover : Gtk.Popover {
     public void present (StorageViewRow row) {
         relative_to = row;
 
-        switch(row.item.custom_type) {
+        switch (row.item.custom_type) {
             case StorageViewType.OS:
                 label.label = _("Operating system files are an essential part of your system and cannot be removed.");
                 break;

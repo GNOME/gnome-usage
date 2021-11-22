@@ -50,7 +50,7 @@ namespace Usage {
                 new MemorySubView()
             };
 
-            foreach(var sub_view in sub_views)
+            foreach (var sub_view in sub_views)
                 performance_content.pack_start(sub_view, true, true, 0);
 
             var stackSwitcher = new GraphStackSwitcher(scrolled_window, sub_views);
@@ -61,7 +61,7 @@ namespace Usage {
 
         [GtkCallback]
         private void on_search_entry_changed () {
-            foreach(View sub_view in sub_views)
+            foreach (View sub_view in sub_views)
                 ((SubView) sub_view).search_in_processes(search_entry.get_text());
         }
 

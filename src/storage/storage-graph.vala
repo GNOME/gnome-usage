@@ -61,7 +61,7 @@ namespace Usage {
             this.selected_items = selected_items;
 
             uint64 size = 0;
-            foreach(var item in selected_items)
+            foreach (var item in selected_items)
                 size += item.size;
 
             selected_size = size;

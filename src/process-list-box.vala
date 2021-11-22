@@ -69,7 +69,7 @@ namespace Usage {
                 AppItem app_a = (AppItem) a;
                 AppItem app_b = (AppItem) b;
 
-                switch(type) {
+                switch (type) {
                     default:
                     case ProcessListBoxType.PROCESSOR:
                         return (int) ((uint64) (app_a.cpu_load < app_b.cpu_load) - (uint64) (app_a.cpu_load > app_b.cpu_load));
@@ -80,22 +80,22 @@ namespace Usage {
 
             var system_monitor = SystemMonitor.get_default();
             if (search_text == "") {
-                switch(type) {
+                switch (type) {
                     default:
                     case ProcessListBoxType.PROCESSOR:
-                        foreach(unowned AppItem app in system_monitor.get_apps()) {
+                        foreach (unowned AppItem app in system_monitor.get_apps()) {
                             if (app.cpu_load > APP_CPU_MIN_LOAD_LIMIT)
                                 model.insert_sorted(app, app_cmp);
                         }
                         break;
                     case ProcessListBoxType.MEMORY:
-                        foreach(unowned AppItem app in system_monitor.get_apps())
+                        foreach (unowned AppItem app in system_monitor.get_apps())
                             if (app.mem_usage > APP_MEM_MIN_USAGE_LIMIT)
                                 model.insert_sorted(app, app_cmp);
                         break;
                 }
             } else {
-                foreach(unowned AppItem app in system_monitor.get_apps()) {
+                foreach (unowned AppItem app in system_monitor.get_apps()) {
                     if (app.display_name.down().contains(search_text.down()) || app.representative_cmdline.down().contains(search_text.down()))
                         model.insert_sorted(app, app_cmp);
                 }

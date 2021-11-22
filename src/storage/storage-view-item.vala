@@ -123,7 +123,7 @@ public class Usage.StorageViewItem : GLib.Object {
         }
 
         if (custom_type != StorageViewType.NONE) {
-            switch(custom_type) {
+            switch (custom_type) {
                 case StorageViewType.OS:
                     style_class = "os-tag";
                     break;
@@ -139,7 +139,7 @@ public class Usage.StorageViewItem : GLib.Object {
 
     private bool _show_check_button () {
         if (custom_type != StorageViewType.NONE) {
-            switch(custom_type) {
+            switch (custom_type) {
                 case StorageViewType.OS:
                 case StorageViewType.AVAILABLE_GRAPH:
                 case StorageViewType.UP_FOLDER:

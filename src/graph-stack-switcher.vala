@@ -42,7 +42,7 @@ namespace Usage {
                 new GraphSwitcherButton.memory(_("Memory"))
             };
 
-            foreach(GraphSwitcherButton button in buttons) {
+            foreach (GraphSwitcherButton button in buttons) {
                 this.pack_start(button, false, true, 0);
 
                 button.button_release_event.connect(() => {
@@ -55,7 +55,7 @@ namespace Usage {
         }
 
         private int get_button_number(Gtk.Button button) {
-            for(int i = 0; i < buttons.length; i++) {
+            for (int i = 0; i < buttons.length; i++) {
                 if (buttons[i] == button)
                     return i;
             }
@@ -74,7 +74,7 @@ namespace Usage {
             Gtk.Allocation alloc;
 
             var button_number = 0;
-            for(int i = 1; i < buttons.length; i++) {
+            for (int i = 1; i < buttons.length; i++) {
                 this.sub_views[i].get_allocation(out alloc);
                 if (y < alloc.y)
                     break;

@@ -51,7 +51,7 @@ namespace Usage {
             GTop.ProcState proc_state;
             GTop.get_proc_state (out proc_state, pid);
 
-            switch(proc_state.state) {
+            switch (proc_state.state) {
                 case GTop.PROCESS_RUNNING:
                 case GTop.PROCESS_UNINTERRUPTIBLE:
                     status = ProcessStatus.RUNNING;
