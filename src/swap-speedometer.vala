@@ -37,22 +37,22 @@ public class Usage.SwapSpeedometer : Gtk.Bin {
     private double swap_usage { get; set; }
 
     construct {
-        var monitor = SystemMonitor.get_default();
-        Timeout.add_seconds(1, () => {
+        var monitor = SystemMonitor.get_default ();
+        Timeout.add_seconds (1, () => {
             var available = (monitor.swap_total - monitor.swap_usage);
             var percentage = 0.0;
             if (available > 0)
                 percentage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
 
-            this.speedometer.percentage = (int)percentage;
-            label.label = "%d".printf((int)percentage) + "%";
+            this.speedometer.percentage = (int) percentage;
+            label.label = "%d".printf ((int) percentage) + "%";
 
-            swap_used.label = Utils.format_size_values(monitor.swap_usage);
-            swap_available.label = Utils.format_size_values(available);
+            swap_used.label = Utils.format_size_values (monitor.swap_usage);
+            swap_available.label = Utils.format_size_values (available);
 
             return true;
         });
 
-        this.show_all();
+        this.show_all ();
     }
 }

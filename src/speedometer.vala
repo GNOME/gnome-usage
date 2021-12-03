@@ -36,22 +36,22 @@ public class Usage.Speedometer : Buildable, Gtk.Bin {
             return _percentage;
         }
         set {
-            on_percentage_changed(value);
+            on_percentage_changed (value);
 
             _percentage = value;
         }
     }
 
     construct {
-        css_provider = new Gtk.CssProvider();
-        inner.get_style_context().add_provider(css_provider,
-                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        css_provider = new Gtk.CssProvider ();
+        inner.get_style_context ().add_provider (css_provider,
+                                                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        bind_property("width-request", content_area, "width-request", BindingFlags.BIDIRECTIONAL);
-        bind_property("height-request", content_area, "height-request", BindingFlags.BIDIRECTIONAL);
+        bind_property ("width-request", content_area, "width-request", BindingFlags.BIDIRECTIONAL);
+        bind_property ("height-request", content_area, "height-request", BindingFlags.BIDIRECTIONAL);
     }
 
-    private void on_percentage_changed(int new_value) {
+    private void on_percentage_changed (int new_value) {
         if (new_value <= 0 && new_value >= 100)
             return;
 
@@ -70,22 +70,22 @@ public class Usage.Speedometer : Buildable, Gtk.Bin {
         }";
 
         try {
-            css_provider.load_from_data(css);
+            css_provider.load_from_data (css);
         }
         catch (GLib.Error error) {
-            warning("Failed to animate speedometer: %s", error.message);
+            warning ("Failed to animate speedometer: %s", error.message);
         }
     }
 
-    public void add_child(Builder builder, Object child, string? type) {
+    public void add_child (Builder builder, Object child, string? type) {
         /* This is a Vala bug. It will cause a "warning".
-        (content_area as Buildable).add_child(builder, child, type);*/
+        (content_area as Buildable).add_child (builder, child, type);*/
         if (child is Gtk.Label) {
-            content_area.add(child as Gtk.Widget);
+            content_area.add (child as Gtk.Widget);
 
             return;
         }
 
-        base.add_child(builder, child, type);
+        base.add_child (builder, child, type);
     }
 }

@@ -30,34 +30,34 @@ public class Usage.Application : Gtk.Application {
         application_id = Config.APPLICATION_ID;
     }
 
-    public Window? get_window() {
+    public Window? get_window () {
         return window;
     }
 
-    public override void activate() {
+    public override void activate () {
         if (window != null)
             return;
 
-        window = new Window(this);
+        window = new Window (this);
 
-        set_accels_for_action("app.quit", {"<Primary>q"});
+        set_accels_for_action ("app.quit", {"<Primary>q"});
 
-        window.show();
+        window.show ();
     }
 
-    protected override void startup() {
-        base.startup();
+    protected override void startup () {
+        base.startup ();
 
-        Hdy.init();
+        Hdy.init ();
 
-        add_action_entries(app_entries, this);
+        add_action_entries (app_entries, this);
         set_accels_for_action ("app.search", {"<Primary>f"});
 
         var icon_theme = Gtk.IconTheme.get_default ();
         icon_theme.add_resource_path ("/org/gnome/Usage/icons/hicolor");
     }
 
-    private void on_about(GLib.SimpleAction action, GLib.Variant? parameter) {
+    private void on_about (GLib.SimpleAction action, GLib.Variant? parameter) {
         string[] authors = {
             "Petr Štětka <pstetka@redhat.com>"
         };
@@ -80,20 +80,20 @@ public class Usage.Application : Gtk.Application {
             license_type: License.GPL_3_0);
     }
 
-    private void on_quit(GLib.SimpleAction action, GLib.Variant? parameter) {
-        window.destroy();
+    private void on_quit (GLib.SimpleAction action, GLib.Variant? parameter) {
+        window.destroy ();
     }
 
-    private void on_search(GLib.SimpleAction action, GLib.Variant? parameter) {
-        window.action_on_search();
+    private void on_search (GLib.SimpleAction action, GLib.Variant? parameter) {
+        window.action_on_search ();
     }
 
     private void on_activate_radio (GLib.SimpleAction action, GLib.Variant? state) {
-        action.change_state(state);
+        action.change_state (state);
     }
 
-    private void change_filter_processes_state(GLib.SimpleAction action, GLib.Variant? state) {
-        action.set_state(state);
-        SystemMonitor.get_default().group_system_apps = state.get_string() == "group-system" ? true : false;
+    private void change_filter_processes_state (GLib.SimpleAction action, GLib.Variant? state) {
+        action.set_state (state);
+        SystemMonitor.get_default ().group_system_apps = state.get_string () == "group-system" ? true : false;
     }
 }

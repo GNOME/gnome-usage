@@ -32,37 +32,37 @@ public class Usage.ProcessListBox : Gtk.ListBox {
     private ListStore model;
     private ProcessListBoxType type;
 
-    public ProcessListBox(ProcessListBoxType type) {
+    public ProcessListBox (ProcessListBoxType type) {
         set_selection_mode (Gtk.SelectionMode.NONE);
         set_header_func (update_header);
 
         this.type = type;
-        model = new ListStore(typeof(AppItem));
-        bind_model(model, on_row_created);
+        model = new ListStore (typeof (AppItem));
+        bind_model (model, on_row_created);
 
-        row_activated.connect((row) => {
+        row_activated.connect ((row) => {
             var process_row = (ProcessRow) row;
-            process_row.activate();
+            process_row.activate ();
         });
 
         this.notify["search-text"].connect ((sender, property) => {
-            update();
+            update ();
         });
 
-        var system_monitor = SystemMonitor.get_default();
+        var system_monitor = SystemMonitor.get_default ();
         system_monitor.notify["process-list-ready"].connect (() => {
             if (system_monitor.process_list_ready)
-                update();
+                update ();
         });
 
-        var settings = Settings.get_default();
-        Timeout.add(settings.list_update_interval_UI, update);
+        var settings = Settings.get_default ();
+        Timeout.add (settings.list_update_interval_UI, update);
 
         bind_property ("empty", this, "visible", BindingFlags.INVERT_BOOLEAN);
     }
 
-    private bool update() {
-        model.remove_all();
+    private bool update () {
+        model.remove_all ();
 
         CompareDataFunc<AppItem> app_cmp = (a, b) => {
             AppItem app_a = (AppItem) a;
@@ -77,45 +77,45 @@ public class Usage.ProcessListBox : Gtk.ListBox {
             }
         };
 
-        var system_monitor = SystemMonitor.get_default();
+        var system_monitor = SystemMonitor.get_default ();
         if (search_text == "") {
             switch (type) {
                 default:
                 case ProcessListBoxType.PROCESSOR:
-                    foreach (unowned AppItem app in system_monitor.get_apps()) {
+                    foreach (unowned AppItem app in system_monitor.get_apps ()) {
                         if (app.cpu_load > APP_CPU_MIN_LOAD_LIMIT)
-                            model.insert_sorted(app, app_cmp);
+                            model.insert_sorted (app, app_cmp);
                     }
                     break;
                 case ProcessListBoxType.MEMORY:
-                    foreach (unowned AppItem app in system_monitor.get_apps())
+                    foreach (unowned AppItem app in system_monitor.get_apps ())
                         if (app.mem_usage > APP_MEM_MIN_USAGE_LIMIT)
-                            model.insert_sorted(app, app_cmp);
+                            model.insert_sorted (app, app_cmp);
                     break;
             }
         } else {
-            foreach (unowned AppItem app in system_monitor.get_apps()) {
-                if (app.display_name.down().contains(search_text.down()) || app.representative_cmdline.down().contains(search_text.down()))
-                    model.insert_sorted(app, app_cmp);
+            foreach (unowned AppItem app in system_monitor.get_apps ()) {
+                if (app.display_name.down ().contains (search_text.down ()) || app.representative_cmdline.down ().contains (search_text.down ()))
+                    model.insert_sorted (app, app_cmp);
             }
         }
 
-        empty = (model.get_n_items() == 0);
+        empty = (model.get_n_items () == 0);
         return true;
     }
 
     private Gtk.Widget on_row_created (Object item) {
-        return new ProcessRow((AppItem) item, type);
+        return new ProcessRow ((AppItem) item, type);
     }
 
-    private void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row) {
+    private void update_header (Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row) {
         if (before_row == null) {
-            row.set_header(null);
+            row.set_header (null);
         } else {
             var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
-            separator.get_style_context().add_class("list");
-            separator.show();
-            row.set_header(separator);
+            separator.get_style_context ().add_class ("list");
+            separator.show ();
+            row.set_header (separator);
         }
     }
 }

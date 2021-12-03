@@ -40,10 +40,10 @@ public class Usage.Process : Object {
     private string? _app_id = null;
     private bool _app_id_checked = false;
 
-    public Process(Pid pid) {
+    public Process (Pid pid) {
         this.pid = pid;
         this.cmdline = get_full_process_cmd (pid);
-        this.uid = _get_uid();
+        this.uid = _get_uid ();
     }
 
     public void update_status () {
@@ -73,9 +73,9 @@ public class Usage.Process : Object {
         mark_as_updated = true;
     }
 
-    private uint _get_uid() {
+    private uint _get_uid () {
         GTop.ProcUid procUid;
-        GTop.get_proc_uid(out procUid, pid);
+        GTop.get_proc_uid (out procUid, pid);
         return procUid.uid;
     }
 
@@ -140,10 +140,10 @@ public class Usage.Process : Object {
             if (status != IOStatus.NORMAL)
                 return null;
 
-            lines = data.split("\n");
+            lines = data.split ("\n");
 
             // Only do anything with cgroup v2
-            if (!lines[0].has_prefix("0::"))
+            if (!lines[0].has_prefix ("0::"))
                 return null;
 
             cgroup = lines[0][3:lines[0].length];
@@ -230,7 +230,7 @@ public class Usage.Process : Object {
 
         for (int i = 0; i < str.length; i++) {
             if (str[i] == ' ') {
-                return str.substring(0, i);
+                return str.substring (0, i);
             }
         }
 

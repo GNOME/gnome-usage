@@ -37,21 +37,21 @@ public class Usage.MemorySpeedometer : Gtk.Bin {
     private double ram_usage { get; set; }
 
     construct {
-        var monitor = SystemMonitor.get_default();
-        Timeout.add_seconds(1, () => {
+        var monitor = SystemMonitor.get_default ();
+        Timeout.add_seconds (1, () => {
             var percentage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
 
             this.speedometer.percentage = (int)percentage;
-            label.label = "%d".printf((int)percentage) + "%";
+            label.label = "%d".printf ((int)percentage) + "%";
 
             var available = (monitor.ram_total - monitor.ram_usage);
 
-            ram_used.label = Utils.format_size_values(monitor.ram_usage);
-            ram_available.label = Utils.format_size_values(available);
+            ram_used.label = Utils.format_size_values (monitor.ram_usage);
+            ram_available.label = Utils.format_size_values (available);
 
             return true;
         });
 
-        this.show_all();
+        this.show_all ();
     }
 }

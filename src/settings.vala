@@ -30,14 +30,14 @@ public class Usage.Settings : GLib.Settings {
 
     private static Settings settings;
 
-    public static Settings get_default() {
+    public static Settings get_default () {
         if (settings == null)
             settings = new Settings ();
 
         return settings;
     }
 
-    public Settings() {
-        Object(schema_id: Config.APPLICATION_ID);
+    public Settings () {
+        Object (schema_id: Config.APPLICATION_ID);
     }
 }

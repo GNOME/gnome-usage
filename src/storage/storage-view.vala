@@ -52,8 +52,8 @@ public class Usage.StorageView : Usage.View {
     private StorageQueryBuilder query_builder;
 
     private StorageViewItem os_item = new StorageViewItem ();
-    private StorageRowPopover row_popover = new StorageRowPopover();
-    private Cancellable cancellable = new Cancellable();
+    private StorageRowPopover row_popover = new StorageRowPopover ();
+    private Cancellable cancellable = new Cancellable ();
 
     private uint need_refresh_depth = 0;
 
@@ -87,21 +87,21 @@ public class Usage.StorageView : Usage.View {
         query_builder = new StorageQueryBuilder ();
         controller = new TrackerController (connection);
 
-        actionbar.refresh_listbox.connect(() => {
-            var item = actual_item.peek_head();
+        actionbar.refresh_listbox.connect (() => {
+            var item = actual_item.peek_head ();
 
-            stack_listbox_up();
-            clear_selected_items();
+            stack_listbox_up ();
+            clear_selected_items ();
 
-            if (listbox.get_depth() >= 1) {
-                selected_items_stack.push_head((owned) selected_items);
-                actual_item.push_head(item);
+            if (listbox.get_depth () >= 1) {
+                selected_items_stack.push_head ((owned) selected_items);
+                actual_item.push_head (item);
                 present_dir.begin (item.uri, item.dir, cancellable);
             } else {
                 populate_view.begin ();
             }
 
-            need_refresh_depth = listbox.get_depth();
+            need_refresh_depth = listbox.get_depth ();
         });
     }
 
@@ -117,53 +117,53 @@ public class Usage.StorageView : Usage.View {
     private void on_row_activated (Gtk.ListBoxRow row) {
         var storage_row = row as StorageViewRow;
 
-        cancellable.cancel();
-        cancellable = new Cancellable();
+        cancellable.cancel ();
+        cancellable = new Cancellable ();
 
         if (storage_row.item.custom_type == StorageViewType.UP_FOLDER) {
-            stack_listbox_up();
+            stack_listbox_up ();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
-            selected_items_stack.push_head((owned) selected_items);
-            actual_item.push_head(storage_row.item);
-            clear_selected_items();
+            selected_items_stack.push_head ((owned) selected_items);
+            actual_item.push_head (storage_row.item);
+            clear_selected_items ();
             present_dir.begin (storage_row.item.uri, storage_row.item.dir, cancellable);
         } else if (storage_row.item.custom_type != StorageViewType.NONE) {
-            row_popover.present(storage_row);
+            row_popover.present (storage_row);
         } else {
             try {
-                AppInfo.launch_default_for_uri(storage_row.item.uri, null);
+                AppInfo.launch_default_for_uri (storage_row.item.uri, null);
             } catch (GLib.Error error) {
                 warning (error.message);
             }
         }
     }
 
-    private void stack_listbox_up() {
-        selected_items = selected_items_stack.pop_head();
-        actual_item.pop_head();
-        refresh_actionbar();
-        listbox.pop();
+    private void stack_listbox_up () {
+        selected_items = selected_items_stack.pop_head ();
+        actual_item.pop_head ();
+        refresh_actionbar ();
+        listbox.pop ();
 
-        var first_item = listbox.get_model().get_item(0) as StorageViewItem;
+        var first_item = listbox.get_model ().get_item (0) as StorageViewItem;
         var refresh = false;
 
-        if (need_refresh_depth >= listbox.get_depth()) {
+        if (need_refresh_depth >= listbox.get_depth ()) {
             need_refresh_depth -= 1;
             refresh = true;
         }
 
-        if (listbox.get_depth() > 1 && first_item.loaded == false || refresh) {
-            var item = actual_item.peek_head();
+        if (listbox.get_depth () > 1 && first_item.loaded == false || refresh) {
+            var item = actual_item.peek_head ();
 
-            clear_selected_items();
-            listbox.pop();
+            clear_selected_items ();
+            listbox.pop ();
 
-            if (listbox.get_depth() == 0)
+            if (listbox.get_depth () == 0)
                 populate_view.begin ();
             else
                 present_dir.begin (item.uri, item.dir, cancellable);
         } else {
-            graph.model = (ListStore) listbox.get_model();
+            graph.model = (ListStore) listbox.get_model ();
         }
     }
 
@@ -176,27 +176,27 @@ public class Usage.StorageView : Usage.View {
         var row = new StorageViewRow.from_item (item);
         row.visible = true;
 
-        if (selected_items.find(item) != null)
+        if (selected_items.find (item) != null)
             row.check_button.active = true;
 
-        row.check_button_toggled.connect(() => {
+        row.check_button_toggled.connect (() => {
             if (row.selected)
-                selected_items.append(row.item);
+                selected_items.append (row.item);
             else
-                selected_items.remove(row.item);
+                selected_items.remove (row.item);
 
-            refresh_actionbar();
+            refresh_actionbar ();
         });
 
         if (item.custom_type == StorageViewType.AVAILABLE_GRAPH)
-            return new Gtk.ListBoxRow();
+            return new Gtk.ListBoxRow ();
 
-        graph.model = (ListStore) listbox.get_model();
+        graph.model = (ListStore) listbox.get_model ();
         return row;
     }
 
     private async void present_dir (string uri, UserDirectory? dir, Cancellable cancellable) {
-        if (connection == null || cancellable.is_cancelled())
+        if (connection == null || cancellable.is_cancelled ())
             return;
 
         var model = new GLib.ListStore (typeof (StorageViewItem));
@@ -204,20 +204,20 @@ public class Usage.StorageView : Usage.View {
         var item = StorageViewItem.from_file (file);
         item.custom_type = StorageViewType.UP_FOLDER;
         item.dir = dir;
-        model.insert(0, item);
+        model.insert (0, item);
 
-        controller.set_model(model);
-        controller.enumerate_children.begin(uri, dir, cancellable, (obj, res) => {
-            if (!cancellable.is_cancelled()) {
-                var up_folder_item = model.get_item(0) as StorageViewItem;
-                up_folder_item.size = controller.enumerate_children.end(res);
+        controller.set_model (model);
+        controller.enumerate_children.begin (uri, dir, cancellable, (obj, res) => {
+            if (!cancellable.is_cancelled ()) {
+                var up_folder_item = model.get_item (0) as StorageViewItem;
+                up_folder_item.size = controller.enumerate_children.end (res);
                 up_folder_item.loaded = true;
                 graph.model = model;
             }
         });
 
-        listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
-        if (!cancellable.is_cancelled())
+        listbox.push (new Gtk.ListBoxRow (), model, create_file_row);
+        if (!cancellable.is_cancelled ())
             graph.model = model;
     }
 
@@ -258,13 +258,13 @@ public class Usage.StorageView : Usage.View {
         var total_used_percentage = ((double) total_used_size / total_size) * 100;
         var total_free_percentage = ((double) total_free_size / total_size) * 100;
 
-        total_used_percentage = Math.round(total_used_percentage);
-        total_free_percentage = Math.round(total_free_percentage);
+        total_used_percentage = Math.round (total_used_percentage);
+        total_free_percentage = Math.round (total_free_percentage);
 
-        used_row.size_label.label = Utils.format_size_values (total_used_size) + " (%d%)".printf((int) total_used_percentage);
+        used_row.size_label.label = Utils.format_size_values (total_used_size) + " (%d%)".printf ((int) total_used_percentage);
         used_row.tag.get_style_context ().add_class ("used-tag");
 
-        available_row.size_label.label = Utils.format_size_values (total_free_size) + " (%d%)".printf((int) total_free_percentage);
+        available_row.size_label.label = Utils.format_size_values (total_free_size) + " (%d%)".printf ((int) total_free_percentage);
         available_row.tag.get_style_context ().add_class ("available-tag");
     }
 
@@ -275,7 +275,7 @@ public class Usage.StorageView : Usage.View {
             return;
 
         var model = new GLib.ListStore (typeof (StorageViewItem));
-        model.append(os_item);
+        model.append (os_item);
 
         var items_loaded = 0;
 
@@ -293,35 +293,35 @@ public class Usage.StorageView : Usage.View {
 
                     items_loaded++;
                     if (items_loaded == xdg_folders.length)
-                        loading_notification.dismiss();
+                        loading_notification.dismiss ();
                 } catch (GLib.Error error) {
                     warning (error.message);
                 }
             });
         }
 
-        listbox.push (new Gtk.ListBoxRow(), model, create_file_row);
+        listbox.push (new Gtk.ListBoxRow (), model, create_file_row);
 
         var available_graph_item = new StorageViewItem ();
         available_graph_item.size = total_free_size;
         available_graph_item.custom_type = StorageViewType.AVAILABLE_GRAPH;
         available_graph_item.percentage = available_graph_item.size * 100 / (double) total_size;
-        model.append(available_graph_item);
+        model.append (available_graph_item);
         graph.model = model;
     }
 
-    private void refresh_actionbar() {
-        actionbar.update_selected_items(selected_items);
-        graph.update_selected_items(selected_items);
+    private void refresh_actionbar () {
+        actionbar.update_selected_items (selected_items);
+        graph.update_selected_items (selected_items);
 
-        if (selected_items.length() == 0)
-            actionbar.hide();
+        if (selected_items.length () == 0)
+            actionbar.hide ();
         else
-            actionbar.show();
+            actionbar.show ();
     }
 
-    private void clear_selected_items() {
+    private void clear_selected_items () {
         selected_items = new List<StorageViewItem>();
-        refresh_actionbar();
+        refresh_actionbar ();
     }
 }

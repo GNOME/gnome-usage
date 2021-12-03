@@ -28,11 +28,11 @@ public class Usage.PieChart : Gtk.DrawingArea {
     Gdk.RGBA available;
 
     class construct {
-        set_css_name("PieChart");
+        set_css_name ("PieChart");
     }
 
-    public PieChart() {
-        set_styles();
+    public PieChart () {
+        set_styles ();
 
         this.draw.connect ((context) => {
             int height = this.get_allocated_height ();
@@ -52,7 +52,7 @@ public class Usage.PieChart : Gtk.DrawingArea {
                 context.move_to (xc, yc);
                 Gdk.cairo_set_source_rgba (context, used_color);
                 context.arc (xc, yc, radius, angle1, angle2);
-                context.fill();
+                context.fill ();
             }
 
             if (other_percentages > 0) {
@@ -62,7 +62,7 @@ public class Usage.PieChart : Gtk.DrawingArea {
                 context.move_to (xc, yc);
                 Gdk.cairo_set_source_rgba (context, others_color);
                 context.arc (xc, yc, radius, angle1, angle2);
-                context.fill();
+                context.fill ();
             }
 
             angle1 = angle2;
@@ -70,24 +70,24 @@ public class Usage.PieChart : Gtk.DrawingArea {
             context.move_to (xc, yc);
             Gdk.cairo_set_source_rgba (context, available);
             context.arc (xc, yc, radius, angle1, angle2);
-            context.fill();
+            context.fill ();
             return true;
         });
     }
 
-    private void set_styles() {
-        var context = get_style_context();
-        context.add_class("used");
-        used_color = context.get_color(context.get_state());
-        context.add_class("others");
-        others_color = context.get_color(context.get_state());
-        context.add_class("available");
-        available = context.get_color(context.get_state());
+    private void set_styles () {
+        var context = get_style_context ();
+        context.add_class ("used");
+        used_color = context.get_color (context.get_state ());
+        context.add_class ("others");
+        others_color = context.get_color (context.get_state ());
+        context.add_class ("available");
+        available = context.get_color (context.get_state ());
     }
 
-    public void update(int used_percentages, int other_percentages) {
+    public void update (int used_percentages, int other_percentages) {
         this.used_percentages = used_percentages;
         this.other_percentages = used_percentages + other_percentages;
-        this.queue_draw();
+        this.queue_draw ();
     }
 }

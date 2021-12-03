@@ -35,6 +35,6 @@ public class Usage.StorageRowPopover : Gtk.Popover {
                 break;
         }
 
-        popup();
+        popup ();
     }
 }

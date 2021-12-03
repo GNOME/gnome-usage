@@ -28,5 +28,5 @@ public abstract class Usage.View : Gtk.Bin {
 }
 
 public interface Usage.SubView {
-    public abstract void search_in_processes(string text);
+    public abstract void search_in_processes (string text);
 }

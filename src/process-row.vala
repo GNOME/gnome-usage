@@ -47,48 +47,48 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
 
     private ProcessListBoxType type;
 
-    public ProcessRow(AppItem app, ProcessListBoxType type) {
+    public ProcessRow (AppItem app, ProcessListBoxType type) {
         this.type = type;
         this.app = app;
-        this.icon.gicon = app.get_icon();
-        this.app.bind_property("gamemode", gamemode, "visible", BindingFlags.SYNC_CREATE);
-        update();
+        this.icon.gicon = app.get_icon ();
+        this.app.bind_property ("gamemode", gamemode, "visible", BindingFlags.SYNC_CREATE);
+        update ();
     }
 
-    private void update() {
-        update_load_label();
-        update_user_tag();
+    private void update () {
+        update_load_label ();
+        update_user_tag ();
 
         title_label.label = app.display_name;
     }
 
-    private void update_load_label() {
+    private void update_load_label () {
         switch (type) {
             case ProcessListBoxType.PROCESSOR:
-                load_label.label = ((int) app.cpu_load).to_string() + " %";
+                load_label.label = ((int) app.cpu_load).to_string () + " %";
                 break;
             case ProcessListBoxType.MEMORY:
-                load_label.label = Utils.format_size_values(app.mem_usage);
+                load_label.label = Utils.format_size_values (app.mem_usage);
                 break;
         }
     }
 
-    private void update_user_tag() {
+    private void update_user_tag () {
         if (app.user == null)
             return;
 
-        remove_user_tag();
-        create_user_tag();
+        remove_user_tag ();
+        create_user_tag ();
     }
 
-    private void remove_user_tag() {
+    private void remove_user_tag () {
         user_tag_box.visible = false;
-        user_tag_box.get_style_context().remove_class(CSS_TAG_USER);
-        user_tag_box.get_style_context().remove_class(CSS_TAG_ROOT);
-        user_tag_box.get_style_context().remove_class(CSS_TAG_SYSTEM);
+        user_tag_box.get_style_context ().remove_class (CSS_TAG_USER);
+        user_tag_box.get_style_context ().remove_class (CSS_TAG_ROOT);
+        user_tag_box.get_style_context ().remove_class (CSS_TAG_SYSTEM);
     }
 
-    private void create_user_tag() {
+    private void create_user_tag () {
         string class_name = "";
         if (app.user.LocalAccount) {
             class_name = CSS_TAG_USER;
@@ -98,22 +98,22 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
             class_name = CSS_TAG_SYSTEM;
         }
 
-        user_tag_box.get_style_context().add_class(class_name);
+        user_tag_box.get_style_context ().add_class (class_name);
         user_tag_label.label = app.user.UserName;
-        user_tag_box.visible = !is_logged_in();
+        user_tag_box.visible = !is_logged_in ();
     }
 
-    private bool is_logged_in(){
-        return app.user.UserName == GLib.Environment.get_user_name();
+    private bool is_logged_in (){
+        return app.user.UserName == GLib.Environment.get_user_name ();
     }
 
-    public new void activate() {
-        var settings = Settings.get_default();
+    public new void activate () {
+        var settings = Settings.get_default ();
         if (app.representative_cmdline in settings.get_strv ("unkillable-processes"))
             return;
 
-        var dialog = new QuitProcessDialog(app);
-        dialog.set_transient_for(get_toplevel() as Gtk.Window);
-        dialog.show_all();
+        var dialog = new QuitProcessDialog (app);
+        dialog.set_transient_for (get_toplevel () as Gtk.Window);
+        dialog.show_all ();
     }
 }

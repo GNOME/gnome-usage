@@ -62,8 +62,8 @@ public class Usage.StorageViewItem : GLib.Object {
         }
     }
 
-    public static StorageViewItem? from_file(File file) {
-        var item = new StorageViewItem();
+    public static StorageViewItem? from_file (File file) {
+        var item = new StorageViewItem ();
         item.uri = file.get_uri ();
 
         try {

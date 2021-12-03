@@ -36,11 +36,11 @@ private class Usage.LoadingNotification: Gtk.Revealer {
         dismissed.connect ( () => {
             if (dismiss_func != null)
                 dismiss_func ();
-            set_reveal_child(false);
+            set_reveal_child (false);
         });
     }
 
-    public void dismiss() {
-        dismissed();
+    public void dismiss () {
+        dismissed ();
     }
 }

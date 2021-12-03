@@ -63,39 +63,39 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         get { return check_button.active; }
     }
 
-    public signal void check_button_toggled();
+    public signal void check_button_toggled ();
 
     public StorageViewItem item;
 
     public StorageViewRow.from_item (StorageViewItem item) {
         this.item = item;
 
-        var tag_style_context = tag.get_style_context();
+        var tag_style_context = tag.get_style_context ();
         tag_style_context.add_class (item.style_class);
-        item.color = tag_style_context.get_background_color(tag_style_context.get_state());
+        item.color = tag_style_context.get_background_color (tag_style_context.get_state ());
 
         check_button.visible = item.show_check_button;
-        check_button.toggled.connect(() => {
-            check_button_toggled();
+        check_button.toggled.connect (() => {
+            check_button_toggled ();
         });
 
-        item.notify.connect(() => {
-            set_up();
+        item.notify.connect (() => {
+            set_up ();
         });
-        set_up();
+        set_up ();
 
         if (item.type == FileType.DIRECTORY || item.custom_type != StorageViewType.NONE)
             tag.width_request = tag.height_request = 20;
 
         if (item.custom_type == StorageViewType.UP_FOLDER) {
-            get_style_context().add_class("up-folder");
+            get_style_context ().add_class ("up-folder");
 
             if (!item.loaded) {
                 spinner.visible = true;
                 size_label.visible = false;
             }
 
-            item.notify["loaded"].connect(() => {
+            item.notify["loaded"].connect (() => {
                 if (item.loaded) {
                     spinner.visible = false;
                     size_label.visible = true;
@@ -104,15 +104,15 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         }
     }
 
-    private void set_up() {
+    private void set_up () {
         title.label = item.name;
         size_label.label = Utils.format_size_values (item.size);
-        change_color(item.color);
+        change_color (item.color);
     }
 
-    private void change_color(Gdk.RGBA color) {
-        var css_provider = new Gtk.CssProvider();
-        tag.get_style_context().add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    private void change_color (Gdk.RGBA color) {
+        var css_provider = new Gtk.CssProvider ();
+        tag.get_style_context ().add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         var css =
         @".row-tag {
@@ -120,10 +120,10 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
         }";
 
         try {
-            css_provider.load_from_data(css);
+            css_provider.load_from_data (css);
         }
         catch (GLib.Error error)    {
-            warning("Failed to color StorageViewRow: %s", error.message);
+            warning ("Failed to color StorageViewRow: %s", error.message);
         }
     }
 }

@@ -28,11 +28,11 @@ public class GraphStackedRenderer : Object, GraphRenderer {
     public Gdk.RGBA stroke_color_rgba { get; set; }
     public Gdk.RGBA stacked_color_rgba { get; set; }
 
-    public void render(GraphModel model, int64 x_begin, int64 x_end, double y_begin, double y_end, Context cr, RectangleInt area) {
+    public void render (GraphModel model, int64 x_begin, int64 x_end, double y_begin, double y_end, Context cr, RectangleInt area) {
         GraphModelIter iter;
-        cr.save();
+        cr.save ();
 
-        if (model.get_iter_first(out iter)) {
+        if (model.get_iter_first (out iter)) {
             double chunk = area.width / (double) (model.max_samples - 1) / 2.0;
             double last_x = calc_x (iter, x_begin, x_end, area.width);
             double last_y = area.height;
@@ -54,10 +54,10 @@ public class GraphStackedRenderer : Object, GraphRenderer {
         cr.set_source_rgba (stacked_color_rgba.red, stacked_color_rgba.green, stacked_color_rgba.blue, stacked_color_rgba.alpha);
         cr.rel_line_to (0, area.height);
         cr.stroke_preserve ();
-        cr.close_path();
-        cr.fill();
+        cr.close_path ();
+        cr.fill ();
 
-        if (model.get_iter_first(out iter)) {
+        if (model.get_iter_first (out iter)) {
             double chunk = area.width / (double) (model.max_samples - 1) / 2.0;
             double last_x = calc_x (iter, x_begin, x_end, area.width);
             double last_y = area.height;
@@ -81,7 +81,7 @@ public class GraphStackedRenderer : Object, GraphRenderer {
     }
 
     private static double calc_x (GraphModelIter iter, int64 begin, int64 end, uint width) {
-        var timestamp = GraphModel.iter_get_timestamp(iter);
+        var timestamp = GraphModel.iter_get_timestamp (iter);
 
         return ((timestamp - begin) / (double) (end - begin) * width);
     }
@@ -89,19 +89,19 @@ public class GraphStackedRenderer : Object, GraphRenderer {
     private static double calc_y (GraphModelIter iter, double range_begin, double range_end, uint height, uint column) {
         double y;
 
-        var val = GraphModel.iter_get_value(iter, column);
-        switch (val.type()) {
+        var val = GraphModel.iter_get_value (iter, column);
+        switch (val.type ()) {
             case Type.DOUBLE:
-                y = val.get_double();
+                y = val.get_double ();
                 break;
             case Type.UINT:
-                y = val.get_uint();
+                y = val.get_uint ();
                 break;
             case Type.UINT64:
                 y = val.get_uint64();
                 break;
             case Type.INT:
-                y = val.get_int();
+                y = val.get_int ();
                 break;
             case Type.INT64:
                 y = val.get_int64();

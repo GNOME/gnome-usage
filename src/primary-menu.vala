@@ -28,14 +28,14 @@ public class Usage.PrimaryMenu : Gtk.Popover {
 
     public HeaderBarMode mode { get; set; }
 
-    public PrimaryMenu() {
+    public PrimaryMenu () {
         notify["mode"].connect ((sender, property) => {
             switch (mode) {
                 case HeaderBarMode.PERFORMANCE:
-                    performance_container.show();
+                    performance_container.show ();
                     break;
                 case HeaderBarMode.STORAGE:
-                    performance_container.hide();
+                    performance_container.hide ();
                     break;
             }
         });

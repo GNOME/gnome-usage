@@ -27,45 +27,45 @@ public class Usage.CpuGraphModel : GraphModel {
     private bool[] change_small_process_usage;
 
     public CpuGraphModel () {
-        var settings = Settings.get_default();
+        var settings = Settings.get_default ();
         set_timespan (settings.graph_timespan * 1000);
         set_max_samples (settings.graph_max_samples);
 
-        var column_total = new GraphColumn("TOTAL CPU", Type.from_name("gdouble"));
-        add_column(column_total);
+        var column_total = new GraphColumn ("TOTAL CPU", Type.from_name ("gdouble"));
+        add_column (column_total);
 
-        change_big_process_usage = new bool[get_num_processors()];
-        change_small_process_usage = new bool[get_num_processors()];
+        change_big_process_usage = new bool[get_num_processors ()];
+        change_small_process_usage = new bool[get_num_processors ()];
 
-        for (int i = 0; i < get_num_processors(); i++) {
-            var column_x_cpu = new GraphColumn("CPU: " + i.to_string(), Type.from_name("gdouble"));
-            add_column(column_x_cpu);
+        for (int i = 0; i < get_num_processors (); i++) {
+            var column_x_cpu = new GraphColumn ("CPU: " + i.to_string (), Type.from_name ("gdouble"));
+            add_column (column_x_cpu);
 
             change_big_process_usage[i] = true;
             change_small_process_usage[i] = true;
         }
 
-        Timeout.add(settings.graph_update_interval, update_data);
+        Timeout.add (settings.graph_update_interval, update_data);
     }
 
-    bool update_data() {
+    bool update_data () {
         GraphModelIter iter;
         push (out iter, get_monotonic_time ());
 
-        SystemMonitor monitor = SystemMonitor.get_default();
+        SystemMonitor monitor = SystemMonitor.get_default ();
 
-        for (int i = 0; i < get_num_processors(); i++) {
-            iter_set_value(iter, i, monitor.x_cpu_load[i]);
+        for (int i = 0; i < get_num_processors (); i++) {
+            iter_set_value (iter, i, monitor.x_cpu_load[i]);
 
             if (monitor.x_cpu_load[i] >= 90) {
                 if (change_big_process_usage[i]) {
-                    big_process_usage(i);
+                    big_process_usage (i);
                     change_big_process_usage[i] = false;
                     change_small_process_usage[i] = true;
                 }
             } else {
                 if (change_small_process_usage[i]) {
-                    small_process_usage(i);
+                    small_process_usage (i);
                     change_small_process_usage[i] = false;
                     change_big_process_usage[i] = true;
                 }
@@ -83,39 +83,39 @@ public class Usage.CpuGraphModelMostUsedCore : GraphModel {
     private bool change_small_process_usage = true;
 
     public CpuGraphModelMostUsedCore () {
-        var settings = Settings.get_default();
+        var settings = Settings.get_default ();
         set_timespan (settings.graph_timespan * 1000);
         set_max_samples (settings.graph_max_samples);
 
-        var column = new GraphColumn("MOST USED CORE", Type.from_name("gdouble"));
-        add_column(column);
+        var column = new GraphColumn ("MOST USED CORE", Type.from_name ("gdouble"));
+        add_column (column);
 
-        Timeout.add(settings.graph_update_interval, update_data);
+        Timeout.add (settings.graph_update_interval, update_data);
     }
 
-    bool update_data() {
+    bool update_data () {
         GraphModelIter iter;
         push (out iter, get_monotonic_time ());
 
-        SystemMonitor monitor = SystemMonitor.get_default();
+        SystemMonitor monitor = SystemMonitor.get_default ();
         double most_used_core = monitor.x_cpu_load[0];
 
-        for (int i = 1; i < get_num_processors(); i++) {
+        for (int i = 1; i < get_num_processors (); i++) {
             if (monitor.x_cpu_load[i] > most_used_core)
                 most_used_core = monitor.x_cpu_load[i];
         }
 
-        iter_set_value(iter, 0, most_used_core);
+        iter_set_value (iter, 0, most_used_core);
 
         if (most_used_core >= 90) {
             if (change_big_process_usage) {
-                big_process_usage();
+                big_process_usage ();
                 change_big_process_usage = false;
                 change_small_process_usage = true;
             }
         } else {
             if (change_small_process_usage) {
-                small_process_usage();
+                small_process_usage ();
                 change_small_process_usage = false;
                 change_big_process_usage = true;
             }

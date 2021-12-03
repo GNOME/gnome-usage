@@ -24,7 +24,7 @@ public class Usage.ColorRectangle : Gtk.DrawingArea {
     public Gdk.RGBA color { get; set; }
 
     class construct {
-        set_css_name("ColorRectangle");
+        set_css_name ("ColorRectangle");
     }
 
     construct {
@@ -40,31 +40,31 @@ public class Usage.ColorRectangle : Gtk.DrawingArea {
             double y = 0;
             double radius = height / 5;
 
-            context.new_sub_path();
-            context.arc(x + width - radius, y + radius, radius, -90 * degrees, 0 * degrees);
-            context.arc(x + width - radius, y + height - radius, radius, 0 * degrees, 90 * degrees);
-            context.arc(x + radius, y + height - radius, radius, 90 * degrees, 180 * degrees);
-            context.arc(x + radius, y + radius, radius, 180 * degrees, 270 * degrees);
-            context.close_path();
+            context.new_sub_path ();
+            context.arc (x + width - radius, y + radius, radius, -90 * degrees, 0 * degrees);
+            context.arc (x + width - radius, y + height - radius, radius, 0 * degrees, 90 * degrees);
+            context.arc (x + radius, y + height - radius, radius, 90 * degrees, 180 * degrees);
+            context.arc (x + radius, y + radius, radius, 180 * degrees, 270 * degrees);
+            context.close_path ();
 
             Gdk.cairo_set_source_rgba (context, color);
-            context.fill();
+            context.fill ();
             return true;
         });
     }
 
-    public ColorRectangle.new_from_rgba(Gdk.RGBA color) {
+    public ColorRectangle.new_from_rgba (Gdk.RGBA color) {
         this.color = color;
-        queue_draw_area(0, 0, this.get_allocated_width(), this.get_allocated_height());
+        queue_draw_area (0, 0, this.get_allocated_width (), this.get_allocated_height ());
     }
 
-    public ColorRectangle.new_from_css(string css_class) {
-        set_color_from_css(css_class);
+    public ColorRectangle.new_from_css (string css_class) {
+        set_color_from_css (css_class);
     }
 
-    public void set_color_from_css(string css_class) {
-        get_style_context().add_class(css_class);
-        color = get_style_context().get_color(get_style_context().get_state());
-        queue_draw_area(0, 0, this.get_allocated_width(), this.get_allocated_height());
+    public void set_color_from_css (string css_class) {
+        get_style_context ().add_class (css_class);
+        color = get_style_context ().get_color (get_style_context ().get_state ());
+        queue_draw_area (0, 0, this.get_allocated_width (), this.get_allocated_height ());
     }
 }

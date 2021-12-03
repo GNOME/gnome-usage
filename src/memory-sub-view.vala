@@ -22,61 +22,61 @@ public class Usage.MemorySubView : View, SubView {
     private ProcessListBox process_list_box;
     private NoResultsFoundView no_process_view;
 
-    public MemorySubView() {
+    public MemorySubView () {
         name = "MEMORY";
 
-        var label = new Gtk.Label("<span font_desc=\"14.0\">" + _("Memory") + "</span>");
-        label.set_use_markup(true);
+        var label = new Gtk.Label ("<span font_desc=\"14.0\">" + _("Memory") + "</span>");
+        label.set_use_markup (true);
         label.margin_top = 25;
         label.margin_bottom = 15;
 
-        process_list_box = new ProcessListBox(ProcessListBoxType.MEMORY);
+        process_list_box = new ProcessListBox (ProcessListBoxType.MEMORY);
         process_list_box.margin_bottom = 20;
         process_list_box.margin_top = 30;
 
-        var spinner = new Gtk.Spinner();
+        var spinner = new Gtk.Spinner ();
         spinner.active = true;
         spinner.margin_top = 30;
         spinner.height_request = 250;
 
-        no_process_view = new NoResultsFoundView();
+        no_process_view = new NoResultsFoundView ();
 
-        var memory_graph = new MemorySpeedometer();
-        var swap_graph = new SwapSpeedometer();
+        var memory_graph = new MemorySpeedometer ();
+        var swap_graph = new SwapSpeedometer ();
         swap_graph.valign = Gtk.Align.END;
 
-        var speedometers = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-        speedometers.pack_start(memory_graph, false, false, 0);
-        speedometers.pack_end(swap_graph, false, false, 0);
+        var speedometers = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        speedometers.pack_start (memory_graph, false, false, 0);
+        speedometers.pack_end (swap_graph, false, false, 0);
         speedometers.margin_top = 30;
 
-        var memory_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-        memory_box.pack_start(label, false, false, 0);
-        memory_box.pack_start(speedometers, false, false, 0);
-        memory_box.pack_start(spinner, true, true, 0);
-        memory_box.add(no_process_view);
+        var memory_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        memory_box.pack_start (label, false, false, 0);
+        memory_box.pack_start (speedometers, false, false, 0);
+        memory_box.pack_start (spinner, true, true, 0);
+        memory_box.add (no_process_view);
 
-        var system_monitor = SystemMonitor.get_default();
+        var system_monitor = SystemMonitor.get_default ();
         system_monitor.notify["process-list-ready"].connect ((sender, property) => {
             if (system_monitor.process_list_ready) {
-                memory_box.pack_start(process_list_box, false, false, 0);
-                memory_box.remove(spinner);
+                memory_box.pack_start (process_list_box, false, false, 0);
+                memory_box.remove (spinner);
             } else {
-                memory_box.pack_start(spinner, true, true, 0);
-                memory_box.remove(process_list_box);
+                memory_box.pack_start (spinner, true, true, 0);
+                memory_box.remove (process_list_box);
             }
         });
 
         process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
-        add(memory_box);
+        add (memory_box);
     }
 
-    public override void show_all() {
-        base.show_all();
-        this.no_process_view.hide();
+    public override void show_all () {
+        base.show_all ();
+        this.no_process_view.hide ();
     }
 
-    public void search_in_processes(string text) {
+    public void search_in_processes (string text) {
         process_list_box.search_text = text;
     }
 }

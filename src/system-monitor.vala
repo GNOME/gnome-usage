@@ -37,75 +37,75 @@ public class Usage.SystemMonitor : Object {
     private int process_mode = GTop.KERN_PROC_ALL;
     private static SystemMonitor system_monitor;
 
-    public static SystemMonitor get_default() {
+    public static SystemMonitor get_default () {
         if (system_monitor == null)
             system_monitor = new SystemMonitor ();
 
         return system_monitor;
     }
 
-    public List<unowned AppItem> get_apps() {
-        return app_table.get_values();
+    public List<unowned AppItem> get_apps () {
+        return app_table.get_values ();
     }
 
-    public unowned AppItem get_app_by_name(string name) {
-        return app_table.get(name);
+    public unowned AppItem get_app_by_name (string name) {
+        return app_table.get (name);
     }
 
-    public SystemMonitor() {
-        GTop.init();
-        AppItem.init();
+    public SystemMonitor () {
+        GTop.init ();
+        AppItem.init ();
 
-        cpu_monitor = new CpuMonitor();
-        memory_monitor = new MemoryMonitor();
-        gamemode_pids = new GameMode.PidList();
+        cpu_monitor = new CpuMonitor ();
+        memory_monitor = new MemoryMonitor ();
+        gamemode_pids = new GameMode.PidList ();
 
-        app_table = new HashTable<string, AppItem>(str_hash, str_equal);
-        process_table = new HashTable<GLib.Pid, Process>(direct_hash, direct_equal);
-        var settings = Settings.get_default();
+        app_table = new HashTable<string, AppItem> (str_hash, str_equal);
+        process_table = new HashTable<GLib.Pid, Process> (direct_hash, direct_equal);
+        var settings = Settings.get_default ();
 
-        init();
+        init ();
         this.notify["group-system-apps"].connect ((sender, property) => {
-            init();
+            init ();
         });
 
-        Timeout.add(settings.data_update_interval, update_data);
+        Timeout.add (settings.data_update_interval, update_data);
     }
 
-    private void init() {
-        var settings = Settings.get_default();
-        app_table.remove_all();
+    private void init () {
+        var settings = Settings.get_default ();
+        app_table.remove_all ();
         process_list_ready = false;
 
         if (group_system_apps) {
-            var system = new AppItem.system();
-            app_table.insert("system" , system);
+            var system = new AppItem.system ();
+            app_table.insert ("system" , system);
         }
 
         foreach (var p in process_table.get_values ()) {
             process_added (p);
         }
 
-        update_data();
-        Timeout.add(settings.data_update_interval, () => {
+        update_data ();
+        Timeout.add (settings.data_update_interval, () => {
             process_list_ready = true;
             return false;
         });
     }
 
-    private bool update_data() {
-        cpu_monitor.update();
-        memory_monitor.update();
+    private bool update_data () {
+        cpu_monitor.update ();
+        memory_monitor.update ();
 
-        cpu_load = cpu_monitor.get_cpu_load();
-        x_cpu_load = cpu_monitor.get_x_cpu_load();
-        ram_usage = memory_monitor.get_ram_usage();
-        ram_total = memory_monitor.get_ram_total();
-        swap_usage = memory_monitor.get_swap_usage();
-        swap_total = memory_monitor.get_swap_total();
+        cpu_load = cpu_monitor.get_cpu_load ();
+        x_cpu_load = cpu_monitor.get_x_cpu_load ();
+        ram_usage = memory_monitor.get_ram_usage ();
+        ram_total = memory_monitor.get_ram_total ();
+        swap_usage = memory_monitor.get_swap_usage ();
+        swap_total = memory_monitor.get_swap_total ();
 
         foreach (var app in app_table.get_values ())
-            app.mark_as_not_updated();
+            app.mark_as_not_updated ();
 
         /* Try to find the difference between the old list of pids,
          * and the new ones, i.e. the one that got added and removed */
@@ -227,11 +227,11 @@ public class Usage.SystemMonitor : Object {
         return p.cmdline;
     }
 
-    private void update_process(ref Process process) {
-        cpu_monitor.update_process(ref process);
-        memory_monitor.update_process(ref process);
-        process.update_status();
-        process.gamemode = gamemode_pids.contains((int) process.pid);
+    private void update_process (ref Process process) {
+        cpu_monitor.update_process (ref process);
+        memory_monitor.update_process (ref process);
+        process.update_status ();
+        process.gamemode = gamemode_pids.contains ((int) process.pid);
     }
 
     public static void sort_pids (void *pids, size_t elm, size_t length) {

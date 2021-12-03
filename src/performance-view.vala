@@ -45,14 +45,14 @@ public class Usage.PerformanceView : View {
         icon_name = "speedometer-symbolic";
 
         sub_views = new View[] {
-            new ProcessorSubView(),
-            new MemorySubView()
+            new ProcessorSubView (),
+            new MemorySubView ()
         };
 
         foreach (var sub_view in sub_views)
-            performance_content.pack_start(sub_view, true, true, 0);
+            performance_content.pack_start (sub_view, true, true, 0);
 
-        var stackSwitcher = new GraphStackSwitcher(scrolled_window, sub_views);
+        var stackSwitcher = new GraphStackSwitcher (scrolled_window, sub_views);
         switcher_box.add (stackSwitcher);
 
         show_all ();
@@ -61,10 +61,10 @@ public class Usage.PerformanceView : View {
     [GtkCallback]
     private void on_search_entry_changed () {
         foreach (View sub_view in sub_views)
-            ((SubView) sub_view).search_in_processes(search_entry.get_text());
+            ((SubView) sub_view).search_in_processes (search_entry.get_text ());
     }
 
-    public void set_search_mode(bool enable) {
-        search_bar.set_search_mode(enable);
+    public void set_search_mode (bool enable) {
+        search_bar.set_search_mode (enable);
     }
 }

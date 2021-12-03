@@ -30,12 +30,12 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         get { return _model; }
         set {
             _model = value;
-            this.draw.connect(draw_storage_graph);
+            this.draw.connect (draw_storage_graph);
             this.queue_draw ();
             root = false;
 
-            for (int i = 0; i < value.get_n_items(); i++) {
-                var item = model.get_item(i) as StorageViewItem;
+            for (int i = 0; i < value.get_n_items (); i++) {
+                var item = model.get_item (i) as StorageViewItem;
                 if (item.custom_type == StorageViewType.OS) {
                     root = true;
                     break;
@@ -47,7 +47,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
     public uint min_percentage_shown_files { get; set; }
 
     class construct {
-        set_css_name("StorageGraph");
+        set_css_name ("StorageGraph");
     }
 
     public enum Circle {
@@ -56,7 +56,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         BASE
     }
 
-    public void update_selected_items(List<StorageViewItem> selected_items) {
+    public void update_selected_items (List<StorageViewItem> selected_items) {
         this.selected_items = selected_items;
 
         uint64 size = 0;
@@ -64,22 +64,22 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
             size += item.size;
 
         selected_size = size;
-        this.queue_draw();
+        this.queue_draw ();
     }
 
-    private void draw_circle(Cairo.Context context, double x, double y, double radius, int section, Circle circle) {
+    private void draw_circle (Cairo.Context context, double x, double y, double radius, int section, Circle circle) {
         double start_angle = 0;
         double final_angle = - Math.PI / 2.0;
         double ratio = 0;
         uint shown_items_number = 1;
-        var background_color = get_toplevel().get_style_context().get_background_color(get_toplevel().get_style_context().get_state());
-        var foreground_color = get_style_context().get_color(get_style_context().get_state());
+        var background_color = get_toplevel ().get_style_context ().get_background_color (get_toplevel ().get_style_context ().get_state ());
+        var foreground_color = get_style_context ().get_color (get_style_context ().get_state ());
 
-        for (int i = 1; i < model.get_n_items(); i++) {
-            var item = (model.get_item(i) as StorageViewItem);
+        for (int i = 1; i < model.get_n_items (); i++) {
+            var item = (model.get_item (i) as StorageViewItem);
 
             if (i > 0 && i < 3 && (item.percentage < min_percentage_shown_files)) {
-                shown_items_number = model.get_n_items();
+                shown_items_number = model.get_n_items ();
                 continue;
             }
 
@@ -91,25 +91,25 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
             if (shown_items_number < 3)
                 shown_items_number = 3;
 
-            for (int i = 0; i < model.get_n_items(); i++) {
-                var item = model.get_item(i) as StorageViewItem;
+            for (int i = 0; i < model.get_n_items (); i++) {
+                var item = model.get_item (i) as StorageViewItem;
                 var item_radius = radius;
                 if (item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
                     continue;
 
-                var style_context = get_style_context();
-                style_context.add_class(item.style_class);
-                var base_color = style_context.get_background_color(style_context.get_state());
-                style_context.remove_class(item.style_class);
+                var style_context = get_style_context ();
+                style_context.add_class (item.style_class);
+                var base_color = style_context.get_background_color (style_context.get_state ());
+                style_context.remove_class (item.style_class);
 
                 Gdk.RGBA fill_color = base_color;
 
                 if (!root) {
-                    fill_color = Utils.generate_color(base_color, i, shown_items_number, true);
+                    fill_color = Utils.generate_color (base_color, i, shown_items_number, true);
                     item.color = fill_color;
                 }
 
-                if (selected_items.find(item) != null)
+                if (selected_items.find (item) != null)
                     item_radius += radius / 6;
 
                 context.set_line_width (2.0);
@@ -128,9 +128,9 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
                 Gdk.cairo_set_source_rgba (context, fill_color);
                 context.arc (x, y, item_radius, start_angle, final_angle);
                 context.line_to (x, y);
-                context.fill_preserve();
+                context.fill_preserve ();
                 Gdk.cairo_set_source_rgba (context, foreground_color);
-                context.stroke();
+                context.stroke ();
 
                 if (start_angle >= (2 * Math.PI - Math.PI / 2.0))
                     break;
@@ -138,17 +138,17 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
 
             context.move_to (x, y);
             context.line_to (x, y-(radius));
-            context.stroke();
+            context.stroke ();
 
             context.arc (x, y, radius/1.8, 0, 2 * Math.PI);
             Gdk.cairo_set_source_rgba (context, background_color);
-            context.fill_preserve();
+            context.fill_preserve ();
             Gdk.cairo_set_source_rgba (context, foreground_color);
-            context.stroke();
+            context.stroke ();
         }
     }
 
-    private bool draw_storage_graph(Cairo.Context context) {
+    private bool draw_storage_graph (Cairo.Context context) {
         int height = this.get_allocated_height ();
         int width = this.get_allocated_width ();
 
@@ -161,38 +161,38 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         x = width / 2.0;
         y = height / 2.0;
 
-        draw_circle(context, x, y, radius, 0, Circle.BASE);
-        draw_selected_size_text(context);
+        draw_circle (context, x, y, radius, 0, Circle.BASE);
+        draw_selected_size_text (context);
 
         return true;
     }
 
-    private void draw_selected_size_text(Cairo.Context context) {
+    private void draw_selected_size_text (Cairo.Context context) {
         if (selected_size == 0)
             return;
 
         var layout = create_pango_layout (null);
-        var text = Utils.format_size_values(selected_size);
+        var text = Utils.format_size_values (selected_size);
 
         int height = get_allocated_height ();
         int width = get_allocated_width ();
         double radius = int.min (width, height) / 22;
 
-        var text_color = get_toplevel().get_style_context().get_color(get_toplevel().get_style_context().get_state());
-        var text_color_string = "#%02x%02x%02x".printf(
-            (uint)(Math.round(text_color.red*255)),
-            (uint)(Math.round(text_color.green*255)),
-            (uint)(Math.round(text_color.blue*255))).up();
+        var text_color = get_toplevel ().get_style_context ().get_color (get_toplevel ().get_style_context ().get_state ());
+        var text_color_string = "#%02x%02x%02x".printf (
+            (uint)(Math.round (text_color.red*255)),
+            (uint)(Math.round (text_color.green*255)),
+            (uint)(Math.round (text_color.blue*255))).up ();
 
-        var markup = "<span foreground='" + text_color_string + "' font='" + radius.to_string() + "'><b>" + text + "</b></span>";
+        var markup = "<span foreground='" + text_color_string + "' font='" + radius.to_string () + "'><b>" + text + "</b></span>";
         layout.set_markup (markup, -1);
 
         Pango.Rectangle layout_rect;
         layout.get_pixel_extents (null, out layout_rect);
-        layout.set_alignment(Pango.Alignment.CENTER);
+        layout.set_alignment (Pango.Alignment.CENTER);
 
         var x = (width - layout_rect.width) / 2;
         var y = (height - layout_rect.height) / 2;
-        get_style_context().render_layout (context, x, y, layout);
+        get_style_context ().render_layout (context, x, y, layout);
     }
 }

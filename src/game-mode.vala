@@ -19,34 +19,34 @@ public interface GameMode.Client : GLib.Object {
     public abstract int client_count {  get; }
 
     [DBus (name = "RegisterGame")]
-    public abstract int register_game(int pid) throws DBusError, IOError;
+    public abstract int register_game (int pid) throws DBusError, IOError;
 
     [DBus (name = "UnregisterGame")]
-    public abstract int unregister_game(int pid) throws DBusError, IOError;
+    public abstract int unregister_game (int pid) throws DBusError, IOError;
 
     [DBus (name = "QueryStatus")]
-    public abstract int query_status(int pid) throws DBusError, IOError;
+    public abstract int query_status (int pid) throws DBusError, IOError;
 
     [DBus (name = "RegisterGameByPID")]
-    public abstract int register_game_by_pid(int pid, int requestor) throws DBusError, IOError;
+    public abstract int register_game_by_pid (int pid, int requestor) throws DBusError, IOError;
 
     [DBus (name = "UnregisterGameByPID")]
-    public abstract int unregister_game_by_pid(int pid, int requestor) throws DBusError, IOError;
+    public abstract int unregister_game_by_pid (int pid, int requestor) throws DBusError, IOError;
 
     [DBus (name = "QueryStatusByPID")]
-    public abstract int query_status_by_pid(int pid, int requestor) throws DBusError, IOError;
+    public abstract int query_status_by_pid (int pid, int requestor) throws DBusError, IOError;
 
     [DBus (name = "RefreshConfig")]
-    public abstract int refresh_config() throws DBusError, IOError;
+    public abstract int refresh_config () throws DBusError, IOError;
 
     [DBus (name = "ListGames")]
-    public abstract GameInfo[] list_games() throws DBusError, IOError;
+    public abstract GameInfo[] list_games () throws DBusError, IOError;
 
     [DBus (name = "GameRegistered")]
-    public signal void game_registered(int pid, GLib.ObjectPath path);
+    public signal void game_registered (int pid, GLib.ObjectPath path);
 
     [DBus (name = "GameUnregistered")]
-    public signal void game_unregistered(int pid, GLib.ObjectPath path);
+    public signal void game_unregistered (int pid, GLib.ObjectPath path);
 }
 
 public struct GameMode.GameInfo {
@@ -62,9 +62,9 @@ public class GameMode.PidList : GLib.Object {
     /* singelton */
     private static PidList singelton;
 
-    public static PidList get_default() {
+    public static PidList get_default () {
         if (singelton == null)
-            singelton = new PidList();
+            singelton = new PidList ();
 
         return singelton;
     }
@@ -74,50 +74,50 @@ public class GameMode.PidList : GLib.Object {
         _pids = new HashTable<int, GLib.ObjectPath>(direct_hash, direct_equal);
     }
 
-    public PidList() {
+    public PidList () {
 
         try {
-            client = Bus.get_proxy_sync(BusType.SESSION,
+            client = Bus.get_proxy_sync (BusType.SESSION,
                                         "com.feralinteractive.GameMode",
                                         "/com/feralinteractive/GameMode");
 
-            client.game_registered.connect(this.on_game_registered);
-            client.game_unregistered.connect(this.on_game_unregistered);
+            client.game_registered.connect (this.on_game_registered);
+            client.game_unregistered.connect (this.on_game_unregistered);
 
-            var games = client.list_games();
+            var games = client.list_games ();
             foreach (GameMode.GameInfo info in games) {
-                _pids.insert(info.pid, info.path);
+                _pids.insert (info.pid, info.path);
             }
 
-        } catch(IOError e) {
-            warning("GameMode Proxy creation failed: %s", e.message);
-        } catch(GLib.DBusError e) {
-            warning("GameMode D-Bus error: %s", e.message);
+        } catch (IOError e) {
+            warning ("GameMode Proxy creation failed: %s", e.message);
+        } catch (GLib.DBusError e) {
+            warning ("GameMode D-Bus error: %s", e.message);
         }
     }
 
     /* public */
     public int[] pids {
         owned get {
-            return _pids.get_keys_as_array();
+            return _pids.get_keys_as_array ();
         }
     }
 
-    public bool contains(int pid) {
+    public bool contains (int pid) {
         return pid in _pids;
     }
 
     [Signal (detailed = true)]
-    public signal void changed(int pid, bool added);
+    public signal void changed (int pid, bool added);
 
     /* Signals */
-    private void on_game_registered(int pid,  GLib.ObjectPath path) {
-        _pids.insert(pid, path);
+    private void on_game_registered (int pid,  GLib.ObjectPath path) {
+        _pids.insert (pid, path);
         changed["added"](pid, true);
     }
 
-    private void on_game_unregistered(int pid, GLib.ObjectPath path) {
-        _pids.remove(pid);
+    private void on_game_unregistered (int pid, GLib.ObjectPath path) {
+        _pids.remove (pid);
         changed["removed"](pid, false);
     }
 }

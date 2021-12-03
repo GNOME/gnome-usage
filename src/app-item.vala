@@ -12,7 +12,7 @@ public class Usage.AppItem : Object {
     private static HashTable<string, AppInfo>? appid_map;
     private AppInfo? app_info = null;
 
-    public static void init() {
+    public static void init () {
         apps_info = new HashTable<string, AppInfo> (str_hash, str_equal);
         appid_map = new HashTable<string, AppInfo> (str_hash, str_equal);
 
@@ -29,7 +29,7 @@ public class Usage.AppItem : Object {
             }
 
             if (id == null) {
-                id = info.get_id();
+                id = info.get_id ();
                 if (id != null && id.has_suffix (".desktop"))
                     id = id[0:id.length - 8];
                 if (id != null)
@@ -80,7 +80,7 @@ public class Usage.AppItem : Object {
             /* Strip .service */
             tmp = tmp[0:tmp.length-8];
             /* Remove any @ element (if there) */
-            escaped_id = tmp.split("@", 2)[0];
+            escaped_id = tmp.split ("@", 2)[0];
         }
 
         if (escaped_id == null)
@@ -88,7 +88,7 @@ public class Usage.AppItem : Object {
 
         /* Now, unescape any \xXX escapes, which should only be dashes
          * from the reverse domain name. */
-        id = escaped_id.compress();
+        id = escaped_id.compress ();
         if (id == null)
             return null;
 
@@ -99,7 +99,7 @@ public class Usage.AppItem : Object {
         AppInfo? info = null;
         string ?cgroup = null;
 
-        cgroup = Process.read_cgroup(p.pid);
+        cgroup = Process.read_cgroup (p.pid);
         if (cgroup != null) {
             /* Try to extract an application ID, this is a bit "magic".
              * See https://systemd.io/DESKTOP_ENVIRONMENTS/
@@ -109,7 +109,7 @@ public class Usage.AppItem : Object {
             string ?appid = null;
             string[] components;
 
-            components = cgroup.split("/");
+            components = cgroup.split ("/");
             systemd_unit = components[components.length - 1];
             appid = appid_from_unit (systemd_unit);
             if (appid != null)
@@ -133,17 +133,17 @@ public class Usage.AppItem : Object {
         return info != null;
     }
 
-    public AppItem(Process process) {
+    public AppItem (Process process) {
         app_info = app_info_for_process (process);
         representative_cmdline = process.cmdline;
         representative_uid = process.uid;
-        display_name = find_display_name();
-        processes.insert(process.pid, process);
-        load_user_account.begin();
+        display_name = find_display_name ();
+        processes.insert (process.pid, process);
+        load_user_account.begin ();
         gamemode = process.gamemode;
     }
 
-    public AppItem.system() {
+    public AppItem.system () {
         display_name = _("System");
         representative_cmdline = "system";
     }
@@ -152,47 +152,47 @@ public class Usage.AppItem : Object {
         processes = new HashTable<Pid?, Process>(int_hash, int_equal);
     }
 
-    public bool contains_process(Pid pid) {
-        return processes.contains(pid);
+    public bool contains_process (Pid pid) {
+        return processes.contains (pid);
     }
 
-    public Icon get_icon() {
-        var app_icon = (app_info == null) ? null : app_info.get_icon();
+    public Icon get_icon () {
+        var app_icon = (app_info == null) ? null : app_info.get_icon ();
 
         if (app_info == null || app_icon == null)
-            return new GLib.ThemedIcon("system-run-symbolic");
+            return new GLib.ThemedIcon ("system-run-symbolic");
         else
             return app_icon;
     }
 
-    public Process get_process_by_pid(Pid pid) {
-        return processes.get(pid);
+    public Process get_process_by_pid (Pid pid) {
+        return processes.get (pid);
     }
 
-    public void insert_process(Process process) {
-        processes.insert(process.pid, process);
+    public void insert_process (Process process) {
+        processes.insert (process.pid, process);
     }
 
-    public void kill() {
-        foreach (var process in processes.get_values()) {
+    public void kill () {
+        foreach (var process in processes.get_values ()) {
             debug ("Terminating %d", (int) process.pid);
-            Posix.kill(process.pid, Posix.Signal.KILL);
+            Posix.kill (process.pid, Posix.Signal.KILL);
         }
     }
 
-    public void mark_as_not_updated() {
-        foreach (var process in processes.get_values())
+    public void mark_as_not_updated () {
+        foreach (var process in processes.get_values ())
             process.mark_as_updated = false;
     }
 
-    public void remove_processes() {
+    public void remove_processes () {
         cpu_load = 0;
         mem_usage = 0;
         int games = 0;
 
-        foreach (var process in processes.get_values()) {
+        foreach (var process in processes.get_values ()) {
             if (!process.mark_as_updated) {
-                processes.remove(process.pid);
+                processes.remove (process.pid);
             } else {
                 cpu_load += process.cpu_load;
                 mem_usage += process.mem_usage;
@@ -202,25 +202,25 @@ public class Usage.AppItem : Object {
         }
 
         gamemode = games > 0;
-        cpu_load = double.min(100, cpu_load);
+        cpu_load = double.min (100, cpu_load);
     }
 
     public void remove_process (Process process) {
         processes.remove (process.pid);
     }
 
-    public void replace_process(Process process) {
-        processes.replace(process.pid, process);
+    public void replace_process (Process process) {
+        processes.replace (process.pid, process);
     }
 
-    private string find_display_name() {
+    private string find_display_name () {
         if (app_info != null)
-            return app_info.get_display_name();
+            return app_info.get_display_name ();
         else
             return representative_cmdline;
     }
 
-    private async void load_user_account() {
+    private async void load_user_account () {
         try {
             Fdo.Accounts accounts = yield Bus.get_proxy (BusType.SYSTEM,
                                                          "org.freedesktop.Accounts",
@@ -234,12 +234,12 @@ public class Usage.AppItem : Object {
         }
     }
 
-    private static void sanitize_cmd(ref string? commandline) {
+    private static void sanitize_cmd (ref string? commandline) {
         if (commandline == null)
             return;
 
         // flatpak: parse the command line of the containerized program
-        if (commandline.contains("flatpak run")) {
+        if (commandline.contains ("flatpak run")) {
             var index = commandline.index_of ("--command=") + 10;
             commandline = commandline.substring (index);
         }

@@ -23,10 +23,10 @@ using Gtk;
 public class GraphBox : Gtk.Box {
 
     class construct {
-        set_css_name("graph-box");
+        set_css_name ("graph-box");
     }
 
     public GraphBox (Dazzle.GraphView graph) {
-        add(graph);
+        add (graph);
     }
 }

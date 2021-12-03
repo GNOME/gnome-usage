@@ -25,21 +25,21 @@ using Gtk;
 public class Usage.QuitProcessDialog : Gtk.MessageDialog {
     private AppItem app;
 
-    public QuitProcessDialog(AppItem app) {
+    public QuitProcessDialog (AppItem app) {
         this.app = app;
-        this.text = this.text.printf(app.display_name);
+        this.text = this.text.printf (app.display_name);
     }
 
     [GtkCallback]
     private void on_force_quit_button_clicked () {
-        app.kill();
-        this.destroy();
+        app.kill ();
+        this.destroy ();
     }
 
     [GtkCallback]
     public void cancel () {
         /* FIXME: For some reason we are not able to connect to the
          * destroy signal right from the .ui file. */
-        this.destroy();
+        this.destroy ();
     }
 }

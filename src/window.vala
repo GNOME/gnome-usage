@@ -48,36 +48,36 @@ public class Usage.Window : Hdy.ApplicationWindow {
 
     private View[] views;
 
-    public Window(Gtk.Application application) {
-        GLib.Object(application : application);
+    public Window (Gtk.Application application) {
+        GLib.Object (application : application);
 
         if (Config.PROFILE == "Devel") {
-            get_style_context().add_class("devel");
+            get_style_context ().add_class ("devel");
         }
 
-        load_css();
-        Gtk.Settings.get_for_screen(get_screen()).notify["gtk-application-prefer-dark-theme"].connect(() => {
-            load_css();
+        load_css ();
+        Gtk.Settings.get_for_screen (get_screen ()).notify["gtk-application-prefer-dark-theme"].connect (() => {
+            load_css ();
         });
 
         mode = HeaderBarMode.PERFORMANCE;
-        menu = new Usage.PrimaryMenu();
-        this.primary_menu_button.set_popover(menu);
+        menu = new Usage.PrimaryMenu ();
+        this.primary_menu_button.set_popover (menu);
 
-        set_mode(HeaderBarMode.PERFORMANCE);
+        set_mode (HeaderBarMode.PERFORMANCE);
 
         views = new View[] {
-            new PerformanceView(),
-            new StorageView(),
+            new PerformanceView (),
+            new StorageView (),
         };
 
         foreach (var view in views) {
-            stack.add_titled(view, view.name, view.title);
+            stack.add_titled (view, view.name, view.title);
             stack.child_set (view, "icon-name", view.icon_name, null);
         }
     }
 
-    public void set_mode(HeaderBarMode mode) {
+    public void set_mode (HeaderBarMode mode) {
         switch (this.mode) {
             case HeaderBarMode.PERFORMANCE:
                 performance_search_revealer.reveal_child = false;
@@ -97,44 +97,44 @@ public class Usage.Window : Hdy.ApplicationWindow {
         this.mode = mode;
     }
 
-    public void action_on_search() {
+    public void action_on_search () {
         switch (mode) {
             case HeaderBarMode.PERFORMANCE:
-                performance_search_button.set_active(!performance_search_button.get_active());
+                performance_search_button.set_active (!performance_search_button.get_active ());
                 break;
             case HeaderBarMode.STORAGE:
                 break;
         }
     }
 
-    public View[] get_views() {
+    public View[] get_views () {
         return views;
     }
 
-    private void load_css() {
-        var provider = new Gtk.CssProvider();
-        Gtk.StyleContext.reset_widgets(get_screen());
-        provider.load_from_resource("/org/gnome/Usage/interface/adwaita.css");
-        Gtk.StyleContext.add_provider_for_screen(get_screen(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    private void load_css () {
+        var provider = new Gtk.CssProvider ();
+        Gtk.StyleContext.reset_widgets (get_screen ());
+        provider.load_from_resource ("/org/gnome/Usage/interface/adwaita.css");
+        Gtk.StyleContext.add_provider_for_screen (get_screen (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     [GtkCallback]
     private void on_performance_search_button_toggled () {
-        var application = GLib.Application.get_default() as Application;
+        var application = GLib.Application.get_default () as Application;
 
         if (application == null)
             return;
 
         /* TODO: Implement a saner way of toggling this mode. */
-        ((PerformanceView) application.get_window().get_views()[Views.PERFORMANCE]).set_search_mode(performance_search_button.active);
+        ((PerformanceView) application.get_window ().get_views ()[Views.PERFORMANCE]).set_search_mode (performance_search_button.active);
     }
 
     [GtkCallback]
-    private void on_visible_child_changed() {
+    private void on_visible_child_changed () {
         if (stack.visible_child_name == views[Views.PERFORMANCE].name) {
-            set_mode(HeaderBarMode.PERFORMANCE);
+            set_mode (HeaderBarMode.PERFORMANCE);
         } else if (stack.visible_child_name == views[Views.STORAGE].name) {
-            set_mode(HeaderBarMode.STORAGE);
+            set_mode (HeaderBarMode.STORAGE);
         }
     }
 }
