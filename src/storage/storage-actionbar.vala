@@ -40,9 +40,13 @@ namespace Usage {
 
         [GtkCallback]
         private void delete_clicked() {
+            var application = GLib.Application.get_default() as Application;
             string display_message = _("Are you sure you want to permanently delete selected items?");
 
-            var dialog = new Gtk.MessageDialog ((GLib.Application.get_default() as Application).get_window(), Gtk.DialogFlags.MODAL,
+            if (application == null)
+                return;
+
+            var dialog = new Gtk.MessageDialog (application.get_window(), Gtk.DialogFlags.MODAL,
                 Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, display_message);
             dialog.secondary_text = _("If you delete these items, they will be permanently lost.");
 
