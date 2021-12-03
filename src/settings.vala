@@ -20,27 +20,24 @@
 
 using Gtk;
 
-namespace Usage {
+public class Usage.Settings : GLib.Settings {
+    public uint graph_timespan { get; set; default = 15000;}
+    public uint graph_max_samples { get; set; default = 20; }
+    public uint graph_update_interval { get { return 1000; }}
+    public uint list_update_interval_UI { get; set; default = 5000; }
+    public uint list_update_pie_charts_UI { get; set; default = 1000; }
+    public uint data_update_interval { get; set; default = 1000; }
 
-    public class Settings : GLib.Settings {
-        public uint graph_timespan { get; set; default = 15000;}
-        public uint graph_max_samples { get; set; default = 20; }
-        public uint graph_update_interval { get { return 1000; }}
-        public uint list_update_interval_UI { get; set; default = 5000; }
-        public uint list_update_pie_charts_UI { get; set; default = 1000; }
-        public uint data_update_interval { get; set; default = 1000; }
+    private static Settings settings;
 
-        private static Settings settings;
+    public static Settings get_default() {
+        if (settings == null)
+            settings = new Settings ();
 
-        public static Settings get_default() {
-            if (settings == null)
-                settings = new Settings ();
+        return settings;
+    }
 
-            return settings;
-        }
-
-        public Settings() {
-            Object(schema_id: Config.APPLICATION_ID);
-        }
+    public Settings() {
+        Object(schema_id: Config.APPLICATION_ID);
     }
 }

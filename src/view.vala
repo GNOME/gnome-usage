@@ -18,17 +18,15 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage {
-    public abstract class View : Gtk.Bin {
-        public string title;
-        public string icon_name;
+public abstract class Usage.View : Gtk.Bin {
+    public string title;
+    public string icon_name;
 
-        protected View () {
-            visible = true;
-        }
+    protected View () {
+        visible = true;
     }
+}
 
-    public interface SubView {
-        public abstract void search_in_processes(string text);
-    }
+public interface Usage.SubView {
+    public abstract void search_in_processes(string text);
 }

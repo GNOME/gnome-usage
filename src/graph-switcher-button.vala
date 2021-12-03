@@ -18,50 +18,48 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage {
-    public class GraphSwitcherButton : Gtk.RadioButton {
-        private static Gtk.RadioButton? _group = null;
+public class Usage.GraphSwitcherButton : Gtk.RadioButton {
+    private static Gtk.RadioButton? _group = null;
 
-        public GraphSwitcherButton.processor(string label) {
-            var processor_graph = new CpuGraphMostUsedCore();
-            child = createContent(processor_graph, label);
-        }
+    public GraphSwitcherButton.processor(string label) {
+        var processor_graph = new CpuGraphMostUsedCore();
+        child = createContent(processor_graph, label);
+    }
 
-        public GraphSwitcherButton.memory(string label) {
-            var memory_graph = new MemoryGraph();
-            child = createContent(memory_graph, label);
-        }
+    public GraphSwitcherButton.memory(string label) {
+        var memory_graph = new MemoryGraph();
+        child = createContent(memory_graph, label);
+    }
 
-        private Gtk.Box createContent(Dazzle.GraphView graph, string label_text) {
-            graph.height_request = 80;
-            graph.hexpand = true;
-            var graph_box = new GraphBox(graph);
-            graph_box.margin_top = 12;
-            graph_box.margin_start = 8;
-            graph_box.margin_end = 8;
+    private Gtk.Box createContent(Dazzle.GraphView graph, string label_text) {
+        graph.height_request = 80;
+        graph.hexpand = true;
+        var graph_box = new GraphBox(graph);
+        graph_box.margin_top = 12;
+        graph_box.margin_start = 8;
+        graph_box.margin_end = 8;
 
-            var label = new Gtk.Label(label_text);
-            label.margin_top = 6;
-            label.margin_bottom = 3;
+        var label = new Gtk.Label(label_text);
+        label.margin_top = 6;
+        label.margin_bottom = 3;
 
-            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            box.pack_start(graph_box, true, true, 0);
-            box.pack_start(label, false, false, 0);
+        var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+        box.pack_start(graph_box, true, true, 0);
+        box.pack_start(label, false, false, 0);
 
-            return box;
-        }
+        return box;
+    }
 
-        construct {
-            if (_group == null)
-                _group = this;
-            else
-                join_group(_group);
+    construct {
+        if (_group == null)
+            _group = this;
+        else
+            join_group(_group);
 
-            set_mode(false);
+        set_mode(false);
 
-            var context = get_style_context();
-            context.add_class("flat");
-            context.add_class("graph-switcher");
-        }
+        var context = get_style_context();
+        context.add_class("flat");
+        context.add_class("graph-switcher");
     }
 }

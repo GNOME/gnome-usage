@@ -20,30 +20,27 @@
 
 using Gtk;
 
-namespace Usage {
+[GtkTemplate (ui = "/org/gnome/Usage/ui/loading-notification.ui")]
+private class Usage.LoadingNotification: Gtk.Revealer {
+    public signal void dismissed ();
+    public delegate void DismissFunc ();
 
-    [GtkTemplate (ui = "/org/gnome/Usage/ui/loading-notification.ui")]
-    private class LoadingNotification: Gtk.Revealer {
-        public signal void dismissed ();
-        public delegate void DismissFunc ();
+    [GtkChild]
+    private unowned Gtk.Label message_label;
 
-        [GtkChild]
-        private unowned Gtk.Label message_label;
+    public LoadingNotification (string message, owned DismissFunc? dismiss_func) {
+        set_reveal_child (true);
 
-        public LoadingNotification (string message, owned DismissFunc? dismiss_func) {
-            set_reveal_child (true);
+        message_label.label = message;
 
-            message_label.label = message;
+        dismissed.connect ( () => {
+            if (dismiss_func != null)
+                dismiss_func ();
+            set_reveal_child(false);
+        });
+    }
 
-            dismissed.connect ( () => {
-                if (dismiss_func != null)
-                    dismiss_func ();
-                set_reveal_child(false);
-            });
-        }
-
-        public void dismiss() {
-            dismissed();
-        }
+    public void dismiss() {
+        dismissed();
     }
 }

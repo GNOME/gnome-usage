@@ -21,103 +21,100 @@
 using Dazzle;
 using Cairo;
 
-namespace Usage {
+public class GraphStackedRenderer : Object, GraphRenderer {
 
-    public class GraphStackedRenderer : Object, GraphRenderer {
+    public uint column { get; set; }
+    public double line_width { get; set; default = 1.0; }
+    public Gdk.RGBA stroke_color_rgba { get; set; }
+    public Gdk.RGBA stacked_color_rgba { get; set; }
 
-        public uint column { get; set; }
-        public double line_width { get; set; default = 1.0; }
-        public Gdk.RGBA stroke_color_rgba { get; set; }
-        public Gdk.RGBA stacked_color_rgba { get; set; }
+    public void render(GraphModel model, int64 x_begin, int64 x_end, double y_begin, double y_end, Context cr, RectangleInt area) {
+        GraphModelIter iter;
+        cr.save();
 
-        public void render(GraphModel model, int64 x_begin, int64 x_end, double y_begin, double y_end, Context cr, RectangleInt area) {
-            GraphModelIter iter;
-            cr.save();
+        if (model.get_iter_first(out iter)) {
+            double chunk = area.width / (double) (model.max_samples - 1) / 2.0;
+            double last_x = calc_x (iter, x_begin, x_end, area.width);
+            double last_y = area.height;
 
-            if (model.get_iter_first(out iter)) {
-                double chunk = area.width / (double) (model.max_samples - 1) / 2.0;
-                double last_x = calc_x (iter, x_begin, x_end, area.width);
-                double last_y = area.height;
+            cr.move_to (last_x, area.height);
 
-                cr.move_to (last_x, area.height);
+            while (GraphModel.iter_next (ref iter)) {
+                double x = calc_x (iter, x_begin, x_end, area.width);
+                double y = calc_y (iter, y_begin, y_end, area.height, column);
 
-                while (GraphModel.iter_next (ref iter)) {
-                    double x = calc_x (iter, x_begin, x_end, area.width);
-                    double y = calc_y (iter, y_begin, y_end, area.height, column);
+                cr.curve_to (last_x + chunk, last_y, last_x + chunk, y, x, y);
 
-                    cr.curve_to (last_x + chunk, last_y, last_x + chunk, y, x, y);
-
-                    last_x = x;
-                    last_y = y;
-                }
+                last_x = x;
+                last_y = y;
             }
-
-            cr.set_line_width (line_width);
-            cr.set_source_rgba (stacked_color_rgba.red, stacked_color_rgba.green, stacked_color_rgba.blue, stacked_color_rgba.alpha);
-            cr.rel_line_to (0, area.height);
-            cr.stroke_preserve ();
-            cr.close_path();
-            cr.fill();
-
-            if (model.get_iter_first(out iter)) {
-                double chunk = area.width / (double) (model.max_samples - 1) / 2.0;
-                double last_x = calc_x (iter, x_begin, x_end, area.width);
-                double last_y = area.height;
-
-                cr.move_to (last_x, last_y);
-
-                while (GraphModel.iter_next (ref iter)) {
-                    double x = calc_x (iter, x_begin, x_end, area.width);
-                    double y = calc_y (iter, y_begin, y_end, area.height, column);
-
-                    cr.curve_to (last_x + chunk, last_y, last_x + chunk, y, x, y);
-
-                    last_x = x;
-                    last_y = y;
-                }
-            }
-
-            cr.set_source_rgba (stroke_color_rgba.red, stroke_color_rgba.green, stroke_color_rgba.blue, stacked_color_rgba.alpha);
-            cr.stroke ();
-            cr.restore ();
         }
 
-        private static double calc_x (GraphModelIter iter, int64 begin, int64 end, uint width) {
-            var timestamp = GraphModel.iter_get_timestamp(iter);
+        cr.set_line_width (line_width);
+        cr.set_source_rgba (stacked_color_rgba.red, stacked_color_rgba.green, stacked_color_rgba.blue, stacked_color_rgba.alpha);
+        cr.rel_line_to (0, area.height);
+        cr.stroke_preserve ();
+        cr.close_path();
+        cr.fill();
 
-            return ((timestamp - begin) / (double) (end - begin) * width);
-        }
+        if (model.get_iter_first(out iter)) {
+            double chunk = area.width / (double) (model.max_samples - 1) / 2.0;
+            double last_x = calc_x (iter, x_begin, x_end, area.width);
+            double last_y = area.height;
 
-        private static double calc_y (GraphModelIter iter, double range_begin, double range_end, uint height, uint column) {
-            double y;
+            cr.move_to (last_x, last_y);
 
-            var val = GraphModel.iter_get_value(iter, column);
-            switch (val.type()) {
-                case Type.DOUBLE:
-                    y = val.get_double();
-                    break;
-                case Type.UINT:
-                    y = val.get_uint();
-                    break;
-                case Type.UINT64:
-                    y = val.get_uint64();
-                    break;
-                case Type.INT:
-                    y = val.get_int();
-                    break;
-                case Type.INT64:
-                    y = val.get_int64();
-                    break;
-                default:
-                    y = 0.0;
-                    break;
+            while (GraphModel.iter_next (ref iter)) {
+                double x = calc_x (iter, x_begin, x_end, area.width);
+                double y = calc_y (iter, y_begin, y_end, area.height, column);
+
+                cr.curve_to (last_x + chunk, last_y, last_x + chunk, y, x, y);
+
+                last_x = x;
+                last_y = y;
             }
-
-            y -= range_begin;
-            y /= (range_end - range_begin);
-            y = height - (y * height);
-
-            return y;
         }
+
+        cr.set_source_rgba (stroke_color_rgba.red, stroke_color_rgba.green, stroke_color_rgba.blue, stacked_color_rgba.alpha);
+        cr.stroke ();
+        cr.restore ();
+    }
+
+    private static double calc_x (GraphModelIter iter, int64 begin, int64 end, uint width) {
+        var timestamp = GraphModel.iter_get_timestamp(iter);
+
+        return ((timestamp - begin) / (double) (end - begin) * width);
+    }
+
+    private static double calc_y (GraphModelIter iter, double range_begin, double range_end, uint height, uint column) {
+        double y;
+
+        var val = GraphModel.iter_get_value(iter, column);
+        switch (val.type()) {
+            case Type.DOUBLE:
+                y = val.get_double();
+                break;
+            case Type.UINT:
+                y = val.get_uint();
+                break;
+            case Type.UINT64:
+                y = val.get_uint64();
+                break;
+            case Type.INT:
+                y = val.get_int();
+                break;
+            case Type.INT64:
+                y = val.get_int64();
+                break;
+            default:
+                y = 0.0;
+                break;
+        }
+
+        y -= range_begin;
+        y /= (range_end - range_begin);
+        y = height - (y * height);
+
+        return y;
     }
 }

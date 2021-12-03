@@ -20,26 +20,24 @@
 
 using Gtk;
 
-namespace Usage {
-    [GtkTemplate (ui="/org/gnome/Usage/ui/primary-menu.ui")]
-    public class PrimaryMenu : Gtk.Popover {
+[GtkTemplate (ui="/org/gnome/Usage/ui/primary-menu.ui")]
+public class Usage.PrimaryMenu : Gtk.Popover {
 
-        [GtkChild]
-        private unowned Gtk.Box performance_container;
+    [GtkChild]
+    private unowned Gtk.Box performance_container;
 
-        public HeaderBarMode mode { get; set; }
+    public HeaderBarMode mode { get; set; }
 
-        public PrimaryMenu() {
-            notify["mode"].connect ((sender, property) => {
-                switch (mode) {
-                    case HeaderBarMode.PERFORMANCE:
-                        performance_container.show();
-                        break;
-                    case HeaderBarMode.STORAGE:
-                        performance_container.hide();
-                        break;
-                }
-            });
-        }
+    public PrimaryMenu() {
+        notify["mode"].connect ((sender, property) => {
+            switch (mode) {
+                case HeaderBarMode.PERFORMANCE:
+                    performance_container.show();
+                    break;
+                case HeaderBarMode.STORAGE:
+                    performance_container.hide();
+                    break;
+            }
+        });
     }
 }

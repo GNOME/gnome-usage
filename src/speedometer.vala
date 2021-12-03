@@ -20,74 +20,72 @@
 
 using Gtk;
 
-namespace Usage {
-    [GtkTemplate (ui = "/org/gnome/Usage/ui/speedometer.ui")]
-    public class Speedometer : Buildable, Gtk.Bin {
-        [GtkChild]
-        private unowned Gtk.Box inner;
+[GtkTemplate (ui = "/org/gnome/Usage/ui/speedometer.ui")]
+public class Usage.Speedometer : Buildable, Gtk.Bin {
+    [GtkChild]
+    private unowned Gtk.Box inner;
 
-        [GtkChild]
-        private unowned Gtk.Box content_area;
+    [GtkChild]
+    private unowned Gtk.Box content_area;
 
-        private Gtk.CssProvider css_provider;
+    private Gtk.CssProvider css_provider;
 
-        private int _percentage = 0;
-        public int percentage {
-            get {
-                return _percentage;
-            }
-            set {
-                on_percentage_changed(value);
+    private int _percentage = 0;
+    public int percentage {
+        get {
+            return _percentage;
+        }
+        set {
+            on_percentage_changed(value);
 
-                _percentage = value;
-            }
+            _percentage = value;
+        }
+    }
+
+    construct {
+        css_provider = new Gtk.CssProvider();
+        inner.get_style_context().add_provider(css_provider,
+                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        bind_property("width-request", content_area, "width-request", BindingFlags.BIDIRECTIONAL);
+        bind_property("height-request", content_area, "height-request", BindingFlags.BIDIRECTIONAL);
+    }
+
+    private void on_percentage_changed(int new_value) {
+        if (new_value <= 0 && new_value >= 100)
+            return;
+
+        double new_angle = 90 + (360 * (new_value/100.0));
+        var filling_color = "@theme_base_color";
+
+        if (new_value > 50) {
+            new_angle -= 180;
+            filling_color = "@theme_selected_bg_color";
         }
 
-        construct {
-            css_provider = new Gtk.CssProvider();
-            inner.get_style_context().add_provider(css_provider,
-                                                   Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        var css =
+        @".speedometer-inner {
+            background: linear-gradient($(new_angle)deg, transparent 50%, $filling_color 50%),
+                        linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
+        }";
 
-            bind_property("width-request", content_area, "width-request", BindingFlags.BIDIRECTIONAL);
-            bind_property("height-request", content_area, "height-request", BindingFlags.BIDIRECTIONAL);
+        try {
+            css_provider.load_from_data(css);
+        }
+        catch (GLib.Error error) {
+            warning("Failed to animate speedometer: %s", error.message);
+        }
+    }
+
+    public void add_child(Builder builder, Object child, string? type) {
+        /* This is a Vala bug. It will cause a "warning".
+        (content_area as Buildable).add_child(builder, child, type);*/
+        if (child is Gtk.Label) {
+            content_area.add(child as Gtk.Widget);
+
+            return;
         }
 
-        private void on_percentage_changed(int new_value) {
-            if (new_value <= 0 && new_value >= 100)
-                return;
-
-            double new_angle = 90 + (360 * (new_value/100.0));
-            var filling_color = "@theme_base_color";
-
-            if (new_value > 50) {
-                new_angle -= 180;
-                filling_color = "@theme_selected_bg_color";
-            }
-
-            var css =
-            @".speedometer-inner {
-                background: linear-gradient($(new_angle)deg, transparent 50%, $filling_color 50%),
-                            linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
-            }";
-
-            try {
-                css_provider.load_from_data(css);
-            }
-            catch (GLib.Error error) {
-                warning("Failed to animate speedometer: %s", error.message);
-            }
-        }
-
-        public void add_child(Builder builder, Object child, string? type) {
-            /* This is a Vala bug. It will cause a "warning".
-            (content_area as Buildable).add_child(builder, child, type);*/
-            if (child is Gtk.Label) {
-                content_area.add(child as Gtk.Widget);
-
-                return;
-            }
-
-            base.add_child(builder, child, type);
-        }
+        base.add_child(builder, child, type);
     }
 }

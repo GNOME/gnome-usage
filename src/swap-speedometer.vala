@@ -20,41 +20,39 @@
 
 using Gtk;
 
-namespace Usage {
-    [GtkTemplate (ui = "/org/gnome/Usage/ui/swap-speedometer.ui")]
-    public class SwapSpeedometer : Gtk.Bin {
-        [GtkChild]
-        private unowned Usage.Speedometer speedometer;
+[GtkTemplate (ui = "/org/gnome/Usage/ui/swap-speedometer.ui")]
+public class Usage.SwapSpeedometer : Gtk.Bin {
+    [GtkChild]
+    private unowned Usage.Speedometer speedometer;
 
-        [GtkChild]
-        private unowned Gtk.Label label;
+    [GtkChild]
+    private unowned Gtk.Label label;
 
-        [GtkChild]
-        private unowned Gtk.Label swap_used;
+    [GtkChild]
+    private unowned Gtk.Label swap_used;
 
-        [GtkChild]
-        private unowned Gtk.Label swap_available;
+    [GtkChild]
+    private unowned Gtk.Label swap_available;
 
-        private double swap_usage { get; set; }
+    private double swap_usage { get; set; }
 
-        construct {
-            var monitor = SystemMonitor.get_default();
-            Timeout.add_seconds(1, () => {
-                var available = (monitor.swap_total - monitor.swap_usage);
-                var percentage = 0.0;
-                if (available > 0)
-                    percentage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
+    construct {
+        var monitor = SystemMonitor.get_default();
+        Timeout.add_seconds(1, () => {
+            var available = (monitor.swap_total - monitor.swap_usage);
+            var percentage = 0.0;
+            if (available > 0)
+                percentage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
 
-                this.speedometer.percentage = (int)percentage;
-                label.label = "%d".printf((int)percentage) + "%";
+            this.speedometer.percentage = (int)percentage;
+            label.label = "%d".printf((int)percentage) + "%";
 
-                swap_used.label = Utils.format_size_values(monitor.swap_usage);
-                swap_available.label = Utils.format_size_values(available);
+            swap_used.label = Utils.format_size_values(monitor.swap_usage);
+            swap_available.label = Utils.format_size_values(available);
 
-                return true;
-            });
+            return true;
+        });
 
-            this.show_all();
-        }
+        this.show_all();
     }
 }

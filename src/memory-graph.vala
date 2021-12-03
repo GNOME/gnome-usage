@@ -20,55 +20,53 @@
 
 using Dazzle;
 
-namespace Usage {
-    public class MemoryGraph : GraphView {
-        private static MemoryGraphModel graph_model;
-        private Gdk.RGBA line_color_max;
-        private Gdk.RGBA line_color_normal;
-        private Gdk.RGBA color_max;
-        private Gdk.RGBA color_normal;
+public class Usage.MemoryGraph : GraphView {
+    private static MemoryGraphModel graph_model;
+    private Gdk.RGBA line_color_max;
+    private Gdk.RGBA line_color_normal;
+    private Gdk.RGBA color_max;
+    private Gdk.RGBA color_normal;
 
-        class construct {
-            set_css_name("rg-graph");
+    class construct {
+        set_css_name("rg-graph");
+    }
+
+    public MemoryGraph () {
+        get_style_context().add_class("line_max");
+        line_color_max = get_style_context().get_color(get_style_context().get_state());
+        get_style_context().remove_class("line_max");
+        get_style_context().add_class("line");
+        line_color_normal = get_style_context().get_color(get_style_context().get_state());
+        get_style_context().remove_class("line");
+        get_style_context().add_class("stacked_max");
+        color_max = get_style_context().get_color(get_style_context().get_state());
+        get_style_context().remove_class("stacked_max");
+        get_style_context().add_class("stacked");
+        color_normal = get_style_context().get_color(get_style_context().get_state());
+        get_style_context().remove_class("stacked");
+
+        if (graph_model == null) {
+            graph_model = new MemoryGraphModel();
+            set_model(graph_model);
+        } else {
+            set_model(graph_model);
         }
 
-        public MemoryGraph () {
-            get_style_context().add_class("line_max");
-            line_color_max = get_style_context().get_color(get_style_context().get_state());
-            get_style_context().remove_class("line_max");
-            get_style_context().add_class("line");
-            line_color_normal = get_style_context().get_color(get_style_context().get_state());
-            get_style_context().remove_class("line");
-            get_style_context().add_class("stacked_max");
-            color_max = get_style_context().get_color(get_style_context().get_state());
-            get_style_context().remove_class("stacked_max");
-            get_style_context().add_class("stacked");
-            color_normal = get_style_context().get_color(get_style_context().get_state());
-            get_style_context().remove_class("stacked");
+        var renderer_ram = new GraphStackedRenderer();
+        renderer_ram.column = MemoryGraphModel.COLUMN_RAM;
+        renderer_ram.stroke_color_rgba = line_color_normal;
+        renderer_ram.stacked_color_rgba = color_normal;
+        renderer_ram.line_width = 1.2;
+        add_renderer(renderer_ram);
 
-            if (graph_model == null) {
-                graph_model = new MemoryGraphModel();
-                set_model(graph_model);
-            } else {
-                set_model(graph_model);
-            }
+        graph_model.big_ram_usage.connect (() => {
+            renderer_ram.stroke_color_rgba = line_color_max;
+            renderer_ram.stacked_color_rgba = color_max;
+        });
 
-            var renderer_ram = new GraphStackedRenderer();
-            renderer_ram.column = MemoryGraphModel.COLUMN_RAM;
+        graph_model.small_ram_usage.connect (() => {
             renderer_ram.stroke_color_rgba = line_color_normal;
             renderer_ram.stacked_color_rgba = color_normal;
-            renderer_ram.line_width = 1.2;
-            add_renderer(renderer_ram);
-
-            graph_model.big_ram_usage.connect (() => {
-                renderer_ram.stroke_color_rgba = line_color_max;
-                renderer_ram.stacked_color_rgba = color_max;
-            });
-
-            graph_model.small_ram_usage.connect (() => {
-                renderer_ram.stroke_color_rgba = line_color_normal;
-                renderer_ram.stacked_color_rgba = color_normal;
-            });
-        }
+        });
     }
 }

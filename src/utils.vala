@@ -18,88 +18,86 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage {
-    public class Utils {
-        public static string format_size_values(uint64 value) {
-            if (value >= 1000)
-                return GLib.format_size(value);
+public class Usage.Utils {
+    public static string format_size_values(uint64 value) {
+        if (value >= 1000)
+            return GLib.format_size(value);
+        else
+            return _("%llu B").printf(value);
+    }
+
+    public static string format_size_speed_values(uint64 value) {
+        if (value >= 1000)
+            return _("%s/s").printf(GLib.format_size(value));
+        else
+            return _("%llu B/s").printf(value);
+    }
+
+    public static Gdk.RGBA generate_color(Gdk.RGBA default_color, uint order, uint all_count, bool reverse = false) {
+        double step = 100 / (double) all_count;
+        uint half_count = all_count / 2;
+
+        if (order >= all_count)
+            order = all_count - 1;
+
+        if (order > (all_count / 2)) {
+            double percentage = step * (order - half_count);
+            if (reverse)
+                return Utils.color_lighter(default_color, percentage);
             else
-                return _("%llu B").printf(value);
-        }
-
-        public static string format_size_speed_values(uint64 value) {
-            if (value >= 1000)
-                return _("%s/s").printf(GLib.format_size(value));
+                return Utils.color_darker(default_color, percentage);
+        } else {
+            double percentage = step * (half_count - (order-1));
+            if (reverse)
+                return Utils.color_darker(default_color, percentage);
             else
-                return _("%llu B/s").printf(value);
-        }
-
-        public static Gdk.RGBA generate_color(Gdk.RGBA default_color, uint order, uint all_count, bool reverse = false) {
-            double step = 100 / (double) all_count;
-            uint half_count = all_count / 2;
-
-            if (order >= all_count)
-                order = all_count - 1;
-
-            if (order > (all_count / 2)) {
-                double percentage = step * (order - half_count);
-                if (reverse)
-                    return Utils.color_lighter(default_color, percentage);
-                else
-                    return Utils.color_darker(default_color, percentage);
-            } else {
-                double percentage = step * (half_count - (order-1));
-                if (reverse)
-                    return Utils.color_darker(default_color, percentage);
-                else
-                    return Utils.color_lighter(default_color, percentage);
-            }
-        }
-
-        public static Gdk.RGBA color_darker(Gdk.RGBA color, double percentage) {
-            color.red = color_field_darker(color.red, percentage);
-            color.green = color_field_darker(color.green, percentage);
-            color.blue = color_field_darker(color.blue, percentage);
-
-            return color;
-        }
-
-        public static Gdk.RGBA color_lighter(Gdk.RGBA color, double percentage) {
-            color.red = color_field_lighter(color.red, percentage);
-            color.green = color_field_lighter(color.green, percentage);
-            color.blue = color_field_lighter(color.blue, percentage);
-
-            return color;
-        }
-
-        private static double color_field_darker(double field, double percentage) {
-            field = field * 255;
-            return (field - ((field / 100) * percentage)) / 255;
-        }
-
-        private static double color_field_lighter(double field, double percentage) {
-            field = field * 255;
-            return (field + (((255 - field) / 100) * percentage)) / 255;
+                return Utils.color_lighter(default_color, percentage);
         }
     }
 
-    public enum UserAccountType {
-        STANDARD,
-        ADMINISTRATOR,
+    public static Gdk.RGBA color_darker(Gdk.RGBA color, double percentage) {
+        color.red = color_field_darker(color.red, percentage);
+        color.green = color_field_darker(color.green, percentage);
+        color.blue = color_field_darker(color.blue, percentage);
+
+        return color;
     }
 
-    [DBus (name = "org.freedesktop.Accounts")]
-    public interface Fdo.Accounts : Object {
-        public abstract async string FindUserById (int64 id) throws GLib.Error;
+    public static Gdk.RGBA color_lighter(Gdk.RGBA color, double percentage) {
+        color.red = color_field_lighter(color.red, percentage);
+        color.green = color_field_lighter(color.green, percentage);
+        color.blue = color_field_lighter(color.blue, percentage);
+
+        return color;
     }
 
-    [DBus (name = "org.freedesktop.Accounts.User")]
-    public interface Fdo.AccountsUser : Object {
-        public abstract bool SystemAccount { get; }
-        public abstract bool LocalAccount { get; }
-        public abstract int32 AccountType { get; }
-        public abstract string RealName { owned get; }
-        public abstract string UserName { owned get; }
-        public abstract uint64 Uid { get; }
+    private static double color_field_darker(double field, double percentage) {
+        field = field * 255;
+        return (field - ((field / 100) * percentage)) / 255;
     }
+
+    private static double color_field_lighter(double field, double percentage) {
+        field = field * 255;
+        return (field + (((255 - field) / 100) * percentage)) / 255;
+    }
+}
+
+public enum Usage.UserAccountType {
+    STANDARD,
+    ADMINISTRATOR,
+}
+
+[DBus (name = "org.freedesktop.Accounts")]
+public interface Usage.Fdo.Accounts : Object {
+    public abstract async string FindUserById (int64 id) throws GLib.Error;
+}
+
+[DBus (name = "org.freedesktop.Accounts.User")]
+public interface Usage.Fdo.AccountsUser : Object {
+    public abstract bool SystemAccount { get; }
+    public abstract bool LocalAccount { get; }
+    public abstract int32 AccountType { get; }
+    public abstract string RealName { owned get; }
+    public abstract string UserName { owned get; }
+    public abstract uint64 Uid { get; }
 }

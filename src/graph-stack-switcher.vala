@@ -18,70 +18,68 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-namespace Usage {
-    public class GraphStackSwitcher : Gtk.Box {
-        View[] sub_views;
-        AnimatedScrolledWindow scrolled_window;
+public class Usage.GraphStackSwitcher : Gtk.Box {
+    View[] sub_views;
+    AnimatedScrolledWindow scrolled_window;
 
-        GraphSwitcherButton[] buttons;
+    GraphSwitcherButton[] buttons;
 
-        class construct {
-            set_css_name("graph-stack-switcher");
+    class construct {
+        set_css_name("graph-stack-switcher");
+    }
+
+    public GraphStackSwitcher(AnimatedScrolledWindow scrolled_window, View[] sub_views) {
+        Object(orientation: Gtk.Orientation.VERTICAL, spacing: 0);
+
+        this.sub_views = sub_views;
+        this.scrolled_window = scrolled_window;
+
+        scrolled_window.scroll_changed.connect(on_scroll_changed);
+
+        buttons = {
+            new GraphSwitcherButton.processor(_("Processor")),
+            new GraphSwitcherButton.memory(_("Memory"))
+        };
+
+        foreach (GraphSwitcherButton button in buttons) {
+            this.pack_start(button, false, true, 0);
+
+            button.button_release_event.connect(() => {
+                var button_number = get_button_number(button);
+                scroll_to_view(button_number);
+
+                return false;
+            });
+        }
+    }
+
+    private int get_button_number(Gtk.Button button) {
+        for (int i = 0; i < buttons.length; i++) {
+            if (buttons[i] == button)
+                return i;
         }
 
-        public GraphStackSwitcher(AnimatedScrolledWindow scrolled_window, View[] sub_views) {
-            Object(orientation: Gtk.Orientation.VERTICAL, spacing: 0);
+        return 0;
+    }
 
-            this.sub_views = sub_views;
-            this.scrolled_window = scrolled_window;
+    private void scroll_to_view(int button_number) {
+        Gtk.Allocation alloc;
 
-            scrolled_window.scroll_changed.connect(on_scroll_changed);
+        this.sub_views[button_number].get_allocation(out alloc);
+        scrolled_window.animated_scroll_vertically(alloc.y);
+    }
 
-            buttons = {
-                new GraphSwitcherButton.processor(_("Processor")),
-                new GraphSwitcherButton.memory(_("Memory"))
-            };
+    private void on_scroll_changed(double y) {
+        Gtk.Allocation alloc;
 
-            foreach (GraphSwitcherButton button in buttons) {
-                this.pack_start(button, false, true, 0);
-
-                button.button_release_event.connect(() => {
-                    var button_number = get_button_number(button);
-                    scroll_to_view(button_number);
-
-                    return false;
-                });
-            }
+        var button_number = 0;
+        for (int i = 1; i < buttons.length; i++) {
+            this.sub_views[i].get_allocation(out alloc);
+            if (y < alloc.y)
+                break;
+            button_number = i;
         }
 
-        private int get_button_number(Gtk.Button button) {
-            for (int i = 0; i < buttons.length; i++) {
-                if (buttons[i] == button)
-                    return i;
-            }
-
-            return 0;
-        }
-
-        private void scroll_to_view(int button_number) {
-            Gtk.Allocation alloc;
-
-            this.sub_views[button_number].get_allocation(out alloc);
-            scrolled_window.animated_scroll_vertically(alloc.y);
-        }
-
-        private void on_scroll_changed(double y) {
-            Gtk.Allocation alloc;
-
-            var button_number = 0;
-            for (int i = 1; i < buttons.length; i++) {
-                this.sub_views[i].get_allocation(out alloc);
-                if (y < alloc.y)
-                    break;
-                button_number = i;
-            }
-
-            buttons[button_number].set_active(true);
-        }
+        buttons[button_number].set_active(true);
     }
 }

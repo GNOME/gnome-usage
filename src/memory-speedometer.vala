@@ -20,40 +20,38 @@
 
 using Gtk;
 
-namespace Usage {
-    [GtkTemplate (ui = "/org/gnome/Usage/ui/memory-speedometer.ui")]
-    public class MemorySpeedometer : Gtk.Bin {
-        [GtkChild]
-        private unowned Usage.Speedometer speedometer;
+[GtkTemplate (ui = "/org/gnome/Usage/ui/memory-speedometer.ui")]
+public class Usage.MemorySpeedometer : Gtk.Bin {
+    [GtkChild]
+    private unowned Usage.Speedometer speedometer;
 
-        [GtkChild]
-        private unowned Gtk.Label label;
+    [GtkChild]
+    private unowned Gtk.Label label;
 
-        [GtkChild]
-        private unowned Gtk.Label ram_used;
+    [GtkChild]
+    private unowned Gtk.Label ram_used;
 
-        [GtkChild]
-        private unowned Gtk.Label ram_available;
+    [GtkChild]
+    private unowned Gtk.Label ram_available;
 
-        private double ram_usage { get; set; }
+    private double ram_usage { get; set; }
 
-        construct {
-            var monitor = SystemMonitor.get_default();
-            Timeout.add_seconds(1, () => {
-                var percentage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
+    construct {
+        var monitor = SystemMonitor.get_default();
+        Timeout.add_seconds(1, () => {
+            var percentage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
 
-                this.speedometer.percentage = (int)percentage;
-                label.label = "%d".printf((int)percentage) + "%";
+            this.speedometer.percentage = (int)percentage;
+            label.label = "%d".printf((int)percentage) + "%";
 
-                var available = (monitor.ram_total - monitor.ram_usage);
+            var available = (monitor.ram_total - monitor.ram_usage);
 
-                ram_used.label = Utils.format_size_values(monitor.ram_usage);
-                ram_available.label = Utils.format_size_values(available);
+            ram_used.label = Utils.format_size_values(monitor.ram_usage);
+            ram_available.label = Utils.format_size_values(available);
 
-                return true;
-            });
+            return true;
+        });
 
-            this.show_all();
-        }
+        this.show_all();
     }
 }

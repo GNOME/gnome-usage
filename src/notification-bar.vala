@@ -20,26 +20,24 @@
 
 using Gtk;
 
-namespace Usage {
-    private class NotificationBar: Gtk.Grid {
-        public const int DEFAULT_TIMEOUT = 6;
-        private const int MAX_NOTIFICATIONS = 5;
-        private GLib.List<Widget> active_notifications = new GLib.List<Widget> ();
+private class Usage.NotificationBar: Gtk.Grid {
+    public const int DEFAULT_TIMEOUT = 6;
+    private const int MAX_NOTIFICATIONS = 5;
+    private GLib.List<Widget> active_notifications = new GLib.List<Widget> ();
 
-        public LoadingNotification display_loading (string message, owned LoadingNotification.DismissFunc? dismiss_func) {
-            var notification = new LoadingNotification (message, (owned) dismiss_func);
-            active_notifications.prepend (notification);
+    public LoadingNotification display_loading (string message, owned LoadingNotification.DismissFunc? dismiss_func) {
+        var notification = new LoadingNotification (message, (owned) dismiss_func);
+        active_notifications.prepend (notification);
 
-            notification.dismissed.connect ( () => {
-                active_notifications.remove (notification);
-            });
+        notification.dismissed.connect ( () => {
+            active_notifications.remove (notification);
+        });
 
-            add_notification (notification);
-            return notification;
-        }
+        add_notification (notification);
+        return notification;
+    }
 
-        private void add_notification (Widget widget) {
-            add (widget);
-        }
+    private void add_notification (Widget widget) {
+        add (widget);
     }
 }
