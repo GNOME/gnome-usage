@@ -23,7 +23,11 @@ using Gtk;
 public class Usage.Application : Gtk.Application {
     private Window window;
 
-    private const GLib.ActionEntry app_entries[] = { { "about", on_about }, { "search", on_search }, { "quit", on_quit }, { "filter-processes", on_activate_radio, "s", "'group-system'", change_filter_processes_state }
+    private const GLib.ActionEntry app_entries[] = {
+        { "about", on_about },
+        { "search", on_search },
+        { "quit", on_quit },
+        { "filter-processes", on_activate_radio, "s", "'group-system'", change_filter_processes_state }
     };
 
     public Application () {
