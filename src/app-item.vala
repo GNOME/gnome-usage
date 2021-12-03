@@ -103,7 +103,6 @@ namespace Usage {
         public static AppInfo? app_info_for_process (Process p) {
             AppInfo? info = null;
             string ?cgroup = null;
-            Pid pid = p.pid;
 
             cgroup = Process.read_cgroup(p.pid);
             if (cgroup != null) {
