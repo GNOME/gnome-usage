@@ -121,8 +121,13 @@ namespace Usage {
 
         [GtkCallback]
         private void on_performance_search_button_toggled () {
+            var application = GLib.Application.get_default() as Application;
+
+            if (application == null)
+                return;
+
             /* TODO: Implement a saner way of toggling this mode. */
-            ((PerformanceView) (GLib.Application.get_default() as Application).get_window().get_views()[Views.PERFORMANCE]).set_search_mode(performance_search_button.active);
+            ((PerformanceView) application.get_window().get_views()[Views.PERFORMANCE]).set_search_mode(performance_search_button.active);
         }
 
         [GtkCallback]
