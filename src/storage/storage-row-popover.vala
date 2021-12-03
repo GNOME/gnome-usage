@@ -31,6 +31,8 @@ public class Usage.StorageRowPopover : Gtk.Popover {
             case StorageViewType.OS:
                 label.label = _("Operating system files are an essential part of your system and cannot be removed.");
                 break;
+            default:
+                break;
         }
 
         popup();

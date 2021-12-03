@@ -101,6 +101,8 @@ public class Usage.StorageViewItem : GLib.Object {
                 case UserDirectory.DOWNLOAD:
                     style_class = "downloads";
                     break;
+                default:
+                    break;
             }
         }
 
@@ -120,6 +122,8 @@ public class Usage.StorageViewItem : GLib.Object {
              case "nfo#EBook":
                 style_class = "documents";
                 break;
+             default:
+                break;
         }
 
         if (custom_type != StorageViewType.NONE) {
@@ -129,6 +133,8 @@ public class Usage.StorageViewItem : GLib.Object {
                     break;
                 case StorageViewType.AVAILABLE_GRAPH:
                     style_class = "available-tag";
+                    break;
+                default:
                     break;
             }
         }
@@ -144,6 +150,8 @@ public class Usage.StorageViewItem : GLib.Object {
                 case StorageViewType.AVAILABLE_GRAPH:
                 case StorageViewType.UP_FOLDER:
                     return false;
+                default:
+                    break;
             }
         }
 
@@ -155,6 +163,8 @@ public class Usage.StorageViewItem : GLib.Object {
                 case UserDirectory.MUSIC:
                 case UserDirectory.DOWNLOAD:
                     return true;
+                default:
+                    break;
             }
         }
 
@@ -167,6 +177,8 @@ public class Usage.StorageViewItem : GLib.Object {
             case "nfo#FileDataObject":
             case "nfo#EBook":
                 return true;
+            default:
+                break;
         }
 
         return false;
