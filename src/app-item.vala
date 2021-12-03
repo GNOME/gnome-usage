@@ -72,20 +72,16 @@ namespace Usage {
              * .scope units we fetch the second to last dashed item,
              * for .service units the last (as they use @ to separate
              * any required) */
-            try {
-                string[] segments = systemd_unit.split ("-");
+            string[] segments = systemd_unit.split ("-");
 
-                if (systemd_unit.has_suffix (".scope") && segments.length >= 2) {
-                    escaped_id = segments[segments.length - 2];
-                } else if (systemd_unit.has_suffix (".service") && segments.length >= 1) {
-                    string tmp = segments[segments.length - 1];
-                    /* Strip .service */
-                    tmp = tmp[0:tmp.length-8];
-                    /* Remove any @ element (if there) */
-                    escaped_id = tmp.split("@", 2)[0];
-                }
-            } catch (Error e) {
-                return null;
+            if (systemd_unit.has_suffix (".scope") && segments.length >= 2) {
+                escaped_id = segments[segments.length - 2];
+            } else if (systemd_unit.has_suffix (".service") && segments.length >= 1) {
+                string tmp = segments[segments.length - 1];
+                /* Strip .service */
+                tmp = tmp[0:tmp.length-8];
+                /* Remove any @ element (if there) */
+                escaped_id = tmp.split("@", 2)[0];
             }
 
             if (escaped_id == null)
