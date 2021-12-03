@@ -47,9 +47,6 @@ namespace Usage {
         private HeaderBarMode mode;
         private Usage.PrimaryMenu menu;
 
-        [GtkChild]
-        private unowned Hdy.ViewSwitcherBar view_switcher_bar;
-
         private View[] views;
 
         public Window(Gtk.Application application) {
