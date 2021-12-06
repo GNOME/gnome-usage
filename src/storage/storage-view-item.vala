@@ -19,7 +19,7 @@
  *          Petr Štětka <pstetka@redhat.com>
  */
 
-public enum StorageViewType {
+public enum Usage.StorageViewType {
     NONE,
     OS,
     UP_FOLDER,

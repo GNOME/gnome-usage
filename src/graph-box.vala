@@ -20,7 +20,7 @@
 
 using Gtk;
 
-public class GraphBox : Gtk.Box {
+public class Usage.GraphBox : Gtk.Box {
 
     class construct {
         set_css_name ("graph-box");

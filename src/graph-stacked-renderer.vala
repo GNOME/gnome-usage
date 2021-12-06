@@ -21,7 +21,7 @@
 using Dazzle;
 using Cairo;
 
-public class GraphStackedRenderer : Object, GraphRenderer {
+public class Usage.GraphStackedRenderer : Object, GraphRenderer {
 
     public uint column { get; set; }
     public double line_width { get; set; default = 1.0; }

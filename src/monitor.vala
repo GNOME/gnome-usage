@@ -18,7 +18,7 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-public interface Monitor {
+public interface Usage.Monitor {
     public abstract void update ();
     public abstract void update_process (ref Usage.Process process);
 }
