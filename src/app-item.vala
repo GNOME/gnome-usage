@@ -166,7 +166,7 @@ public class Usage.AppItem : Object {
     }
 
     public Process get_process_by_pid (Pid pid) {
-        return processes.get (pid);
+        return processes.@get (pid);
     }
 
     public void insert_process (Process process) {

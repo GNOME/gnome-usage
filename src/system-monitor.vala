@@ -49,7 +49,7 @@ public class Usage.SystemMonitor : Object {
     }
 
     public unowned AppItem get_app_by_name (string name) {
-        return app_table.get (name);
+        return app_table.@get (name);
     }
 
     public SystemMonitor () {

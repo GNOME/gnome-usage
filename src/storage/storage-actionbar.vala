@@ -77,7 +77,7 @@ public class Usage.StorageActionBar : Gtk.ActionBar {
             }
 
             if (delete_basefile)
-                file.delete ();
+                file.@delete ();
         }
         catch (Error e) {
             stderr.printf ("Error: %s\n", e.message);

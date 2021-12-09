@@ -19,18 +19,18 @@
  */
 
 public class Usage.Utils {
-    public static string format_size_values (uint64 value) {
-        if (value >= 1000)
-            return GLib.format_size (value);
+    public static string format_size_values (uint64 @value) {
+        if (@value >= 1000)
+            return GLib.format_size (@value);
         else
-            return _("%llu B").printf (value);
+            return _("%llu B").printf (@value);
     }
 
-    public static string format_size_speed_values (uint64 value) {
-        if (value >= 1000)
-            return _("%s/s").printf (GLib.format_size (value));
+    public static string format_size_speed_values (uint64 @value) {
+        if (@value >= 1000)
+            return _("%s/s").printf (GLib.format_size (@value));
         else
-            return _("%llu B/s").printf (value);
+            return _("%llu B/s").printf (@value);
     }
 
     public static Gdk.RGBA generate_color (Gdk.RGBA default_color, uint order, uint all_count, bool reverse = false) {
