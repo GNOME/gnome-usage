@@ -2,22 +2,21 @@
 # Copyright (C) 2020 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2020-03-31 09:58+0000\n"
-"PO-Revision-Date: 2020-03-31 13:01+0300\n"
+"POT-Creation-Date: 2021-12-08 11:25+0000\n"
+"PO-Revision-Date: 2021-12-09 23:59+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.07.70\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
@@ -36,8 +35,8 @@ msgstr ""
 "Проста програма GNOME 3 для спостереження та аналізу використання ресурсів "
 "системи, зокрема обробки процесів, пам'яті та сховищ даних."
 
-#: data/org.gnome.Usage.desktop.in.in:3 src/application.vala:79
-#: src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
+#: data/ui/window.ui:23 src/application.vala:73
 msgid "Usage"
 msgstr "Використання"
 
@@ -73,12 +72,12 @@ msgstr ""
 msgid "RAM"
 msgstr "Пам’ять"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Використано"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Доступно"
@@ -121,11 +120,10 @@ msgid "Force Quit"
 msgstr "Примусово закрити"
 
 #: data/ui/storage-actionbar.ui:17
-#| msgid "Delete"
 msgid "Delete…"
 msgstr "Вилучити…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:42
 msgid "Home Partition"
 msgstr "Домашній розділ"
 
@@ -133,11 +131,11 @@ msgstr "Домашній розділ"
 msgid "Swap"
 msgstr "Резервна пам'ять"
 
-#: src/app-item.vala:71
+#: src/app-item.vala:148
 msgid "System"
 msgstr "Система"
 
-#: src/application.vala:80
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -145,41 +143,36 @@ msgstr ""
 "Чудовий спосіб переглянути відомості щодо використання ресурсів системи, "
 "зокрема пам'яті і місця на диску."
 
-#: src/application.vala:83
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>"
 
-#: src/application.vala:85
+#: src/application.vala:79
 msgid "Websites"
 msgstr "Сайти"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:29 src/graph-stack-switcher.vala:41
 msgid "Processor"
 msgstr "Процесор"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:42 src/memory-sub-view.vala:29
 msgid "Memory"
 msgstr "Пам'ять"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:45
 msgid "Performance"
 msgstr "Швидкодія"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:38
 #, c-format
-#| msgid "%u selected"
-#| msgid_plural "%u selected"
 msgid "%s selected"
 msgstr "Позначено %s"
 
-#: src/storage/storage-actionbar.vala:45
-#| msgid "Are you sure you want to permanently delete the %d selected item?"
-#| msgid_plural ""
-#| "Are you sure you want to permanently delete the %d selected items?"
+#: src/storage/storage-actionbar.vala:44
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Ви справді хочете остаточно вилучити вибрані об'єкти?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:51
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Якщо ви вилучите ці об'єкти, їх буде незворотно втрачено."
 
@@ -188,17 +181,35 @@ msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
 msgstr ""
-"Базові файли операційної системи є важливою частиною вашої системи. Їх не"
-" можна вилучати."
+"Базові файли операційної системи є важливою частиною вашої системи. Їх не "
+"можна вилучати."
 
 #: src/storage/storage-view.vala:78
 msgid "Storage"
 msgstr "Сховище даних"
 
-#: src/storage/storage-view.vala:245
+#: src/storage/storage-view.vala:246
 msgid "Operating System"
 msgstr "Операційна система"
 
-#: src/storage/storage-view.vala:271
+#: src/storage/storage-view.vala:272
 msgid "Scanning directories"
 msgstr "Сканування каталогів"
+
+#: src/utils.vala:27
+#, c-format
+msgid "%llu B"
+msgstr ""
+"%llu Б"
+
+#: src/utils.vala:32
+#, c-format
+msgid "%s/s"
+msgstr ""
+"%s/с"
+
+#: src/utils.vala:34
+#, c-format
+msgid "%llu B/s"
+msgstr ""
+"%llu Б/с"
