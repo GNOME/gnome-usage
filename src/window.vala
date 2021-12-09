@@ -21,12 +21,12 @@
 
 public enum Usage.Views {
     PERFORMANCE,
-    STORAGE,
+    STORAGE;
 }
 
 public enum Usage.HeaderBarMode {
     PERFORMANCE,
-    STORAGE,
+    STORAGE;
 }
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/window.ui")]

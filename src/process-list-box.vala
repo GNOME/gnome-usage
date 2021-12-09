@@ -20,7 +20,7 @@
 
 public enum Usage.ProcessListBoxType {
     PROCESSOR,
-    MEMORY
+    MEMORY;
 }
 
 public class Usage.ProcessListBox : Gtk.ListBox {

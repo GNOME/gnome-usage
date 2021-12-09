@@ -24,7 +24,7 @@ public enum Usage.StorageViewType {
     OS,
     UP_FOLDER,
     AVAILABLE_GRAPH,
-    ROOT_ITEM
+    ROOT_ITEM;
 }
 
 public class Usage.StorageViewItem : GLib.Object {

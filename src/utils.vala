@@ -84,7 +84,7 @@ public class Usage.Utils {
 
 public enum Usage.UserAccountType {
     STANDARD,
-    ADMINISTRATOR,
+    ADMINISTRATOR;
 }
 
 [DBus (name = "org.freedesktop.Accounts")]

@@ -241,5 +241,5 @@ public class Usage.Process : Object {
 public enum Usage.ProcessStatus {
     RUNNING,
     SLEEPING,
-    DEAD
+    DEAD;
 }
