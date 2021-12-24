@@ -1,15 +1,16 @@
 # Swedish translation for gnome-usage.
-# Copyright © 2017, 2018, 2019 gnome-usage's COPYRIGHT HOLDER
+# Copyright © 2017-2021 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2017.
 # Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019.
+# Luna Jernberg <droidbittin@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-05-02 11:40+0000\n"
-"PO-Revision-Date: 2019-08-29 12:49+0200\n"
+"POT-Creation-Date: 2021-12-10 12:35+0000\n"
+"PO-Revision-Date: 2021-12-24 12:54+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,17 +18,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
+#: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
 msgstr "GNOME Användning"
 
-#: data/org.gnome.Usage.appdata.xml.in:6
+#: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr "Ett trevligt sätt att se information om användning av systemresurser"
 
-#: data/org.gnome.Usage.appdata.xml.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
@@ -35,11 +36,12 @@ msgstr ""
 "Ett enkelt GNOME 3-program för att övervaka och analysera systemresurser så "
 "som processorkraft, minne och lagring."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
+#: data/ui/window.ui:23 src/application.vala:76
 msgid "Usage"
 msgstr "Användning"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -48,7 +50,7 @@ msgstr ""
 "minne och diskutrymme"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -56,11 +58,11 @@ msgstr ""
 "Skärm;System;Process;CPU;Minne;Nätverk;Historik;Användning;Prestanda;Uppgift;"
 "Hanterare;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "En lista över processer vi inte vill döda"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Listan används för att filtrera vilka processer användaren inte kan stoppa."
@@ -69,12 +71,12 @@ msgstr ""
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Använt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Tillgängligt"
@@ -120,7 +122,7 @@ msgstr "Tvinga avslut"
 msgid "Delete…"
 msgstr "Ta bort…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:42
 msgid "Home Partition"
 msgstr "Hempartition"
 
@@ -128,11 +130,11 @@ msgstr "Hempartition"
 msgid "Swap"
 msgstr "Växlingsutrymme"
 
-#: src/app-item.vala:43
+#: src/app-item.vala:147
 msgid "System"
 msgstr "System"
 
-#: src/application.vala:80
+#: src/application.vala:77
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -140,36 +142,39 @@ msgstr ""
 "Ett trevligt sätt att se information om användning av systemresurser så som "
 "minne och diskutrymme."
 
-#: src/application.vala:83
+#: src/application.vala:80
 msgid "translator-credits"
-msgstr "Josef Andersson <josef.andersson@fripost.org>, 2016, 2017"
+msgstr ""
+"Josef Andersson <josef.andersson@fripost.org>, 2016, 2017\n"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019\n"
+"Luna Jernberg <droidbittin@gmail.com>, 2021"
 
-#: src/application.vala:85
+#: src/application.vala:82
 msgid "Websites"
 msgstr "Webbplatser"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Processor"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
 msgid "Memory"
 msgstr "Minne"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:44
 msgid "Performance"
 msgstr "Prestanda"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:37
 #, c-format
 msgid "%s selected"
 msgstr "%s markerat"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:43
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Är du säker på att du permanent vill ta bort markerade objekt?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:50
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Om du tar bort dessa objekt är de borta för alltid."
 
@@ -184,13 +189,28 @@ msgstr ""
 msgid "Storage"
 msgstr "Lagring"
 
-#: src/storage/storage-view.vala:245
+#: src/storage/storage-view.vala:246
 msgid "Operating System"
 msgstr "Operativsystem"
 
-#: src/storage/storage-view.vala:271
+#: src/storage/storage-view.vala:272
 msgid "Scanning directories"
 msgstr "Söker igenom kataloger"
+
+#: src/utils.vala:26
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:31
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:33
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
 
 #~ msgid "org.gnome.Usage"
 #~ msgstr "org.gnome.Usage"
