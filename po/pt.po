@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2020-09-26 11:52+0000\n"
-"PO-Revision-Date: 2021-08-28 15:24+0100\n"
+"POT-Creation-Date: 2021-12-08 11:25+0000\n"
+"PO-Revision-Date: 2022-01-13 13:24+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
-"Language-Team: Portuguese <>\n"
+"Language-Team: Portuguese <https://l10n.gnome.org/teams/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
@@ -27,7 +27,7 @@ msgstr "Utilização GNOME"
 #: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr ""
-"Uma forma agradável de ver informação sobre a utilização dos recursos do "
+"Uma boa maneira de ver a informação sobre a utilização dos recursos do "
 "sistema"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:8
@@ -36,10 +36,10 @@ msgid ""
 "processing, memory, and storage."
 msgstr ""
 "Uma aplicação GNOME 3 simples para monitorizar e analisar recursos do "
-"sistema como processos, memória e espaço em disco."
+"sistema tais como processos, memória e espaço em disco."
 
 #: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:85
+#: data/ui/window.ui:23 src/application.vala:73
 msgid "Usage"
 msgstr "Utilização"
 
@@ -48,7 +48,7 @@ msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
 msgstr ""
-"Uma forma agradável de ver informação sobre a utilização dos recursos do "
+"Uma boa maneira de ver a informação sobre a utilização dos recursos do "
 "sistema, como memória e espaço em disco"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
@@ -62,7 +62,7 @@ msgstr ""
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
-msgstr "Uma lista de processos que não deveriam ser terminados"
+msgstr "Uma lista de processos que não queremos que terminem"
 
 #: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
@@ -90,7 +90,7 @@ msgstr "Sem resultados"
 
 #: data/ui/no-results-found-view.ui:32
 msgid "Try a different search"
-msgstr "Tente outro critério de pesquisa"
+msgstr "Tentar outro critério de pesquisa"
 
 #: data/ui/primary-menu.ui:14
 msgid "_About Usage"
@@ -102,7 +102,7 @@ msgstr "Agrupar processos do sistema"
 
 #: data/ui/primary-menu.ui:37
 msgid "Show all processes"
-msgstr "Ver todos os processos"
+msgstr "Mostrar todos os processos"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -111,7 +111,7 @@ msgstr "Forçar o terminar de %s?"
 
 #: data/ui/quit-process-dialog.ui:10
 msgid "Unsaved work might be lost."
-msgstr "As alterações não gravadas hão de ser perdidas."
+msgstr "As alterações não gravadas podem perder-se."
 
 #: data/ui/quit-process-dialog.ui:16
 msgid "Cancel"
@@ -133,52 +133,52 @@ msgstr "Partição Home"
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:155
+#: src/app-item.vala:148
 msgid "System"
 msgstr "Sistema"
 
-#: src/application.vala:86
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr ""
-"Uma forma agradável de ver informação sobre a utilização dos recursos do "
+"Uma boa maneira de ver a informação sobre a utilização dos recursos do "
 "sistema, como memória e espaço em disco."
 
-#: src/application.vala:89
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "Juliano de Souza Camargo <julianosc@protonmail.com>\n"
 "Hugo Carvalho <hugokarvalho@hotmail.com>"
 
-#: src/application.vala:91
+#: src/application.vala:79
 msgid "Websites"
-msgstr "Páginas Web"
+msgstr "Websites"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:29 src/graph-stack-switcher.vala:41
 msgid "Processor"
 msgstr "Processador"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:42 src/memory-sub-view.vala:29
 msgid "Memory"
 msgstr "Memória"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:45
 msgid "Performance"
 msgstr "Desempenho"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:38
 #, c-format
 msgid "%s selected"
 msgstr "%s selecionado"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:44
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Eliminar permanentemente os itens selecionados?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:51
 msgid "If you delete these items, they will be permanently lost."
-msgstr "Caso elimine estes itens, eles hão de ser perdidos definitivamente."
+msgstr "Caso elimine estes itens, eles perder-se-ão permanentemente."
 
 #: src/storage/storage-row-popover.vala:32
 msgid ""
@@ -199,6 +199,21 @@ msgstr "Sistema Operativo"
 #: src/storage/storage-view.vala:272
 msgid "Scanning directories"
 msgstr "A verificar diretórios"
+
+#: src/utils.vala:27
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:32
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:34
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
 
 #~ msgid "Move to"
 #~ msgstr "Mover para"
