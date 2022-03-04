@@ -7,27 +7,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-05-02 11:40+0000\n"
-"PO-Revision-Date: 2019-06-22 19:28+0200\n"
+"POT-Creation-Date: 2021-12-08 11:25+0000\n"
+"PO-Revision-Date: 2022-03-04 11:28+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
+#: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
 msgstr "GNOME Resursi"
 
-#: data/org.gnome.Usage.appdata.xml.in:6
+#: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr "Ugodan način za prikaz informacija o upotrebi resursa sustava"
 
-#: data/org.gnome.Usage.appdata.xml.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
@@ -35,11 +35,12 @@ msgstr ""
 "Jednostavna GNOME 3 aplikacija za nadgledanje i analizu resursa sustava "
 "poput pokrenutih procesa, memorije i diskovnog prostora."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
+#: data/ui/window.ui:23 src/application.vala:73
 msgid "Usage"
 msgstr "Resursi"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -48,7 +49,7 @@ msgstr ""
 "memorije i diskovnog prostora"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -56,11 +57,11 @@ msgstr ""
 "Nadgledaj;Sustav;Proces;CPU;Memorija;Mreža;Povijest;Upotreba;Performanse;"
 "Zadatak;Upravitelj;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Popis procesa koje ne želimo ubiti"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Ovaj popis se koristi za prikaz procesa koje korisnik ne može zaustaviti."
@@ -69,12 +70,12 @@ msgstr ""
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Iskorišteno"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Dostupno"
@@ -120,7 +121,7 @@ msgstr "Prisilno zatvori"
 msgid "Delete…"
 msgstr "Obriši…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:42
 msgid "Home Partition"
 msgstr "Osobna particija"
 
@@ -128,11 +129,11 @@ msgstr "Osobna particija"
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:43
+#: src/app-item.vala:148
 msgid "System"
 msgstr "Sustav"
 
-#: src/application.vala:80
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -140,38 +141,38 @@ msgstr ""
 "Ugodan način za prikaz informacija o upotrebi resursa sustava, poput "
 "memorije i diskovnog prostora."
 
-#: src/application.vala:83
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  gogo https://launchpad.net/~trebelnik-stefina"
 
-#: src/application.vala:85
+#: src/application.vala:79
 msgid "Websites"
 msgstr "Web stranica"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:29 src/graph-stack-switcher.vala:41
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:42 src/memory-sub-view.vala:29
 msgid "Memory"
 msgstr "Memorija"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:45
 msgid "Performance"
 msgstr "Performanse"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:38
 #, c-format
 msgid "%s selected"
 msgstr "%s odabrana"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:44
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Sigurno želite trajno obrisati odabrane stavke?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:51
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Ako obrišete ove stavke, biti će trajno izgubljene."
 
@@ -187,13 +188,28 @@ msgstr ""
 msgid "Storage"
 msgstr "Pohrana"
 
-#: src/storage/storage-view.vala:245
+#: src/storage/storage-view.vala:246
 msgid "Operating System"
 msgstr "Operativni sustav"
 
-#: src/storage/storage-view.vala:271
+#: src/storage/storage-view.vala:272
 msgid "Scanning directories"
 msgstr "Pretraživanje direktorija"
+
+#: src/utils.vala:27
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:32
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:34
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
 
 #~ msgid "Move to"
 #~ msgstr "Premjesti u"
