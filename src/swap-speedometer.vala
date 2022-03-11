@@ -41,7 +41,7 @@ public class Usage.SwapSpeedometer : Gtk.Bin {
         Timeout.add_seconds (1, () => {
             var available = (monitor.swap_total - monitor.swap_usage);
             var percentage = 0.0;
-            if (available > 0)
+            if (monitor.swap_total > 0)
                 percentage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
 
             this.speedometer.percentage = (int) percentage;
