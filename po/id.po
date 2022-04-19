@@ -2,32 +2,32 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Andika Triwidada <atriwidada@gnome.org>, 2018
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-05-02 11:40+0000\n"
-"PO-Revision-Date: 2019-07-11 14:55+0700\n"
+"POT-Creation-Date: 2021-12-08 11:25+0000\n"
+"PO-Revision-Date: 2022-04-19 10:06+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
+#: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
 msgstr "GNOME Pemakaian"
 
-#: data/org.gnome.Usage.appdata.xml.in:6
+#: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Cara yang baik untuk melihat informasi tentang penggunaan sumber daya sistem"
 
-#: data/org.gnome.Usage.appdata.xml.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
@@ -35,11 +35,12 @@ msgstr ""
 "Aplikasi GNOME 3 sederhana untuk memantau dan menganalisis sumber daya "
 "sistem seperti pemrosesan, memori, dan penyimpanan."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
+#: data/ui/window.ui:23 src/application.vala:73
 msgid "Usage"
 msgstr "Pemakaian"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -48,7 +49,7 @@ msgstr ""
 "sistem, seperti memori dan ruang diska"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -56,11 +57,11 @@ msgstr ""
 "Monitor;Sistem;Proses;CPU;Memori;Jaringan;Riwayat;Pemakaian;Performa;Tugas;"
 "Pengelola;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Daftar proses yang tidak ingin kita dibunuh"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Daftar ini digunakan untuk menyaring proses yang pengguna tidak bisa "
@@ -70,12 +71,12 @@ msgstr ""
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Terpakai"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Tersedia"
@@ -121,7 +122,7 @@ msgstr "Keluar Paksa"
 msgid "Delete…"
 msgstr "Hapus…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:42
 msgid "Home Partition"
 msgstr "Partisi Home"
 
@@ -129,11 +130,11 @@ msgstr "Partisi Home"
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:43
+#: src/app-item.vala:148
 msgid "System"
 msgstr "Sistem"
 
-#: src/application.vala:80
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -141,36 +142,36 @@ msgstr ""
 "Cara yang baik untuk melihat informasi tentang penggunaan sumber daya "
 "sistem, seperti memori dan ruang diska."
 
-#: src/application.vala:83
+#: src/application.vala:77
 msgid "translator-credits"
-msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019."
+msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2022."
 
-#: src/application.vala:85
+#: src/application.vala:79
 msgid "Websites"
 msgstr "Situs Web"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:29 src/graph-stack-switcher.vala:41
 msgid "Processor"
 msgstr "Prosesor"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:42 src/memory-sub-view.vala:29
 msgid "Memory"
 msgstr "Memori"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:45
 msgid "Performance"
 msgstr "Performa"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:38
 #, c-format
 msgid "%s selected"
 msgstr "%s dipilih"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:44
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Apakah Anda yakin ingin menghapus permanen butir yang dipilih?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:51
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Jika Anda menghapus butir-butir ini, mereka akan hilang selamanya."
 
@@ -186,13 +187,28 @@ msgstr ""
 msgid "Storage"
 msgstr "Penyimpanan"
 
-#: src/storage/storage-view.vala:245
+#: src/storage/storage-view.vala:246
 msgid "Operating System"
 msgstr "Sistem Operasi"
 
-#: src/storage/storage-view.vala:271
+#: src/storage/storage-view.vala:272
 msgid "Scanning directories"
 msgstr "Memindai direktori"
+
+#: src/utils.vala:27
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:32
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:34
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
 
 #~ msgid "label"
 #~ msgstr "label"
