@@ -73,7 +73,7 @@ msgstr "RAM"
 #: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
-msgstr "Usada"
+msgstr "Usat"
 
 #: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
 #: data/ui/swap-speedometer.ui:75
