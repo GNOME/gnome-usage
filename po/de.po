@@ -5,22 +5,24 @@
 # Bernd Homuth <dev@hmt.im>, 2017.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2017-2018.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2021.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2022.
+# Tim Sabsch <tim@sabsch.com>, 2022.
 #
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2020-09-13 10:55+0000\n"
-"PO-Revision-Date: 2021-08-16 22:37+0200\n"
-"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
+"POT-Creation-Date: 2022-05-29 13:01+0000\n"
+"PO-Revision-Date: 2022-06-19 11:42+0200\n"
+"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
@@ -37,11 +39,11 @@ msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
 msgstr ""
-"Eine einfache GNOME3-Anwendung zum Überwachen und Analysieren von "
+"Eine einfache GNOME 3-Anwendung zum Überwachen und Analysieren von "
 "Systemressourcen wie Prozessor, Arbeits- und Festplattenspeicher."
 
 #: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:85
+#: data/ui/window.ui:23 src/application.vala:76
 msgid "Usage"
 msgstr "Auslastung"
 
@@ -51,7 +53,7 @@ msgid ""
 "and disk space"
 msgstr ""
 "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
-"Ressourcen, wie Arbeitsspeicher und Speicherplatz anzuzeigen"
+"Ressourcen, wie Arbeitsspeicher und Speicherplatz, anzuzeigen"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in.in:13
@@ -135,61 +137,62 @@ msgstr "Home-Partition"
 msgid "Swap"
 msgstr "Auslagerungsspeicher"
 
-#: src/app-item.vala:155
+#: src/app-item.vala:147
 msgid "System"
 msgstr "System"
 
-#: src/application.vala:86
+#: src/application.vala:77
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr ""
 "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
-"Ressourcen, wie Arbeitsspeicher und Speicherplatz anzuzeigen."
+"Ressourcen, wie Arbeitsspeicher und Speicherplatz, anzuzeigen."
 
-#: src/application.vala:89
+#: src/application.vala:80
 msgid "translator-credits"
 msgstr ""
 "Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Bernd Homuth <dev@hmt.im>\n"
-"Philipp Kiemle <philipp.kiemle@gmail.com>"
+"Philipp Kiemle <philipp.kiemle@gmail.com>\n"
+"Jürgen Benvenuti <gastornis@posteo.org>"
 
-#: src/application.vala:91
+#: src/application.vala:82
 msgid "Websites"
 msgstr "Webseiten"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Prozessor"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
 msgid "Memory"
 msgstr "Speicher"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:44
 msgid "Performance"
 msgstr "Leistungsfähigkeit"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:37
 #, c-format
 msgid "%s selected"
 msgstr "%s ausgewählt"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:43
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr ""
 "Sind Sie sicher, dass Sie die ausgewählten Objekte dauerhaft löschen wollen?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:50
 msgid "If you delete these items, they will be permanently lost."
-msgstr "Wenn Sie diese Objekte löschen, gehen Sie dauerhaft verloren."
+msgstr "Wenn Sie diese Objekte löschen, gehen sie dauerhaft verloren."
 
 #: src/storage/storage-row-popover.vala:32
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
 msgstr ""
-"Betriebssystem-Dateien sind ein essenzieller Teil Ihres Systems und können "
+"Betriebssystem-Dateien sind ein wesentlicher Teil Ihres Systems und können "
 "nicht entfernt werden."
 
 #: src/storage/storage-view.vala:78
@@ -203,6 +206,23 @@ msgstr "Betriebssystem"
 #: src/storage/storage-view.vala:272
 msgid "Scanning directories"
 msgstr "Verzeichnisse werden gescannt"
+
+# B steht für Bytes
+#: src/utils.vala:26
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+# s steht für Sekunde und wird nach SI kleingeschrieben - ts
+#: src/utils.vala:31
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:33
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
 
 #~ msgid "Move to"
 #~ msgstr "Verschieben nach"
