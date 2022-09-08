@@ -1,66 +1,67 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2017, 2018, 2019
+# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2017, 2018, 2019, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-05-02 11:40+0000\n"
-"PO-Revision-Date: 2019-05-20 22:15+0200\n"
-"Last-Translator: Jordi Mas <jmas@softcatala.org>\n"
+"POT-Creation-Date: 2022-06-14 21:14+0000\n"
+"PO-Revision-Date: 2022-09-08 22:15+0200\n"
+"Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: \n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.1\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
+#: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
 msgstr "Ús del GNOME"
 
-#: data/org.gnome.Usage.appdata.xml.in:6
+#: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Una manera atractiva de visualitzar la informació de l'ús dels recursos del "
 "sistema"
 
-#: data/org.gnome.Usage.appdata.xml.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple GNOME 3 application to monitor and analyze system resources such as"
+" processing, memory, and storage."
 msgstr ""
 "Una aplicació simple del GNOME 3 per a fer un seguiment i analitzar els "
 "recursos del sistema com ara processament, memòria o emmagatzematge."
 
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
+#: data/ui/window.ui:23 src/application.vala:76
 msgid "Usage"
 msgstr "Ús"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
-"A nice way to view information about use of system resources, like memory and "
-"disk space"
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
 msgstr ""
-"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com "
-"ara memòria o espai en disc"
+"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com"
+" ara memòria o espai en disc"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;"
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
 msgstr ""
 "Monitor;Sistema;Procés;CPU;Memòria;Xarxa;Història;Ús;Rendiment;Tasca;Gestor;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Una llista de processos que no voleu que es puguin finalitzar"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Aquesta llista s'utilitza per a filtrar els processos que l'usuari no pot "
@@ -70,12 +71,12 @@ msgstr ""
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Usat"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Disponible"
@@ -100,7 +101,8 @@ msgstr "Agrupa els processos del sistema"
 msgid "Show all processes"
 msgstr "Mostra tots els processos"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#. Translators: This sentence is later suffixed with an application name.
+#. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
 msgid "Force Quit %s?"
 msgstr "Força'n la sortida %s?"
@@ -121,7 +123,7 @@ msgstr "Força'n la sortida"
 msgid "Delete…"
 msgstr "Suprimeix…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:42
 msgid "Home Partition"
 msgstr "Partició d'inici"
 
@@ -129,48 +131,49 @@ msgstr "Partició d'inici"
 msgid "Swap"
 msgstr "Espai d'intercanvi"
 
-#: src/app-item.vala:43
+#: src/app-item.vala:147
 msgid "System"
 msgstr "Sistema"
 
-#: src/application.vala:80
+#: src/application.vala:77
 msgid ""
-"A nice way to view information about use of system resources, like memory and "
-"disk space."
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
 msgstr ""
-"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com "
-"ara memòria o espai en disc."
+"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com"
+" ara memòria o espai en disc."
 
-#: src/application.vala:83
+#: src/application.vala:80
 msgid "translator-credits"
 msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>"
 
-#: src/application.vala:85
+#: src/application.vala:82
 msgid "Websites"
 msgstr "Llocs web"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Processador"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
 msgid "Memory"
 msgstr "Memòria"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:44
 msgid "Performance"
 msgstr "Rendiment"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:37
 #, c-format
 msgid "%s selected"
 msgstr "%s seleccionat"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:43
 msgid "Are you sure you want to permanently delete selected items?"
-msgstr "Esteu segur que voleu suprimir permanentment els elements seleccionats?"
+msgstr ""
+"Esteu segur que voleu suprimir permanentment els elements seleccionats?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:50
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Si suprimiu aquests elements, es perdran permanentment."
 
@@ -179,16 +182,32 @@ msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
 msgstr ""
-"Els fitxers del sistema operatiu són part essencial del sistema i no poden ser suprimits."
+"Els fitxers del sistema operatiu són part essencial del sistema i no poden "
+"ser suprimits."
 
 #: src/storage/storage-view.vala:78
 msgid "Storage"
 msgstr "Emmagatzematge"
 
-#: src/storage/storage-view.vala:245
+#: src/storage/storage-view.vala:246
 msgid "Operating System"
 msgstr "Sistema operatiu"
 
-#: src/storage/storage-view.vala:271
+#: src/storage/storage-view.vala:272
 msgid "Scanning directories"
 msgstr "S'estan escanejant els directoris"
+
+#: src/utils.vala:26
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:31
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:33
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
