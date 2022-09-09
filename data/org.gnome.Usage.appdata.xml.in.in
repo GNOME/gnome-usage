@@ -11,17 +11,14 @@
     </p>
   </description>
   <screenshots>
-    <screenshot height="950" width="647" type="default">
+    <screenshot height="1002" width="652" type="default">
       <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/master/screenshots/screenshot-performance-view.png</image>
     </screenshot>
-    <screenshot height="950" width="647">
+    <screenshot height="1002" width="652">
       <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/master/screenshots/screenshot-performance-memory-view.png</image>
     </screenshot>
-    <screenshot height="950" width="647">
+    <screenshot height="1002" width="652">
       <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/master/screenshots/screenshot-storage-view.png</image>
-    </screenshot>
-    <screenshot height="951" width="651">
-      <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/master/screenshots/screenshot-about-dialog.png</image>
     </screenshot>
   </screenshots>
   <project_group>GNOME</project_group>
@@ -30,7 +27,7 @@
   <releases>
     <release version="3.32.0" date="2019-03-22">
       <description>
-        <p>Boxes 3.32.0 is the latest stable release of GNOME Usage.</p>
+        <p>3.32.0 is the latest stable release of GNOME Usage.</p>
       </description>
     </release>
   </releases>
