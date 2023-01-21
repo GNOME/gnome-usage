@@ -7,16 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2020-06-05 07:24+0000\n"
-"PO-Revision-Date: 2020-10-21 18:33+0200\n"
-"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
-"Language-Team: Friulian <fur@li.org>\n"
+"POT-Creation-Date: 2022-12-16 02:08+0000\n"
+"PO-Revision-Date: 2023-01-21 11:03+0000\n"
+"Last-Translator: Fabio T. <f.t.public@gmail.com>\n"
+"Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Editor: HaiPO 1.4 beta\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
@@ -28,14 +29,14 @@ msgstr "Un biel mût di viodi lis informazions sul ûs des risorsis di sisteme"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple GNOME 3 application to monitor and analyze system resources such as"
+" processing, memory, and storage."
 msgstr ""
 "Une semplice aplicazion di GNOME 3 par monitorâ e analizâ lis risorsis di "
 "sisteme come par esempli elaborazion, memorie e archiviazion."
 
-#: data/org.gnome.Usage.desktop.in.in:3 src/application.vala:79
-#: src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
+#: data/ui/window.ui:23 src/application.vala:76
 msgid "Usage"
 msgstr "Utilizazion"
 
@@ -47,14 +48,13 @@ msgstr ""
 "Un biel mût par viodi lis informazions sul ûs des risorsis di sisteme, come "
 "memorie e spazi dal disc"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;"
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
 msgstr ""
-"Monitorâ;Sisteme;Procès;CPU;Memorie;Rêt;Cronologjie;Ûs;Utilizazion;"
-"Prestazion;Ativitât;Gjestion;"
+"Monitorâ;Sisteme;Procès;CPU;Memorie;Rêt;Cronologjie;Ûs;Utilizazion;Prestazion;Ativitât;Gjestion;"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -69,12 +69,12 @@ msgstr ""
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Doprât"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Disponibil"
@@ -99,7 +99,8 @@ msgstr "Procès di sisteme dal grup"
 msgid "Show all processes"
 msgstr "Mostre ducj i procès"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#. Translators: This sentence is later suffixed with an application name.
+#. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
 msgid "Force Quit %s?"
 msgstr "Sfuarce jessude di %s?"
@@ -120,7 +121,7 @@ msgstr "Sfuarce jessude"
 msgid "Delete…"
 msgstr "Elimine…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:42
 msgid "Home Partition"
 msgstr "Partizion home"
 
@@ -128,11 +129,11 @@ msgstr "Partizion home"
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:71
+#: src/app-item.vala:147
 msgid "System"
 msgstr "Sisteme"
 
-#: src/application.vala:80
+#: src/application.vala:77
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -140,36 +141,36 @@ msgstr ""
 "Un biel mût par viodi lis informazions sul ûs des risorsis di sisteme, come "
 "Memorie e spazi dal disc."
 
-#: src/application.vala:83
+#: src/application.vala:80
 msgid "translator-credits"
 msgstr "Fabio Tomat <f.t.public@gmail.com>, 2018"
 
-#: src/application.vala:85
+#: src/application.vala:82
 msgid "Websites"
 msgstr "Sîts Web"
 
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Processôr"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
 msgid "Memory"
 msgstr "Memorie"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:44
 msgid "Performance"
 msgstr "Prestazions"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:37
 #, c-format
 msgid "%s selected"
 msgstr "%s selezionât"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:43
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Eliminâ par simpri i elements selezionâts?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:50
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Se si elimine chescj elements, a vignaran pierdûts par simpri."
 
@@ -185,13 +186,28 @@ msgstr ""
 msgid "Storage"
 msgstr "Archivi"
 
-#: src/storage/storage-view.vala:245
+#: src/storage/storage-view.vala:246
 msgid "Operating System"
 msgstr "Sisteme operatîf"
 
-#: src/storage/storage-view.vala:271
+#: src/storage/storage-view.vala:272
 msgid "Scanning directories"
 msgstr "Scansion cartelis"
+
+#: src/utils.vala:26
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:31
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:33
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
 
 #~ msgid "org.gnome.Usage"
 #~ msgstr "org.gnome.Usage"
