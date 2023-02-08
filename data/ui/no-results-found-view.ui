@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.9 -->
+  <requires lib="gtk" version="4.0"/>
   <template class="UsageNoResultsFoundView" parent="UsageView">
-    <property name="visible">True</property>
+    <property name="visible">False</property>
+    <property name="hexpand">True</property>
     <child>
       <object class="GtkBox">
         <property name="margin-top">40</property>
         <property name="orientation">vertical</property>
+        <property name="hexpand">True</property>
         <child>
           <object class="GtkImage">
             <property name="margin-start">10</property>

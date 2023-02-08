@@ -21,7 +21,7 @@
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/swap-speedometer.ui")]
-public class Usage.SwapSpeedometer : Gtk.Bin {
+public class Usage.SwapSpeedometer : Adw.Bin {
     [GtkChild]
     private unowned Usage.Speedometer speedometer;
 
@@ -52,7 +52,5 @@ public class Usage.SwapSpeedometer : Gtk.Bin {
 
             return true;
         });
-
-        this.show_all ();
     }
 }

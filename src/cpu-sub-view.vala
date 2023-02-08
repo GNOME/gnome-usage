@@ -41,37 +41,35 @@ public class Usage.ProcessorSubView : View, SubView {
         process_list_box.margin_top = 30;
 
         var spinner = new Gtk.Spinner ();
-        spinner.active = true;
+        spinner.map.connect (spinner.start);
+        spinner.unmap.connect (spinner.stop);
         spinner.margin_top = 30;
         spinner.height_request = 250;
+        spinner.hexpand = true;
+        spinner.halign = Gtk.Align.CENTER;
 
         no_process_view = new NoResultsFoundView ();
 
         var cpu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        cpu_box.pack_start (label, false, false, 0);
-        cpu_box.pack_start (cpu_graph_box, false, false, 0);
-        cpu_box.pack_start (spinner, true, true, 0);
-        cpu_box.add (no_process_view);
+        cpu_box.append (label);
+        cpu_box.append (cpu_graph_box);
+        cpu_box.append (spinner);
+        cpu_box.append (no_process_view);
 
         var system_monitor = SystemMonitor.get_default ();
         system_monitor.notify["process-list-ready"].connect ((sender, property) => {
             if (system_monitor.process_list_ready) {
-                cpu_box.pack_start (process_list_box, false, false, 0);
+                cpu_box.append (process_list_box);
                 cpu_box.remove (spinner);
             } else {
-                cpu_box.pack_start (spinner, true, true, 0);
+                cpu_box.append (spinner);
                 cpu_box.remove (process_list_box);
             }
         });
 
         process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
 
-        add (cpu_box);
-    }
-
-    public override void show_all () {
-        base.show_all ();
-        this.no_process_view.hide ();
+        set_child (cpu_box);
     }
 
     public void search_in_processes (string text) {

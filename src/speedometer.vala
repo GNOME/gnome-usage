@@ -21,7 +21,7 @@
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/speedometer.ui")]
-public class Usage.Speedometer : Buildable, Gtk.Bin {
+public class Usage.Speedometer : Buildable, Adw.Bin {
     [GtkChild]
     private unowned Gtk.Box inner;
 
@@ -69,19 +69,14 @@ public class Usage.Speedometer : Buildable, Gtk.Bin {
                         linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
         }";
 
-        try {
-            css_provider.load_from_data (css);
-        }
-        catch (GLib.Error error) {
-            warning ("Failed to animate speedometer: %s", error.message);
-        }
+        css_provider.load_from_data (css.data);
     }
 
     public void add_child (Builder builder, Object child, string? type) {
         /* This is a Vala bug. It will cause a "warning".
         (content_area as Buildable).add_child (builder, child, type);*/
         if (child is Gtk.Label) {
-            content_area.add (child as Gtk.Widget);
+            content_area.append (child as Gtk.Widget);
 
             return;
         }

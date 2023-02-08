@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.10 -->
+  <requires lib="gtk" version="4.0"/>
   <template class="UsageProcessRow" parent="GtkListBoxRow">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <child>
+    <property name="hexpand">True</property>
+    <property name="child">
       <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="margin-start">10</property>
             <property name="margin-end">10</property>
             <property name="margin-top">10</property>
             <property name="margin-bottom">10</property>
             <child>
               <object class="GtkImage" id="icon">
-                <property name="can_focus">False</property>
                 <property name="visible">True</property>
                 <property name="margin-end">10</property>
                 <property name="margin-start">10</property>
@@ -29,7 +26,6 @@
             <child>
               <object class="GtkLabel" id="title_label">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="ellipsize">end</property>
                 <property name="max_width_chars">60</property>
                 <property name="hexpand">True</property>
@@ -39,7 +35,6 @@
             <child>
               <object class="GtkImage" id="gamemode">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="margin-start">10</property>
                 <property name="margin-end">10</property>
                 <property name="pixel_size">24</property>
@@ -49,7 +44,6 @@
             <child>
               <object class="GtkBox" id="user_tag_box">
                 <property name="visible">False</property>
-                <property name="can_focus">False</property>
                 <property name="margin-end">10</property>
                 <style>
                   <class name="tag"/>
@@ -64,7 +58,6 @@
             <child>
               <object class="GtkLabel" id="load_label">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="ellipsize">end</property>
                 <property name="max_width_chars">30</property>
                 <property name="margin-end">10</property>
@@ -73,6 +66,6 @@
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

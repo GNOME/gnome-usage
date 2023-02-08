@@ -30,9 +30,9 @@ public enum Usage.HeaderBarMode {
 }
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/window.ui")]
-public class Usage.Window : Hdy.ApplicationWindow {
+public class Usage.Window : Adw.ApplicationWindow {
     [GtkChild]
-    private unowned Gtk.Stack stack;
+    private unowned Adw.ViewStack stack;
 
     [GtkChild]
     private unowned Gtk.Revealer performance_search_revealer;
@@ -51,11 +51,6 @@ public class Usage.Window : Hdy.ApplicationWindow {
             get_style_context ().add_class ("devel");
         }
 
-        load_css ();
-        Gtk.Settings.get_for_screen (get_screen ()).notify["gtk-application-prefer-dark-theme"].connect (() => {
-            load_css ();
-        });
-
         mode = HeaderBarMode.PERFORMANCE;
         set_mode (HeaderBarMode.PERFORMANCE);
 
@@ -65,8 +60,7 @@ public class Usage.Window : Hdy.ApplicationWindow {
         };
 
         foreach (var view in views) {
-            stack.add_titled (view, view.name, view.title);
-            stack.child_set (view, "icon-name", view.icon_name, null);
+            stack.add_titled_with_icon (view, view.name, view.title, view.icon_name);
         }
     }
 
@@ -107,13 +101,6 @@ public class Usage.Window : Hdy.ApplicationWindow {
 
     public View[] get_views () {
         return views;
-    }
-
-    private void load_css () {
-        var provider = new Gtk.CssProvider ();
-        Gtk.StyleContext.reset_widgets (get_screen ());
-        provider.load_from_resource ("/org/gnome/Usage/style.css");
-        Gtk.StyleContext.add_provider_for_screen (get_screen (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     [GtkCallback]

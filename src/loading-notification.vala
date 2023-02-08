@@ -28,13 +28,18 @@ private class Usage.LoadingNotification : Gtk.Grid {
     [GtkChild]
     private unowned Gtk.Label message_label;
 
+    [GtkChild]
+    private unowned Gtk.Spinner spinner;
+
     public LoadingNotification (string message, owned DismissFunc? dismiss_func) {
         message_label.label = message;
 
         dismissed.connect ( () => {
             if (dismiss_func != null)
                 dismiss_func ();
+            spinner.stop ();
         });
+        spinner.start();
     }
 
     public void dismiss () {

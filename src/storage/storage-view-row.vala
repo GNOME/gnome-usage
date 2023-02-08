@@ -92,12 +92,14 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
 
             if (!item.loaded) {
                 spinner.visible = true;
+                spinner.start ();
                 size_label.visible = false;
             }
 
             item.notify["loaded"].connect (() => {
                 if (item.loaded) {
                     spinner.visible = false;
+                    spinner.stop ();
                     size_label.visible = true;
                 }
             });
@@ -119,11 +121,6 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
             background: $color;
         }";
 
-        try {
-            css_provider.load_from_data (css);
-        }
-        catch (GLib.Error error)    {
-            warning ("Failed to color StorageViewRow: %s", error.message);
-        }
+        css_provider.load_from_data (css.data);
     }
 }

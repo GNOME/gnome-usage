@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
-  <template class="UsageStorageActionBar" parent="GtkBin">
-    <child>
+  <requires lib="gtk" version="4.0"/>
+  <template class="UsageStorageActionBar" parent="AdwBin">
+    <property name="visible">False</property>
+    <property name="child">
       <object class="GtkActionBar">
         <property name="visible">True</property>
         <property name="hexpand">True</property>
@@ -11,26 +11,19 @@
           <object class="GtkLabel" id="size_label">
             <property name="visible">True</property>
           </object>
-          <packing>
-            <property name="pack_type">start</property>
-          </packing>
         </child>
 
-        <child>
+        <child type="end">
           <object class="GtkButton" id="delete_button">
             <property name="label" translatable="yes">Delete…</property>
-            <property name="can_focus">True</property>
             <property name="visible">True</property>
             <signal name="clicked" handler="delete_clicked" swapped="no"/>
             <style>
               <class name="destructive-action"/>
             </style>
           </object>
-          <packing>
-            <property name="pack_type">end</property>
-          </packing>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

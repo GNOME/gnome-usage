@@ -47,12 +47,14 @@ public class Usage.StorageView : Usage.View {
     [GtkChild]
     private unowned NotificationBar notificationbar;
 
+    [GtkChild]
+    private unowned StorageRowPopover row_popover;
+
     private Sparql.Connection connection;
     private TrackerController controller;
     private StorageQueryBuilder query_builder;
 
     private StorageViewItem os_item = new StorageViewItem ();
-    private StorageRowPopover row_popover = new StorageRowPopover ();
     private Cancellable cancellable = new Cancellable ();
 
     private uint64 total_used_size = 0;

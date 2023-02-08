@@ -41,14 +41,14 @@ public class Usage.GraphStackSwitcher : Gtk.Box {
             new GraphSwitcherButton.memory (_("Memory"))
         };
 
-        foreach (GraphSwitcherButton button in buttons) {
-            this.pack_start (button, false, true, 0);
+        buttons[0].set_active (true);
 
-            button.button_release_event.connect (() => {
+        foreach (GraphSwitcherButton button in buttons) {
+            this.append (button);
+
+            button.clicked.connect (() => {
                 var button_number = get_button_number (button);
                 scroll_to_view (button_number);
-
-                return false;
             });
         }
     }

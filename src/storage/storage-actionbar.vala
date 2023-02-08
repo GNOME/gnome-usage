@@ -1,6 +1,7 @@
 /* storage-actionbar.vala
  *
  * Copyright (C) 2018 Red Hat, Inc.
+ * Copyright (C) 2023 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,10 +17,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-actionbar.ui")]
-public class Usage.StorageActionBar : Gtk.Bin {
+public class Usage.StorageActionBar : Adw.Bin {
     private unowned List<StorageViewItem> selected_items;
 
     [GtkChild]
@@ -39,26 +41,37 @@ public class Usage.StorageActionBar : Gtk.Bin {
 
     [GtkCallback]
     private void delete_clicked () {
-        var application = GLib.Application.get_default () as Application;
         string display_message = _("Are you sure you want to permanently delete selected items?");
+        string display_explanation = _("If you delete these items, they will be permanently lost.");
 
-        if (application == null)
-            return;
+        Adw.MessageDialog dialog = new Adw.MessageDialog ((Gtk.Window) this.get_root (), display_message, display_explanation);
 
-        var dialog = new Gtk.MessageDialog (application.get_window (), Gtk.DialogFlags.MODAL,
-            Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, display_message);
-        dialog.secondary_text = _("If you delete these items, they will be permanently lost.");
+        dialog.add_response ("cancel",  _("Cancel"));
+        dialog.add_response ("delete", _("Delete"));
 
-        if (dialog.run () == Gtk.ResponseType.OK) {
-            foreach (var item in selected_items) {
-                if (item.type == FileType.DIRECTORY && item.custom_type == StorageViewType.ROOT_ITEM)
-                    delete_file (item.uri, false);
-                else
-                    delete_file (item.uri, true);
+        dialog.set_response_appearance ("delete", Adw.ResponseAppearance.DESTRUCTIVE);
+
+        dialog.set_default_response ("cancel");
+        dialog.set_close_response ("cancel");
+
+        dialog.response.connect ((dialog, response_type) => {
+            switch (response_type) {
+                case "replace":
+                    foreach (var item in selected_items) {
+                        if (item.type == FileType.DIRECTORY && item.custom_type == StorageViewType.ROOT_ITEM)
+                            delete_file (item.uri, false);
+                        else
+                            delete_file (item.uri, true);
+                    }
+                    refresh_listbox ();
+                    break;
+                case "cancel":
+                default:
+                    break;
             }
-            refresh_listbox ();
-        }
-        dialog.destroy ();
+            dialog.destroy ();
+        });
+        dialog.present ();
     }
 
     private void delete_file (string uri, bool delete_basefile) {

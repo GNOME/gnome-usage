@@ -51,7 +51,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
     }
 
     construct {
-        this.draw.connect (draw_storage_graph);
+        this.set_draw_func (draw_storage_graph);
     }
 
     public enum Circle {
@@ -76,8 +76,9 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         double final_angle = - Math.PI / 2.0;
         double ratio = 0;
         uint shown_items_number = 1;
-        var background_color = get_toplevel ().get_style_context ().get_background_color (get_toplevel ().get_style_context ().get_state ());
-        var foreground_color = get_style_context ().get_color (get_style_context ().get_state ());
+        Gdk.RGBA background_color;
+        get_style_context ().lookup_color ("window_bg_color", out background_color);
+        Gdk.RGBA foreground_color = get_style_context ().get_color ();
 
         for (int i = 1; i < model.get_n_items (); i++) {
             var item = (model.get_item (i) as StorageViewItem);
@@ -149,10 +150,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         }
     }
 
-    private bool draw_storage_graph (Cairo.Context context) {
-        int height = this.get_allocated_height ();
-        int width = this.get_allocated_width ();
-
+    private void draw_storage_graph (Gtk.DrawingArea drawing_area, Cairo.Context context, int width, int height) {
         double x = 0;
         double y = 0;
         double radius = 0;
@@ -164,8 +162,6 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
 
         draw_circle (context, x, y, radius, 0, Circle.BASE);
         draw_selected_size_text (context);
-
-        return true;
     }
 
     private void draw_selected_size_text (Cairo.Context context) {
@@ -179,7 +175,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         int width = get_allocated_width ();
         double radius = int.min (width, height) / 22;
 
-        var text_color = get_toplevel ().get_style_context ().get_color (get_toplevel ().get_style_context ().get_state ());
+        var text_color = get_root ().get_style_context ().get_color ();
         var text_color_string = "#%02x%02x%02x".printf (
             (uint)(Math.round (text_color.red*255)),
             (uint)(Math.round (text_color.green*255)),

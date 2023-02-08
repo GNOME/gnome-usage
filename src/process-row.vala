@@ -113,7 +113,7 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
             return;
 
         var dialog = new QuitProcessDialog (app);
-        dialog.set_transient_for (get_toplevel () as Gtk.Window);
-        dialog.show_all ();
+        dialog.set_transient_for ((Gtk.Window) this.get_root ());
+        dialog.present ();
     }
 }

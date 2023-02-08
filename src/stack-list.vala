@@ -24,14 +24,14 @@ public class Usage.StackList : Gtk.Box {
     private int depth = 0;
 
     public void init (Gtk.ListBoxCreateWidgetFunc row_function) {
-        Gtk.ScrolledWindow scrolled_window = new Gtk.ScrolledWindow (null, null);
+        Gtk.ScrolledWindow scrolled_window = new Gtk.ScrolledWindow ();
 
         scrolled_window.visible = true;
         scrolled_window.vexpand = true;
         scrolled_window.hexpand = true;
         scrolled_window.child = list_box;
 
-        this.add (scrolled_window);
+        this.append (scrolled_window);
 
         list_box.visible = true;
 

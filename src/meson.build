@@ -51,7 +51,7 @@ deps = [
   gtk_dep,
   libgtop_dep,
   tracker_dep,
-  libhandy_dep,
+  libadwaita_dep,
   cc.find_library('m'),
   valac.find_library('config', dirs: vapi_dir),
   valac.find_library('stopgap', dirs: vapi_dir),

@@ -29,7 +29,7 @@ public class Usage.PerformanceView : View {
     private unowned Gtk.Box performance_content;
 
     [GtkChild]
-    private unowned Hdy.SearchBar search_bar;
+    private unowned Gtk.SearchBar search_bar;
 
     [GtkChild]
     private unowned Gtk.SearchEntry search_entry;
@@ -50,13 +50,11 @@ public class Usage.PerformanceView : View {
         };
 
         foreach (var sub_view in sub_views)
-            performance_content.pack_start (sub_view, true, true, 0);
+            performance_content.append (sub_view);
 
         AnimatedScrolledWindow animated_scrolled_window = new AnimatedScrolledWindow (scrolled_window);
         var stackSwitcher = new GraphStackSwitcher (animated_scrolled_window, sub_views);
-        switcher_box.add (stackSwitcher);
-
-        show_all ();
+        switcher_box.append (stackSwitcher);
     }
 
     [GtkCallback]

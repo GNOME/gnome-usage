@@ -27,6 +27,7 @@ public class Usage.GraphBox : Gtk.Box {
     }
 
     public GraphBox (GraphView graph) {
-        add (graph);
+        this.add_css_class ("view");
+        append (graph);
     }
 }

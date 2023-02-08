@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.9 -->
-  <template class="UsageSpeedometer" parent="GtkBin">
+  <requires lib="gtk" version="4.0"/>
+  <template class="UsageSpeedometer" parent="AdwBin">
     <property name="visible">True</property>
 
-    <child>
+    <property name="child">
       <object class="GtkBox" id="outter">
         <property name="visible">True</property>
         <property name="valign">center</property>
@@ -35,6 +35,6 @@
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

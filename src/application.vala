@@ -20,7 +20,7 @@
 
 using Gtk;
 
-public class Usage.Application : Gtk.Application {
+public class Usage.Application : Adw.Application {
     private Window window;
 
     private const GLib.ActionEntry app_entries[] = {
@@ -44,7 +44,7 @@ public class Usage.Application : Gtk.Application {
 
         window = new Window (this);
 
-        set_accels_for_action ("app.quit", {"<Primary>q"});
+        set_accels_for_action ("app.quit", {"<Control>q"});
 
         window.show ();
     }
@@ -52,13 +52,8 @@ public class Usage.Application : Gtk.Application {
     protected override void startup () {
         base.startup ();
 
-        Hdy.init ();
-
         add_action_entries (app_entries, this);
-        set_accels_for_action ("app.search", {"<Primary>f"});
-
-        var icon_theme = Gtk.IconTheme.get_default ();
-        icon_theme.add_resource_path ("/org/gnome/Usage/icons");
+        set_accels_for_action ("app.search", {"<Control>f"});
     }
 
     private void on_about (GLib.SimpleAction action, GLib.Variant? parameter) {

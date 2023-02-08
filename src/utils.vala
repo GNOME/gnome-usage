@@ -60,20 +60,20 @@ public class Usage.Utils {
     }
 
     public static Gdk.RGBA generate_color (Gdk.RGBA default_color, uint order, uint all_count, bool reverse = false) {
-        double step = 100 / (double) all_count;
+        float step = 100 / (float) all_count;
         uint half_count = all_count / 2;
 
         if (order >= all_count)
             order = all_count - 1;
 
         if (order > (all_count / 2)) {
-            double percentage = step * (order - half_count);
+            float percentage = step * (order - half_count);
             if (reverse)
                 return Utils.color_lighter (default_color, percentage);
             else
                 return Utils.color_darker (default_color, percentage);
         } else {
-            double percentage = step * (half_count - (order-1));
+            float percentage = step * (half_count - (order-1));
             if (reverse)
                 return Utils.color_darker (default_color, percentage);
             else
@@ -81,7 +81,7 @@ public class Usage.Utils {
         }
     }
 
-    public static Gdk.RGBA color_darker (Gdk.RGBA color, double percentage) {
+    public static Gdk.RGBA color_darker (Gdk.RGBA color, float percentage) {
         color.red = color_field_darker (color.red, percentage);
         color.green = color_field_darker (color.green, percentage);
         color.blue = color_field_darker (color.blue, percentage);
@@ -89,7 +89,7 @@ public class Usage.Utils {
         return color;
     }
 
-    public static Gdk.RGBA color_lighter (Gdk.RGBA color, double percentage) {
+    public static Gdk.RGBA color_lighter (Gdk.RGBA color, float percentage) {
         color.red = color_field_lighter (color.red, percentage);
         color.green = color_field_lighter (color.green, percentage);
         color.blue = color_field_lighter (color.blue, percentage);
@@ -97,12 +97,12 @@ public class Usage.Utils {
         return color;
     }
 
-    private static double color_field_darker (double field, double percentage) {
+    private static float color_field_darker (float field, float percentage) {
         field = field * 255;
         return (field - ((field / 100) * percentage)) / 255;
     }
 
-    private static double color_field_lighter (double field, double percentage) {
+    private static float color_field_lighter (float field, float percentage) {
         field = field * 255;
         return (field + (((255 - field) / 100) * percentage)) / 255;
     }

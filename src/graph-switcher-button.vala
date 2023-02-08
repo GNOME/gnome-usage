@@ -18,8 +18,8 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-public class Usage.GraphSwitcherButton : Gtk.RadioButton {
-    private static Gtk.RadioButton? _group = null;
+public class Usage.GraphSwitcherButton : Gtk.ToggleButton {
+    private static Gtk.ToggleButton? _group = null;
 
     public GraphSwitcherButton.processor (string label) {
         var processor_graph = new CpuGraphMostUsedCore ();
@@ -44,8 +44,8 @@ public class Usage.GraphSwitcherButton : Gtk.RadioButton {
         label.margin_bottom = 3;
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        box.pack_start (graph_box, true, true, 0);
-        box.pack_start (label, false, false, 0);
+        box.append (graph_box);
+        box.append (label);
 
         return box;
     }
@@ -54,9 +54,7 @@ public class Usage.GraphSwitcherButton : Gtk.RadioButton {
         if (_group == null)
             _group = this;
         else
-            join_group (_group);
-
-        set_mode (false);
+            set_group (_group);
 
         var context = get_style_context ();
         context.add_class ("flat");

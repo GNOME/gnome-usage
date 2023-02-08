@@ -25,7 +25,17 @@ public class Usage.StorageRowPopover : Gtk.Popover {
     private unowned Gtk.Label label;
 
     public void popup_on_row (StorageViewRow row) {
-        relative_to = row;
+        Graphene.Rect row_bounds = Graphene.Rect ();
+        row.compute_bounds (this, out row_bounds);
+
+        Gdk.Rectangle pointing_to = Gdk.Rectangle ();
+
+        pointing_to.x = (int) row_bounds.get_top_left ().x;
+        pointing_to.y = (int) row_bounds.get_top_left ().y;
+        pointing_to.width = (int) row_bounds.get_width ();
+        pointing_to.height = (int) row_bounds.get_height ();
+
+        this.set_pointing_to (pointing_to);
 
         switch (row.item.custom_type) {
             case StorageViewType.OS:

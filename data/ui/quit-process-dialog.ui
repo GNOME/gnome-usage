@@ -1,37 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.9 -->
+  <requires lib="gtk" version="4.0"/>
 
-  <template class="UsageQuitProcessDialog" parent="GtkMessageDialog">
+  <template class="UsageQuitProcessDialog" parent="AdwMessageDialog">
     <property name="modal">True</property>
     <property name="resizable">False</property>
-    <property name="message-type">question</property>
-    <property name="text" translatable="yes" comments="Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”">Force Quit %s?</property>
-    <property name="secondary-text" translatable="yes">Unsaved work might be lost.</property>
-
-    <child type="action">
-      <object class="GtkButton" id="button_cancel">
-        <property name="visible">True</property>
-        <property name="can-default">True</property>
-        <property name="label" translatable="yes">Cancel</property>
-        <signal name="clicked" handler="cancel" swapped="no"/>
-      </object>
-    </child>
-
-    <child type="action">
-      <object class="GtkButton" id="button_force_quit">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">Force Quit</property>
-        <signal name="clicked" handler="on_force_quit_button_clicked"/>
-        <style>
-          <class name="destructive-action"/>
-        </style>
-      </object>
-    </child>
-
-    <action-widgets>
-      <action-widget response="accept">button_force_quit</action-widget>
-      <action-widget response="cancel">button_cancel</action-widget>
-    </action-widgets>
+    <property name="heading" translatable="yes" comments="Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”">Force Quit %s?</property>
+    <property name="body" translatable="yes">Unsaved work might be lost.</property>
+    <property name="default-response">cancel</property>
+    <property name="close-response">cancel</property>
+    <signal name="response" handler="responded"/>
+    <responses>
+      <response id="cancel" translatable="yes">Cancel</response>
+      <response id="quit" translatable="yes" appearance="destructive">Force Quit</response>
+    </responses>
   </template>
 </interface>

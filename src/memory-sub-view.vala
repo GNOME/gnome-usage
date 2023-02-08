@@ -35,9 +35,12 @@ public class Usage.MemorySubView : View, SubView {
         process_list_box.margin_top = 30;
 
         var spinner = new Gtk.Spinner ();
-        spinner.active = true;
+        spinner.map.connect (spinner.start);
+        spinner.unmap.connect (spinner.stop);
         spinner.margin_top = 30;
         spinner.height_request = 250;
+        spinner.hexpand = true;
+        spinner.halign = Gtk.Align.CENTER;
 
         no_process_view = new NoResultsFoundView ();
 
@@ -46,34 +49,29 @@ public class Usage.MemorySubView : View, SubView {
         swap_graph.valign = Gtk.Align.END;
 
         var speedometers = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        speedometers.pack_start (memory_graph, false, false, 0);
-        speedometers.pack_end (swap_graph, false, false, 0);
+        speedometers.append (memory_graph);
+        speedometers.append (swap_graph);
         speedometers.margin_top = 30;
 
         var memory_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        memory_box.pack_start (label, false, false, 0);
-        memory_box.pack_start (speedometers, false, false, 0);
-        memory_box.pack_start (spinner, true, true, 0);
-        memory_box.add (no_process_view);
+        memory_box.append (label);
+        memory_box.append (speedometers);
+        memory_box.append (spinner);
+        memory_box.append (no_process_view);
 
         var system_monitor = SystemMonitor.get_default ();
         system_monitor.notify["process-list-ready"].connect ((sender, property) => {
             if (system_monitor.process_list_ready) {
-                memory_box.pack_start (process_list_box, false, false, 0);
+                memory_box.append (process_list_box);
                 memory_box.remove (spinner);
             } else {
-                memory_box.pack_start (spinner, true, true, 0);
+                memory_box.append (spinner);
                 memory_box.remove (process_list_box);
             }
         });
 
         process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
-        add (memory_box);
-    }
-
-    public override void show_all () {
-        base.show_all ();
-        this.no_process_view.hide ();
+        set_child (memory_box);
     }
 
     public void search_in_processes (string text) {

@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.24"/>
-  <requires lib="libhandy" version="1.0"/>
-  <template class="UsageWindow" parent="HdyApplicationWindow">
+  <requires lib="gtk" version="4.0"/>
+  <template class="UsageWindow" parent="AdwApplicationWindow">
     <property name="default-height">600</property>
     <property name="default-width">950</property>
     <property name="title" translatable="yes">Usage</property>
     <property name="visible">True</property>
-    <property name="window-position">center</property>
     <child>
       <object class="GtkBox">
         <property name="orientation">vertical</property>
         <property name="visible">True</property>
         <child>
-          <object class="HdyHeaderBar" id="header_bar">
+          <object class="AdwHeaderBar" id="header_bar">
             <property name="centering-policy">strict</property>
-            <property name="show-close-button">True</property>
             <property name="visible">True</property>
-            <child type="title">
-              <object class="HdyViewSwitcherTitle" id="view_switcher_title">
+            <property name="title-widget">
+              <object class="AdwViewSwitcherTitle" id="view_switcher_title">
                 <property name="stack">stack</property>
                 <property name="title" translatable="yes">Usage</property>
                 <property name="visible">True</property>
               </object>
-            </child>
-            <child>
+            </property>
+            <child type="end">
               <object class="GtkMenuButton" id="primary_menu_button">
                 <property name="visible">True</property>
+                <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primary_menu</property>
+                <property name="primary">True</property>
                 <property name="tooltip-text" translatable="yes">Main Menu</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="icon-name">open-menu-symbolic</property>
-                    <property name="visible">True</property>
-                  </object>
-                </child>
               </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
             </child>
-            <child>
+            <child type="end">
               <object class="GtkRevealer" id="performance_search_revealer">
                 <!-- This allows the button to take space even when it is concealed, keeping the header bar's sizing homogeneous. -->
                 <property name="transition-duration">0</property>
@@ -49,24 +39,16 @@
                 <child>
                   <object class="GtkToggleButton" id="performance_search_button">
                     <property name="visible">True</property>
+                    <property name="icon-name">system-search-symbolic</property>
                     <signal name="toggled" handler="on_performance_search_button_toggled"/>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="icon-name">system-search-symbolic</property>
-                        <property name="visible">True</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
             </child>
           </object>
         </child>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="AdwViewStack" id="stack">
             <property name="height-request">200</property>
             <property name="vexpand">True</property>
             <property name="visible">True</property>
@@ -75,7 +57,7 @@
           </object>
         </child>
         <child>
-          <object class="HdyViewSwitcherBar" id="view_switcher_bar">
+          <object class="AdwViewSwitcherBar" id="view_switcher_bar">
             <property name="reveal" bind-source="view_switcher_title" bind-property="title-visible" bind-flags="sync-create"/>
             <property name="stack">stack</property>
             <property name="visible">True</property>

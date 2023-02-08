@@ -20,26 +20,15 @@ endif
 
 glib_dep = dependency('glib-2.0', version : '>=2.38')
 gobject_dep = dependency('gobject-2.0')
-gio_dep = dependency('gio-2.0')
+gio_dep = dependency('gio-2.0', version : '>=2.44')
 gio_unix_dep = dependency('gio-unix-2.0')
-gtk_dep = dependency('gtk+-3.0', version : '>=3.20.10')
+gtk_dep = dependency('gtk4', version : '>=4.6')
 libgtop_dep = dependency('libgtop-2.0', version : '>= 2.34.0')
-libhandy_dep = dependency('libhandy-1', version : '>= 1.0.0', required: false)
+libadwaita_dep = dependency('libadwaita-1', version : '>=1.2')
 tracker_dep = dependency('tracker-sparql-3.0')
 
 gnome = import('gnome')
 i18n = import('i18n')
-
-add_project_arguments (
-  '-DHANDY_USE_UNSTABLE_API',
-  language: 'c'
-)
-
-add_project_arguments (
-  # FIXME Drop once we depend on libhandy 1.0.
-  '--disable-since-check',
-  language: 'vala'
-)
 
 po_dir = join_paths(meson.source_root(), 'po')
 vapi_dir = join_paths (meson.source_root (), 'vapi')

@@ -18,7 +18,7 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-public abstract class Usage.View : Gtk.Bin {
+public abstract class Usage.View : Adw.Bin {
     public string title;
     public string icon_name;
 

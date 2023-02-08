@@ -23,7 +23,7 @@ public enum Usage.ProcessListBoxType {
     MEMORY;
 }
 
-public class Usage.ProcessListBox : Gtk.Bin {
+public class Usage.ProcessListBox : Adw.Bin {
     public Gtk.ListBox list_box { get; private set; default = new Gtk.ListBox (); }
 
     public bool empty { get; set; default = true; }
@@ -35,7 +35,7 @@ public class Usage.ProcessListBox : Gtk.Bin {
     private ProcessListBoxType type;
 
     public ProcessListBox (ProcessListBoxType type) {
-        this.add (list_box);
+        this.set_child (list_box);
 
         list_box.visible = true;
 

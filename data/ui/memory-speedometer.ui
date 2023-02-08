@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.9 -->
-  <template class="UsageMemorySpeedometer" parent="GtkBin">
+  <requires lib="gtk" version="4.0"/>
+  <template class="UsageMemorySpeedometer" parent="AdwBin">
     <property name="visible">True</property>
     <property name="width_request">120</property>
     <property name="height_request">120</property>
 
-    <child>
+    <property name="child">
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
@@ -90,7 +90,7 @@
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 
   <object class="GtkSizeGroup">

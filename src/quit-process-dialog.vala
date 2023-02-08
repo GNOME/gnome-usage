@@ -1,6 +1,7 @@
 /* quit-process-dialog.vala
  *
  * Copyright (C) 2017 Red Hat, Inc.
+ * Copyright (C) 2023 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,29 +18,29 @@
  *
  * Authors: Felipe Borges <felipeborges@gnome.org>
  *          Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/quit-process-dialog.ui")]
-public class Usage.QuitProcessDialog : Gtk.MessageDialog {
+public class Usage.QuitProcessDialog : Adw.MessageDialog {
     private AppItem app;
 
     public QuitProcessDialog (AppItem app) {
         this.app = app;
-        this.text = this.text.printf (app.display_name);
+        this.heading = this.heading.printf (app.display_name);
     }
 
     [GtkCallback]
-    private void on_force_quit_button_clicked () {
-        app.kill ();
-        this.destroy ();
-    }
-
-    [GtkCallback]
-    public void cancel () {
-        /* FIXME: For some reason we are not able to connect to the
-         * destroy signal right from the .ui file. */
+    public void responded (Adw.MessageDialog dialog, string response_type) {
+        switch (response_type) {
+            case "quit":
+                app.kill ();
+                break;
+            default:
+                break;
+        }
         this.destroy ();
     }
 }

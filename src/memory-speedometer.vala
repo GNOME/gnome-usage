@@ -21,7 +21,7 @@
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/memory-speedometer.ui")]
-public class Usage.MemorySpeedometer : Gtk.Bin {
+public class Usage.MemorySpeedometer : Adw.Bin {
     [GtkChild]
     private unowned Usage.Speedometer speedometer;
 
@@ -51,7 +51,5 @@ public class Usage.MemorySpeedometer : Gtk.Bin {
 
             return true;
         });
-
-        this.show_all ();
     }
 }
