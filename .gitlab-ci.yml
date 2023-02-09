@@ -25,7 +25,7 @@ flatpak:
     MANIFEST_PATH: 'org.gnome.Usage.json'
     RUNTIME_REPO: 'https://nightly.gnome.org/gnome-nightly.flatpakrepo'
     FLATPAK_MODULE: 'gnome-usage'
-    BUNDLE: "org.gnome.Usage.Devel.flatpak"
+    BUNDLE: "org.gnome.UsageDevel.flatpak"
     APP_ID: 'org.gnome.UsageDevel'
 
 nightly:

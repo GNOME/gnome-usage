@@ -31,7 +31,7 @@ public class Usage.Application : Gtk.Application {
     };
 
     public Application () {
-        application_id = Config.APPLICATION_ID;
+        Object (application_id: Config.APPLICATION_ID, flags: ApplicationFlags.FLAGS_NONE, resource_base_path: Config.APPLICATION_RESOURCE_PATH);
     }
 
     public Window? get_window () {

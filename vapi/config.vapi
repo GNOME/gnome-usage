@@ -4,7 +4,7 @@ namespace Config {
     public const string GETTEXT_PACKAGE;
     public const string GNOMELOCALEDIR;
     public const string APPLICATION_ID;
-    public const string NAME_SUFFIX;
+    public const string APPLICATION_RESOURCE_PATH;
     public const string PROFILE;
 }
 

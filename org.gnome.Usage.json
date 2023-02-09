@@ -5,7 +5,6 @@
     "sdk": "org.gnome.Sdk",
     "command": "gnome-usage",
     "tags": ["devel"],
-    "desktop-file-name-prefix": "(Development) ",
     "finish-args": [
         "--share=ipc", "--socket=x11",
         "--socket=wayland",

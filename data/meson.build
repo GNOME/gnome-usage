@@ -14,11 +14,9 @@ resource_data = files(
   'ui/window.ui',
 )
 
-gresource = 'org.gnome.Usage'
-
 resources = gnome.compile_resources(
-  gresource,
-  gresource + '.gresource.xml',
+  base_id,
+  '@0@.gresource.xml'.format(base_id),
   c_name: 'resources',
   dependencies: resource_data
 )
@@ -26,7 +24,7 @@ resources = gnome.compile_resources(
 schema_conf = configuration_data()
 schema_conf.set('app-id', application_id)
 configure_file(
-  input: 'org.gnome.Usage.gschema.xml.in',
+  input: '@0@.gschema.xml.in'.format(base_id),
   output: '@BASENAME@',
   configuration: schema_conf,
   install: true,
@@ -38,7 +36,7 @@ desktop_conf.set('icon', application_id)
 i18n.merge_file(
   type: 'desktop',
   input: configure_file(
-    input: 'org.gnome.Usage.desktop.in.in',
+    input: '@0@.desktop.in.in'.format(base_id),
     output: '@BASENAME@',
     configuration: desktop_conf
   ),
@@ -52,7 +50,7 @@ appdata_conf = configuration_data()
 appdata_conf.set('app-id', application_id)
 i18n.merge_file(
   input: configure_file(
-    input: 'org.gnome.Usage.appdata.xml.in.in',
+    input: '@0@.appdata.xml.in.in'.format(base_id),
     output: '@BASENAME@',
     configuration: appdata_conf
   ),
@@ -63,7 +61,7 @@ i18n.merge_file(
 )
 
 install_data(
-  'icons/hicolor/scalable/apps/org.gnome.Usage.svg',
+  'icons/hicolor/scalable/apps/@0@.svg'.format(application_id),
   install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'apps'),
   rename: '@0@.svg'.format(application_id)
 )

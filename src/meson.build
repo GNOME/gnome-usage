@@ -62,12 +62,12 @@ deps = [
 ]
 
 c_args = [
-  '-DVERSION="@0@"'.format(meson.project_version()),
+  '-DVERSION="@0@@1@"'.format(meson.project_version(), version_suffix),
   '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
   '-DGNOMELOCALEDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('localedir'))),
   '-DPROFILE="@0@"'.format(profile),
   '-DAPPLICATION_ID="@0@"'.format(application_id),
-  '-DNAME_SUFFIX="@0@"'.format(name_suffix)
+  '-DAPPLICATION_RESOURCE_PATH="@0@"'.format(resource_path)
 ]
 
 executable(

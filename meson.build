@@ -37,16 +37,26 @@ vapi_dir = join_paths (meson.source_root (), 'vapi')
 
 vapi_dirs = [ '--vapidir=@0@'.format(vapi_dir) ]
 
+base_id = 'org.gnome.Usage'
+resource_path = '/org/gnome/Usage/'
+
 if get_option('profile') == 'development'
   profile = 'Devel'
-  name_suffix = ' (Development)'
+  version_suffix = '-devel'
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip()
+  if vcs_tag != ''
+    version_suffix = '-@0@'.format(vcs_tag)
+  endif
 else
   profile = ''
-  name_suffix = ''
+  version_suffix = ''
 endif
 
-application_id = 'org.gnome.Usage@0@'.format(profile)
-
+if profile != ''
+  application_id = '@0@@1@'.format(base_id, profile)
+else
+  application_id = base_id
+endif
 
 subdir('data')
 subdir('po')
