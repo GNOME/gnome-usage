@@ -23,7 +23,9 @@ public enum Usage.ProcessListBoxType {
     MEMORY;
 }
 
-public class Usage.ProcessListBox : Gtk.ListBox {
+public class Usage.ProcessListBox : Gtk.Bin {
+    public Gtk.ListBox list_box { get; private set; default = new Gtk.ListBox (); }
+
     public bool empty { get; set; default = true; }
     public string search_text { get; set; default = ""; }
 
@@ -33,14 +35,18 @@ public class Usage.ProcessListBox : Gtk.ListBox {
     private ProcessListBoxType type;
 
     public ProcessListBox (ProcessListBoxType type) {
-        set_selection_mode (Gtk.SelectionMode.NONE);
-        set_header_func (update_header);
+        this.add (list_box);
+
+        list_box.visible = true;
+
+        list_box.set_selection_mode (Gtk.SelectionMode.NONE);
+        list_box.set_header_func (update_header);
 
         this.type = type;
         model = new ListStore (typeof (AppItem));
-        bind_model (model, on_row_created);
+        list_box.bind_model (model, on_row_created);
 
-        row_activated.connect ((row) => {
+        list_box.row_activated.connect ((row) => {
             var process_row = (ProcessRow) row;
             process_row.activate ();
         });
