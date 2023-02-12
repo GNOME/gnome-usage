@@ -1,5 +1,5 @@
 resource_data = files(
-  'interface/adwaita.css',
+  'style.css',
   'ui/primary-menu.ui',
   'ui/memory-speedometer.ui',
   'ui/no-results-found-view.ui',
