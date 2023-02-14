@@ -38,7 +38,10 @@
                   <object class="GtkLabel" id="header_label">
                     <property name="visible">True</property>
                     <property name="halign">start</property>
-                    <property name="margin">10</property>
+                    <property name="margin-start">10</property>
+                    <property name="margin-end">10</property>
+                    <property name="margin-top">10</property>
+                    <property name="margin-bottom">10</property>
                     <property name="label" translatable="yes">Home Partition</property>
                     <attributes>
                       <attribute name="weight" value="bold" />
@@ -94,7 +97,8 @@
                 <child>
                   <object class="UsageStorageGraph" id="graph">
                     <property name="visible">True</property>
-                    <property name="expand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="hexpand">True</property>
                   </object>
                 </child>
               </object>

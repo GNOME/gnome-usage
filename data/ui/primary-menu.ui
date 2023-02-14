@@ -5,7 +5,10 @@
     <child>
       <object class="GtkBox" id="primary_menu_container">
         <property name="visible">True</property>
-        <property name="margin">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkModelButton" id="about_usage_button">

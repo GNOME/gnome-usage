@@ -9,7 +9,10 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkImage">
-            <property name="margin">10</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">10</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
             <property name="icon-name">system-run-symbolic</property>
             <property name="pixel-size">72</property>
           </object>
@@ -21,7 +24,10 @@
               <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
             </attributes>
             <property name="label" translatable="yes">No results found</property>
-            <property name="margin">10</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">10</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
           </object>
         </child>
         <child>

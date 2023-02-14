@@ -9,7 +9,10 @@
       <object class="GtkLabel" id="label">
         <property name="visible">True</property>
         <property name="label" translatable="no">label</property>
-        <property name="margin">10</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <property name="margin-top">10</property>
+        <property name="margin-bottom">10</property>
         <property name="max-width-chars">30</property>
         <property name="wrap">True</property>
       </object>
