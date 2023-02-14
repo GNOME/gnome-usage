@@ -35,7 +35,7 @@ public class Usage.PerformanceView : View {
     private unowned Gtk.SearchEntry search_entry;
 
     [GtkChild]
-    private unowned AnimatedScrolledWindow scrolled_window;
+    private unowned Gtk.ScrolledWindow scrolled_window;
 
     View[] sub_views;
 
@@ -52,7 +52,8 @@ public class Usage.PerformanceView : View {
         foreach (var sub_view in sub_views)
             performance_content.pack_start (sub_view, true, true, 0);
 
-        var stackSwitcher = new GraphStackSwitcher (scrolled_window, sub_views);
+        AnimatedScrolledWindow animated_scrolled_window = new AnimatedScrolledWindow (scrolled_window);
+        var stackSwitcher = new GraphStackSwitcher (animated_scrolled_window, sub_views);
         switcher_box.add (stackSwitcher);
 
         show_all ();

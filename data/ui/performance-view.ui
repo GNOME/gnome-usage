@@ -67,7 +67,7 @@
             </child>
 
             <child>
-              <object class="UsageAnimatedScrolledWindow" id="scrolled_window">
+              <object class="GtkScrolledWindow" id="scrolled_window">
                 <property name="visible">True</property>
                 <property name="vexpand">True</property>
                 <child>
