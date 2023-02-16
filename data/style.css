@@ -100,10 +100,6 @@ StorageGraph {
 }
 
 /* Storage */
-.storage-list:last-child {
-    background: @theme_bg_color;
-}
-
 .row-tag {
     border-radius: 100%;
 }
@@ -150,18 +146,19 @@ row.up-folder:not(:backdrop)  {
     border-bottom: 1px solid shade(@borders, 0.8);
 }
 
-dzlstacklist list {
+.storage-list list {
+    background: @theme_bg_color;
     border-color: @borders;
     border-left: none;
     border-right: none;
     border-bottom: none;
 }
 
-dzlstacklist list:not(:backdrop)  {
+.storage-list list:not(:backdrop)  {
     border-top: 1px solid shade(@borders, 0.8);
 }
 
-dzlstacklist list.stack-header {
+.storage-list list.stack-header {
     padding-bottom: 1px;
     margin: 0px;
     border:none;
