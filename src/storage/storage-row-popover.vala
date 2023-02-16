@@ -24,7 +24,7 @@ public class Usage.StorageRowPopover : Gtk.Popover {
     [GtkChild]
     private unowned Gtk.Label label;
 
-    public void present (StorageViewRow row) {
+    public void popup_on_row (StorageViewRow row) {
         relative_to = row;
 
         switch (row.item.custom_type) {

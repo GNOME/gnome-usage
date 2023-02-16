@@ -24,7 +24,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
     private unowned List<StorageViewItem> selected_items;
     private unowned GLib.ListStore _model;
     private uint64 selected_size = 0;
-    private bool root { get; private set; }
+    private bool is_root { get; private set; }
 
     public unowned GLib.ListStore model {
         get { return _model; }
@@ -32,12 +32,12 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
             _model = value;
             this.draw.connect (draw_storage_graph);
             this.queue_draw ();
-            root = false;
+            is_root = false;
 
             for (int i = 0; i < value.get_n_items (); i++) {
                 var item = model.get_item (i) as StorageViewItem;
                 if (item.custom_type == StorageViewType.OS) {
-                    root = true;
+                    is_root = true;
                     break;
                 }
             }
@@ -104,7 +104,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
 
                 Gdk.RGBA fill_color = base_color;
 
-                if (!root) {
+                if (!is_root) {
                     fill_color = Utils.generate_color (base_color, i, shown_items_number, true);
                     item.color = fill_color;
                 }

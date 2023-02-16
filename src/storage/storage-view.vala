@@ -128,7 +128,7 @@ public class Usage.StorageView : Usage.View {
             clear_selected_items ();
             present_dir.begin (storage_row.item.uri, storage_row.item.dir, cancellable);
         } else if (storage_row.item.custom_type != StorageViewType.NONE) {
-            row_popover.present (storage_row);
+            row_popover.popup_on_row (storage_row);
         } else {
             try {
                 AppInfo.launch_default_for_uri (storage_row.item.uri, null);
