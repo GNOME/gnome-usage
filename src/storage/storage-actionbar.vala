@@ -19,7 +19,7 @@
  */
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-actionbar.ui")]
-public class Usage.StorageActionBar : Gtk.ActionBar {
+public class Usage.StorageActionBar : Gtk.Bin {
     private unowned List<StorageViewItem> selected_items;
 
     [GtkChild]
