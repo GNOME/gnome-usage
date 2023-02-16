@@ -51,17 +51,6 @@ rg-graph.stacked_max {
     color: rgba(238,34,34,0.227);
 }
 
-PieChart.used, ColorRectangle.used {
-    color: #4a90d9;
-}
-
-PieChart.others, ColorRectangle.others {
-    color:  @insensitive_fg_color;
-}
-PieChart.available, ColorRectangle.available {
-    color: @theme_base_color;
-}
-
 StorageGraph {
     color: @theme_base_color;
 }
