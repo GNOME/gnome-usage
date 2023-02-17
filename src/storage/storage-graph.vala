@@ -97,10 +97,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
                 if (item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
                     continue;
 
-                var style_context = get_style_context ();
-                style_context.add_class (item.style_class);
-                var base_color = style_context.get_background_color (style_context.get_state ());
-                style_context.remove_class (item.style_class);
+                Gdk.RGBA base_color = item.get_base_color ();
 
                 Gdk.RGBA fill_color = base_color;
 

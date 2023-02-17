@@ -72,7 +72,7 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
 
         var tag_style_context = tag.get_style_context ();
         tag_style_context.add_class (item.style_class);
-        item.color = tag_style_context.get_background_color (tag_style_context.get_state ());
+        item.color = item.get_base_color ();
 
         check_button.visible = item.show_check_button;
         check_button.toggled.connect (() => {

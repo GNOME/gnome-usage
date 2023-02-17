@@ -116,14 +116,6 @@ StorageGraph {
 .available-tag { background: white; border: 1px solid @borders; }
 .os-tag { background: black; }
 
-.folders { background: #737373; }
-.files { background: #cdcdcd; }
-.downloads { background: #ffe451; }
-.pictures { background: #2493d3; }
-.videos { background: #a77aa5; }
-.documents { background: #7be95a; }
-.music { background: #f9a14a; }
-
 .storage-row {
     padding: 0 5px;
 }

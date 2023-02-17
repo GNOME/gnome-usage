@@ -183,4 +183,39 @@ public class Usage.StorageViewItem : GLib.Object {
 
         return false;
     }
+
+    public Gdk.RGBA get_base_color () {
+        Gdk.RGBA base_color = Gdk.RGBA ();
+        switch (style_class) {
+            case "available-tag":
+                base_color.parse ("#ffffff");
+                break;
+            case "os-tag":
+                base_color.parse ("#000000");
+                break;
+            case "folders":
+                base_color.parse ("#737373");
+                break;
+            case "downloads":
+                base_color.parse ("#ffe451");
+                break;
+            case "pictures":
+                base_color.parse ("#2493d3");
+                break;
+            case "videos":
+                base_color.parse ("#a77aa5");
+                break;
+            case "documents":
+                base_color.parse ("#7be95a");
+                break;
+            case "music":
+                base_color.parse ("#f9a14a");
+                break;
+            case "files":
+            default:
+                base_color.parse ("#cdcdcd");
+                break;
+        }
+        return base_color;
+    }
 }
