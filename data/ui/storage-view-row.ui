@@ -28,19 +28,28 @@
               <class name="circular"/>
             </style>
           </object>
-          <packing>
-            <property name="pack-type">start</property>
-          </packing>
         </child>
 
         <child>
           <object class="GtkLabel" id="title">
             <property name="visible">True</property>
             <property name="ellipsize">middle</property>
+            <property name="hexpand">True</property>
+            <property name="halign">start</property>
           </object>
-          <packing>
-            <property name="pack-type">start</property>
-          </packing>
+        </child>
+
+         <child>
+          <object class="GtkSpinner" id="spinner">
+            <property name="active">True</property>
+            <property name="visible">False</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkLabel" id="size_label">
+            <property name="visible">True</property>
+          </object>
         </child>
 
         <child>
@@ -49,28 +58,6 @@
             <property name="receives_default">True</property>
             <property name="draw_indicator">True</property>
           </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
-        </child>
-
-         <child>
-          <object class="GtkSpinner" id="spinner">
-            <property name="active">True</property>
-            <property name="visible">False</property>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
-        </child>
-
-        <child>
-          <object class="GtkLabel" id="size_label">
-            <property name="visible">True</property>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
         </child>
 
       </object>

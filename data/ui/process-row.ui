@@ -25,11 +25,6 @@
                 <property name="margin-start">10</property>
                 <property name="pixel_size">24</property>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="title_label">
@@ -37,27 +32,9 @@
                 <property name="can_focus">False</property>
                 <property name="ellipsize">end</property>
                 <property name="max_width_chars">60</property>
+                <property name="hexpand">True</property>
+                <property name="halign">start</property>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="load_label">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="ellipsize">end</property>
-                <property name="max_width_chars">30</property>
-                <property name="margin-end">10</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack_type">end</property>
-                <property name="position">3</property>
-              </packing>
             </child>
             <child>
               <object class="GtkImage" id="gamemode">
@@ -68,12 +45,6 @@
                 <property name="pixel_size">24</property>
                 <property name="icon_name">applications-games-symbolic</property>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="pack_type">end</property>
-                <property name="position">3</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox" id="user_tag_box">
@@ -89,19 +60,17 @@
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack_type">end</property>
-                <property name="position">3</property>
-              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="load_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="ellipsize">end</property>
+                <property name="max_width_chars">30</property>
+                <property name="margin-end">10</property>
+              </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
       </object>
     </child>
