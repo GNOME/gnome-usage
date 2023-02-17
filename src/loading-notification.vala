@@ -21,7 +21,7 @@
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/loading-notification.ui")]
-private class Usage.LoadingNotification: Gtk.Revealer {
+private class Usage.LoadingNotification : Gtk.Grid {
     public signal void dismissed ();
     public delegate void DismissFunc ();
 
@@ -29,14 +29,11 @@ private class Usage.LoadingNotification: Gtk.Revealer {
     private unowned Gtk.Label message_label;
 
     public LoadingNotification (string message, owned DismissFunc? dismiss_func) {
-        set_reveal_child (true);
-
         message_label.label = message;
 
         dismissed.connect ( () => {
             if (dismiss_func != null)
                 dismiss_func ();
-            set_reveal_child (false);
         });
     }
 

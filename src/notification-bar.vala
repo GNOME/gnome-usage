@@ -29,15 +29,26 @@ private class Usage.NotificationBar: Gtk.Grid {
         var notification = new LoadingNotification (message, (owned) dismiss_func);
         active_notifications.prepend (notification);
 
+        Gtk.Revealer notification_revealer = add_notification (notification);
+        notification_revealer.set_reveal_child (true);
+
         notification.dismissed.connect ( () => {
+            notification_revealer.set_reveal_child (false);
             active_notifications.remove (notification);
         });
 
-        add_notification (notification);
         return notification;
     }
 
-    private void add_notification (Widget widget) {
-        add (widget);
+    private Gtk.Revealer add_notification (Widget widget) {
+        Gtk.Revealer revealer = new Gtk.Revealer ();
+        revealer.visible = true;
+        revealer.can_focus = false;
+        revealer.valign = Gtk.Align.START;
+        revealer.child = widget;
+
+        add (revealer);
+
+        return revealer;
     }
 }
