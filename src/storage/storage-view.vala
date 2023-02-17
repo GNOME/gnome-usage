@@ -88,6 +88,9 @@ public class Usage.StorageView : Usage.View {
         controller = new TrackerController (connection);
 
         listbox.init (create_file_row);
+        listbox.model_changed.connect ((model) => {
+            graph.model = model;
+        });
 
         actionbar.refresh_listbox.connect (() => {
             var item = actual_item.peek_head ();
@@ -164,8 +167,6 @@ public class Usage.StorageView : Usage.View {
                 populate_view.begin ();
             else
                 present_dir.begin (item.uri, item.dir, cancellable);
-        } else {
-            graph.model = (ListStore) listbox.get_model ();
         }
     }
 
@@ -193,7 +194,6 @@ public class Usage.StorageView : Usage.View {
         if (item.custom_type == StorageViewType.AVAILABLE_GRAPH)
             return new Gtk.ListBoxRow ();
 
-        graph.model = (ListStore) listbox.get_model ();
         return row;
     }
 
@@ -214,13 +214,10 @@ public class Usage.StorageView : Usage.View {
                 var up_folder_item = model.get_item (0) as StorageViewItem;
                 up_folder_item.size = controller.enumerate_children.end (res);
                 up_folder_item.loaded = true;
-                graph.model = model;
             }
         });
 
         listbox.push_layer (model);
-        if (!cancellable.is_cancelled ())
-            graph.model = model;
     }
 
     private void setup_header_label () {
@@ -309,7 +306,6 @@ public class Usage.StorageView : Usage.View {
         available_graph_item.custom_type = StorageViewType.AVAILABLE_GRAPH;
         available_graph_item.percentage = available_graph_item.size * 100 / (double) total_size;
         model.append (available_graph_item);
-        graph.model = model;
     }
 
     private void refresh_actionbar () {

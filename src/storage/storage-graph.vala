@@ -26,11 +26,11 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
     private uint64 selected_size = 0;
     private bool is_root { get; private set; }
 
-    public unowned GLib.ListStore model {
+    public virtual GLib.ListStore model {
         get { return _model; }
         set {
             _model = value;
-            this.draw.connect (draw_storage_graph);
+            value.items_changed.connect (this.queue_draw);
             this.queue_draw ();
             is_root = false;
 
@@ -48,6 +48,10 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
 
     class construct {
         set_css_name ("StorageGraph");
+    }
+
+    construct {
+        this.draw.connect (draw_storage_graph);
     }
 
     public enum Circle {
