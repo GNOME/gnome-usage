@@ -1,6 +1,5 @@
 resource_data = files(
   'style.css',
-  'ui/primary-menu.ui',
   'ui/memory-speedometer.ui',
   'ui/no-results-found-view.ui',
   'ui/performance-view.ui',

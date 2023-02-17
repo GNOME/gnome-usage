@@ -40,11 +40,7 @@ public class Usage.Window : Hdy.ApplicationWindow {
     [GtkChild]
     private unowned Gtk.ToggleButton performance_search_button;
 
-    [GtkChild]
-    private unowned Gtk.MenuButton primary_menu_button;
-
     private HeaderBarMode mode;
-    private Usage.PrimaryMenu menu;
 
     private View[] views;
 
@@ -61,9 +57,6 @@ public class Usage.Window : Hdy.ApplicationWindow {
         });
 
         mode = HeaderBarMode.PERFORMANCE;
-        menu = new Usage.PrimaryMenu ();
-        this.primary_menu_button.set_popover (menu);
-
         set_mode (HeaderBarMode.PERFORMANCE);
 
         views = new View[] {
@@ -93,7 +86,12 @@ public class Usage.Window : Hdy.ApplicationWindow {
             case HeaderBarMode.STORAGE:
                 break;
         }
-        menu.mode = mode;
+
+        SimpleAction performance_action = this.get_application ().lookup_action ("filter-processes") as SimpleAction;
+        if (performance_action != null) {
+            performance_action.set_enabled (mode == HeaderBarMode.PERFORMANCE);
+        }
+
         this.mode = mode;
     }
 

@@ -27,6 +27,8 @@
             <child>
               <object class="GtkMenuButton" id="primary_menu_button">
                 <property name="visible">True</property>
+                <property name="menu-model">primary_menu</property>
+                <property name="tooltip-text" translatable="yes">Main Menu</property>
                 <child>
                   <object class="GtkImage">
                     <property name="icon-name">open-menu-symbolic</property>
@@ -82,4 +84,26 @@
       </object>
     </child>
   </template>
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_About Usage</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Group system processes</attribute>
+        <attribute name="action">app.filter-processes</attribute>
+        <attribute name="target">group-system</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Show all processes</attribute>
+        <attribute name="action">app.filter-processes</attribute>
+        <attribute name="target">show-all</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>

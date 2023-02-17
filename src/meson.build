@@ -22,7 +22,6 @@ vala_sources = [
   'no-results-found-view.vala',
   'notification-bar.vala',
   'performance-view.vala',
-  'primary-menu.vala',
   'process-list-box.vala',
   'process-row.vala',
   'process.vala',
