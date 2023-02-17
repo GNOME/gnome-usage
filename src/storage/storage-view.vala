@@ -36,7 +36,7 @@ public class Usage.StorageView : Usage.View {
     private unowned StorageViewRow available_row;
 
     [GtkChild]
-    private unowned Dazzle.StackList listbox;
+    private unowned StackList listbox;
 
     [GtkChild]
     private unowned StorageGraph graph;
@@ -86,6 +86,8 @@ public class Usage.StorageView : Usage.View {
 
         query_builder = new StorageQueryBuilder ();
         controller = new TrackerController (connection);
+
+        listbox.init (create_file_row);
 
         actionbar.refresh_listbox.connect (() => {
             var item = actual_item.peek_head ();
@@ -142,7 +144,7 @@ public class Usage.StorageView : Usage.View {
         selected_items = selected_items_stack.pop_head ();
         actual_item.pop_head ();
         refresh_actionbar ();
-        listbox.pop ();
+        listbox.layer_up ();
 
         var first_item = listbox.get_model ().get_item (0) as StorageViewItem;
         var refresh = false;
@@ -156,7 +158,7 @@ public class Usage.StorageView : Usage.View {
             var item = actual_item.peek_head ();
 
             clear_selected_items ();
-            listbox.pop ();
+            listbox.layer_up ();
 
             if (listbox.get_depth () == 0)
                 populate_view.begin ();
@@ -216,7 +218,7 @@ public class Usage.StorageView : Usage.View {
             }
         });
 
-        listbox.push (new Gtk.ListBoxRow (), model, create_file_row);
+        listbox.push_layer (model);
         if (!cancellable.is_cancelled ())
             graph.model = model;
     }
@@ -300,7 +302,7 @@ public class Usage.StorageView : Usage.View {
             });
         }
 
-        listbox.push (new Gtk.ListBoxRow (), model, create_file_row);
+        listbox.push_layer (model);
 
         var available_graph_item = new StorageViewItem ();
         available_graph_item.size = total_free_size;

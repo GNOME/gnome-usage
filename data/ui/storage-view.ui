@@ -63,7 +63,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="DzlStackList" id="listbox">
+                  <object class="UsageStackList" id="listbox">
                     <property name="visible">True</property>
                     <property name="vexpand">True</property>
                     <signal name="row-activated" handler="on_row_activated" />

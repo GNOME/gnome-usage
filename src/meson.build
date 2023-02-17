@@ -28,6 +28,7 @@ vala_sources = [
   'quit-process-dialog.vala',
   'settings.vala',
   'speedometer.vala',
+  'stack-list.vala',
   'storage/storage-actionbar.vala',
   'storage/storage-graph.vala',
   'storage/query-builder.vala',
