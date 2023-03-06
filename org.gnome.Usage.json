@@ -33,6 +33,17 @@
             ]
         },
         {
+            "name": "gee-0.8",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libgee",
+                    "branch": "main"
+                }
+            ]
+        },
+        {
             "buildsystem": "meson",
             "config-opts": [
                 "-Dprofile=development"

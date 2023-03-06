@@ -44,6 +44,7 @@ vala_sources = [
 ]
 
 deps = [
+  gee_dep,
   gio_dep,
   gio_unix_dep,
   glib_dep,
