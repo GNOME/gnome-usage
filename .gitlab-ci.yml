@@ -9,7 +9,7 @@ fedora:
   before_script:
     - dnf update -y
     - dnf install -y gcc meson gettext gtk-doc vala gtk3-devel libgtop2-devel libhandy-devel
-                     desktop-file-utils libdazzle-devel redhat-rpm-config tracker-devel
+                     desktop-file-utils redhat-rpm-config tracker-devel
 
   image: fedora:38
   stage: test

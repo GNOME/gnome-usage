@@ -33,20 +33,6 @@
             ]
         },
         {
-            "name" : "libdazzle",
-            "buildsystem" : "meson",
-	    "build-options" : {
-		"append-path": "/usr/lib/sdk/vala-nightly/bin",
-		"append-ld-library-path": "/usr/lib/sdk/vala-nightly/lib"
-	    },
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/libdazzle.git"
-                }
-            ]
-        },
-        {
             "buildsystem": "meson",
             "config-opts": [
                 "-Dprofile=development"
