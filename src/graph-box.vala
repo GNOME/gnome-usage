@@ -26,7 +26,7 @@ public class Usage.GraphBox : Gtk.Box {
         set_css_name ("graph-box");
     }
 
-    public GraphBox (Dazzle.GraphView graph) {
+    public GraphBox (GraphView graph) {
         add (graph);
     }
 }

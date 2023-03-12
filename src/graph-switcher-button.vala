@@ -31,7 +31,7 @@ public class Usage.GraphSwitcherButton : Gtk.RadioButton {
         child = createContent (memory_graph, label);
     }
 
-    private Gtk.Box createContent (Dazzle.GraphView graph, string label_text) {
+    private Gtk.Box createContent (GraphView graph, string label_text) {
         graph.height_request = 80;
         graph.hexpand = true;
         var graph_box = new GraphBox (graph);

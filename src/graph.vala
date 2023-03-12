@@ -1,6 +1,6 @@
-/* memory-graph.vala
+/* graph.vala
  *
- * Copyright (C) 2018 Red Hat, Inc.
+ * Copyright (C) 2023 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Authors: Petr Štětka <pstetka@redhat.com>
+ * Authors: Markus Göllnitz <camelcasenick@bewares.it>
  */
 
-public class Usage.MemoryGraph : GraphView {
-    public MemoryGraph () {
+public class Usage.GraphView : Gtk.Box {
+    class construct {
+        set_css_name ("rg-graph");
     }
 }
