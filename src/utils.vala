@@ -1,6 +1,7 @@
 /* utils.vala
  *
  * Copyright (C) 2017 Red Hat, Inc.
+ * Copyright (C) 2023 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +17,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
 public class Usage.Utils {
+    public static string unescape (string escaped) {
+        string unescaped = escaped;
+        unichar c = 0;
+        int index = 0;
+        while (unescaped.get_next_char (ref index, out c)) {
+            if (c != '\\') {
+                continue;
+            }
+            unescaped.get_next_char (ref index, out c);
+            if (c == 'x') {
+                string char_point = unescaped.slice (index, index + 2);
+                char unescaped_char = 0;
+                for (int i = 0; i < char_point.length; i++) {
+                    char offset = '0';
+                    if (char_point.data[i] >= 'A') offset = 'A' - 10;
+                    if (char_point.data[i] >= 'a') offset = 'a' - 10;
+                    unescaped_char = unescaped_char * 16 + char_point.data[i] - offset;
+                }
+                unescaped = unescaped.splice (index - 2, index + 2, unescaped_char.to_string ());
+            }
+        }
+        return unescaped.compress ();
+    }
+
     public static string format_size_values (uint64 @value) {
         if (@value >= 1000)
             return GLib.format_size (@value);

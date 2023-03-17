@@ -88,7 +88,7 @@ public class Usage.AppItem : Object {
 
         /* Now, unescape any \xXX escapes, which should only be dashes
          * from the reverse domain name. */
-        id = escaped_id.compress ();
+        id = Utils.unescape (escaped_id);
         if (id == null)
             return null;
 
