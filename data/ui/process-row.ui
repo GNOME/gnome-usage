@@ -2,22 +2,18 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="UsageProcessRow" parent="GtkListBoxRow">
-    <property name="visible">True</property>
     <property name="hexpand">True</property>
     <property name="child">
       <object class="GtkBox">
-        <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
             <property name="margin-start">10</property>
             <property name="margin-end">10</property>
             <property name="margin-top">10</property>
             <property name="margin-bottom">10</property>
             <child>
               <object class="GtkImage" id="icon">
-                <property name="visible">True</property>
                 <property name="margin-end">10</property>
                 <property name="margin-start">10</property>
                 <property name="pixel_size">24</property>
@@ -25,7 +21,6 @@
             </child>
             <child>
               <object class="GtkLabel" id="title_label">
-                <property name="visible">True</property>
                 <property name="ellipsize">end</property>
                 <property name="max_width_chars">60</property>
                 <property name="hexpand">True</property>
@@ -34,7 +29,6 @@
             </child>
             <child>
               <object class="GtkImage" id="gamemode">
-                <property name="visible">True</property>
                 <property name="margin-start">10</property>
                 <property name="margin-end">10</property>
                 <property name="pixel_size">24</property>
@@ -49,15 +43,12 @@
                   <class name="tag"/>
                 </style>
                 <child>
-                  <object class="GtkLabel" id="user_tag_label">
-                    <property name="visible">True</property>
-                  </object>
+                  <object class="GtkLabel" id="user_tag_label"/>
                 </child>
               </object>
             </child>
             <child>
               <object class="GtkLabel" id="load_label">
-                <property name="visible">True</property>
                 <property name="ellipsize">end</property>
                 <property name="max_width_chars">30</property>
                 <property name="margin-end">10</property>

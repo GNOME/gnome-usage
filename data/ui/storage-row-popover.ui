@@ -6,7 +6,6 @@
     <property name="autohide">True</property>
     <child>
       <object class="GtkLabel" id="label">
-        <property name="visible">True</property>
         <property name="label" translatable="no">label</property>
         <property name="margin-start">10</property>
         <property name="margin-end">10</property>

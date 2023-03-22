@@ -37,8 +37,6 @@ public class Usage.ProcessListBox : Adw.Bin {
     public ProcessListBox (ProcessListBoxType type) {
         this.set_child (list_box);
 
-        list_box.visible = true;
-
         list_box.set_selection_mode (Gtk.SelectionMode.NONE);
         list_box.set_header_func (update_header);
 

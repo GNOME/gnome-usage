@@ -2,13 +2,10 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="UsageStorageView" parent="UsageView">
-    <property name="visible">True</property>
     <child>
       <object class="GtkOverlay" id="notification_overlay">
-        <property name="visible">True</property>
         <child type="overlay">
           <object class="UsageNotificationBar" id="notificationbar">
-            <property name="visible">True</property>
             <property name="valign">start</property>
             <property name="halign">center</property>
             <property name="orientation">vertical</property>
@@ -19,14 +16,12 @@
         </child>
         <child>
           <object class="AdwLeaflet" id="leaflet">
-            <property name="visible">True</property>
             <property name="orientation">horizontal</property>
             <property name="can-navigate-back">True</property>
             <property name="can-navigate-forward">True</property>
             <property name="transition-type">over</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
                 <property name="hexpand">False</property>
                 <property name="hexpand-set">True</property>
                 <property name="orientation">vertical</property>
@@ -36,7 +31,6 @@
                 </style>
                 <child>
                   <object class="GtkLabel" id="header_label">
-                    <property name="visible">True</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="margin-end">10</property>
@@ -50,21 +44,18 @@
                 </child>
                 <child>
                   <object class="UsageStorageViewRow" id="used_row">
-                    <property name="visible">True</property>
                     <property name="label" translatable="yes">Used</property>
                     <property name="tag_size">1</property>
                   </object>
                 </child>
                 <child>
                   <object class="UsageStorageViewRow" id="available_row">
-                    <property name="visible">True</property>
                     <property name="label" translatable="yes">Available</property>
                     <property name="tag_size">1</property>
                   </object>
                 </child>
                 <child>
                   <object class="UsageStackList" id="listbox">
-                    <property name="visible">True</property>
                     <property name="vexpand">True</property>
                     <signal name="row-activated" handler="on_row_activated" />
                     <style>
@@ -84,21 +75,17 @@
               <object class="AdwLeafletPage">
                 <property name="navigatable">False</property>
                 <property name="child">
-                  <object class="GtkSeparator">
-                    <property name="visible">True</property>
-                  </object>
+                  <object class="GtkSeparator"/>
                 </property>
               </object>
             </child>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="width-request">360</property>
                 <child>
                   <object class="UsageStorageGraph" id="graph">
-                    <property name="visible">True</property>
                     <property name="vexpand">True</property>
                     <property name="hexpand">True</property>
                   </object>

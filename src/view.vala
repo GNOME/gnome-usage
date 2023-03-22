@@ -23,7 +23,6 @@ public abstract class Usage.View : Adw.Bin {
     public string icon_name;
 
     protected View () {
-        visible = true;
     }
 }
 

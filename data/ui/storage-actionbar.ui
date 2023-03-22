@@ -5,18 +5,14 @@
     <property name="visible">False</property>
     <property name="child">
       <object class="GtkActionBar">
-        <property name="visible">True</property>
         <property name="hexpand">True</property>
         <child>
-          <object class="GtkLabel" id="size_label">
-            <property name="visible">True</property>
-          </object>
+          <object class="GtkLabel" id="size_label"/>
         </child>
 
         <child type="end">
           <object class="GtkButton" id="delete_button">
             <property name="label" translatable="yes">Delete…</property>
-            <property name="visible">True</property>
             <signal name="clicked" handler="delete_clicked" swapped="no"/>
             <style>
               <class name="destructive-action"/>

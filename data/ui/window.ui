@@ -5,25 +5,20 @@
     <property name="default-height">600</property>
     <property name="default-width">950</property>
     <property name="title" translatable="yes">Usage</property>
-    <property name="visible">True</property>
     <child>
       <object class="GtkBox">
         <property name="orientation">vertical</property>
-        <property name="visible">True</property>
         <child>
           <object class="AdwHeaderBar" id="header_bar">
             <property name="centering-policy">strict</property>
-            <property name="visible">True</property>
             <property name="title-widget">
               <object class="AdwViewSwitcherTitle" id="view_switcher_title">
                 <property name="stack">stack</property>
                 <property name="title" translatable="yes">Usage</property>
-                <property name="visible">True</property>
               </object>
             </property>
             <child type="end">
               <object class="GtkMenuButton" id="primary_menu_button">
-                <property name="visible">True</property>
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primary_menu</property>
                 <property name="primary">True</property>
@@ -35,10 +30,8 @@
                 <!-- This allows the button to take space even when it is concealed, keeping the header bar's sizing homogeneous. -->
                 <property name="transition-duration">0</property>
                 <property name="transition-type">crossfade</property>
-                <property name="visible">True</property>
                 <child>
                   <object class="GtkToggleButton" id="performance_search_button">
-                    <property name="visible">True</property>
                     <property name="icon-name">system-search-symbolic</property>
                     <signal name="toggled" handler="on_performance_search_button_toggled"/>
                   </object>
@@ -51,7 +44,6 @@
           <object class="AdwViewStack" id="stack">
             <property name="height-request">200</property>
             <property name="vexpand">True</property>
-            <property name="visible">True</property>
             <property name="width-request">360</property>
             <signal name="notify::visible-child" handler="on_visible_child_changed"/>
           </object>
@@ -60,7 +52,6 @@
           <object class="AdwViewSwitcherBar" id="view_switcher_bar">
             <property name="reveal" bind-source="view_switcher_title" bind-property="title-visible" bind-flags="sync-create"/>
             <property name="stack">stack</property>
-            <property name="visible">True</property>
           </object>
         </child>
       </object>

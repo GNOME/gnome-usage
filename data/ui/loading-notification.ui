@@ -2,21 +2,16 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="UsageLoadingNotification" parent="GtkGrid">
-    <property name="visible">True</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
     <property name="margin_start">12</property>
     <property name="margin_end">12</property>
     <property name="column_spacing">12</property>
     <child>
-      <object class="GtkLabel" id="message_label">
-        <property name="visible">True</property>
-      </object>
+      <object class="GtkLabel" id="message_label"/>
     </child>
     <child>
-      <object class="GtkSpinner" id="spinner">
-        <property name="visible">True</property>
-      </object>
+      <object class="GtkSpinner" id="spinner"/>
     </child>
     <style>
       <class name="app-notification"/>

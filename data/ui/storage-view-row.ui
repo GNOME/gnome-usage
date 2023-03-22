@@ -2,14 +2,12 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="UsageStorageViewRow" parent="GtkListBoxRow">
-    <property name="visible">True</property>
     <style>
       <class name="storage-row"/>
     </style>
 
     <property name="child">
       <object class="GtkBox">
-        <property name="visible">True</property>
         <property name="spacing">10</property>
         <property name="margin-start">10</property>
         <property name="margin-end">10</property>
@@ -18,7 +16,6 @@
 
         <child>
           <object class="GtkBox" id="tag">
-            <property name="visible">True</property>
             <property name="width-request">15</property>
             <property name="height-request">15</property>
             <property name="halign">center</property>
@@ -32,7 +29,6 @@
 
         <child>
           <object class="GtkLabel" id="title">
-            <property name="visible">True</property>
             <property name="ellipsize">middle</property>
             <property name="hexpand">True</property>
             <property name="halign">start</property>
@@ -46,9 +42,7 @@
         </child>
 
         <child>
-          <object class="GtkLabel" id="size_label">
-            <property name="visible">True</property>
-          </object>
+          <object class="GtkLabel" id="size_label"/>
         </child>
 
         <child>

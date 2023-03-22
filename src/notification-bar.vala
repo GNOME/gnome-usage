@@ -42,7 +42,6 @@ private class Usage.NotificationBar: Gtk.Grid {
 
     private Gtk.Revealer add_notification (Widget widget) {
         Gtk.Revealer revealer = new Gtk.Revealer ();
-        revealer.visible = true;
         revealer.valign = Gtk.Align.START;
         revealer.child = widget;
 

@@ -145,7 +145,6 @@ public class Usage.StorageView : Usage.View {
     private Gtk.Widget create_file_row (Object obj) {
         var item = obj as StorageViewItem;
         var row = new StorageViewRow.from_item (item);
-        row.visible = true;
 
         if (selected_items.find (item) != null)
             row.check_button.active = true;

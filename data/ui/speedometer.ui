@@ -2,11 +2,9 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="UsageSpeedometer" parent="AdwBin">
-    <property name="visible">True</property>
 
     <property name="child">
       <object class="GtkBox" id="outter">
-        <property name="visible">True</property>
         <property name="valign">center</property>
         <property name="halign">center</property>
         <style>
@@ -15,7 +13,6 @@
 
         <child>
           <object class="GtkBox" id="inner">
-            <property name="visible">True</property>
             <property name="valign">center</property>
             <property name="halign">center</property>
             <style>
@@ -24,7 +21,6 @@
 
             <child>
               <object class="GtkBox" id="content_area">
-                <property name="visible">True</property>
                 <property name="valign">center</property>
                 <property name="halign">center</property>
                 <style>
