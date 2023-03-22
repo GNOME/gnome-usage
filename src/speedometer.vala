@@ -56,17 +56,17 @@ public class Usage.Speedometer : Buildable, Adw.Bin {
             return;
 
         double new_angle = 90 + (360 * (new_value/100.0));
-        var filling_color = "@theme_base_color";
+        var filling_color = "@view_bg_color";
 
         if (new_value > 50) {
             new_angle -= 180;
-            filling_color = "@theme_selected_bg_color";
+            filling_color = "@accent_bg_color";
         }
 
         var css =
         @".speedometer-inner {
             background: linear-gradient($(new_angle)deg, transparent 50%, $filling_color 50%),
-                        linear-gradient(90deg, @theme_base_color 50%, transparent 50%);
+                        linear-gradient(90deg, @view_bg_color 50%, transparent 50%);
         }";
 
         css_provider.load_from_data (css.data);
