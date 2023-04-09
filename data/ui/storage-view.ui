@@ -3,15 +3,13 @@
   <requires lib="gtk" version="4.0"/>
   <template class="UsageStorageView" parent="UsageView">
     <child>
-      <object class="GtkOverlay" id="notification_overlay">
+      <object class="GtkOverlay">
         <child type="overlay">
-          <object class="UsageNotificationBar" id="notificationbar">
-            <property name="valign">start</property>
-            <property name="halign">center</property>
-            <property name="orientation">vertical</property>
+          <object class="GtkProgressBar" id="directory_loading_bar">
             <style>
-              <class name="transparent-bg" />
+              <class name="osd" />
             </style>
+            <property name="pulse-step">0.022</property>
           </object>
         </child>
         <child>

@@ -45,7 +45,7 @@ public class Usage.StorageView : Usage.View {
     private unowned StorageActionBar actionbar;
 
     [GtkChild]
-    private unowned NotificationBar notificationbar;
+    private unowned Gtk.ProgressBar directory_loading_bar;
 
     [GtkChild]
     private unowned StorageRowPopover row_popover;
@@ -187,6 +187,8 @@ public class Usage.StorageView : Usage.View {
         item.dir = dir;
         model.insert (0, item);
 
+        is_directory_loading (true);
+
         controller.set_model (model);
         controller.enumerate_children.begin (uri, dir, cancellable, (obj, res) => {
             if (!cancellable.is_cancelled ()) {
@@ -194,6 +196,7 @@ public class Usage.StorageView : Usage.View {
                 up_folder_item.size = controller.enumerate_children.end (res);
                 up_folder_item.loaded = true;
             }
+            is_directory_loading (false);
         });
 
         listbox.push_layer (model);
@@ -247,13 +250,13 @@ public class Usage.StorageView : Usage.View {
     }
 
     private async void populate_view () {
-        var loading_notification = notificationbar.display_loading (_("Scanning directories"), null);
-
         if (connection == null)
             return;
 
         var model = new GLib.ListStore (typeof (StorageViewItem));
         model.append (os_item);
+
+        is_directory_loading (true);
 
         var items_loaded = 0;
 
@@ -271,7 +274,7 @@ public class Usage.StorageView : Usage.View {
 
                     items_loaded++;
                     if (items_loaded == xdg_folders.length)
-                        loading_notification.dismiss ();
+                        is_directory_loading (false);
                 } catch (GLib.Error error) {
                     warning (error.message);
                 }
@@ -300,5 +303,17 @@ public class Usage.StorageView : Usage.View {
     private void clear_selected_items () {
         selected_items = new List<StorageViewItem>();
         refresh_actionbar ();
+    }
+
+    private void is_directory_loading (bool loading) {
+        directory_loading_bar.visible = loading;
+        if (loading) {
+            directory_loading_bar.fraction = 0;
+
+            this.add_tick_callback ((widget, frame_clock) => {
+                directory_loading_bar.pulse ();
+                return directory_loading_bar.visible ? Source.CONTINUE : Source.REMOVE;
+            });
+        }
     }
 }
