@@ -66,5 +66,8 @@ public class Usage.PerformanceView : View {
 
     public void set_search_mode (bool enable) {
         search_bar.set_search_mode (enable);
+        if (enable) {
+            search_entry.grab_focus ();
+        }
     }
 }
