@@ -38,7 +38,7 @@ public class Usage.ProcessListBox : Adw.Bin {
         this.set_child (list_box);
 
         list_box.set_selection_mode (Gtk.SelectionMode.NONE);
-        list_box.set_header_func (update_header);
+        list_box.add_css_class ("boxed-list");
 
         this.type = type;
         model = new ListStore (typeof (AppItem));
@@ -110,16 +110,5 @@ public class Usage.ProcessListBox : Adw.Bin {
 
     private Gtk.Widget on_row_created (Object item) {
         return new ProcessRow ((AppItem) item, type);
-    }
-
-    private void update_header (Gtk.ListBoxRow row, Gtk.ListBoxRow? before_row) {
-        if (before_row == null) {
-            row.set_header (null);
-        } else {
-            var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
-            separator.get_style_context ().add_class ("list");
-            separator.show ();
-            row.set_header (separator);
-        }
     }
 }

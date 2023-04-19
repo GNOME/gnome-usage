@@ -28,6 +28,7 @@ public class Usage.GraphBox : Gtk.Box {
 
     public GraphBox (GraphView graph) {
         this.add_css_class ("view");
+        this.overflow = Gtk.Overflow.HIDDEN;
         append (graph);
     }
 }

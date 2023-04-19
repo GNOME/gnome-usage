@@ -35,6 +35,7 @@ public class Usage.ProcessorSubView : View, SubView {
         var cpu_graph_box = new GraphBox (cpu_graph);
         cpu_graph_box.height_request = 225;
         cpu_graph_box.valign = Gtk.Align.START;
+        cpu_graph_box.add_css_class ("card");
 
         process_list_box = new ProcessListBox (ProcessListBoxType.PROCESSOR);
         process_list_box.margin_bottom = 20;

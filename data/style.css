@@ -1,12 +1,6 @@
-list, graph-box {
+graph-box:not(.card) {
     border: 1px solid @borders;
-}
-list row {
-    padding: 0;
-}
-
-list separator {
-    background: @borders;
+    border-radius: 6px;
 }
 
 list row.max {
