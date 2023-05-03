@@ -13,13 +13,6 @@
   <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/gnome-usage/issues" />
   <maintainer>
     <foaf:Person>
-      <foaf:name>Adrien Plazas</foaf:name>
-      <foaf:mbox rdf:resource="mailto:kekun.plazas@laposte.net" />
-      <gnome:userid>aplazas</gnome:userid>
-    </foaf:Person>
-  </maintainer>
-  <maintainer>
-    <foaf:Person>
       <foaf:name>Markus Göllnitz</foaf:name>
       <foaf:mbox rdf:resource="mailto:camelcasenick@bewares.it" />
       <gnome:userid>mgoellnitz</gnome:userid>
