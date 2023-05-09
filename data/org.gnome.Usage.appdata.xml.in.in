@@ -2,11 +2,11 @@
 <component type="desktop">
   <id>@app-id@</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <name>GNOME Usage</name>
+  <name>Usage</name>
   <summary>A nice way to view information about use of system resources</summary>
   <description>
     <p>
-        A simple GNOME 3 application to monitor and analyze system resources such
+        A simple application for GNOME to monitor and analyze system resources such
         as processing, memory, and storage.
     </p>
   </description>
@@ -21,7 +21,6 @@
       <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/master/screenshots/screenshot-storage-view.png</image>
     </screenshot>
   </screenshots>
-  <project_group>GNOME</project_group>
   <url type="homepage">https://wiki.gnome.org/Apps/Usage</url>
   <update_contact>pstetka_at_redhat.com"</update_contact>
   <releases>
