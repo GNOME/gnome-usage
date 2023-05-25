@@ -179,7 +179,7 @@ public class Usage.StorageView : Usage.View {
         if (selected_items.find (item) != null)
             row.check_button.active = true;
 
-        row.check_button_toggled.connect (() => {
+        row.check_button_toggled.connect ((row) => {
             if (row.selected)
                 selected_items.append (row.item);
             else
