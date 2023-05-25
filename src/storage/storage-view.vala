@@ -158,8 +158,15 @@ public class Usage.StorageView : Usage.View {
             refresh_actionbar ();
         });
 
-        if (item.custom_type == StorageViewType.AVAILABLE_GRAPH)
-            return new Gtk.ListBoxRow ();
+        if (item.custom_type == StorageViewType.AVAILABLE_GRAPH) {
+            Gtk.ListBoxRow hidden_row = new Gtk.ListBoxRow ();
+            hidden_row.notify["visible"].connect (() => {
+                if (hidden_row.visible) {
+                    hidden_row.visible = false;
+                }
+            });
+            return hidden_row;
+        }
 
         return row;
     }
