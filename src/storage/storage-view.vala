@@ -55,8 +55,6 @@ public class Usage.StorageView : Usage.View {
     private StorageRowPopover row_popover = new StorageRowPopover ();
     private Cancellable cancellable = new Cancellable ();
 
-    private uint need_refresh_depth = 0;
-
     private uint64 total_used_size = 0;
     private uint64 total_free_size = 0;
     private uint64 total_size = 0;
@@ -71,7 +69,6 @@ public class Usage.StorageView : Usage.View {
 
     private List<StorageViewItem> selected_items = new List<StorageViewItem> ();
     private Queue<List> selected_items_stack = new Queue<List> ();
-    private Queue<StorageViewItem> actual_item = new Queue<StorageViewItem> ();
 
     construct {
         name = "STORAGE";
@@ -92,22 +89,7 @@ public class Usage.StorageView : Usage.View {
             graph.model = model;
         });
 
-        actionbar.refresh_listbox.connect (() => {
-            var item = actual_item.peek_head ();
-
-            stack_listbox_up ();
-            clear_selected_items ();
-
-            if (listbox.get_depth () >= 1) {
-                selected_items_stack.push_head ((owned) selected_items);
-                actual_item.push_head (item);
-                present_dir.begin (item.uri, item.dir, cancellable);
-            } else {
-                populate_view.begin ();
-            }
-
-            need_refresh_depth = listbox.get_depth ();
-        });
+        actionbar.refresh_listbox.connect (this.refresh_current_dir);
     }
 
     public StorageView () {
@@ -129,7 +111,6 @@ public class Usage.StorageView : Usage.View {
             stack_listbox_up ();
         } else if (storage_row.item.type == FileType.DIRECTORY) {
             selected_items_stack.push_head ((owned) selected_items);
-            actual_item.push_head (storage_row.item);
             clear_selected_items ();
             present_dir.begin (storage_row.item.uri, storage_row.item.dir, cancellable);
         } else if (storage_row.item.custom_type != StorageViewType.NONE) {
@@ -145,28 +126,13 @@ public class Usage.StorageView : Usage.View {
 
     private void stack_listbox_up () {
         selected_items = selected_items_stack.pop_head ();
-        actual_item.pop_head ();
         refresh_actionbar ();
         listbox.layer_up ();
 
         var first_item = listbox.get_model ().get_item (0) as StorageViewItem;
-        var refresh = false;
 
-        if (need_refresh_depth >= listbox.get_depth ()) {
-            need_refresh_depth -= 1;
-            refresh = true;
-        }
-
-        if (listbox.get_depth () > 1 && first_item.loaded == false || refresh) {
-            var item = actual_item.peek_head ();
-
-            clear_selected_items ();
-            listbox.layer_up ();
-
-            if (listbox.get_depth () == 0)
-                populate_view.begin ();
-            else
-                present_dir.begin (item.uri, item.dir, cancellable);
+        if (listbox.get_depth () > 1 && first_item.loaded == false) {
+            this.refresh_current_dir ();
         }
     }
 
@@ -195,6 +161,18 @@ public class Usage.StorageView : Usage.View {
             return new Gtk.ListBoxRow ();
 
         return row;
+    }
+
+    private void refresh_current_dir () {
+        var item = listbox.get_model ().get_item (0) as StorageViewItem;
+
+        clear_selected_items ();
+        listbox.layer_up ();
+
+        if (listbox.get_depth () == 0)
+            populate_view.begin ();
+        else
+            present_dir.begin (item.uri, item.dir, cancellable);
     }
 
     private async void present_dir (string uri, UserDirectory? dir, Cancellable cancellable) {
