@@ -66,17 +66,18 @@ public class Usage.Application : Adw.Application {
             "Jakub Steiner <jsteiner@redhat.com>"
         };
 
-        Gtk.show_about_dialog (window,
-            logo_icon_name: Config.APPLICATION_ID,
-            program_name: _("Usage"),
-            comments: _("A nice way to view information about use of system resources, like memory and disk space."),
-            authors: authors,
-            artists: artists,
-            translator_credits: _("translator-credits"),
-            website: "https://wiki.gnome.org/Apps/Usage",
-            website_label: _("Websites"),
-            version: Config.VERSION,
-            license_type: License.GPL_3_0);
+        new Adw.AboutWindow () {
+            transient_for = window,
+            application_icon = Config.APPLICATION_ID,
+            application_name = _("Usage"),
+            comments = _("A nice way to view information about use of system resources, like memory and disk space."),
+            developers = authors,
+            designers = artists,
+            translator_credits = _("translator-credits"),
+            website = "https://wiki.gnome.org/Apps/Usage",
+            version = Config.VERSION,
+            license_type = License.GPL_3_0
+        }.present ();
     }
 
     private void on_quit (GLib.SimpleAction action, GLib.Variant? parameter) {
