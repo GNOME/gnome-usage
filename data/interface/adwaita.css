@@ -1,12 +1,12 @@
 list, graph-box {
-    border: 1px solid alpha(@theme_fg_color, 0.2);
+    border: 1px solid @borders;
 }
 list row {
     padding: 0;
 }
 
 list separator {
-    background: alpha(@theme_fg_color, 0.2);
+    background: @borders;
 }
 
 list row.max {
@@ -24,7 +24,7 @@ button.graph-switcher {
 
 rg-graph.big {
     background-size: 57px 57px;
-    background-image: repeating-linear-gradient(0deg, alpha(@theme_fg_color, 0.2), alpha(@theme_fg_color, 0.2) 1px, transparent 1px, transparent 57px);
+    background-image: repeating-linear-gradient(0deg, @borders, @borders 1px, transparent 1px, transparent 57px);
 }
 
 rg-graph.line {
