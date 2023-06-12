@@ -240,10 +240,10 @@ public class Usage.StorageView : Usage.View {
         total_free_percentage = Math.round (total_free_percentage);
 
         used_row.size_label.label = Utils.format_size_values (total_used_size) + " (%d%)".printf ((int) total_used_percentage);
-        used_row.tag.get_style_context ().add_class ("used-tag");
+        used_row.tag.add_css_class ("used-tag");
 
         available_row.size_label.label = Utils.format_size_values (total_free_size) + " (%d%)".printf ((int) total_free_percentage);
-        available_row.tag.get_style_context ().add_class ("available-tag");
+        available_row.tag.add_css_class ("available-tag");
     }
 
     private async void populate_view () {

@@ -70,8 +70,7 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
     public StorageViewRow.from_item (StorageViewItem item) {
         this.item = item;
 
-        var tag_style_context = tag.get_style_context ();
-        tag_style_context.add_class (item.style_class);
+        tag.add_css_class (item.style_class);
         item.color = item.get_base_color ();
 
         check_button.visible = item.show_check_button;
@@ -88,7 +87,7 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
             tag.width_request = tag.height_request = 20;
 
         if (item.custom_type == StorageViewType.UP_FOLDER) {
-            get_style_context ().add_class ("up-folder");
+            this.add_css_class ("up-folder");
 
             if (!item.loaded) {
                 spinner.visible = true;

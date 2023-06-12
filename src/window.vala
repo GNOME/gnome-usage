@@ -48,7 +48,7 @@ public class Usage.Window : Adw.ApplicationWindow {
         GLib.Object (application : application);
 
         if (Config.PROFILE == "Devel") {
-            get_style_context ().add_class ("devel");
+            this.add_css_class ("devel");
         }
 
         mode = HeaderBarMode.PERFORMANCE;

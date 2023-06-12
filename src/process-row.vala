@@ -83,9 +83,9 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
 
     private void remove_user_tag () {
         user_tag_box.visible = false;
-        user_tag_box.get_style_context ().remove_class (CSS_TAG_USER);
-        user_tag_box.get_style_context ().remove_class (CSS_TAG_ROOT);
-        user_tag_box.get_style_context ().remove_class (CSS_TAG_SYSTEM);
+        user_tag_box.remove_css_class (CSS_TAG_USER);
+        user_tag_box.remove_css_class (CSS_TAG_ROOT);
+        user_tag_box.remove_css_class (CSS_TAG_SYSTEM);
     }
 
     private void create_user_tag () {
@@ -98,7 +98,7 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
             class_name = CSS_TAG_SYSTEM;
         }
 
-        user_tag_box.get_style_context ().add_class (class_name);
+        user_tag_box.add_css_class (class_name);
         user_tag_label.label = app.user.UserName;
         user_tag_box.visible = !is_logged_in ();
     }

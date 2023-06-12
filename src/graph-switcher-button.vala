@@ -56,8 +56,7 @@ public class Usage.GraphSwitcherButton : Gtk.ToggleButton {
         else
             set_group (_group);
 
-        var context = get_style_context ();
-        context.add_class ("flat");
-        context.add_class ("graph-switcher");
+        this.add_css_class ("flat");
+        this.add_css_class ("graph-switcher");
     }
 }
