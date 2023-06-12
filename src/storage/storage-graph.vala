@@ -78,7 +78,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         uint shown_items_number = 1;
         Gdk.RGBA background_color;
         get_style_context ().lookup_color ("window_bg_color", out background_color);
-        Gdk.RGBA foreground_color = get_style_context ().get_color ();
+        Gdk.RGBA foreground_color = this.get_color ();
 
         for (int i = 1; i < model.get_n_items (); i++) {
             var item = (model.get_item (i) as StorageViewItem);
@@ -175,7 +175,7 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         int width = get_allocated_width ();
         double radius = int.min (width, height) / 22;
 
-        var text_color = get_root ().get_style_context ().get_color ();
+        var text_color = this.get_root ().get_color ();
         var text_color_string = "#%02x%02x%02x".printf (
             (uint)(Math.round (text_color.red*255)),
             (uint)(Math.round (text_color.green*255)),
