@@ -58,7 +58,7 @@ public class Usage.Application : Gtk.Application {
         set_accels_for_action ("app.search", {"<Primary>f"});
 
         var icon_theme = Gtk.IconTheme.get_default ();
-        icon_theme.add_resource_path ("/org/gnome/Usage/icons/hicolor");
+        icon_theme.add_resource_path ("/org/gnome/Usage/icons");
     }
 
     private void on_about (GLib.SimpleAction action, GLib.Variant? parameter) {
