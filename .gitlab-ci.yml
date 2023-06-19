@@ -36,7 +36,7 @@ alpine:
   before_script:
     - apk upgrade -a
     - apk add alpine-sdk meson vala libgee-dev gtk4.0-dev libadwaita-dev
-              libgtop-dev tinysparql-dev
+              libgtop-dev tinysparql-dev networkmanager-dev json-glib-dev
   image: alpine:latest
   script:
     - meson setup ${MESON_BUILD_DIR}

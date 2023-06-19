@@ -5,6 +5,8 @@ src/app-item.c
 src/application.c
 src/cpu-view.c
 src/memory-view.c
+src/network/network-interface-graph.c
+src/network/network-view.c
 src/performance-view.c
 src/storage/storage-actionbar.c
 src/storage/storage-view.c

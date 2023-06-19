@@ -5,6 +5,7 @@ data/org.gnome.Usage.metainfo.xml.in.in
 data/org.gnome.Usage.gschema.xml.in
 data/ui/app-dialog.ui
 data/ui/memory-speedometer.ui
+data/ui/network-view.ui
 data/ui/no-results-found-view.ui
 data/ui/process-row.ui
 data/ui/quit-process-dialog.ui
@@ -17,6 +18,8 @@ src/app-item.vala
 src/application.vala
 src/cpu-view.vala
 src/memory-view.vala
+src/network/network-interface-graph.vala
+src/network/network-view.vala
 src/storage/storage-actionbar.vala
 src/storage/storage-view.vala
 src/utils.vala

@@ -12,8 +12,10 @@
         "--share=ipc", "--device=dri", "--socket=fallback-x11",
         "--socket=wayland",
         "--share=network",
+        "--system-talk-name=org.freedesktop.NetworkManager.*",
         "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:FileSystem",
         "--filesystem=xdg-documents", "--filesystem=xdg-download", "--filesystem=xdg-music", "--filesystem=xdg-pictures", "--filesystem=xdg-videos",
+	"--filesystem=/var/lib/vnstat/vnstat.db",
         "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
         "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
         "--talk-name=org.freedesktop.background.Monitor"
@@ -34,6 +36,71 @@
             ]
         },
         {
+            "name": "vnstat",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/vergoh/vnstat"
+                }
+            ]
+        },
+        {
+            "name" : "NetworkManager",
+            "buildsystem" : "meson",
+            "build-options" : {
+                "cflags" : "-ltinfo",
+                "cxxflags" : "-ltinfo",
+		"append-path": "/usr/lib/sdk/vala-nightly/bin",
+		"append-ld-library-path": "/usr/lib/sdk/vala-nightly/lib",
+                "env": {
+                    "ACLOCAL_PATH": "/usr/lib/sdk/vala-nightly/share/aclocal"
+                }
+	    },
+            "config-opts" : [
+                "-Dlibaudit=no",
+                "-Ddbus_conf_dir=/app/etc/dbus-1/system.d",
+                "-Ddnsmasq=/usr/bin/true",
+                "-Ddocs=false",
+                "-Dintrospection=true",
+                "-Diptables=/usr/bin/true",
+                "-Dlibpsl=false",
+                "-Dmodem_manager=false",
+                "-Dnmtui=false",
+                "-Dnm_cloud_setup=false",
+                "-Dovs=false",
+                "-Dppp=false",
+                "-Dqt=false",
+                "-Dselinux=false",
+                "-Dsession_tracking=no",
+                "-Dsystemdsystemunitdir=/app/lib/systemd/system",
+                "-Dudev_dir=/app/lib/udev",
+                "-Dsystemd_journal=false",
+                "-Dtests=no",
+                "-Dvapi=true"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "branch": "main",
+                    "url" : "https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git"
+                }
+            ],
+            "modules": [
+                {
+                    "name" : "libndp",
+                    "buildsystem" : "autotools",
+                    "sources" : [
+                        {
+                            "type" : "archive",
+                            "url" : "http://libndp.org/files/libndp-1.6.tar.gz",
+                            "sha256" : "0c7dfa84e013bd5e569ef2c6292a6f72cfaf14f4ff77a77425e52edc33ffac0e"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "gee-0.8",
             "buildsystem": "autotools",
 	    "build-options" : {
@@ -48,6 +115,17 @@
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libgee",
                     "branch": "main"
+                }
+            ]
+        },
+        {
+            "name": "json-glib",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/json-glib",
+                    "branch": "master"
                 }
             ]
         },

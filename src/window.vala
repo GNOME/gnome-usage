@@ -50,6 +50,7 @@ public class Usage.Window : Adw.ApplicationWindow {
         views = new View[] {
             new CpuView (),
             new MemoryView (),
+            new NetworkView (),
             new StorageView (),
         };
 
