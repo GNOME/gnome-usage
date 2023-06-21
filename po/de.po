@@ -5,7 +5,7 @@
 # Bernd Homuth <dev@hmt.im>, 2017.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2017-2018.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2021.
-# Jürgen Benvenuti <gastornis@posteo.org>, 2022.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2022, 2023.
 # Tim Sabsch <tim@sabsch.com>, 2022.
 #
 #
@@ -13,16 +13,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2022-05-29 13:01+0000\n"
-"PO-Revision-Date: 2022-06-19 11:42+0200\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
+"POT-Creation-Date: 2023-06-20 23:45+0000\n"
+"PO-Revision-Date: 2023-06-21 11:32+0200\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
@@ -39,8 +39,8 @@ msgid ""
 "A simple GNOME 3 application to monitor and analyze system resources such as "
 "processing, memory, and storage."
 msgstr ""
-"Eine einfache GNOME 3-Anwendung zum Überwachen und Analysieren von "
-"Systemressourcen wie Prozessor, Arbeits- und Festplattenspeicher."
+"Eine einfache GNOME 3-Anwendung zum Überwachen und Analysieren von System-"
+"Ressourcen wie Prozessor, Arbeits- und Festplattenspeicher."
 
 #: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
 #: data/ui/window.ui:23 src/application.vala:76
@@ -78,35 +78,23 @@ msgstr ""
 msgid "RAM"
 msgstr "Arbeitsspeicher"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:54
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Belegt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:61
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Verfügbar"
 
-#: data/ui/no-results-found-view.ui:23
+#: data/ui/no-results-found-view.ui:26
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
 
-#: data/ui/no-results-found-view.ui:32
+#: data/ui/no-results-found-view.ui:38
 msgid "Try a different search"
 msgstr "Andere Suche ausprobieren"
-
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_Info zu Auslastung"
-
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Systemprozesse gruppieren"
-
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Alle Prozesse anzeigen"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -125,17 +113,33 @@ msgstr "Abbrechen"
 msgid "Force Quit"
 msgstr "Beenden erzwingen"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/storage-actionbar.ui:21
 msgid "Delete…"
 msgstr "Löschen …"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:45
 msgid "Home Partition"
 msgstr "Home-Partition"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
 msgstr "Auslagerungsspeicher"
+
+#: data/ui/window.ui:31
+msgid "Main Menu"
+msgstr "Hauptmenü"
+
+#: data/ui/window.ui:90
+msgid "_About Usage"
+msgstr "_Info zu Auslastung"
+
+#: data/ui/window.ui:96
+msgid "Group system processes"
+msgstr "Systemprozesse gruppieren"
+
+#: data/ui/window.ui:102
+msgid "Show all processes"
+msgstr "Alle Prozesse anzeigen"
 
 #: src/app-item.vala:147
 msgid "System"
@@ -208,18 +212,18 @@ msgid "Scanning directories"
 msgstr "Verzeichnisse werden gescannt"
 
 # B steht für Bytes
-#: src/utils.vala:26
+#: src/utils.vala:52
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
 # s steht für Sekunde und wird nach SI kleingeschrieben - ts
-#: src/utils.vala:31
+#: src/utils.vala:57
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
 
-#: src/utils.vala:33
+#: src/utils.vala:59
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
