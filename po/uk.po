@@ -2,20 +2,21 @@
 # Copyright (C) 2020 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2021-12-08 11:25+0000\n"
-"PO-Revision-Date: 2021-12-09 23:59+0200\n"
+"POT-Creation-Date: 2023-06-20 23:45+0000\n"
+"PO-Revision-Date: 2023-06-25 17:18+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
@@ -36,7 +37,7 @@ msgstr ""
 "системи, зокрема обробки процесів, пам'яті та сховищ даних."
 
 #: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:73
+#: data/ui/window.ui:23 src/application.vala:76
 msgid "Usage"
 msgstr "Використання"
 
@@ -72,35 +73,23 @@ msgstr ""
 msgid "RAM"
 msgstr "Пам’ять"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:54
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Використано"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:61
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Доступно"
 
-#: data/ui/no-results-found-view.ui:23
+#: data/ui/no-results-found-view.ui:26
 msgid "No results found"
 msgstr "Нічого не знайдено"
 
-#: data/ui/no-results-found-view.ui:32
+#: data/ui/no-results-found-view.ui:38
 msgid "Try a different search"
 msgstr "Спробуйте інші критерії пошуку"
-
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_Про «Використання»"
-
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Групувати процеси системи"
-
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Показати усі процеси"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -119,11 +108,11 @@ msgstr "Скасувати"
 msgid "Force Quit"
 msgstr "Примусово закрити"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/storage-actionbar.ui:21
 msgid "Delete…"
 msgstr "Вилучити…"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:45
 msgid "Home Partition"
 msgstr "Домашній розділ"
 
@@ -131,11 +120,27 @@ msgstr "Домашній розділ"
 msgid "Swap"
 msgstr "Резервна пам'ять"
 
-#: src/app-item.vala:148
+#: data/ui/window.ui:31
+msgid "Main Menu"
+msgstr "Головне меню"
+
+#: data/ui/window.ui:90
+msgid "_About Usage"
+msgstr "_Про «Використання»"
+
+#: data/ui/window.ui:96
+msgid "Group system processes"
+msgstr "Групувати процеси системи"
+
+#: data/ui/window.ui:102
+msgid "Show all processes"
+msgstr "Показати усі процеси"
+
+#: src/app-item.vala:147
 msgid "System"
 msgstr "Система"
 
-#: src/application.vala:74
+#: src/application.vala:77
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -143,36 +148,36 @@ msgstr ""
 "Чудовий спосіб переглянути відомості щодо використання ресурсів системи, "
 "зокрема пам'яті і місця на диску."
 
-#: src/application.vala:77
+#: src/application.vala:80
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>"
 
-#: src/application.vala:79
+#: src/application.vala:82
 msgid "Websites"
 msgstr "Сайти"
 
-#: src/cpu-sub-view.vala:29 src/graph-stack-switcher.vala:41
+#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Процесор"
 
-#: src/graph-stack-switcher.vala:42 src/memory-sub-view.vala:29
+#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
 msgid "Memory"
 msgstr "Пам'ять"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:44
 msgid "Performance"
 msgstr "Швидкодія"
 
-#: src/storage/storage-actionbar.vala:38
+#: src/storage/storage-actionbar.vala:37
 #, c-format
 msgid "%s selected"
 msgstr "Позначено %s"
 
-#: src/storage/storage-actionbar.vala:44
+#: src/storage/storage-actionbar.vala:43
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Ви справді хочете остаточно вилучити вибрані об'єкти?"
 
-#: src/storage/storage-actionbar.vala:51
+#: src/storage/storage-actionbar.vala:50
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Якщо ви вилучите ці об'єкти, їх буде незворотно втрачено."
 
@@ -196,20 +201,17 @@ msgstr "Операційна система"
 msgid "Scanning directories"
 msgstr "Сканування каталогів"
 
-#: src/utils.vala:27
+#: src/utils.vala:52
 #, c-format
 msgid "%llu B"
-msgstr ""
-"%llu Б"
+msgstr "%llu Б"
 
-#: src/utils.vala:32
+#: src/utils.vala:57
 #, c-format
 msgid "%s/s"
-msgstr ""
-"%s/с"
+msgstr "%s/с"
 
-#: src/utils.vala:34
+#: src/utils.vala:59
 #, c-format
 msgid "%llu B/s"
-msgstr ""
-"%llu Б/с"
+msgstr "%llu Б/с"
