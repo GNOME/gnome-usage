@@ -3,6 +3,9 @@
     "runtime": "org.gnome.Sdk",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.vala-nightly"
+    ],
     "command": "gnome-usage",
     "tags": ["devel"],
     "finish-args": [
@@ -32,6 +35,10 @@
         {
             "name" : "libdazzle",
             "buildsystem" : "meson",
+	    "build-options" : {
+		"append-path": "/usr/lib/sdk/vala-nightly/bin",
+		"append-ld-library-path": "/usr/lib/sdk/vala-nightly/lib"
+	    },
             "sources" : [
                 {
                     "type" : "git",
@@ -44,6 +51,10 @@
             "config-opts": [
                 "-Dprofile=development"
             ],
+	    "build-options" : {
+		"append-path": "/usr/lib/sdk/vala-nightly/bin",
+		"append-ld-library-path": "/usr/lib/sdk/vala-nightly/lib"
+	    },
             "name": "gnome-usage",
             "sources": [
                 {
