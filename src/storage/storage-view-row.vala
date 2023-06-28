@@ -120,6 +120,6 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
             background: $color;
         }";
 
-        css_provider.load_from_data (css.data);
+        css_provider.load_from_string (css);
     }
 }

@@ -69,7 +69,7 @@ public class Usage.Speedometer : Buildable, Adw.Bin {
                         linear-gradient(90deg, @view_bg_color 50%, transparent 50%);
         }";
 
-        css_provider.load_from_data (css.data);
+        css_provider.load_from_string (css);
     }
 
     public void add_child (Builder builder, Object child, string? type) {
