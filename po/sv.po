@@ -1,16 +1,16 @@
 # Swedish translation for gnome-usage.
-# Copyright © 2017-2021 gnome-usage's COPYRIGHT HOLDER
+# Copyright © 2017-2023 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2017.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019, 2023.
 # Luna Jernberg <droidbittin@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2021-12-10 12:35+0000\n"
-"PO-Revision-Date: 2021-12-24 12:54+0100\n"
+"POT-Creation-Date: 2023-06-20 23:45+0000\n"
+"PO-Revision-Date: 2023-06-21 10:15+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
@@ -71,35 +71,23 @@ msgstr ""
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
+#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:54
 #: data/ui/swap-speedometer.ui:51
 msgid "Used"
 msgstr "Använt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
+#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:61
 #: data/ui/swap-speedometer.ui:75
 msgid "Available"
 msgstr "Tillgängligt"
 
-#: data/ui/no-results-found-view.ui:23
+#: data/ui/no-results-found-view.ui:26
 msgid "No results found"
 msgstr "Inga resultat hittades"
 
-#: data/ui/no-results-found-view.ui:32
+#: data/ui/no-results-found-view.ui:38
 msgid "Try a different search"
 msgstr "Försök med en annan sökning"
-
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_Om Användning"
-
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Gruppera systemprocesser"
-
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Visa alla processer"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:9
@@ -118,17 +106,33 @@ msgstr "Avbryt"
 msgid "Force Quit"
 msgstr "Tvinga avslut"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/storage-actionbar.ui:21
 msgid "Delete…"
 msgstr "Ta bort…"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:45
 msgid "Home Partition"
 msgstr "Hempartition"
 
 #: data/ui/swap-speedometer.ui:36
 msgid "Swap"
 msgstr "Växlingsutrymme"
+
+#: data/ui/window.ui:31
+msgid "Main Menu"
+msgstr "Huvudmeny"
+
+#: data/ui/window.ui:90
+msgid "_About Usage"
+msgstr "_Om Användning"
+
+#: data/ui/window.ui:96
+msgid "Group system processes"
+msgstr "Gruppera systemprocesser"
+
+#: data/ui/window.ui:102
+msgid "Show all processes"
+msgstr "Visa alla processer"
 
 #: src/app-item.vala:147
 msgid "System"
@@ -197,17 +201,17 @@ msgstr "Operativsystem"
 msgid "Scanning directories"
 msgstr "Söker igenom kataloger"
 
-#: src/utils.vala:26
+#: src/utils.vala:52
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
-#: src/utils.vala:31
+#: src/utils.vala:57
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
 
-#: src/utils.vala:33
+#: src/utils.vala:59
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
