@@ -35,6 +35,13 @@
         {
             "name": "gee-0.8",
             "buildsystem": "autotools",
+	    "build-options" : {
+		"append-path": "/usr/lib/sdk/vala-nightly/bin",
+		"append-ld-library-path": "/usr/lib/sdk/vala-nightly/lib",
+                "env": {
+                    "ACLOCAL_PATH": "/usr/lib/sdk/vala-nightly/share/aclocal"
+                }
+	    },
             "sources": [
                 {
                     "type": "git",
