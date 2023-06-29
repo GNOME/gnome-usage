@@ -1,10 +1,9 @@
 include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
 stages:
-  - build
   - test
   - deploy
 
-build:
+fedora:
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
   before_script:
@@ -13,7 +12,7 @@ build:
                      desktop-file-utils libdazzle-devel redhat-rpm-config tracker-devel
 
   image: fedora:38
-  stage: build
+  stage: test
   script:
   - meson _build .
   - ninja -C _build
