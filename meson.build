@@ -8,6 +8,16 @@ project(
 cc = meson.get_compiler('c')
 valac = meson.get_compiler('vala')
 
+# Development versions of Usage might use features from pre-release
+# versions of its dependencies if their release schedules align,
+# esp. when following GNOME's.
+if get_option('profile') == 'development'
+  add_project_arguments(
+    '--disable-since-check',
+    language: 'vala'
+  )
+endif
+
 glib_dep = dependency('glib-2.0', version : '>=2.38')
 gobject_dep = dependency('gobject-2.0')
 gio_dep = dependency('gio-2.0')
