@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-06-20 23:45+0000\n"
-"PO-Revision-Date: 2023-06-21 11:32+0200\n"
+"POT-Creation-Date: 2023-06-29 16:44+0000\n"
+"PO-Revision-Date: 2023-06-29 20:11+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -42,8 +42,8 @@ msgstr ""
 "Eine einfache GNOME 3-Anwendung zum Überwachen und Analysieren von System-"
 "Ressourcen wie Prozessor, Arbeits- und Festplattenspeicher."
 
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:76
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:7
+#: data/ui/window.ui:17 src/application.vala:72
 msgid "Usage"
 msgstr "Auslastung"
 
@@ -74,70 +74,70 @@ msgstr ""
 "Diese Liste wird zur Filterung der Prozesse verwendet, die der Benutzer "
 "nicht beenden kann."
 
-#: data/ui/memory-speedometer.ui:38
+#: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "Arbeitsspeicher"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:54
-#: data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:45
+#: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Belegt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:61
-#: data/ui/swap-speedometer.ui:75
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:51
+#: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Verfügbar"
 
-#: data/ui/no-results-found-view.ui:26
+#: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
 
-#: data/ui/no-results-found-view.ui:38
+#: data/ui/no-results-found-view.ui:40
 msgid "Try a different search"
 msgstr "Andere Suche ausprobieren"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:8
 msgid "Force Quit %s?"
 msgstr "Beenden von %s erzwingen?"
 
-#: data/ui/quit-process-dialog.ui:10
+#: data/ui/quit-process-dialog.ui:9
 msgid "Unsaved work might be lost."
 msgstr "Ungespeicherte Arbeit könnte verloren gehen."
 
-#: data/ui/quit-process-dialog.ui:16
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/quit-process-dialog.ui:15
 msgid "Force Quit"
 msgstr "Beenden erzwingen"
 
-#: data/ui/storage-actionbar.ui:21
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Löschen …"
 
-#: data/ui/storage-view.ui:45
+#: data/ui/storage-view.ui:37
 msgid "Home Partition"
 msgstr "Home-Partition"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Auslagerungsspeicher"
 
-#: data/ui/window.ui:31
+#: data/ui/window.ui:25
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: data/ui/window.ui:90
+#: data/ui/window.ui:63
 msgid "_About Usage"
 msgstr "_Info zu Auslastung"
 
-#: data/ui/window.ui:96
+#: data/ui/window.ui:69
 msgid "Group system processes"
 msgstr "Systemprozesse gruppieren"
 
-#: data/ui/window.ui:102
+#: data/ui/window.ui:75
 msgid "Show all processes"
 msgstr "Alle Prozesse anzeigen"
 
@@ -145,7 +145,7 @@ msgstr "Alle Prozesse anzeigen"
 msgid "System"
 msgstr "System"
 
-#: src/application.vala:77
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -153,17 +153,13 @@ msgstr ""
 "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
 "Ressourcen, wie Arbeitsspeicher und Speicherplatz, anzuzeigen."
 
-#: src/application.vala:80
+#: src/application.vala:76
 msgid "translator-credits"
 msgstr ""
 "Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Bernd Homuth <dev@hmt.im>\n"
 "Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Jürgen Benvenuti <gastornis@posteo.org>"
-
-#: src/application.vala:82
-msgid "Websites"
-msgstr "Webseiten"
 
 #: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
@@ -177,21 +173,25 @@ msgstr "Speicher"
 msgid "Performance"
 msgstr "Leistungsfähigkeit"
 
-#: src/storage/storage-actionbar.vala:37
+#: src/storage/storage-actionbar.vala:39
 #, c-format
 msgid "%s selected"
 msgstr "%s ausgewählt"
 
-#: src/storage/storage-actionbar.vala:43
+#: src/storage/storage-actionbar.vala:44
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr ""
 "Sind Sie sicher, dass Sie die ausgewählten Objekte dauerhaft löschen wollen?"
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:45
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Wenn Sie diese Objekte löschen, gehen sie dauerhaft verloren."
 
-#: src/storage/storage-row-popover.vala:32
+#: src/storage/storage-actionbar.vala:50
+msgid "Delete"
+msgstr "Löschen"
+
+#: src/storage/storage-row-popover.vala:42
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
@@ -199,17 +199,13 @@ msgstr ""
 "Betriebssystem-Dateien sind ein wesentlicher Teil Ihres Systems und können "
 "nicht entfernt werden."
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Speicher"
 
-#: src/storage/storage-view.vala:246
+#: src/storage/storage-view.vala:227
 msgid "Operating System"
 msgstr "Betriebssystem"
-
-#: src/storage/storage-view.vala:272
-msgid "Scanning directories"
-msgstr "Verzeichnisse werden gescannt"
 
 # B steht für Bytes
 #: src/utils.vala:52
@@ -227,6 +223,12 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "Websites"
+#~ msgstr "Webseiten"
+
+#~ msgid "Scanning directories"
+#~ msgstr "Verzeichnisse werden gescannt"
 
 #~ msgid "Move to"
 #~ msgstr "Verschieben nach"
