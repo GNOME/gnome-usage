@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2021-12-30 13:30+0000\n"
-"PO-Revision-Date: 2022-01-04 21:32+1000\n"
+"POT-Creation-Date: 2023-06-29 18:42+0000\n"
+"PO-Revision-Date: 2023-06-30 07:02+1000\n"
+"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
-"Last-Translator: Ser82-png\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 msgid "GNOME Usage"
@@ -36,8 +36,8 @@ msgstr ""
 "Программа для мониторинга и анализа системных ресурсов, таких как процессы, "
 "оперативная память и дисковое пространство."
 
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:76
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:7
+#: data/ui/window.ui:17 src/application.vala:72
 msgid "Usage"
 msgstr "Usage"
 
@@ -69,74 +69,78 @@ msgstr ""
 "Этот список используется для фильтрации процессов, которые пользователь не "
 "может остановить."
 
-#: data/ui/memory-speedometer.ui:38
+#: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "Оперативная память"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
-#: data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:45
+#: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Использовано"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
-#: data/ui/swap-speedometer.ui:75
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:51
+#: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Доступно"
 
-#: data/ui/no-results-found-view.ui:23
+#: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Ничего не найдено"
 
-#: data/ui/no-results-found-view.ui:32
+#: data/ui/no-results-found-view.ui:40
 msgid "Try a different search"
 msgstr "Попробуйте другой поиск"
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_О приложении"
-
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Группа системных процессов"
-
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Показать все процессы"
-
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:8
 msgid "Force Quit %s?"
 msgstr "Принудительно завершить работу %s?"
 
-#: data/ui/quit-process-dialog.ui:10
+#: data/ui/quit-process-dialog.ui:9
 msgid "Unsaved work might be lost."
 msgstr "Несохраненная работа может быть потеряна."
 
-#: data/ui/quit-process-dialog.ui:16
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
 msgid "Cancel"
-msgstr "Отмена"
+msgstr "Отменить"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/quit-process-dialog.ui:15
 msgid "Force Quit"
 msgstr "Принудительный выход"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Удалить…"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:37
 msgid "Home Partition"
 msgstr "Домашний раздел"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Подкачка"
+
+#: data/ui/window.ui:25
+msgid "Main Menu"
+msgstr "Главное меню"
+
+#: data/ui/window.ui:63
+msgid "_About Usage"
+msgstr "_О приложении"
+
+#: data/ui/window.ui:69
+msgid "Group system processes"
+msgstr "Группа системных процессов"
+
+#: data/ui/window.ui:75
+msgid "Show all processes"
+msgstr "Показать все процессы"
 
 #: src/app-item.vala:147
 msgid "System"
 msgstr "Система"
 
-#: src/application.vala:77
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -144,15 +148,11 @@ msgstr ""
 "Хороший способ просмотра информации об использовании системных ресурсов, "
 "таких как оперативная память и дисковое пространство."
 
-#: src/application.vala:80
+#: src/application.vala:76
 msgid "translator-credits"
 msgstr ""
 "IgorPolyakov <igorpolyakov@protonmail.com>,2019\n"
-"Ser82-png,2021"
-
-#: src/application.vala:82
-msgid "Websites"
-msgstr "Веб-сайты"
+"Ser82-png <asvmail.as@gmail.com>, 2021, 2023"
 
 #: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
@@ -166,22 +166,26 @@ msgstr "Память"
 msgid "Performance"
 msgstr "Производительность"
 
-#: src/storage/storage-actionbar.vala:37
+#: src/storage/storage-actionbar.vala:39
 #, c-format
 msgid "%s selected"
 msgstr "%s выбрано"
 
-#: src/storage/storage-actionbar.vala:43
+#: src/storage/storage-actionbar.vala:44
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr ""
 "Вы действительно хотите удалить выбранные элементы без возможности "
 "восстановления?"
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:45
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Если вы удалите эти элементы, они будут потеряны безвозвратно."
 
-#: src/storage/storage-row-popover.vala:32
+#: src/storage/storage-actionbar.vala:50
+msgid "Delete"
+msgstr "Удалить"
+
+#: src/storage/storage-row-popover.vala:42
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
@@ -189,29 +193,31 @@ msgstr ""
 "Файлы операционной системы являются важной частью вашей системы и не могут "
 "быть удалены."
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Хранилище"
 
-#: src/storage/storage-view.vala:246
+#: src/storage/storage-view.vala:227
 msgid "Operating System"
 msgstr "Операционная система"
 
-#: src/storage/storage-view.vala:272
-msgid "Scanning directories"
-msgstr "Сканирование каталогов"
-
-#: src/utils.vala:26
+#: src/utils.vala:52
 #, c-format
 msgid "%llu B"
 msgstr "%llu Б"
 
-#: src/utils.vala:31
+#: src/utils.vala:57
 #, c-format
 msgid "%s/s"
 msgstr "%s/с"
 
-#: src/utils.vala:33
+#: src/utils.vala:59
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
+
+#~ msgid "Websites"
+#~ msgstr "Веб-сайты"
+
+#~ msgid "Scanning directories"
+#~ msgstr "Сканирование каталогов"
