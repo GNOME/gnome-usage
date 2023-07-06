@@ -5,5 +5,16 @@
             <summary>A list of processes which we don’t want killed</summary>
             <description>This list is used for filtering which processes the user can’t stop.</description>
         </key>
+        <key name="disable-scrolling-graphs" type="b">
+            <default>false</default>
+            <summary>Force graphs to not continuously scrolling</summary>
+            <description>
+              If enabled, the performance graphs will be forced to not scroll
+              continuously, but instead will only jump when a new data point is
+              added.
+              If disabled, the graphs will decide, based on power-saving mode
+              and GTK's global animations settings, how to behave.
+            </description>
+        </key>
     </schema>
 </schemalist>

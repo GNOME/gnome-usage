@@ -34,7 +34,8 @@ public class Usage.Settings : GLib.Settings {
     public bool enable_scrolling_graph {
         get {
             return gtk_settings.gtk_enable_animations
-                    && !power_profile_monitor.power_saver_enabled;
+                    && !power_profile_monitor.power_saver_enabled
+                    && !settings.get_boolean ("disable-scrolling-graphs");
         }
     }
 
