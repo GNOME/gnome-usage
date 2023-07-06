@@ -6,7 +6,7 @@
             <description>This list is used for filtering which processes the user can’t stop.</description>
         </key>
         <key name="performance-graphs-timespan" type="u">
-            <default>15000</default>
+            <default>45000</default>
             <summary>time span (ms) of the graphs in the performance tab</summary>
             <description>
               The time span for up to which the CPU and memory graphs in the
@@ -14,7 +14,7 @@
             </description>
         </key>
         <key name="performance-update-interval" type="u">
-            <default>1000</default>
+            <default>2500</default>
             <summary>interval (ms) for the performance data refresh</summary>
             <description>
               The interval at which the data for the performance tab are updated
@@ -41,7 +41,7 @@
             </description>
         </key>
         <key name="disable-scrolling-graphs" type="b">
-            <default>false</default>
+            <default>true</default>
             <summary>Force graphs to not continuously scrolling</summary>
             <description>
               If enabled, the performance graphs will be forced to not scroll
