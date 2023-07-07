@@ -20,6 +20,7 @@
 
 public abstract class Usage.PerformanceGraphView : GraphView {
     private Settings settings = Settings.get_default ();
+    private bool constant_redraw;
 
     construct {
         this.range_y = 100;
@@ -27,12 +28,29 @@ public abstract class Usage.PerformanceGraphView : GraphView {
         this.range_x = 1000 * settings.graph_timespan;
         this.update_x_offset ();
 
-        this.add_tick_callback (this.update_x_offset);
+        this.reevaluate_constant_redraw ();
 
         Timeout.add (settings.graph_update_interval, () => {
             this.update_graphs ();
+
+            this.reevaluate_constant_redraw ();
+            if (!constant_redraw) {
+                this.update_x_offset ();
+            }
+
             return true;
         });
+    }
+
+    private void reevaluate_constant_redraw () {
+        constant_redraw = settings.enable_scrolling_graph;
+
+        if (constant_redraw) {
+            this.add_tick_callback (() => {
+                this.update_x_offset ();
+                return constant_redraw;
+            });
+        }
     }
 
     public void add_graph (Graph graph) {
@@ -40,10 +58,13 @@ public abstract class Usage.PerformanceGraphView : GraphView {
         base.add_graph (graph);
     }
 
-    public bool update_x_offset () {
+    public void update_x_offset () {
         int64 timestamp = get_monotonic_time ();
-        this.offset_x = timestamp - 1000 * (settings.graph_timespan + settings.graph_update_interval);
-        return true;
+        int64 offset = timestamp - 1000 * settings.graph_timespan;
+        if (constant_redraw) {
+            offset -= 1000 * settings.graph_update_interval;
+        }
+        this.offset_x = offset;
     }
 
     protected abstract void update_graphs ();

@@ -21,6 +21,9 @@
 using Gtk;
 
 public class Usage.Settings : GLib.Settings {
+    private Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
+    private GLib.PowerProfileMonitor power_profile_monitor = GLib.PowerProfileMonitor.dup_default ();
+
     public uint graph_timespan { get; set; default = 15000;}
     public uint graph_update_interval { get { return 1000; }}
     public uint list_update_interval_UI { get; set; default = 5000; }
@@ -28,6 +31,12 @@ public class Usage.Settings : GLib.Settings {
     public uint data_update_interval { get; set; default = 1000; }
     public double app_minimum_load { get { return 0.2d; } }
     public double app_minimum_memory { get { return 0; } }
+    public bool enable_scrolling_graph {
+        get {
+            return gtk_settings.gtk_enable_animations
+                    && !power_profile_monitor.power_saver_enabled;
+        }
+    }
 
     private static Settings settings;
 
