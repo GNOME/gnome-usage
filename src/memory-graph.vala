@@ -20,44 +20,30 @@
  *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
-public class Usage.MemoryGraph : GraphView {
-    private Settings settings = Settings.get_default ();
+public class Usage.MemoryGraph : PerformanceGraphView {
+    Graph mem_graph = new Graph ();
+    Graph swap_graph = new Graph ();
 
     public MemoryGraph () {
-        Graph mem_graph = new Graph ();
-        mem_graph.maximal_queue_length = settings.graph_timespan/settings.graph_update_interval + 2;
-        this.add_graph (mem_graph);
-        Graph swap_graph = new Graph ();
-        swap_graph.maximal_queue_length = settings.graph_timespan/settings.graph_update_interval + 2;
-        this.add_graph (swap_graph);
+        this.add_graph (this.mem_graph);
+        this.add_graph (this.swap_graph);
+    }
 
-        this.range_y = 100;
-        this.offset_y = 0;
-        this.range_x = 1000 * settings.graph_timespan;
-        this.add_tick_callback ((widget, frame_clock) => {
-            int64 timestamp = get_monotonic_time ();
-            this.offset_x = timestamp - 1000 * (settings.graph_timespan + settings.graph_update_interval);
-            return true;
-        });
+    protected override void update_graphs () {
+        SystemMonitor monitor = SystemMonitor.get_default ();
+        int64 timestamp = get_monotonic_time ();
 
-        Timeout.add (settings.graph_update_interval, () => {
-            SystemMonitor monitor = SystemMonitor.get_default ();
-            int64 timestamp = get_monotonic_time ();
+        double ram_usage = 0;
+        if (monitor.ram_total != 0)
+            ram_usage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
 
-            double ram_usage = 0;
-            if (monitor.ram_total != 0)
-                ram_usage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
+        double swap_usage = 0;
+        if (monitor.ram_total != 0)
+            swap_usage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
 
-            double swap_usage = 0;
-            if (monitor.ram_total != 0)
-                swap_usage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
-
-            GraphPoint mem_point = GraphPoint (timestamp, ram_usage);
-            mem_graph.push_point (mem_point);
-            GraphPoint swap_point = GraphPoint (timestamp, swap_usage);
-            swap_graph.push_point (swap_point);
-
-            return true;
-        });
+        GraphPoint mem_point = GraphPoint (timestamp, ram_usage);
+        mem_graph.push_point (mem_point);
+        GraphPoint swap_point = GraphPoint (timestamp, swap_usage);
+        swap_graph.push_point (swap_point);
     }
 }

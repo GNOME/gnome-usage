@@ -23,75 +23,48 @@
 /**
  *  Graph showing most used core
 **/
-public class Usage.CpuGraphMostUsedCore : GraphView {
-    private Settings settings = Settings.get_default ();
+public class Usage.CpuGraphMostUsedCore : PerformanceGraphView {
+    Graph max_load_graph = new Graph ();
 
     public CpuGraphMostUsedCore () {
-        Graph max_load_graph = new Graph ();
-        max_load_graph.maximal_queue_length = settings.graph_timespan/settings.graph_update_interval + 2;
-        this.add_graph (max_load_graph);
+        this.add_graph (this.max_load_graph);
+    }
 
-        this.range_y = 100;
-        this.offset_y = 0;
-        this.range_x = 1000 * settings.graph_timespan;
-        this.add_tick_callback ((widget, frame_clock) => {
-            int64 timestamp = get_monotonic_time ();
-            this.offset_x = timestamp - 1000 * (settings.graph_timespan + settings.graph_update_interval);
-            return true;
-        });
+    protected override void update_graphs () {
+        SystemMonitor monitor = SystemMonitor.get_default ();
+        int64 timestamp = get_monotonic_time ();
+        double most_used_core = monitor.x_cpu_load[0];
 
-        Timeout.add (settings.graph_update_interval, () => {
-            SystemMonitor monitor = SystemMonitor.get_default ();
-            int64 timestamp = get_monotonic_time ();
-            double most_used_core = monitor.x_cpu_load[0];
+        for (int i = 1; i < get_num_processors (); i++) {
+            if (monitor.x_cpu_load[i] > most_used_core)
+                most_used_core = monitor.x_cpu_load[i];
+        }
 
-            for (int i = 1; i < get_num_processors (); i++) {
-                if (monitor.x_cpu_load[i] > most_used_core)
-                    most_used_core = monitor.x_cpu_load[i];
-            }
-
-            GraphPoint point = GraphPoint (timestamp, most_used_core);
-            max_load_graph.push_point (point);
-
-            return true;
-        });
+        GraphPoint point = GraphPoint (timestamp, most_used_core);
+        max_load_graph.push_point (point);
     }
 }
 
 /**
  *  Graph showing all processor cores.
 **/
-public class Usage.CpuGraph : GraphView {
-    private Settings settings = Settings.get_default ();
-
+public class Usage.CpuGraph : PerformanceGraphView {
     public CpuGraph () {
         for (int i = 0; i < get_num_processors (); i++) {
             Graph graph = new Graph ();
-            graph.maximal_queue_length = settings.graph_timespan/settings.graph_update_interval + 2;
             this.add_graph (graph);
         }
 
         this.add_css_class ("big");
+    }
 
-        this.range_y = 100;
-        this.offset_y = 0;
-        this.range_x = 1000 * settings.graph_timespan;
-        this.add_tick_callback ((widget, frame_clock) => {
-            int64 timestamp = get_monotonic_time ();
-            this.offset_x = timestamp - 1000 * (settings.graph_timespan + settings.graph_update_interval);
-            return true;
-        });
+    protected override void update_graphs () {
+        SystemMonitor monitor = SystemMonitor.get_default ();
+        int64 timestamp = get_monotonic_time ();
 
-        Timeout.add (settings.graph_update_interval, () => {
-            SystemMonitor monitor = SystemMonitor.get_default ();
-            int64 timestamp = get_monotonic_time ();
-
-            for (int i = 0; i < get_num_processors (); i++) {
-                GraphPoint point = GraphPoint (timestamp, monitor.x_cpu_load[i]);
-                this.get_graph(i).push_point (point);
-            }
-
-            return true;
-        });
+        for (int i = 0; i < get_num_processors (); i++) {
+            GraphPoint point = GraphPoint (timestamp, monitor.x_cpu_load[i]);
+            this.get_graph(i).push_point (point);
+        }
     }
 }
