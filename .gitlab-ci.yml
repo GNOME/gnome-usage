@@ -7,11 +7,12 @@ fedora:
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
   before_script:
-    - dnf update -y
-    - dnf install -y gcc meson gettext gtk-doc vala gtk4-devel libgtop2-devel libadwaita-devel libgee-devel
-                     desktop-file-utils redhat-rpm-config tracker-devel
+    - dnf5 update -y
+    - dnf5 install -y gcc meson gettext gtk-doc vala gtk4-devel libgtop2-devel
+                      libadwaita-devel libgee-devel desktop-file-utils
+                      redhat-rpm-config tracker-devel
 
-  image: fedora:38
+  image: fedora:rawhide
   stage: test
   script:
   - meson _build .
