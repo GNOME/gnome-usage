@@ -112,7 +112,7 @@ public class Usage.GraphView : Gtk.Widget {
                 Math.sincos(angle, out sin_angle, out cos_angle);
 
                 Graphene.Rect bounds = Graphene.Rect ();
-                bounds.init (x, 0, (float) delta_x, this.get_height ());
+                bounds.init (x, Math.fminf(y, y - (float) delta_y) - thickness/2, (float) delta_x, Math.fabsf((float) delta_y) + thickness);
 
                 Graphene.Point start = Graphene.Point ();
                 Graphene.Point end = Graphene.Point ();
