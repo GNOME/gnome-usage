@@ -20,30 +20,6 @@
  *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
-[GtkTemplate (ui = "/org/gnome/Usage/ui/process-row.ui")]
-public class Usage.ProcessRow : Gtk.ListBoxRow {
-    public AppItem app { get; private set; }
-    public ProcessRowItem item { get; private set; }
-
-    [GtkChild]
-    private unowned Usage.ProcessUserTag user_tag;
-
-    public ProcessRow (AppItem app, ProcessListBoxType type) {
-        this.app = app;
-        this.item = new ProcessRowItem (app, type);
-    }
-
-    public new void activate () {
-        var settings = Settings.get_default ();
-        if (app.representative_cmdline in settings.get_strv ("unkillable-processes"))
-            return;
-
-        var dialog = new QuitProcessDialog (app);
-        dialog.set_transient_for ((Gtk.Window) this.get_root ());
-        dialog.present ();
-    }
-}
-
 public class Usage.ProcessRowItem : Object {
     private const string CSS_TAG_USER = "tag-user";
     private const string CSS_TAG_ROOT = "tag-root";

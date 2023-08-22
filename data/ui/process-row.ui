@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <template class="UsageProcessRow" parent="GtkListBoxRow">
-    <property name="hexpand">True</property>
+  <template class="GtkListItem">
     <property name="child">
       <object class="GtkBox">
         <property name="orientation">vertical</property>
@@ -19,7 +18,7 @@
                 <binding name="gicon">
                   <lookup name="icon" type="UsageAppItem">
                     <lookup name="app" type="UsageProcessRowItem">
-                      <lookup name="item" type="UsageProcessRow"/>
+                      <lookup name="item" type="GtkListItem"/>
                     </lookup>
                   </lookup>
                 </binding>
@@ -34,7 +33,7 @@
                 <binding name="label">
                   <lookup name="display_name" type="UsageAppItem">
                     <lookup name="app" type="UsageProcessRowItem">
-                      <lookup name="item" type="UsageProcessRow"/>
+                      <lookup name="item" type="GtkListItem"/>
                     </lookup>
                   </lookup>
                 </binding>
@@ -47,7 +46,7 @@
                 <binding name="visible">
                   <lookup name="gamemode" type="UsageAppItem">
                     <lookup name="app" type="UsageProcessRowItem">
-                      <lookup name="item" type="UsageProcessRow"/>
+                      <lookup name="item" type="GtkListItem"/>
                     </lookup>
                   </lookup>
                 </binding>
@@ -57,17 +56,17 @@
               <object class="UsageProcessUserTag" id="user_tag">
                 <binding name="visible">
                   <lookup name="not_current_user" type="UsageProcessRowItem">
-                    <lookup name="item" type="UsageProcessRow"/>
+                    <lookup name="item" type="GtkListItem"/>
                   </lookup>
                 </binding>
                 <binding name="label">
                   <lookup name="user" type="UsageProcessRowItem">
-                    <lookup name="item" type="UsageProcessRow"/>
+                    <lookup name="item" type="GtkListItem"/>
                   </lookup>
                 </binding>
                 <binding name="user_type">
                   <lookup name="user_type" type="UsageProcessRowItem">
-                    <lookup name="item" type="UsageProcessRow"/>
+                    <lookup name="item" type="GtkListItem"/>
                   </lookup>
                 </binding>
               </object>
@@ -78,7 +77,7 @@
                 <property name="max_width_chars">30</property>
                 <binding name="label">
                   <lookup name="load" type="UsageProcessRowItem">
-                    <lookup name="item" type="UsageProcessRow"/>
+                    <lookup name="item" type="GtkListItem"/>
                   </lookup>
                 </binding>
               </object>

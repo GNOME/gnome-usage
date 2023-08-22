@@ -20,7 +20,7 @@ vala_sources = [
   'performance-graph-view.vala',
   'performance-view.vala',
   'process-list-box.vala',
-  'process-row.vala',
+  'process-row-item.vala',
   'process-user-tag.vala',
   'process.vala',
   'quit-process-dialog.vala',
