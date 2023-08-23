@@ -26,7 +26,7 @@ public class Usage.Settings : GLib.Settings {
     public uint list_update_interval_UI { get; set; default = 5000; }
     public uint list_update_pie_charts_UI { get; set; default = 1000; }
     public uint data_update_interval { get; set; default = 1000; }
-    public double app_minimum_load { get { return 1; } }
+    public double app_minimum_load { get { return 0.2d; } }
     public double app_minimum_memory { get { return 0; } }
 
     private static Settings settings;

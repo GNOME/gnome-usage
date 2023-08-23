@@ -202,6 +202,7 @@ public class Usage.AppItem : Object {
         }
 
         gamemode = games > 0;
+        cpu_load = cpu_load / get_num_processors ();
     }
 
     public void remove_process (Process process) {
