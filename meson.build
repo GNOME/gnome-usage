@@ -25,7 +25,7 @@ gio_dep = dependency('gio-2.0', version : '>=2.44')
 gio_unix_dep = dependency('gio-unix-2.0')
 gtk_dep = dependency('gtk4', version : '>=4.11.3')
 libgtop_dep = dependency('libgtop-2.0', version : '>= 2.34.0')
-libadwaita_dep = dependency('libadwaita-1', version : '>=1.2')
+libadwaita_dep = dependency('libadwaita-1', version : '>=1.4')
 tracker_dep = dependency('tracker-sparql-3.0')
 
 gnome = import('gnome')

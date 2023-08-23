@@ -160,6 +160,10 @@ row.up-folder:not(:backdrop)  {
     border:none;
 }
 
-leaflet > box.sidebar {
-    border: none;
+.storage-graph-view:dir(ltr) {
+    border-left: 1px solid @borders;
+}
+
+.storage-graph-view:dir(rtl) {
+    border-right: 1px solid @borders;
 }

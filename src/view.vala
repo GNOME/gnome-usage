@@ -20,9 +20,14 @@
  *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
-public abstract class Usage.View : Adw.Bin {
+public abstract class Usage.View : Adw.BreakpointBin {
     public string title;
     public string icon_name;
+
+    construct {
+        this.width_request = 360;
+        this.height_request = 300;
+    }
 
     protected View () {
     }
