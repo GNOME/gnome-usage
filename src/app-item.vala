@@ -202,7 +202,6 @@ public class Usage.AppItem : Object {
         }
 
         gamemode = games > 0;
-        cpu_load = double.min (100, cpu_load);
     }
 
     public void remove_process (Process process) {
