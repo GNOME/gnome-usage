@@ -1,6 +1,7 @@
 /* view.vala
  *
  * Copyright (C) 2017 Red Hat, Inc.
+ * Copyright (C) 2023 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
 public abstract class Usage.View : Adw.Bin {
@@ -26,6 +28,11 @@ public abstract class Usage.View : Adw.Bin {
     }
 }
 
-public interface Usage.SubView {
+public abstract class Usage.SubView : Adw.Bin {
+    public string title;
+
+    protected SubView () {
+    }
+
     public abstract void search_in_processes (string text);
 }

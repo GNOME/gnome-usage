@@ -37,14 +37,14 @@ public class Usage.PerformanceView : View {
     [GtkChild]
     private unowned Gtk.ScrolledWindow scrolled_window;
 
-    View[] sub_views;
+    SubView[] sub_views;
 
     public PerformanceView () {
         name = "PERFORMANCE";
         title = _("Performance");
         icon_name = "speedometer-symbolic";
 
-        sub_views = new View[] {
+        sub_views = new SubView[] {
             new ProcessorSubView (),
             new MemorySubView ()
         };
@@ -59,7 +59,7 @@ public class Usage.PerformanceView : View {
 
     [GtkCallback]
     private void on_search_entry_changed () {
-        foreach (View sub_view in sub_views)
+        foreach (SubView sub_view in sub_views)
             ((SubView) sub_view).search_in_processes (search_entry.get_text ());
     }
 

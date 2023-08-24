@@ -18,7 +18,7 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-public class Usage.ProcessorSubView : View, SubView {
+public class Usage.ProcessorSubView : SubView {
     private ProcessListBox process_list_box;
     private NoResultsFoundView no_process_view;
 
@@ -73,7 +73,7 @@ public class Usage.ProcessorSubView : View, SubView {
         set_child (cpu_box);
     }
 
-    public void search_in_processes (string text) {
+    public override void search_in_processes (string text) {
         process_list_box.search_text = text;
     }
 }

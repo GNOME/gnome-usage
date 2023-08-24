@@ -19,7 +19,7 @@
  */
 
 public class Usage.GraphStackSwitcher : Gtk.Box {
-    View[] sub_views;
+    SubView[] sub_views;
     AnimatedScrolledWindow scrolled_window;
 
     GraphSwitcherButton[] buttons;
@@ -28,7 +28,7 @@ public class Usage.GraphStackSwitcher : Gtk.Box {
         set_css_name ("graph-stack-switcher");
     }
 
-    public GraphStackSwitcher (AnimatedScrolledWindow scrolled_window, View[] sub_views) {
+    public GraphStackSwitcher (AnimatedScrolledWindow scrolled_window, SubView[] sub_views) {
         Object (orientation: Gtk.Orientation.VERTICAL, spacing: 0);
 
         this.sub_views = sub_views;
