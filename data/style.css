@@ -11,6 +11,11 @@ list row.max:hover {
     background: alpha(@error_color, 0.4);
 }
 
+list row {
+    font-feature-settings: "tnum";
+
+}
+
 button.graph-switcher {
     border-style: none;
     border-radius: 0;
@@ -50,6 +55,10 @@ StorageGraph {
 }
 
 /* Speedometer */
+Speedometer {
+    font-feature-settings: "tnum";
+}
+
 .speedometer-outter, .speedometer-inner, .speedometer-content-area {
     border-radius: 50%;
 }
@@ -112,6 +121,7 @@ StorageGraph {
 
 .storage-row {
     padding: 0 5px;
+    font-feature-settings: "tnum";
 }
 
 .stack-children .storage-row {

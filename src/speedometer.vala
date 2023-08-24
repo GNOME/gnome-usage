@@ -42,6 +42,10 @@ public class Usage.Speedometer : Buildable, Adw.Bin {
         }
     }
 
+    class construct {
+        set_css_name ("Speedometer");
+    }
+
     construct {
         css_provider = new Gtk.CssProvider ();
         inner.get_style_context ().add_provider (css_provider,
