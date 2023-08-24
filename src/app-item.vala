@@ -1,3 +1,25 @@
+/* app-item.vala
+ *
+ * Copyright (C) 2018 Red Hat, Inc.
+ * Copyright (C) 2023 Markus Göllnitz
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
+ */
+
 public class Usage.AppItem : Object {
     public HashTable<Pid?, Process>? processes { get; set; }
     public string display_name { get; private set; }
@@ -173,10 +195,16 @@ public class Usage.AppItem : Object {
         processes.insert (process.pid, process);
     }
 
+    public bool is_killable () {
+        return !(this.representative_cmdline in Settings.get_default ().get_strv ("unkillable-processes"));
+    }
+
     public void kill () {
-        foreach (var process in processes.get_values ()) {
-            debug ("Terminating %d", (int) process.pid);
-            Posix.kill (process.pid, Posix.Signal.KILL);
+        if (this.is_killable ()) {
+            foreach (var process in processes.get_values ()) {
+                debug ("Terminating %d", (int) process.pid);
+                Posix.kill (process.pid, Posix.Signal.KILL);
+            }
         }
     }
 
