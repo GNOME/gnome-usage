@@ -29,8 +29,6 @@ public class Usage.ProcessListBox : Adw.Bin {
     public bool empty { get; set; default = true; }
     public string search_text { get; set; default = ""; }
 
-    private const double APP_CPU_MIN_LOAD_LIMIT = 1;
-    private const double APP_MEM_MIN_USAGE_LIMIT = 0;
     private ListStore model;
     private ProcessListBoxType type;
 
@@ -82,18 +80,19 @@ public class Usage.ProcessListBox : Adw.Bin {
         };
 
         var system_monitor = SystemMonitor.get_default ();
+        Settings settings = Settings.get_default ();
         if (search_text == "") {
             switch (type) {
                 default:
                 case ProcessListBoxType.PROCESSOR:
                     foreach (unowned AppItem app in system_monitor.get_apps ()) {
-                        if (app.cpu_load > APP_CPU_MIN_LOAD_LIMIT)
+                        if (app.cpu_load > settings.app_minimum_load)
                             model.insert_sorted (app, app_cmp);
                     }
                     break;
                 case ProcessListBoxType.MEMORY:
                     foreach (unowned AppItem app in system_monitor.get_apps ())
-                        if (app.mem_usage > APP_MEM_MIN_USAGE_LIMIT)
+                        if (app.mem_usage > settings.app_minimum_memory)
                             model.insert_sorted (app, app_cmp);
                     break;
             }
