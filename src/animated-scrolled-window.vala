@@ -23,6 +23,8 @@
 using Gtk;
 
 public class Usage.AnimatedScrolledWindow {
+    private Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
+
     public signal void scroll_changed (double y);
     private const uint DURATION = 400;
     public Gtk.ScrolledWindow scrolled_window { get; private set; }
@@ -35,6 +37,11 @@ public class Usage.AnimatedScrolledWindow {
     }
 
     public void animated_scroll_vertically (int y) {
+        if (!gtk_settings.gtk_enable_animations) {
+            scrolled_window.vadjustment.set_value ((double) y);
+            return;
+        }
+
         var clock = scrolled_window.get_frame_clock ();
         int64 start_time = clock.get_frame_time ();
         int64 end_time = start_time + 1000 * DURATION;
