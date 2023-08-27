@@ -1,6 +1,7 @@
 /* settings.vala
  *
  * Copyright (C) 2017 Red Hat, Inc.
+ * Copyright (C) 2023 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
 using Gtk;
@@ -24,13 +26,19 @@ public class Usage.Settings : GLib.Settings {
     private Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
     private GLib.PowerProfileMonitor power_profile_monitor = GLib.PowerProfileMonitor.dup_default ();
 
-    public uint graph_timespan { get; set; default = 15000;}
-    public uint graph_update_interval { get { return 1000; }}
-    public uint list_update_interval_UI { get; set; default = 5000; }
-    public uint list_update_pie_charts_UI { get; set; default = 1000; }
-    public uint data_update_interval { get; set; default = 1000; }
-    public double app_minimum_load { get { return 0.2d; } }
-    public double app_minimum_memory { get { return 0; } }
+    public uint graph_timespan { get { return settings.get_uint ("performance-graphs-timespan"); } }
+    public uint graph_update_interval { get { return settings.get_uint ("performance-update-interval"); } }
+    public uint list_update_interval_UI {
+        get {
+            uint performance_interval = settings.get_uint ("performance-update-interval");
+            if (performance_interval >= 5000) return performance_interval;
+            return (int) Math.ceil(5000.0/performance_interval) * performance_interval;
+        }
+    }
+    public uint list_update_pie_charts_UI { get { return settings.get_uint ("performance-update-interval"); } }
+    public uint data_update_interval { get { return settings.get_uint ("performance-update-interval"); } }
+    public double app_minimum_load { get { return settings.get_double ("app-minimum-load"); } }
+    public double app_minimum_memory { get { return settings.get_double ("app-minimum-memory"); } }
     public bool enable_scrolling_graph {
         get {
             return gtk_settings.gtk_enable_animations

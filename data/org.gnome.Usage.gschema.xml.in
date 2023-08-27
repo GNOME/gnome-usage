@@ -5,6 +5,41 @@
             <summary>A list of processes which we don’t want killed</summary>
             <description>This list is used for filtering which processes the user can’t stop.</description>
         </key>
+        <key name="performance-graphs-timespan" type="u">
+            <default>15000</default>
+            <summary>time span (ms) of the graphs in the performance tab</summary>
+            <description>
+              The time span for up to which the CPU and memory graphs in the
+              performance tab and its sidebar go back in time in milliseconds.
+            </description>
+        </key>
+        <key name="performance-update-interval" type="u">
+            <default>1000</default>
+            <summary>interval (ms) for the performance data refresh</summary>
+            <description>
+              The interval at which the data for the performance tab are updated
+              and displayed periodically in milliseconds.
+            </description>
+        </key>
+        <key name="app-minimum-load" type="d">
+            <default>0.2</default>
+            <summary>minimum relative load (%) of an app to be displayed in the performance tab</summary>
+            <description>
+              The load an app has to have in total as the sum over all its
+              processes, normalized to 100, to be listed in the performance tab.
+              With 0, all apps are listed. With 100 an app is only listed if its
+              processes fully utilise all CPU threads.
+            </description>
+        </key>
+        <key name="app-minimum-memory" type="d">
+            <default>0</default>
+            <summary>minimum memory footprint of an app to be displayed in the performance tab</summary>
+            <description>
+              The minimum amount of memory an app has to use in total as the sum
+              over all its processes in bytes to be listed in the performance
+              tab.
+            </description>
+        </key>
         <key name="disable-scrolling-graphs" type="b">
             <default>false</default>
             <summary>Force graphs to not continuously scrolling</summary>
