@@ -63,19 +63,19 @@ public class Usage.GraphStackSwitcher : Gtk.Box {
     }
 
     private void scroll_to_view (int button_number) {
-        Gtk.Allocation alloc;
+        Graphene.Rect bounds;
 
-        this.sub_views[button_number].get_allocation (out alloc);
-        scrolled_window.animated_scroll_vertically (alloc.y);
+        this.sub_views[button_number].compute_bounds (this.scrolled_window.scrolled_window, out bounds);
+        scrolled_window.animated_scroll_vertically ((int) bounds.get_y () + (int) this.scrolled_window.scrolled_window.vadjustment.get_value ());
     }
 
     private void on_scroll_changed (double y) {
-        Gtk.Allocation alloc;
+        Graphene.Rect bounds;
 
         var button_number = 0;
         for (int i = 1; i < buttons.length; i++) {
-            this.sub_views[i].get_allocation (out alloc);
-            if (y < alloc.y)
+            this.sub_views[i].compute_bounds (this.scrolled_window.scrolled_window, out bounds);
+            if (y < bounds.get_y () + this.scrolled_window.scrolled_window.vadjustment.get_value ())
                 break;
             button_number = i;
         }

@@ -171,8 +171,8 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         var layout = create_pango_layout (null);
         var text = Utils.format_size_values (selected_size);
 
-        int height = get_allocated_height ();
-        int width = get_allocated_width ();
+        int height = this.get_height ();
+        int width = this.get_width ();
         double radius = int.min (width, height) / 22;
 
         var text_color = this.get_root ().get_color ();
