@@ -50,7 +50,7 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
     public ProcessRow (AppItem app, ProcessListBoxType type) {
         this.type = type;
         this.app = app;
-        this.icon.gicon = app.get_icon ();
+        this.icon.gicon = app.icon;
         this.app.bind_property ("gamemode", gamemode, "visible", BindingFlags.SYNC_CREATE);
         update ();
     }

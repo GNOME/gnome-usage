@@ -21,6 +21,8 @@
  */
 
 public class Usage.AppItem : Object {
+    private static Icon default_icon = new GLib.ThemedIcon ("system-run-symbolic");
+
     public HashTable<Pid?, Process>? processes { get; set; }
     public string display_name { get; private set; }
     public string representative_cmdline { get; private set; }
@@ -29,6 +31,14 @@ public class Usage.AppItem : Object {
     public uint64 mem_usage { get; private set; }
     public Fdo.AccountsUser? user { get; private set; default = null; }
     public bool gamemode {get; private set; }
+    public virtual Icon icon {
+        get {
+            if (app_info == null || app_info.get_icon () == null) {
+                return default_icon;
+            }
+            return app_info.get_icon ();
+        }
+    }
 
     private static HashTable<string, AppInfo>? apps_info;
     private static HashTable<string, AppInfo>? appid_map;
@@ -180,15 +190,6 @@ public class Usage.AppItem : Object {
 
     public bool contains_process (Pid pid) {
         return processes.contains (pid);
-    }
-
-    public Icon get_icon () {
-        var app_icon = (app_info == null) ? null : app_info.get_icon ();
-
-        if (app_info == null || app_icon == null)
-            return new GLib.ThemedIcon ("system-run-symbolic");
-        else
-            return app_icon;
     }
 
     public Process get_process_by_pid (Pid pid) {
