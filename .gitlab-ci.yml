@@ -1,6 +1,7 @@
 include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
 stages:
   - test
+  - review
   - deploy
 
 fedora:
@@ -27,6 +28,12 @@ flatpak:
     FLATPAK_MODULE: 'gnome-usage'
     BUNDLE: "org.gnome.UsageDevel.flatpak"
     APP_ID: 'org.gnome.UsageDevel'
+
+i18n:
+  stage: review
+  script:
+    - ./build-aux/test/i18n-strings-check.sh
+
 
 nightly:
   extends: '.publish_nightly'
