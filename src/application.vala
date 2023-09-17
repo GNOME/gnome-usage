@@ -58,7 +58,8 @@ public class Usage.Application : Adw.Application {
 
     private void on_about (GLib.SimpleAction action, GLib.Variant? parameter) {
         string[] authors = {
-            "Petr Štětka <pstetka@redhat.com>"
+            "Petr Štětka <pstetka@redhat.com>",
+            "Markus Göllnitz <camelcasenick@bewares.it>"
         };
         string[] artists = {
             "Allan Day <aday@gnome.org>",

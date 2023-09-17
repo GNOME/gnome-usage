@@ -6,8 +6,8 @@
   <summary>A nice way to view information about use of system resources</summary>
   <description>
     <p>
-        A simple application for GNOME to monitor and analyze system resources such
-        as processing, memory, and storage.
+        A simple application to monitor and analyze system resources such
+        as CPU and memory usage of running apps, and storage usage.
     </p>
   </description>
   <screenshots>
@@ -22,7 +22,7 @@
     </screenshot>
   </screenshots>
   <url type="homepage">https://wiki.gnome.org/Apps/Usage</url>
-  <update_contact>pstetka_at_redhat.com"</update_contact>
+  <update_contact>camelcasenick@bewares.it</update_contact>
   <releases>
     <release version="3.32.0" date="2019-03-22">
       <description>
@@ -42,7 +42,8 @@
     <control>touch</control>
   </recommends>
   <requires>
-    <display_length compare="ge">360</display_length>
+    <display_length compare="ge" side="shortest">360</display_length>
+    <display_length compare="ge" side="longest">400</display_length>
   </requires>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
   <project_license>GPL-3.0+</project_license>
