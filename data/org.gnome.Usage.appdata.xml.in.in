@@ -24,6 +24,17 @@
   <url type="homepage">https://wiki.gnome.org/Apps/Usage</url>
   <update_contact>camelcasenick@bewares.it</update_contact>
   <releases>
+    <release version="45.0" date="2023-09-17">
+      <description>
+        <p>Usage 45 is out with</p>
+        <ul>
+          <li>the new look and feel of modern Adwaita on GNOME</li>
+          <li>improved graphs that now just update every two seconds with a measurement for performance</li>
+          <li>more reliable application classifications due to fixed bugs</li>
+	        <li>scaling the CPU usage with its amount of threads, so that 100 % now means all cores are in use</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.32.0" date="2019-03-22">
       <description>
         <p>3.32.0 is the latest stable release of GNOME Usage.</p>

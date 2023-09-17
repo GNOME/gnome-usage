@@ -1,3 +1,63 @@
+45.0 - Sep 17, 2023
+===================
+
+With removing GNOME from the app's name (!108) it is now hopefully clearer
+that Usage is not affiliated with GNOME and not part of its Core Apps.
+
+But the branding is not even close to the only thing changed in the last
+three years, amongst the more user facing are
+* porting to GTK4 and the new Adwaita widgets with a completely rewritten graph view (!110, !112, !100, !102, !116, !103, !121),
+* normalising the load, so that 100 % now means all threads are in use (!123),
+* reducing the re-rendering by making the graphs not scroll continuously – at least by default (!119), and
+* making sure, Usage doesn't think we had no swap just because 0 % is left (!94, by vfjpl).
+
+Usage now does no longer depend on libhandy and GTK+3, and instead gained
+libadwaita >=1.4, GTK 4 >=4.12, and libgee as dependencies.
+
+And there are Thanks due for
+* adding pipewire-pulseaudio to default unkillable processes (!87, by Björn Daase),
+* making formatting of byte dimensioned sizesbetter (!89, by Nishal Kulkarni),
+* fixing control group based application classification for apps with dashes in their ID (!104),
+
+and for
+* providing source files for the app icons (!86, by Jakub Steiner),
+* dropping building libhandy for Flatpak, as it was already part of the runtime (!93, Jordan Petridis), and
+* looking into the coding style, and making it more consistent (!91, by Nahuel Gomez),
+
+as well to Adrien Plazas for his prior involvment as amaintainer, and for
+quiet a few clean-ups changes not included above.
+
+Usage gained new translations for
+ * Belarusian (Vasil Pupkin)
+ * Georgian (Zurab Kargareteli, Ekaterine Papava)
+ * Hebrew (Yosef Or Boczko)
+ * Korean (Seong-ho Cho)
+ * Occitan (Quentin PAGÈS)
+ * Portuguese (Juliano de Souza Camargo, Hugo Carvalho)
+
+has seen updates in
+ * Basque (Asier Sarasua Garmendia)
+ * Brazilian Portuguese (Rafael Fontenelle)
+ * Catalan (Jordi Mas)
+ * Chinese (China) (Boyuan Yang, Luming Zh)
+ * Croatian (Goran Vidović)
+ * Czech (Marek Černocký)
+ * Danish (Alan Mortensen)
+ * Dutch (Nathan Follens)
+ * Friulian (Fabio Tomat)
+ * Galician (Fran Dieguez)
+ * German (Christian Kirbach, Philipp Kiemle, Jürgen Benvenuti)
+ * Hungarian (Balázs Úr)
+ * Indonesian (Kukuh Syafaat)
+ * Japanese (sicklylife)
+ * Polish (Piotr Drąg)
+ * Russian (Sergej A)
+ * Serbian (Мирослав Николић)
+ * Slovenian (Matej Urbančič)
+ * Swedish (Luna Jernberg, Daniel Mustieles, Anders Jonsson)
+ * Turkish (Sabri Ünal)
+ * Ukrainian (Yuri Chornoivan)
+
 3.38.1 - Mar 19, 2021
 =====================
 
