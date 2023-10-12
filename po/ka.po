@@ -7,20 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-06-29 16:44+0000\n"
-"PO-Revision-Date: 2023-07-01 07:58+0200\n"
-"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"POT-Creation-Date: 2023-10-10 10:42+0000\n"
+"PO-Revision-Date: 2023-10-12 15:51+0200\n"
+"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-msgid "GNOME Usage"
-msgstr "GNOME Usage"
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
+#: src/application.vala:73
+msgid "Usage"
+msgstr "გამოყენება"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
@@ -29,16 +31,11 @@ msgstr ""
 
 #: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
 msgstr ""
-"GNOME 3-ის მარტივი აპლიკაცია ისეთი სისტემური რესურსების, როგორიცაა "
-"დამუშავება, მეხსიერება და საცავი, მონიტორინგი და ანალიზი."
-
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:7
-#: data/ui/window.ui:17 src/application.vala:72
-msgid "Usage"
-msgstr "გამოყენება"
+"მარტივი აპლიკაცია ისეთი სისტემური რესურსების, როგორიცაა CPU, მეხსიერება და "
+"საცავი, მონიტორინგი და ანალიზი."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -67,16 +64,72 @@ msgstr ""
 "ეს სია გამოიყენება იმ პროცესების გასაფილტრად, რომლების მოკვლაც მომხმარებლებს "
 "არ შეუძლიათ."
 
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:45
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Გამოყენებული"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:51
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "ხელმისაწვდომია"
@@ -110,7 +163,7 @@ msgstr "ძალით გასვლა"
 msgid "Delete…"
 msgstr "წაშლა…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:41
 msgid "Home Partition"
 msgstr "საწყისი დანაყოფი"
 
@@ -118,19 +171,19 @@ msgstr "საწყისი დანაყოფი"
 msgid "Swap"
 msgstr "სვაპი"
 
-#: data/ui/window.ui:25
+#: data/ui/window.ui:34
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
-#: data/ui/window.ui:63
+#: data/ui/window.ui:71
 msgid "_About Usage"
 msgstr "_Usage-ის შესახებ"
 
-#: data/ui/window.ui:69
+#: data/ui/window.ui:77
 msgid "Group system processes"
 msgstr "სისტემური პროცესების დაჯგუფება"
 
-#: data/ui/window.ui:75
+#: data/ui/window.ui:83
 msgid "Show all processes"
 msgstr "ყველა პროცესის ჩვენება"
 
@@ -138,7 +191,7 @@ msgstr "ყველა პროცესის ჩვენება"
 msgid "System"
 msgstr "სისტემა"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -146,7 +199,7 @@ msgstr ""
 "სასიამოვნო გზა მიიღოთ ინფორმაცია ისეთი სისტემური რესურსების გამოყენების "
 "შესახებ, როგორიცაა მეხსიერება და ადგილი დისკზე."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "თემური დოღონაძე"
 
@@ -191,7 +244,7 @@ msgstr ""
 msgid "Storage"
 msgstr "სათავსო"
 
-#: src/storage/storage-view.vala:227
+#: src/storage/storage-view.vala:234
 msgid "Operating System"
 msgstr "ოპერაციული სისტემა"
 
@@ -209,6 +262,9 @@ msgstr "%s/წმ"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu ბ/წმ"
+
+#~ msgid "GNOME Usage"
+#~ msgstr "GNOME Usage"
 
 #~ msgid "Websites"
 #~ msgstr "ვებგვერდები"
