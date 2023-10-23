@@ -2,13 +2,13 @@
 # Copyright (C) 2019 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # scootergrisen, 2019.
-# Alan Mortensen <alanmortensen.am@gmail.com>, 2022.
+# Alan Mortensen <alanmortensen.am@gmail.com>, 2022-23.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2021-12-08 11:25+0000\n"
-"PO-Revision-Date: 2022-03-21 18:42+0100\n"
+"POT-Creation-Date: 2023-10-10 10:42+0000\n"
+"PO-Revision-Date: 2023-10-12 17:45+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish\n"
 "Language: da\n"
@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-msgid "GNOME Usage"
-msgstr "GNOME Forbrug"
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
+#: src/application.vala:73
+msgid "Usage"
+msgstr "Forbrug"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
@@ -28,16 +30,11 @@ msgstr "En fin måde til at vise information om forbruget af systemressourcer"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
 msgstr ""
-"Et simpelt GNOME 3-program til at overvåge og analysere systemressourcer "
-"såsom processor, hukommelse og lager."
-
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:73
-msgid "Usage"
-msgstr "Forbrug"
+"Et simpelt program til at overvåge og analysere systemressourcer såsom "
+"kørende programmers processor- og hukommelsesforbrug samt lagerforbrug."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -65,70 +62,146 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Listen bruges til at filtrere hvilke processer brugeren ikke kan stoppe."
 
-#: data/ui/memory-speedometer.ui:38
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "tidsspænd (ms) for graferne i ydelsesfanen"
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Tidsrummet (i millisekunder) som CPU- og hukommelsesgraferne i ydelsesfanen "
+"og dens sidebjælke går tilbage i tid."
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "interval (ms) for opdatering af ydelsesdata"
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"Tidsintervallet (i millisekunder) for opdatering af data samt grafik i ydelsesfanen."
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr ""
+"mindste relative belastning (%) for et program der skal vises i ydelsesfanen"
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
+"Den belastning, et program skal have i alt som summen af alle dens processer "
+"(normaliseret til 100), for at blive vist i ydelsesfanen. Med 0 vises alle "
+"programmer. Med 100 vises et program kun, hvis dens processer udnytter alle "
+"CPU-tråde fuldt ud."
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+"mindste hukommelsesforbrug for et program der skal vises i ydelsesfanen"
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Den mindste mængde hukommelse, som et program skal bruge i alt som summen af "
+"alle dets processer i byte, for at blive vist på ydelsesfanen."
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Tving grafer til ikke at rulle kontinuerligt"
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Hvis den er aktiveret, vil ydelsesgraferne blive tvunget til ikke at rulle "
+"kontinuerligt, men i stedet kun hoppe, når der tilføjes et nyt datapunkt. "
+"Hvis den er deaktiveret, vil graferne selv bestemme, hvordan de skal opføre "
+"sig, baseret på strømbesparende tilstand og GTK's globale "
+"animationsindstillinger."
+
+#: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
-#: data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
+#: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Anvendt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
-#: data/ui/swap-speedometer.ui:75
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
+#: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Tilgængelig"
 
-#: data/ui/no-results-found-view.ui:23
+#: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Fandt ingen resultater"
 
-#: data/ui/no-results-found-view.ui:32
+#: data/ui/no-results-found-view.ui:40
 msgid "Try a different search"
 msgstr "Prøv en anden søgning"
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_Om Forbrug"
-
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Gruppér systemressourcer"
-
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Vis alle processer"
-
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:8
 msgid "Force Quit %s?"
 msgstr "Tving %s til at afslutte?"
 
-#: data/ui/quit-process-dialog.ui:10
+#: data/ui/quit-process-dialog.ui:9
 msgid "Unsaved work might be lost."
 msgstr "Arbejde, der ikke er gemt, kan gå tabt."
 
-#: data/ui/quit-process-dialog.ui:16
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
 msgid "Cancel"
 msgstr "Annullér"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/quit-process-dialog.ui:15
 msgid "Force Quit"
 msgstr "Tving afslutning"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Slet …"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:41
 msgid "Home Partition"
 msgstr "Hjemme-partition"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:148
+#: data/ui/window.ui:34
+msgid "Main Menu"
+msgstr "Hovedmenu"
+
+#: data/ui/window.ui:71
+msgid "_About Usage"
+msgstr "_Om Forbrug"
+
+#: data/ui/window.ui:77
+msgid "Group system processes"
+msgstr "Gruppér systemressourcer"
+
+#: data/ui/window.ui:83
+msgid "Show all processes"
+msgstr "Vis alle processer"
+
+#: src/app-item.vala:147
 msgid "System"
 msgstr "System"
 
@@ -144,23 +217,19 @@ msgstr ""
 msgid "translator-credits"
 msgstr "scootergrisen"
 
-#: src/application.vala:79
-msgid "Websites"
-msgstr "Websteder"
-
-#: src/cpu-sub-view.vala:29 src/graph-stack-switcher.vala:41
+#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Processor"
 
-#: src/graph-stack-switcher.vala:42 src/memory-sub-view.vala:29
+#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
 msgid "Memory"
 msgstr "Hukommelse"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:44
 msgid "Performance"
 msgstr "Ydelse"
 
-#: src/storage/storage-actionbar.vala:38
+#: src/storage/storage-actionbar.vala:39
 #, c-format
 msgid "%s selected"
 msgstr "%s valgt"
@@ -169,43 +238,52 @@ msgstr "%s valgt"
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Er du sikker på, at du vil slette de valgte elementer permanent?"
 
-#: src/storage/storage-actionbar.vala:51
+#: src/storage/storage-actionbar.vala:45
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Hvis du sletter elementerne, så går de tabt permanent."
 
-#: src/storage/storage-row-popover.vala:32
+#: src/storage/storage-actionbar.vala:50
+msgid "Delete"
+msgstr "Slet"
+
+#: src/storage/storage-row-popover.vala:42
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
 msgstr ""
 "Styresystemfiler er en essentiel del af dit system og kan ikke fjernes."
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Lager"
 
-#: src/storage/storage-view.vala:246
+#: src/storage/storage-view.vala:234
 msgid "Operating System"
 msgstr "Styresystem"
 
-#: src/storage/storage-view.vala:272
-msgid "Scanning directories"
-msgstr "Skanner mapper"
-
-#: src/utils.vala:27
+#: src/utils.vala:52
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
-#: src/utils.vala:32
+#: src/utils.vala:57
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
 
-#: src/utils.vala:34
+#: src/utils.vala:59
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "GNOME Usage"
+#~ msgstr "GNOME Forbrug"
+
+#~ msgid "Websites"
+#~ msgstr "Websteder"
+
+#~ msgid "Scanning directories"
+#~ msgstr "Skanner mapper"
 
 #~ msgid "org.gnome.Usage"
 #~ msgstr "org.gnome.Usage"
