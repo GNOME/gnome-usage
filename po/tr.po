@@ -2,17 +2,17 @@
 # Copyright (C) 2017-2022 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Emin Tufan Çetin <etcetin@gmail.com>, 2017-2019, 2022.
 # Sabri Ünal <libreajans@gmail.com>, 2019, 2022.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2017-2019, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-10-10 10:42+0000\n"
-"PO-Revision-Date: 2023-10-11 15:43+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"POT-Creation-Date: 2023-10-23 06:19+0000\n"
+"PO-Revision-Date: 2023-10-29 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +54,7 @@ msgid ""
 "Manager;"
 msgstr ""
 "Gözlemci;İzleyici;Sistem;İşlem;Süreç;CPU;MİB;İşlemci;Bellek;Ağ;Geçmiş;"
-"Kullanım;Performans;Görev;Yönetici;"
+"Kullanım;Başarım;Performans;Görev;Yönetici;"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -67,28 +67,33 @@ msgstr ""
 
 #: data/org.gnome.Usage.gschema.xml.in:10
 msgid "time span (ms) of the graphs in the performance tab"
-msgstr ""
+msgstr "başarım sekmesindeki grafiklerin zaman aralığı (ms)"
 
 #: data/org.gnome.Usage.gschema.xml.in:11
 msgid ""
 "The time span for up to which the CPU and memory graphs in the performance "
 "tab and its sidebar go back in time in milliseconds."
 msgstr ""
+"Başarım sekmesindeki ve kenar çubuğundaki MİB ve bellek grafiklerinin "
+"milisaniye türünden geriye doğru gittiği zaman aralığı."
 
 #: data/org.gnome.Usage.gschema.xml.in:18
 msgid "interval (ms) for the performance data refresh"
-msgstr ""
+msgstr "başarım veri yenilemesi için aralık (ms)"
 
 #: data/org.gnome.Usage.gschema.xml.in:19
 msgid ""
 "The interval at which the data for the performance tab are updated and "
 "displayed periodically in milliseconds."
 msgstr ""
+"Başarım sekmesi için verilerin güncellendiği ve milisaniye türünden "
+"periyodik olarak görüntülendiği aralık."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
 msgid ""
 "minimum relative load (%) of an app to be displayed in the performance tab"
 msgstr ""
+"başarım sekmesinde görüntülenecek uygulamanın asgari göreli yükü (%)"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
@@ -97,21 +102,27 @@ msgid ""
 "listed. With 100 an app is only listed if its processes fully utilise all "
 "CPU threads."
 msgstr ""
+"Uygulamanın başarım sekmesinde listelenmesi için tüm süreçlerinin toplamı "
+"100’e normalleştirilmiş yükte olmalıdır. 0 ile tüm "
+"uygulamalar listelenir. 100 ile uygulama yalnızca süreçleri tüm MİB iş "
+"parçacıklarını tümüyle kullanıyorsa listelenir."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
 "minimum memory footprint of an app to be displayed in the performance tab"
-msgstr ""
+msgstr "başarım sekmesinde görüntülenecek uygulamanın asgari bellek ayak izi"
 
 #: data/org.gnome.Usage.gschema.xml.in:37
 msgid ""
 "The minimum amount of memory an app has to use in total as the sum over all "
 "its processes in bytes to be listed in the performance tab."
 msgstr ""
+"Uygulamanın başarım sekmesinde listelenmesi için bayt türünden tüm "
+"işlemlerinin kullanması gereken toplam asgari bellek miktarı."
 
 #: data/org.gnome.Usage.gschema.xml.in:45
 msgid "Force graphs to not continuously scrolling"
-msgstr ""
+msgstr "Grafikleri sürekli kaydırmamaya zorla"
 
 #: data/org.gnome.Usage.gschema.xml.in:46
 msgid ""
@@ -120,6 +131,10 @@ msgid ""
 "disabled, the graphs will decide, based on power-saving mode and GTK's "
 "global animations settings, how to behave."
 msgstr ""
+"Etkinleştirilirse, başarım grafikleri sürekli olarak kaydırılmamaya "
+"zorlanacak, bunun yerine yalnızca yeni veri noktası eklendiğinde "
+"atlayacaktır. Devre dışı bırakılırsa, grafikler güç tutum kipine ve GTK’nın "
+"küresel canlandırma ayarlarına göre nasıl davranacaklarına karar verirler."
 
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
@@ -141,7 +156,7 @@ msgstr "Sonuç bulunamadı"
 
 #: data/ui/no-results-found-view.ui:40
 msgid "Try a different search"
-msgstr "Başka bir arama deneyin"
+msgstr "Başka arama deneyin"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:8
@@ -216,7 +231,7 @@ msgstr "Bellek"
 
 #: src/performance-view.vala:44
 msgid "Performance"
-msgstr "Performans"
+msgstr "Başarım"
 
 #: src/storage/storage-actionbar.vala:39
 #, c-format
@@ -229,7 +244,7 @@ msgstr "Seçili ögeyi kalıcı olarak silmek istediğinizden emin misiniz?"
 
 #: src/storage/storage-actionbar.vala:45
 msgid "If you delete these items, they will be permanently lost."
-msgstr "Bu ögeleri silerseniz kalıcı olarak kaybedilecekler."
+msgstr "Bu ögeleri silerseniz kalıcı olarak yitecekler."
 
 #: src/storage/storage-actionbar.vala:50
 msgid "Delete"
