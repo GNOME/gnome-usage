@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-06-29 16:44+0000\n"
-"PO-Revision-Date: 2023-07-09 18:01+0700\n"
+"POT-Creation-Date: 2023-10-14 21:13+0000\n"
+"PO-Revision-Date: 2023-11-15 15:38+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-msgid "GNOME Usage"
-msgstr "GNOME Pemakaian"
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
+#: src/application.vala:73
+msgid "Usage"
+msgstr "Pemakaian"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
@@ -29,16 +31,11 @@ msgstr ""
 
 #: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
 msgstr ""
-"Aplikasi GNOME 3 sederhana untuk memantau dan menganalisis sumber daya "
-"sistem seperti pemrosesan, memori, dan penyimpanan."
-
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:7
-#: data/ui/window.ui:17 src/application.vala:72
-msgid "Usage"
-msgstr "Pemakaian"
+"Aplikasi sederhana untuk memantau dan menganalisis sumber daya sistem "
+"seperti pemrosesan, memori, dan penyimpanan."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -67,16 +64,87 @@ msgstr ""
 "Daftar ini digunakan untuk menyaring proses yang pengguna tidak bisa "
 "hentikan."
 
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "rentang waktu (ms) grafik di tab kinerja"
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Rentang waktu hingga grafik CPU dan memori di tab kinerja dan bilah sisinya "
+"kembali ke masa lalu dalam milidetik."
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "interval (ms) untuk penyegaran data kinerja"
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"Interval saat data untuk tab kinerja diperbarui dan ditampilkan secara "
+"berkala dalam milidetik."
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr ""
+"beban relatif minimum (%) aplikasi yang akan ditampilkan di tab kinerja"
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
+"Beban total yang harus dimiliki aplikasi sebagai jumlah seluruh prosesnya, "
+"dinormalisasi menjadi 100, untuk dicantumkan di tab kinerja. Dengan 0, semua "
+"aplikasi terdaftar. Dengan 100, sebuah aplikasi hanya terdaftar jika "
+"prosesnya memanfaatkan sepenuhnya semua thread CPU."
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr "jejak memori minimum suatu aplikasi untuk ditampilkan di tab kinerja"
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Jumlah total memori minimum yang harus digunakan aplikasi sebagai jumlah "
+"seluruh prosesnya dalam bita untuk dicantumkan di tab kinerja."
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Paksa grafik untuk tidak terus bergulir"
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Jika diaktifkan, grafik kinerja akan dipaksa untuk tidak bergulir terus-"
+"menerus, namun hanya akan melompat ketika titik data baru ditambahkan. Jika "
+"dinonaktifkan, grafik akan menentukan, berdasarkan mode hemat daya dan "
+"pengaturan animasi global GTK, bagaimana perilakunya."
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:45
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Terpakai"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:51
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Tersedia"
@@ -92,7 +160,7 @@ msgstr "Coba pencarian berbeda"
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:8
 msgid "Force Quit %s?"
-msgstr "Keluar Paksa &s?"
+msgstr "Keluar Paksa %s?"
 
 #: data/ui/quit-process-dialog.ui:9
 msgid "Unsaved work might be lost."
@@ -110,7 +178,7 @@ msgstr "Keluar Paksa"
 msgid "Delete…"
 msgstr "Hapus…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:41
 msgid "Home Partition"
 msgstr "Partisi Home"
 
@@ -118,19 +186,19 @@ msgstr "Partisi Home"
 msgid "Swap"
 msgstr "Swap"
 
-#: data/ui/window.ui:25
+#: data/ui/window.ui:34
 msgid "Main Menu"
 msgstr "Menu Utama"
 
-#: data/ui/window.ui:63
+#: data/ui/window.ui:71
 msgid "_About Usage"
 msgstr "Tent_ang Pemakaian"
 
-#: data/ui/window.ui:69
+#: data/ui/window.ui:77
 msgid "Group system processes"
 msgstr "Proses sistem grup"
 
-#: data/ui/window.ui:75
+#: data/ui/window.ui:83
 msgid "Show all processes"
 msgstr "Tampilkan semua proses"
 
@@ -138,7 +206,7 @@ msgstr "Tampilkan semua proses"
 msgid "System"
 msgstr "Sistem"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -146,7 +214,7 @@ msgstr ""
 "Cara yang baik untuk melihat informasi tentang penggunaan sumber daya "
 "sistem, seperti memori dan ruang diska."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2023."
 
@@ -191,7 +259,7 @@ msgstr ""
 msgid "Storage"
 msgstr "Penyimpanan"
 
-#: src/storage/storage-view.vala:227
+#: src/storage/storage-view.vala:234
 msgid "Operating System"
 msgstr "Sistem Operasi"
 
@@ -209,6 +277,9 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "GNOME Usage"
+#~ msgstr "GNOME Pemakaian"
 
 #~ msgid "Websites"
 #~ msgstr "Situs Web"
