@@ -7,8 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2020-07-02 08:48+0000\n"
-"PO-Revision-Date: 2020-07-13 13:22+0300\n"
+"POT-Creation-Date: 2023-10-10 10:42+0000\n"
+"PO-Revision-Date: 2023-12-28 15:21+0200\n"
+"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
+"gmail [dot] com>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -16,12 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-msgid "GNOME Usage"
-msgstr "Utilizare GNOME"
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
+#: src/application.vala:73
+msgid "Usage"
+msgstr "Utilizare"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
@@ -31,16 +34,12 @@ msgstr ""
 
 #: data/org.gnome.Usage.appdata.xml.in.in:8
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
 msgstr ""
-"O aplicație GNOME 3 simplă pentru a monitoriza și analiza resursele "
-"sistemului precum procesarea, memoria și stocarea."
-
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:85
-msgid "Usage"
-msgstr "Utilizare"
+"O aplicație simplă pentru a monitoriza și analiza resursele sistemului, cum "
+"ar fi utilizarea CPU și a memoriei aplicațiilor care rulează și utilizarea "
+"stocării."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -70,74 +69,153 @@ msgstr ""
 "Această listă este utilizată pentru a filtra procesele pe care utilizatorul "
 "nu le poate opri."
 
-#: data/ui/memory-speedometer.ui:38
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "intervalul de timp (ms) al graficelor din fila de performanță"
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Intervalul de timp până la care graficele CPU și memorie din fila de "
+"performanță și bara laterală a acesteia se întorc în timp în milisecunde."
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "interval (ms) pentru reîmprospătarea datelor de performanță"
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"Intervalul la care datele pentru fila de performanță sunt actualizate și "
+"afișate periodic în milisecunde."
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr ""
+"sarcina relativă minimă (%) a unei aplicații, pentru a fi afișată în fila de "
+"performanță"
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
+"Încărcarea pe care o aplicație trebuie să o aibă în total, ca sumă peste "
+"toate procesele sale, normalizată la 100, pentru a fi listată în fila de "
+"performanță. Cu 0, toate aplicațiile sunt listate. Cu 100, o aplicație este "
+"listată doar dacă procesele sale utilizează pe deplin toate firele CPU."
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+"amprenta minimă de memorie a unei aplicații, pentru a fi afișată în fila de "
+"performanță"
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Cantitatea minimă de memorie pe care o aplicație trebuie să o utilizeze în "
+"total, ca suma tuturor proceselor sale în octeți, pentru a fi listată în "
+"fila de performanță."
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Forțează graficele să nu deruleze continuu"
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Dacă este activat, graficele de performanță vor fi forțate să nu deruleze "
+"continuu, ci vor sări doar atunci când este adăugat un nou punct de date. "
+"Dacă este dezactivat, graficele vor decide, pe baza modului de economisire a "
+"energiei și a configurărilor de animații globale ale GTK, cum să se comporte."
+
+#: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
-#: data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
+#: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Utilizat"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
-#: data/ui/swap-speedometer.ui:75
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
+#: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Disponibil"
 
-#: data/ui/no-results-found-view.ui:23
+#: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Nu s-au găsit rezultate"
 
-#: data/ui/no-results-found-view.ui:32
+#: data/ui/no-results-found-view.ui:40
 msgid "Try a different search"
 msgstr "Încercați o altă căutare"
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_Despre utilizare"
-
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Procese de sistem de grup"
-
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Arată toate procesele"
-
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:8
 msgid "Force Quit %s?"
 msgstr "Fortați ieșirea pentru %s?"
 
-#: data/ui/quit-process-dialog.ui:10
+#: data/ui/quit-process-dialog.ui:9
 msgid "Unsaved work might be lost."
 msgstr "Munca nesalvată poate fi pierdută."
 
-#: data/ui/quit-process-dialog.ui:16
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
 msgid "Cancel"
 msgstr "Anulează"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/quit-process-dialog.ui:15
 msgid "Force Quit"
 msgstr "Forțează ieșirea"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Șterge…"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:41
 msgid "Home Partition"
 msgstr "Partiție personală"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:71
+#: data/ui/window.ui:34
+msgid "Main Menu"
+msgstr "Meniu principal"
+
+#: data/ui/window.ui:71
+msgid "_About Usage"
+msgstr "_Despre utilizare"
+
+#: data/ui/window.ui:77
+msgid "Group system processes"
+msgstr "Procese de sistem de grup"
+
+#: data/ui/window.ui:83
+msgid "Show all processes"
+msgstr "Arată toate procesele"
+
+#: src/app-item.vala:147
 msgid "System"
 msgstr "Sistem"
 
-#: src/application.vala:86
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -145,41 +223,42 @@ msgstr ""
 "O metodă bună de a vizualiza informații despre utilizarea resurselor "
 "sistemului, precum memoria și spațiul pe disc."
 
-#: src/application.vala:89
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
-"Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, 2020"
+"Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
+"2020, 2023"
 
-#: src/application.vala:91
-msgid "Websites"
-msgstr "Pagini web"
-
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
+#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
 msgid "Memory"
 msgstr "Memorie"
 
-#: src/performance-view.vala:48
+#: src/performance-view.vala:44
 msgid "Performance"
 msgstr "Performanță"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:39
 #, c-format
 msgid "%s selected"
 msgstr "%s selectată"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:44
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Sigur doriți să ștergeți permanent elementele selectate?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:45
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Dacă ștergeți aceste elemente, ele vor fi pierdute permanent."
 
-#: src/storage/storage-row-popover.vala:32
+#: src/storage/storage-actionbar.vala:50
+msgid "Delete"
+msgstr "Șterge"
+
+#: src/storage/storage-row-popover.vala:42
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
@@ -187,14 +266,34 @@ msgstr ""
 "Fișierele de sistem de operare sunt o parte esențială a sistemului și nu pot "
 "fi eliminate."
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Stocare"
 
-#: src/storage/storage-view.vala:246
+#: src/storage/storage-view.vala:234
 msgid "Operating System"
 msgstr "Sistem de operare"
 
-#: src/storage/storage-view.vala:272
-msgid "Scanning directories"
-msgstr "Se scanează directoare"
+#: src/utils.vala:52
+#, c-format
+msgid "%llu B"
+msgstr "%llu O"
+
+#: src/utils.vala:57
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:59
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu O/s"
+
+#~ msgid "GNOME Usage"
+#~ msgstr "Utilizare GNOME"
+
+#~ msgid "Websites"
+#~ msgstr "Pagini web"
+
+#~ msgid "Scanning directories"
+#~ msgstr "Se scanează directoare"
