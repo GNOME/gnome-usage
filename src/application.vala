@@ -31,7 +31,7 @@ public class Usage.Application : Adw.Application {
     };
 
     public Application () {
-        Object (application_id: Config.APPLICATION_ID, flags: ApplicationFlags.FLAGS_NONE, resource_base_path: Config.APPLICATION_RESOURCE_PATH);
+        Object (application_id: Config.APPLICATION_ID, flags: ApplicationFlags.DEFAULT_FLAGS, resource_base_path: Config.APPLICATION_RESOURCE_PATH);
     }
 
     public Window? get_window () {
