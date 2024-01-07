@@ -17,4 +17,4 @@
  */
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/no-results-found-view.ui")]
-public class Usage.NoResultsFoundView : View { }
+public class Usage.NoResultsFoundView : Adw.Bin { }
