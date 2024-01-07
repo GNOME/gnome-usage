@@ -1,25 +1,3 @@
-resource_data = files(
-  'style.css',
-  'ui/memory-speedometer.ui',
-  'ui/no-results-found-view.ui',
-  'ui/performance-view.ui',
-  'ui/process-row.ui',
-  'ui/quit-process-dialog.ui',
-  'ui/speedometer.ui',
-  'ui/storage-actionbar.ui',
-  'ui/storage-row-popover.ui',
-  'ui/storage-view.ui',
-  'ui/swap-speedometer.ui',
-  'ui/window.ui',
-)
-
-resources = gnome.compile_resources(
-  base_id,
-  '@0@.gresource.xml'.format(base_id),
-  c_name: 'resources',
-  dependencies: resource_data
-)
-
 schema_conf = configuration_data()
 schema_conf.set('app-id', application_id)
 configure_file(
@@ -47,7 +25,7 @@ i18n.merge_file(
 
 appdata_conf = configuration_data()
 appdata_conf.set('app-id', application_id)
-i18n.merge_file(
+appdata = i18n.merge_file(
   input: configure_file(
     input: '@0@.appdata.xml.in.in'.format(base_id),
     output: '@BASENAME@',
@@ -57,6 +35,31 @@ i18n.merge_file(
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(get_option('datadir'), 'metainfo')
+)
+# install appdata a second time to base_id location to work around
+# https://gitlab.gnome.org/GNOME/vala/-/issues/804 TODO: don't
+# see data/org.gnome.Usage.gresource.xml, src/application.vala
+if application_id != base_id
+  appdata = i18n.merge_file(
+    input: configure_file(
+      input: '@0@.appdata.xml.in.in'.format(base_id),
+      output: '@BASENAME@',
+      configuration: appdata_conf
+    ),
+    output: '@0@.appdata.xml'.format(base_id),
+    po_dir: po_dir,
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'metainfo')
+  )
+endif
+
+resources_conf = configuration_data()
+resources_conf.set('app-id', application_id)
+resources = gnome.compile_resources(
+  base_id,
+  '@0@.gresource.xml'.format(base_id),
+  c_name: 'resources',
+  dependencies: [appdata]
 )
 
 install_data(

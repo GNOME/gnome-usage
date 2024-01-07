@@ -67,17 +67,13 @@ public class Usage.Application : Adw.Application {
             "Jakub Steiner <jsteiner@redhat.com>"
         };
 
-        new Adw.AboutWindow () {
+        // TODO: should use Config.APPLICATION_ID, see data/meson.build
+        new Adw.AboutWindow.from_appdata (Config.APPLICATION_RESOURCE_PATH + "org.gnome.Usage" + ".appdata.xml", Config.VERSION.split ("-")[0]) {
             transient_for = window,
-            application_icon = Config.APPLICATION_ID,
-            application_name = _("Usage"),
             comments = _("A nice way to view information about use of system resources, like memory and disk space."),
             developers = authors,
             designers = artists,
             translator_credits = _("translator-credits"),
-            website = "https://wiki.gnome.org/Apps/Usage",
-            version = Config.VERSION,
-            license_type = License.GPL_3_0
         }.present ();
     }
 
