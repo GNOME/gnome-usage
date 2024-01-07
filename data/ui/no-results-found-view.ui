@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <template class="UsageNoResultsFoundView" parent="UsageView">
+  <template class="UsageNoResultsFoundView" parent="AdwBin">
     <property name="visible">False</property>
     <property name="hexpand">True</property>
     <child>
