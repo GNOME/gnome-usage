@@ -46,7 +46,7 @@ public class Usage.Application : Adw.Application {
 
         set_accels_for_action ("app.quit", {"<Control>q"});
 
-        window.show ();
+        window.present ();
     }
 
     protected override void startup () {
