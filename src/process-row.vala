@@ -34,13 +34,10 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
     private unowned Gtk.Label title_label;
 
     [GtkChild]
-    private unowned Gtk.Box user_tag_box;
+    private unowned Usage.ProcessUserTag user_tag;
 
     [GtkChild]
     private unowned Gtk.Image gamemode;
-
-    [GtkChild]
-    private unowned Gtk.Label user_tag_label;
 
     [GtkChild]
     private unowned Gtk.Label load_label;
@@ -82,10 +79,7 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
     }
 
     private void remove_user_tag () {
-        user_tag_box.visible = false;
-        user_tag_box.remove_css_class (CSS_TAG_USER);
-        user_tag_box.remove_css_class (CSS_TAG_ROOT);
-        user_tag_box.remove_css_class (CSS_TAG_SYSTEM);
+        user_tag.visible = false;
     }
 
     private void create_user_tag () {
@@ -98,9 +92,9 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
             class_name = CSS_TAG_SYSTEM;
         }
 
-        user_tag_box.add_css_class (class_name);
-        user_tag_label.label = app.user.UserName;
-        user_tag_box.visible = !is_logged_in ();
+        user_tag.user_type = class_name;
+        user_tag.label = app.user.UserName;
+        user_tag.visible = !is_logged_in ();
     }
 
     private bool is_logged_in (){

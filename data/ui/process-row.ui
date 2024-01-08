@@ -33,15 +33,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkBox" id="user_tag_box">
-                <property name="visible">False</property>
-                <style>
-                  <class name="tag"/>
-                </style>
-                <child>
-                  <object class="GtkLabel" id="user_tag_label"/>
-                </child>
-              </object>
+              <object class="UsageProcessUserTag" id="user_tag"/>
             </child>
             <child>
               <object class="GtkLabel" id="load_label">

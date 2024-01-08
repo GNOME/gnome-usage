@@ -21,6 +21,7 @@ vala_sources = [
   'performance-view.vala',
   'process-list-box.vala',
   'process-row.vala',
+  'process-user-tag.vala',
   'process.vala',
   'quit-process-dialog.vala',
   'settings.vala',
