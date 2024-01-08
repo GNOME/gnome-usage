@@ -26,18 +26,9 @@ public abstract class Usage.View : Adw.BreakpointBin {
 
     construct {
         this.width_request = 360;
-        this.height_request = 300;
+        this.height_request = 210;
     }
 
     protected View () {
     }
-}
-
-public abstract class Usage.SubView : Adw.Bin {
-    public string title;
-
-    protected SubView () {
-    }
-
-    public abstract void search_in_processes (string text);
 }

@@ -20,7 +20,8 @@
  */
 
 public enum Usage.Views {
-    PERFORMANCE,
+    CPU,
+    MEMORY,
     STORAGE;
 }
 
@@ -55,7 +56,8 @@ public class Usage.Window : Adw.ApplicationWindow {
         set_mode (HeaderBarMode.PERFORMANCE);
 
         views = new View[] {
-            new PerformanceView (),
+            new CpuView (),
+            new MemoryView (),
             new StorageView (),
         };
 
@@ -111,15 +113,16 @@ public class Usage.Window : Adw.ApplicationWindow {
             return;
 
         /* TODO: Implement a saner way of toggling this mode. */
-        ((PerformanceView) application.get_window ().get_views ()[Views.PERFORMANCE]).set_search_mode (performance_search_button.active);
+        ((CpuView) application.get_window ().get_views ()[Views.CPU]).set_search_mode (performance_search_button.active);
+        ((MemoryView) application.get_window ().get_views ()[Views.MEMORY]).set_search_mode (performance_search_button.active);
     }
 
     [GtkCallback]
     private void on_visible_child_changed () {
-        if (stack.visible_child_name == views[Views.PERFORMANCE].name) {
-            set_mode (HeaderBarMode.PERFORMANCE);
-        } else if (stack.visible_child_name == views[Views.STORAGE].name) {
+        if (stack.visible_child_name == views[Views.STORAGE].name) {
             set_mode (HeaderBarMode.STORAGE);
+        } else {
+            set_mode (HeaderBarMode.PERFORMANCE);
         }
     }
 }

@@ -1,6 +1,7 @@
-/* memory-sub-view.vala
+/* cpu-view.vala
  *
  * Copyright (C) 2017 Red Hat, Inc.
+ * Copyright (C) 2024 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,29 +17,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
-public class Usage.MemorySubView : SubView {
+[GtkTemplate (ui = "/org/gnome/Usage/ui/cpu-view.ui")]
+public class Usage.CpuView : View {
     private ProcessListBox process_list_box;
     private NoResultsFoundView no_process_view;
 
-    public MemorySubView () {
-        name = "MEMORY";
+    [GtkChild]
+    private unowned Gtk.SearchBar search_bar;
 
-        var label = new Gtk.Label ("<span font_desc=\"14.0\">" + _("Memory") + "</span>");
-        label.set_use_markup (true);
-        label.margin_top = 25;
-        label.margin_bottom = 15;
+    [GtkChild]
+    private unowned Gtk.SearchEntry search_entry;
+
+    [GtkChild]
+    private unowned Gtk.Box cpu_box;
+
+    public CpuView () {
+        name = "PROCESSOR";
+        title = _("Processor");
+        icon_name = "speedometer-symbolic";
+
+        var cpu_graph = new CpuGraph ();
+        cpu_graph.hexpand = true;
+        var cpu_graph_box = new GraphBox (cpu_graph);
+        cpu_graph_box.height_request = 225;
+        cpu_graph_box.valign = Gtk.Align.START;
+        cpu_graph_box.add_css_class ("card");
 
         process_list_box = new ProcessListBox (ProcessListBoxType () {
             comparator = (a, b) => {
-                return (int) ((uint64) (a.mem_usage < b.mem_usage) - (uint64) (a.mem_usage > b.mem_usage));
+                return (int) ((uint64) (a.cpu_load < b.cpu_load) - (uint64) (a.cpu_load > b.cpu_load));
             },
             filter = (item) => {
-                return item.mem_usage > Settings.get_default ().app_minimum_memory;
+                return item.cpu_load > Settings.get_default ().app_minimum_load;
             },
             load_widget_factory = (item) => {
-                Gtk.Label load_label = new Gtk.Label (Utils.format_size_values (item.mem_usage));
+                Gtk.Label load_label = new Gtk.Label ("%.1f %%".printf (item.cpu_load));
 
                 load_label.ellipsize = Pango.EllipsizeMode.END;
                 load_label.max_width_chars = 30;
@@ -46,8 +62,6 @@ public class Usage.MemorySubView : SubView {
                 return load_label;
             },
         });
-        process_list_box.margin_bottom = 20;
-        process_list_box.margin_top = 30;
 
         var spinner = new Gtk.Spinner ();
         spinner.map.connect (spinner.start);
@@ -59,37 +73,33 @@ public class Usage.MemorySubView : SubView {
 
         no_process_view = new NoResultsFoundView ();
 
-        var memory_graph = new MemorySpeedometer ();
-        var swap_graph = new SwapSpeedometer ();
-        swap_graph.valign = Gtk.Align.END;
-
-        var speedometers = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        speedometers.append (memory_graph);
-        speedometers.append (swap_graph);
-        speedometers.margin_top = 30;
-
-        var memory_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        memory_box.append (label);
-        memory_box.append (speedometers);
-        memory_box.append (spinner);
-        memory_box.append (no_process_view);
+        cpu_box.append (cpu_graph_box);
+        cpu_box.append (spinner);
+        cpu_box.append (no_process_view);
 
         var system_monitor = SystemMonitor.get_default ();
         system_monitor.notify["process-list-ready"].connect ((sender, property) => {
             if (system_monitor.process_list_ready) {
-                memory_box.append (process_list_box);
-                memory_box.remove (spinner);
+                cpu_box.append (process_list_box);
+                cpu_box.remove (spinner);
             } else {
-                memory_box.append (spinner);
-                memory_box.remove (process_list_box);
+                cpu_box.append (spinner);
+                cpu_box.remove (process_list_box);
             }
         });
 
         process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
-        set_child (memory_box);
     }
 
-    public override void search_in_processes (string text) {
-        process_list_box.search_text = text;
+    [GtkCallback]
+    private void on_search_entry_changed () {
+        process_list_box.search_text = search_entry.get_text ();
+    }
+
+    public void set_search_mode (bool enable) {
+        search_bar.set_search_mode (enable);
+        if (enable) {
+            search_entry.grab_focus ();
+        }
     }
 }

@@ -9,7 +9,7 @@
         <setter object="view_switcher_bar" property="reveal">True</setter>
       </object>
     </child>
-    <property name="height-request">400</property>
+    <property name="height-request">360</property>
     <property name="width-request">360</property>
     <property name="default-height">600</property>
     <property name="default-width">950</property>

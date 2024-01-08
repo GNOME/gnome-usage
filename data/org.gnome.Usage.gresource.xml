@@ -4,9 +4,10 @@
         <file preprocess="xml-stripblanks">icons/scalable/status/speedometer-symbolic.svg</file>
         <file preprocess="xml-stripblanks">icons/scalable/actions/background-app-ghost-symbolic.svg</file>
         <file compressed="true">style.css</file>
+        <file preprocess="xml-stripblanks">ui/cpu-view.ui</file>
         <file preprocess="xml-stripblanks">ui/memory-speedometer.ui</file>
+        <file preprocess="xml-stripblanks">ui/memory-view.ui</file>
         <file preprocess="xml-stripblanks">ui/no-results-found-view.ui</file>
-        <file preprocess="xml-stripblanks">ui/performance-view.ui</file>
         <file preprocess="xml-stripblanks">ui/quit-process-dialog.ui</file>
         <file preprocess="xml-stripblanks">ui/speedometer.ui</file>
         <file preprocess="xml-stripblanks">ui/storage-actionbar.ui</file>

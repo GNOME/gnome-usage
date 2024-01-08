@@ -16,11 +16,6 @@ list row {
 
 }
 
-button.graph-switcher {
-    border-style: none;
-    border-radius: 0;
-}
-
 rg-graph.big {
     background-size: 57px 57px;
     background-image: repeating-linear-gradient(0deg, @borders, @borders 1px, transparent 1px, transparent 57px);

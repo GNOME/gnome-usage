@@ -2,9 +2,9 @@
 # Please keep this file sorted alphabetically.
 src/app-item.c
 src/application.c
-src/cpu-sub-view.c
+src/cpu-view.c
 src/graph-stack-switcher.c
-src/memory-sub-view.c
+src/memory-view.c
 src/performance-view.c
 src/storage/storage-actionbar.c
 src/storage/storage-row-popover.c

@@ -5,7 +5,6 @@ data/org.gnome.Usage.desktop.in.in
 data/org.gnome.Usage.gschema.xml.in
 data/ui/memory-speedometer.ui
 data/ui/no-results-found-view.ui
-data/ui/performance-view.ui
 data/ui/process-row.ui
 data/ui/quit-process-dialog.ui
 data/ui/storage-actionbar.ui
@@ -15,10 +14,9 @@ data/ui/swap-speedometer.ui
 data/ui/window.ui
 src/app-item.vala
 src/application.vala
-src/cpu-sub-view.vala
+src/cpu-view.vala
 src/graph-stack-switcher.vala
-src/memory-sub-view.vala
-src/performance-view.vala
+src/memory-view.vala
 src/storage/storage-actionbar.vala
 src/storage/storage-row-popover.vala
 src/storage/storage-view.vala
