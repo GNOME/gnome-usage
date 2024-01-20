@@ -57,7 +57,7 @@ public struct GameMode.GameInfo {
 public class GameMode.PidList : GLib.Object {
 
     private Client client;
-    private HashTable<int, GLib.ObjectPath> _pids;
+    private HashTable<int, GLib.ObjectPath> pids;
 
     /* singelton */
     private static PidList singelton;
@@ -71,7 +71,7 @@ public class GameMode.PidList : GLib.Object {
 
     /* construction */
     construct {
-        _pids = new HashTable<int, GLib.ObjectPath>(direct_hash, direct_equal);
+        pids = new HashTable<int, GLib.ObjectPath>(direct_hash, direct_equal);
     }
 
     public PidList () {
@@ -86,7 +86,7 @@ public class GameMode.PidList : GLib.Object {
 
             var games = client.list_games ();
             foreach (GameMode.GameInfo info in games) {
-                _pids.insert (info.pid, info.path);
+                pids.insert (info.pid, info.path);
             }
 
         } catch (IOError e) {
@@ -96,15 +96,8 @@ public class GameMode.PidList : GLib.Object {
         }
     }
 
-    /* public */
-    public int[] pids {
-        owned get {
-            return _pids.get_keys_as_array ();
-        }
-    }
-
     public bool contains (int pid) {
-        return pid in _pids;
+        return pid in pids;
     }
 
     [Signal (detailed = true)]
@@ -112,12 +105,12 @@ public class GameMode.PidList : GLib.Object {
 
     /* Signals */
     private void on_game_registered (int pid,  GLib.ObjectPath path) {
-        _pids.insert (pid, path);
+        pids.insert (pid, path);
         changed["added"](pid, true);
     }
 
     private void on_game_unregistered (int pid, GLib.ObjectPath path) {
-        _pids.remove (pid);
+        pids.remove (pid);
         changed["removed"](pid, false);
     }
 }
