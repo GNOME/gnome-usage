@@ -59,14 +59,14 @@ public class GameMode.PidList : GLib.Object {
     private Client client;
     private HashTable<int, GLib.ObjectPath> pids;
 
-    /* singelton */
-    private static PidList singelton;
+    /* singleton */
+    private static PidList singleton;
 
     public static PidList get_default () {
-        if (singelton == null)
-            singelton = new PidList ();
+        if (singleton == null)
+            singleton = new PidList ();
 
-        return singelton;
+        return singleton;
     }
 
     /* construction */
