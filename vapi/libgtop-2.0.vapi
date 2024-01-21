@@ -56,7 +56,7 @@ namespace GTop {
         uint64 size;
     }
     [CCode(array_length = false, array_null_terminated = false)]
-    public GLib.Pid[] get_proclist(out Proclist proclist, uint64 which, uint64? arg = null);
+    public GLib.Pid[] get_proclist(out Proclist proclist, uint64 which, uint64 arg = 0);
 
     [CCode(cname = "glibtop_proc_state", cheader_filename = "glibtop/procstate.h")]
     public struct ProcState {
