@@ -22,6 +22,10 @@ public class Usage.StackList : Gtk.Box {
     private Gtk.ListBox list_box = new Gtk.ListBox ();
     private Queue<ListStore> models = new Queue<ListStore>();
     private int depth = 0;
+    public Gtk.SelectionMode selection_mode {
+        get { return list_box.selection_mode; }
+        set { list_box.selection_mode = value; }
+    }
 
     public void init (Gtk.ListBoxCreateWidgetFunc row_function) {
         Gtk.ScrolledWindow scrolled_window = new Gtk.ScrolledWindow ();
