@@ -45,15 +45,20 @@
                   </object>
                 </child>
                 <child>
-                  <object class="UsageStorageViewRow" id="used_row">
-                    <property name="label" translatable="yes">Used</property>
-                    <property name="tag_size">1</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="UsageStorageViewRow" id="available_row">
-                    <property name="label" translatable="yes">Available</property>
-                    <property name="tag_size">1</property>
+                  <object class="GtkListBox">
+                    <property name="selection-mode">none</property>
+                    <child>
+                      <object class="UsageStorageViewRow" id="used_row">
+                        <property name="label" translatable="yes">Used</property>
+                        <property name="tag_size">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="UsageStorageViewRow" id="available_row">
+                        <property name="label" translatable="yes">Available</property>
+                        <property name="tag_size">1</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>
