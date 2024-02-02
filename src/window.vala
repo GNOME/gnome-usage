@@ -107,4 +107,35 @@ public class Usage.Window : Adw.ApplicationWindow {
             performance_action.set_enabled (search_available);
         }
     }
+
+    [GtkCallback]
+    string get_title_for_usage_view (Usage.View? view) {
+        if (view != null) {
+            return view.title;
+        }
+        return "";
+    }
+
+    /* TODO: use GtkCallback attribute, see https://gitlab.gnome.org/GNOME/vala/-/issues/1523 */
+    static construct {
+        bind_template_callback_full ("get_switcher_widget_for_usage_view", (Callback) get_switcher_widget_for_usage_view);
+    }
+
+    Gtk.Widget get_switcher_widget_for_usage_view (Usage.View? view) {
+        Gtk.Widget? switcher_widget = null;
+        string fallback_icon_name = "speedometer-symbolic";
+
+        if (view != null) {
+            switcher_widget = view.switcher_widget;
+            fallback_icon_name = view.icon_name;
+        }
+
+        if (switcher_widget == null) {
+            Gtk.Image fallback_icon = new Gtk.Image.from_icon_name (fallback_icon_name);
+            fallback_icon.icon_size = Gtk.IconSize.LARGE;
+            switcher_widget = fallback_icon;
+        }
+
+        return switcher_widget;
+    }
 }

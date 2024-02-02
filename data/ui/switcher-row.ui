@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="AdwBin">
+            <property name="margin-top">12</property>
+            <property name="margin-start">8</property>
+            <property name="margin-end">8</property>
+            <binding name="child">
+              <closure function="get_switcher_widget_for_usage_view" type="GtkWidget">
+                <lookup name="child" type="AdwViewStackPage">
+                  <lookup name="item" type="GtkListItem"/>
+                </lookup>
+              </closure>
+            </binding>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="margin-top">3</property>
+            <property name="margin-bottom">3</property>
+            <binding name="label">
+              <closure function="get_title_for_usage_view" type="gchararray">
+                <lookup name="child" type="AdwViewStackPage">
+                  <lookup name="item" type="GtkListItem"/>
+                </lookup>
+              </closure>
+            </binding>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>
