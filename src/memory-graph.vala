@@ -37,13 +37,14 @@ public class Usage.MemoryGraph : PerformanceGraphView {
         if (monitor.ram_total != 0)
             ram_usage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
 
-        double swap_usage = 0;
-        if (monitor.ram_total != 0)
-            swap_usage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
-
         GraphPoint mem_point = GraphPoint (timestamp, ram_usage);
         mem_graph.push_point (mem_point);
-        GraphPoint swap_point = GraphPoint (timestamp, swap_usage);
-        swap_graph.push_point (swap_point);
+
+        if (monitor.swap_total != 0) {
+            double swap_usage = (((double) monitor.swap_usage / monitor.swap_total) * 100);
+
+            GraphPoint swap_point = GraphPoint (timestamp, swap_usage);
+            swap_graph.push_point (swap_point);
+        }
     }
 }
