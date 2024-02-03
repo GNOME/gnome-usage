@@ -37,8 +37,13 @@ public class Usage.MemorySubView : SubView {
             filter = (item) => {
                 return item.mem_usage > Settings.get_default ().app_minimum_memory;
             },
-            load_label_factory = (item) => {
-                return Utils.format_size_values (item.mem_usage);
+            load_widget_factory = (item) => {
+                Gtk.Label load_label = new Gtk.Label (Utils.format_size_values (item.mem_usage));
+
+                load_label.ellipsize = Pango.EllipsizeMode.END;
+                load_label.max_width_chars = 30;
+
+                return load_label;
             },
         });
         process_list_box.margin_bottom = 20;

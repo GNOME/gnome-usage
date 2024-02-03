@@ -72,11 +72,9 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel" id="load_label">
-                <property name="ellipsize">end</property>
-                <property name="max_width_chars">30</property>
-                <binding name="label">
-                  <lookup name="load" type="UsageProcessRowItem">
+              <object class="AdwBin">
+                <binding name="child">
+                  <lookup name="load_widget" type="UsageProcessRowItem">
                     <lookup name="item" type="GtkListItem"/>
                   </lookup>
                 </binding>

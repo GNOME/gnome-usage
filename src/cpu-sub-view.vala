@@ -44,8 +44,13 @@ public class Usage.ProcessorSubView : SubView {
             filter = (item) => {
                 return item.cpu_load > Settings.get_default ().app_minimum_load;
             },
-            load_label_factory = (item) => {
-                return "%.1f %%".printf (item.cpu_load);
+            load_widget_factory = (item) => {
+                Gtk.Label load_label = new Gtk.Label ("%.1f %%".printf (item.cpu_load));
+
+                load_label.ellipsize = Pango.EllipsizeMode.END;
+                load_label.max_width_chars = 30;
+
+                return load_label;
             },
         });
         process_list_box.margin_bottom = 20;

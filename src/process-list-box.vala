@@ -21,11 +21,11 @@
  */
 
 public delegate bool Usage.FilterFunc<T> (T object);
-public delegate string Usage.LabelFactoryFunc<T> (T object);
+public delegate Gtk.Widget Usage.WidgetFactoryFunc<T> (T object);
 public struct Usage.ProcessListBoxType {
     public CompareDataFunc<AppItem> comparator;
     public Usage.FilterFunc<AppItem> filter;
-    public Usage.LabelFactoryFunc<AppItem> load_label_factory;
+    public Usage.WidgetFactoryFunc<AppItem> load_widget_factory;
 }
 
 public class Usage.ProcessListBox : Adw.Bin {

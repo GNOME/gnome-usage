@@ -29,9 +29,9 @@ public class Usage.ProcessRowItem : Object {
 
     public AppItem app { get; private set; }
 
-    public virtual string load {
+    public virtual Gtk.Widget load_widget {
         owned get {
-            return this.type.load_label_factory (app);
+            return this.type.load_widget_factory (app);
         }
     }
 
