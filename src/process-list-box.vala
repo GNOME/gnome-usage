@@ -35,14 +35,35 @@ public class Usage.ProcessListBox : Adw.Bin {
     public string search_text { get; set; default = ""; }
 
     private ListStore model;
+    private Gtk.Filter filter;
+    private Gtk.Sorter sorter;
     private ProcessListBoxType type;
+    private HashTable<AppItem, ProcessRowItem> item_for_app;
 
     public ProcessListBox (ProcessListBoxType type) {
         this.type = type;
+        this.item_for_app = new HashTable<AppItem, ProcessRowItem> (GLib.direct_hash, GLib.direct_equal);
         this.model = new ListStore (typeof (ProcessRowItem));
+        this.filter = new Gtk.CustomFilter ((item) => {
+            AppItem app = ((ProcessRowItem) item).app;
+
+            if (search_text != "") {
+                return app.display_name.down ().contains (search_text.down ()) || app.representative_cmdline.down ().contains (search_text.down ());
+            }
+
+            return this.type.filter (app);
+        });
+        this.sorter = new Gtk.CustomSorter((a, b) => {
+            return this.type.comparator (((ProcessRowItem) a).app, ((ProcessRowItem) b).app);
+        });
+
+        Gtk.FilterListModel filter_model = new Gtk.FilterListModel (this.model, filter);
+        Gtk.SortListModel sort_model = new Gtk.SortListModel (filter_model, sorter);
+        Gtk.SelectionModel selection_model = new Gtk.NoSelection (sort_model);
+
         typeof (Usage.ProcessUserTag).ensure ();
         Gtk.BuilderListItemFactory factory = new Gtk.BuilderListItemFactory.from_resource (null, "/org/gnome/Usage/ui/process-row.ui");
-        this.list_view = new Gtk.ListView (new Gtk.NoSelection (model), factory);
+        this.list_view = new Gtk.ListView (selection_model, factory);
 
         this.list_view.add_css_class ("card");
         this.list_view.show_separators = true;
@@ -77,25 +98,38 @@ public class Usage.ProcessListBox : Adw.Bin {
     }
 
     private bool update () {
-        model.remove_all ();
-
-        CompareDataFunc<ProcessRowItem> app_cmp = (a, b) => {
-            return this.type.comparator (((ProcessRowItem) a).app, ((ProcessRowItem) b).app);
-        };
-
         var system_monitor = SystemMonitor.get_default ();
-        Settings settings = Settings.get_default ();
-        if (search_text == "") {
-            foreach (unowned AppItem app in system_monitor.get_apps ()) {
-                if (this.type.filter (app))
-                    model.insert_sorted (new ProcessRowItem (app, type), app_cmp);
-            }
-        } else {
-            foreach (unowned AppItem app in system_monitor.get_apps ()) {
-                if (app.display_name.down ().contains (search_text.down ()) || app.representative_cmdline.down ().contains (search_text.down ()))
-                    model.insert_sorted (new ProcessRowItem (app, type), app_cmp);
+        List<unowned AppItem> apps = system_monitor.get_apps ();
+
+        uint inserted = 0;
+        uint removed = 0;
+
+        for (uint position = 0; position < model.n_items; position++) {
+            AppItem app = ((ProcessRowItem) model.get_item (position)).app;
+            if (apps.index (app) < 0 || !app.is_running ()) {
+                model.remove (position);
+                item_for_app.remove (app);
+                removed++;
             }
         }
+        foreach (unowned AppItem app in system_monitor.get_apps ()) {
+            uint index;
+            if (!model.find (item_for_app.@get (app), out index) && app.is_running ()) {
+                ProcessRowItem item = new ProcessRowItem (app, type);
+                model.append (item);
+                item_for_app.insert (app, item);
+                inserted++;
+            }
+        }
+
+        debug (@"$inserted started; $removed stopped");
+
+        for (uint position = 0; position < model.n_items; position++) {
+            ProcessRowItem item = (ProcessRowItem) model.get_item (position);
+            item.notify_property ("load_widget");
+        }
+        filter.changed (Gtk.FilterChange.DIFFERENT);
+        sorter.changed (Gtk.SorterChange.DIFFERENT);
 
         empty = (model.get_n_items () == 0);
         return true;
