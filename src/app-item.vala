@@ -1,7 +1,7 @@
 /* app-item.vala
  *
  * Copyright (C) 2018 Red Hat, Inc.
- * Copyright (C) 2023 Markus Göllnitz
+ * Copyright (C) 2023–2024 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,11 +54,13 @@ public class Usage.AppItem : Object {
         }
     }
 
+    private static HashTable<Process, AppItem> app_for_process;
     private static HashTable<string, AppInfo> apps_info;
     private static HashTable<string, AppInfo> appid_map;
     private AppInfo? app_info = null;
 
     public static void init () {
+        app_for_process = new HashTable<Process, AppItem> (int_hash, int_equal);
         apps_info = new HashTable<string, AppInfo> (str_hash, str_equal);
         appid_map = new HashTable<string, AppInfo> (str_hash, str_equal);
 
@@ -157,6 +159,10 @@ public class Usage.AppItem : Object {
         return id;
     }
 
+    public static AppItem? app_item_for_process (Process process) {
+        return app_for_process.@get (process);
+    }
+
     public static AppInfo? app_info_for_process (Process p) {
         AppInfo? info = null;
         string ?cgroup = null;
@@ -233,6 +239,7 @@ public class Usage.AppItem : Object {
     }
 
     public void insert_process (Process process) {
+        app_for_process.insert (process, this);
         processes.insert (process.pid, process);
         this.notify_property ("running");
     }
@@ -278,11 +285,14 @@ public class Usage.AppItem : Object {
     }
 
     public void remove_process (Process process) {
+        app_for_process.remove (process);
         processes.remove (process.pid);
         this.notify_property ("running");
     }
 
     public void replace_process (Process process) {
+        app_for_process.remove (this.get_process_by_pid (process.pid));
+        app_for_process.insert (process, this);
         processes.replace (process.pid, process);
         this.notify_property ("running");
     }

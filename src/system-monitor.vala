@@ -216,9 +216,7 @@ public class Usage.SystemMonitor : Object {
     }
 
     private void process_removed (Process p) {
-        string app_id = get_app_id_for_process (p);
-
-        AppItem? item = app_table[app_id];
+        AppItem? item = AppItem.app_item_for_process (p);
 
         if (item != null)
             item.remove_process (p);
