@@ -174,6 +174,10 @@ public class Usage.AppItem : Object {
         processes = new HashTable<Pid?, Process>(int_hash, int_equal);
     }
 
+    public bool is_running () {
+        return processes.length > 0;
+    }
+
     public bool contains_process (Pid pid) {
         return processes.contains (pid);
     }
