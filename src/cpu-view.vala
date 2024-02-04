@@ -87,7 +87,7 @@ public class Usage.CpuView : View {
         process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
     }
 
-    public void set_search_text (string query) {
+    public override void set_search_text (string query) {
         process_list_box.search_text = query;
     }
 }

@@ -21,12 +21,6 @@
  *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
-public enum Usage.Views {
-    CPU,
-    MEMORY,
-    STORAGE;
-}
-
 [GtkTemplate (ui = "/org/gnome/Usage/ui/window.ui")]
 public class Usage.Window : Adw.ApplicationWindow {
     [GtkChild]
@@ -72,10 +66,6 @@ public class Usage.Window : Adw.ApplicationWindow {
         }
     }
 
-    public View[] get_views () {
-        return views;
-    }
-
     [GtkCallback]
     private void on_performance_search_button_toggled () {
         if (!this.performance_search_button.active) {
@@ -87,9 +77,9 @@ public class Usage.Window : Adw.ApplicationWindow {
 
     [GtkCallback]
     private void on_search_entry_changed () {
-        /* TODO: Implement a saner way of propagating search query. */
-        ((CpuView) this.get_views ()[Views.CPU]).set_search_text (search_entry.get_text ());
-        ((MemoryView) this.get_views ()[Views.MEMORY]).set_search_text (search_entry.get_text ());
+        foreach (View view in views) {
+            view.set_search_text (search_entry.get_text ());
+        }
     }
 
     [GtkCallback]

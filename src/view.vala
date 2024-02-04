@@ -1,7 +1,7 @@
 /* view.vala
  *
  * Copyright (C) 2017 Red Hat, Inc.
- * Copyright (C) 2023 Markus Göllnitz
+ * Copyright (C) 2023–2024 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,5 +32,11 @@ public abstract class Usage.View : Adw.BreakpointBin {
     }
 
     protected View () {
+    }
+
+    public virtual void set_search_text (string query) {
+        if (search_available) {
+            critical ("Search Feature Not Yet Implemented");
+        }
     }
 }
