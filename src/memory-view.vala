@@ -32,6 +32,7 @@ public class Usage.MemoryView : View {
         name = "MEMORY";
         title = _("Memory");
         icon_name = "memory-symbolic";
+        search_available = true;
         switcher_widget = new GraphBox (new MemoryGraph ());
         switcher_widget.height_request = 80;
 

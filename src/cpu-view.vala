@@ -32,6 +32,7 @@ public class Usage.CpuView : View {
         name = "PROCESSOR";
         title = _("Processor");
         icon_name = "speedometer-symbolic";
+        search_available = true;
         switcher_widget = new GraphBox (new CpuGraphMostUsedCore ());
         switcher_widget.height_request = 80;
 
