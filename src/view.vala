@@ -23,6 +23,7 @@
 public abstract class Usage.View : Adw.BreakpointBin {
     public string title;
     public string icon_name;
+    public Gtk.Widget? switcher_widget;
 
     construct {
         this.width_request = 360;

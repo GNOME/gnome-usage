@@ -38,6 +38,8 @@ public class Usage.MemoryView : View {
         name = "MEMORY";
         title = _("Memory");
         icon_name = "memory-symbolic";
+        switcher_widget = new GraphBox (new MemoryGraph ());
+        switcher_widget.height_request = 80;
 
         process_list_box = new ProcessListBox (ProcessListBoxType () {
             comparator = (a, b) => {

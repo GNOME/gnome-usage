@@ -38,9 +38,10 @@ public class Usage.CpuView : View {
         name = "PROCESSOR";
         title = _("Processor");
         icon_name = "speedometer-symbolic";
+        switcher_widget = new GraphBox (new CpuGraphMostUsedCore ());
+        switcher_widget.height_request = 80;
 
         var cpu_graph = new CpuGraph ();
-        cpu_graph.hexpand = true;
         var cpu_graph_box = new GraphBox (cpu_graph);
         cpu_graph_box.height_request = 225;
         cpu_graph_box.valign = Gtk.Align.START;

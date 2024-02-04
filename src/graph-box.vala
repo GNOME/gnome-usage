@@ -1,6 +1,7 @@
 /* graph-box.vala
  *
  * Copyright (C) 2017 Red Hat, Inc.
+ * Copyright (C) 2024 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,11 +17,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
  */
 
 using Gtk;
 
-public class Usage.GraphBox : Gtk.Box {
+public class Usage.GraphBox : Adw.Bin {
 
     class construct {
         set_css_name ("graph-box");
@@ -29,6 +31,8 @@ public class Usage.GraphBox : Gtk.Box {
     public GraphBox (GraphView graph) {
         this.add_css_class ("view");
         this.overflow = Gtk.Overflow.HIDDEN;
-        append (graph);
+        graph.hexpand = true;
+        graph.vexpand = true;
+        this.child = graph;
     }
 }

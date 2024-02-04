@@ -61,6 +61,9 @@ public class Usage.StorageView : Usage.View {
     private uint64 total_free_size = 0;
     private uint64 total_size = 0;
 
+    private Gtk.LevelBar switcher_level = new Gtk.LevelBar ();
+    private Gtk.Label switcher_label = new Gtk.Label ("");
+
     private UserDirectory[] xdg_folders = {
         UserDirectory.DOCUMENTS,
         UserDirectory.DOWNLOAD,
@@ -76,6 +79,9 @@ public class Usage.StorageView : Usage.View {
         name = "STORAGE";
         title = _("Storage");
         icon_name = "drive-harddisk-symbolic";
+        switcher_widget = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        ((Gtk.Box) switcher_widget).append (switcher_label);
+        ((Gtk.Box) switcher_widget).append (switcher_level);
 
         try {
             connection = Sparql.Connection.bus_new ("org.freedesktop.Tracker3.Miner.Files", null, null);
@@ -254,6 +260,12 @@ public class Usage.StorageView : Usage.View {
 
         available_row.size_label.label = Utils.format_size_values (total_free_size) + " (%d%)".printf ((int) total_free_percentage);
         available_row.tag.add_css_class ("available-tag");
+
+        ulong total_free_size_most_significant;
+        string total_free_size_formatted = Utils.format_size_values (total_free_size, out total_free_size_most_significant);
+        switcher_level.max_value = total_size;
+        switcher_level.@value = total_used_size;
+        switcher_label.label = GLib.ngettext("%s available", "%s available", total_free_size_most_significant).printf(total_free_size_formatted);
     }
 
     private async void populate_view () {
