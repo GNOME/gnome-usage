@@ -6,23 +6,6 @@
       <object class="GtkBox">
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkSearchBar" id="search_bar">
-            <child>
-              <object class="AdwClamp">
-                <property name="hexpand">True</property>
-                <property name="maximum-size">400</property>
-                <property name="tightening-threshold">300</property>
-                <child>
-                  <object class="GtkSearchEntry" id="search_entry">
-                    <property name="hexpand">True</property>
-                    <signal name="search-changed" handler="on_search_entry_changed"/>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
           <object class="GtkScrolledWindow">
             <property name="vexpand">True</property>
             <property name="child">

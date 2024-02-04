@@ -26,12 +26,6 @@ public class Usage.CpuView : View {
     private NoResultsFoundView no_process_view;
 
     [GtkChild]
-    private unowned Gtk.SearchBar search_bar;
-
-    [GtkChild]
-    private unowned Gtk.SearchEntry search_entry;
-
-    [GtkChild]
     private unowned Gtk.Box cpu_box;
 
     public CpuView () {
@@ -92,15 +86,7 @@ public class Usage.CpuView : View {
         process_list_box.bind_property ("empty", no_process_view, "visible", BindingFlags.BIDIRECTIONAL);
     }
 
-    [GtkCallback]
-    private void on_search_entry_changed () {
-        process_list_box.search_text = search_entry.get_text ();
-    }
-
-    public void set_search_mode (bool enable) {
-        search_bar.set_search_mode (enable);
-        if (enable) {
-            search_entry.grab_focus ();
-        }
+    public void set_search_text (string query) {
+        process_list_box.search_text = query;
     }
 }

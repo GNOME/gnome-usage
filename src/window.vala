@@ -41,6 +41,12 @@ public class Usage.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Gtk.ToggleButton performance_search_button;
 
+    [GtkChild]
+    private unowned Gtk.SearchEntry search_entry;
+
+    [GtkChild]
+    private unowned Adw.ToolbarView content_area;
+
     private HeaderBarMode mode;
 
     private View[] views;
@@ -52,9 +58,6 @@ public class Usage.Window : Adw.ApplicationWindow {
             this.add_css_class ("devel");
         }
 
-        mode = HeaderBarMode.PERFORMANCE;
-        set_mode (HeaderBarMode.PERFORMANCE);
-
         views = new View[] {
             new CpuView (),
             new MemoryView (),
@@ -64,24 +67,13 @@ public class Usage.Window : Adw.ApplicationWindow {
         foreach (var view in views) {
             stack.add_titled_with_icon (view, view.name, view.title, view.icon_name);
         }
+
+        this.search_entry.set_key_capture_widget (content_area);
     }
 
     public void set_mode (HeaderBarMode mode) {
-        switch (this.mode) {
-            case HeaderBarMode.PERFORMANCE:
-                performance_search_revealer.reveal_child = false;
-                break;
-            case HeaderBarMode.STORAGE:
-                break;
-        }
-
-        switch (mode) {
-            case HeaderBarMode.PERFORMANCE:
-                performance_search_revealer.reveal_child = true;
-                break;
-            case HeaderBarMode.STORAGE:
-                break;
-        }
+        this.performance_search_button.active &= mode == HeaderBarMode.PERFORMANCE;
+        this.performance_search_revealer.reveal_child = mode == HeaderBarMode.PERFORMANCE;
 
         SimpleAction performance_action = this.get_application ().lookup_action ("filter-processes") as SimpleAction;
         if (performance_action != null) {
@@ -107,14 +99,31 @@ public class Usage.Window : Adw.ApplicationWindow {
 
     [GtkCallback]
     private void on_performance_search_button_toggled () {
-        var application = GLib.Application.get_default () as Application;
+        if (!this.performance_search_button.active) {
+            this.search_entry.text = "";
+        } else {
+            search_entry.grab_focus ();
+        }
+    }
 
-        if (application == null)
-            return;
+    [GtkCallback]
+    private void on_search_entry_changed () {
+        /* TODO: Implement a saner way of propagating search query. */
+        ((CpuView) this.get_views ()[Views.CPU]).set_search_text (search_entry.get_text ());
+        ((MemoryView) this.get_views ()[Views.MEMORY]).set_search_text (search_entry.get_text ());
+    }
 
-        /* TODO: Implement a saner way of toggling this mode. */
-        ((CpuView) application.get_window ().get_views ()[Views.CPU]).set_search_mode (performance_search_button.active);
-        ((MemoryView) application.get_window ().get_views ()[Views.MEMORY]).set_search_mode (performance_search_button.active);
+    [GtkCallback]
+    private bool on_search_entry_key_pressed (uint keyvalue, uint keycode, Gdk.ModifierType state) {
+        if (keyvalue == Gdk.Key.Down || keyvalue == Gdk.Key.KP_Down) {
+            return this.child_focus (Gtk.DirectionType.TAB_FORWARD);
+        }
+
+        if (keyvalue == Gdk.Key.Escape) {
+            this.performance_search_button.active = false;
+        }
+
+        return false;
     }
 
     [GtkCallback]

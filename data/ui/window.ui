@@ -15,7 +15,7 @@
     <property name="default-width">950</property>
     <property name="title" translatable="yes">Usage</property>
     <child>
-      <object class="AdwToolbarView">
+      <object class="AdwToolbarView" id="content_area">
         <property name="top-bar-style">raised</property>
         <child type="top">
           <object class="AdwHeaderBar" id="header_bar">
@@ -42,7 +42,32 @@
                 <child>
                   <object class="GtkToggleButton" id="performance_search_button">
                     <property name="icon-name">system-search-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Search</property>
                     <signal name="toggled" handler="on_performance_search_button_toggled"/>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child type="top">
+          <object class="GtkSearchBar" id="search_bar">
+            <property name="search-mode-enabled" bind-source="performance_search_button" bind-property="active" bind-flags="sync-create|bidirectional"/>
+            <child>
+              <object class="AdwClamp">
+                <property name="hexpand">True</property>
+                <property name="maximum-size">400</property>
+                <property name="tightening-threshold">300</property>
+                <child>
+                  <object class="GtkSearchEntry" id="search_entry">
+                    <property name="hexpand">True</property>
+                    <property name="placeholder-text" translatable="yes">Search Applications…</property>
+                    <signal name="search-changed" handler="on_search_entry_changed"/>
+                    <child>
+                      <object class="GtkEventControllerKey">
+                        <signal name="key-pressed" handler="on_search_entry_key_pressed"/>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
