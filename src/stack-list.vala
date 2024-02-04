@@ -34,6 +34,13 @@ public class Usage.StackList : Gtk.Box {
         scrolled_window.hexpand = true;
         scrolled_window.child = list_box;
 
+        list_box.margin_top = 12;
+        list_box.margin_bottom = 12;
+        list_box.margin_start = 12;
+        list_box.margin_end = 12;
+        list_box.valign = Gtk.Align.START;
+        list_box.add_css_class ("boxed-list");
+
         this.append (scrolled_window);
 
         list_box.row_activated.connect ((box, row) => {
