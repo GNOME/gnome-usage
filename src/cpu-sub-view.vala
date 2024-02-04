@@ -37,7 +37,17 @@ public class Usage.ProcessorSubView : SubView {
         cpu_graph_box.valign = Gtk.Align.START;
         cpu_graph_box.add_css_class ("card");
 
-        process_list_box = new ProcessListBox (ProcessListBoxType.PROCESSOR);
+        process_list_box = new ProcessListBox (ProcessListBoxType () {
+            comparator = (a, b) => {
+                return (int) ((uint64) (a.cpu_load < b.cpu_load) - (uint64) (a.cpu_load > b.cpu_load));
+            },
+            filter = (item) => {
+                return item.cpu_load > Settings.get_default ().app_minimum_load;
+            },
+            load_label_factory = (item) => {
+                return "%.1f %%".printf (item.cpu_load);
+            },
+        });
         process_list_box.margin_bottom = 20;
         process_list_box.margin_top = 30;
 

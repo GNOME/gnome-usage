@@ -60,14 +60,7 @@ public class Usage.ProcessRow : Gtk.ListBoxRow {
     }
 
     private void update_load_label () {
-        switch (type) {
-            case ProcessListBoxType.PROCESSOR:
-                load_label.label = "%.1f %%".printf (app.cpu_load);
-                break;
-            case ProcessListBoxType.MEMORY:
-                load_label.label = Utils.format_size_values (app.mem_usage);
-                break;
-        }
+        load_label.label = this.type.load_label_factory (app);
     }
 
     private void update_user_tag () {

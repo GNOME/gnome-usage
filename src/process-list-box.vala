@@ -18,9 +18,12 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-public enum Usage.ProcessListBoxType {
-    PROCESSOR,
-    MEMORY;
+public delegate bool Usage.FilterFunc<T> (T object);
+public delegate string Usage.LabelFactoryFunc<T> (T object);
+public struct Usage.ProcessListBoxType {
+    public CompareDataFunc<AppItem> comparator;
+    public Usage.FilterFunc<AppItem> filter;
+    public Usage.LabelFactoryFunc<AppItem> load_label_factory;
 }
 
 public class Usage.ProcessListBox : Adw.Bin {
@@ -66,40 +69,17 @@ public class Usage.ProcessListBox : Adw.Bin {
     private bool update () {
         model.remove_all ();
 
-        CompareDataFunc<AppItem> app_cmp = (a, b) => {
-            AppItem app_a = (AppItem) a;
-            AppItem app_b = (AppItem) b;
-
-            switch (type) {
-                default:
-                case ProcessListBoxType.PROCESSOR:
-                    return (int) ((uint64) (app_a.cpu_load < app_b.cpu_load) - (uint64) (app_a.cpu_load > app_b.cpu_load));
-                case ProcessListBoxType.MEMORY:
-                    return (int) ((uint64) (app_a.mem_usage < app_b.mem_usage) - (uint64) (app_a.mem_usage > app_b.mem_usage));
-            }
-        };
-
         var system_monitor = SystemMonitor.get_default ();
         Settings settings = Settings.get_default ();
         if (search_text == "") {
-            switch (type) {
-                default:
-                case ProcessListBoxType.PROCESSOR:
-                    foreach (unowned AppItem app in system_monitor.get_apps ()) {
-                        if (app.cpu_load > settings.app_minimum_load)
-                            model.insert_sorted (app, app_cmp);
-                    }
-                    break;
-                case ProcessListBoxType.MEMORY:
-                    foreach (unowned AppItem app in system_monitor.get_apps ())
-                        if (app.mem_usage > settings.app_minimum_memory)
-                            model.insert_sorted (app, app_cmp);
-                    break;
+            foreach (unowned AppItem app in system_monitor.get_apps ()) {
+                if (this.type.filter (app))
+                    model.insert_sorted (app, this.type.comparator);
             }
         } else {
             foreach (unowned AppItem app in system_monitor.get_apps ()) {
                 if (app.display_name.down ().contains (search_text.down ()) || app.representative_cmdline.down ().contains (search_text.down ()))
-                    model.insert_sorted (app, app_cmp);
+                    model.insert_sorted (app, this.type.comparator);
             }
         }
 
