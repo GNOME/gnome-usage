@@ -57,7 +57,7 @@
   </recommends>
   <requires>
     <display_length compare="ge" side="shortest">360</display_length>
-    <display_length compare="ge" side="longest">400</display_length>
+    <display_length compare="ge" side="longest">360</display_length>
   </requires>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
   <project_license>GPL-3.0-or-later</project_license>
