@@ -3,6 +3,10 @@
   <id>@app-id@</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>Usage</name>
+  <developer_name>Usage developers</developer_name>
+  <developer>
+    <name>Usage developers</name>
+  </developer>
   <summary>A nice way to view information about use of system resources</summary>
   <description>
     <p>
@@ -21,7 +25,6 @@
       <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/main/screenshots/screenshot-storage-view.png</image>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://wiki.gnome.org/Apps/Usage</url>
   <update_contact>camelcasenick@bewares.it</update_contact>
   <releases>
     <release version="45.0" date="2023-09-17">
@@ -57,14 +60,12 @@
     <display_length compare="ge" side="longest">400</display_length>
   </requires>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
-  <project_license>GPL-3.0+</project_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <!--url type="homepage">https://wiki.gnome.org/Apps/Usage</url-->
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-usage/issues</url>
-  <url type="donation">http://www.gnome.org/friends/</url>
-  <url type="help">https://gitlab.gnome.org/GNOME/gnome-usage/wikis/home</url>
-  <url type="translate">https://wiki.gnome.org/TranslationProject</url>
+  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-usage</url>
+  <url type="donation">https://liberapay.com/camelCaseNick/</url>
+  <!--url type="help">https://gitlab.gnome.org/GNOME/gnome-usage/wikis/home</url-->
+  <url type="translate">https://l10n.gnome.org/module/gnome-usage/</url>
   <translation type="gettext">gnome-usage</translation>
-  <custom>
-    <value key="Purism::form_factor">workstation</value>
-    <value key="Purism::form_factor">mobile</value>
-  </custom>
 </component>
