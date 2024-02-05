@@ -25,6 +25,18 @@
               </object>
             </child>
             <child>
+              <object class="GtkImage" id="background">
+                <property name="icon_name">background-app-ghost-symbolic</property>
+                <binding name="visible">
+                  <lookup name="is_background" type="UsageAppItem">
+                    <lookup name="app" type="UsageProcessRowItem">
+                      <lookup name="item" type="GtkListItem"/>
+                    </lookup>
+                  </lookup>
+                </binding>
+              </object>
+            </child>
+            <child>
               <object class="GtkLabel" id="title_label">
                 <property name="ellipsize">end</property>
                 <property name="max_width_chars">60</property>
