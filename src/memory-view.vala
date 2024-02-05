@@ -37,7 +37,7 @@ public class Usage.MemoryView : View {
     public MemoryView () {
         name = "MEMORY";
         title = _("Memory");
-        icon_name = "speedometer-symbolic";
+        icon_name = "memory-symbolic";
 
         process_list_box = new ProcessListBox (ProcessListBoxType () {
             comparator = (a, b) => {
