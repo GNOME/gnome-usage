@@ -28,6 +28,7 @@ public class Usage.SystemMonitor : Object {
     public uint64 swap_total { get; private set; }
     public bool group_system_apps { get; set; default = true; }
 
+    private BackgroundMonitor background_monitor;
     private CpuMonitor cpu_monitor;
     private MemoryMonitor memory_monitor;
     private GameMode.PidList gamemode_pids;
@@ -56,6 +57,7 @@ public class Usage.SystemMonitor : Object {
         GTop.init ();
         AppItem.init ();
 
+        background_monitor = new BackgroundMonitor ();
         cpu_monitor = new CpuMonitor ();
         memory_monitor = new MemoryMonitor ();
         gamemode_pids = new GameMode.PidList ();
@@ -182,6 +184,14 @@ public class Usage.SystemMonitor : Object {
 
         foreach (var app in app_table.get_values ())
             app.remove_processes ();
+
+        string[] background_app_ids = {};
+        foreach (org.freedesktop.background.BackgroundApp background_app in background_monitor.get_background_apps ()) {
+            background_app_ids += background_app.app_id;
+        }
+        app_table.foreach ((app_id, app) => {
+            app.is_background = app_id.substring(0, app_id.length - ".desktop".length) in background_app_ids;
+        });
 
         debug ("removed: %u, added: %u\n", removed, added);
         debug ("app table size: %u\n", app_table.length);

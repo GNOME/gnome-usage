@@ -15,7 +15,8 @@
         "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:FileSystem",
         "--filesystem=xdg-documents", "--filesystem=xdg-download", "--filesystem=xdg-music", "--filesystem=xdg-pictures", "--filesystem=xdg-videos",
         "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+        "--talk-name=org.freedesktop.background.Monitor"
     ],
     "cleanup": ["/include", "/lib/pkgconfig",
                 "/share/pkgconfig", "/share/aclocal",

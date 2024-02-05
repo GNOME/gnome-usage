@@ -2,6 +2,7 @@ vala_sources = [
   'animated-scrolled-window.vala',
   'app-item.vala',
   'application.vala',
+  'background-monitor.vala',
   'cpu-graph.vala',
   'cpu-monitor.vala',
   'cpu-sub-view.vala',

@@ -31,6 +31,7 @@ public class Usage.AppItem : Object {
     public uint64 mem_usage { get; private set; }
     public Fdo.AccountsUser? user { get; private set; default = null; }
     public bool gamemode {get; private set; }
+    public bool is_background { get; set; }
     public virtual Icon icon {
         get {
             if (app_info == null || app_info.get_icon () == null) {
