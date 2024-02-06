@@ -24,7 +24,7 @@
 using Gtk;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/quit-process-dialog.ui")]
-public class Usage.QuitProcessDialog : Adw.MessageDialog {
+public class Usage.QuitProcessDialog : Adw.AlertDialog {
     private AppItem app;
 
     public QuitProcessDialog (AppItem app) {
@@ -33,7 +33,7 @@ public class Usage.QuitProcessDialog : Adw.MessageDialog {
     }
 
     [GtkCallback]
-    public void responded (Adw.MessageDialog dialog, string response_type) {
+    public void responded (Adw.AlertDialog dialog, string response_type) {
         switch (response_type) {
             case "quit":
                 app.kill ();

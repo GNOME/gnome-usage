@@ -2,9 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
 
-  <template class="UsageQuitProcessDialog" parent="AdwMessageDialog">
-    <property name="modal">True</property>
-    <property name="resizable">False</property>
+  <template class="UsageQuitProcessDialog" parent="AdwAlertDialog">
     <property name="heading" translatable="yes" comments="Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”">Quit %s?</property>
     <property name="body" translatable="yes">Stopping applications might come with side effects, such as data loss of unsaved work.</property>
     <property name="default-response">cancel</property>

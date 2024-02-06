@@ -51,7 +51,7 @@ public class Usage.AppDialogProperties : Object, ListModel {
 }
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/app-dialog.ui")]
-public class Usage.AppDialog : Adw.Window {
+public class Usage.AppDialog : Adw.Dialog {
     private AppItem app;
 
     [GtkChild]
@@ -116,8 +116,7 @@ public class Usage.AppDialog : Adw.Window {
     public void quit_clicked (Gtk.Button quit_button) {
         if (this.app.is_killable ()) {
             QuitProcessDialog dialog = new QuitProcessDialog (app);
-            dialog.set_transient_for ((Gtk.Window) this.get_root ());
-            dialog.present ();
+            dialog.present ((Gtk.Window) this.get_root ());
 
             dialog.response.connect ((dialog, response_type) => {
                 if (response_type == "quit") {

@@ -68,13 +68,13 @@ public class Usage.Application : Adw.Application {
         };
 
         // TODO: should use Config.APPLICATION_ID, see data/meson.build
-        new Adw.AboutWindow.from_appdata (Config.APPLICATION_RESOURCE_PATH + "org.gnome.Usage" + ".appdata.xml", Config.VERSION.split ("-")[0]) {
-            transient_for = window,
+        new Adw.AboutDialog.from_appdata (Config.APPLICATION_RESOURCE_PATH + "org.gnome.Usage" + ".appdata.xml",
+                                          Config.VERSION.split ("-")[0]) {
             comments = _("A nice way to view information about use of system resources, like memory and disk space."),
             developers = authors,
             designers = artists,
             translator_credits = _("translator-credits"),
-        }.present ();
+        }.present (window);
     }
 
     private void on_quit (GLib.SimpleAction action, GLib.Variant? parameter) {

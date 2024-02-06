@@ -76,8 +76,7 @@ public class Usage.ProcessListBox : Adw.Bin {
 
             if (app.representative_cmdline != "system") {
                 AppDialog dialog = new AppDialog (app);
-                dialog.set_transient_for ((Gtk.Window) this.get_root ());
-                dialog.present ();
+                dialog.present ((Gtk.Window) this.get_root ());
             }
         });
 
