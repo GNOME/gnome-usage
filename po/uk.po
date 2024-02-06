@@ -2,13 +2,13 @@
 # Copyright (C) 2020 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-10-10 10:42+0000\n"
-"PO-Revision-Date: 2023-10-10 22:49+0300\n"
+"POT-Creation-Date: 2024-02-06 00:32+0000\n"
+"PO-Revision-Date: 2024-02-06 09:18+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -17,30 +17,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 #: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
-#: src/application.vala:73
 msgid "Usage"
 msgstr "Використання"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "Usage developers"
+msgstr "Розробники «Usage»"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:10
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Чудовий спосіб переглянути відомості щодо використання ресурсів системи"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:8
-#| msgid ""
-#| "A simple GNOME 3 application to monitor and analyze system resources such "
-#| "as processing, memory, and storage."
+#: data/org.gnome.Usage.appdata.xml.in.in:12
 msgid ""
 "A simple application to monitor and analyze system resources such as CPU and "
 "memory usage of running apps, and storage usage."
 msgstr ""
-"Проста програма для спостереження та аналізу використання ресурсів "
-"системи, зокрема процесора, використання пам'яті запущеними програмами та"
-" використання сховищ даних."
+"Проста програма для спостереження та аналізу використання ресурсів системи, "
+"зокрема процесора, використання пам'яті запущеними програмами та "
+"використання сховищ даних."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -79,9 +79,9 @@ msgid ""
 "The time span for up to which the CPU and memory graphs in the performance "
 "tab and its sidebar go back in time in milliseconds."
 msgstr ""
-"Проміжок часу у мілісекундах, який буде використано для даних з минулого,"
-" які буде показано на графіках для процесора і пам'яті на вкладці швидкодії"
-" та її бічній панелі."
+"Проміжок часу у мілісекундах, який буде використано для даних з минулого, "
+"які буде показано на графіках для процесора і пам'яті на вкладці швидкодії "
+"та її бічній панелі."
 
 #: data/org.gnome.Usage.gschema.xml.in:18
 msgid "interval (ms) for the performance data refresh"
@@ -98,8 +98,8 @@ msgstr ""
 msgid ""
 "minimum relative load (%) of an app to be displayed in the performance tab"
 msgstr ""
-"мінімальна відносне навантаження (у %) для показу програми на вкладці"
-" швидкодії"
+"мінімальна відносне навантаження (у %) для показу програми на вкладці "
+"швидкодії"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
@@ -108,11 +108,11 @@ msgid ""
 "listed. With 100 an app is only listed if its processes fully utilise all "
 "CPU threads."
 msgstr ""
-"Нормалізоване до 100 навантаження програмою, як сума для усіх її процесів,"
-" яке достатнім для того, щоб програма потрапила до списку на вкладці"
-" швидкодії. Якщо вказати 0, буде у списку показано усі програми. Якщо"
-" вказати 100, програма потрапить до списку, лише якщо її процеси повністю"
-" використовують усі потоки обробки процесора."
+"Нормалізоване до 100 навантаження програмою, як сума для усіх її процесів, "
+"яке достатнім для того, щоб програма потрапила до списку на вкладці "
+"швидкодії. Якщо вказати 0, буде у списку показано усі програми. Якщо вказати "
+"100, програма потрапить до списку, лише якщо її процеси повністю "
+"використовують усі потоки обробки процесора."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -124,8 +124,8 @@ msgid ""
 "The minimum amount of memory an app has to use in total as the sum over all "
 "its processes in bytes to be listed in the performance tab."
 msgstr ""
-"Мінімальний обсяг пам'яті, яку має споживати програма загалом, як сума для"
-" усіх її процесів у байтах, для потрапляння до списку на вкладці швидкодії."
+"Мінімальний обсяг пам'яті, яку має споживати програма загалом, як сума для "
+"усіх її процесів у байтах, для потрапляння до списку на вкладці швидкодії."
 
 #: data/org.gnome.Usage.gschema.xml.in:45
 msgid "Force graphs to not continuously scrolling"
@@ -138,21 +138,21 @@ msgid ""
 "disabled, the graphs will decide, based on power-saving mode and GTK's "
 "global animations settings, how to behave."
 msgstr ""
-"Якщо увімкнено, неперервне гортання графіків швидкодії буде заборонено —"
-" програма здійснюватиме перехід до нового стану, лише при додаванні нової"
-" точки на графік. Якщо вимкнено, поведінка визначатиметься на основі"
-" параметрів енергозаощадження та загальних параметрів анімації GTK."
+"Якщо увімкнено, неперервне гортання графіків швидкодії буде заборонено — "
+"програма здійснюватиме перехід до нового стану, лише при додаванні нової "
+"точки на графік. Якщо вимкнено, поведінка визначатиметься на основі "
+"параметрів енергозаощадження та загальних параметрів анімації GTK."
 
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "Пам’ять"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:52
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Використано"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:58
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Доступно"
@@ -214,7 +214,7 @@ msgstr "Показати усі процеси"
 msgid "System"
 msgstr "Система"
 
-#: src/application.vala:74
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -222,7 +222,7 @@ msgstr ""
 "Чудовий спосіб переглянути відомості щодо використання ресурсів системи, "
 "зокрема пам'яті і місця на диску."
 
-#: src/application.vala:77
+#: src/application.vala:76
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>"
 
