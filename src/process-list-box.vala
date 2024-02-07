@@ -131,7 +131,7 @@ public class Usage.ProcessListBox : Adw.Bin {
         filter.changed (Gtk.FilterChange.DIFFERENT);
         sorter.changed (Gtk.SorterChange.DIFFERENT);
 
-        empty = (model.get_n_items () == 0);
+        empty = (this.list_view.model.get_n_items () == 0);
         return true;
     }
 }
