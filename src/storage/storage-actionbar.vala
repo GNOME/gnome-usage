@@ -36,7 +36,10 @@ public class Usage.StorageActionBar : Adw.Bin {
         foreach (var item in selected_items) {
             size += item.size;
         }
-        size_label.label = _("%s selected").printf (Utils.format_size_values (size));
+
+        ulong most_significant;
+        string size_formatted = Utils.format_size_values (size, out most_significant);
+        size_label.label = GLib.ngettext("%s selected", "%s selected", most_significant).printf (size_formatted);
     }
 
     [GtkCallback]

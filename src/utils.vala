@@ -45,7 +45,13 @@ public class Usage.Utils {
         return unescaped.compress ();
     }
 
-    public static string format_size_values (uint64 @value) {
+    public static string format_size_values (uint64 @value, out ulong? most_significant = null) {
+        uint64 significant = @value;
+        while (significant > 1000) {
+            significant /= 1000;
+        }
+        most_significant = (ulong) significant;
+
         if (@value >= 1000)
             return GLib.format_size (@value);
         else
