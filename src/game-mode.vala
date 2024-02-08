@@ -92,7 +92,7 @@ public class GameMode.PidList : GLib.Object {
         } catch (IOError e) {
             warning ("GameMode Proxy creation failed: %s", e.message);
         } catch (GLib.DBusError e) {
-            warning ("GameMode D-Bus error: %s", e.message);
+            info ("GameMode D-Bus error: %s", e.message);
         }
     }
 
