@@ -6,6 +6,7 @@ data/org.gnome.Usage.gschema.xml.in
 data/ui/memory-speedometer.ui
 data/ui/no-results-found-view.ui
 data/ui/performance-view.ui
+data/ui/process-row.ui
 data/ui/quit-process-dialog.ui
 data/ui/storage-actionbar.ui
 data/ui/storage-row-popover.ui

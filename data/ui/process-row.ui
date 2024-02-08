@@ -11,24 +11,13 @@
             <property name="margin-end">12</property>
             <property name="margin-top">6</property>
             <property name="margin-bottom">6</property>
-            <property name="spacing">12</property>
+            <property name="spacing">6</property>
             <child>
               <object class="GtkImage" id="icon">
                 <property name="icon-size">large</property>
+                <property name="margin-end">6</property>
                 <binding name="gicon">
                   <lookup name="icon" type="UsageAppItem">
-                    <lookup name="app" type="UsageProcessRowItem">
-                      <lookup name="item" type="GtkListItem"/>
-                    </lookup>
-                  </lookup>
-                </binding>
-              </object>
-            </child>
-            <child>
-              <object class="GtkImage" id="background">
-                <property name="icon_name">background-app-ghost-symbolic</property>
-                <binding name="visible">
-                  <lookup name="is_background" type="UsageAppItem">
                     <lookup name="app" type="UsageProcessRowItem">
                       <lookup name="item" type="GtkListItem"/>
                     </lookup>
@@ -40,7 +29,6 @@
               <object class="GtkLabel" id="title_label">
                 <property name="ellipsize">end</property>
                 <property name="max_width_chars">60</property>
-                <property name="hexpand">True</property>
                 <property name="halign">start</property>
                 <binding name="label">
                   <lookup name="display_name" type="UsageAppItem">
@@ -52,16 +40,35 @@
               </object>
             </child>
             <child>
-              <object class="GtkImage" id="gamemode">
-                <property name="pixel_size">24</property>
-                <property name="icon_name">applications-games-symbolic</property>
-                <binding name="visible">
-                  <lookup name="gamemode" type="UsageAppItem">
-                    <lookup name="app" type="UsageProcessRowItem">
-                      <lookup name="item" type="GtkListItem"/>
-                    </lookup>
-                  </lookup>
-                </binding>
+              <object class="GtkBox">
+                <property name="hexpand">True</property>
+                <property name="spacing">3</property>
+                <child>
+                  <object class="GtkImage" id="background">
+                    <property name="icon_name">background-app-ghost-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Application is running in background</property>
+                    <binding name="visible">
+                      <lookup name="is_background" type="UsageAppItem">
+                        <lookup name="app" type="UsageProcessRowItem">
+                          <lookup name="item" type="GtkListItem"/>
+                        </lookup>
+                      </lookup>
+                    </binding>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkImage" id="gamemode">
+                    <property name="icon_name">applications-games-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Application uses optimised game mode</property>
+                    <binding name="visible">
+                      <lookup name="gamemode" type="UsageAppItem">
+                        <lookup name="app" type="UsageProcessRowItem">
+                          <lookup name="item" type="GtkListItem"/>
+                        </lookup>
+                      </lookup>
+                    </binding>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
