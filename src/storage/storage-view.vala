@@ -80,8 +80,8 @@ public class Usage.StorageView : Usage.View {
         title = _("Storage");
         icon_name = "drive-harddisk-symbolic";
         switcher_widget = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-        ((Gtk.Box) switcher_widget).append (switcher_label);
         ((Gtk.Box) switcher_widget).append (switcher_level);
+        ((Gtk.Box) switcher_widget).append (switcher_label);
 
         try {
             connection = Sparql.Connection.bus_new ("org.freedesktop.Tracker3.Miner.Files", null, null);
