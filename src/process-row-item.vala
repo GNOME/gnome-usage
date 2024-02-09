@@ -48,7 +48,7 @@ public class Usage.ProcessRowItem : Object {
             return app.user == null || app.user.UserName != GLib.Environment.get_user_name ();
         }
     }
-    public virtual string user_type {
+    public virtual string? user_type {
         get {
             if (app.user == null) {
                 return null;
