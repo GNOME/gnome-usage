@@ -70,7 +70,7 @@ public class Usage.ProcessListBox : Adw.Bin {
         this.list_view.single_click_activate = true;
 
         this.list_view.activate.connect ((list_view, position) => {
-            AppItem app = (list_view.get_model ().get_item (position) as ProcessRowItem).app;
+            AppItem app = ((ProcessRowItem) list_view.get_model ().get_item (position)).app;
 
             if (app.is_killable ()) {
                 var dialog = new QuitProcessDialog (app);
