@@ -53,7 +53,7 @@ public abstract class Usage.PerformanceGraphView : GraphView {
         }
     }
 
-    public void add_graph (Graph graph) {
+    public new void add_graph (Graph graph) {
         graph.maximal_queue_length = (int) Math.ceilf((float) settings.graph_timespan/settings.graph_update_interval) + 2;
         base.add_graph (graph);
     }
