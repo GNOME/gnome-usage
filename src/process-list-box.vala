@@ -72,8 +72,8 @@ public class Usage.ProcessListBox : Adw.Bin {
         this.list_view.activate.connect ((list_view, position) => {
             AppItem app = ((ProcessRowItem) list_view.get_model ().get_item (position)).app;
 
-            if (app.is_killable ()) {
-                var dialog = new QuitProcessDialog (app);
+            if (app.representative_cmdline != "system") {
+                AppDialog dialog = new AppDialog (app);
                 dialog.set_transient_for ((Gtk.Window) this.get_root ());
                 dialog.present ();
             }

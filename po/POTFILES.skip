@@ -1,5 +1,6 @@
 # List of source files that should *not* be translated.
 # Please keep this file sorted alphabetically.
+src/app-dialog.c
 src/app-item.c
 src/application.c
 src/cpu-view.c

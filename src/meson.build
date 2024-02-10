@@ -1,4 +1,5 @@
 vala_sources = [
+  'app-dialog.vala',
   'app-item.vala',
   'application.vala',
   'background-monitor.vala',

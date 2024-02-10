@@ -3,6 +3,7 @@
 data/org.gnome.Usage.appdata.xml.in.in
 data/org.gnome.Usage.desktop.in.in
 data/org.gnome.Usage.gschema.xml.in
+data/ui/app-dialog.ui
 data/ui/memory-speedometer.ui
 data/ui/no-results-found-view.ui
 data/ui/process-row.ui
@@ -12,6 +13,7 @@ data/ui/storage-row-popover.ui
 data/ui/storage-view.ui
 data/ui/swap-speedometer.ui
 data/ui/window.ui
+src/app-dialog.vala
 src/app-item.vala
 src/application.vala
 src/cpu-view.vala
