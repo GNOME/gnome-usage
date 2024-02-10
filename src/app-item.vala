@@ -213,11 +213,11 @@ public class Usage.AppItem : Object {
         return !blocked && by_current_user;
     }
 
-    public void kill () {
+    public void kill (Posix.Signal? sig = Posix.Signal.TERM) {
         if (this.is_killable ()) {
             foreach (var process in processes.get_values ()) {
                 debug ("Terminating %d", (int) process.pid);
-                Posix.kill (process.pid, Posix.Signal.KILL);
+                Posix.kill (process.pid, sig ?? Posix.Signal.TERM);
             }
         }
     }
