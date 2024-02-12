@@ -265,8 +265,8 @@ public class Usage.AppItem : Object {
     }
 
     public void remove_processes () {
-        cpu_load = 0;
-        mem_usage = 0;
+        double cpu_load = 0;
+        uint64 mem_usage = 0;
         int games = 0;
 
         foreach (var process in processes.get_values ()) {
@@ -280,8 +280,9 @@ public class Usage.AppItem : Object {
                 games++;
         }
 
-        gamemode = games > 0;
-        cpu_load = cpu_load / get_num_processors ();
+        this.gamemode = games > 0;
+        this.cpu_load = cpu_load / get_num_processors ();
+        this.mem_usage = mem_usage;
     }
 
     public void remove_process (Process process) {
