@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-09 15:24+0000\n"
-"PO-Revision-Date: 2024-02-09 22:44+0200\n"
+"POT-Creation-Date: 2024-02-12 16:25+0000\n"
+"PO-Revision-Date: 2024-02-12 20:38+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -20,7 +20,8 @@ msgstr ""
 "X-Generator: Lokalize 23.04.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:34
 msgid "Usage"
 msgstr "Використання"
 
@@ -147,12 +148,12 @@ msgstr ""
 msgid "RAM"
 msgstr "Пам’ять"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:52
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Використано"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:58
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Доступно"
@@ -182,7 +183,7 @@ msgstr "Примусово завершити %s?"
 msgid "Unsaved work might be lost."
 msgstr "Може бути втрачено незбережені результати роботи."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -194,7 +195,7 @@ msgstr "Примусово закрити"
 msgid "Delete…"
 msgstr "Вилучити…"
 
-#: data/ui/storage-view.ui:41
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Домашній розділ"
 
@@ -202,19 +203,27 @@ msgstr "Домашній розділ"
 msgid "Swap"
 msgstr "Резервна пам'ять"
 
-#: data/ui/window.ui:34
+#: data/ui/window.ui:42 data/ui/window.ui:88
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/ui/window.ui:71
+#: data/ui/window.ui:100
+msgid "Search"
+msgstr "Пошук"
+
+#: data/ui/window.ui:119
+msgid "Search Applications…"
+msgstr "Пошук програм…"
+
+#: data/ui/window.ui:153
 msgid "_About Usage"
 msgstr "_Про «Використання»"
 
-#: data/ui/window.ui:77
+#: data/ui/window.ui:159
 msgid "Group system processes"
 msgstr "Групувати процеси системи"
 
-#: data/ui/window.ui:83
+#: data/ui/window.ui:165
 msgid "Show all processes"
 msgstr "Показати усі процеси"
 
@@ -234,32 +243,33 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>"
 
-#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Процесор"
 
-#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
+#: src/memory-view.vala:33
 msgid "Memory"
 msgstr "Пам'ять"
 
-#: src/performance-view.vala:44
-msgid "Performance"
-msgstr "Швидкодія"
-
-#: src/storage/storage-actionbar.vala:39
+#: src/storage/storage-actionbar.vala:42
 #, c-format
+#| msgid "%s selected"
 msgid "%s selected"
-msgstr "Позначено %s"
+msgid_plural "%s selected"
+msgstr[0] "Позначено %s"
+msgstr[1] "Позначено %s"
+msgstr[2] "Позначено %s"
+msgstr[3] "Позначено %s"
 
-#: src/storage/storage-actionbar.vala:44
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Ви справді хочете остаточно вилучити вибрані об'єкти?"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Якщо ви вилучите ці об'єкти, їх буде незворотно втрачено."
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:53
 msgid "Delete"
 msgstr "Вилучити"
 
@@ -271,28 +281,41 @@ msgstr ""
 "Базові файли операційної системи є важливою частиною вашої системи. Їх не "
 "можна вилучати."
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:80
 msgid "Storage"
 msgstr "Сховище даних"
 
-#: src/storage/storage-view.vala:234
+#: src/storage/storage-view.vala:240
 msgid "Operating System"
 msgstr "Операційна система"
 
-#: src/utils.vala:52
+#: src/storage/storage-view.vala:268
+#, c-format
+#| msgid "Available"
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "Доступно %s"
+msgstr[1] "Доступно %s"
+msgstr[2] "Доступно %s"
+msgstr[3] "Доступно %s"
+
+#: src/utils.vala:58
 #, c-format
 msgid "%llu B"
 msgstr "%llu Б"
 
-#: src/utils.vala:57
+#: src/utils.vala:63
 #, c-format
 msgid "%s/s"
 msgstr "%s/с"
 
-#: src/utils.vala:59
+#: src/utils.vala:65
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
+
+#~ msgid "Performance"
+#~ msgstr "Швидкодія"
 
 #~ msgid "GNOME Usage"
 #~ msgstr "Використання GNOME"
