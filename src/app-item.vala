@@ -32,6 +32,11 @@ public class Usage.AppItem : Object {
     public Fdo.AccountsUser? user { get; private set; default = null; }
     public bool gamemode {get; private set; }
     public bool is_background { get; set; }
+    public virtual bool running {
+        get {
+            return processes.length > 0;
+        }
+    }
     public virtual Icon icon {
         get {
             if (app_info == null || app_info.get_icon () == null) {
@@ -171,7 +176,7 @@ public class Usage.AppItem : Object {
         representative_cmdline = process.cmdline;
         representative_uid = process.uid;
         display_name = find_display_name ();
-        processes.insert (process.pid, process);
+        this.insert_process (process);
         load_user_account.begin ();
         gamemode = process.gamemode;
     }
@@ -186,7 +191,7 @@ public class Usage.AppItem : Object {
     }
 
     public bool is_running () {
-        return processes.length > 0;
+        return this.running;
     }
 
     public bool contains_process (Pid pid) {
@@ -199,6 +204,7 @@ public class Usage.AppItem : Object {
 
     public void insert_process (Process process) {
         processes.insert (process.pid, process);
+        this.notify_property ("running");
     }
 
     public bool is_killable () {
@@ -228,7 +234,7 @@ public class Usage.AppItem : Object {
 
         foreach (var process in processes.get_values ()) {
             if (!process.mark_as_updated) {
-                processes.remove (process.pid);
+                this.remove_process (process);
             } else {
                 cpu_load += process.cpu_load;
                 mem_usage += process.mem_usage;
@@ -243,10 +249,12 @@ public class Usage.AppItem : Object {
 
     public void remove_process (Process process) {
         processes.remove (process.pid);
+        this.notify_property ("running");
     }
 
     public void replace_process (Process process) {
         processes.replace (process.pid, process);
+        this.notify_property ("running");
     }
 
     private string find_display_name () {
