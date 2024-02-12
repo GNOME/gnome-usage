@@ -15,7 +15,6 @@ data/ui/window.ui
 src/app-item.vala
 src/application.vala
 src/cpu-view.vala
-src/graph-stack-switcher.vala
 src/memory-view.vala
 src/storage/storage-actionbar.vala
 src/storage/storage-row-popover.vala

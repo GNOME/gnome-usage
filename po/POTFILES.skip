@@ -3,7 +3,6 @@
 src/app-item.c
 src/application.c
 src/cpu-view.c
-src/graph-stack-switcher.c
 src/memory-view.c
 src/performance-view.c
 src/storage/storage-actionbar.c
