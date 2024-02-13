@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-10-12 13:52+0000\n"
-"PO-Revision-Date: 2023-10-19 09:25+1000\n"
+"POT-Creation-Date: 2024-02-12 01:14+0000\n"
+"PO-Revision-Date: 2024-02-12 18:35+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -21,16 +21,19 @@ msgstr ""
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 #: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
-#: src/application.vala:73
 msgid "Usage"
 msgstr "Usage"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "Usage developers"
+msgstr "Разработчики «Usage»"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:10
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Хороший способ просмотра информации об использовании системных ресурсов"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:12
 msgid ""
 "A simple application to monitor and analyze system resources such as CPU and "
 "memory usage of running apps, and storage usage."
@@ -149,12 +152,12 @@ msgstr ""
 msgid "RAM"
 msgstr "Оперативная память"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:52
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Использовано"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:58
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Доступно"
@@ -167,6 +170,14 @@ msgstr "Ничего не найдено"
 msgid "Try a different search"
 msgstr "Попробуйте другой поиск"
 
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Приложение работает в фоновом режиме"
+
+#: data/ui/process-row.ui:62
+msgid "Application uses optimised game mode"
+msgstr "Приложение использует оптимизированный игровой режим"
+
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:8
 msgid "Force Quit %s?"
@@ -176,7 +187,7 @@ msgstr "Принудительно завершить работу %s?"
 msgid "Unsaved work might be lost."
 msgstr "Несохраненная работа может быть потеряна."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Отменить"
 
@@ -212,11 +223,11 @@ msgstr "Группа системных процессов"
 msgid "Show all processes"
 msgstr "Показать все процессы"
 
-#: src/app-item.vala:147
+#: src/app-item.vala:180
 msgid "System"
 msgstr "Система"
 
-#: src/application.vala:74
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -224,11 +235,11 @@ msgstr ""
 "Хороший способ просмотра информации об использовании системных ресурсов, "
 "таких как оперативная память и дисковое пространство."
 
-#: src/application.vala:77
+#: src/application.vala:76
 msgid "translator-credits"
 msgstr ""
 "IgorPolyakov <igorpolyakov@protonmail.com>,2019\n"
-"Ser82-png <asvmail.as@gmail.com>, 2021, 2023"
+"Ser82-png <asvmail.as@gmail.com>, 2021-2024"
 
 #: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
@@ -242,22 +253,25 @@ msgstr "Память"
 msgid "Performance"
 msgstr "Производительность"
 
-#: src/storage/storage-actionbar.vala:39
+#: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
-msgstr "%s выбрано"
+msgid_plural "%s selected"
+msgstr[0] "%s выбран"
+msgstr[1] "%s выбрано"
+msgstr[2] "%s выбрано"
 
-#: src/storage/storage-actionbar.vala:44
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr ""
 "Вы действительно хотите удалить выбранные элементы без возможности "
 "восстановления?"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Если вы удалите эти элементы, они будут потеряны безвозвратно."
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:53
 msgid "Delete"
 msgstr "Удалить"
 
@@ -277,17 +291,17 @@ msgstr "Хранилище"
 msgid "Operating System"
 msgstr "Операционная система"
 
-#: src/utils.vala:52
+#: src/utils.vala:58
 #, c-format
 msgid "%llu B"
 msgstr "%llu Б"
 
-#: src/utils.vala:57
+#: src/utils.vala:63
 #, c-format
 msgid "%s/s"
 msgstr "%s/с"
 
-#: src/utils.vala:59
+#: src/utils.vala:65
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
