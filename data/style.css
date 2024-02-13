@@ -3,17 +3,17 @@ graph-box:not(.card) {
     border-radius: 6px;
 }
 
-list row.max {
-    background: alpha(@error_color, 0.3);
-}
-
-list row.max:hover {
-    background: alpha(@error_color, 0.4);
-}
-
-list row {
+listview row {
     font-feature-settings: "tnum";
+}
 
+/* ListView is not supported by .boxed-list, this is needed for using .card */
+listview.card > row:first-child {
+    border-radius: 12px 12px 0 0;
+}
+
+listview.card > row:last-child {
+    border-radius: 0 0 12px 12px;
 }
 
 rg-graph.big {
