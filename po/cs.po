@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-06 00:32+0000\n"
-"PO-Revision-Date: 2024-02-07 15:24+0100\n"
+"POT-Creation-Date: 2024-02-09 15:24+0000\n"
+"PO-Revision-Date: 2024-02-10 23:08+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -146,6 +146,14 @@ msgstr "Nebylo nic nalezeno"
 msgid "Try a different search"
 msgstr "Zkuste hledat něco jiného"
 
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Aplikace běží na pozadí"
+
+#: data/ui/process-row.ui:62
+msgid "Application uses optimised game mode"
+msgstr "Aplikace využívá optimalizovaný herní režim"
+
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
 #: data/ui/quit-process-dialog.ui:8
 msgid "Force Quit %s?"
@@ -191,7 +199,7 @@ msgstr "Seskupovat systémové procesy"
 msgid "Show all processes"
 msgstr "Zobrazovat všechny procesy"
 
-#: src/app-item.vala:147
+#: src/app-item.vala:180
 msgid "System"
 msgstr "Systém"
 
