@@ -202,7 +202,9 @@ public class Usage.AppItem : Object {
     }
 
     public bool is_killable () {
-        return !(this.representative_cmdline in Settings.get_default ().get_strv ("unkillable-processes"));
+        bool blocked = this.representative_cmdline in Settings.get_default ().get_strv ("unkillable-processes");
+        bool by_current_user = this.user != null && this.user.UserName == GLib.Environment.get_user_name ();
+        return !blocked && by_current_user;
     }
 
     public void kill () {
