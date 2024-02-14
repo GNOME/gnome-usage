@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-09 15:24+0000\n"
-"PO-Revision-Date: 2024-02-10 23:08+0100\n"
+"POT-Creation-Date: 2024-02-14 00:34+0000\n"
+"PO-Revision-Date: 2024-02-14 01:40+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -20,7 +20,8 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:34
 msgid "Usage"
 msgstr "Využití"
 
@@ -128,12 +129,12 @@ msgstr ""
 msgid "RAM"
 msgstr "Operační paměť"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:52
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Použito"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:58
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Dostupné"
@@ -163,7 +164,7 @@ msgstr "Vynutit ukončení aplikace %s?"
 msgid "Unsaved work might be lost."
 msgstr "Můžete přijít o neuloženou práci."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Storno"
 
@@ -175,7 +176,7 @@ msgstr "Vynutit ukončení"
 msgid "Delete…"
 msgstr "Smazat…"
 
-#: data/ui/storage-view.ui:41
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Domovský oddíl"
 
@@ -183,19 +184,27 @@ msgstr "Domovský oddíl"
 msgid "Swap"
 msgstr "Odkládací prostor"
 
-#: data/ui/window.ui:34
+#: data/ui/window.ui:42 data/ui/window.ui:88
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
-#: data/ui/window.ui:71
+#: data/ui/window.ui:100
+msgid "Search"
+msgstr "Hledat"
+
+#: data/ui/window.ui:119
+msgid "Search Applications…"
+msgstr "hledat aplikace…"
+
+#: data/ui/window.ui:153
 msgid "_About Usage"
 msgstr "O _aplikaci Využití"
 
-#: data/ui/window.ui:77
+#: data/ui/window.ui:159
 msgid "Group system processes"
 msgstr "Seskupovat systémové procesy"
 
-#: data/ui/window.ui:83
+#: data/ui/window.ui:165
 msgid "Show all processes"
 msgstr "Zobrazovat všechny procesy"
 
@@ -215,33 +224,32 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Zdeněk Hataš <zdenek.hatas@gmail.com>"
 
-#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Procesor"
 
-#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
+#: src/memory-view.vala:33
 msgid "Memory"
 msgstr "Paměť"
 
-#: src/performance-view.vala:44
-msgid "Performance"
-msgstr "Výkon"
-
 # c-format
-#: src/storage/storage-actionbar.vala:39
+#: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
-msgstr "Vybrali jste %s"
+msgid_plural "%s selected"
+msgstr[0] "Vybrali jste %s"
+msgstr[1] "Vybrali jste %s"
+msgstr[2] "Vybrali jste %s"
 
-#: src/storage/storage-actionbar.vala:44
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Opravdu chcete trvale smazat vybrané položky?"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Pokdu tyto položky smažete, budou nenávratně ztraceny."
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:53
 msgid "Delete"
 msgstr "Smazat"
 
@@ -253,28 +261,39 @@ msgstr ""
 "Soubory operačního systému jsou základní částí systému a nemohou být proto "
 "odstraněny."
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:80
 msgid "Storage"
 msgstr "Úložiště"
 
-#: src/storage/storage-view.vala:234
+#: src/storage/storage-view.vala:240
 msgid "Operating System"
 msgstr "Operační systém"
 
-#: src/utils.vala:52
+#: src/storage/storage-view.vala:268
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "Dostupné %s"
+msgstr[1] "Dostupné %s"
+msgstr[2] "Dostupných %s"
+
+#: src/utils.vala:58
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
-#: src/utils.vala:57
+#: src/utils.vala:63
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
 
-#: src/utils.vala:59
+#: src/utils.vala:65
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "Performance"
+#~ msgstr "Výkon"
 
 #~ msgid "GNOME Usage"
 #~ msgstr "Využití GNOME"
