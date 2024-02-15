@@ -5,14 +5,14 @@
   <template class="UsageQuitProcessDialog" parent="AdwMessageDialog">
     <property name="modal">True</property>
     <property name="resizable">False</property>
-    <property name="heading" translatable="yes" comments="Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”">Force Quit %s?</property>
-    <property name="body" translatable="yes">Unsaved work might be lost.</property>
+    <property name="heading" translatable="yes" comments="Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”">Quit %s?</property>
+    <property name="body" translatable="yes">Stopping applications might come with side effects, such as data loss of unsaved work.</property>
     <property name="default-response">cancel</property>
     <property name="close-response">cancel</property>
     <signal name="response" handler="responded"/>
     <responses>
       <response id="cancel" translatable="yes">Cancel</response>
-      <response id="quit" translatable="yes" appearance="destructive">Force Quit</response>
+      <response id="quit" translatable="yes" appearance="destructive">Quit</response>
     </responses>
   </template>
 </interface>
