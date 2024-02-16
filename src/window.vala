@@ -54,7 +54,9 @@ public class Usage.Window : Adw.ApplicationWindow {
         };
 
         foreach (var view in views) {
-            stack.add_titled_with_icon (view, view.name, view.title, view.icon_name);
+            if (view.prerequisite_fulfilled ()) {
+                stack.add_titled_with_icon (view, view.name, view.title, view.icon_name);
+            }
         }
 
         this.search_entry.set_key_capture_widget (content_area);

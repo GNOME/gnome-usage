@@ -39,4 +39,8 @@ public abstract class Usage.View : Adw.BreakpointBin {
             critical ("Search Feature Not Yet Implemented");
         }
     }
+
+    public virtual bool prerequisite_fulfilled () {
+        return true;
+    }
 }
