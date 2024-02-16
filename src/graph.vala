@@ -80,22 +80,28 @@ public class Usage.GraphView : Gtk.Widget {
     }
 
     public override void snapshot (Gtk.Snapshot snapshot) {
-        Gdk.RGBA color;
-        this.get_style_context ().lookup_color ("accent_color", out color);
-        Gdk.RGBA color_transparent = color.copy ();
-        color_transparent.alpha = 0;
-
         float thickness = 2.5f;
 
         int view_width = this.get_width ();
         int view_height = (int) Math.llrintf (this.get_height () - thickness);
 
-        Gsk.ColorStop[] stops = { Gsk.ColorStop(){offset = 0, color = color_transparent},
-                                  Gsk.ColorStop(){offset = 0.3f, color = color},
-                                  Gsk.ColorStop(){offset = 0.7f, color = color},
-                                  Gsk.ColorStop(){offset = 1, color = color_transparent} };
-
         foreach (Graph graph in graphs) {
+            Gdk.RGBA color;
+            if (graph.color != null) {
+                color = (!) graph.color;
+            } else {
+                this.get_style_context ().lookup_color ("accent_color", out color);
+            }
+            Gdk.RGBA color_transparent = color.copy ();
+            color_transparent.alpha = 0;
+
+            Gsk.ColorStop[] stops = {
+                Gsk.ColorStop () { offset = 0, color = color_transparent },
+                Gsk.ColorStop () { offset = 0.3f, color = color },
+                Gsk.ColorStop () { offset = 0.7f, color = color },
+                Gsk.ColorStop () { offset = 1, color = color_transparent },
+            };
+
             for (uint n = 1; n < graph.values.get_length (); n++) {
                 GraphPoint graph_point = graph.values.peek_nth (n);
                 GraphPoint graph_point_next = graph.values.peek_nth (n - 1);
@@ -129,6 +135,7 @@ public class Usage.Graph {
     public Gsk.RenderNode render_node;
     public Queue<GraphPoint?> values = new Queue<GraphPoint?> ();
     public uint maximal_queue_length = 0;
+    public Gdk.RGBA? color = null;
 
     public void push_point (GraphPoint point) {
         this.values.push_head (point);
