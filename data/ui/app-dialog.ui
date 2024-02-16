@@ -48,6 +48,7 @@
                               <class name="title-1"/>
                             </style>
                             <property name="wrap">True</property>
+                            <property name="justify">center</property>
                           </object>
                         </child>
                         <child>
