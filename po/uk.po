@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-12 16:25+0000\n"
-"PO-Revision-Date: 2024-02-12 20:38+0200\n"
+"POT-Creation-Date: 2024-02-16 17:38+0000\n"
+"PO-Revision-Date: 2024-02-16 20:41+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -144,6 +144,19 @@ msgstr ""
 "точки на графік. Якщо вимкнено, поведінка визначатиметься на основі "
 "параметрів енергозаощадження та загальних параметрів анімації GTK."
 
+#: data/ui/app-dialog.ui:77
+#| msgid "Application is running in background"
+msgid "Application is running with no visible window"
+msgstr "Програма працює без видимого вікна"
+
+#: data/ui/app-dialog.ui:137
+msgid "Quit App"
+msgstr "Вийти з програми"
+
+#: data/ui/app-dialog.ui:148
+msgid "Force Quit"
+msgstr "Примусово закрити"
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "Пам’ять"
@@ -174,22 +187,27 @@ msgstr "Програма працює у фоновому режимі"
 msgid "Application uses optimised game mode"
 msgstr "Програма використовує оптимізований до ігор режим"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
 #: data/ui/quit-process-dialog.ui:8
-msgid "Force Quit %s?"
-msgstr "Примусово завершити %s?"
+#| msgid "Force Quit %s?"
+msgid "Quit %s?"
+msgstr "Вийти з %s?"
 
 #: data/ui/quit-process-dialog.ui:9
-msgid "Unsaved work might be lost."
-msgstr "Може бути втрачено незбережені результати роботи."
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Припинення роботи програми може мати сторонні наслідки, зокрема втрату"
+" незбережених даних."
 
 #: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Скасувати"
 
 #: data/ui/quit-process-dialog.ui:15
-msgid "Force Quit"
-msgstr "Примусово закрити"
+msgid "Quit"
+msgstr "Вийти"
 
 #: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
@@ -227,7 +245,15 @@ msgstr "Групувати процеси системи"
 msgid "Show all processes"
 msgstr "Показати усі процеси"
 
-#: src/app-item.vala:180
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "Процесор"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Пам'ять"
+
+#: src/app-item.vala:185
 msgid "System"
 msgstr "Система"
 
@@ -247,13 +273,8 @@ msgstr "Юрій Чорноіван <yurchor@ukr.net>"
 msgid "Processor"
 msgstr "Процесор"
 
-#: src/memory-view.vala:33
-msgid "Memory"
-msgstr "Пам'ять"
-
 #: src/storage/storage-actionbar.vala:42
 #, c-format
-#| msgid "%s selected"
 msgid "%s selected"
 msgid_plural "%s selected"
 msgstr[0] "Позначено %s"
@@ -291,7 +312,6 @@ msgstr "Операційна система"
 
 #: src/storage/storage-view.vala:268
 #, c-format
-#| msgid "Available"
 msgid "%s available"
 msgid_plural "%s available"
 msgstr[0] "Доступно %s"
@@ -313,6 +333,9 @@ msgstr "%s/с"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Може бути втрачено незбережені результати роботи."
 
 #~ msgid "Performance"
 #~ msgstr "Швидкодія"
