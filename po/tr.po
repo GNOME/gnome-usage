@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-12 16:25+0000\n"
-"PO-Revision-Date: 2024-02-13 16:15+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2024-02-16 18:41+0000\n"
+"PO-Revision-Date: 2024-02-16 23:54+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -139,6 +139,18 @@ msgstr ""
 "atlayacaktır. Devre dışı bırakılırsa, grafikler güç tutum kipine ve GTK’nın "
 "küresel canlandırma ayarlarına göre nasıl davranacaklarına karar verirler."
 
+#: data/ui/app-dialog.ui:77
+msgid "Application is running with no visible window"
+msgstr "Uygulama görünür pencere olmadan çalışıyor"
+
+#: data/ui/app-dialog.ui:137
+msgid "Quit App"
+msgstr "Uygulamadan Çık"
+
+#: data/ui/app-dialog.ui:148
+msgid "Force Quit"
+msgstr "Çıkmaya Zorla"
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
@@ -169,22 +181,26 @@ msgstr "Uygulama arka planda çalışıyor"
 msgid "Application uses optimised game mode"
 msgstr "Uygulama eniyilenmiş oyun kipini kullanır"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
 #: data/ui/quit-process-dialog.ui:8
-msgid "Force Quit %s?"
-msgstr "%s Uygulamasından Çıkmaya Zorla?"
+msgid "Quit %s?"
+msgstr "%s Uygulamasından Çıkılsın Mı?"
 
 #: data/ui/quit-process-dialog.ui:9
-msgid "Unsaved work might be lost."
-msgstr "Kaydedilmemiş iş kaybedilebilir."
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Uygulamaların durdurulması, kaydedilmemiş çalışmalarda veri yitimi gibi yan "
+"etkilere neden olabilir."
 
 #: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "İptal"
 
 #: data/ui/quit-process-dialog.ui:15
-msgid "Force Quit"
-msgstr "Çıkmaya Zorla"
+msgid "Quit"
+msgstr "Çık"
 
 #: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
@@ -222,7 +238,15 @@ msgstr "Sistem süreçlerini kümele"
 msgid "Show all processes"
 msgstr "Tüm süreçleri göster"
 
-#: src/app-item.vala:180
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "İşlemci"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Bellek"
+
+#: src/app-item.vala:185
 msgid "System"
 msgstr "Sistem"
 
@@ -243,10 +267,6 @@ msgstr ""
 #: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "İşlemci"
-
-#: src/memory-view.vala:33
-msgid "Memory"
-msgstr "Bellek"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
@@ -301,6 +321,9 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Kaydedilmemiş iş kaybedilebilir."
 
 #~ msgid "Performance"
 #~ msgstr "Başarım"
@@ -397,9 +420,6 @@ msgstr "%llu B/s"
 
 #~ msgid "About"
 #~ msgstr "Hakkında"
-
-#~ msgid "Quit"
-#~ msgstr "Çık"
 
 #~ msgid "Others"
 #~ msgstr "Diğerleri"
