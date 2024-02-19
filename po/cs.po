@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-10-11 20:21+0000\n"
-"PO-Revision-Date: 2023-10-11 22:42+0200\n"
+"POT-Creation-Date: 2024-01-28 13:13+0000\n"
+"PO-Revision-Date: 2024-02-19 20:28+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
 #: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
@@ -62,7 +62,7 @@ msgstr "Seznam všech procesů, které nechceme ukončit"
 #: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
-"Tento seznam je používám pro filtrování procesů, které uživatele nesmí "
+"Tento seznam je používán pro filtrování procesů, které uživatel nesmí "
 "ukončit."
 
 #: data/org.gnome.Usage.gschema.xml.in:10
@@ -154,7 +154,7 @@ msgstr "Můžete přijít o neuloženou práci."
 
 #: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
 msgid "Cancel"
-msgstr "Storno"
+msgstr "Zrušit"
 
 #: data/ui/quit-process-dialog.ui:15
 msgid "Force Quit"
