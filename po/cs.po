@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-14 00:34+0000\n"
-"PO-Revision-Date: 2024-02-14 01:40+0100\n"
+"POT-Creation-Date: 2024-02-16 17:38+0000\n"
+"PO-Revision-Date: 2024-02-19 20:24+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -66,7 +66,7 @@ msgstr "Seznam všech procesů, které nechceme ukončit"
 #: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
-"Tento seznam je používám pro filtrování procesů, které uživatele nesmí "
+"Tento seznam je používán pro filtrování procesů, které uživatel nesmí "
 "ukončit."
 
 #: data/org.gnome.Usage.gschema.xml.in:10
@@ -125,6 +125,18 @@ msgid ""
 "global animations settings, how to behave."
 msgstr ""
 
+#: data/ui/app-dialog.ui:77
+msgid "Application is running with no visible window"
+msgstr "Aplikace běží bez viditelného okna"
+
+#: data/ui/app-dialog.ui:137
+msgid "Quit App"
+msgstr "Ukončit aplikaci"
+
+#: data/ui/app-dialog.ui:148
+msgid "Force Quit"
+msgstr "Vynutit ukončení"
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "Operační paměť"
@@ -155,22 +167,27 @@ msgstr "Aplikace běží na pozadí"
 msgid "Application uses optimised game mode"
 msgstr "Aplikace využívá optimalizovaný herní režim"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
 #: data/ui/quit-process-dialog.ui:8
-msgid "Force Quit %s?"
-msgstr "Vynutit ukončení aplikace %s?"
+#| msgid "Force Quit %s?"
+msgid "Quit %s?"
+msgstr "Ukončit %s?"
 
 #: data/ui/quit-process-dialog.ui:9
-msgid "Unsaved work might be lost."
-msgstr "Můžete přijít o neuloženou práci."
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Ukončení aplikací může mít nežádoucí účinky, například ztrátu dat neuložené "
+"práce."
 
 #: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
-msgstr "Storno"
+msgstr "Zrušit"
 
 #: data/ui/quit-process-dialog.ui:15
-msgid "Force Quit"
-msgstr "Vynutit ukončení"
+msgid "Quit"
+msgstr "Ukončit"
 
 #: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
@@ -208,7 +225,15 @@ msgstr "Seskupovat systémové procesy"
 msgid "Show all processes"
 msgstr "Zobrazovat všechny procesy"
 
-#: src/app-item.vala:180
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "Procesor"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Paměť"
+
+#: src/app-item.vala:185
 msgid "System"
 msgstr "Systém"
 
@@ -227,10 +252,6 @@ msgstr "Zdeněk Hataš <zdenek.hatas@gmail.com>"
 #: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Procesor"
-
-#: src/memory-view.vala:33
-msgid "Memory"
-msgstr "Paměť"
 
 # c-format
 #: src/storage/storage-actionbar.vala:42
@@ -291,6 +312,9 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Můžete přijít o neuloženou práci."
 
 #~ msgid "Performance"
 #~ msgstr "Výkon"
