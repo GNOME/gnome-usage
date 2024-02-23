@@ -1,27 +1,29 @@
 # Hungarian translation for gnome-usage.
-# Copyright (C) 2017, 2018, 2019, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2017, 2018, 2019, 2022, 2024 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2018, 2019, 2022.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2018, 2019, 2022, 2024.
 # Gabor Kelemen <kelemeng at ubuntu dot com>, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2021-12-08 11:25+0000\n"
-"PO-Revision-Date: 2022-03-11 01:45+0100\n"
+"POT-Creation-Date: 2024-02-19 19:32+0000\n"
+"PO-Revision-Date: 2024-02-23 01:12+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-msgid "GNOME Usage"
-msgstr "GNOME Használat"
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
+#: src/application.vala:73
+msgid "Usage"
+msgstr "Használat"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
 msgid "A nice way to view information about use of system resources"
@@ -29,17 +31,16 @@ msgstr ""
 "Remek eszköz a rendszer erőforrás-használati információinak megjelenítésére"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:8
+#| msgid ""
+#| "A simple GNOME 3 application to monitor and analyze system resources such "
+#| "as processing, memory, and storage."
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
 msgstr ""
-"Egyszerű GNOME 3 alkalmazás a rendszererőforrások figyelésére és elemzésére: "
-"processzor, memória és tárolás."
-
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:73
-msgid "Usage"
-msgstr "Használat"
+"Egyszerű alkalmazás a rendszererőforrások figyelésére és elemzésére, mint"
+" például futó alkalmazások processzor- és memóriahasználata, valamint"
+" tárolóhasználat."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -68,70 +69,149 @@ msgstr ""
 "Ez a lista használható annak szűréséhez, hogy mely folyamatokat nem tud a "
 "felhasználó leállítani."
 
-#: data/ui/memory-speedometer.ui:38
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "a teljesítmény lapon lévő grafikonok időtartama (ezredmásodperc)"
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Az az időtartam ezredmásodpercben, ameddig a teljesítmény lapon és annak"
+" oldalsávján lévő processzor- és memóriagrafikonok visszamennek az időben."
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "a teljesítményadatok frissítésének időköze (ezredmásodperc)"
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"Az az időköz ezredmásodpercben, amely gyakorisággal a teljesítmény lap adatai"
+" rendszeresen frissülnek és megjelennek."
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr ""
+"a teljesítmény lapon megjelenítendő alkalmazás legkisebb relatív terhelése (%)"
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
+"Az a terhelés, amellyel egy alkalmazásnak az összes folyamatának"
+" összesítéseként, 100-ra normalizálva kell rendelkeznie ahhoz, hogy a"
+" teljesítmény lapon szerepeljen. A 0-s értékkel az összes alkalmazás szerepel"
+" a listán. A 100-as értékkel egy alkalmazás csak akkor szerepel a listán, ha"
+" a folyamatai teljesen kihasználják az összes CPU-szálat."
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+"a teljesítmény lapon megjelenítendő alkalmazás legkisebb memórialábnyoma"
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Az a legkisebb memóriamennyiség, amelyet egy alkalmazásnak az összes"
+" folyamata összesített memóriahasználataként, bájtban kifejezve kell"
+" felhasználnia ahhoz, hogy a teljesítmény lapon szerepeljen."
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Grafikonok kényszerítése, hogy ne gördüljenek folyamatosan"
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Ha engedélyezve van, akkor a teljesítménygrafikonok kényszerítve lesznek,"
+" hogy ne gördüljenek folyamatosan, hanem csak akkor ugorjanak, amikor új"
+" adatpont kerül hozzáadásra. Ha le van tiltva, akkor a grafikonok az"
+" energiatakarékos mód és a GTK globális animációs beállításai alapján"
+" döntenek arról, hogy hogyan viselkedjenek."
+
+#: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
-#: data/ui/swap-speedometer.ui:51
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
+#: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Használt"
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
-#: data/ui/swap-speedometer.ui:75
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
+#: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Elérhető"
 
-#: data/ui/no-results-found-view.ui:23
+#: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Nincs találat"
 
-#: data/ui/no-results-found-view.ui:32
+#: data/ui/no-results-found-view.ui:40
 msgid "Try a different search"
 msgstr "Próbáljon másfajta keresést"
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "A Használat _névjegye"
-
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Rendszerfolyamatok csoportosítása"
-
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Összes folyamat megjelenítése"
-
 #. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:8
 msgid "Force Quit %s?"
 msgstr "Erőltetetten kilép ebből: %s?"
 
-#: data/ui/quit-process-dialog.ui:10
+#: data/ui/quit-process-dialog.ui:9
 msgid "Unsaved work might be lost."
 msgstr "A mentetlen munka elveszhet."
 
-#: data/ui/quit-process-dialog.ui:16
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
 msgid "Cancel"
 msgstr "Mégse"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/quit-process-dialog.ui:15
 msgid "Force Quit"
 msgstr "Erőltetett kilépés"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Törlés…"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:41
 msgid "Home Partition"
 msgstr "Saját mappa partíciója"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Cserehely"
 
-#: src/app-item.vala:148
+#: data/ui/window.ui:34
+msgid "Main Menu"
+msgstr "Főmenü"
+
+#: data/ui/window.ui:71
+msgid "_About Usage"
+msgstr "A Használat _névjegye"
+
+#: data/ui/window.ui:77
+msgid "Group system processes"
+msgstr "Rendszerfolyamatok csoportosítása"
+
+#: data/ui/window.ui:83
+msgid "Show all processes"
+msgstr "Összes folyamat megjelenítése"
+
+#: src/app-item.vala:147
 msgid "System"
 msgstr "Rendszer"
 
@@ -147,23 +227,19 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Meskó Balázs <mesko.balazs at fsf dot hu>"
 
-#: src/application.vala:79
-msgid "Websites"
-msgstr "Weboldalak"
-
-#: src/cpu-sub-view.vala:29 src/graph-stack-switcher.vala:41
+#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
 msgid "Processor"
 msgstr "Processzor"
 
-#: src/graph-stack-switcher.vala:42 src/memory-sub-view.vala:29
+#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
 msgid "Memory"
 msgstr "Memória"
 
-#: src/performance-view.vala:45
+#: src/performance-view.vala:44
 msgid "Performance"
 msgstr "Teljesítmény"
 
-#: src/storage/storage-actionbar.vala:38
+#: src/storage/storage-actionbar.vala:39
 #, c-format
 msgid "%s selected"
 msgstr "%s kiválasztva"
@@ -172,11 +248,16 @@ msgstr "%s kiválasztva"
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Biztos, hogy végleg törli a kijelölt elemeket?"
 
-#: src/storage/storage-actionbar.vala:51
+#: src/storage/storage-actionbar.vala:45
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Ha törli ezeket az elemeket, véglegesen elvesznek."
 
-#: src/storage/storage-row-popover.vala:32
+#: src/storage/storage-actionbar.vala:50
+#| msgid "Delete…"
+msgid "Delete"
+msgstr "Törlés"
+
+#: src/storage/storage-row-popover.vala:42
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
@@ -184,29 +265,25 @@ msgstr ""
 "Az operációs rendszer fájljai a rendszer létfontosságú részei, és nem "
 "távolíthatóak el."
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Tároló"
 
-#: src/storage/storage-view.vala:246
+#: src/storage/storage-view.vala:234
 msgid "Operating System"
 msgstr "Operációs rendszer"
 
-#: src/storage/storage-view.vala:272
-msgid "Scanning directories"
-msgstr "Könyvtárak vizsgálata"
-
-#: src/utils.vala:27
+#: src/utils.vala:52
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
-#: src/utils.vala:32
+#: src/utils.vala:57
 #, c-format
 msgid "%s/s"
 msgstr "%s/mp"
 
-#: src/utils.vala:34
+#: src/utils.vala:59
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/mp"
