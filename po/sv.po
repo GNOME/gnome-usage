@@ -1,16 +1,16 @@
 # Swedish translation for gnome-usage.
-# Copyright © 2017-2023 gnome-usage's COPYRIGHT HOLDER
+# Copyright © 2017-2024 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2017.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019, 2023.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019, 2023, 2024.
 # Luna Jernberg <droidbittin@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-10-12 13:52+0000\n"
-"PO-Revision-Date: 2023-10-31 20:43+0100\n"
+"POT-Creation-Date: 2024-02-16 17:38+0000\n"
+"PO-Revision-Date: 2024-02-17 01:09+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,19 +18,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
-#: src/application.vala:73
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:34
 msgid "Usage"
 msgstr "Användning"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "Usage developers"
+msgstr "Utvecklarna av Användning"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:10
 msgid "A nice way to view information about use of system resources"
 msgstr "Ett trevligt sätt att se information om användning av systemresurser"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:12
 msgid ""
 "A simple application to monitor and analyze system resources such as CPU and "
 "memory usage of running apps, and storage usage."
@@ -137,16 +141,28 @@ msgstr ""
 "diagrammen bestämma hur de ska bete sig baserat på strömsparläge och GTK:s "
 "globala animeringsinställningar."
 
+#: data/ui/app-dialog.ui:77
+msgid "Application is running with no visible window"
+msgstr "Programmet körs utan något synligt fönster"
+
+#: data/ui/app-dialog.ui:137
+msgid "Quit App"
+msgstr "Avsluta program"
+
+#: data/ui/app-dialog.ui:148
+msgid "Force Quit"
+msgstr "Tvinga avslut"
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Använt"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Tillgängligt"
@@ -159,28 +175,39 @@ msgstr "Inga resultat hittades"
 msgid "Try a different search"
 msgstr "Försök med en annan sökning"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Programmet körs i bakgrunden"
+
+#: data/ui/process-row.ui:62
+msgid "Application uses optimised game mode"
+msgstr "Programmet använder optimerat spelläge"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
 #: data/ui/quit-process-dialog.ui:8
-msgid "Force Quit %s?"
-msgstr "Tvinga %s att avsluta?"
+msgid "Quit %s?"
+msgstr "Avsluta %s?"
 
 #: data/ui/quit-process-dialog.ui:9
-msgid "Unsaved work might be lost."
-msgstr "Osparat arbete kan gå förlorat."
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Att stoppa program kan ha sidoeffekter som dataförlust av osparat arbete."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: data/ui/quit-process-dialog.ui:15
-msgid "Force Quit"
-msgstr "Tvinga avslut"
+msgid "Quit"
+msgstr "Avsluta"
 
 #: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Ta bort…"
 
-#: data/ui/storage-view.ui:41
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Hempartition"
 
@@ -188,27 +215,43 @@ msgstr "Hempartition"
 msgid "Swap"
 msgstr "Växlingsutrymme"
 
-#: data/ui/window.ui:34
+#: data/ui/window.ui:42 data/ui/window.ui:88
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/ui/window.ui:71
+#: data/ui/window.ui:100
+msgid "Search"
+msgstr "Sök"
+
+#: data/ui/window.ui:119
+msgid "Search Applications…"
+msgstr "Sök program…"
+
+#: data/ui/window.ui:153
 msgid "_About Usage"
 msgstr "_Om Användning"
 
-#: data/ui/window.ui:77
+#: data/ui/window.ui:159
 msgid "Group system processes"
 msgstr "Gruppera systemprocesser"
 
-#: data/ui/window.ui:83
+#: data/ui/window.ui:165
 msgid "Show all processes"
 msgstr "Visa alla processer"
 
-#: src/app-item.vala:147
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "Processor"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Minne"
+
+#: src/app-item.vala:185
 msgid "System"
 msgstr "System"
 
-#: src/application.vala:74
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -216,39 +259,33 @@ msgstr ""
 "Ett trevligt sätt att se information om användning av systemresurser så som "
 "minne och diskutrymme."
 
-#: src/application.vala:77
+#: src/application.vala:76
 msgid "translator-credits"
 msgstr ""
 "Josef Andersson <josef.andersson@fripost.org>, 2016, 2017\n"
 "Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019\n"
 "Luna Jernberg <droidbittin@gmail.com>, 2021"
 
-#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Processor"
 
-#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
-msgid "Memory"
-msgstr "Minne"
-
-#: src/performance-view.vala:44
-msgid "Performance"
-msgstr "Prestanda"
-
-#: src/storage/storage-actionbar.vala:39
+#: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
-msgstr "%s markerat"
+msgid_plural "%s selected"
+msgstr[0] "%s markerat"
+msgstr[1] "%s markerade"
 
-#: src/storage/storage-actionbar.vala:44
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Är du säker på att du permanent vill ta bort markerade objekt?"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Om du tar bort dessa objekt är de borta för alltid."
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:53
 msgid "Delete"
 msgstr "Ta bort"
 
@@ -259,28 +296,41 @@ msgid ""
 msgstr ""
 "Operativsystemfiler är en nödvändig del av ditt system och kan inte tas bort."
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:80
 msgid "Storage"
 msgstr "Lagring"
 
-#: src/storage/storage-view.vala:234
+#: src/storage/storage-view.vala:240
 msgid "Operating System"
 msgstr "Operativsystem"
 
-#: src/utils.vala:52
+#: src/storage/storage-view.vala:268
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s tillgängligt"
+msgstr[1] "%s tillgängligt"
+
+#: src/utils.vala:58
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
-#: src/utils.vala:57
+#: src/utils.vala:63
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
 
-#: src/utils.vala:59
+#: src/utils.vala:65
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Osparat arbete kan gå förlorat."
+
+#~ msgid "Performance"
+#~ msgstr "Prestanda"
 
 #~ msgid "GNOME Usage"
 #~ msgstr "GNOME Användning"
@@ -376,9 +426,6 @@ msgstr "%llu B/s"
 #~ msgid "About"
 #~ msgstr "Om"
 
-#~ msgid "Quit"
-#~ msgstr "Avsluta"
-
 #~ msgid "Others"
 #~ msgstr "Andra"
 
@@ -458,6 +505,3 @@ msgstr "%llu B/s"
 
 #~ msgid "Browse…"
 #~ msgstr "Bläddra..."
-
-#~ msgid "Search"
-#~ msgstr "Sök"
