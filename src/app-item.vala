@@ -45,9 +45,17 @@ public class Usage.AppItem : Object {
             return app_info.get_icon ();
         }
     }
+    public virtual string? container {
+        get {
+            if ((this.app_info as DesktopAppInfo)?.get_categories () == "X-WayDroid-App;") {
+                return "Waydroid";
+            }
+            return null;
+        }
+    }
 
-    private static HashTable<string, AppInfo>? apps_info;
-    private static HashTable<string, AppInfo>? appid_map;
+    private static HashTable<string, AppInfo> apps_info;
+    private static HashTable<string, AppInfo> appid_map;
     private AppInfo? app_info = null;
 
     public static void init () {
@@ -58,29 +66,44 @@ public class Usage.AppItem : Object {
 
         foreach (AppInfo info in _apps_info) {
             GLib.DesktopAppInfo? dai = info as GLib.DesktopAppInfo;
-            string ?id = null;
+            string? id = null;
 
             if (dai != null) {
-                id = dai.get_string ("X-Flatpak");
-                if (id != null)
-                    appid_map.insert (id, info);
+                id = dai?.get_string ("X-Flatpak");
+                if (id != null) {
+                    appid_map.insert ((!) id, info);
+                }
             }
 
             if (id == null) {
                 id = info.get_id ();
-                if (id != null && id.has_suffix (".desktop"))
-                    id = id[0:id.length - 8];
-                if (id != null)
-                    appid_map.insert (id, info);
+
+                if (id?.has_suffix (".desktop") ?? false) {
+                    id = id?.substring (0, id?.length - 8);
+                }
+                if (dai?.get_categories () == "X-WayDroid-App;") {
+                    if (id == "Waydroid") {
+                        apps_info.insert ("waydroid", info);
+                        id = "system_waydroid";
+                    } else {
+                        id = id?.substring (9);
+                    }
+                }
+
+                if (id != null) {
+                    appid_map.insert ((!) id, info);
+                }
             }
 
-            string cmd = info.get_commandline ();
+            string? cmd = info.get_commandline ();
 
             if (cmd == null)
                 continue;
 
             sanitize_cmd (ref cmd);
-            apps_info.insert (cmd, info);
+            if (apps_info[(!) cmd] == null) {
+                apps_info.insert ((!) cmd, info);
+            }
         }
     }
 
@@ -138,6 +161,12 @@ public class Usage.AppItem : Object {
         string ?cgroup = null;
 
         cgroup = Process.read_cgroup (p.pid);
+
+        /* Waydroid */
+        if (cgroup == "/lxc.payload.waydroid") {
+            return appid_map[p.cmdline] ?? appid_map["system_waydroid"];
+        }
+
         if (cgroup != null) {
             /* Try to extract an application ID, this is a bit "magic".
              * See https://systemd.io/DESKTOP_ENVIRONMENTS/
@@ -209,7 +238,7 @@ public class Usage.AppItem : Object {
 
     public bool is_killable () {
         bool blocked = this.representative_cmdline in Settings.get_default ().get_strv ("unkillable-processes");
-        bool by_current_user = this.user != null && this.user.UserName == GLib.Environment.get_user_name ();
+        bool by_current_user = this.user?.Uid == Posix.geteuid ();
         return !blocked && by_current_user;
     }
 
@@ -286,6 +315,10 @@ public class Usage.AppItem : Object {
         if (commandline.contains ("flatpak run")) {
             var index = commandline.index_of ("--command=") + 10;
             commandline = commandline.substring (index);
+        }
+
+        if (commandline.contains ("waydroid app launch ")) {
+            commandline = commandline.substring (20);
         }
 
         // TODO: unify this with the logic in get_full_process_cmd

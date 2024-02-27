@@ -229,12 +229,15 @@ public class Usage.SystemMonitor : Object {
     private string get_app_id_for_process (Process p) {
         AppInfo? info = AppItem.app_info_for_process (p);
 
-        if (info != null)
-            return info.get_id ();
-        else if (group_system_apps)
-            return "system";
+        string fallback = p.cmdline;
+        if (group_system_apps) {
+            fallback = "system";
+            if (Process.read_cgroup (p.pid) == "/lxc.payload.waydroid") {
+                fallback = "system_waydroid";
+            }
+        }
 
-        return p.cmdline;
+        return info?.get_id () ?? fallback;
     }
 
     private void update_process (ref Process process) {
