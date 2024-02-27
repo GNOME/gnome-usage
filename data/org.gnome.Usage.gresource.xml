@@ -4,6 +4,7 @@
         <file preprocess="xml-stripblanks">icons/scalable/actions/memory-symbolic.svg</file>
         <file preprocess="xml-stripblanks">icons/scalable/status/speedometer-symbolic.svg</file>
         <file preprocess="xml-stripblanks">icons/scalable/actions/background-app-ghost-symbolic.svg</file>
+        <file preprocess="xml-stripblanks">icons/scalable/actions/android-app-symbolic.svg</file>
         <file compressed="true">style.css</file>
         <file preprocess="xml-stripblanks">ui/app-dialog.ui</file>
         <file preprocess="xml-stripblanks">ui/cpu-view.ui</file>

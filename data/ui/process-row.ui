@@ -57,6 +57,15 @@
                   </object>
                 </child>
                 <child>
+                  <object class="GtkImage" id="container_icon">
+                    <binding name="gicon">
+                      <lookup name="container_icon" type="UsageProcessRowItem">
+                        <lookup name="item" type="GtkListItem"/>
+                      </lookup>
+                    </binding>
+                  </object>
+                </child>"
+                <child>
                   <object class="GtkImage" id="gamemode">
                     <property name="icon_name">applications-games-symbolic</property>
                     <property name="tooltip-text" translatable="yes">Application uses optimised game mode</property>

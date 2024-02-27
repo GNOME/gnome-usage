@@ -65,6 +65,20 @@ public class Usage.ProcessRowItem : Object {
             return null;
         }
     }
+    public virtual Icon? container_icon {
+        owned get {
+            string? container = this.app.container;
+            if (container == null) {
+                return null;
+            }
+            switch ((!) container) {
+                case "Waydroid":
+                    return new GLib.ThemedIcon ("android-app-symbolic");
+                default:
+                    return null;
+            }
+        }
+    }
 
     public ProcessRowItem (AppItem app, ProcessListBoxType type) {
         this.app = app;
