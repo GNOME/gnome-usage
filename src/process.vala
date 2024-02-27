@@ -227,14 +227,7 @@ public class Usage.Process : Object {
     }
 
     public static string first_component (string str) {
-
-        for (int i = 0; i < str.length; i++) {
-            if (str[i] == ' ') {
-                return str.substring (0, i);
-            }
-        }
-
-        return str;
+        return str.split (" ", 2)[0];
     }
 }
 
