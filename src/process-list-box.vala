@@ -48,7 +48,9 @@ public class Usage.ProcessListBox : Adw.Bin {
             AppItem app = ((ProcessRowItem) item).app;
 
             if (search_text != "") {
-                return app.display_name.down ().contains (search_text.down ()) || app.representative_cmdline.down ().contains (search_text.down ());
+                return app.display_name.down ().contains (search_text.down ())
+                       || app.representative_cmdline.down ().contains (search_text.down ())
+                       || (app.container?.down ()?.contains (search_text.down ()) ?? false);
             }
 
             return this.type.filter (app);
