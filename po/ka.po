@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-12 16:25+0000\n"
-"PO-Revision-Date: 2024-02-14 05:40+0100\n"
+"POT-Creation-Date: 2024-02-25 10:18+0000\n"
+"PO-Revision-Date: 2024-02-28 05:40+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.3.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
@@ -124,6 +124,18 @@ msgid ""
 "global animations settings, how to behave."
 msgstr ""
 
+#: data/ui/app-dialog.ui:77
+msgid "Application is running with no visible window"
+msgstr "აპლიკაცია გაშვებულია ხილული ფანჯრის გარეშე"
+
+#: data/ui/app-dialog.ui:137
+msgid "Quit App"
+msgstr "აპიდან გასვლა"
+
+#: data/ui/app-dialog.ui:148
+msgid "Force Quit"
+msgstr "ძალით გასვლა"
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
@@ -154,22 +166,24 @@ msgstr "აპლიკაცია ფონურადაა გაშვე�
 msgid "Application uses optimised game mode"
 msgstr "აპლიკაცია ოპტიმიზებულ თამაშის რეჟიმს იყენებს"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
 #: data/ui/quit-process-dialog.ui:8
-msgid "Force Quit %s?"
-msgstr "ძალით დავასრულო %s?"
+msgid "Quit %s?"
+msgstr "გავიდე პროგრამიდან %s?"
 
 #: data/ui/quit-process-dialog.ui:9
-msgid "Unsaved work might be lost."
-msgstr "შეუნახავი მასალები დაგეკარგებათ."
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
 
 #: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "გაუქმება"
 
 #: data/ui/quit-process-dialog.ui:15
-msgid "Force Quit"
-msgstr "ძალით გასვლა"
+msgid "Quit"
+msgstr ""
 
 #: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
@@ -207,7 +221,15 @@ msgstr "სისტემური პროცესების დაჯგ�
 msgid "Show all processes"
 msgstr "ყველა პროცესის ჩვენება"
 
-#: src/app-item.vala:180
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr ""
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "მეხსიერება"
+
+#: src/app-item.vala:185
 msgid "System"
 msgstr "სისტემა"
 
@@ -227,15 +249,12 @@ msgstr "თემური დოღონაძე"
 msgid "Processor"
 msgstr "პროცესორი"
 
-#: src/memory-view.vala:33
-msgid "Memory"
-msgstr "მეხსიერება"
-
 #: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
 msgid_plural "%s selected"
 msgstr[0] "მონიშნულია %s"
+msgstr[1] "მონიშნულია %s"
 
 #: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
@@ -270,6 +289,7 @@ msgstr "ოპერაციული სისტემა"
 msgid "%s available"
 msgid_plural "%s available"
 msgstr[0] "%s ხელმისაწვდომია"
+msgstr[1] "%s ხელმისაწვდომია"
 
 #: src/utils.vala:58
 #, c-format
@@ -285,6 +305,9 @@ msgstr "%s/წმ"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu ბ/წმ"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "შეუნახავი მასალები დაგეკარგებათ."
 
 #~ msgid "Performance"
 #~ msgstr "წარმადობა"
