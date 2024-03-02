@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-12 01:14+0000\n"
-"PO-Revision-Date: 2024-02-12 18:35+1000\n"
+"POT-Creation-Date: 2024-02-17 01:00+0000\n"
+"PO-Revision-Date: 2024-02-17 12:45+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -20,7 +20,8 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:34
 msgid "Usage"
 msgstr "Usage"
 
@@ -148,16 +149,28 @@ msgstr ""
 "поведение будет определяться на основе параметров энергосбережения и "
 "глобальных настроек анимации GTK."
 
+#: data/ui/app-dialog.ui:77
+msgid "Application is running with no visible window"
+msgstr "Приложение работает без видимого окна"
+
+#: data/ui/app-dialog.ui:137
+msgid "Quit App"
+msgstr "Закрыть приложение"
+
+#: data/ui/app-dialog.ui:148
+msgid "Force Quit"
+msgstr "Принудительный выход"
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "Оперативная память"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:52
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Использовано"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:58
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Доступно"
@@ -178,28 +191,32 @@ msgstr "Приложение работает в фоновом режиме"
 msgid "Application uses optimised game mode"
 msgstr "Приложение использует оптимизированный игровой режим"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
 #: data/ui/quit-process-dialog.ui:8
-msgid "Force Quit %s?"
-msgstr "Принудительно завершить работу %s?"
+msgid "Quit %s?"
+msgstr "Завершить работу %s?"
 
 #: data/ui/quit-process-dialog.ui:9
-msgid "Unsaved work might be lost."
-msgstr "Несохраненная работа может быть потеряна."
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Остановка работы приложений может привести к нежелательным последствиям, "
+"таким как потеря несохранённых данных."
 
 #: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Отменить"
 
 #: data/ui/quit-process-dialog.ui:15
-msgid "Force Quit"
-msgstr "Принудительный выход"
+msgid "Quit"
+msgstr "Завершить"
 
 #: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Удалить…"
 
-#: data/ui/storage-view.ui:41
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Домашний раздел"
 
@@ -207,23 +224,39 @@ msgstr "Домашний раздел"
 msgid "Swap"
 msgstr "Подкачка"
 
-#: data/ui/window.ui:34
+#: data/ui/window.ui:42 data/ui/window.ui:88
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/ui/window.ui:71
+#: data/ui/window.ui:100
+msgid "Search"
+msgstr "Поиск"
+
+#: data/ui/window.ui:119
+msgid "Search Applications…"
+msgstr "Поиск приложений…"
+
+#: data/ui/window.ui:153
 msgid "_About Usage"
 msgstr "_О приложении"
 
-#: data/ui/window.ui:77
+#: data/ui/window.ui:159
 msgid "Group system processes"
 msgstr "Группа системных процессов"
 
-#: data/ui/window.ui:83
+#: data/ui/window.ui:165
 msgid "Show all processes"
 msgstr "Показать все процессы"
 
-#: src/app-item.vala:180
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "ЦП"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Память"
+
+#: src/app-item.vala:185
 msgid "System"
 msgstr "Система"
 
@@ -241,17 +274,9 @@ msgstr ""
 "IgorPolyakov <igorpolyakov@protonmail.com>,2019\n"
 "Ser82-png <asvmail.as@gmail.com>, 2021-2024"
 
-#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Процессор"
-
-#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
-msgid "Memory"
-msgstr "Память"
-
-#: src/performance-view.vala:44
-msgid "Performance"
-msgstr "Производительность"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
@@ -283,13 +308,21 @@ msgstr ""
 "Файлы операционной системы являются важной частью вашей системы и не могут "
 "быть удалены."
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:80
 msgid "Storage"
 msgstr "Хранилище"
 
-#: src/storage/storage-view.vala:234
+#: src/storage/storage-view.vala:240
 msgid "Operating System"
 msgstr "Операционная система"
+
+#: src/storage/storage-view.vala:268
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "Доступно %s"
+msgstr[1] "Доступно %s"
+msgstr[2] "Доступно %s"
 
 #: src/utils.vala:58
 #, c-format
@@ -305,6 +338,12 @@ msgstr "%s/с"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Несохраненная работа может быть потеряна."
+
+#~ msgid "Performance"
+#~ msgstr "Производительность"
 
 #~ msgid "GNOME Usage"
 #~ msgstr "GNOME Usage"
