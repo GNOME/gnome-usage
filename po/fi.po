@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-05-02 11:40+0000\n"
-"PO-Revision-Date: 2019-08-18 17:41+0300\n"
+"POT-Creation-Date: 2024-02-16 17:38+0000\n"
+"PO-Revision-Date: 2024-03-03 21:34+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,29 +16,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
-msgid "GNOME Usage"
-msgstr "Käyttötiedot"
-
-#: data/org.gnome.Usage.appdata.xml.in:6
-msgid "A nice way to view information about use of system resources"
-msgstr "Mukava tapa seurata järjestelmän resurssien käyttöä"
-
-#: data/org.gnome.Usage.appdata.xml.in:8
-msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
-msgstr ""
-"Yksinkertainen Gnome 3 -sovellus järjestelmäresurssien, kuten suorittimen, "
-"muistin ja tallennustilan, valvontaan sekä analysointiin."
-
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+#: data/org.gnome.Usage.appdata.xml.in.in:5
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:34
 msgid "Usage"
 msgstr "Käyttötiedot"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "Usage developers"
+msgstr "Usage-kehittäjät"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:10
+msgid "A nice way to view information about use of system resources"
+msgstr "Mukava tapa seurata järjestelmän resurssien käyttöä"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:12
+msgid ""
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
+msgstr ""
+"Yksinkertainen sovellus järjestelmäresurssien, kuten suorittimen, muistin, "
+"tallennustilan ja käynnissä olevien sovellusten, valvontaan sekä "
+"analysointiin."
+
+#: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -47,7 +50,7 @@ msgstr ""
 "levytilan, käyttöä"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
+#: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
@@ -55,84 +58,185 @@ msgstr ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Luettelo prosesseist, joita ei haluta tapettavan"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Tätä luettelo käytetään lähteenä sille, mitä prosesseja käyttäjä ei voi "
 "pysäyttää."
 
-#: data/ui/memory-speedometer.ui:38
-msgid "RAM"
-msgstr "Keskusmuisti"
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr ""
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
-#: data/ui/swap-speedometer.ui:51
-msgid "Used"
-msgstr "Käytetty"
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
-#: data/ui/swap-speedometer.ui:75
-msgid "Available"
-msgstr "Käytettävissä"
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr ""
 
-#: data/ui/no-results-found-view.ui:23
-msgid "No results found"
-msgstr "Tuloksia ei löytynyt"
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
 
-#: data/ui/no-results-found-view.ui:32
-msgid "Try a different search"
-msgstr "Yritä eri hakuehtoja"
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr ""
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_Tietoja - Käyttötiedot"
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
 
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Ryhmitä järjestelmäprosessit"
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
 
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Näytä kaikki prosessit"
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
-msgid "Force Quit %s?"
-msgstr "Pakotetaanko sovelluksen %s lopetus?"
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr ""
 
-#: data/ui/quit-process-dialog.ui:10
-msgid "Unsaved work might be lost."
-msgstr "Tallentamattomat työt saattavat kadota."
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
 
-#: data/ui/quit-process-dialog.ui:16
-msgid "Cancel"
-msgstr "Peru"
+#: data/ui/app-dialog.ui:77
+msgid "Application is running with no visible window"
+msgstr "Sovellus on käynnissä ilman näkyvissä olevaa ikkunaa"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/app-dialog.ui:137
+msgid "Quit App"
+msgstr "Lopeta sovellus"
+
+#: data/ui/app-dialog.ui:148
 msgid "Force Quit"
 msgstr "Pakota lopetus"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "Keskusmuisti"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "Käytetty"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Käytettävissä"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "Tuloksia ei löytynyt"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Yritä eri hakuehtoja"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Sovellus on käynnissä taustalla"
+
+#: data/ui/process-row.ui:62
+msgid "Application uses optimised game mode"
+msgstr "Sovellus käyttää optimoitua pelitilaa"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:8
+#| msgid "Force Quit %s?"
+msgid "Quit %s?"
+msgstr "Lopetetaanko %s?"
+
+#: data/ui/quit-process-dialog.ui:9
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Sovellusten pysäyttäminen saattaa aiheuttaa sivuvaikutuksia, kuten "
+"tallentamattomien tietojen katoamista."
+
+#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "Peru"
+
+#: data/ui/quit-process-dialog.ui:15
+msgid "Quit"
+msgstr "Lopeta"
+
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Poista…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Kotiosio"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:43
+#: data/ui/window.ui:42 data/ui/window.ui:88
+msgid "Main Menu"
+msgstr "Päävalikko"
+
+#: data/ui/window.ui:100
+msgid "Search"
+msgstr "Etsi"
+
+#: data/ui/window.ui:119
+msgid "Search Applications…"
+msgstr "Etsi sovelluksia…"
+
+#: data/ui/window.ui:153
+msgid "_About Usage"
+msgstr "_Tietoja - Käyttötiedot"
+
+#: data/ui/window.ui:159
+msgid "Group system processes"
+msgstr "Ryhmitä järjestelmäprosessit"
+
+#: data/ui/window.ui:165
+msgid "Show all processes"
+msgstr "Näytä kaikki prosessit"
+
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "Suoritin"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Muisti"
+
+#: src/app-item.vala:185
 msgid "System"
 msgstr "Järjestelmä"
 
-#: src/application.vala:80
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -140,40 +244,34 @@ msgstr ""
 "Mukava tapa seurata järjestelmän resurssien, esimerkiksi muistin ja "
 "levytilan, käyttöä."
 
-#: src/application.vala:83
+#: src/application.vala:76
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/application.vala:85
-msgid "Websites"
-msgstr "Verkkosivustot"
-
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Suoritin"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
-msgid "Memory"
-msgstr "Muisti"
-
-#: src/performance-view.vala:48
-msgid "Performance"
-msgstr "Suorituskyky"
-
-#: src/storage/storage-actionbar.vala:40
+#: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
-msgstr "%s valittu"
+msgid_plural "%s selected"
+msgstr[0] "%s valittu"
+msgstr[1] "%s valittu"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Haluatko varmasti poistaa valitut kohteet?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Jos poistat nämä kohteet, ne katoavat pysyvästi.."
 
-#: src/storage/storage-row-popover.vala:32
+#: src/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Poista"
+
+#: src/storage/storage-row-popover.vala:42
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
@@ -181,17 +279,51 @@ msgstr ""
 "Käyttöjärjestelmän tiedostot ovat järjestelmän oleellisia osia, eikä niitä "
 "voi poistaa."
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:80
 msgid "Storage"
 msgstr "Tallennustila"
 
-#: src/storage/storage-view.vala:245
+#: src/storage/storage-view.vala:240
 msgid "Operating System"
 msgstr "Käyttöjärjestelmä"
 
-#: src/storage/storage-view.vala:271
-msgid "Scanning directories"
-msgstr "Läpikäydään kansioita"
+#: src/storage/storage-view.vala:268
+#, c-format
+#| msgid "Available"
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s saatavilla"
+msgstr[1] "%s saatavilla"
+
+#: src/utils.vala:58
+#, c-format
+msgid "%llu B"
+msgstr ""
+
+#: src/utils.vala:63
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:65
+#, c-format
+msgid "%llu B/s"
+msgstr ""
+
+#~ msgid "GNOME Usage"
+#~ msgstr "Käyttötiedot"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Tallentamattomat työt saattavat kadota."
+
+#~ msgid "Websites"
+#~ msgstr "Verkkosivustot"
+
+#~ msgid "Performance"
+#~ msgstr "Suorituskyky"
+
+#~ msgid "Scanning directories"
+#~ msgstr "Läpikäydään kansioita"
 
 #~ msgid "org.gnome.Usage"
 #~ msgstr "org.gnome.Usage"
@@ -270,9 +402,6 @@ msgstr "Läpikäydään kansioita"
 
 #~ msgid "About"
 #~ msgstr "Tietoja"
-
-#~ msgid "Quit"
-#~ msgstr "Lopeta"
 
 #~ msgid "Others"
 #~ msgstr "Muut"
@@ -355,6 +484,3 @@ msgstr "Läpikäydään kansioita"
 
 #~ msgid "Browse…"
 #~ msgstr "Selaa…"
-
-#~ msgid "Search"
-#~ msgstr "Etsi"
