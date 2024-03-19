@@ -119,36 +119,20 @@ public class Usage.Process : Object {
 
     public static string? read_cgroup (Pid pid) {
         string path = "/proc/%u/cgroup".printf ((uint) pid);
-        int flags = Posix.O_RDONLY | StopGap.O_CLOEXEC | Posix.O_NOCTTY;
-
-        int fd = StopGap.openat (StopGap.AT_FDCWD, path, flags);
-
-        if (fd == -1)
-            return null;
 
         try {
-            string? data = null;
-            string[] lines;
-            string? cgroup = null;
-            size_t len;
+            File file = File.new_for_path (path);
 
-            // TODO use MappedFile.from_fd, requires vala 0.46
-            IOChannel ch = new IOChannel.unix_new (fd);
-            ch.set_close_on_unref (true);
+            uint8[] contents;
+            file.load_contents (null, out contents, null);
 
-            var status = ch.read_to_end (out data, out len);
-            if (status != IOStatus.NORMAL)
-                return null;
-
-            lines = data.split ("\n");
+            string line = ((string) contents).split ("\n")[0];
 
             // Only do anything with cgroup v2
-            if (!lines[0].has_prefix ("0::"))
+            if (!line.has_prefix ("0::"))
                 return null;
 
-            cgroup = lines[0][3:lines[0].length];
-
-            return cgroup;
+            return line[3:line.length];
         } catch (Error e) {
             return null;
         }
@@ -190,18 +174,8 @@ public class Usage.Process : Object {
         KeyFile kf = new KeyFile ();
 
         try {
-            string? data = null;
-            size_t len;
-
-            // TODO use MappedFile.from_fd, requires vala 0.46
-            IOChannel ch = new IOChannel.unix_new (fd);
-            ch.set_close_on_unref (true);
-
-            var status = ch.read_to_end (out data, out len);
-            if (status != IOStatus.NORMAL)
-                return null;
-
-            kf.load_from_data (data, len, 0);
+            MappedFile file = new MappedFile.from_fd (fd, false);
+            kf.load_from_data ((string) file.get_contents (), file.get_length (), 0);
         } catch (Error e) {
             return null;
         }
