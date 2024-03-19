@@ -1,3 +1,12 @@
+45.1 - Mar 19, 2024
+===================
+
+With the included patches Usage
+* builds with GCC 14 and Clang 16, together with Vala 0.56.15,
+* avoids glitches in graphs on systems with no swap, due to a previous division by zero,
+* has better keyboard navigation with a different selection mode for boxes in the storage view, and
+* correctly classifies applications with a long path in its cmdline.
+
 45.0 - Sep 17, 2023
 ===================
 

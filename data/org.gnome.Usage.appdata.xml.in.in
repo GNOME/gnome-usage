@@ -24,6 +24,16 @@
   <url type="homepage">https://wiki.gnome.org/Apps/Usage</url>
   <update_contact>camelcasenick@bewares.it</update_contact>
   <releases>
+    <release version="45.1" date="2023-03-19">
+      <description>
+        <p>Usage 45.1 contains a few bug fixes.</p>
+        <ul>
+          <li>It avoids glitches in graphs on systems with no swap,</li>
+          <li>has better keyboard navigation in the storage view, and</li>
+          <li>more often correctly classifies applications.</li>
+        </ul>
+      </description>
+    </release>
     <release version="45.0" date="2023-09-17">
       <description>
         <p>Usage 45 is out with</p>
