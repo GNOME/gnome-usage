@@ -3,6 +3,7 @@
     <gresource prefix="/org/gnome/Usage">
         <file preprocess="xml-stripblanks">icons/scalable/actions/memory-symbolic.svg</file>
         <file preprocess="xml-stripblanks">icons/scalable/status/speedometer-symbolic.svg</file>
+        <file preprocess="xml-stripblanks">icons/scalable/status/info-symbolic.svg</file>
         <file preprocess="xml-stripblanks">icons/scalable/actions/background-app-ghost-symbolic.svg</file>
         <file preprocess="xml-stripblanks">icons/scalable/actions/android-app-symbolic.svg</file>
         <file compressed="true">style.css</file>
