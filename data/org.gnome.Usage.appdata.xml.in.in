@@ -27,6 +27,27 @@
   </screenshots>
   <update_contact>camelcasenick@bewares.it</update_contact>
   <releases>
+    <release version="46.0" date="2023-03-20">
+      <description>
+        <p>The new release alongside GNOME 46 is out and now Usage</p>
+        <ul>
+          <li>is displaying individual Waydroid applications,</li>
+          <li>is highlighting applications running in background,</li>
+          <li>has split the CPU and memory views for a new look and feel, and</li>
+          <li>has an improved performance of the CPU and memory views.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="45.1" date="2023-03-19">
+      <description>
+        <p>Usage 45.1 contains a few bug fixes.</p>
+        <ul>
+          <li>It avoids glitches in graphs on systems with no swap,</li>
+          <li>has better keyboard navigation in the storage view, and</li>
+          <li>more often correctly classifies applications.</li>
+        </ul>
+      </description>
+    </release>
     <release version="45.0" date="2023-09-17">
       <description>
         <p>Usage 45 is out with</p>
