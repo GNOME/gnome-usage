@@ -48,6 +48,7 @@
         <child>
           <object class="GtkCheckButton" id="check_button">
             <property name="receives_default">True</property>
+            <property name="visible">False</property>
           </object>
         </child>
 
