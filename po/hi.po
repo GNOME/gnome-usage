@@ -1,0 +1,318 @@
+# Hindi translation for gnome-usage.
+# Copyright (C) 2024 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2024-04-07 06:59+0000\n"
+"PO-Revision-Date: 2024-04-23 16:32+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.0\n"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:5
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:33
+msgid "Usage"
+msgstr "Usage"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "Usage developers"
+msgstr "Usage विकासकर्ता"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:10
+msgid "A nice way to view information about use of system resources"
+msgstr "सिस्टम संसाधनों के उपयोग के बारे में जानकारी देखने का एक अच्छा तरीका"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:12
+msgid ""
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
+msgstr ""
+"सिस्टम संसाधनों जैसे CPU और चल रहे ऐप्स की मेमोरी उपयोग और स्टोरेज उपयोग की निगरानी और "
+"विश्लेषण करने के लिए एक सरल अनुप्रयोग।"
+
+#: data/org.gnome.Usage.desktop.in.in:4
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"मेमोरी और डिस्क स्थान जैसे सिस्टम संसाधनों के उपयोग के बारे में जानकारी देखने का एक अच्छा "
+"तरीका"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in.in:13
+msgid ""
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
+msgstr "निगरानी;सिस्टम;प्रक्रिया;CPU;मेमोरी;नेटवर्क;इतिहास;उपयोग;प्रदर्शन;टास्क;प्रबंधक;"
+
+#: data/org.gnome.Usage.gschema.xml.in:5
+msgid "A list of processes which we don’t want killed"
+msgstr "उन प्रक्रियाओं की एक सूची जिन्हें हम ख़त्म नहीं करना चाहते"
+
+#: data/org.gnome.Usage.gschema.xml.in:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"इस सूची का उपयोग उन प्रक्रियाओं को फिल्टर करने के लिए किया जाता है जिन्हें उपयोगकर्ता "
+"रोक नहीं सकता है।"
+
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "प्रदर्शन टैब में ग्राफ़ की समय अवधि (ms)"
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"वह समय अवधि जिसके लिए प्रदर्शन टैब और उसके पार्श्वपट्टी में CPU और मेमोरी का ग्राफ़ "
+"(मिलीसेकंड में) दिखाया जाता है।"
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "प्रदर्शन डेटा ताज़ा करने के लिए अंतराल (ms)"
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"वह अंतराल जिस पर प्रदर्शन टैब के लिए डेटा समय-समय पर (मिलीसेकंड में) अद्यतन और प्रदर्शित "
+"किया जाता है।"
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr "किसी ऐप का न्यूनतम सापेक्ष लोड (%) प्रदर्शन टैब में प्रदर्शित किया जाना चाहिए"
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
+"प्रदर्शन टैब में सूचीबद्ध होने के लिए किसी ऐप का लोड उसकी सभी प्रक्रियाओं के योग के रूप में "
+"होना चाहिए, जिसे 100 तक सामान्यीकृत किया जाता है। 0 के साथ, सभी ऐप्स सूचीबद्ध हैं। 100 "
+"के साथ कोई ऐप केवल तभी सूचीबद्ध होता है जब उसकी प्रक्रियाएं सभी CPU थ्रेड्स का पूरी तरह "
+"से उपयोग करती हैं।"
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr "किसी ऐप की न्यूनतम मेमोरी पदचिह्न को प्रदर्शन टैब में प्रदर्शित किया जाना चाहिए"
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"प्रदर्शन टैब में सूचीबद्ध करने के लिए किसी ऐप को बाइट्स में अपनी सभी प्रक्रियाओं के योग के रूप "
+"में उपयोग की जाने वाली मेमोरी की न्यूनतम मात्रा।"
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "ग्राफ़ को लगातार स्क्रॉल न करने के लिए बाध्य करें"
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"यदि सक्षम किया गया है, तो प्रदर्शन ग्राफ़ को लगातार स्क्रॉल नहीं करने के लिए मजबूर किया "
+"जाएगा, बल्कि केवल तभी कूदेगा जब कोई नया डेटा बिंदु जोड़ा जाएगा। यदि अक्षम किया गया है, "
+"तो ग्राफ़ पावर-सेविंग मोड और GTK की वैश्विक एनिमेशन सेटिंग्स के आधार पर निर्णय लेंगे कि कैसे "
+"व्यवहार करना है।"
+
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "अनुप्रयोग बिना दृश्य विंडो के चल रहा है"
+
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "ऐप छोड़ें"
+
+#: data/ui/app-dialog.ui:149
+msgid "Force Quit"
+msgstr "बलपूर्वक छोड़ें"
+
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "प्रयुक्त"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "उपलब्ध"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "कोई परिणाम नहीं मिला"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "भिन्न खोज का प्रयास करें"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "अनुप्रयोग पृष्ठभूमि में चल रहा है"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "अनुप्रयोग अनुकूलित गेम मोड का उपयोग करता है"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "%s छोड़ें?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr "अनुप्रयोग को रोकने से दुष्प्रभाव हो सकते हैं, जैसे सहेजे न गए कार्य का डेटा हानि।"
+
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "छोड़ें"
+
+#: data/ui/storage-actionbar.ui:15
+msgid "Delete…"
+msgstr "मिटायें…"
+
+#: data/ui/storage-view.ui:44
+msgid "Home Partition"
+msgstr "गृह विभाजन"
+
+#: data/ui/swap-speedometer.ui:31
+msgid "Swap"
+msgstr "बदलें"
+
+#: data/ui/window.ui:41 data/ui/window.ui:86
+msgid "Main Menu"
+msgstr "मुख्य मेनू"
+
+#: data/ui/window.ui:98
+msgid "Search"
+msgstr "खोजें"
+
+#: data/ui/window.ui:117
+msgid "Search Applications…"
+msgstr "अनुप्रयोग खोजें…"
+
+#: data/ui/window.ui:151
+msgid "_About Usage"
+msgstr "Usage के बारे में (_A)"
+
+#: data/ui/window.ui:157
+msgid "Group system processes"
+msgstr "समूह सिस्टम प्रक्रियाएं"
+
+#: data/ui/window.ui:163
+msgid "Show all processes"
+msgstr "सभी प्रक्रियाएं दिखाएं"
+
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "CPU"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "मेमोरी"
+
+#: src/app-item.vala:214
+msgid "System"
+msgstr "सिस्टम"
+
+#: src/application.vala:73
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"मेमोरी और डिस्क स्थान जैसे सिस्टम संसाधनों के उपयोग के बारे में जानकारी देखने का एक अच्छा "
+"तरीका।"
+
+#: src/application.vala:76
+msgid "translator-credits"
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
+
+#: src/cpu-view.vala:33
+msgid "Processor"
+msgstr "प्रोसेसर"
+
+#: src/storage/storage-actionbar.vala:42
+#, c-format
+msgid "%s selected"
+msgid_plural "%s selected"
+msgstr[0] "%s चयनित"
+msgstr[1] "%s चयनित"
+
+#: src/storage/storage-actionbar.vala:47
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "क्या आप वाकई चयनित वस्तुओं को स्थायी रूप से मिटाना चाहते हैं?"
+
+#: src/storage/storage-actionbar.vala:48
+msgid "If you delete these items, they will be permanently lost."
+msgstr "यदि आप इन वस्तुओं को मिटाते हैं, तो वे स्थायी रूप से खो जाएंगे।"
+
+#: src/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "मिटाएं"
+
+#: src/storage/storage-row-popover.vala:42
+msgid ""
+"Operating system files are an essential part of your system and cannot be "
+"removed."
+msgstr ""
+"ऑपरेटिंग सिस्टम की फाइलें आपके सिस्टम का एक अनिवार्य हिस्सा हैं और इन्हें हटाया नहीं जा "
+"सकता।"
+
+#: src/storage/storage-view.vala:80
+msgid "Storage"
+msgstr "भंडारण"
+
+#: src/storage/storage-view.vala:240
+msgid "Operating System"
+msgstr "ऑपरेटिंग सिस्टम"
+
+#: src/storage/storage-view.vala:268
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s उपलब्ध"
+msgstr[1] "%s उपलब्ध"
+
+#: src/utils.vala:58
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:63
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:65
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
