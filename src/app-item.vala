@@ -68,9 +68,10 @@ public class Usage.AppItem : Object {
             GLib.DesktopAppInfo? dai = info as GLib.DesktopAppInfo;
             string? id = null;
 
-            if (dai != null) {
-                id = dai?.get_string ("X-Flatpak");
-                if (id != null) {
+            id = dai?.get_string ("X-Flatpak");
+            if (id != null) {
+                /* prioritise app infos without nodisplay */
+                if (appid_map[(!) id] == null || !((!) dai).get_nodisplay ()) {
                     appid_map.insert ((!) id, info);
                 }
             }
