@@ -7,22 +7,35 @@
   <developer>
     <name>Usage developers</name>
   </developer>
-  <summary>A nice way to view information about use of system resources</summary>
+  <summary>Analyse your system</summary>
   <description>
     <p>
-        A simple application to monitor and analyze system resources such
-        as CPU and memory usage of running apps, and storage usage.
+      Usage helps with simple to understand ways to analyze how the system uses
+      its resources.
     </p>
+    <ul>
+      <li>
+        Easy access to which app uses what amount of processing power or memory,
+        helps find performance issues.
+      </li>
+      <li>
+        The storage view provides insight to simplify cleaning up unnecessary
+        leftover files.
+      </li>
+    </ul>
   </description>
   <screenshots>
     <screenshot height="1002" width="652" type="default">
       <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/main/screenshots/screenshot-performance-view.png</image>
+      <caption>See where the processing power is going</caption>
     </screenshot>
     <screenshot height="1002" width="652">
       <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/main/screenshots/screenshot-performance-memory-view.png</image>
+      <caption>Understand which application is using up the memory</caption>
     </screenshot>
     <screenshot height="1002" width="652">
       <image>https://gitlab.gnome.org/GNOME/gnome-usage/raw/main/screenshots/screenshot-storage-view.png</image>
+      <caption>Find what fills the storage</caption>
     </screenshot>
   </screenshots>
   <update_contact>camelcasenick@bewares.it</update_contact>
