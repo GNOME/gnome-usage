@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-  <id>@app-id@</id>
+<component type="desktop-application">
   <metadata_license>CC0-1.0</metadata_license>
+  <update_contact>camelcasenick@bewares.it</update_contact>
+
+  <id>@app-id@</id>
+  <launchable type="desktop-id">@app-id@.desktop</launchable>
+  <project_license>GPL-3.0-or-later</project_license>
+  <!--url type="homepage">https://wiki.gnome.org/Apps/Usage</url-->
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-usage/issues</url>
+  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-usage</url>
+  <url type="donation">https://liberapay.com/camelCaseNick/</url>
+  <!--url type="help">https://gitlab.gnome.org/GNOME/gnome-usage/wikis/home</url-->
+  <url type="translate">https://l10n.gnome.org/module/gnome-usage/</url>
+  <translation type="gettext">gnome-usage</translation>
+
   <name>Usage</name>
   <developer_name>Usage developers</developer_name>
   <developer>
@@ -38,7 +50,18 @@
       <caption>Find what fills the storage</caption>
     </screenshot>
   </screenshots>
-  <update_contact>camelcasenick@bewares.it</update_contact>
+
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </recommends>
+  <requires>
+    <display_length compare="ge" side="shortest">360</display_length>
+    <display_length compare="ge" side="longest">360</display_length>
+  </requires>
+  <content_rating type="oars-1.1" />
+
   <releases>
     <release version="46.0" date="2024-03-20">
       <description>
@@ -78,28 +101,4 @@
       </description>
     </release>
   </releases>
-  <kudos>
-    <kudo>AppMenu</kudo>
-    <kudo>HiDpiIcon</kudo>
-    <kudo>HighContrast</kudo>
-    <kudo>ModernToolkit</kudo>
-  </kudos>
-  <recommends>
-    <control>keyboard</control>
-    <control>pointing</control>
-    <control>touch</control>
-  </recommends>
-  <requires>
-    <display_length compare="ge" side="shortest">360</display_length>
-    <display_length compare="ge" side="longest">360</display_length>
-  </requires>
-  <launchable type="desktop-id">@app-id@.desktop</launchable>
-  <project_license>GPL-3.0-or-later</project_license>
-  <!--url type="homepage">https://wiki.gnome.org/Apps/Usage</url-->
-  <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-usage/issues</url>
-  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-usage</url>
-  <url type="donation">https://liberapay.com/camelCaseNick/</url>
-  <!--url type="help">https://gitlab.gnome.org/GNOME/gnome-usage/wikis/home</url-->
-  <url type="translate">https://l10n.gnome.org/module/gnome-usage/</url>
-  <translation type="gettext">gnome-usage</translation>
 </component>
