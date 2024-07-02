@@ -22,6 +22,6 @@
         <file preprocess="xml-stripblanks">ui/process-row.ui</file>
         <file preprocess="xml-stripblanks">ui/swap-speedometer.ui</file>
         <file preprocess="xml-stripblanks">ui/window.ui</file>
-        <file preprocess="xml-stripblanks">org.gnome.Usage.appdata.xml</file> <!-- should use @app-id@, see data/meson.build -->
+        <file preprocess="xml-stripblanks">org.gnome.Usage.metainfo.xml</file> <!-- should use @app-id@, see data/meson.build -->
     </gresource>
 </gresources>

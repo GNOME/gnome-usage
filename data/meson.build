@@ -23,30 +23,30 @@ i18n.merge_file(
   install_dir: join_paths(get_option('datadir'), 'applications')
 )
 
-appdata_conf = configuration_data()
-appdata_conf.set('app-id', application_id)
-appdata = i18n.merge_file(
+metainfo_conf = configuration_data()
+metainfo_conf.set('app-id', application_id)
+metainfo = i18n.merge_file(
   input: configure_file(
-    input: '@0@.appdata.xml.in.in'.format(base_id),
+    input: '@0@.metainfo.xml.in.in'.format(base_id),
     output: '@BASENAME@',
-    configuration: appdata_conf
+    configuration: metainfo_conf
   ),
-  output: '@0@.appdata.xml'.format(application_id),
+  output: '@0@.metainfo.xml'.format(application_id),
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(get_option('datadir'), 'metainfo')
 )
-# install appdata a second time to base_id location to work around
+# install metainfo a second time to base_id location to work around
 # https://gitlab.gnome.org/GNOME/vala/-/issues/804 TODO: don't
 # see data/org.gnome.Usage.gresource.xml, src/application.vala
 if application_id != base_id
-  appdata = i18n.merge_file(
+  metainfo = i18n.merge_file(
     input: configure_file(
-      input: '@0@.appdata.xml.in.in'.format(base_id),
+      input: '@0@.metainfo.xml.in.in'.format(base_id),
       output: '@BASENAME@',
-      configuration: appdata_conf
+      configuration: metainfo_conf
     ),
-    output: '@0@.appdata.xml'.format(base_id),
+    output: '@0@.metainfo.xml'.format(base_id),
     po_dir: po_dir,
     install: true,
     install_dir: join_paths(get_option('datadir'), 'metainfo')
@@ -59,7 +59,7 @@ resources = gnome.compile_resources(
   base_id,
   '@0@.gresource.xml'.format(base_id),
   c_name: 'resources',
-  dependencies: [appdata]
+  dependencies: [metainfo]
 )
 
 install_data(
