@@ -48,13 +48,13 @@ if application_id != base_id
     ),
     output: '@0@.appdata.xml'.format(base_id),
     po_dir: po_dir,
-    install: true,
-    install_dir: join_paths(get_option('datadir'), 'metainfo')
+    install: false
   )
 endif
 
 resources_conf = configuration_data()
 resources_conf.set('app-id', application_id)
+resources_conf.set('base-id', base_id)
 resources = gnome.compile_resources(
   base_id,
   '@0@.gresource.xml'.format(base_id),
