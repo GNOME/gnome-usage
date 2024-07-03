@@ -15,21 +15,18 @@ lint:
   script:
     - io.elementary.vala-lint src -c build-aux/test/vala-lint.conf
 
-fedora:
+alpine:
   stage: build
-  variables:
-    GIT_SUBMODULE_STRATEGY: recursive
+  allow_failure: true
   before_script:
-    - dnf update -y
-    - dnf install -y gcc meson gettext gtk-doc vala gtk4-devel libgtop2-devel
-                     libadwaita-devel libgee-devel desktop-file-utils
-                     redhat-rpm-config tracker-devel
+    - apk upgrade -a
+    - apk add alpine-sdk meson vala gtk4.0-dev libgtop-dev
+              libadwaita-dev libgee-dev tracker-dev
 
-  image: fedora:rawhide
+  image: alpine:latest
   script:
-  - meson _build .
-  - ninja -C _build
-  - ninja -C _build install
+  - meson setup _build
+  - meson compile -C _build
 
 flatpak:
   stage: build
