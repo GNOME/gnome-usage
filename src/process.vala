@@ -24,6 +24,19 @@ public class Usage.Process : Object {
     public uint uid { get; private set; }
     public uint64 start_time { get; set; default = 0; }
 
+    private bool _cgroup_read = false;
+    private string? _cgroup;
+    public string? cgroup {
+        get {
+            if (!this._cgroup_read) {
+                this._cgroup = Process.read_cgroup (this.pid);
+                this._cgroup_read = true;
+            }
+
+            return this._cgroup;
+        }
+    }
+
     public double cpu_load { get; set; default = 0; }
     public double x_cpu_load { get; set; default = 0; }
     public uint64 cpu_last_used { get; set; default = 0; }
@@ -81,8 +94,10 @@ public class Usage.Process : Object {
 
     public string? app_id {
         get {
-            if (!_app_id_checked)
-                _app_id = read_app_id (pid);
+            if (!this._app_id_checked) {
+                this._app_id = read_app_id (pid);
+                this._app_id_checked = true;
+            }
 
             return _app_id;
         }

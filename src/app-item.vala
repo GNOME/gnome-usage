@@ -165,9 +165,7 @@ public class Usage.AppItem : Object {
 
     public static AppInfo? app_info_for_process (Process p) {
         AppInfo? info = null;
-        string ?cgroup = null;
-
-        cgroup = Process.read_cgroup (p.pid);
+        string? cgroup = p.cgroup;
 
         /* Waydroid */
         if (cgroup == "/lxc.payload.waydroid") {
@@ -179,25 +177,22 @@ public class Usage.AppItem : Object {
              * See https://systemd.io/DESKTOP_ENVIRONMENTS/
              * and we also have some special cases for GNOME which is not
              * currently compliant to the specification. */
-            string ?systemd_unit = null;
-            string ?appid = null;
+            string? systemd_unit = null;
+            string? appid = null;
             string[] components;
 
-            components = cgroup.split ("/");
+            components = cgroup?.split ("/");
             systemd_unit = components[components.length - 1];
             appid = appid_from_unit (systemd_unit);
             if (appid != null)
-                info = appid_map[appid];
-
-            if (info != null)
-                return info;
+                info = appid_map[(!) appid];
         }
 
-        if (p.cmdline != null)
+        if (info == null && p.cmdline != null)
             info = apps_info[p.cmdline];
 
         if (info == null && p.app_id != null)
-            info = appid_map[p.app_id];
+            info = appid_map[(!) p.app_id];
 
         return info;
     }
