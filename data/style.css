@@ -7,6 +7,10 @@ listview row {
     font-feature-settings: "tnum";
 }
 
+listview.switcher-sidebar > row {
+    padding: 8px;
+}
+
 /* ListView is not supported by .boxed-list, this is needed for using .card */
 listview.card > row:first-child {
     border-radius: 12px 12px 0 0;

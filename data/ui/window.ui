@@ -49,6 +49,7 @@
                   <object class="GtkListView">
                     <style>
                       <class name="navigation-sidebar"/>
+                      <class name="switcher-sidebar"/>
                     </style>
                     <property name="factory">
                       <object class="GtkBuilderListItemFactory">
