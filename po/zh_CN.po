@@ -9,38 +9,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-16 17:38+0000\n"
-"PO-Revision-Date: 2024-02-17 08:55+0800\n"
+"POT-Creation-Date: 2024-08-24 13:11+0000\n"
+"PO-Revision-Date: 2024-08-24 21:28+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
-"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 45.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 46.1\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "使用情况"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "使用情况的开发者们"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr "查看系统资源使用信息的好方式"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"一个用于监视和分析系统资源如运行应用的处理器和内存占用，以及存储占用的简单应"
-"用程序。"
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -57,6 +41,44 @@ msgstr ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;监控;监视;系统;进程;处理;中央处理器;内存;网络;历史;使用情况;用量;性"
 "能;任务;管理器;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "使用情况的开发者们"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "分析您的系统"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr "使用情况使用简单易理解的方式来帮助分析系统使用资源的情况。"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr "易于访问各个应用使用处理器性能或内存的用量，帮助查找性能问题。"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr "存储视图提供了对简化清理无用残留文件的洞察。"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "查看处理器性能消耗在了哪里"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "明白哪个应用程序在大量使用内存"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "查找哪些东西填充了存储空间"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -127,15 +149,15 @@ msgstr ""
 "如果启用，性能图表将被强制不再持续滚动，而是在添加新数据点时跳动。如果禁用，"
 "图表将基于省电模式和 GTK 的全局动画设置来决定表现方式。"
 
-#: data/ui/app-dialog.ui:77
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "应用程序正在以无可见窗口的状态运行"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "退出应用"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "强制退出"
 
@@ -165,26 +187,26 @@ msgstr "尝试不同的搜索"
 msgid "Application is running in background"
 msgstr "应用程序正在后台运行"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "应用程序使用优化的游戏模式"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "退出 %s？"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
 msgstr "停止应用程序可能带来副作用，比如丢失未保存工作的数据。"
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "取消"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "退出"
 
@@ -200,27 +222,27 @@ msgstr "用户分区"
 msgid "Swap"
 msgstr "交换分区"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "搜索"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "搜索应用程序…"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "关于使用情况(_A)"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "合并系统进程"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "显示所有进程"
 
@@ -232,7 +254,7 @@ msgstr "处理器"
 msgid "Memory"
 msgstr "内存"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:214
 msgid "System"
 msgstr "系统"
 
@@ -305,6 +327,16 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr "查看系统资源使用信息的好方式"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "一个用于监视和分析系统资源如运行应用的处理器和内存占用，以及存储占用的简单"
+#~ "应用程序。"
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "可能会丢失未保存的工作。"
@@ -450,9 +482,6 @@ msgstr "%llu B/s"
 
 #~ msgid "Data"
 #~ msgstr "数据"
-
-#~ msgid "No applications using memory."
-#~ msgstr "没有应用程序正在使用内存。"
 
 #~ msgid "Network"
 #~ msgstr "网络"
