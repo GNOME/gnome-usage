@@ -1,7 +1,7 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-data/org.gnome.Usage.appdata.xml.in.in
 data/org.gnome.Usage.desktop.in.in
+data/org.gnome.Usage.metainfo.xml.in.in
 data/org.gnome.Usage.gschema.xml.in
 data/ui/app-dialog.ui
 data/ui/memory-speedometer.ui
