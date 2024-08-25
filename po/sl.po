@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-16 17:38+0000\n"
-"PO-Revision-Date: 2024-04-28 00:34+0200\n"
+"POT-Creation-Date: 2024-08-24 13:11+0000\n"
+"PO-Revision-Date: 2024-08-25 16:57+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -21,27 +21,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.2.1\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Podrobnosti uporabe sistema"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Razvijalci programa"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr "Učinkovit način za pregled podrobnosti o uporabi sistemskih virov"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"Enostaven program za nadzor in preučevanje sistemskih virov, kot so "
-"procesorska moč, pomnilnik in prostor."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -59,6 +43,49 @@ msgid ""
 msgstr ""
 "Nadzor;Sistem;Opravila;CPE;OPE;Pomnilnik;Omrežje;Zgodovina;Uporaba;Zmožnost;"
 "Naloge;Upravljalnik"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Razvijalci programa"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Analizirajte svoj sistem"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Ta program pomaga pri preprostih načinih za analizo, kako sistem uporablja "
+"svoje vire."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Preprosto dostopajte do tega, kateri program uporablja kakšno količino "
+"procesorske moči ali pomnilnika, kar pomaga najti težave z učinkovitostjo "
+"delovanja."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr "Pogled shrambe omogoča vpogled v čiščenje nepotrebnih ostalin datotek."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Oglejte si, kam gre procesorska moč"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Razumite, kateri program porablja pomnilnik"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Ugotovite, kaj zapolni prostor za shranjevanje"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -145,15 +172,15 @@ msgstr ""
 "podatkovna točka. Če je onemogočena, se bodo grafi glede na način varčevanja "
 "z energijo in splošne nastavitve animacij GTK odločili, kako se obnašati."
 
-#: data/ui/app-dialog.ui:77
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "Program se izvaja brez vidnega okna"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "Zapusti program"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Vsili končanje"
 
@@ -183,16 +210,16 @@ msgstr "Poskusite z drugačnim iskalnim nizom"
 msgid "Application is running in background"
 msgstr "Program se izvaja v ozadju"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "Progam uporablja optimiziran igralni način"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "Ali želite končati %s?"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
@@ -200,11 +227,11 @@ msgstr ""
 "Zaustavitev programov ima lahko neželene učinke, kot je izguba podatkov "
 "neshranjenega delovanja."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "Končaj"
 
@@ -220,27 +247,27 @@ msgstr "Osebni razdelek (home)"
 msgid "Swap"
 msgstr "Izmenjevalni razdelek"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "Išči"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "Poišči program …"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "_O programu"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "Skupinska sistemska opravila"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "Pokaži vsa opravila"
 
@@ -252,7 +279,7 @@ msgstr "CPE"
 msgid "Memory"
 msgstr "Pomnilnik"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Sistem"
 
