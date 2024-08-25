@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-16 17:38+0000\n"
-"PO-Revision-Date: 2024-02-16 20:41+0200\n"
+"POT-Creation-Date: 2024-08-24 13:11+0000\n"
+"PO-Revision-Date: 2024-08-25 09:43+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -17,31 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Використання"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Розробники «Usage»"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Чудовий спосіб переглянути відомості щодо використання ресурсів системи"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"Проста програма для спостереження та аналізу використання ресурсів системи, "
-"зокрема процесора, використання пам'яті запущеними програмами та "
-"використання сховищ даних."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -60,6 +42,50 @@ msgstr ""
 "Монітор;Система;Процес;Процесор;Пам'ять;Мережа;Історія;Використання;Завдання;"
 "Менеджер;Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;"
 "Task;Manager;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Розробники «Usage»"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Аналіз вашої системи"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"«Використання» реалізує прості шляхи аналізу того, як ваша система"
+" використовує ресурси обладнання."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Простий доступ до даних щодо потужностей процесора або пам'яті, які"
+" використовує програма, допомагає боротися із проблемами зі швидкодією."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"За допомогою панелі перегляду сховища даних вам простіше буде позбутися"
+" непотрібних залишкових файлів."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Перегляд того, на що витрачаються ресурси процесора"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Ознайомлення з даними щодо використання програмами пам'яті"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Визначення характеристик даних, якими заповнено сховище даних"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -144,16 +170,15 @@ msgstr ""
 "точки на графік. Якщо вимкнено, поведінка визначатиметься на основі "
 "параметрів енергозаощадження та загальних параметрів анімації GTK."
 
-#: data/ui/app-dialog.ui:77
-#| msgid "Application is running in background"
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "Програма працює без видимого вікна"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "Вийти з програми"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Примусово закрити"
 
@@ -183,29 +208,28 @@ msgstr "Спробуйте інші критерії пошуку"
 msgid "Application is running in background"
 msgstr "Програма працює у фоновому режимі"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "Програма використовує оптимізований до ігор режим"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
-#| msgid "Force Quit %s?"
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "Вийти з %s?"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
 msgstr ""
-"Припинення роботи програми може мати сторонні наслідки, зокрема втрату"
-" незбережених даних."
+"Припинення роботи програми може мати сторонні наслідки, зокрема втрату "
+"незбережених даних."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "Вийти"
 
@@ -221,27 +245,27 @@ msgstr "Домашній розділ"
 msgid "Swap"
 msgstr "Резервна пам'ять"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "Пошук"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "Пошук програм…"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "_Про «Використання»"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "Групувати процеси системи"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "Показати усі процеси"
 
@@ -253,7 +277,7 @@ msgstr "Процесор"
 msgid "Memory"
 msgstr "Пам'ять"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Система"
 
@@ -333,6 +357,18 @@ msgstr "%s/с"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Чудовий спосіб переглянути відомості щодо використання ресурсів системи"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "Проста програма для спостереження та аналізу використання ресурсів "
+#~ "системи, зокрема процесора, використання пам'яті запущеними програмами та "
+#~ "використання сховищ даних."
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "Може бути втрачено незбережені результати роботи."
