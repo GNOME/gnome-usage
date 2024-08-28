@@ -45,6 +45,7 @@ public class Usage.Application : Adw.Application {
         window = new Window (this);
 
         set_accels_for_action ("app.quit", {"<Control>q"});
+        window.set_icon_name ("org.gnome.Usage");
 
         window.present ();
     }
