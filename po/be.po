@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2022-09-22 20:47+0000\n"
-"PO-Revision-Date: 2022-12-16 05:05+0300\n"
+"POT-Creation-Date: 2024-08-24 13:09+0000\n"
+"PO-Revision-Date: 2024-08-28 18:04+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -17,28 +17,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-msgid "GNOME Usage"
-msgstr "GNOME Usage"
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:33
+msgid "Usage"
+msgstr "Usage"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "Usage developers"
+msgstr "Распрацоўшчыкі «Usage»"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:10
 msgid "A nice way to view information about use of system resources"
 msgstr "Добры спосаб прагляду інфармацыі пра выкарыстанне сістэмных рэсурсаў"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:12
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
 msgstr ""
-"Простая праграма асяроддзя GNOME 3 для назірання і аналізу сістэмных "
-"рэсурсаў, такіх як выкарыстанне працэсара, памяці і месца на дыску."
-
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:76
-msgid "Usage"
-msgstr "Usage"
+"Простая праграма для назірання і аналізу сістэмных рэсурсаў, такіх як "
+"выкарыстанне працэсара, памяці і месца на дыску."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -54,8 +55,9 @@ msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
 msgstr ""
-"Usage;Назіранне;Сістэма;Працэсар;CPU;Памяць;Сетка;Гісторыя;Выкарыстанне;"
-"Прадукцыйнасць;Дыспетчар;Задачы;Кіраўнік;"
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;Манітор;Назіранне;Сістэма;Працэсар;CPU;Памяць;Сетка;Гісторыя;"
+"Выкарыстанне;Прадукцыйнасць;Дыспетчар;Задачы;Кіраўнік;"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -67,74 +69,192 @@ msgstr ""
 "Гэты спіс выкарыстоўваецца для фільтрацыі працэсаў, якія не можа спыніць "
 "карыстальнік."
 
-#: data/ui/memory-speedometer.ui:38
-msgid "RAM"
-msgstr "RAM"
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "прамежак часу (мілісекунд) для графіка на ўкладках прадукцыйнасці"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
-#: data/ui/swap-speedometer.ui:51
-msgid "Used"
-msgstr "Выкарыстана"
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Прамежак часу (мілісекунд), які паказваецца на графіку выкарыстання "
+"працэсара і памяці ў бакавой панэлі і ўкладках прадукцыйнасці."
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
-#: data/ui/swap-speedometer.ui:75
-msgid "Available"
-msgstr "Даступна"
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "інтэрвал (мс) абнаўлення даных аб прадукцыйнасці"
 
-#: data/ui/no-results-found-view.ui:23
-msgid "No results found"
-msgstr "Нічога не знойдзена"
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"Інтэрвал часу (мілісекунд) праз які абнаўляюцца і паказваюцца даныя на "
+"ўкладках прадукцыйнасці."
 
-#: data/ui/no-results-found-view.ui:32
-msgid "Try a different search"
-msgstr "Паспрабуйце змяніць пошукавы запыт"
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr ""
+"мінімальная адносная нагрузка (%) для праграмы, каб паказвацца на ўкладцы "
+"прадукцыйнасці"
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_Аб праграме"
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
+"Нагрузка адносна 100, якую павінны даваць усе працэсы праграмы агулам, каб "
+"паказвацца на ўкладцы прадукцыйнасці. Пры значэнні 0 паказваюцца ўсе "
+"праграмы, пры 100 – толькі праграма, якая цалкам выкарыстоўвае ўсе патокі "
+"працэсара."
 
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Група сістэмных працэсаў"
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+"мінімальны аб'ём памяці для праграмы, каб паказвацца на ўкладцы "
+"прадукцыйнасці"
 
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Паказаць усе працэсы"
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Мінімальны аб'ём памяці (у байтах), які павінны выкарыстоўваць усе працэсы "
+"праграмы агулам, каб паказвацца на ўкладцы прадукцыйнасці."
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
-msgid "Force Quit %s?"
-msgstr "Прымусова завяршыць %s?"
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Прымусова спыніць бесперапынную прагортку графікаў"
 
-#: data/ui/quit-process-dialog.ui:10
-msgid "Unsaved work might be lost."
-msgstr "Незахаваная праца можа быць страчана."
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Калі ўключана, графікі прадукцыйнасці будуць не прагортвацца бесперапынна, а "
+"рухацца толькі пры з'яўленні новых даных. Калі адключана, паводзіны для "
+"графікаў вызначаюцца на аснове рэжыму энергазберажэння і глабальных налад "
+"анімацыі GTK."
 
-#: data/ui/quit-process-dialog.ui:16
-msgid "Cancel"
-msgstr "Скасаваць"
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "Праграмы выконваюцца без бачных вокнаў"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Завяршыць праграму"
+
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Прымусова завяршыць"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "Выкарыстана"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Даступна"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "Нічога не знойдзена"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Паспрабуйце змяніць пошукавы запыт"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Праграмы, якія выконваюцца ў фоне"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "Праграмы, якія выкарыстоўваюць рэжым гульні"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "Завяршыць «%s»?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Спыненне праграм можа выклікаць непажаданыя эфекты, напрыклад, страту "
+"незахаваных даных."
+
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "Скасаваць"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Завяршыць"
+
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Выдаліць…"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Хатні раздзел"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:147
+#: data/ui/window.ui:41 data/ui/window.ui:86
+msgid "Main Menu"
+msgstr "Галоўнае меню"
+
+#: data/ui/window.ui:98
+msgid "Search"
+msgstr "Пошук"
+
+#: data/ui/window.ui:117
+msgid "Search Applications…"
+msgstr "Пошук праграм…"
+
+#: data/ui/window.ui:151
+msgid "_About Usage"
+msgstr "_Аб праграме"
+
+#: data/ui/window.ui:157
+msgid "Group system processes"
+msgstr "Згрупаваць сістэмныя працэсы"
+
+#: data/ui/window.ui:163
+msgid "Show all processes"
+msgstr "Паказаць усе працэсы"
+
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "ЦП"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Памяць"
+
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Сістэма"
 
-#: src/application.vala:77
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -142,40 +262,35 @@ msgstr ""
 "Добры спосаб прагляду інфармацыі пра выкарыстанне сістэмных рэсурсаў, такіх "
 "як памяць і месца на дыску."
 
-#: src/application.vala:80
+#: src/application.vala:76
 msgid "translator-credits"
 msgstr "Юрась Шумовіч <shumovichy@gmail.com>"
 
-#: src/application.vala:82
-msgid "Websites"
-msgstr "Вэб-сайты"
-
-#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Працэсар"
 
-#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
-msgid "Memory"
-msgstr "Памяць"
-
-#: src/performance-view.vala:44
-msgid "Performance"
-msgstr "Прадукцыйнасць"
-
-#: src/storage/storage-actionbar.vala:37
+#: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
-msgstr "вылучана: %s"
+msgid_plural "%s selected"
+msgstr[0] "вылучана: %s"
+msgstr[1] "вылучана: %s"
+msgstr[2] "вылучана: %s"
 
-#: src/storage/storage-actionbar.vala:43
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Сапраўды незваротна выдаліць вылучаныя элементы?"
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Калі вы выдаліце гэты элементы, яны будуць назаўсёды страчаны."
 
-#: src/storage/storage-row-popover.vala:32
+#: src/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Выдаліць"
+
+#: src/storage/storage-row-popover.vala:42
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
@@ -183,29 +298,80 @@ msgstr ""
 "Файлы аперацыйнай сістэмы з'яўляюцца неад'емная часткай вашай сістэмы, іх "
 "нельга выдаліць."
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:80
 msgid "Storage"
 msgstr "Сховішча"
 
-#: src/storage/storage-view.vala:246
+#: src/storage/storage-view.vala:240
 msgid "Operating System"
 msgstr "Аперацыйная сістэма"
 
-#: src/storage/storage-view.vala:272
-msgid "Scanning directories"
-msgstr "Сканаванне каталогаў"
+#: src/storage/storage-view.vala:268
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "даступна: %s"
+msgstr[1] "даступна: %s"
+msgstr[2] "даступна: %s"
 
-#: src/utils.vala:26
+#: src/utils.vala:58
 #, c-format
 msgid "%llu B"
 msgstr "%llu Байт"
 
-#: src/utils.vala:31
+#: src/utils.vala:63
 #, c-format
 msgid "%s/s"
 msgstr "%s/с"
 
-#: src/utils.vala:33
+#: src/utils.vala:65
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Байт/с"
+
+#~ msgid "Analyse your system"
+#~ msgstr "Аналіз сістэмы"
+
+#~ msgid ""
+#~ "Usage helps with simple to understand ways to analyze how the system uses "
+#~ "its resources."
+#~ msgstr ""
+#~ "Usage дапамагае простым і зручным чынам паглядзець як сістэма "
+#~ "выкарыстоўвае рэсурсы."
+
+#~ msgid ""
+#~ "Easy access to which app uses what amount of processing power or memory, "
+#~ "helps find performance issues."
+#~ msgstr ""
+#~ "Просты доступ да звестак пра выкарыстанне працэсара або памяці для кожнай "
+#~ "праграмы, дапамагае знайсці праблемы з прадукцыйнасцю."
+
+#~ msgid ""
+#~ "The storage view provides insight to simplify cleaning up unnecessary "
+#~ "leftover files."
+#~ msgstr ""
+#~ "Старонка «Сховішча» спрашчае пошук непатрэбных файлаў для выдалення."
+
+#~ msgid "See where the processing power is going"
+#~ msgstr "Прагляд, на што выкарыстоўваюцца рэсурсы працэсара"
+
+#~ msgid "Understand which application is using up the memory"
+#~ msgstr "Прагляд, якія праграмы выкарыстоўваюць памяць"
+
+#~ msgid "Find what fills the storage"
+#~ msgstr "Прагляд, чым запоўнена сховішча"
+
+#~ msgid "GNOME Usage"
+#~ msgstr "GNOME Usage"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Незахаваная праца можа быць страчана."
+
+#~ msgid "Websites"
+#~ msgstr "Вэб-сайты"
+
+#~ msgid "Performance"
+#~ msgstr "Прадукцыйнасць"
+
+#~ msgid "Scanning directories"
+#~ msgstr "Сканаванне каталогаў"
