@@ -2,46 +2,29 @@
 # Copyright (C) 2017-2022 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2019, 2022, 2024.
+# Sabri Ünal <yakushabb@gmail.com>, 2019, 2022, 2024.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2017-2019, 2022-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-16 18:41+0000\n"
-"PO-Revision-Date: 2024-02-16 23:54+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"POT-Creation-Date: 2024-08-25 06:44+0000\n"
+"PO-Revision-Date: 2024-09-01 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.3\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Kullanım"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Kullanım geliştiricileri"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Sistem kaynaklarının kullanımıyla ilgili bilgiyi görmek için güzel bir yol"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"İşlemci, çalışan uygulamaların bellek kullanımı ve depolama gibi sistem "
-"kaynaklarını çözümlemek ve gözlemlemek için basit bir uygulama. "
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -59,6 +42,48 @@ msgid ""
 msgstr ""
 "Gözlemci;İzleyici;Sistem;İşlem;Süreç;CPU;MİB;İşlemci;Bellek;Ağ;Geçmiş;"
 "Kullanım;Başarım;Performans;Görev;Yönetici;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Kullanım geliştiricileri"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Sisteminizi inceleyin"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Kullanım, sistemin kaynakları nasıl kullandığını incelemeyi kolaylaştırır."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Uygulamaların ne miktarda işlem gücü ya da bellek kullandığını "
+"açıkça gösterir, başarım sorunlarını bulmada yardımcı olur."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Depolama görünümü gereksiz atık dosyaları temizlemeyi basitleştirir."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "İşlem gücünün nereye gittiğini görün"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Belleği hangi uygulamanın kullandığını anlayın"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Depolama alanını neyin doldurduğunu bulun"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -139,15 +164,15 @@ msgstr ""
 "atlayacaktır. Devre dışı bırakılırsa, grafikler güç tutum kipine ve GTK’nın "
 "küresel canlandırma ayarlarına göre nasıl davranacaklarına karar verirler."
 
-#: data/ui/app-dialog.ui:77
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "Uygulama görünür pencere olmadan çalışıyor"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "Uygulamadan Çık"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Çıkmaya Zorla"
 
@@ -177,16 +202,16 @@ msgstr "Başka arama deneyin"
 msgid "Application is running in background"
 msgstr "Uygulama arka planda çalışıyor"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "Uygulama eniyilenmiş oyun kipini kullanır"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "%s Uygulamasından Çıkılsın Mı?"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
@@ -194,11 +219,11 @@ msgstr ""
 "Uygulamaların durdurulması, kaydedilmemiş çalışmalarda veri yitimi gibi yan "
 "etkilere neden olabilir."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "İptal"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "Çık"
 
@@ -214,27 +239,27 @@ msgstr "Ev Bölümü"
 msgid "Swap"
 msgstr "Takas"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "Ara"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "Uygulamaları Ara…"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "Kullanım _Hakkında"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "Sistem süreçlerini kümele"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "Tüm süreçleri göster"
 
@@ -246,7 +271,7 @@ msgstr "İşlemci"
 msgid "Memory"
 msgstr "Bellek"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Sistem"
 
@@ -262,7 +287,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
-"Sabri Ünal <libreajans@gmail.com>"
+"Sabri Ünal <yakushabb@gmail.com>"
 
 #: src/cpu-view.vala:33
 msgid "Processor"
@@ -321,6 +346,17 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Sistem kaynaklarının kullanımıyla ilgili bilgiyi görmek için güzel bir yol"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "İşlemci, çalışan uygulamaların bellek kullanımı ve depolama gibi sistem "
+#~ "kaynaklarını çözümlemek ve gözlemlemek için basit bir uygulama. "
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "Kaydedilmemiş iş kaybedilebilir."
