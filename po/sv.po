@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-usage master\n"
+"Project-Id-Version: gnome-usage main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-16 17:38+0000\n"
-"PO-Revision-Date: 2024-02-17 01:09+0100\n"
+"POT-Creation-Date: 2024-08-24 13:11+0000\n"
+"PO-Revision-Date: 2024-09-05 17:19+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,30 +18,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Användning"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Utvecklarna av Användning"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr "Ett trevligt sätt att se information om användning av systemresurser"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"Ett enkelt program för att övervaka och analysera systemresurser såsom "
-"processor- och minnesanvändning för körande program och använt "
-"lagringsutrymme."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -59,6 +42,50 @@ msgid ""
 msgstr ""
 "Skärm;System;Process;CPU;Minne;Nätverk;Historik;Användning;Prestanda;Uppgift;"
 "Hanterare;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Utvecklarna av Användning"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Analysera ditt system"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Användning hjälper till med lättförstådda sätt att analysera hur systemet "
+"använder sina resurser."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Lätt åtkomst till vilket program som använder vilken mängd ström eller minne "
+"hjälper till att hitta prestandaproblem."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Lagringsvyn ger insikter som förenklar uppstädning av onödiga kvarglömda "
+"filer."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Se var beräkningskraften används"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Förstå vilket program som använder minnet"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Se vad som fyller lagringsutrymmet"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -141,15 +168,15 @@ msgstr ""
 "diagrammen bestämma hur de ska bete sig baserat på strömsparläge och GTK:s "
 "globala animeringsinställningar."
 
-#: data/ui/app-dialog.ui:77
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "Programmet körs utan något synligt fönster"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "Avsluta program"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Tvinga avslut"
 
@@ -179,27 +206,27 @@ msgstr "Försök med en annan sökning"
 msgid "Application is running in background"
 msgstr "Programmet körs i bakgrunden"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "Programmet använder optimerat spelläge"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "Avsluta %s?"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
 msgstr ""
 "Att stoppa program kan ha sidoeffekter som dataförlust av osparat arbete."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "Avsluta"
 
@@ -215,27 +242,27 @@ msgstr "Hempartition"
 msgid "Swap"
 msgstr "Växlingsutrymme"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "Sök"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "Sök program…"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "_Om Användning"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "Gruppera systemprocesser"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "Visa alla processer"
 
@@ -247,7 +274,7 @@ msgstr "Processor"
 msgid "Memory"
 msgstr "Minne"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:214
 msgid "System"
 msgstr "System"
 
@@ -263,7 +290,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Josef Andersson <josef.andersson@fripost.org>, 2016, 2017\n"
-"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019\n"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019, 2023, 2024\n"
 "Luna Jernberg <droidbittin@gmail.com>, 2021"
 
 #: src/cpu-view.vala:33
@@ -325,6 +352,18 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Ett trevligt sätt att se information om användning av systemresurser"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "Ett enkelt program för att övervaka och analysera systemresurser såsom "
+#~ "processor- och minnesanvändning för körande program och använt "
+#~ "lagringsutrymme."
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "Osparat arbete kan gå förlorat."
@@ -449,9 +488,6 @@ msgstr "%llu B/s"
 
 #~ msgid "Data"
 #~ msgstr "Data"
-
-#~ msgid "No applications using memory."
-#~ msgstr "Inga program använder minne."
 
 #~ msgid "Power"
 #~ msgstr "Ström"
