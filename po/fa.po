@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-03-19 23:24+0000\n"
-"PO-Revision-Date: 2024-05-01 03:23+0330\n"
+"POT-Creation-Date: 2024-08-24 13:11+0000\n"
+"PO-Revision-Date: 2024-09-07 13:45+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -16,28 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5 data/org.gnome.Usage.desktop.in.in:3
-#: data/ui/window.ui:18 data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3 data/org.gnome.Usage.metainfo.xml.in.in:17
+#: data/ui/window.ui:18 data/ui/window.ui:33
 msgid "Usage"
 msgstr "استفاده"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "توسعه‌دهندگان استفاده"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr "روشی خوب برای دیدن اطّلاعات دربارهٔ استفاده از منابع سامانه‌ای"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"برنامه‌ای ساده برای پایش و تحلیل منابع سامانه‌ای چون استفادهٔ حافظه و پردازندهٔ "
-"کاره‌های در حال اجرا و استفادهٔ ذخیره‌ساز."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -53,6 +37,49 @@ msgid ""
 msgstr ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
 "پایش;سامانه;فرایند;پردانده;حافظه;شبکه;تاریخچه;استفاده;وظیفه;مدیر;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "توسعه‌دهندگان استفاده"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "تجزیه و تحلیل سامانه‌تان"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses its "
+"resources."
+msgstr ""
+"استفاده با روش‌هایی آسان‌فهم به تجزیه و تحلیل چگونگی استفادهٔ سامانه از منابعش کمک "
+"می‌کند."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, helps "
+"find performance issues."
+msgstr ""
+"دسترسی ساده به این که کدام کاره چه مقدار توان پردازشی یا حافظه استفاده می‌کند کمک "
+"به یافتن مشکلات کارایی."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary leftover "
+"files."
+msgstr ""
+"نمای ذخیره سازی درکی برای ساده سازی پاک کردن پرونده‌ّای ماندهٔ نالازم فراهم می‌کند."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "دیدن این که که توان پردازشی کجا می‌رود"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "فهمیدن این که که کدام برنامه از حافظه استفاده می‌کند"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "یافتن چیزی که ذخیره‌ساز را پر کرده"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -203,27 +230,27 @@ msgstr "افزار خانگی"
 msgid "Swap"
 msgstr "مبادله"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "جست‌وجو"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "جست‌وجوی برنامه‌ها…"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "_دربارهٔ استفاده"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "گروه‌بندی فرایندهای سامانه"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "نمایش همهٔ فرایندها"
 
@@ -307,6 +334,16 @@ msgstr "%s/ث"
 #, c-format
 msgid "%llu B/s"
 msgstr "%Illu ب/ث"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr "روشی خوب برای دیدن اطّلاعات دربارهٔ استفاده از منابع سامانه‌ای"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU and "
+#~ "memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "برنامه‌ای ساده برای پایش و تحلیل منابع سامانه‌ای چون استفادهٔ حافظه و پردازندهٔ "
+#~ "کاره‌های در حال اجرا و استفادهٔ ذخیره‌ساز."
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "ممکن است کارهای ذخیره نشده از دست بروند."
