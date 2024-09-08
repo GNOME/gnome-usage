@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-16 17:38+0000\n"
-"PO-Revision-Date: 2024-02-23 01:09+0100\n"
+"POT-Creation-Date: 2024-08-24 13:11+0000\n"
+"PO-Revision-Date: 2024-09-09 01:24+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -19,32 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.08.4\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Használat"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "A Használat fejlesztői"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Remek eszköz a rendszer erőforrás-használati információinak megjelenítésére"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-#| msgid ""
-#| "A simple GNOME 3 application to monitor and analyze system resources such "
-#| "as processing, memory, and storage."
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"Egyszerű alkalmazás a rendszererőforrások figyelésére és elemzésére, mint"
-" például futó alkalmazások processzor- és memóriahasználata, valamint"
-" tárolóhasználat."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -62,6 +41,51 @@ msgid ""
 msgstr ""
 "Figyelő;Rendszer;Folyamat;CPU;Memória;Hálózat;Előzmények;Használat;"
 "Teljesítmény;Feladat;Kezelő;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "A Használat fejlesztői"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "A rendszer elemzése"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"A Használat segít egyszerűen érthető módon elemezni, hogy a rendszer hogyan"
+" használja az erőforrásait."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Könnyű hozzáférés ahhoz, hogy melyik alkalmazás mennyi feldolgozási"
+" teljesítményt vagy memóriát használ, segít megtalálni a"
+" teljesítményproblémákat."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"A tárolási nézet betekintést nyújt a feleslegesen megmaradt fájlok"
+" tisztításának egyszerűsítéséhez."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Annak megnézése, hogy hová kerül a feldolgozási teljesítmény"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Annak megértése, hogy melyik alkalmazás használja a memóriát"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Annak megkeresése, hogy mi tölti ki a tárolóhelyet"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -82,8 +106,8 @@ msgid ""
 "The time span for up to which the CPU and memory graphs in the performance "
 "tab and its sidebar go back in time in milliseconds."
 msgstr ""
-"Az az időtartam ezredmásodpercben, ameddig a teljesítmény lapon és annak"
-" oldalsávján lévő processzor- és memóriagrafikonok visszamennek az időben."
+"Az az időtartam ezredmásodpercben, ameddig a teljesítmény lapon és annak "
+"oldalsávján lévő processzor- és memóriagrafikonok visszamennek az időben."
 
 #: data/org.gnome.Usage.gschema.xml.in:18
 msgid "interval (ms) for the performance data refresh"
@@ -94,14 +118,15 @@ msgid ""
 "The interval at which the data for the performance tab are updated and "
 "displayed periodically in milliseconds."
 msgstr ""
-"Az az időköz ezredmásodpercben, amely gyakorisággal a teljesítmény lap adatai"
-" rendszeresen frissülnek és megjelennek."
+"Az az időköz ezredmásodpercben, amely gyakorisággal a teljesítmény lap "
+"adatai rendszeresen frissülnek és megjelennek."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
 msgid ""
 "minimum relative load (%) of an app to be displayed in the performance tab"
 msgstr ""
-"a teljesítmény lapon megjelenítendő alkalmazás legkisebb relatív terhelése (%)"
+"a teljesítmény lapon megjelenítendő alkalmazás legkisebb relatív terhelése "
+"(%)"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
@@ -110,11 +135,11 @@ msgid ""
 "listed. With 100 an app is only listed if its processes fully utilise all "
 "CPU threads."
 msgstr ""
-"Az a terhelés, amellyel egy alkalmazásnak az összes folyamatának"
-" összesítéseként, 100-ra normalizálva kell rendelkeznie ahhoz, hogy a"
-" teljesítmény lapon szerepeljen. A 0-s értékkel az összes alkalmazás szerepel"
-" a listán. A 100-as értékkel egy alkalmazás csak akkor szerepel a listán, ha"
-" a folyamatai teljesen kihasználják az összes CPU-szálat."
+"Az a terhelés, amellyel egy alkalmazásnak az összes folyamatának "
+"összesítéseként, 100-ra normalizálva kell rendelkeznie ahhoz, hogy a "
+"teljesítmény lapon szerepeljen. A 0-s értékkel az összes alkalmazás szerepel "
+"a listán. A 100-as értékkel egy alkalmazás csak akkor szerepel a listán, ha "
+"a folyamatai teljesen kihasználják az összes CPU-szálat."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -127,9 +152,9 @@ msgid ""
 "The minimum amount of memory an app has to use in total as the sum over all "
 "its processes in bytes to be listed in the performance tab."
 msgstr ""
-"Az a legkisebb memóriamennyiség, amelyet egy alkalmazásnak az összes"
-" folyamata összesített memóriahasználataként, bájtban kifejezve kell"
-" felhasználnia ahhoz, hogy a teljesítmény lapon szerepeljen."
+"Az a legkisebb memóriamennyiség, amelyet egy alkalmazásnak az összes "
+"folyamata összesített memóriahasználataként, bájtban kifejezve kell "
+"felhasználnia ahhoz, hogy a teljesítmény lapon szerepeljen."
 
 #: data/org.gnome.Usage.gschema.xml.in:45
 msgid "Force graphs to not continuously scrolling"
@@ -142,21 +167,21 @@ msgid ""
 "disabled, the graphs will decide, based on power-saving mode and GTK's "
 "global animations settings, how to behave."
 msgstr ""
-"Ha engedélyezve van, akkor a teljesítménygrafikonok kényszerítve lesznek,"
-" hogy ne gördüljenek folyamatosan, hanem csak akkor ugorjanak, amikor új"
-" adatpont kerül hozzáadásra. Ha le van tiltva, akkor a grafikonok az"
-" energiatakarékos mód és a GTK globális animációs beállításai alapján"
-" döntenek arról, hogy hogyan viselkedjenek."
+"Ha engedélyezve van, akkor a teljesítménygrafikonok kényszerítve lesznek, "
+"hogy ne gördüljenek folyamatosan, hanem csak akkor ugorjanak, amikor új "
+"adatpont kerül hozzáadásra. Ha le van tiltva, akkor a grafikonok az "
+"energiatakarékos mód és a GTK globális animációs beállításai alapján "
+"döntenek arról, hogy hogyan viselkedjenek."
 
-#: data/ui/app-dialog.ui:77
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "Az alkalmazás látható ablak nélkül fut"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "Kilépés az alkalmazásból"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Erőltetett kilépés"
 
@@ -186,29 +211,28 @@ msgstr "Próbáljon másfajta keresést"
 msgid "Application is running in background"
 msgstr "Az alkalmazás a háttérben fut"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "Az alkalmazás optimalizált játékmódot használ"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
-#| msgid "Force Quit %s?"
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "Kilép ebből: %s?"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
 msgstr ""
-"Az alkalmazások leállítása mellékhatásokkal járhat, például a nem mentett"
-" munkák adatvesztésével."
+"Az alkalmazások leállítása mellékhatásokkal járhat, például a nem mentett "
+"munkák adatvesztésével."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Mégse"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -224,27 +248,27 @@ msgstr "Saját mappa partíciója"
 msgid "Swap"
 msgstr "Cserehely"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "Keresés"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "Alkalmazások keresése…"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "A Használat _névjegye"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "Rendszerfolyamatok csoportosítása"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "Összes folyamat megjelenítése"
 
@@ -256,7 +280,7 @@ msgstr "Processzor"
 msgid "Memory"
 msgstr "Memória"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Rendszer"
 
@@ -278,7 +302,6 @@ msgstr "Processzor"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
-#| msgid "%s selected"
 msgid "%s selected"
 msgid_plural "%s selected"
 msgstr[0] "%s kiválasztva"
@@ -293,7 +316,6 @@ msgid "If you delete these items, they will be permanently lost."
 msgstr "Ha törli ezeket az elemeket, véglegesen elvesznek."
 
 #: src/storage/storage-actionbar.vala:53
-#| msgid "Delete…"
 msgid "Delete"
 msgstr "Törlés"
 
@@ -315,7 +337,6 @@ msgstr "Operációs rendszer"
 
 #: src/storage/storage-view.vala:268
 #, c-format
-#| msgid "Available"
 msgid "%s available"
 msgid_plural "%s available"
 msgstr[0] "%s elérhető"
