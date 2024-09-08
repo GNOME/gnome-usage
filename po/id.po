@@ -1,35 +1,39 @@
 # Indonesian translation for gnome-usage.
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Andika Triwidada <atriwidada@gnome.org>, 2018
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2022, 2023.
+# Andika Triwidada <andika@gmail.com>, 2018, 2024.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2019, 2022, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-usage master\n"
+"Project-Id-Version: gnome-usage gnome-46\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2023-10-14 21:13+0000\n"
-"PO-Revision-Date: 2023-11-15 15:38+0700\n"
-"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"POT-Creation-Date: 2024-08-24 13:09+0000\n"
+"PO-Revision-Date: 2024-09-08 18:45+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:16
-#: src/application.vala:73
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Pemakaian"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "Usage developers"
+msgstr "Pengembang Pemakaian"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:10
 msgid "A nice way to view information about use of system resources"
 msgstr ""
 "Cara yang baik untuk melihat informasi tentang penggunaan sumber daya sistem"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:12
 msgid ""
 "A simple application to monitor and analyze system resources such as CPU and "
 "memory usage of running apps, and storage usage."
@@ -135,16 +139,28 @@ msgstr ""
 "dinonaktifkan, grafik akan menentukan, berdasarkan mode hemat daya dan "
 "pengaturan animasi global GTK, bagaimana perilakunya."
 
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "Aplikasi berjalan tanpa jendela yang tampak"
+
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Keluar Aplikasi"
+
+#: data/ui/app-dialog.ui:149
+msgid "Force Quit"
+msgstr "Keluar Paksa"
+
 #: data/ui/memory-speedometer.ui:33
 msgid "RAM"
 msgstr "RAM"
 
-#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:49
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
 #: data/ui/swap-speedometer.ui:45
 msgid "Used"
 msgstr "Terpakai"
 
-#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:55
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Tersedia"
@@ -157,28 +173,40 @@ msgstr "Hasil tak ditemukan"
 msgid "Try a different search"
 msgstr "Coba pencarian berbeda"
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:8
-msgid "Force Quit %s?"
-msgstr "Keluar Paksa %s?"
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Aplikasi sedang berjalan di latar belakang"
 
-#: data/ui/quit-process-dialog.ui:9
-msgid "Unsaved work might be lost."
-msgstr "Pekerjaan yang belum disimpan bisa hilang."
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "Aplikasi memakai mode permainan teroptimasi"
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:49
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "Keluar %s?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Menghentikan aplikasi dapat menyebabkan efek samping, seperti misalnya "
+"kehilangan data atas pekerjaan yang belum disimpan."
+
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Batal"
 
-#: data/ui/quit-process-dialog.ui:15
-msgid "Force Quit"
-msgstr "Keluar Paksa"
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Keluar"
 
 #: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Hapus…"
 
-#: data/ui/storage-view.ui:41
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Partisi Home"
 
@@ -186,27 +214,43 @@ msgstr "Partisi Home"
 msgid "Swap"
 msgstr "Swap"
 
-#: data/ui/window.ui:34
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "Menu Utama"
 
-#: data/ui/window.ui:71
+#: data/ui/window.ui:98
+msgid "Search"
+msgstr "Cari"
+
+#: data/ui/window.ui:117
+msgid "Search Applications…"
+msgstr "Cari Aplikasi…"
+
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "Tent_ang Pemakaian"
 
-#: data/ui/window.ui:77
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "Proses sistem grup"
 
-#: data/ui/window.ui:83
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "Tampilkan semua proses"
 
-#: src/app-item.vala:147
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "CPU"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Memori"
+
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Sistem"
 
-#: src/application.vala:74
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -214,36 +258,31 @@ msgstr ""
 "Cara yang baik untuk melihat informasi tentang penggunaan sumber daya "
 "sistem, seperti memori dan ruang diska."
 
-#: src/application.vala:77
+#: src/application.vala:76
 msgid "translator-credits"
-msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019, 2023."
+msgstr ""
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2019, 2023.\n"
+"Andika Triwidada <andika@gmail.com>, 2024."
 
-#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Prosesor"
 
-#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
-msgid "Memory"
-msgstr "Memori"
-
-#: src/performance-view.vala:44
-msgid "Performance"
-msgstr "Performa"
-
-#: src/storage/storage-actionbar.vala:39
+#: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
-msgstr "%s dipilih"
+msgid_plural "%s selected"
+msgstr[0] "%s dipilih"
 
-#: src/storage/storage-actionbar.vala:44
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Apakah Anda yakin ingin menghapus permanen butir yang dipilih?"
 
-#: src/storage/storage-actionbar.vala:45
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Jika Anda menghapus butir-butir ini, mereka akan hilang selamanya."
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:53
 msgid "Delete"
 msgstr "Hapus"
 
@@ -255,133 +294,31 @@ msgstr ""
 "Berkas sistem operasi adalah bagian penting dari sistem Anda dan tidak dapat "
 "dihapus."
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:80
 msgid "Storage"
 msgstr "Penyimpanan"
 
-#: src/storage/storage-view.vala:234
+#: src/storage/storage-view.vala:240
 msgid "Operating System"
 msgstr "Sistem Operasi"
 
-#: src/utils.vala:52
+#: src/storage/storage-view.vala:268
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s tersedia"
+
+#: src/utils.vala:58
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
-#: src/utils.vala:57
+#: src/utils.vala:63
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
 
-#: src/utils.vala:59
+#: src/utils.vala:65
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
-
-#~ msgid "GNOME Usage"
-#~ msgstr "GNOME Pemakaian"
-
-#~ msgid "Websites"
-#~ msgstr "Situs Web"
-
-#~ msgid "Scanning directories"
-#~ msgstr "Memindai direktori"
-
-#~ msgid "label"
-#~ msgstr "label"
-
-#~ msgid "org.gnome.Usage"
-#~ msgstr "org.gnome.Usage"
-
-#~ msgid "Move to"
-#~ msgstr "Pindah ke"
-
-#~ msgid "Move to Trash"
-#~ msgstr "Pindahkan ke Tong Sampah"
-
-#~ msgid "Empty folder"
-#~ msgstr "Kosongkan folder"
-
-#~ msgid "Restore"
-#~ msgstr "Kembalikan"
-
-#~ msgid "Delete from Trash"
-#~ msgstr "Hapus dari Tong Sampah"
-
-#~ msgid "No content here"
-#~ msgstr "Tidak ada konten di sini"
-
-#~ msgid "Click on items to select them"
-#~ msgstr "Klik pada butir untuk memilihnya"
-
-#~ msgid "Select all"
-#~ msgstr "Pilih semua"
-
-#~ msgid "Select None"
-#~ msgstr "Pilih Tak Satupun"
-
-#~ msgid "Select destination folder"
-#~ msgstr "Pilih folder tujuan"
-
-#~ msgid "Select"
-#~ msgstr "Pilih"
-
-#~ msgid "Are you sure you want to permanently delete “%s”?"
-#~ msgstr "Apakah Anda yakin ingin menghapus \"%s\" secara permanen?"
-
-#~ msgid "Empty all items from Trash?"
-#~ msgstr "Kosongkan semua item dari Tempat Sampah?"
-
-#~ msgid "All items in the Trash will be permanently deleted."
-#~ msgstr "Semua item dalam Tong Sampah akan dihapus secara permanen."
-
-#~ msgid "Empty all items from %s?"
-#~ msgstr "Kosongkan semua item dari %s?"
-
-#~ msgid "All items in the %s will be moved to the Trash."
-#~ msgstr "Semua item di %s akan dipindahkan ke Tong Sampah."
-
-#~ msgid "Storage 1"
-#~ msgstr "Penyimpanan 1"
-
-#~ msgid "Storage 2"
-#~ msgstr "Penyimpanan 2"
-
-#~ msgid "Capacity"
-#~ msgstr "Kapasitas"
-
-#~ msgid "Home"
-#~ msgstr "Beranda"
-
-#~ msgid "Trash"
-#~ msgstr "Tong Sampah"
-
-#~ msgid "Empty"
-#~ msgstr "Kosong"
-
-#~ msgid "Empty Trash"
-#~ msgstr "Kosongkan Tong Sampah"
-
-#~ msgid "Rename"
-#~ msgstr "Ubah Nama"
-
-#~ msgid "Are you sure you want to permanently delete %s?"
-#~ msgstr "Anda yakin akan menghapus permanen \"%s\"?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Jika Anda menghapus suatu butir, itu akan hilang selamanya."
-
-#~ msgid "Others"
-#~ msgstr "Lainnya"
-
-#~ msgid "About"
-#~ msgstr "Tentang"
-
-#~ msgid "Quit"
-#~ msgstr "Keluar"
-
-#~ msgid "Are you sure you want to permanently delete \"%s\" ?"
-#~ msgstr "Anda yakin akan menghapus permanen \"%s\"?"
-
-#~ msgid "Move to trash"
-#~ msgstr "Pindahkan ke tong sampah"
