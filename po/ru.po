@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-17 01:00+0000\n"
-"PO-Revision-Date: 2024-02-17 12:45+1000\n"
+"POT-Creation-Date: 2024-08-28 15:03+0000\n"
+"PO-Revision-Date: 2024-08-30 14:43+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -19,29 +19,11 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Usage"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Разработчики «Usage»"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Хороший способ просмотра информации об использовании системных ресурсов"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"Простое приложение для мониторинга и анализа системных ресурсов, таких как "
-"использование процессора и памяти запущенных приложений, а также дискового "
-"пространства."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -60,6 +42,49 @@ msgstr ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;Мониторинг;Система;Процесс;Процессор;Память;Сеть;История;"
 "Использование;Производительность;Задачи;Менеджер;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Разработчики «Usage»"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Проанализируйте свою систему"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"«Usage» предлагает простые способы анализа использования системных ресурсов."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Простой доступ к данным об использовании приложениями процессора или памяти, "
+"помогает выявить проблемы с производительностью."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Панель просмотра хранилища позволяет получить представление о том, как лучше "
+"провести очистку от ненужных остаточных файлов."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Посмотрите на что уходит вычислительная мощность"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Узнайте, какое приложение использует память"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Посмотрите, чем заполнено хранилище"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -149,15 +174,15 @@ msgstr ""
 "поведение будет определяться на основе параметров энергосбережения и "
 "глобальных настроек анимации GTK."
 
-#: data/ui/app-dialog.ui:77
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "Приложение работает без видимого окна"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "Закрыть приложение"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Принудительный выход"
 
@@ -187,16 +212,16 @@ msgstr "Попробуйте другой поиск"
 msgid "Application is running in background"
 msgstr "Приложение работает в фоновом режиме"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "Приложение использует оптимизированный игровой режим"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "Завершить работу %s?"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
@@ -204,11 +229,11 @@ msgstr ""
 "Остановка работы приложений может привести к нежелательным последствиям, "
 "таким как потеря несохранённых данных."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Отменить"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "Завершить"
 
@@ -224,27 +249,27 @@ msgstr "Домашний раздел"
 msgid "Swap"
 msgstr "Подкачка"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "Поиск"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "Поиск приложений…"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "_О приложении"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "Группа системных процессов"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "Показать все процессы"
 
@@ -256,7 +281,7 @@ msgstr "ЦП"
 msgid "Memory"
 msgstr "Память"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Система"
 
@@ -338,6 +363,18 @@ msgstr "%s/с"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Хороший способ просмотра информации об использовании системных ресурсов"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "Простое приложение для мониторинга и анализа системных ресурсов, таких "
+#~ "как использование процессора и памяти запущенных приложений, а также "
+#~ "дискового пространства."
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "Несохраненная работа может быть потеряна."
