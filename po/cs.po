@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-16 17:38+0000\n"
-"PO-Revision-Date: 2024-02-19 20:24+0100\n"
+"POT-Creation-Date: 2024-08-24 13:11+0000\n"
+"PO-Revision-Date: 2024-09-10 19:26+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -17,30 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Využití"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Vývojáři aplikace Využití"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Elegantní způsob, jak zobrazit informace o využití systémových prostředků."
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"Jednoduchá aplikace ke sledování a analýze systémových prostředků, jako je "
-"využití procesoru a paměti běžícími aplikacemi a využití úložiště."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -58,6 +41,50 @@ msgid ""
 msgstr ""
 "monitor;monitorovat;sledování;sledovat;systém;proces;CPU;procesor;paměť;"
 "operační paměť;síť;historie;využití;vytížení;výkon;úloha;správce;správa;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Vývojáři aplikace Využití"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Analyzujte svůj systém"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Využití pomáhá s jednoduchými způsoby, jak analyzovat využívání svých zdrojů "
+"systémem."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Snadný přístup k tomu, která aplikace využívá jaké množství výpočetního "
+"výkonu nebo paměti, pomáhá najít problémy s výkonem."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Zobrazení úložiště poskytuje přehled, který zjednodušuje čištění "
+"nepotřebných zbývajících souborů."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Podívejte se, kam se ztrácí výpočetní výkon"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Zjistěte, která aplikace využívá paměť"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Najděte, co zaplňuje úložiště"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -125,15 +152,15 @@ msgid ""
 "global animations settings, how to behave."
 msgstr ""
 
-#: data/ui/app-dialog.ui:77
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "Aplikace běží bez viditelného okna"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "Ukončit aplikaci"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Vynutit ukončení"
 
@@ -163,17 +190,16 @@ msgstr "Zkuste hledat něco jiného"
 msgid "Application is running in background"
 msgstr "Aplikace běží na pozadí"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "Aplikace využívá optimalizovaný herní režim"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
-#| msgid "Force Quit %s?"
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "Ukončit %s?"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
@@ -181,11 +207,11 @@ msgstr ""
 "Ukončení aplikací může mít nežádoucí účinky, například ztrátu dat neuložené "
 "práce."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "Ukončit"
 
@@ -201,27 +227,27 @@ msgstr "Domovský oddíl"
 msgid "Swap"
 msgstr "Odkládací prostor"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:86
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:98
 msgid "Search"
 msgstr "Hledat"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:117
 msgid "Search Applications…"
 msgstr "hledat aplikace…"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:151
 msgid "_About Usage"
 msgstr "O _aplikaci Využití"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:157
 msgid "Group system processes"
 msgstr "Seskupovat systémové procesy"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:163
 msgid "Show all processes"
 msgstr "Zobrazovat všechny procesy"
 
@@ -233,7 +259,7 @@ msgstr "Procesor"
 msgid "Memory"
 msgstr "Paměť"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Systém"
 
@@ -312,6 +338,17 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Elegantní způsob, jak zobrazit informace o využití systémových prostředků."
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "Jednoduchá aplikace ke sledování a analýze systémových prostředků, jako "
+#~ "je využití procesoru a paměti běžícími aplikacemi a využití úložiště."
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "Můžete přijít o neuloženou práci."
