@@ -23,7 +23,7 @@ public abstract class Usage.PerformanceGraphView : GraphView {
     private bool constant_redraw;
 
     construct {
-        this.range_y = 100;
+        this.range_y = 1;
         this.offset_y = 0;
         this.range_x = 1000 * settings.graph_timespan;
         this.update_x_offset ();

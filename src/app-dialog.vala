@@ -91,10 +91,10 @@ public class Usage.AppDialog : Adw.Dialog {
 
         AppDialogProperty cpu_property = new AppDialogProperty () {
             name = _("CPU"),
-            @value = "%.1f %%".printf (this.app.cpu_load),
+            @value = "%.1f %%".printf (this.app.cpu_load * 100),
         };
         this.app.notify["cpu-load"].connect (() => {
-            cpu_property.@value = "%.1f %%".printf (this.app.cpu_load);
+            cpu_property.@value = "%.1f %%".printf (this.app.cpu_load * 100);
             cpu_property.notify_property ("value");
         });
         AppDialogProperty memory_property = new AppDialogProperty () {

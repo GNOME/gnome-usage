@@ -276,7 +276,7 @@ public class Usage.AppItem : Object {
         }
 
         this.gamemode = games > 0;
-        this.cpu_load = cpu_load / get_num_processors ();
+        this.cpu_load = cpu_load;
         this.mem_usage = mem_usage;
     }
 

@@ -50,7 +50,7 @@ public class Usage.CpuView : View {
                 return item.cpu_load > Settings.get_default ().app_minimum_load;
             },
             load_widget_factory = (item) => {
-                Gtk.Label load_label = new Gtk.Label ("%.1f %%".printf (item.cpu_load));
+                Gtk.Label load_label = new Gtk.Label ("%.1f %%".printf (item.cpu_load * 100));
 
                 load_label.ellipsize = Pango.EllipsizeMode.END;
                 load_label.max_width_chars = 30;

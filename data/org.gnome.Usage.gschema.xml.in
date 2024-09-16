@@ -22,13 +22,13 @@
             </description>
         </key>
         <key name="app-minimum-load" type="d">
-            <default>0.2</default>
-            <summary>minimum relative load (%) of an app to be displayed in the performance tab</summary>
+            <default>0.002</default>
+            <summary>minimum relative load of an app to be displayed in the performance tab</summary>
             <description>
               The load an app has to have in total as the sum over all its
-              processes, normalized to 100, to be listed in the performance tab.
-              With 0, all apps are listed. With 100 an app is only listed if its
-              processes fully utilise all CPU threads.
+              processes, normalized to 1.00, to be listed in the performance
+              tab. With 0.00, all apps are listed. With 1.00 an app is only
+              listed if its processes fully utilise all CPU threads.
             </description>
         </key>
         <key name="app-minimum-memory" type="d">
