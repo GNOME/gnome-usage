@@ -22,7 +22,7 @@
             </description>
         </key>
         <key name="app-minimum-load" type="d">
-            <default>0.002</default>
+            <default>0</default>
             <summary>minimum relative load of an app to be displayed in the performance tab</summary>
             <description>
               The load an app has to have in total as the sum over all its
