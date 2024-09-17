@@ -28,7 +28,6 @@ vala_sources = [
   'storage/storage-actionbar.vala',
   'storage/storage-graph.vala',
   'storage/query-builder.vala',
-  'storage/storage-row-popover.vala',
   'storage/storage-view-item.vala',
   'storage/storage-view.vala',
   'storage/storage-view-row.vala',

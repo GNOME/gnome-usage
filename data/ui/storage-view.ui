@@ -81,9 +81,6 @@
                             </style>
                           </object>
                         </child>
-                        <child>
-                          <object class="UsageStorageRowPopover" id="row_popover"></object>
-                        </child>
                       </object>
                     </property>
                   </object>

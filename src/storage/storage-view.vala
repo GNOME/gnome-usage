@@ -47,9 +47,6 @@ public class Usage.StorageView : Usage.View {
     [GtkChild]
     private unowned Gtk.ProgressBar directory_loading_bar;
 
-    [GtkChild]
-    private unowned StorageRowPopover row_popover;
-
     private Sparql.Connection connection;
     private TrackerController controller;
     private StorageQueryBuilder query_builder;
@@ -121,9 +118,7 @@ public class Usage.StorageView : Usage.View {
             selected_items_stack.push_head ((owned) selected_items);
             clear_selected_items ();
             present_dir.begin (storage_row.item.uri, storage_row.item.dir, cancellable);
-        } else if (storage_row.item.custom_type != StorageViewType.NONE) {
-            row_popover.popup_on_row (storage_row);
-        } else {
+        } else if (storage_row.item.custom_type == StorageViewType.NONE) {
             try {
                 AppInfo.launch_default_for_uri (storage_row.item.uri, null);
             } catch (GLib.Error error) {
