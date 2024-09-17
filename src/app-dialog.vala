@@ -121,9 +121,7 @@ public class Usage.AppDialog : Adw.Dialog {
             dialog.response.connect ((dialog, response_type) => {
                 if (response_type == "quit") {
                     this.quit_button.sensitive = false;
-                    this.quit_button.set_child (new Gtk.Spinner () {
-                          spinning = true,
-                    });
+                    this.quit_button.set_child (new Adw.Spinner ());
 
                     this.app.notify["running"].connect (() => {
                         if (!this.app.is_running ()) {

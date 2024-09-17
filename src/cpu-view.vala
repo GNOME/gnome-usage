@@ -59,13 +59,10 @@ public class Usage.CpuView : View {
             },
         });
 
-        var spinner = new Gtk.Spinner ();
-        spinner.map.connect (spinner.start);
-        spinner.unmap.connect (spinner.stop);
-        spinner.margin_top = 30;
-        spinner.height_request = 250;
-        spinner.hexpand = true;
-        spinner.halign = Gtk.Align.CENTER;
+        var spinner = new Adw.Spinner () {
+            margin_top = 30,
+            height_request = 250,
+        };
 
         no_process_view = new NoResultsFoundView ();
 

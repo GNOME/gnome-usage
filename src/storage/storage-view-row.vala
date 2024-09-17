@@ -39,7 +39,7 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
     public unowned Gtk.Label size_label;
 
     [GtkChild]
-    public unowned Gtk.Spinner spinner;
+    public unowned Adw.Spinner spinner;
 
     [GtkChild]
     public unowned Gtk.Box tag;
@@ -91,14 +91,12 @@ public class Usage.StorageViewRow : Gtk.ListBoxRow {
 
             if (!item.loaded) {
                 spinner.visible = true;
-                spinner.start ();
                 size_label.visible = false;
             }
 
             item.notify["loaded"].connect (() => {
                 if (item.loaded) {
                     spinner.visible = false;
-                    spinner.stop ();
                     size_label.visible = true;
                 }
             });
