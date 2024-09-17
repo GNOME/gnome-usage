@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:11+0000\n"
-"PO-Revision-Date: 2024-08-24 21:28+0800\n"
+"POT-Creation-Date: 2024-09-16 20:22+0000\n"
+"PO-Revision-Date: 2024-09-17 09:28+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -110,19 +110,18 @@ msgid ""
 msgstr "性能标签页中数据以毫秒为单位周期性更新和显示的时间间隔。"
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
-msgstr "在性能标签页中显示的应用最小相关性负载（%）"
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr "在性能标签页中显示的应用最小相关性负载"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
-"在性能标签页中列出的总计其所有进程之和标准化至 100 的应用负载。若为 0，则列出"
-"所有应用。若为 100，则仅列出其进程完全利用所有处理器线程的应用。"
+"在性能标签页中列出的总计其所有进程之和标准化至 1.00 的应用负载。若为 0.00，则"
+"列出所有应用。若为 1.00，则仅列出其进程完全利用所有处理器线程的应用。"
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -222,27 +221,27 @@ msgstr "用户分区"
 msgid "Swap"
 msgstr "交换分区"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "搜索"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "搜索应用程序…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "关于使用情况(_A)"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "合并系统进程"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "显示所有进程"
 
@@ -254,17 +253,17 @@ msgstr "处理器"
 msgid "Memory"
 msgstr "内存"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "系统"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr "查看系统资源使用信息的好方法，如内存和磁盘空间。"
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "Tranquilo Chan <cdh4227@qq.com>, 2020.\n"
