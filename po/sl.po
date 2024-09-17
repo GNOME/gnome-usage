@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:11+0000\n"
-"PO-Revision-Date: 2024-08-25 16:57+0200\n"
+"POT-Creation-Date: 2024-09-16 20:22+0000\n"
+"PO-Revision-Date: 2024-09-17 17:22+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -123,23 +123,22 @@ msgstr ""
 "posodabljajo in prikazujejo periodično v milisekundah."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"Najmanjša relativna obremenitev programa (%), ki bo prikazana na zavihku "
+"Najmanjša relativna obremenitev programa, ki bo prikazana na zavihku "
 "»Učinkovitost delovanja«"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
 "Obremenitev, ki jo mora imeti program, je skupna vsota vseh procesov, "
-"normalizirana na 100, ki bo navedena na zavihku učinkovitosti delovanja. Z 0 "
-"so navedeni vsi programi. S številko 100 je program naveden le, če njegoci "
-"procesi v celoti uporabljajo vse niti CPE."
+"normalizirana na 1,00, ki bo navedena na zavihku učinkovitosti delovanja. Z "
+"0,00 so izpisani vsi programi. S številko 1,00 je program naveden le, če "
+"njegovi procesi v celoti uporabljajo vse niti CPE."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -247,27 +246,27 @@ msgstr "Osebni razdelek (home)"
 msgid "Swap"
 msgstr "Izmenjevalni razdelek"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Išči"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Poišči program …"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_O programu"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Skupinska sistemska opravila"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Pokaži vsa opravila"
 
@@ -279,11 +278,11 @@ msgstr "CPE"
 msgid "Memory"
 msgstr "Pomnilnik"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "Sistem"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -291,7 +290,7 @@ msgstr ""
 "Učinkovit način za pregled podrobnosti o uporabi sistemskih virov, kot sta "
 "pomnilnik in prostor na disku."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
