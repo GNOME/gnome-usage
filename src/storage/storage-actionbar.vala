@@ -47,7 +47,7 @@ public class Usage.StorageActionBar : Adw.Bin {
         string display_message = _("Are you sure you want to permanently delete selected items?");
         string display_explanation = _("If you delete these items, they will be permanently lost.");
 
-        Adw.MessageDialog dialog = new Adw.MessageDialog ((Gtk.Window) this.get_root (), display_message, display_explanation);
+        Adw.AlertDialog dialog = new Adw.AlertDialog (display_message, display_explanation);
 
         dialog.add_response ("cancel",  _("Cancel"));
         dialog.add_response ("delete", _("Delete"));
@@ -74,7 +74,7 @@ public class Usage.StorageActionBar : Adw.Bin {
             }
             dialog.destroy ();
         });
-        dialog.present ();
+        dialog.present ((Gtk.Window) this.get_root ());
     }
 
     private void delete_file (string uri, bool delete_basefile) {
