@@ -9,7 +9,6 @@ data/ui/no-results-found-view.ui
 data/ui/process-row.ui
 data/ui/quit-process-dialog.ui
 data/ui/storage-actionbar.ui
-data/ui/storage-row-popover.ui
 data/ui/storage-view.ui
 data/ui/swap-speedometer.ui
 data/ui/window.ui
@@ -19,7 +18,6 @@ src/application.vala
 src/cpu-view.vala
 src/memory-view.vala
 src/storage/storage-actionbar.vala
-src/storage/storage-row-popover.vala
 src/storage/storage-view.vala
 src/utils.vala
 src/window.vala
