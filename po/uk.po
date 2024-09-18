@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:11+0000\n"
-"PO-Revision-Date: 2024-08-25 09:43+0300\n"
+"POT-Creation-Date: 2024-09-16 20:22+0000\n"
+"PO-Revision-Date: 2024-09-18 09:56+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -56,24 +56,24 @@ msgid ""
 "Usage helps with simple to understand ways to analyze how the system uses "
 "its resources."
 msgstr ""
-"«Використання» реалізує прості шляхи аналізу того, як ваша система"
-" використовує ресурси обладнання."
+"«Використання» реалізує прості шляхи аналізу того, як ваша система "
+"використовує ресурси обладнання."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:29
 msgid ""
 "Easy access to which app uses what amount of processing power or memory, "
 "helps find performance issues."
 msgstr ""
-"Простий доступ до даних щодо потужностей процесора або пам'яті, які"
-" використовує програма, допомагає боротися із проблемами зі швидкодією."
+"Простий доступ до даних щодо потужностей процесора або пам'яті, які "
+"використовує програма, допомагає боротися із проблемами зі швидкодією."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:33
 msgid ""
 "The storage view provides insight to simplify cleaning up unnecessary "
 "leftover files."
 msgstr ""
-"За допомогою панелі перегляду сховища даних вам простіше буде позбутися"
-" непотрібних залишкових файлів."
+"За допомогою панелі перегляду сховища даних вам простіше буде позбутися "
+"непотрібних залишкових файлів."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:42
 msgid "See where the processing power is going"
@@ -122,23 +122,30 @@ msgstr ""
 "Інтервал регулярного оновлення даних на вкладці швидкодії у мілісекундах."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+#| msgid ""
+#| "minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"мінімальна відносне навантаження (у %) для показу програми на вкладці "
+"мінімальна відносне навантаження для показу програми на вкладці "
 "швидкодії"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
+#| msgid ""
+#| "The load an app has to have in total as the sum over all its processes, "
+#| "normalized to 100, to be listed in the performance tab. With 0, all apps "
+#| "are listed. With 100 an app is only listed if its processes fully utilise "
+#| "all CPU threads."
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
-"Нормалізоване до 100 навантаження програмою, як сума для усіх її процесів, "
+"Нормалізоване до 1,00 навантаження програмою, як сума для усіх її процесів, "
 "яке достатнім для того, щоб програма потрапила до списку на вкладці "
-"швидкодії. Якщо вказати 0, буде у списку показано усі програми. Якщо вказати "
-"100, програма потрапить до списку, лише якщо її процеси повністю "
+"швидкодії. Якщо вказати 0,00, буде у списку показано усі програми. Якщо"
+" вказати "
+"1,00, програма потрапить до списку, лише якщо її процеси повністю "
 "використовують усі потоки обробки процесора."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
@@ -245,27 +252,27 @@ msgstr "Домашній розділ"
 msgid "Swap"
 msgstr "Резервна пам'ять"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Пошук"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Пошук програм…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_Про «Використання»"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Групувати процеси системи"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Показати усі процеси"
 
@@ -277,11 +284,11 @@ msgstr "Процесор"
 msgid "Memory"
 msgstr "Пам'ять"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "Система"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -289,7 +296,7 @@ msgstr ""
 "Чудовий спосіб переглянути відомості щодо використання ресурсів системи, "
 "зокрема пам'яті і місця на диску."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>"
 
