@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:11+0000\n"
-"PO-Revision-Date: 2024-08-26 23:40-0300\n"
+"POT-Creation-Date: 2024-09-18 15:41+0000\n"
+"PO-Revision-Date: 2024-09-20 23:43-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
@@ -122,23 +122,21 @@ msgstr ""
 "periodicamente em milissegundos."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"carga relativa mínima (%) de um aplicativo a ser exibida nas guias de "
-"desempenho."
+"carga relativa mínima de um aplicativo a ser exibida nas guias de desempenho."
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
 "A carga que um aplicativo deve ter no total como a soma de todos os seus "
-"processos, normalizada para 100, para ser listada na guia de desempenho. Com "
-"0, todos os aplicativos são listados. Com 100, um aplicativo só é listado se "
-"seus processos utilizarem totalmente todos os threads da CPU..."
+"processos, normalizada para 1.00, para ser listada na guia de desempenho. "
+"Com 0.00, todos os aplicativos são listados. Com 1.00, um aplicativo só é "
+"listado se seus processos utilizarem totalmente todos os threads da CPU..."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -248,27 +246,27 @@ msgstr "Partição Home"
 msgid "Swap"
 msgstr "Swap"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Pesquisar"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Pesquisar por aplicativos…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_Sobre o Uso"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Agrupar processos de sistema"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Mostrar todos os processos"
 
@@ -280,11 +278,11 @@ msgstr "CPU"
 msgid "Memory"
 msgstr "Memória"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "Sistema"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -292,7 +290,7 @@ msgstr ""
 "Uma forma legal de ver informações sobre o uso dos recursos do sistema, como "
 "memória e espaço em disco."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>\n"
@@ -322,23 +320,15 @@ msgstr "Se você excluir estes itens, eles serão permanentemente excluídos."
 msgid "Delete"
 msgstr "Excluir"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Os arquivos do sistema operacional são uma parte essencial de seu sistema e "
-"não podem ser removidos."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Armazenamento"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "Sistema operacional"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -359,6 +349,13 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Os arquivos do sistema operacional são uma parte essencial de seu sistema "
+#~ "e não podem ser removidos."
 
 #~ msgid "A nice way to view information about use of system resources"
 #~ msgstr ""
