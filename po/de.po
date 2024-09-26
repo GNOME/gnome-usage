@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-28 17:51+0000\n"
-"PO-Revision-Date: 2024-08-31 09:32+0200\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
+"POT-Creation-Date: 2024-09-18 15:41+0000\n"
+"PO-Revision-Date: 2024-09-21 11:53+0200\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -24,29 +24,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
 #: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Auslastung"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Auslastung-Entwickler"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Eine gute Möglichkeit, Informationen über die Verwendung von System-"
-"Ressourcen anzuzeigen"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"Eine einfache Anwendung zum Überwachen und Analysieren von System-Ressourcen "
-"wie Prozessor, Arbeitsspeicherbelegung und Festplattenspeicherbelegung."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -62,8 +44,52 @@ msgid ""
 "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
 "Manager;"
 msgstr ""
-"Überwachung;System;Prozess;CPU;Speicher;Netzwerk;Chronik;Last;Leistung;"
-"Aufgabe;Dienst;Verwaltung;"
+"Überwachung;System;Prozess;CPU;Arbeitsspeicher;Netzwerk;Chronik;Last;"
+"Leistung;Aufgabe;Dienst;Verwaltung;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Auslastung-Entwickler"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Ihr System analysieren"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Auslastung hilft mit einfach zu verstehenden Methoden zu analysieren, wie "
+"das System seine Ressourcen nutzt."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Einfacher Zugriff darauf, welche Anwendung wie viel Rechenleistung oder "
+"Arbeitsspeicher verwendet, hilft, Leistungsprobleme zu finden."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Die Speicheransicht gibt Einblicke, um das Bereinigen unnötiger übrig "
+"gebliebener Dateien zu vereinfachen."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Sehen, wohin die Rechenleistung fließt"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Verstehen, welche Anwendung den Arbeitsspeicher verbraucht"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Herausfinden, was den Speicher füllt"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -89,7 +115,7 @@ msgstr ""
 
 #: data/org.gnome.Usage.gschema.xml.in:18
 msgid "interval (ms) for the performance data refresh"
-msgstr "Interall (in ms) zwischen den Aktualisierungen der Leistungsdaten"
+msgstr "Intervall (in ms) zwischen den Aktualisierungen der Leistungsdaten"
 
 #: data/org.gnome.Usage.gschema.xml.in:19
 msgid ""
@@ -100,28 +126,28 @@ msgstr ""
 "periodisch aktualisiert und dargestellt werden."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"Minimale relative Last (%) einer App, die im Reiter Leistung angezeigt wird"
+"Minimale relative Last einer Anwendung, die im Reiter Leistung angezeigt wird"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
-"Die Last, die eine App insgesamt haben muss, um im Reiter Leistung "
+"Die Last, die eine Anwendung insgesamt haben muss, um im Reiter Leistung "
 "aufgelistet zu werden, als die Summe über alle ihre Prozesse, normalisiert "
-"auf 100. Mit 0 werden alle Apps aufgelistet. Mit 100 wird eine App nur "
-"aufgelistet, wenn alle ihre Prozesse alle Prozessor-Threads voll auslasten."
+"auf 1.00. Mit 0.00 werden alle Anwendungen aufgelistet. Mit 1.00 wird eine "
+"Anwendung nur aufgelistet, wenn alle ihre Prozesse alle Prozessor-Threads "
+"voll auslasten."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
 "minimum memory footprint of an app to be displayed in the performance tab"
 msgstr ""
-"Minimale Arbeitsspeicher-Belegung einer App, die im Reiter Leistung "
+"Minimale Arbeitsspeicher-Belegung einer Anwendung, die im Reiter Leistung "
 "angezeigt wird"
 
 #: data/org.gnome.Usage.gschema.xml.in:37
@@ -129,8 +155,9 @@ msgid ""
 "The minimum amount of memory an app has to use in total as the sum over all "
 "its processes in bytes to be listed in the performance tab."
 msgstr ""
-"Die minimale Arbeitsspeicher-Belegung in Byte, die eine App haben muss, als "
-"Summe aller ihrer Prozesse, damit sie im Reiter Leistung angezeigt wird."
+"Die minimale Arbeitsspeicher-Belegung in Byte, die eine Anwendung haben "
+"muss, als Summe aller ihrer Prozesse, damit sie im Reiter Leistung angezeigt "
+"wird."
 
 #: data/org.gnome.Usage.gschema.xml.in:45
 msgid "Force graphs to not continuously scrolling"
@@ -223,27 +250,27 @@ msgstr "Home-Partition"
 msgid "Swap"
 msgstr "Auslagerungsspeicher"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Suchen"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Anwendungen durchsuchen …"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_Info zu Auslastung"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Systemprozesse gruppieren"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Alle Prozesse anzeigen"
 
@@ -253,13 +280,13 @@ msgstr "CPU"
 
 #: src/app-dialog.vala:101 src/memory-view.vala:33
 msgid "Memory"
-msgstr "Speicher"
+msgstr "Arbeitsspeicher"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "System"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -267,7 +294,7 @@ msgstr ""
 "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
 "Ressourcen, wie Arbeitsspeicher und Speicherplatz, anzuzeigen."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "Mario Blättermann <mario.blaettermann@gmail.com>\n"
@@ -300,23 +327,15 @@ msgstr "Wenn Sie diese Objekte löschen, gehen sie dauerhaft verloren."
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Betriebssystem-Dateien sind ein wesentlicher Teil Ihres Systems und können "
-"nicht entfernt werden."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Speicher"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "Betriebssystem"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -339,6 +358,26 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Eine gute Möglichkeit, Informationen über die Verwendung von System-"
+#~ "Ressourcen anzuzeigen"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "Eine einfache Anwendung zum Überwachen und Analysieren von System-"
+#~ "Ressourcen wie Prozessor, Arbeitsspeicherbelegung und "
+#~ "Festplattenspeicherbelegung."
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Betriebssystem-Dateien sind ein wesentlicher Teil Ihres Systems und "
+#~ "können nicht entfernt werden."
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "Ungespeicherte Arbeit könnte verloren gehen."
