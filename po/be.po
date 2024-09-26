@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:11+0000\n"
-"PO-Revision-Date: 2024-08-28 18:02+0300\n"
+"POT-Creation-Date: 2024-09-18 15:41+0000\n"
+"PO-Revision-Date: 2024-09-26 23:56+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Usage.desktop.in.in:3
 #: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
@@ -120,22 +120,21 @@ msgstr ""
 "ўкладках прадукцыйнасці."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"мінімальная адносная нагрузка (%) для праграмы, каб паказвацца на ўкладцы "
+"мінімальная адносная нагрузка для праграмы, каб паказвацца на ўкладцы "
 "прадукцыйнасці"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
-"Нагрузка адносна 100, якую павінны даваць усе працэсы праграмы агулам, каб "
-"паказвацца на ўкладцы прадукцыйнасці. Пры значэнні 0 паказваюцца ўсе "
-"праграмы, пры 100 – толькі праграма, якая цалкам выкарыстоўвае ўсе патокі "
+"Нагрузка адносна 1.00, якую павінны даваць усе працэсы праграмы агулам, каб "
+"паказвацца на ўкладцы прадукцыйнасці. Пры значэнні 0.00 паказваюцца ўсе "
+"праграмы, пры 1.00 – толькі праграма, якая цалкам выкарыстоўвае ўсе патокі "
 "працэсара."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
@@ -244,27 +243,27 @@ msgstr "Хатні раздзел"
 msgid "Swap"
 msgstr "Swap"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Галоўнае меню"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Пошук"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Пошук праграм…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_Аб праграме"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Згрупаваць сістэмныя працэсы"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Паказаць усе працэсы"
 
@@ -276,11 +275,11 @@ msgstr "ЦП"
 msgid "Memory"
 msgstr "Памяць"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "Сістэма"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -288,7 +287,7 @@ msgstr ""
 "Добры спосаб прагляду інфармацыі пра выкарыстанне сістэмных рэсурсаў, такіх "
 "як памяць і месца на дыску."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "Юрась Шумовіч <shumovichy@gmail.com>"
 
@@ -316,23 +315,15 @@ msgstr "Калі вы выдаліце гэты элементы, яны буд�
 msgid "Delete"
 msgstr "Выдаліць"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Файлы аперацыйнай сістэмы з'яўляюцца неад'емная часткай вашай сістэмы, іх "
-"нельга выдаліць."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Сховішча"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "Аперацыйная сістэма"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -354,6 +345,13 @@ msgstr "%s/с"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Байт/с"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Файлы аперацыйнай сістэмы з'яўляюцца неад'емная часткай вашай сістэмы, іх "
+#~ "нельга выдаліць."
 
 #~ msgid "GNOME Usage"
 #~ msgstr "GNOME Usage"
