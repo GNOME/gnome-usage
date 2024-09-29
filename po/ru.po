@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-28 15:03+0000\n"
-"PO-Revision-Date: 2024-08-30 14:43+1000\n"
+"POT-Creation-Date: 2024-09-18 15:41+0000\n"
+"PO-Revision-Date: 2024-09-21 22:30+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -122,24 +122,23 @@ msgstr ""
 "вкладке «Производительность»."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"минимальная относительная нагрузка (%) для отображения приложения на вкладке "
+"минимальная относительная нагрузка для отображения приложения на вкладке "
 "«Производительность»"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
 "Общая нагрузка приложения рассчитанная как сумма по всем его процессам, "
-"нормализованная до 100, которая будет показана на вкладке "
-"«Производительность». При значении 0 в списке будут показаны все приложения. "
-"При значении 100 приложение будет показано в списке только в том случае, "
-"если его процессы полностью используют все потоки процессора."
+"нормализованная до 1.00, которая будет показана на вкладке "
+"«Производительность». При значении 0.00 в списке будут показаны все "
+"приложения. При значении 1.00 приложение будет показано в списке только в "
+"том случае, если его процессы полностью используют все потоки процессора."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -249,27 +248,27 @@ msgstr "Домашний раздел"
 msgid "Swap"
 msgstr "Подкачка"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Поиск"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Поиск приложений…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_О приложении"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Группа системных процессов"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Показать все процессы"
 
@@ -281,11 +280,11 @@ msgstr "ЦП"
 msgid "Memory"
 msgstr "Память"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "Система"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -293,7 +292,7 @@ msgstr ""
 "Хороший способ просмотра информации об использовании системных ресурсов, "
 "таких как оперативная память и дисковое пространство."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "IgorPolyakov <igorpolyakov@protonmail.com>,2019\n"
@@ -325,23 +324,15 @@ msgstr "Если вы удалите эти элементы, они будут 
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Файлы операционной системы являются важной частью вашей системы и не могут "
-"быть удалены."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Хранилище"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "Операционная система"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -363,6 +354,13 @@ msgstr "%s/с"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Файлы операционной системы являются важной частью вашей системы и не "
+#~ "могут быть удалены."
 
 #~ msgid "A nice way to view information about use of system resources"
 #~ msgstr ""
