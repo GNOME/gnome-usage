@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-10-05 14:57+0000\n"
-"PO-Revision-Date: 2024-10-19 23:54+0200\n"
+"POT-Creation-Date: 2024-10-21 09:47+0000\n"
+"PO-Revision-Date: 2024-10-22 23:05+0200\n"
 "Last-Translator: Sergio Gil <yo@sgil.es>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -42,21 +42,20 @@ msgstr ""
 "Monitor;Sistema;Proceso;CPU;Memoria;Red;Histórico;Uso;Rendimiento;Tarea:"
 "Gestor;Administrador;"
 
-# "Desarrolladores de Uso" sería la traducción literal, pero no estoy muy convencido
 #: data/org.gnome.Usage.metainfo.xml.in.in:18
 msgid "Usage developers"
-msgstr ""
+msgstr "Desarrolladores de Uso"
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:22
 msgid "Analyse your system"
 msgstr "Analiza tu sistema"
 
-# De nuevo, traducir aquí "Usage" como "Uso" puede ser un poco extraño
 #: data/org.gnome.Usage.metainfo.xml.in.in:24
 msgid ""
 "Usage helps with simple to understand ways to analyze how the system uses "
 "its resources."
 msgstr ""
+"Uso ofrece maneras simples de analizar cómo el sistema utiliza sus recursos"
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:29
 msgid ""
@@ -72,6 +71,8 @@ msgid ""
 "The storage view provides insight to simplify cleaning up unnecessary "
 "leftover files."
 msgstr ""
+"La vista de almacenamiento proporciona información para ayudarle a eliminar "
+"archivos residuales innecesarios."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:42
 msgid "See where the processing power is going"
@@ -123,6 +124,8 @@ msgstr ""
 #: data/org.gnome.Usage.gschema.xml.in:26
 msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
+"Carga relativa mínima para que una aplicación se muestre en la pestaña de "
+"rendimiento"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
@@ -131,11 +134,17 @@ msgid ""
 "are listed. With 1.00 an app is only listed if its processes fully utilise "
 "all CPU threads."
 msgstr ""
+"La carga total que una aplicación ha de tener como la suma de todos sus "
+"procesos, normalizada a 1,00. Establecida a 0,00 se muestran todas las "
+"aplicaciones. Establecida a 1,00 una aplicación sólo se muestra si sus "
+"procesos utilizan todos los hilos de la CPU al completo."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
 "minimum memory footprint of an app to be displayed in the performance tab"
 msgstr ""
+"Uso de memoria mínimo para que una aplicación se muestre en la pestaña de "
+"rendimiento"
 
 #: data/org.gnome.Usage.gschema.xml.in:37
 msgid ""
@@ -213,6 +222,8 @@ msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
 msgstr ""
+"Detener aplicaciones puede tener efectos adversos, tales como la pérdida de "
+"datos sin guardar."
 
 #: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
@@ -280,7 +291,9 @@ msgstr ""
 
 #: src/application.vala:77
 msgid "translator-credits"
-msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2017"
+msgstr ""
+"Daniel Mustieles <daniel.mustieles@gmail.com>, 2017\n"
+"Sergio Gil <yo@sgil.es>, 2024"
 
 #: src/cpu-view.vala:33
 msgid "Processor"
