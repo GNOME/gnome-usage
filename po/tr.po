@@ -1,5 +1,5 @@
 # Turkish translation for gnome-usage.
-# Copyright (C) 2017-2022 gnome-usage's COPYRIGHT HOLDER
+# Copyright (C) 2017-2024 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
 # Sabri Ünal <yakushabb@gmail.com>, 2019, 2022, 2024.
@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-25 06:44+0000\n"
-"PO-Revision-Date: 2024-09-01 08:00+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2024-10-05 14:57+0000\n"
+"PO-Revision-Date: 2024-10-27 07:14+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Usage.desktop.in.in:3
 #: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
@@ -63,15 +63,14 @@ msgid ""
 "Easy access to which app uses what amount of processing power or memory, "
 "helps find performance issues."
 msgstr ""
-"Uygulamaların ne miktarda işlem gücü ya da bellek kullandığını "
-"açıkça gösterir, başarım sorunlarını bulmada yardımcı olur."
+"Uygulamaların ne miktarda işlem gücü ya da bellek kullandığını açıkça "
+"gösterir, başarım sorunlarını bulmada yardımcı olur."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:33
 msgid ""
 "The storage view provides insight to simplify cleaning up unnecessary "
 "leftover files."
-msgstr ""
-"Depolama görünümü gereksiz atık dosyaları temizlemeyi basitleştirir."
+msgstr "Depolama görünümü gereksiz atık dosyaları temizlemeyi basitleştirir."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:42
 msgid "See where the processing power is going"
@@ -119,20 +118,19 @@ msgstr ""
 "periyodik olarak görüntülendiği aralık."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
-msgstr "başarım sekmesinde görüntülenecek uygulamanın asgari göreli yükü (%)"
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr "başarım sekmesinde görüntülenecek uygulamanın asgari göreli yükü"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
 "Uygulamanın başarım sekmesinde listelenmesi için tüm süreçlerinin toplamı "
-"100’e normalleştirilmiş yükte olmalıdır. 0 ile tüm uygulamalar listelenir. "
-"100 ile uygulama yalnızca süreçleri tüm MİB iş parçacıklarını tümüyle "
+"1.00’a normalleştirilmiş yükte olmalıdır. 0 ile tüm uygulamalar listelenir. "
+"1.00 ile uygulama yalnızca süreçleri tüm MİB iş parçacıklarını tümüyle "
 "kullanıyorsa listelenir."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
@@ -239,27 +237,27 @@ msgstr "Ev Bölümü"
 msgid "Swap"
 msgstr "Takas"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Ara"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Uygulamaları Ara…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "Kullanım _Hakkında"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Sistem süreçlerini kümele"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Tüm süreçleri göster"
 
@@ -271,11 +269,11 @@ msgstr "İşlemci"
 msgid "Memory"
 msgstr "Bellek"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "Sistem"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -283,7 +281,7 @@ msgstr ""
 "Bellek ve disk alanı gibi sistem kaynaklarının kullanımıyla ilgili bilgiyi "
 "görmek için güzel bir yol."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
@@ -311,22 +309,15 @@ msgstr "Bu ögeleri silerseniz kalıcı olarak yitecekler."
 msgid "Delete"
 msgstr "Sil"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"İşletim sistemi dosyaları sisteminizin önemli bir parçasıdır ve kaldırılamaz."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Depolama"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "İşletim Sistemi"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -346,119 +337,3 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
-
-#~ msgid "A nice way to view information about use of system resources"
-#~ msgstr ""
-#~ "Sistem kaynaklarının kullanımıyla ilgili bilgiyi görmek için güzel bir yol"
-
-#~ msgid ""
-#~ "A simple application to monitor and analyze system resources such as CPU "
-#~ "and memory usage of running apps, and storage usage."
-#~ msgstr ""
-#~ "İşlemci, çalışan uygulamaların bellek kullanımı ve depolama gibi sistem "
-#~ "kaynaklarını çözümlemek ve gözlemlemek için basit bir uygulama. "
-
-#~ msgid "Unsaved work might be lost."
-#~ msgstr "Kaydedilmemiş iş kaybedilebilir."
-
-#~ msgid "Performance"
-#~ msgstr "Başarım"
-
-#~ msgid "GNOME Usage"
-#~ msgstr "GNOME Kullanım"
-
-#~ msgid "Websites"
-#~ msgstr "Web siteleri"
-
-#~ msgid "Scanning directories"
-#~ msgstr "Dizinler taranıyor"
-
-#~ msgid "org.gnome.Usage"
-#~ msgstr "org.gnome.Usage"
-
-#~ msgid "Move to"
-#~ msgstr "Şuraya taşı"
-
-#~ msgid "Move to Trash"
-#~ msgstr "Çöpe taşı"
-
-#~ msgid "Empty folder"
-#~ msgstr "Klasörü boşalt"
-
-#~ msgid "Restore"
-#~ msgstr "Geri yükle"
-
-#~ msgid "Delete from Trash"
-#~ msgstr "Çöpten sil"
-
-#~ msgid "No content here"
-#~ msgstr "Burada içerik yok"
-
-#~ msgid "Click on items to select them"
-#~ msgstr "Ögeleri seçmek için tıklayın"
-
-#~ msgid "Select all"
-#~ msgstr "Tümünü seç"
-
-#~ msgid "Select None"
-#~ msgstr "Hiçbirini seçme"
-
-#~ msgid "Select destination folder"
-#~ msgstr "Hedef klasörü seç"
-
-#~ msgid "Select"
-#~ msgstr "Seç"
-
-#~ msgid "Are you sure you want to permanently delete “%s”?"
-#~ msgstr "“%s” dosyasını kalıcı olarak silmek istediğinizden emin misiniz?"
-
-#~ msgid "Empty all items from Trash?"
-#~ msgstr "Tüm ögeleri çöpten temizle?"
-
-#~ msgid "All items in the Trash will be permanently deleted."
-#~ msgstr "Çöpteki tüm ögeler kalıcı olarak silinecek."
-
-#~ msgid "Empty all items from %s?"
-#~ msgstr "Tüm ögeleri %s’den temizle?"
-
-#~ msgid "All items in the %s will be moved to the Trash."
-#~ msgstr "%s içindeki tüm ögeler çöpe taşınacak."
-
-#~ msgid "Storage 1"
-#~ msgstr "Depolama 1"
-
-#~ msgid "Storage 2"
-#~ msgstr "Depolama 2"
-
-#~ msgid "Capacity"
-#~ msgstr "Kapasite"
-
-#~ msgid "Home"
-#~ msgstr "Ev"
-
-#~ msgid "Trash"
-#~ msgstr "Çöp"
-
-#~ msgid "Empty"
-#~ msgstr "Boşalt"
-
-#~ msgid "Empty Trash"
-#~ msgstr "Çöpü boşalt"
-
-#~ msgid "Rename"
-#~ msgstr "Yeniden adlandır"
-
-#~ msgid "Are you sure you want to permanently delete %s?"
-#~ msgstr "%sʼi kalıcı olarak silmek istediğinizden emin misiniz?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Ögeyi silerseniz kalıcı olarak kaybedilecektir."
-
-#~ msgid "About"
-#~ msgstr "Hakkında"
-
-#~ msgid "Others"
-#~ msgstr "Diğerleri"
-
-#~ msgid "Move to trash"
-#~ msgstr "Çöpe taşı"
