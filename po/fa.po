@@ -1,14 +1,14 @@
 # Persian translation for gnome-usage.
 # Copyright (C) 2024 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Danial Behzadi <dani.behzi@ubuntu.com>, 2024.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:11+0000\n"
-"PO-Revision-Date: 2024-09-07 13:45+0330\n"
+"POT-Creation-Date: 2025-01-12 23:20+0000\n"
+"PO-Revision-Date: 2025-01-13 16:40+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Usage.desktop.in.in:3 data/org.gnome.Usage.metainfo.xml.in.in:17
 #: data/ui/window.ui:18 data/ui/window.ui:33
@@ -32,11 +32,8 @@ msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in.in:13
-msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
-msgstr ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
-"پایش;سامانه;فرایند;پردانده;حافظه;شبکه;تاریخچه;استفاده;وظیفه;مدیر;"
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;پایش;سامانه;فرایند;پردانده;حافظه;شبکه;تاریخچه;استفاده;وظیفه;مدیر;"
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:18
 msgid "Usage developers"
@@ -114,19 +111,20 @@ msgstr ""
 "شوند."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid "minimum relative load (%) of an app to be displayed in the performance tab"
-msgstr "کمینهٔ بار نسبی (%) کاره برای نمایش در زبانهٔ عملکرد"
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr "کمینهٔ بار نسبی کاره برای نمایش در زبانهٔ عملکرد"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all CPU "
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps are "
+"listed. With 1.00 an app is only listed if its processes fully utilise all CPU "
 "threads."
 msgstr ""
-"بار طبیعی شده با ۱۰۰ که کاره باید در کل به عنوان مجموع تمام فرایندهایش داشته باشد "
-"تا در زبانهٔ عملکرد سیاهه شود. با 0 همهٔ کاره‌ها سیاهه می‌شوند. با 100 کاره فقط در "
-"صورتی سیاهه می‌شود که فرایندهایش از تمام رشته‌های پردازنده به طور کامل استفاده کنند."
+"بار طبیعی شده با ۱٫۰۰ که کاره باید در کل به عنوان مجموع تمام فرایندهایش داشته "
+"باشد تا در زبانهٔ عملکرد سیاهه شود. با ۰٫۰۰ همهٔ کاره‌ها سیاهه می‌شوند. با ۱٫۰۰ کاره "
+"فقط در صورتی سیاهه می‌شود که فرایندهایش از تمام رشته‌های پردازنده به طور کامل "
+"استفاده کنند."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid "minimum memory footprint of an app to be displayed in the performance tab"
@@ -230,27 +228,27 @@ msgstr "افزار خانگی"
 msgid "Swap"
 msgstr "مبادله"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "جست‌وجو"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "جست‌وجوی برنامه‌ها…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_دربارهٔ استفاده"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "گروه‌بندی فرایندهای سامانه"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "نمایش همهٔ فرایندها"
 
@@ -262,18 +260,18 @@ msgstr "پردازنده"
 msgid "Memory"
 msgstr "حافظه"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "سامانه"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory and "
 "disk space."
 msgstr ""
 "روشی خوب برای دیدن اطّلاعات دربارهٔ استفاده از منابع سامانه‌ای چون فضای دیسک و حافظه."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "دانیال بهزادی <dani.behzi@ubuntu.com>"
 
@@ -300,20 +298,15 @@ msgstr "اگر این موارد را حذف کنید، برای همیشه از
 msgid "Delete"
 msgstr "حذف"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be removed."
-msgstr "پرونده‌های سیستم‌عامل بخشی اساسی از سامانه‌تان هستند و نمی‌توانند برداشته شوند."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "ذخیره‌گاه"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "سیستم‌عامل"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -334,6 +327,12 @@ msgstr "%s/ث"
 #, c-format
 msgid "%llu B/s"
 msgstr "%Illu ب/ث"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "پرونده‌های سیستم‌عامل بخشی اساسی از سامانه‌تان هستند و نمی‌توانند برداشته شوند."
 
 #~ msgid "A nice way to view information about use of system resources"
 #~ msgstr "روشی خوب برای دیدن اطّلاعات دربارهٔ استفاده از منابع سامانه‌ای"
