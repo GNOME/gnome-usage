@@ -1,43 +1,46 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright © YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2017–2021.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2017–2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2021-12-08 11:25+0000\n"
-"PO-Revision-Date: 2021-12-30 14:29+0200\n"
+"POT-Creation-Date: 2024-08-24 13:09+0000\n"
+"PO-Revision-Date: 2024-12-24 08:58+0100\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:5
-msgid "GNOME Usage"
-msgstr "Гномово Коришћење"
+#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/ui/window.ui:33
+msgid "Usage"
+msgstr "Коришћење"
 
 #: data/org.gnome.Usage.appdata.xml.in.in:6
+msgid "Usage developers"
+msgstr "Програмери Коришћења"
+
+#: data/org.gnome.Usage.appdata.xml.in.in:10
 msgid "A nice way to view information about use of system resources"
 msgstr "Погодан начин за преглед података о коришћењу ресурса система"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:8
+#: data/org.gnome.Usage.appdata.xml.in.in:12
 msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
+"A simple application to monitor and analyze system resources such as CPU and "
+"memory usage of running apps, and storage usage."
 msgstr ""
-"Једноставни Гном 3 програм за праћење и проучавање ресурса система као што "
-"су то процесор, меморија и складиште."
-
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:73
-msgid "Usage"
-msgstr "Коришћење"
+"Једноставан програм за праћење и проучавање ресурса система као што је "
+"искоришћеност процесора и меморије покренутих програма и заузетост "
+"складишног простора."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -67,74 +70,192 @@ msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Овај списак се користи за издвајање процеса које корисник не може зауставити."
 
-#: data/ui/memory-speedometer.ui:38
-msgid "RAM"
-msgstr "Меморија"
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "временски распон (ms) графика на картици учинковитости"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
-#: data/ui/swap-speedometer.ui:51
-msgid "Used"
-msgstr "Заузето"
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Временски распон за који се графици процесора и меморије на картици "
+"учинковитости и његовој бочној површи враћају назад у милисекундама."
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
-#: data/ui/swap-speedometer.ui:75
-msgid "Available"
-msgstr "Расположиво"
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "интервал (ms) за освежавање података учинковитости"
 
-#: data/ui/no-results-found-view.ui:23
-msgid "No results found"
-msgstr "Нема резултата"
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"Интервал у милисекундама након кога се подаци за картицу учинковитости "
+"освежавају и приказују повремено."
 
-#: data/ui/no-results-found-view.ui:32
-msgid "Try a different search"
-msgstr "Покушај другачију претрагу"
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid ""
+"minimum relative load (%) of an app to be displayed in the performance tab"
+msgstr ""
+"најмање релативно оптерећење (%) неког програма које ће се приказати на "
+"картици учинковитости"
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_О Коришћењу"
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 100, to be listed in the performance tab. With 0, all apps are "
+"listed. With 100 an app is only listed if its processes fully utilise all "
+"CPU threads."
+msgstr ""
+"Оптерећење програма мора имати укупно као суму свих својих процеса, "
+"нормализовано на 100, да би био приказан на картици учинковитости. Са 0, сви "
+"програми се приказују. Са 100 програм се приказује само ако његови процеси "
+"потпуно користе све нити процесора."
 
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Групиши системске процесе"
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+"најмањи отисак меморије неког програма који ће се приказати на картици "
+"учинковитости"
 
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Прикажи све процесе"
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Најмања количина меморије коју програм укупно треба да користи као збир над "
+"свим процесима у бајтовима да би био приказан на картици учинковитости."
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
-msgid "Force Quit %s?"
-msgstr "Приморати излаз из програма „%s“?"
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Приморај графике да не клизају непрекидно"
 
-#: data/ui/quit-process-dialog.ui:10
-msgid "Unsaved work might be lost."
-msgstr "Можда ћете изгубити несачуване радове."
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Ако је укључено, графици учинковитости биће приморани да не клизају "
+"непрекидно, већ ће скочити само када је додата нова тачка података. Ако је "
+"искључено, графици ће одлучити, у зависности од режима уштеде напајања и "
+"општих Гтк поставки анимација, како ће се понашати."
 
-#: data/ui/quit-process-dialog.ui:16
-msgid "Cancel"
-msgstr "Откажи"
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "Програм ради без видљивог прозора"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Затвори програм"
+
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Приморај излаз"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "Меморија"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "Заузето"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Расположиво"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "Нема резултата"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Покушај другачију претрагу"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Програм ради у позадини"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "Програм користи оптимизовани режим игре"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "Да затворим „%s“?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Заустављање програма може имати непожељна дејства, као што је губитак "
+"података несачуваног рада."
+
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "Откажи"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Изађи"
+
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Обриши…"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Лична партиција"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Заменска меморија"
 
-#: src/app-item.vala:148
+#: data/ui/window.ui:41 data/ui/window.ui:86
+msgid "Main Menu"
+msgstr "Главни изборник"
+
+#: data/ui/window.ui:98
+msgid "Search"
+msgstr "Тражи"
+
+#: data/ui/window.ui:117
+msgid "Search Applications…"
+msgstr "Тражим програме..."
+
+#: data/ui/window.ui:151
+msgid "_About Usage"
+msgstr "_О Коришћењу"
+
+#: data/ui/window.ui:157
+msgid "Group system processes"
+msgstr "Групиши системске процесе"
+
+#: data/ui/window.ui:163
+msgid "Show all processes"
+msgstr "Прикажи све процесе"
+
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "Процесор"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Меморија"
+
+#: src/app-item.vala:214
 msgid "System"
 msgstr "Систем"
 
-#: src/application.vala:74
+#: src/application.vala:73
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -142,7 +263,7 @@ msgstr ""
 "Погодан начин за преглед података о коришћењу ресурса система, као што је "
 "меморија и простор на диску."
 
-#: src/application.vala:77
+#: src/application.vala:76
 msgid "translator-credits"
 msgstr ""
 "Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
@@ -150,69 +271,86 @@ msgstr ""
 "\n"
 "http://prevod.org — превод на српски језик."
 
-#: src/application.vala:79
-msgid "Websites"
-msgstr "Веб сајтови"
-
-#: src/cpu-sub-view.vala:29 src/graph-stack-switcher.vala:41
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Процесор"
 
-#: src/graph-stack-switcher.vala:42 src/memory-sub-view.vala:29
-msgid "Memory"
-msgstr "Меморија"
-
-#: src/performance-view.vala:45
-msgid "Performance"
-msgstr "Учинак"
-
-#: src/storage/storage-actionbar.vala:38
+#: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
-msgstr "%s изабрано"
+msgid_plural "%s selected"
+msgstr[0] "%s изабран"
+msgstr[1] "%s изабрана"
+msgstr[2] "%s изабрано"
+msgstr[3] "%s изабран"
 
-#: src/storage/storage-actionbar.vala:44
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
-msgstr "Дa ли сигурно желите трајно обрисати изабране ставке?"
+msgstr "Да ли сигурно желите трајно обрисати изабране ставке?"
 
-#: src/storage/storage-actionbar.vala:51
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Ако обришете ове ставке, биће трајно изгубљене."
 
-#: src/storage/storage-row-popover.vala:32
+#: src/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Обриши"
+
+#: src/storage/storage-row-popover.vala:42
 msgid ""
 "Operating system files are an essential part of your system and cannot be "
 "removed."
 msgstr ""
-"Датотеке оперативног система су кључан део вашег система и не могу бити "
+"Датотеке оперативног система су кључни део вашег система и не могу бити "
 "уклоњене."
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:80
 msgid "Storage"
 msgstr "Складиште"
 
-#: src/storage/storage-view.vala:246
+#: src/storage/storage-view.vala:240
 msgid "Operating System"
 msgstr "Оперативни систем"
 
-#: src/storage/storage-view.vala:272
-msgid "Scanning directories"
-msgstr "Проучавам фасцикле"
+#: src/storage/storage-view.vala:268
+#, c-format
+#| msgid "Available"
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s доступан"
+msgstr[1] "%s доступна"
+msgstr[2] "%s доступно"
+msgstr[3] "%s доступан"
 
-#: src/utils.vala:27
+#: src/utils.vala:58
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
-#: src/utils.vala:32
+#: src/utils.vala:63
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
 
-#: src/utils.vala:34
+#: src/utils.vala:65
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "GNOME Usage"
+#~ msgstr "Гномово Коришћење"
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Можда ћете изгубити несачуване радове."
+
+#~ msgid "Websites"
+#~ msgstr "Веб сајтови"
+
+#~ msgid "Performance"
+#~ msgstr "Учинак"
+
+#~ msgid "Scanning directories"
+#~ msgstr "Проучавам фасцикле"
 
 #~ msgid "org.gnome.Usage"
 #~ msgstr "org.gnome.Usage"
@@ -237,9 +375,6 @@ msgstr "%llu B/s"
 
 #~ msgid "About"
 #~ msgstr "О програму"
-
-#~ msgid "Quit"
-#~ msgstr "Изађи"
 
 #~ msgid "Others"
 #~ msgstr "Остало"
@@ -394,6 +529,3 @@ msgstr "%llu B/s"
 
 #~ msgid "Browse…"
 #~ msgstr "Разгледај…"
-
-#~ msgid "Search"
-#~ msgstr "Тражи"
