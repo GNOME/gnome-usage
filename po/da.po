@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-02-25 10:18+0000\n"
-"PO-Revision-Date: 2024-03-16 15:20+0100\n"
+"POT-Creation-Date: 2024-09-18 15:41+0000\n"
+"PO-Revision-Date: 2024-09-24 19:04+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish\n"
 "Language: da\n"
@@ -16,29 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
-#: data/ui/window.ui:34
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Forbrug"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Udviklerne af Forbrug"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr "En fin måde til at vise information om forbruget af systemressourcer"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr ""
-"Et simpelt program til at overvåge og analysere systemressourcer såsom "
-"kørende programmers processor- og hukommelsesforbrug samt lagerforbrug."
 
 #: data/org.gnome.Usage.desktop.in.in:4
 msgid ""
@@ -56,6 +40,50 @@ msgid ""
 msgstr ""
 "Overvåg;System;Processor;CPU;Hukommelse;Netværk;Historik;Forbrug;Ydelse;"
 "Opgave;Håndtering;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Udviklerne af Forbrug"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Analysér dit system"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Forbrug hjælper med at analysere på en letforståelig måde, hvordan systemet "
+"bruger sine ressourcer."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Nem adgang til hvilket program der bruger hvilken mængde processorkraft "
+"eller hukommelse, hjælper med at finde problemer med ydeevnen."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Lagervisningen giver indsigt, så det bliver nemmere at rydde op i "
+"unødvendige filer, der er blevet efterladt."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Se, hvor processorkraften bruges"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Forstå, hvilke programmer der sluger hukommelsen"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Find ud af, hvad der fylder på lageret"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -91,22 +119,21 @@ msgstr ""
 "ydelsesfanen."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"mindste relative belastning (%) for et program der skal vises i ydelsesfanen"
+"mindste relative belastning for et program der skal vises i ydelsesfanen"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
-"Den belastning, et program skal have i alt som summen af alle dens processer "
-"(normaliseret til 100), for at blive vist i ydelsesfanen. Med 0 vises alle "
-"programmer. Med 100 vises et program kun, hvis dens processer udnytter alle "
-"CPU-tråde fuldt ud."
+"Den belastning et program skal have i alt som summen af alle dets processer "
+"(normaliseret til 1,00) for at blive vist i ydelsesfanen. Med 0,00 vises "
+"alle programmer. Med 1,00 vises et program kun, hvis dets processer udnytter "
+"alle CPU-tråde fuldt ud."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -139,15 +166,15 @@ msgstr ""
 "sig, baseret på strømbesparende tilstand og GTK's globale "
 "animationsindstillinger."
 
-#: data/ui/app-dialog.ui:77
+#: data/ui/app-dialog.ui:78
 msgid "Application is running with no visible window"
 msgstr "Programmet kører uden synlige vinduer"
 
-#: data/ui/app-dialog.ui:137
+#: data/ui/app-dialog.ui:138
 msgid "Quit App"
 msgstr "Afslut program"
 
-#: data/ui/app-dialog.ui:148
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Tving afslutning"
 
@@ -177,26 +204,26 @@ msgstr "Prøv en anden søgning"
 msgid "Application is running in background"
 msgstr "Programmet kører i baggrunden"
 
-#: data/ui/process-row.ui:62
+#: data/ui/process-row.ui:71
 msgid "Application uses optimised game mode"
 msgstr "Programmet bruger optimeret spiltilstand"
 
 #. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
-#: data/ui/quit-process-dialog.ui:8
+#: data/ui/quit-process-dialog.ui:6
 msgid "Quit %s?"
 msgstr "Afslut %s?"
 
-#: data/ui/quit-process-dialog.ui:9
+#: data/ui/quit-process-dialog.ui:7
 msgid ""
 "Stopping applications might come with side effects, such as data loss of "
 "unsaved work."
 msgstr "Stoppes programmer, kan det medføre tab af data, som ikke er gemt."
 
-#: data/ui/quit-process-dialog.ui:14 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Annullér"
 
-#: data/ui/quit-process-dialog.ui:15
+#: data/ui/quit-process-dialog.ui:13
 msgid "Quit"
 msgstr "Afslut"
 
@@ -212,27 +239,27 @@ msgstr "Hjemme-partition"
 msgid "Swap"
 msgstr "Swap"
 
-#: data/ui/window.ui:42 data/ui/window.ui:88
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Hovedmenu"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Søg"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Søg efter programmer …"
 
-#: data/ui/window.ui:153
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_Om Forbrug"
 
-#: data/ui/window.ui:159
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Gruppér systemressourcer"
 
-#: data/ui/window.ui:165
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Vis alle processer"
 
@@ -244,11 +271,11 @@ msgstr "CPU"
 msgid "Memory"
 msgstr "Hukommelse"
 
-#: src/app-item.vala:185
+#: src/app-item.vala:216
 msgid "System"
 msgstr "System"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -256,7 +283,7 @@ msgstr ""
 "En fin måde til at vise information om forbruget af systemressourcer såsom "
 "hukommelse og diskplads."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "scootergrisen"
 
@@ -283,22 +310,15 @@ msgstr "Hvis du sletter elementerne, så går de tabt permanent."
 msgid "Delete"
 msgstr "Slet"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Styresystemfiler er en essentiel del af dit system og kan ikke fjernes."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Lager"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "Styresystem"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -319,6 +339,23 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "En fin måde til at vise information om forbruget af systemressourcer"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "Et simpelt program til at overvåge og analysere systemressourcer såsom "
+#~ "kørende programmers processor- og hukommelsesforbrug samt lagerforbrug."
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Styresystemfiler er en essentiel del af dit system og kan ikke fjernes."
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "Arbejde, der ikke er gemt, kan gå tabt."
