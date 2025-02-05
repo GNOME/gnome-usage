@@ -277,6 +277,14 @@ public class Usage.StorageView : Usage.View {
         foreach (var dir in xdg_folders) {
             var file = File.new_for_uri (get_user_special_dir_path (dir));
             var item = StorageViewItem.from_file (file);
+
+            if (item == null) {
+                items_loaded++;
+                if (items_loaded == xdg_folders.length)
+                    is_directory_loading (false);
+                continue;
+            }
+
             item.dir = dir;
 
             controller.get_file_size.begin (item.uri, (obj, res) => {
