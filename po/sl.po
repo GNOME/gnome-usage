@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the gnome-usage package.
 #
 # Matej Urbančič <mateju@src.gnome.org>, 2017–2022.
+# Martin Srebotnjak <miles@filmsi.net>, 2023-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-09-16 20:22+0000\n"
-"PO-Revision-Date: 2024-09-17 17:22+0200\n"
+"POT-Creation-Date: 2025-02-27 03:26+0000\n"
+"PO-Revision-Date: 2025-02-27 08:59+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -197,6 +198,10 @@ msgstr "Uporabljeno"
 msgid "Available"
 msgstr "Razpoložljivo"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Zadnjih 30 dni"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Ni najdenih zadetkov"
@@ -302,6 +307,35 @@ msgstr ""
 msgid "Processor"
 msgstr "Procesor"
 
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%b %e, %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Omrežje"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Žično"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "Brezžično omrežje (WiFi)"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Brezžično omrežje (WiFi, P2P)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Mobilna povezava"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Dostopna točka Bluetooth"
+
 #: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
@@ -323,23 +357,15 @@ msgstr "Izbrisani predmeti, bodo trajno izgubljeni."
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Datoteke operacijskega sistema so nepogrešljivi del sistema in jih ni mogoče "
-"odstraniti."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Prostor"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "Operacijski sistem"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
