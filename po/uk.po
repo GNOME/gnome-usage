@@ -2,13 +2,13 @@
 # Copyright (C) 2020 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2023, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage gnome-3-32\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-09-16 20:22+0000\n"
-"PO-Revision-Date: 2024-09-18 09:56+0300\n"
+"POT-Creation-Date: 2025-02-27 03:26+0000\n"
+"PO-Revision-Date: 2025-02-27 17:07+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -122,19 +122,11 @@ msgstr ""
 "Інтервал регулярного оновлення даних на вкладці швидкодії у мілісекундах."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-#| msgid ""
-#| "minimum relative load (%) of an app to be displayed in the performance tab"
 msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"мінімальна відносне навантаження для показу програми на вкладці "
-"швидкодії"
+"мінімальна відносне навантаження для показу програми на вкладці швидкодії"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
-#| msgid ""
-#| "The load an app has to have in total as the sum over all its processes, "
-#| "normalized to 100, to be listed in the performance tab. With 0, all apps "
-#| "are listed. With 100 an app is only listed if its processes fully utilise "
-#| "all CPU threads."
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
 "normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
@@ -143,9 +135,8 @@ msgid ""
 msgstr ""
 "Нормалізоване до 1,00 навантаження програмою, як сума для усіх її процесів, "
 "яке достатнім для того, щоб програма потрапила до списку на вкладці "
-"швидкодії. Якщо вказати 0,00, буде у списку показано усі програми. Якщо"
-" вказати "
-"1,00, програма потрапить до списку, лише якщо її процеси повністю "
+"швидкодії. Якщо вказати 0,00, буде у списку показано усі програми. Якщо "
+"вказати 1,00, програма потрапить до списку, лише якщо її процеси повністю "
 "використовують усі потоки обробки процесора."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
@@ -202,6 +193,10 @@ msgstr "Використано"
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "Доступно"
+
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Попередні 30 днів"
 
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
@@ -304,6 +299,35 @@ msgstr "Юрій Чорноіван <yurchor@ukr.net>"
 msgid "Processor"
 msgstr "Процесор"
 
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%b %e, %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Мережа"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Дротова"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "WiFi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "WiFi (міжвузлова)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Мобільне з'єднання"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Точка доступу Bluetooth"
+
 #: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
@@ -325,23 +349,15 @@ msgstr "Якщо ви вилучите ці об'єкти, їх буде нез�
 msgid "Delete"
 msgstr "Вилучити"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Базові файли операційної системи є важливою частиною вашої системи. Їх не "
-"можна вилучати."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Сховище даних"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "Операційна система"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -364,6 +380,13 @@ msgstr "%s/с"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu Б/с"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Базові файли операційної системи є важливою частиною вашої системи. Їх не "
+#~ "можна вилучати."
 
 #~ msgid "A nice way to view information about use of system resources"
 #~ msgstr ""
