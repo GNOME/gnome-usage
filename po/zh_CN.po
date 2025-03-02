@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the gnome-usage package.
 # Tranquilo Chan <cdh4227@qq.com>, 2020.
 # Dingzhong Chen <wsxy162@gmail.com>, 2017-2021.
-# lumingzh <lumingzh@qq.com>, 2022-2024.
+# lumingzh <lumingzh@qq.com>, 2022-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-09-16 20:22+0000\n"
-"PO-Revision-Date: 2024-09-17 09:28+0800\n"
+"POT-Creation-Date: 2025-02-27 03:26+0000\n"
+"PO-Revision-Date: 2025-03-02 14:25+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 46.1\n"
+"X-Generator: Gtranslator 47.1\n"
 
 #: data/org.gnome.Usage.desktop.in.in:3
 #: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
@@ -174,6 +174,10 @@ msgstr "已用"
 msgid "Available"
 msgstr "可用"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "最近 30 天"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "未找到结果"
@@ -268,11 +272,40 @@ msgid "translator-credits"
 msgstr ""
 "Tranquilo Chan <cdh4227@qq.com>, 2020.\n"
 "Dingzhong Chen <wsxy162@gmail.com>, 2017-2021.\n"
-"lumingzh <lumingzh@qq.com>, 2023-2024."
+"lumingzh <lumingzh@qq.com>, 2023-2025."
 
 #: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "处理器"
+
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%Y年%-m月%-d日"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "网络"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "有线"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "WiFi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "WiFi（对等直连）"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "移动数据连接"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "蓝牙热点"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
@@ -292,21 +325,15 @@ msgstr "如果您删除这些项目，它们将永久丢失。"
 msgid "Delete"
 msgstr "删除"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr "操作系统文件是组成你的系统的必要部分，因此不能移除。"
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "存储"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "操作系统"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -326,6 +353,11 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr "操作系统文件是组成你的系统的必要部分，因此不能移除。"
 
 #~ msgid "A nice way to view information about use of system resources"
 #~ msgstr "查看系统资源使用信息的好方式"
@@ -481,9 +513,6 @@ msgstr "%llu B/s"
 
 #~ msgid "Data"
 #~ msgstr "数据"
-
-#~ msgid "Network"
-#~ msgstr "网络"
 
 #~ msgid "No applications using network."
 #~ msgstr "没有应用程序正在使用网络。"
