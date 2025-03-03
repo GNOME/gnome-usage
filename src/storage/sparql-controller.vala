@@ -1,4 +1,4 @@
-/* tracker-controller.vala
+/* sparql-controller.vala
  *
  * Copyright (C) 2018 Red Hat, Inc.
  *
@@ -18,18 +18,16 @@
  * Authors: Felipe Borges <felipeborges@gnome.org>
  */
 
-using Tracker;
-
-public class Usage.TrackerController : GLib.Object {
-    private Sparql.Connection connection;
+public class Usage.SparqlController : GLib.Object {
+    private Tsparql.SparqlConnection connection;
     private StorageQueryBuilder query_builder;
     private GLib.ListStore model;
 
     construct {
-        query_builder = new StorageQueryBuilder ();
+        this.query_builder = new StorageQueryBuilder ();
     }
 
-    public TrackerController (Sparql.Connection connection) {
+    public SparqlController (Tsparql.SparqlConnection connection) {
         this.connection = connection;
     }
 
@@ -38,24 +36,24 @@ public class Usage.TrackerController : GLib.Object {
     }
 
     public async uint64 enumerate_children (string uri, UserDirectory? dir, Cancellable cancellable) {
-        var query = query_builder.enumerate_children (uri);
+        string query = this.query_builder.enumerate_children (uri);
 
         uint64 uri_size = 0;
         try {
 
-            var worker = yield new TrackerWorker (connection, query);
+            SparqlWorker worker = yield new SparqlWorker (connection, query);
             string n_uri = null;
             string file_type = null;
 
-            var parent = File.new_for_uri (uri);
+            File parent = File.new_for_uri (uri);
             uint64 parent_size = 1;
             if (parent != null)
-                parent_size = yield get_file_size (uri);
+                parent_size = yield this.get_file_size (uri);
 
             while (yield worker.fetch_next (out n_uri, out file_type)) {
                 if (!cancellable.is_cancelled ()) {
-                    var file = File.new_for_uri (n_uri);
-                    var item = StorageViewItem.from_file (file);
+                    File file = File.new_for_uri (n_uri);
+                    StorageViewItem item = StorageViewItem.from_file (file);
 
                     if (item == null)
                         continue;
@@ -64,15 +62,15 @@ public class Usage.TrackerController : GLib.Object {
                     item.dir = dir;
 
                     if (item.type == FileType.DIRECTORY) {
-                        item.size = yield get_file_size (n_uri);
+                        item.size = yield this.get_file_size (n_uri);
                     }
 
-                    item.percentage = item.size*100/(double)parent_size;
+                    item.percentage = item.size * 100 / (double) parent_size;
                     uri_size += item.size;
 
                     model.insert_sorted (item, (a, b) => {
-                        var item_a = a as StorageViewItem;
-                        var item_b = b as StorageViewItem;
+                        StorageViewItem item_a = a as StorageViewItem;
+                        StorageViewItem item_b = b as StorageViewItem;
 
                         if (item_a.custom_type == StorageViewType.UP_FOLDER || item_a.size > item_b.size) {
                             return -1;
@@ -96,8 +94,8 @@ public class Usage.TrackerController : GLib.Object {
 
     private uint64 get_g_file_size (string uri) {
         try {
-            var file = File.new_for_uri (uri);
-            var info = file.query_info (FileAttribute.STANDARD_SIZE, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+            File file = File.new_for_uri (uri);
+            FileInfo info = file.query_info (FileAttribute.STANDARD_SIZE, FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
 
             return info.get_size ();
         } catch (GLib.Error error) {
@@ -108,13 +106,13 @@ public class Usage.TrackerController : GLib.Object {
     public async uint64 get_file_size (string uri) throws GLib.Error {
         uint64 total = 0;
 
-        var query = query_builder.enumerate_children (uri, true);
+        string query = this.query_builder.enumerate_children (uri, true);
 
-        var worker = yield new TrackerWorker (connection, query);
+        SparqlWorker worker = yield new SparqlWorker (connection, query);
 
         string n_uri = null;
         while (yield worker.fetch_next (out n_uri, null))
-            total += get_g_file_size (n_uri);
+            total += this.get_g_file_size (n_uri);
 
         return total;
     }

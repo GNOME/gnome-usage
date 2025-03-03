@@ -19,7 +19,6 @@
  *          Petr Štětka <pstetka@redhat.com>
  */
 
-using Tracker;
 using GTop;
 
 [GtkTemplate (ui = "/org/gnome/Usage/ui/storage-view.ui")]
@@ -47,8 +46,8 @@ public class Usage.StorageView : Usage.View {
     [GtkChild]
     private unowned Gtk.ProgressBar directory_loading_bar;
 
-    private Sparql.Connection connection;
-    private TrackerController controller;
+    private Tsparql.SparqlConnection connection;
+    private SparqlController controller;
     private StorageQueryBuilder query_builder;
 
     private StorageViewItem os_item = new StorageViewItem ();
@@ -81,13 +80,13 @@ public class Usage.StorageView : Usage.View {
         ((Gtk.Box) switcher_widget).append (switcher_label);
 
         try {
-            connection = Sparql.Connection.bus_new ("org.freedesktop.Tracker3.Miner.Files", null, null);
+            this.connection = Tsparql.SparqlConnection.bus_new ("org.freedesktop.LocalSearch3", null, null);
         } catch (GLib.Error error) {
             critical ("Failed to connect to Tracker Miner FS: %s", error.message);
         }
 
-        query_builder = new StorageQueryBuilder ();
-        controller = new TrackerController (connection);
+        this.query_builder = new StorageQueryBuilder ();
+        this.controller = new SparqlController (connection);
 
         listbox.init (create_file_row);
         listbox.model_changed.connect ((model) => {

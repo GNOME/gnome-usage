@@ -13,7 +13,7 @@
         "--socket=wayland",
         "--share=network",
         "--system-talk-name=org.freedesktop.NetworkManager.*",
-        "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:FileSystem",
+        "--add-policy=Tracker3.dbus:org.freedesktop.LocalSearch3=tracker:FileSystem",
         "--filesystem=xdg-documents", "--filesystem=xdg-download", "--filesystem=xdg-music", "--filesystem=xdg-pictures", "--filesystem=xdg-videos",
 	"--filesystem=/var/lib/vnstat/vnstat.db",
         "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",

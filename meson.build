@@ -28,7 +28,7 @@ json_dep = dependency('json-glib-1.0')
 libgtop_dep = dependency('libgtop-2.0', version : '>= 2.34.0')
 libnm_dep = dependency('libnm', version : '>= 1.44.0')
 libadwaita_dep = dependency('libadwaita-1', version : '>=1.6')
-tracker_dep = dependency('tracker-sparql-3.0')
+tinysparql_dep = dependency('tinysparql-3.0')
 
 gnome = import('gnome')
 i18n = import('i18n')
