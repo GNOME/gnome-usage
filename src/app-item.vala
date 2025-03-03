@@ -262,7 +262,7 @@ public class Usage.AppItem : Object {
     public void remove_processes () {
         double cpu_load = 0;
         uint64 mem_usage = 0;
-        int games = 0;
+        bool gamemode = false;
 
         foreach (var process in processes.get_values ()) {
             if (!process.mark_as_updated) {
@@ -270,14 +270,15 @@ public class Usage.AppItem : Object {
             } else {
                 cpu_load += process.cpu_load;
                 mem_usage += process.mem_usage;
+                if (process.gamemode) {
+                    gamemode = true;
+                }
             }
-            if (process.gamemode)
-                games++;
         }
 
-        this.gamemode = games > 0;
         this.cpu_load = cpu_load;
         this.mem_usage = mem_usage;
+        this.gamemode = gamemode;
     }
 
     public void remove_process (Process process) {
