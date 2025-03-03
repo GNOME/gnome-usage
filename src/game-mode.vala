@@ -55,27 +55,25 @@ public struct GameMode.GameInfo {
 }
 
 public class GameMode.PidList : GLib.Object {
-
-    private Client client;
+    private Client? client;
     private HashTable<int, GLib.ObjectPath> pids;
 
     /* singleton */
-    private static PidList singleton;
+    private static PidList? singleton;
 
-    public static PidList get_default () {
+    public static PidList get_default () ensures (singleton != null) {
         if (singleton == null)
             singleton = new PidList ();
 
-        return singleton;
+        return (!) singleton;
     }
 
     /* construction */
     construct {
-        pids = new HashTable<int, GLib.ObjectPath>(direct_hash, direct_equal);
+        pids = new HashTable<int, GLib.ObjectPath> (direct_hash, direct_equal);
     }
 
     public PidList () {
-
         try {
             client = Bus.get_proxy_sync (BusType.SESSION,
                                         "com.feralinteractive.GameMode",
@@ -84,11 +82,10 @@ public class GameMode.PidList : GLib.Object {
             client.game_registered.connect (this.on_game_registered);
             client.game_unregistered.connect (this.on_game_unregistered);
 
-            var games = client.list_games ();
+            GameInfo[] games = client?.list_games ();
             foreach (GameMode.GameInfo info in games) {
                 pids.insert (info.pid, info.path);
             }
-
         } catch (IOError e) {
             warning ("GameMode Proxy creation failed: %s", e.message);
         } catch (GLib.DBusError e) {
