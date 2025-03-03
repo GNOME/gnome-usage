@@ -268,9 +268,9 @@ public class Usage.AppItem : Object {
             } else {
                 cpu_load += process.cpu_load;
                 mem_usage += process.mem_usage;
+                if (process.gamemode)
+                    games++;
             }
-            if (process.gamemode)
-                games++;
         }
 
         gamemode = games > 0;
