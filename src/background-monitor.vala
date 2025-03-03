@@ -34,7 +34,7 @@ public struct org.freedesktop.background.BackgroundApp {
 }
 
 public class Usage.BackgroundMonitor : Object {
-    org.freedesktop.background.Monitor monitor;
+    org.freedesktop.background.Monitor? monitor;
 
     public BackgroundMonitor () {
         try {
@@ -42,7 +42,7 @@ public class Usage.BackgroundMonitor : Object {
                                           "org.freedesktop.background.Monitor",
                                           "/org/freedesktop/background/monitor");
 
-            if (monitor.version > 1) {
+            if (monitor?.version > 1) {
                 warning ("Usage.BackgroundMonitor only makes use of org.freedesktop.background.Monitor version 1");
             }
         } catch (IOError e) {
@@ -52,10 +52,10 @@ public class Usage.BackgroundMonitor : Object {
 
     public org.freedesktop.background.BackgroundApp[] get_background_apps () {
         org.freedesktop.background.BackgroundApp[] background_apps = {};
-        foreach (HashTable<string, Variant?> app_as_table in monitor.background_apps) {
+        foreach (HashTable<string, Variant?> app_as_table in monitor?.background_apps) {
             background_apps += org.freedesktop.background.BackgroundApp () {
-                app_id = app_as_table["app_id"].get_string (),
-                instance = app_as_table["instance"].get_string (),
+                app_id = ((!) app_as_table["app_id"]).get_string (),
+                instance = ((!) app_as_table["instance"]).get_string (),
                 message = app_as_table["message"]?.get_string (),
             };
         }
