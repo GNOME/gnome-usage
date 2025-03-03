@@ -66,24 +66,25 @@ public class Usage.Process : Object {
         switch (proc_state.state) {
             case GTop.PROCESS_RUNNING:
             case GTop.PROCESS_UNINTERRUPTIBLE:
-                status = ProcessStatus.RUNNING;
+                this.status = ProcessStatus.RUNNING;
                 break;
             case GTop.PROCESS_SWAPPING:
             case GTop.PROCESS_INTERRUPTIBLE:
             case GTop.PROCESS_STOPPED:
-                status = ProcessStatus.SLEEPING;
+                this.status = ProcessStatus.SLEEPING;
                 break;
             case GTop.PROCESS_DEAD:
             case GTop.PROCESS_ZOMBIE:
             default:
-                status = ProcessStatus.DEAD;
+                if (this.cpu_load > 0) {
+                    this.status = ProcessStatus.RUNNING;
+                } else {
+                    this.status = ProcessStatus.DEAD;
+                }
                 break;
         }
 
-        if (cpu_load > 0)
-            status = ProcessStatus.RUNNING;
-
-        mark_as_updated = true;
+        this.mark_as_updated = true;
     }
 
     private uint _get_uid () {
