@@ -90,7 +90,7 @@ public class Usage.GraphView : Gtk.Widget {
             if (graph.color != null) {
                 color = (!) graph.color;
             } else {
-                this.get_style_context ().lookup_color ("accent_color", out color);
+                color = Adw.StyleManager.get_default ().get_accent_color ().to_rgba ();
             }
             Gdk.RGBA color_transparent = color.copy ();
             color_transparent.alpha = 0;
