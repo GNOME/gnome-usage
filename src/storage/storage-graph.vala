@@ -24,7 +24,6 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
     private unowned List<StorageViewItem> selected_items;
     private unowned GLib.ListStore _model;
     private uint64 selected_size = 0;
-    private bool is_root { get; private set; }
 
     public virtual GLib.ListStore model {
         get { return _model; }
@@ -32,15 +31,6 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
             _model = value;
             value.items_changed.connect (this.queue_draw);
             this.queue_draw ();
-            is_root = false;
-
-            for (int i = 0; i < value.get_n_items (); i++) {
-                var item = model.get_item (i) as StorageViewItem;
-                if (item.custom_type == StorageViewType.OS) {
-                    is_root = true;
-                    break;
-                }
-            }
         }
     }
 
@@ -75,79 +65,55 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
         double start_angle = 0;
         double final_angle = - Math.PI / 2.0;
         double ratio = 0;
-        uint shown_items_number = 1;
         Gdk.RGBA background_color;
-        get_style_context ().lookup_color ("window_bg_color", out background_color);
+        this.get_style_context ().lookup_color ("window_bg_color", out background_color);
         Gdk.RGBA foreground_color = this.get_color ();
 
-        for (int i = 1; i < model.get_n_items (); i++) {
-            var item = (model.get_item (i) as StorageViewItem);
+        for (int i = 0; i < this.model.get_n_items (); i++) {
+            StorageViewItem item = (StorageViewItem) this.model.get_item (i);
 
-            if (i > 0 && i < 3 && (item.percentage < min_percentage_shown_files)) {
-                shown_items_number = model.get_n_items ();
+            if (item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
                 continue;
-            }
 
-            if (item.percentage > min_percentage_shown_files)
-                shown_items_number = shown_items_number + 1;
-        }
+            double item_radius = radius;
+            Gdk.RGBA fill_color = item.color;
 
-        if (shown_items_number > 1) {
-            if (shown_items_number < 3)
-                shown_items_number = 3;
+            if (this.selected_items.find (item) != null)
+                item_radius += radius / 6;
 
-            for (int i = 0; i < model.get_n_items (); i++) {
-                var item = model.get_item (i) as StorageViewItem;
-                var item_radius = radius;
-                if (item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
-                    continue;
+            context.set_line_width (2.0);
+            start_angle = final_angle;
 
-                Gdk.RGBA base_color = item.get_base_color ();
+            if (item.percentage < 0.3)
+                ratio = ratio + ((double) 0.3 / 100);
+            else
+                ratio = ratio + ((double) item.percentage / 100);
 
-                Gdk.RGBA fill_color = base_color;
-
-                if (!is_root) {
-                    fill_color = Utils.generate_color (base_color, i, shown_items_number, true);
-                    item.color = fill_color;
-                }
-
-                if (selected_items.find (item) != null)
-                    item_radius += radius / 6;
-
-                context.set_line_width (2.0);
-                start_angle = final_angle;
-
-                if (item.percentage < 0.3)
-                    ratio = ratio + ((double) 0.3 / 100);
-                else
-                    ratio = ratio + ((double) item.percentage / 100);
-
-                final_angle = ratio * 2 * Math.PI - Math.PI / 2.0;
-                if (final_angle >= (2 * Math.PI - Math.PI / 2.0))
-                    final_angle = 2 * Math.PI - Math.PI / 2.0;
-
-                context.move_to (x, y);
-                Gdk.cairo_set_source_rgba (context, fill_color);
-                context.arc (x, y, item_radius, start_angle, final_angle);
-                context.line_to (x, y);
-                context.fill_preserve ();
-                Gdk.cairo_set_source_rgba (context, foreground_color);
-                context.stroke ();
-
-                if (start_angle >= (2 * Math.PI - Math.PI / 2.0))
-                    break;
-            }
+            final_angle = ratio * 2 * Math.PI - Math.PI / 2.0;
+            if (final_angle >= (2 * Math.PI - Math.PI / 2.0))
+                final_angle = 2 * Math.PI - Math.PI / 2.0;
 
             context.move_to (x, y);
-            context.line_to (x, y-(radius));
-            context.stroke ();
-
-            context.arc (x, y, radius/1.8, 0, 2 * Math.PI);
-            Gdk.cairo_set_source_rgba (context, background_color);
+            Gdk.cairo_set_source_rgba (context, fill_color);
+            context.arc (x, y, item_radius, start_angle, final_angle);
+            context.line_to (x, y);
             context.fill_preserve ();
             Gdk.cairo_set_source_rgba (context, foreground_color);
             context.stroke ();
+
+            if (start_angle >= (2 * Math.PI - Math.PI / 2.0))
+                break;
         }
+
+        context.move_to (x, y);
+        context.line_to (x, y - radius);
+        context.stroke ();
+
+        context.arc (x, y, radius / 1.8, 0, 2 * Math.PI);
+        Gdk.cairo_set_source_rgba (context, background_color);
+        context.fill_preserve ();
+        Gdk.cairo_set_source_rgba (context, foreground_color);
+        context.stroke ();
     }
 
     private void draw_storage_graph (Gtk.DrawingArea drawing_area, Cairo.Context context, int width, int height) {
@@ -177,11 +143,11 @@ public class Usage.StorageGraph : Gtk.DrawingArea {
 
         var text_color = this.get_root ().get_color ();
         var text_color_string = "#%02x%02x%02x".printf (
-            (uint)(Math.round (text_color.red*255)),
-            (uint)(Math.round (text_color.green*255)),
-            (uint)(Math.round (text_color.blue*255))).up ();
+            (uint) (Math.round (text_color.red * 255)),
+            (uint) (Math.round (text_color.green * 255)),
+            (uint) (Math.round (text_color.blue * 255))).up ();
 
-        var markup = "<span foreground='" + text_color_string + "' font='" + radius.to_string () + "'><b>" + text + "</b></span>";
+        var markup = @"<span foreground='$text_color_string' font='$radius'><b>$text</b></span>";
         layout.set_markup (markup, -1);
 
         Pango.Rectangle layout_rect;

@@ -94,7 +94,21 @@ public class Usage.StorageView : Usage.View {
 
         listbox.init (create_file_row);
         listbox.model_changed.connect ((model) => {
-            graph.model = model;
+            model.items_changed.connect ((position, removed, add) => {
+                if ((model.get_item (0) as StorageViewItem).custom_type == StorageViewType.OS)
+                    return;
+
+                for (int i = 0; i < model.get_n_items (); i++) {
+                    StorageViewItem item = (StorageViewItem) model.get_item (i);
+
+                    if (item.custom_type == StorageViewType.UP_FOLDER || item.size == 0)
+                        continue;
+
+                    item.color = Utils.generate_color (item.get_base_color (), i, model.get_n_items (), true);
+                }
+            });
+
+            this.graph.model = model;
         });
 
         actionbar.refresh_listbox.connect (this.refresh_current_dir);
