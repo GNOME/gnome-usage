@@ -1,15 +1,15 @@
 # Hungarian translation for gnome-usage.
-# Copyright (C) 2017, 2018, 2019, 2022, 2024 Free Software Foundation, Inc.
+# Copyright (C) 2017, 2018, 2019, 2022, 2024, 2025 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-usage package.
 #
-# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2018, 2019, 2022, 2024.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2018, 2019, 2022, 2024, 2025.
 # Gabor Kelemen <kelemeng at ubuntu dot com>, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:11+0000\n"
-"PO-Revision-Date: 2024-09-09 01:24+0200\n"
+"POT-Creation-Date: 2025-02-27 03:26+0000\n"
+"PO-Revision-Date: 2025-03-04 07:02+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: data/org.gnome.Usage.desktop.in.in:3
 #: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
@@ -55,25 +55,25 @@ msgid ""
 "Usage helps with simple to understand ways to analyze how the system uses "
 "its resources."
 msgstr ""
-"A Használat segít egyszerűen érthető módon elemezni, hogy a rendszer hogyan"
-" használja az erőforrásait."
+"A Használat segít egyszerűen érthető módon elemezni, hogy a rendszer hogyan "
+"használja az erőforrásait."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:29
 msgid ""
 "Easy access to which app uses what amount of processing power or memory, "
 "helps find performance issues."
 msgstr ""
-"Könnyű hozzáférés ahhoz, hogy melyik alkalmazás mennyi feldolgozási"
-" teljesítményt vagy memóriát használ, segít megtalálni a"
-" teljesítményproblémákat."
+"Könnyű hozzáférés ahhoz, hogy melyik alkalmazás mennyi feldolgozási "
+"teljesítményt vagy memóriát használ, segít megtalálni a "
+"teljesítményproblémákat."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:33
 msgid ""
 "The storage view provides insight to simplify cleaning up unnecessary "
 "leftover files."
 msgstr ""
-"A tárolási nézet betekintést nyújt a feleslegesen megmaradt fájlok"
-" tisztításának egyszerűsítéséhez."
+"A tárolási nézet betekintést nyújt a feleslegesen megmaradt fájlok "
+"tisztításának egyszerűsítéséhez."
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:42
 msgid "See where the processing power is going"
@@ -122,24 +122,29 @@ msgstr ""
 "adatai rendszeresen frissülnek és megjelennek."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+#| msgid ""
+#| "minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"a teljesítmény lapon megjelenítendő alkalmazás legkisebb relatív terhelése "
-"(%)"
+"a teljesítmény lapon megjelenítendő alkalmazás legkisebb relatív terhelése"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
+#| msgid ""
+#| "The load an app has to have in total as the sum over all its processes, "
+#| "normalized to 100, to be listed in the performance tab. With 0, all apps "
+#| "are listed. With 100 an app is only listed if its processes fully utilise "
+#| "all CPU threads."
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
-"Az a terhelés, amellyel egy alkalmazásnak az összes folyamatának "
-"összesítéseként, 100-ra normalizálva kell rendelkeznie ahhoz, hogy a "
-"teljesítmény lapon szerepeljen. A 0-s értékkel az összes alkalmazás szerepel "
-"a listán. A 100-as értékkel egy alkalmazás csak akkor szerepel a listán, ha "
-"a folyamatai teljesen kihasználják az összes CPU-szálat."
+"Az a terhelés, amellyel egy alkalmazásnak az összes folyamatának"
+" összesítéseként, 1,00-ra normalizálva kell rendelkeznie ahhoz, hogy a"
+" teljesítmény lapon szerepeljen. A 0,00-s értékkel az összes alkalmazás"
+" szerepel a listán. Az 1,00-s értékkel egy alkalmazás csak akkor szerepel a"
+" listán, ha a folyamatai teljesen kihasználják az összes CPU-szálat."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -199,6 +204,10 @@ msgstr "Használt"
 msgid "Available"
 msgstr "Elérhető"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Utolsó 30 nap"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Nincs találat"
@@ -248,27 +257,27 @@ msgstr "Saját mappa partíciója"
 msgid "Swap"
 msgstr "Cserehely"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Keresés"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Alkalmazások keresése…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "A Használat _névjegye"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Rendszerfolyamatok csoportosítása"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Összes folyamat megjelenítése"
 
@@ -280,11 +289,11 @@ msgstr "Processzor"
 msgid "Memory"
 msgstr "Memória"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "Rendszer"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -292,13 +301,42 @@ msgstr ""
 "Jó módja rendszererőforrások használatáról szóló információk "
 "megjelenítésének, mint például a memória és a lemezterület."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "Meskó Balázs <mesko.balazs at fsf dot hu>"
 
 #: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Processzor"
+
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%Y. %b. %-e."
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Hálózat"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Vezetékes"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "Wi-Fi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Wi-Fi (egyenrangú)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Mobil kapcsolat"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Bluetooth csatlakozási pont"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
@@ -319,23 +357,15 @@ msgstr "Ha törli ezeket az elemeket, véglegesen elvesznek."
 msgid "Delete"
 msgstr "Törlés"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Az operációs rendszer fájljai a rendszer létfontosságú részei, és nem "
-"távolíthatóak el."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:77
 msgid "Storage"
 msgstr "Tároló"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:235
 msgid "Operating System"
 msgstr "Operációs rendszer"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:263
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
