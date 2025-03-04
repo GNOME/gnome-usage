@@ -63,6 +63,16 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <release version="46.1" date="2024-03-04">
+      <description>
+        <p>A few have been identified and fixed, for example</p>
+        <ul>
+          <li>some applications were not correctly identified if they provide background services,</li>
+          <li>some users experienced a missing app icon for Usage, and</li>
+          <li>stopping an app used to regularly result in Usage crashing.</li>
+        </ul>
+      </description>
+    </release>
     <release version="46.0" date="2024-03-20">
       <description>
         <p>The new release alongside GNOME 46 is out and now Usage</p>

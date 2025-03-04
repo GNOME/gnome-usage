@@ -1,3 +1,11 @@
+46.1 - Mar 5, 2025
+==================
+
+Usage has bug fixes, amongst them for
+* a use after free bug when a process exits during update
+* finding the preferred desktop entry when an app install mutliple
+* having bogus check boxes on system rows in the storage view
+
 46.0 - Mar 20, 2024
 ===================
 
