@@ -35,6 +35,11 @@ public class Usage.Application : Adw.Application {
                 flags: ApplicationFlags.DEFAULT_FLAGS,
                 resource_base_path: Config.APPLICATION_RESOURCE_PATH,
                 register_session: true);
+
+        Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+        Intl.setlocale (LocaleCategory.ALL, "");
+        Intl.textdomain (Config.GETTEXT_PACKAGE);
+        Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "utf-8");
     }
 
     public Window? get_window () {
@@ -96,4 +101,8 @@ public class Usage.Application : Adw.Application {
         action.set_state (state);
         SystemMonitor.get_default ().group_system_apps = state.get_string () == "group-system" ? true : false;
     }
+}
+
+public static int main (string[] args) {
+    return new Usage.Application ().run (args);
 }

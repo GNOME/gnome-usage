@@ -1,6 +1,5 @@
 vala_sources = [
   'application.vala',
-  'gnome-usage.vala',
   'settings.vala',
   'utils.vala',
   'monitor/app-item.vala',
