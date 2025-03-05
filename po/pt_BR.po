@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the gnome-usage package.
 # Enrico Nicoletto <liverig@gmail.com>, 2017, 2018.
 # Alex Jr <alexjrsh@proton.me>, 2023.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2017-2024.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2017-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-09-18 15:41+0000\n"
-"PO-Revision-Date: 2024-09-20 23:43-0300\n"
+"POT-Creation-Date: 2025-03-05 00:28+0000\n"
+"PO-Revision-Date: 2025-03-05 15:19-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 46.1\n"
+"X-Generator: Gtranslator 47.1\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Usage.desktop.in.in:3
@@ -37,12 +37,8 @@ msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in.in:13
-msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;"
-msgstr ""
-"Monitor;Sistema;Processo;CPU;Memória;Rede;História;Uso;Desempenho;"
-"Performance;Tarefa;Gerenciar;"
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr "Monitor;Sistema;Processo;CPU;Memória;Rede;História;Uso;Desempenho;Performance;Tarefa;Gerenciar;"
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:18
 msgid "Usage developers"
@@ -197,6 +193,10 @@ msgstr "Usado"
 msgid "Available"
 msgstr "Disponível"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Últimos 30 dias"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Nenhum resultado localizado"
@@ -300,6 +300,35 @@ msgstr ""
 msgid "Processor"
 msgstr "Processador"
 
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e de %b de %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Rede"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Cabeada"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "WiFi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "WiFi (ponto a ponto)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Conexão móvel"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Ponto de acesso Bluetooth"
+
 #: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
@@ -320,15 +349,15 @@ msgstr "Se você excluir estes itens, eles serão permanentemente excluídos."
 msgid "Delete"
 msgstr "Excluir"
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "Armazenamento"
 
-#: src/storage/storage-view.vala:235
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "Sistema operacional"
 
-#: src/storage/storage-view.vala:263
+#: src/storage/storage-view.vala:276
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -506,9 +535,6 @@ msgstr "%llu B/s"
 
 #~ msgid "Disk I/O"
 #~ msgstr "E/S de Disco"
-
-#~ msgid "Network"
-#~ msgstr "Rede"
 
 #~ msgid "No applications using network."
 #~ msgstr "Nenhum aplicativo usando a rede."
