@@ -5,7 +5,7 @@ vala_sources = [
   'monitor/app-item.vala',
   'monitor/background-monitor.vala',
   'monitor/cpu-monitor.vala',
-  'monitor/game-mode.vala',
+  'monitor/gamemode-monitor.vala',
   'monitor/memory-monitor.vala',
   'monitor/monitor.vala',
   'monitor/process.vala',

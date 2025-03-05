@@ -39,7 +39,7 @@ public class Usage.SystemMonitor : Object {
     private BackgroundMonitor background_monitor;
     private CpuMonitor cpu_monitor;
     private MemoryMonitor memory_monitor;
-    private GameMode.PidList gamemode_pids;
+    private GameModeMonitor gamemode_monitor;
 
     private HashTable<string, AppItem> app_table;
     private HashTable<GLib.Pid, Process> process_table;
@@ -72,10 +72,10 @@ public class Usage.SystemMonitor : Object {
         GTop.init ();
         AppItem.init ();
 
-        background_monitor = new BackgroundMonitor ();
-        cpu_monitor = new CpuMonitor ();
-        memory_monitor = new MemoryMonitor ();
-        gamemode_pids = new GameMode.PidList ();
+        this.background_monitor = new BackgroundMonitor ();
+        this.cpu_monitor = new CpuMonitor ();
+        this.memory_monitor = new MemoryMonitor ();
+        this.gamemode_monitor = new GameModeMonitor ();
 
         app_table = new HashTable<string, AppItem> (str_hash, str_equal);
         process_table = new HashTable<GLib.Pid, Process> (direct_hash, direct_equal);
@@ -184,8 +184,9 @@ public class Usage.SystemMonitor : Object {
     }
 
     private bool update_data () requires (this.state != MonitorState.PAUSED) {
-        cpu_monitor.update ();
-        memory_monitor.update ();
+        this.cpu_monitor.update ();
+        this.memory_monitor.update ();
+        this.gamemode_monitor.update ();
 
         cpu_load = cpu_monitor.get_cpu_load ();
         x_cpu_load = cpu_monitor.get_x_cpu_load ();
@@ -329,10 +330,10 @@ public class Usage.SystemMonitor : Object {
     }
 
     private void update_process (ref Process process) {
-        cpu_monitor.update_process (ref process);
-        memory_monitor.update_process (ref process);
+        this.cpu_monitor.update_process (ref process);
+        this.memory_monitor.update_process (ref process);
+        this.gamemode_monitor.update_process (ref process);
         process.update_status ();
-        process.gamemode = gamemode_pids.contains ((int) process.pid);
     }
 
     public static void sort_pids (void *pids, size_t elm, size_t length) {
