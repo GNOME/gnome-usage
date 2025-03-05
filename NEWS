@@ -1,3 +1,57 @@
+48.rc - Mar 5, 2025
+===================
+
+To interest of packagers and other downstream might be:
+* performance: change default minimum load to 0 (!136, Markus Göllnitz)
+* update for libadwaita 1.6 (!157, Markus Göllnitz)
+* network panel with data usage per interface (!113, Markus Göllnitz)
+* storage: move to tinysparql (!160, Markus Göllnitz)
+
+Usage 48 requires libadwaita >= 1.6, and tracker-sparql has been replaced
+with tinysparql. Usage has a new dependency on libnm from NetworkManager.
+
+At runtime, Usage can optionally make use of vnstat's JSON interface for a
+new network view.
+
+The app-minimum-load key expects values between 0.0 and 1.0. Previously, it
+was 0.0 to 100.0.
+
+Usage has seen a number of other improvements:
+* window: drop strict centering-policy from titlebar (!150, knuxify)
+* storage-view: remove check buttons from available and used rows (!151, José Guilherme)
+* Set icon for the window (!155, Balló György)
+* window: use Adwaita's listview padding (!156, Markus Göllnitz)
+* process: use MappedFile (!148, Markus Göllnitz)
+* prioritise desktop entries without NoDisplay when matching processes to apps (!140, Markus Göllnitz)
+* optimise performance views (!136, Markus Göllnitz)
+* storage: Skip XDG folder if missing (!158, Balló György)
+* app-item: fix use after free in process update (!160, Markus Göllnitz)
+
+There have been many translation updates:
+* Basque (Asier Sarasua Garmendia)
+* Belarusian (Vasil Pupkin)
+* Brazilian Portuguese (Rafael Fontenelle)
+* Chinese (China) (Luming Zh)
+* Czech (Daniel Rusek)
+* Danish (Alan Mortensen)
+* German (Jürgen Benvenuti)
+* Hebrew (Yaron Shahrabani)
+* Hebrew (Yosef Or Boczko)
+* Hindi (Scrambled 777)
+* Hungarian (Balázs Úr)
+* Persian (Danial Behzadi)
+* Polish (Piotr Drąg)
+* Portuguese (Hugo Carvalho)
+* Romanian (Daniel Șerbănescu)
+* Russian (Sergej A.)
+* Serbian (Мирослав Николић)
+* Slovenian (Martin)
+* Spanish (Sergio Gil)
+* Swedish (Anders Jonsson)
+* Turkish (Emin Tufan Çetin)
+* Turkish (Sabri Ünal)
+* Ukrainian (Yuri Chornoivan)
+
 46.1 - Mar 4, 2025
 ==================
 
