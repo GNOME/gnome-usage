@@ -1,15 +1,13 @@
 # List of source files that should *not* be translated.
 # Please keep this file sorted alphabetically.
-src/app-dialog.c
-src/app-item.c
 src/application.c
-src/cpu-view.c
-src/memory-view.c
-src/network/network-interface-graph.c
-src/network/network-view.c
-src/performance-view.c
-src/storage/storage-actionbar.c
-src/storage/storage-view.c
 src/utils.c
-src/window.c
-subprojects/libhandy
+src/monitor/app-item.c
+src/ui/window.c
+src/ui/network/network-interface-graph.c
+src/ui/network/network-view.c
+src/ui/performance/app-dialog.c
+src/ui/performance/cpu-view.c
+src/ui/performance/memory-view.c
+src/ui/storage/storage-actionbar.c
+src/ui/storage/storage-view.c

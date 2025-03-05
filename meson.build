@@ -33,6 +33,8 @@ tinysparql_dep = dependency('tinysparql-3.0')
 gnome = import('gnome')
 i18n = import('i18n')
 
+
+src_dir = meson.project_source_root() / 'src'
 po_dir = join_paths(meson.source_root(), 'po')
 vapi_dir = join_paths (meson.source_root (), 'vapi')
 
