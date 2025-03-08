@@ -82,57 +82,51 @@ public class Usage.ProcessListBox : Adw.Bin {
 
         this.set_child (list_view);
 
-        this.notify["search-text"].connect ((sender, property) => {
-            update ();
-        });
+        this.notify["search-text"].connect (this.update);
 
-        var system_monitor = SystemMonitor.get_default ();
-        system_monitor.notify["process-list-ready"].connect (() => {
-            if (system_monitor.process_list_ready)
-                update ();
+        SystemMonitor.get_default ().updated.connect ((list_cycle) => {
+            if (list_cycle) {
+                this.update ();
+            }
         });
-
-        var settings = Settings.get_default ();
-        Timeout.add (settings.list_update_interval_UI, update);
 
         this.bind_property ("empty", this, "visible", BindingFlags.INVERT_BOOLEAN | BindingFlags.SYNC_CREATE);
     }
 
-    private bool update () {
+    private void update () {
         var system_monitor = SystemMonitor.get_default ();
         List<unowned AppItem> apps = system_monitor.get_apps ();
 
         uint inserted = 0;
         uint removed = 0;
 
-        for (uint position = 0; position < model.n_items; position++) {
-            AppItem app = ((ProcessRowItem) model.get_item (position)).app;
+        for (uint position = 0; position < this.model.n_items; position++) {
+            AppItem app = ((ProcessRowItem) this.model.get_item (position)).app;
             if (apps.index (app) < 0 || !app.is_running ()) {
-                model.remove (position);
-                item_for_app.remove (app);
+                this.model.remove (position);
+                this.item_for_app.remove (app);
                 removed++;
             }
         }
         foreach (unowned AppItem app in system_monitor.get_apps ()) {
             uint index;
-            if (!model.find (item_for_app.@get (app), out index) && app.is_running ()) {
+            if (!this.model.find (this.item_for_app.@get (app), out index) && app.is_running ()) {
                 ProcessRowItem item = new ProcessRowItem (app, type);
-                model.append (item);
-                item_for_app.insert (app, item);
+                this.model.append (item);
+                this.item_for_app.insert (app, item);
                 inserted++;
             }
         }
 
         debug (@"$inserted started; $removed stopped");
 
-        for (uint position = 0; position < model.n_items; position++) {
-            ProcessRowItem item = (ProcessRowItem) model.get_item (position);
+        for (uint position = 0; position < this.model.n_items; position++) {
+            ProcessRowItem item = (ProcessRowItem) this.model.get_item (position);
             item.notify_property ("load_widget");
         }
-        filter.changed (Gtk.FilterChange.DIFFERENT);
-        sorter.changed (Gtk.SorterChange.DIFFERENT);
+        this.filter.changed (Gtk.FilterChange.DIFFERENT);
+        this.sorter.changed (Gtk.SorterChange.DIFFERENT);
 
-        empty = (this.list_view.model.get_n_items () == 0);
-        return true;
+        this.empty = (this.list_view.model.get_n_items () == 0);
     }
 }

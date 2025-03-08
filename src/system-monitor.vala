@@ -38,12 +38,16 @@ public class Usage.SystemMonitor : Object {
     private int process_mode = GTop.KERN_PROC_ALL;
     private static SystemMonitor system_monitor;
 
+    private uint update_cycle = 0;
+
     public static SystemMonitor get_default () {
         if (system_monitor == null)
             system_monitor = new SystemMonitor ();
 
         return system_monitor;
     }
+
+    public signal void updated (bool list_cycle);
 
     public List<unowned AppItem> get_apps () {
         return app_table.get_values ();
@@ -75,24 +79,19 @@ public class Usage.SystemMonitor : Object {
     }
 
     private void init () {
-        var settings = Settings.get_default ();
-        app_table.remove_all ();
-        process_list_ready = false;
+        this.app_table.remove_all ();
+        this.process_list_ready = false;
 
-        if (group_system_apps) {
-            var system = new AppItem.system ();
-            app_table.insert ("system" , system);
+        if (this.group_system_apps) {
+            AppItem system = new AppItem.system ();
+            this.app_table.insert ("system", system);
         }
 
-        foreach (var p in process_table.get_values ()) {
-            process_added (p);
+        foreach (Process p in this.process_table.get_values ()) {
+            this.process_added (p);
         }
 
-        update_data ();
-        Timeout.add (settings.data_update_interval, () => {
-            process_list_ready = true;
-            return false;
-        });
+        this.update_data ();
     }
 
     private bool update_data () {
@@ -196,6 +195,12 @@ public class Usage.SystemMonitor : Object {
         debug ("removed: %u, added: %u\n", removed, added);
         debug ("app table size: %u\n", app_table.length);
         debug ("process table size: %u\n", process_table.length);
+
+        uint list_cycles = Settings.get_default ().list_update_multiple;
+        this.updated (this.update_cycle % list_cycles == 0);
+        this.update_cycle = (this.update_cycle + 1) % list_cycles;
+
+        this.process_list_ready = true;
 
         return true;
     }

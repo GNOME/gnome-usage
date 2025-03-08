@@ -30,31 +30,28 @@ public abstract class Usage.PerformanceGraphView : GraphView {
 
         this.reevaluate_constant_redraw ();
         this.settings.notify["enable-scrolling-graph"].connect (this.reevaluate_constant_redraw);
+        SystemMonitor.get_default ().updated.connect (this.update_graphs);
     }
 
     private void reevaluate_constant_redraw () {
         this.constant_redraw = this.settings.enable_scrolling_graph;
 
         if (this.constant_redraw) {
-            this.add_tick_callback (() => {
-                this.update_x_offset ();
-                return this.constant_redraw;
-            });
-            Timeout.add (this.settings.graph_update_interval, () => {
-                this.update_graphs ();
-                return this.constant_redraw;
-            });
+            this.add_tick_callback (this.queue_update);
+            SystemMonitor.get_default ().updated.disconnect (this.update_x_offset);
         } else {
-            Timeout.add (this.settings.graph_update_interval, () => {
-                this.update_graphs ();
-                this.update_x_offset ();
-                return !this.constant_redraw;
-            });
+            SystemMonitor.get_default ().updated.connect (this.update_x_offset);
         }
     }
 
+    private bool queue_update () {
+        this.update_x_offset ();
+        return this.constant_redraw;
+    }
+
     public new void add_graph (Graph graph) {
-        graph.maximal_queue_length = (int) Math.ceilf ((float) this.settings.graph_timespan / this.settings.graph_update_interval) + 2;
+        float visible_points = (float) this.settings.graph_timespan / this.settings.data_update_interval + 1;
+        graph.maximal_queue_length = (int) Math.ceilf (visible_points);
         base.add_graph (graph);
     }
 
@@ -62,7 +59,7 @@ public abstract class Usage.PerformanceGraphView : GraphView {
         int64 timestamp = get_monotonic_time ();
         int64 offset = timestamp - 1000 * this.settings.graph_timespan;
         if (constant_redraw) {
-            offset -= 1000 * this.settings.graph_update_interval;
+            offset -= 1000 * this.settings.data_update_interval;
         }
         this.offset_x = offset;
     }
