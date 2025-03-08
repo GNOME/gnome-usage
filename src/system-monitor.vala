@@ -1,6 +1,7 @@
 /* system-monitor.vala
  *
  * Copyright (C) 2017 Red Hat, Inc.
+ * Copyright (C) 2025 Markus Göllnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Authors: Petr Štětka <pstetka@redhat.com>
+ *          Markus Göllnitz <camelcasenick@bewares.it>
  */
+
+private enum MonitorState {
+    ACTIVE,
+    SLOWED,
+    PAUSED;
+}
 
 public class Usage.SystemMonitor : Object {
     public bool process_list_ready { get; private set; default = false; }
@@ -38,6 +46,9 @@ public class Usage.SystemMonitor : Object {
     private int process_mode = GTop.KERN_PROC_ALL;
     private static SystemMonitor system_monitor;
 
+    private uint update_source_id = 0;
+    private MonitorState state = MonitorState.PAUSED;
+    private uint active_users = 0;
     private uint update_cycle = 0;
 
     public static SystemMonitor get_default () {
@@ -68,14 +79,78 @@ public class Usage.SystemMonitor : Object {
 
         app_table = new HashTable<string, AppItem> (str_hash, str_equal);
         process_table = new HashTable<GLib.Pid, Process> (direct_hash, direct_equal);
-        var settings = Settings.get_default ();
 
         init ();
         this.notify["group-system-apps"].connect ((sender, property) => {
             init ();
         });
 
-        Timeout.add (settings.data_update_interval, update_data);
+        this.check_update ();
+        Settings.get_default ().notify["efficiency-state"].connect (this.check_update);
+        this.notify["process-list-ready"].connect (this.check_update);
+    }
+
+    private void check_update () {
+        MonitorState state = this.state;
+        Settings settings = Settings.get_default ();
+
+        switch (settings.efficiency_state) {
+            case EfficiencyState.SCREEN_OFF:
+                if (state != MonitorState.PAUSED) {
+                    debug ("Turning off monitor as screen was locked.");
+                }
+                state = MonitorState.PAUSED;
+                break;
+            case EfficiencyState.DEFAULT:
+            default:
+                if (this.active_users == 0 && this.process_list_ready) {
+                    if (state != MonitorState.SLOWED) {
+                        debug ("Slowing down as there is no active window.");
+                    }
+                    state = MonitorState.SLOWED;
+                } else {
+                    state = MonitorState.ACTIVE;
+                }
+                break;
+        }
+
+        if (this.state == state)
+            return;
+
+        this.state = state;
+
+        uint interval = 0;
+
+        switch (this.state) {
+            case MonitorState.ACTIVE:
+                interval = settings.data_update_interval;
+                break;
+            case MonitorState.SLOWED:
+                interval = settings.data_update_interval_slowed;
+                break;
+            case MonitorState.PAUSED:
+                interval = 0;
+                break;
+        }
+
+        if (this.update_source_id > 0) {
+            Source.remove (this.update_source_id);
+            this.update_source_id = 0;
+        }
+
+        if (interval > 0) {
+            this.update_source_id = Timeout.add (interval, this.update_data);
+        }
+    }
+
+    public void activate () {
+        this.active_users++;
+        this.check_update ();
+    }
+
+    public void deactivate () requires (this.active_users > 0) {
+        this.active_users--;
+        this.check_update ();
     }
 
     private void init () {
@@ -91,10 +166,10 @@ public class Usage.SystemMonitor : Object {
             this.process_added (p);
         }
 
-        this.update_data ();
+        this.check_update ();
     }
 
-    private bool update_data () {
+    private bool update_data () requires (this.state != MonitorState.PAUSED) {
         cpu_monitor.update ();
         memory_monitor.update ();
 
@@ -202,7 +277,7 @@ public class Usage.SystemMonitor : Object {
 
         this.process_list_ready = true;
 
-        return true;
+        return Source.CONTINUE;
     }
 
     private void process_added (Process p) {

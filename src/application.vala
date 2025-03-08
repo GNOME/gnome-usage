@@ -31,7 +31,10 @@ public class Usage.Application : Adw.Application {
     };
 
     public Application () {
-        Object (application_id: Config.APPLICATION_ID, flags: ApplicationFlags.DEFAULT_FLAGS, resource_base_path: Config.APPLICATION_RESOURCE_PATH);
+        Object (application_id: Config.APPLICATION_ID,
+                flags: ApplicationFlags.DEFAULT_FLAGS,
+                resource_base_path: Config.APPLICATION_RESOURCE_PATH,
+                register_session: true);
     }
 
     public Window? get_window () {
@@ -52,6 +55,8 @@ public class Usage.Application : Adw.Application {
         set_accels_for_action ("app.search", {"<Control>f"});
         set_accels_for_action ("app.quit", {"<Control>q"});
         Gtk.Window.set_default_icon_name ("org.gnome.Usage");
+
+        Settings.get_default ().init_application (this);
     }
 
     private void on_about (GLib.SimpleAction action, GLib.Variant? parameter) {

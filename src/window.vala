@@ -61,6 +61,20 @@ public class Usage.Window : Adw.ApplicationWindow {
         }
 
         this.search_entry.set_key_capture_widget (content_area);
+
+        if (!this.suspended) {
+            this.update_active_monitor ();
+        }
+        this.notify["suspended"].connect (this.update_active_monitor);
+    }
+
+    private void update_active_monitor () {
+        debug (@"window state changed to suspended = $(this.suspended)");
+        if (!this.suspended) {
+            SystemMonitor.get_default ().activate ();
+        } else {
+            SystemMonitor.get_default ().deactivate ();
+        }
     }
 
     public void action_on_search () {
