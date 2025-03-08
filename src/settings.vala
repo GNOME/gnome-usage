@@ -24,7 +24,8 @@ using Gtk;
 
 public enum Usage.EfficiencyState {
     DEFAULT,
-    SCREEN_OFF;
+    SCREEN_OFF,
+    POWER_SAVING;
 }
 
 public class Usage.Settings : GLib.Settings {
@@ -53,6 +54,9 @@ public class Usage.Settings : GLib.Settings {
             if (this.application?.screensaver_active == true) {
                 return EfficiencyState.SCREEN_OFF;
             }
+            if (this.power_profile_monitor.power_saver_enabled) {
+                return EfficiencyState.POWER_SAVING;
+            }
             return EfficiencyState.DEFAULT;
         }
     }
@@ -73,6 +77,7 @@ public class Usage.Settings : GLib.Settings {
 
         this.power_profile_monitor.notify["power-saver-enabled"].connect (() => {
             this.notify_property ("enable-scrolling-graph");
+            this.notify_property ("efficiency-state");
         });
 
         this.gtk_settings.notify["gtk-enable-animations"].connect (() => {

@@ -101,6 +101,16 @@ public class Usage.SystemMonitor : Object {
                 }
                 state = MonitorState.PAUSED;
                 break;
+            case EfficiencyState.POWER_SAVING:
+                if (this.active_users == 0) {
+                    if (state != MonitorState.PAUSED) {
+                        debug ("Turning off monitor in power saving mode.");
+                    }
+                    state = MonitorState.PAUSED;
+                } else {
+                    state = MonitorState.ACTIVE;
+                }
+                break;
             case EfficiencyState.DEFAULT:
             default:
                 if (this.active_users == 0 && this.process_list_ready) {
