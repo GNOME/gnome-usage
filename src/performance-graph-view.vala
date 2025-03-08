@@ -25,44 +25,44 @@ public abstract class Usage.PerformanceGraphView : GraphView {
     construct {
         this.range_y = 1;
         this.offset_y = 0;
-        this.range_x = 1000 * settings.graph_timespan;
+        this.range_x = 1000 * this.settings.graph_timespan;
         this.update_x_offset ();
 
         this.reevaluate_constant_redraw ();
-
-        Timeout.add (settings.graph_update_interval, () => {
-            this.update_graphs ();
-
-            this.reevaluate_constant_redraw ();
-            if (!constant_redraw) {
-                this.update_x_offset ();
-            }
-
-            return true;
-        });
+        this.settings.notify["enable-scrolling-graph"].connect (this.reevaluate_constant_redraw);
     }
 
     private void reevaluate_constant_redraw () {
-        constant_redraw = settings.enable_scrolling_graph;
+        this.constant_redraw = this.settings.enable_scrolling_graph;
 
-        if (constant_redraw) {
+        if (this.constant_redraw) {
             this.add_tick_callback (() => {
                 this.update_x_offset ();
-                return constant_redraw;
+                return this.constant_redraw;
+            });
+            Timeout.add (this.settings.graph_update_interval, () => {
+                this.update_graphs ();
+                return this.constant_redraw;
+            });
+        } else {
+            Timeout.add (this.settings.graph_update_interval, () => {
+                this.update_graphs ();
+                this.update_x_offset ();
+                return !this.constant_redraw;
             });
         }
     }
 
     public new void add_graph (Graph graph) {
-        graph.maximal_queue_length = (int) Math.ceilf((float) settings.graph_timespan/settings.graph_update_interval) + 2;
+        graph.maximal_queue_length = (int) Math.ceilf ((float) this.settings.graph_timespan / this.settings.graph_update_interval) + 2;
         base.add_graph (graph);
     }
 
     public void update_x_offset () {
         int64 timestamp = get_monotonic_time ();
-        int64 offset = timestamp - 1000 * settings.graph_timespan;
+        int64 offset = timestamp - 1000 * this.settings.graph_timespan;
         if (constant_redraw) {
-            offset -= 1000 * settings.graph_update_interval;
+            offset -= 1000 * this.settings.graph_update_interval;
         }
         this.offset_x = offset;
     }

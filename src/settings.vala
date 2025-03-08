@@ -27,15 +27,15 @@ public class Usage.Settings : GLib.Settings {
     private GLib.PowerProfileMonitor power_profile_monitor = GLib.PowerProfileMonitor.dup_default ();
 
     public uint graph_timespan { get { return settings.get_uint ("performance-graphs-timespan"); } }
-    public uint graph_update_interval { get { return settings.get_uint ("performance-update-interval"); } }
+    public uint graph_update_interval { get { return this.data_update_interval; } }
     public uint list_update_interval_UI {
         get {
-            uint performance_interval = settings.get_uint ("performance-update-interval");
+            uint performance_interval = this.data_update_interval;
             if (performance_interval >= 5000) return performance_interval;
-            return (int) Math.ceil(5000.0/performance_interval) * performance_interval;
+            return (int) Math.ceil (5000.0 / performance_interval) * performance_interval;
         }
     }
-    public uint list_update_pie_charts_UI { get { return settings.get_uint ("performance-update-interval"); } }
+    public uint list_update_pie_charts_UI { get { return this.data_update_interval; } }
     public uint data_update_interval { get { return settings.get_uint ("performance-update-interval"); } }
     public double app_minimum_load { get { return settings.get_double ("app-minimum-load"); } }
     public double app_minimum_memory { get { return settings.get_double ("app-minimum-memory"); } }
@@ -58,5 +58,13 @@ public class Usage.Settings : GLib.Settings {
 
     public Settings () {
         Object (schema_id: Config.APPLICATION_ID);
+
+        this.power_profile_monitor.notify["power-saver-enabled"].connect (() => {
+            this.notify_property ("enable-scrolling-graph");
+        });
+
+        this.gtk_settings.notify["gtk-enable-animations"].connect (() => {
+            this.notify_property ("enable-scrolling-graph");
+        });
     }
 }
