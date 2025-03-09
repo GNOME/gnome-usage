@@ -1,16 +1,16 @@
 # Swedish translation for gnome-usage.
-# Copyright © 2017-2024 gnome-usage's COPYRIGHT HOLDER
+# Copyright © 2017-2025 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2017.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019, 2023, 2024.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019, 2023, 2024, 2025.
 # Luna Jernberg <droidbittin@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:11+0000\n"
-"PO-Revision-Date: 2024-09-05 17:19+0200\n"
+"POT-Creation-Date: 2025-03-04 23:18+0000\n"
+"PO-Revision-Date: 2025-03-09 12:00+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Usage.desktop.in.in:3
 #: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
@@ -36,12 +36,8 @@ msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in.in:13
-msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;"
-msgstr ""
-"Skärm;System;Process;CPU;Minne;Nätverk;Historik;Användning;Prestanda;Uppgift;"
-"Hanterare;"
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr "Skärm;System;Process;CPU;Minne;Nätverk;Historik;Användning;Prestanda;Uppgift;Hanterare;"
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:18
 msgid "Usage developers"
@@ -121,22 +117,21 @@ msgstr ""
 "periodiskt i millisekunder."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr ""
-"minsta relativa belastning (%) för att ett program ska visas i "
-"prestandafliken"
+"minsta relativa belastning för att ett program ska visas i prestandafliken"
 
+# TODO: utilize?
 #: data/org.gnome.Usage.gschema.xml.in:27
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
 msgstr ""
 "Belastningen ett program måste ha summerat över alla dess processer, "
-"normaliserat till 100, för att listas i prestandafliken. Med 0 listas alla "
-"program. Med 100 listas ett program bara om dess processer fullkomligt "
+"normaliserat till 1,00, för att listas i prestandafliken. Med 0,00 listas "
+"alla program. Med 1,00 listas ett program bara om dess processer fullkomligt "
 "använder alla processortrådar."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
@@ -194,6 +189,10 @@ msgstr "Använt"
 msgid "Available"
 msgstr "Tillgängligt"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Senaste 30 dagarna"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Inga resultat hittades"
@@ -242,27 +241,27 @@ msgstr "Hempartition"
 msgid "Swap"
 msgstr "Växlingsutrymme"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Sök"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Sök program…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "_Om Användning"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Gruppera systemprocesser"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Visa alla processer"
 
@@ -274,11 +273,11 @@ msgstr "Processor"
 msgid "Memory"
 msgstr "Minne"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:216
 msgid "System"
 msgstr "System"
 
-#: src/application.vala:73
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -286,7 +285,7 @@ msgstr ""
 "Ett trevligt sätt att se information om användning av systemresurser så som "
 "minne och diskutrymme."
 
-#: src/application.vala:76
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr ""
 "Josef Andersson <josef.andersson@fripost.org>, 2016, 2017\n"
@@ -296,6 +295,35 @@ msgstr ""
 #: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Processor"
+
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e %b, %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Nätverk"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Trådbunden"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "Wi-Fi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Wi-Fi (P2P)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Mobilanslutning"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Bluetooth-surfzon"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
@@ -316,22 +344,15 @@ msgstr "Om du tar bort dessa objekt är de borta för alltid."
 msgid "Delete"
 msgstr "Ta bort"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Operativsystemfiler är en nödvändig del av ditt system och kan inte tas bort."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "Lagring"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "Operativsystem"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:276
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -352,6 +373,13 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Operativsystemfiler är en nödvändig del av ditt system och kan inte tas "
+#~ "bort."
 
 #~ msgid "A nice way to view information about use of system resources"
 #~ msgstr ""
@@ -500,9 +528,6 @@ msgstr "%llu B/s"
 
 #~ msgid "Disk I/O"
 #~ msgstr "Disk in/ut"
-
-#~ msgid "Network"
-#~ msgstr "Nätverk"
 
 #~ msgid "No applications using network."
 #~ msgstr "Inga program använder nätverk."
