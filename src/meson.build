@@ -67,7 +67,8 @@ c_args = [
   '-DGNOMELOCALEDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('localedir'))),
   '-DPROFILE="@0@"'.format(profile),
   '-DAPPLICATION_ID="@0@"'.format(application_id),
-  '-DAPPLICATION_RESOURCE_PATH="@0@"'.format(resource_path)
+  '-DAPPLICATION_RESOURCE_PATH="@0@"'.format(resource_path),
+  '-DG_LOG_DOMAIN="@0@"'.format(meson.project_name()),
 ]
 
 executable(
