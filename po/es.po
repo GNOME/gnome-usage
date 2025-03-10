@@ -2,16 +2,16 @@
 # Copyright (C) 2017 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2017-2024.
-# Sergio Gil <yo@sgil.es>, 2024.
+# Sergio Gil <sergio@sgil.es>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-10-21 09:47+0000\n"
-"PO-Revision-Date: 2024-10-22 23:05+0200\n"
-"Last-Translator: Sergio Gil <yo@sgil.es>\n"
-"Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2025-03-05 00:28+0000\n"
+"PO-Revision-Date: 2025-03-08 11:09+0100\n"
+"Last-Translator: Sergio Gil <sergio@sgil.es>\n"
+"Language-Team: es_ES <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -196,6 +196,10 @@ msgstr "Usada"
 msgid "Available"
 msgstr "Disponible"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Últimos 30 días"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "No se encontraron resultados"
@@ -293,11 +297,47 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2017\n"
-"Sergio Gil <yo@sgil.es>, 2024"
+"Sergio Gil <sergio@sgil.es>, 2024-2025"
 
 #: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Procesador"
+
+# %e - día del mes
+# %B - nombre del mes
+# %Y - año
+#
+# p. ej., «8 de mayo de 2025»
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e de %B de %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Red"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Cableado"
+
+# https://www.fundeu.es/recomendacion/wifi-como-termino-espanol-545/
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "Wifi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Wifi (entre pares)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Conexión móvil"
+
+# Bluetooth en minúscula y redonda
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Punto de acceso bluetooth"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
@@ -320,15 +360,15 @@ msgstr "Si elimina estos elementos, se perderán para siempre."
 msgid "Delete"
 msgstr "Eliminar"
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "Almacenamiento"
 
-#: src/storage/storage-view.vala:235
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "Sistema operativo"
 
-#: src/storage/storage-view.vala:263
+#: src/storage/storage-view.vala:276
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -508,9 +548,6 @@ msgstr "%llu B/s"
 
 #~ msgid "Disk I/O"
 #~ msgstr "E/S de disco"
-
-#~ msgid "Network"
-#~ msgstr "Red"
 
 #~ msgid "No applications using network."
 #~ msgstr "No hay aplicaciones usando la red."
