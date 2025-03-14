@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-11-24 11:29+0000\n"
-"PO-Revision-Date: 2025-01-09 09:16+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2025-03-14 11:37+0000\n"
+"PO-Revision-Date: 2025-03-14 14:11+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -34,12 +34,8 @@ msgstr "דרך נחמדה לצפות במידע על שימוש במשאבי ה�
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in.in:13
-msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;"
-msgstr ""
-"צג;מוניטור;מערכת;מעבד;CPU;זיכרון;רשת;היסטוריה;שימוש;משבים;ניצול;משימות;משימה;"
-"מנהל;ניהול;ביצועים;"
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr "צג;מוניטור;מערכת;מעבד;CPU;זיכרון;רשת;היסטוריה;שימוש;משבים;ניצול;משימות;משימה;מנהל;ניהול;ביצועים;"
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:18
 msgid "Usage developers"
@@ -119,11 +115,6 @@ msgid "minimum relative load of an app to be displayed in the performance tab"
 msgstr "עומס יחסי מזערי של יישום להצגה בלשונית הביצועים"
 
 #: data/org.gnome.Usage.gschema.xml.in:27
-#| msgid ""
-#| "The load an app has to have in total as the sum over all its processes, "
-#| "normalized to 100, to be listed in the performance tab. With 0, all apps "
-#| "are listed. With 100 an app is only listed if its processes fully utilise "
-#| "all CPU threads."
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
 "normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
@@ -190,6 +181,10 @@ msgstr "מנוצל"
 #: data/ui/swap-speedometer.ui:67
 msgid "Available"
 msgstr "זמין"
+
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "30 הימים האחרונים"
 
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
@@ -291,6 +286,35 @@ msgstr ""
 msgid "Processor"
 msgstr "מעבד"
 
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%b ב%e, %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "רשת"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "קווי"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "אלחוטי"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "אלחוטי (נקודה לנקודה)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "חיבור רשת סלולרית"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "נקודת Bluetooth חמה"
+
 #: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
@@ -312,15 +336,15 @@ msgstr "בחירה במחיקת פריטים אלו תוביל לאבדנם לצ
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "אחסון"
 
-#: src/storage/storage-view.vala:235
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "מערכת הפעלה"
 
-#: src/storage/storage-view.vala:263
+#: src/storage/storage-view.vala:276
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
