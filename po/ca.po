@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2022-06-14 21:14+0000\n"
-"PO-Revision-Date: 2022-09-08 22:15+0200\n"
+"POT-Creation-Date: 2025-03-10 21:50+0000\n"
+"PO-Revision-Date: 2025-03-15 22:27+0100\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -16,28 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-msgid "GNOME Usage"
-msgstr "Ús del GNOME"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Una manera atractiva de visualitzar la informació de l'ús dels recursos del "
-"sistema"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:8
-msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as"
-" processing, memory, and storage."
-msgstr ""
-"Una aplicació simple del GNOME 3 per a fer un seguiment i analitzar els "
-"recursos del sistema com ara processament, memòria o emmagatzematge."
-
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:8
-#: data/ui/window.ui:23 src/application.vala:76
+#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Ús"
 
@@ -46,16 +29,60 @@ msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
 msgstr ""
-"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com"
-" ara memòria o espai en disc"
+"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com "
+"ara memòria o espai en disc"
 
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Usage.desktop.in.in:13
 msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
+"Manager;"
 msgstr ""
 "Monitor;Sistema;Procés;CPU;Memòria;Xarxa;Història;Ús;Rendiment;Tasca;Gestor;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Programadors de l'Ús"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Analitzeu el vostre sistema"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"L'Ús ajuda amb mètodes simples d'entendre a analitzar com el sistema usa els "
+"recursos."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"L'accés fàcil a quina aplicació utilitza quina quantitat de processador o "
+"memòria ajuda a trobar problemes de rendiment."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"La vista d'emmagatzemament proporciona informació per simplificar la neteja "
+"de fitxers innecessaris abandonats."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Vegeu cap a on se n'està anant la capacitat de procés"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Comprengueu quina aplicació està acaparant la memòria"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Trobeu què està omplint l'emmagatzemament"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -67,147 +94,322 @@ msgstr ""
 "Aquesta llista s'utilitza per a filtrar els processos que l'usuari no pot "
 "aturar."
 
-#: data/ui/memory-speedometer.ui:38
-msgid "RAM"
-msgstr "RAM"
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "lapse de temps (ms) dels gràfics a la pestanya de rendiment"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:51
-#: data/ui/swap-speedometer.ui:51
-msgid "Used"
-msgstr "Usat"
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"L'interval de temps en mil·lisegons fins al qual retrocedeixen els gràfics "
+"la CPU i de memòria a la pestanya de rendiment i la seva barra lateral."
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:58
-#: data/ui/swap-speedometer.ui:75
-msgid "Available"
-msgstr "Disponible"
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "interval (ms) per a l'actualització de les dades de rendiment"
 
-#: data/ui/no-results-found-view.ui:23
-msgid "No results found"
-msgstr "No hi ha resultats"
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"L'interval en què les dades de la pestanya de rendiment s'actualitzen i es "
+"mostren periòdicament en mil·lisegons."
 
-#: data/ui/no-results-found-view.ui:32
-msgid "Try a different search"
-msgstr "Proveu una cerca diferent"
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr ""
+"càrrega mínima relativa d'una aplicació per a ser mostrada a la pestanya de "
+"rendiment"
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "_Quant a l'Ús"
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
+msgstr ""
+"La càrrega que una aplicació ha de tenir en total com a la suma de tots els "
+"seus processos, normalitzada a 1,00, per a ser llistada a la pertanya de "
+"rendiment. Amb 0,00, totes les aplicacions són llistades. Amb 1,00 una "
+"aplicació només serà llistada si els seus processos utilitzen al complet "
+"tots els fils de la CPU."
 
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Agrupa els processos del sistema"
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+"empremta mínima de memòria d'una aplicació per a ser mostrada a la pestanya "
+"de rendiment"
 
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Mostra tots els processos"
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"La quantitat mínima de memòria en bytes que ha d'usar una aplicació, en "
+"total com a la suma de tots els seus processos, per a ser llistada a la "
+"pestanya de rendiment."
 
-#. Translators: This sentence is later suffixed with an application name.
-#. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
-msgid "Force Quit %s?"
-msgstr "Força'n la sortida %s?"
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Força que les gràfiques no estiguin en desplaçament continu"
 
-#: data/ui/quit-process-dialog.ui:10
-msgid "Unsaved work might be lost."
-msgstr "La feina que no s'ha desat es pot perdre."
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Si s'activa, les gràfiques de rendiment seran forçades a no desplaçar-se "
+"contínuament, sinó que que només saltaran quan s'afegeixi un nou punt de "
+"dades. Si es desactiva, les gràfiques decidiran com han d'actuar basant-se "
+"en el mode d'estalvi d'energia i la configuració global de les animacions "
+"del GTK."
 
-#: data/ui/quit-process-dialog.ui:16
-msgid "Cancel"
-msgstr "Cancel·la"
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "L'aplicació s'està executant sense cap finestra visible"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Surt de l'aplicació"
+
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Força'n la sortida"
 
-#: data/ui/storage-actionbar.ui:17
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "Usat"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Disponible"
+
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Darrers 30 dies"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "No hi ha resultats"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Proveu una cerca diferent"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "L'aplicació s'està executant en segon pla"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "L'aplicació usa el mode de joc optimitzat"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "Voleu aturar %s?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Aturar aplicacions pot tenir efectes colaterals, com ara la pèrdua de dades "
+"de tasques no desades."
+
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Surt"
+
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Suprimeix…"
 
-#: data/ui/storage-view.ui:42
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Partició d'inici"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Espai d'intercanvi"
 
-#: src/app-item.vala:147
+#: data/ui/window.ui:41 data/ui/window.ui:87
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/ui/window.ui:99
+msgid "Search"
+msgstr "Cerca"
+
+#: data/ui/window.ui:118
+msgid "Search Applications…"
+msgstr "Cerca aplicacions…"
+
+#: data/ui/window.ui:152
+msgid "_About Usage"
+msgstr "_Quant a l'Ús"
+
+#: data/ui/window.ui:158
+msgid "Group system processes"
+msgstr "Agrupa els processos del sistema"
+
+#: data/ui/window.ui:164
+msgid "Show all processes"
+msgstr "Mostra tots els processos"
+
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "Processador"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Memòria"
+
+#: src/app-item.vala:216
 msgid "System"
 msgstr "Sistema"
 
-#: src/application.vala:77
+#: src/application.vala:74
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr ""
-"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com"
-" ara memòria o espai en disc."
+"Una manera atractiva de visualitzar la informació de l'ús dels recursos, com "
+"ara memòria o espai en disc."
 
-#: src/application.vala:80
+#: src/application.vala:77
 msgid "translator-credits"
 msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>"
 
-#: src/application.vala:82
-msgid "Websites"
-msgstr "Llocs web"
-
-#: src/cpu-sub-view.vala:28 src/graph-stack-switcher.vala:40
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Processador"
 
-#: src/graph-stack-switcher.vala:41 src/memory-sub-view.vala:28
-msgid "Memory"
-msgstr "Memòria"
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e %b de %Y"
 
-#: src/performance-view.vala:44
-msgid "Performance"
-msgstr "Rendiment"
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Xarxa"
 
-#: src/storage/storage-actionbar.vala:37
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Amb fil"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "WiFi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "WiFi (punt a punt)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Connexió mòvil"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Punt d'accés Bluetooth"
+
+#: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
-msgstr "%s seleccionat"
+msgid_plural "%s selected"
+msgstr[0] "%s seleccionat"
+msgstr[1] "%s seleccionats"
 
-#: src/storage/storage-actionbar.vala:43
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr ""
 "Esteu segur que voleu suprimir permanentment els elements seleccionats?"
 
-#: src/storage/storage-actionbar.vala:50
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
 msgstr "Si suprimiu aquests elements, es perdran permanentment."
 
-#: src/storage/storage-row-popover.vala:32
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"Els fitxers del sistema operatiu són part essencial del sistema i no poden "
-"ser suprimits."
+#: src/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Suprimeix"
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "Emmagatzematge"
 
-#: src/storage/storage-view.vala:246
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "Sistema operatiu"
 
-#: src/storage/storage-view.vala:272
-msgid "Scanning directories"
-msgstr "S'estan escanejant els directoris"
+#: src/storage/storage-view.vala:276
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s està disponible"
+msgstr[1] "%s estan disponibles"
 
-#: src/utils.vala:26
+#: src/utils.vala:58
 #, c-format
 msgid "%llu B"
 msgstr "%llu B"
 
-#: src/utils.vala:31
+#: src/utils.vala:63
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
 
-#: src/utils.vala:33
+#: src/utils.vala:65
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "GNOME Usage"
+#~ msgstr "Ús del GNOME"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Una manera atractiva de visualitzar la informació de l'ús dels recursos "
+#~ "del sistema"
+
+#~ msgid ""
+#~ "A simple GNOME 3 application to monitor and analyze system resources such "
+#~ "as processing, memory, and storage."
+#~ msgstr ""
+#~ "Una aplicació simple del GNOME 3 per a fer un seguiment i analitzar els "
+#~ "recursos del sistema com ara processament, memòria o emmagatzematge."
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "La feina que no s'ha desat es pot perdre."
+
+#~ msgid "Websites"
+#~ msgstr "Llocs web"
+
+#~ msgid "Performance"
+#~ msgstr "Rendiment"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Els fitxers del sistema operatiu són part essencial del sistema i no "
+#~ "poden ser suprimits."
+
+#~ msgid "Scanning directories"
+#~ msgstr "S'estan escanejant els directoris"
