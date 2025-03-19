@@ -149,7 +149,11 @@ public class Usage.SystemMonitor : Object {
         }
 
         if (interval > 0) {
-            this.update_source_id = Timeout.add (interval, this.update_data);
+            if (interval % 1000 == 0) {
+                this.update_source_id = Timeout.add_seconds ((uint) interval / 1000, this.update_data);
+            } else {
+                this.update_source_id = Timeout.add (interval, this.update_data);
+            }
         }
     }
 

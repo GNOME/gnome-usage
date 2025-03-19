@@ -14,7 +14,7 @@
             </description>
         </key>
         <key name="performance-update-interval" type="u">
-            <default>2500</default>
+            <default>3000</default>
             <summary>interval (ms) for the performance data refresh</summary>
             <description>
               The interval at which the data for the performance tab are updated
