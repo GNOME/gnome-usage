@@ -25,30 +25,6 @@ rg-graph.big {
     background-image: repeating-linear-gradient(0deg, @borders, @borders 1px, transparent 1px, transparent 57px);
 }
 
-rg-graph.line {
-    color: rgba(74,144,217,1);
-}
-
-rg-graph.stacked {
-    color: rgba(74,144,217,0.325);
-}
-
-rg-graph.line_orange {
-    color: rgba(255,153,0,1);
-}
-
-rg-graph.stacked_orange {
-    color: rgba(255,153,0,0.353);
-}
-
-rg-graph.line_max {
-    color: rgba(238,34,34,1);
-}
-
-rg-graph.stacked_max {
-    color: rgba(238,34,34,0.227);
-}
-
 StorageGraph {
     color: @view_bg_color;
 }
