@@ -63,6 +63,21 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <release version="48.0" date="2025-03-22">
+      <description>
+        <p>A bit late to the party, here is Usage 48.0! It comes packed:</p>
+        <ul>
+          <li>
+            Most notably, it now has a brand new network view, which depending
+            on the system configuration might be available or not. It will be
+            improved on in future releases.
+          </li>
+          <li>Application identification has been improved again in both correctness and performance.</li>
+          <li>The performance views for CPU and memory now display all running apps without a threshold by default.</li>
+          <li>Multiple crashes and interface issues have been identified and fixed.</li>
+        </ul>
+      </description>
+    </release>
     <release version="48~rc" date="2025-03-05" />
     <release version="46.1" date="2025-03-04">
       <description>

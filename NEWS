@@ -1,3 +1,23 @@
+48.0 - Oct 25, 2025
+===================
+
+Usage 48.0 contains a few small bug fixes compared to 48.rc. For further
+changes, including documentation of new build time and runtime dependencies, see
+the changelog for 48.rc – notably for the new network view.
+
+Since 48.rc, these changes to the app landed:
+* present existing window on activation (!166, Balló György)
+
+Compared to 48.rc, these transations saw updates:
+* Belarusian (Vasil Pupkin)
+* Brazilian Portuguese (Rafael Fontenelle)
+* Catalan (Jordi Mas i Hernandez)
+* Hebrew (Yaron Shahrabani)
+* Persian (Danial Behzadi)
+* Russian (Sergej A.)
+* Spanish (Sergio Gil)
+* Swedish (Anders Jonsson)
+
 48.rc - Mar 5, 2025
 ===================
 
