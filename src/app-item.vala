@@ -197,11 +197,6 @@ public class Usage.AppItem : Object {
         return info;
     }
 
-    public static bool have_app_info (Process p) {
-        AppInfo? info = app_info_for_process (p);
-        return info != null;
-    }
-
     public AppItem (Process process) {
         app_info = app_info_for_process (process);
         representative_cmdline = process.cmdline;
