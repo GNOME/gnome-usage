@@ -172,17 +172,10 @@ public class Usage.Process : Object {
     }
 
     public static KeyFile? read_flatpak_info (Pid pid) {
-        string path = "/proc/%u/root".printf ((uint) pid);
+        string path = "/proc/%u/root/.flatpak-info".printf ((uint) pid);
         int flags = Posix.O_RDONLY | StopGap.O_CLOEXEC | Posix.O_NOCTTY;
 
-        int root = StopGap.openat (StopGap.AT_FDCWD, path, flags | Posix.O_NONBLOCK | StopGap.O_DIRECTORY);
-
-        if (root == -1)
-            return null;
-
-        int fd = StopGap.openat (root, ".flatpak-info", flags);
-
-        Posix.close (root);
+        int fd = StopGap.openat (StopGap.AT_FDCWD, path, flags);
 
         if (fd == -1)
             return null;
@@ -195,6 +188,8 @@ public class Usage.Process : Object {
         } catch (Error e) {
             return null;
         }
+
+        Posix.close (fd);
 
         return kf;
     }
