@@ -13,11 +13,13 @@ listview.switcher-sidebar > row {
 
 /* ListView is not supported by .boxed-list, this is needed for using .card */
 listview.card > row:first-child {
-    border-radius: 12px 12px 0 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
 listview.card > row:last-child {
-    border-radius: 0 0 12px 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 rg-graph.big {
