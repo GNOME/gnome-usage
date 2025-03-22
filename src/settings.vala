@@ -28,25 +28,26 @@ public enum Usage.EfficiencyState {
     POWER_SAVING;
 }
 
-public class Usage.Settings : GLib.Settings {
-    private Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
+public class Usage.Settings : Object {
+    private GLib.Settings gsettings = new GLib.Settings (Config.APPLICATION_ID);
+    private Gtk.Settings gtk_settings;
     private GLib.PowerProfileMonitor power_profile_monitor = GLib.PowerProfileMonitor.dup_default ();
 
-    public uint graph_timespan { get { return this.settings.get_uint ("performance-graphs-timespan"); } }
+    public uint graph_timespan { get { return this.gsettings.get_uint ("performance-graphs-timespan"); } }
     public uint list_update_multiple {
         get {
             return (int) Math.ceil (5000.0 / this.data_update_interval);
         }
     }
-    public uint data_update_interval { get { return this.settings.get_uint ("performance-update-interval"); } }
+    public uint data_update_interval { get { return this.gsettings.get_uint ("performance-update-interval"); } }
     public uint data_update_interval_slowed { get { return 2 * this.data_update_interval; } }
-    public double app_minimum_load { get { return this.settings.get_double ("app-minimum-load"); } }
-    public double app_minimum_memory { get { return this.settings.get_double ("app-minimum-memory"); } }
+    public double app_minimum_load { get { return this.gsettings.get_double ("app-minimum-load"); } }
+    public double app_minimum_memory { get { return this.gsettings.get_double ("app-minimum-memory"); } }
     public bool enable_scrolling_graph {
         get {
             return this.gtk_settings.gtk_enable_animations
                     && !this.power_profile_monitor.power_saver_enabled
-                    && !this.settings.get_boolean ("disable-scrolling-graphs");
+                    && !this.gsettings.get_boolean ("disable-scrolling-graphs");
         }
     }
     public EfficiencyState efficiency_state {
@@ -60,20 +61,24 @@ public class Usage.Settings : GLib.Settings {
             return EfficiencyState.DEFAULT;
         }
     }
+    public string[] unkillable_processes { owned get { return this.gsettings.get_strv ("unkillable-processes"); } }
 
     private Gtk.Application? application;
 
-    private static Settings settings;
+    private static Settings? SETTINGS;
 
     public static Settings get_default () {
-        if (settings == null)
-            settings = new Settings ();
+        if (SETTINGS == null) {
+            SETTINGS = new Settings ();
+        }
 
-        return settings;
+        return (!) SETTINGS;
     }
 
     public Settings () {
-        Object (schema_id: Config.APPLICATION_ID);
+        Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
+        assert (gtk_settings != null);
+        this.gtk_settings = (!) gtk_settings;
 
         this.power_profile_monitor.notify["power-saver-enabled"].connect (() => {
             this.notify_property ("enable-scrolling-graph");
