@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2025-01-12 23:20+0000\n"
-"PO-Revision-Date: 2025-01-13 16:40+0330\n"
+"POT-Creation-Date: 2025-03-14 11:37+0000\n"
+"PO-Revision-Date: 2025-04-01 07:16+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -180,6 +180,10 @@ msgstr "استفاده شده"
 msgid "Available"
 msgstr "موجود"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "۳۰ روز اخیر"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "هیچ نتیجه‌ای پیدا نشد"
@@ -279,6 +283,35 @@ msgstr "دانیال بهزادی <dani.behzi@ubuntu.com>"
 msgid "Processor"
 msgstr "پردازنده"
 
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%Oe %B، %OY"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "شبکه"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "سیمی"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "وای‌فای"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "وای‌فای (نظیر به نظیر)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "اتّصال همراه"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "نقطهٔ داغ بلوتوثی"
+
 #: src/storage/storage-actionbar.vala:42
 #, c-format
 msgid "%s selected"
@@ -298,15 +331,15 @@ msgstr "اگر این موارد را حذف کنید، برای همیشه از
 msgid "Delete"
 msgstr "حذف"
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "ذخیره‌گاه"
 
-#: src/storage/storage-view.vala:235
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "سیستم‌عامل"
 
-#: src/storage/storage-view.vala:263
+#: src/storage/storage-view.vala:276
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
