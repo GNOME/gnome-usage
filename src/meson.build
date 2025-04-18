@@ -9,6 +9,7 @@ vala_sources = [
   'monitor/memory-monitor.vala',
   'monitor/monitor.vala',
   'monitor/process.vala',
+  'monitor/process-monitor.vala',
   'monitor/query-builder.vala',
   'monitor/sparql-controller.vala',
   'monitor/sparql-worker.vala',

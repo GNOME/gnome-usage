@@ -48,7 +48,7 @@ public class Usage.Process : Object {
     public bool gamemode { get; set; }
 
     public bool mark_as_updated { get; set; default = true; }
-    public ProcessStatus status { get; private set; default = ProcessStatus.SLEEPING; }
+    public ProcessStatus status { get; set; default = ProcessStatus.SLEEPING; }
 
     private string? _app_id = null;
     private bool _app_id_checked = false;
@@ -59,30 +59,9 @@ public class Usage.Process : Object {
         this.uid = _get_uid ();
     }
 
-    public void update_status () {
-        GTop.ProcState proc_state;
-        GTop.get_proc_state (out proc_state, pid);
-
-        switch (proc_state.state) {
-            case GTop.PROCESS_RUNNING:
-            case GTop.PROCESS_UNINTERRUPTIBLE:
-                this.status = ProcessStatus.RUNNING;
-                break;
-            case GTop.PROCESS_SWAPPING:
-            case GTop.PROCESS_INTERRUPTIBLE:
-            case GTop.PROCESS_STOPPED:
-                this.status = ProcessStatus.SLEEPING;
-                break;
-            case GTop.PROCESS_DEAD:
-            case GTop.PROCESS_ZOMBIE:
-            default:
-                if (this.cpu_load > 0) {
-                    this.status = ProcessStatus.RUNNING;
-                } else {
-                    this.status = ProcessStatus.DEAD;
-                }
-                break;
-        }
+    public void update () {
+        Process p = this;
+        SystemMonitor.get_default ().update_process (ref p);
 
         this.mark_as_updated = true;
     }
