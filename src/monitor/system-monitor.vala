@@ -38,8 +38,9 @@ public class Usage.SystemMonitor : Object {
 
     private BackgroundMonitor background_monitor;
     private CpuMonitor cpu_monitor;
-    private MemoryMonitor memory_monitor;
     private GameModeMonitor gamemode_monitor;
+    private MemoryMonitor memory_monitor;
+    public Monitor[] monitors { get; private set; }
 
     private HashTable<string, AppItem> app_table;
     private HashTable<GLib.Pid, Process> process_table;
@@ -72,10 +73,16 @@ public class Usage.SystemMonitor : Object {
         GTop.init ();
         AppItem.init ();
 
-        this.background_monitor = new BackgroundMonitor ();
+        this.background_monitor = new BackgroundMonitor (this);
         this.cpu_monitor = new CpuMonitor ();
-        this.memory_monitor = new MemoryMonitor ();
         this.gamemode_monitor = new GameModeMonitor ();
+        this.memory_monitor = new MemoryMonitor ();
+        this.monitors = {
+            this.background_monitor,
+            this.cpu_monitor,
+            this.gamemode_monitor,
+            this.memory_monitor,
+        };
 
         app_table = new HashTable<string, AppItem> (str_hash, str_equal);
         process_table = new HashTable<GLib.Pid, Process> (direct_hash, direct_equal);
@@ -184,9 +191,9 @@ public class Usage.SystemMonitor : Object {
     }
 
     private bool update_data () requires (this.state != MonitorState.PAUSED) {
-        this.cpu_monitor.update ();
-        this.memory_monitor.update ();
-        this.gamemode_monitor.update ();
+        foreach (Monitor monitor in this.monitors) {
+            monitor.update ();
+        }
 
         cpu_load = cpu_monitor.get_cpu_load ();
         x_cpu_load = cpu_monitor.get_x_cpu_load ();
@@ -273,14 +280,6 @@ public class Usage.SystemMonitor : Object {
 
         foreach (var app in app_table.get_values ())
             app.remove_processes ();
-
-        string[] background_app_ids = {};
-        foreach (org.freedesktop.background.BackgroundApp background_app in background_monitor.get_background_apps ()) {
-            background_app_ids += background_app.app_id;
-        }
-        app_table.foreach ((app_id, app) => {
-            app.is_background = app_id.substring(0, app_id.length - ".desktop".length) in background_app_ids;
-        });
 
         debug ("removed: %u, added: %u\n", removed, added);
         debug ("app table size: %u\n", app_table.length);

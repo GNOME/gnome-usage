@@ -57,7 +57,7 @@ public class Usage.AppItem : Object {
     private static HashTable<Process, AppItem> app_for_process;
     private static HashTable<string, AppInfo> apps_info;
     private static HashTable<string, AppInfo> appid_map;
-    private AppInfo? app_info = null;
+    public AppInfo? app_info { get; private set; default = null; }
 
     public static void init () {
         app_for_process = new HashTable<Process, AppItem> (int_hash, int_equal);

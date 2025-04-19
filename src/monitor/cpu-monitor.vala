@@ -18,7 +18,7 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-public class Usage.CpuMonitor : Monitor {
+public class Usage.CpuMonitor : Monitor, Object {
     private double cpu_load;
     private double[] x_cpu_load;
     private uint64 cpu_last_used = 0;

@@ -18,7 +18,7 @@
  * Authors: Petr Štětka <pstetka@redhat.com>
  */
 
-public class Usage.MemoryMonitor : Monitor {
+public class Usage.MemoryMonitor : Monitor, Object {
     private uint64 ram_usage;
     private uint64 ram_total;
     private uint64 swap_usage;

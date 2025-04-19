@@ -45,7 +45,7 @@ public struct com.feralinteractive.GameMode.GameInfo {
     public ObjectPath path;
 }
 
-public class Usage.GameModeMonitor : Monitor {
+public class Usage.GameModeMonitor : Monitor, Object {
     private com.feralinteractive.GameMode.Client? client;
     private HashTable<int, ObjectPath> pids = new HashTable<int, ObjectPath> (direct_hash, direct_equal);
 

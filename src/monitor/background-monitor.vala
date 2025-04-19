@@ -33,10 +33,13 @@ public struct org.freedesktop.background.BackgroundApp {
     public string? message;
 }
 
-public class Usage.BackgroundMonitor : Object {
-    org.freedesktop.background.Monitor? monitor;
+public class Usage.BackgroundMonitor : Monitor, Object {
+    private unowned SystemMonitor parent_monitor;
+    private org.freedesktop.background.Monitor? monitor;
 
-    public BackgroundMonitor () {
+    public BackgroundMonitor (SystemMonitor parent_monitor) {
+        this.parent_monitor = parent_monitor;
+
         try {
             monitor = Bus.get_proxy_sync (BusType.SESSION,
                                           "org.freedesktop.background.Monitor",
@@ -50,7 +53,7 @@ public class Usage.BackgroundMonitor : Object {
         }
     }
 
-    public org.freedesktop.background.BackgroundApp[] get_background_apps () {
+    private org.freedesktop.background.BackgroundApp[] get_background_apps () {
         org.freedesktop.background.BackgroundApp[] background_apps = {};
         foreach (HashTable<string, Variant?> app_as_table in monitor?.background_apps) {
             background_apps += org.freedesktop.background.BackgroundApp () {
@@ -60,5 +63,21 @@ public class Usage.BackgroundMonitor : Object {
             };
         }
         return background_apps;
+    }
+
+    public void update () {
+        string[] background_app_ids = {};
+        foreach (org.freedesktop.background.BackgroundApp background_app in this.get_background_apps ()) {
+            background_app_ids += background_app.app_id;
+        }
+        foreach (AppItem app in this.parent_monitor.get_apps ()) {
+            string? app_id = app.app_info?.get_id ();
+            app_id = app_id?.substring (0, app_id?.length - ".desktop".length);
+
+            app.is_background = app_id != null && (!) app_id in background_app_ids;
+        };
+    }
+
+    public void update_process (ref Process process) {
     }
 }
