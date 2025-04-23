@@ -39,13 +39,8 @@ public class Usage.Application : Adw.Application {
     }
 
     public override void activate () {
-        if (window != null)
-            return;
-
-        window = new Window (this);
-
-        set_accels_for_action ("app.quit", {"<Control>q"});
-        window.set_icon_name ("org.gnome.Usage");
+        if (window == null)
+            window = new Window (this);
 
         window.present ();
     }
@@ -55,6 +50,8 @@ public class Usage.Application : Adw.Application {
 
         add_action_entries (app_entries, this);
         set_accels_for_action ("app.search", {"<Control>f"});
+        set_accels_for_action ("app.quit", {"<Control>q"});
+        Gtk.Window.set_default_icon_name ("org.gnome.Usage");
     }
 
     private void on_about (GLib.SimpleAction action, GLib.Variant? parameter) {
