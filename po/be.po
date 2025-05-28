@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-09-18 15:41+0000\n"
-"PO-Revision-Date: 2024-09-26 23:56+0300\n"
+"POT-Creation-Date: 2025-05-10 18:32+0000\n"
+"PO-Revision-Date: 2025-05-28 19:04+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -194,6 +194,10 @@ msgstr "Выкарыстана"
 msgid "Available"
 msgstr "Даступна"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Апошнія 30 дзён"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Нічога не знойдзена"
@@ -275,11 +279,11 @@ msgstr "ЦП"
 msgid "Memory"
 msgstr "Памяць"
 
-#: src/app-item.vala:216
+#: src/app-item.vala:211
 msgid "System"
 msgstr "Сістэма"
 
-#: src/application.vala:74
+#: src/application.vala:71
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -287,13 +291,42 @@ msgstr ""
 "Добры спосаб прагляду інфармацыі пра выкарыстанне сістэмных рэсурсаў, такіх "
 "як памяць і месца на дыску."
 
-#: src/application.vala:77
+#: src/application.vala:74
 msgid "translator-credits"
 msgstr "Юрась Шумовіч <shumovichy@gmail.com>"
 
 #: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Працэсар"
+
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e %b %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Сетка"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Правадное"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "WiFi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Wi-Fi Direct (P2P)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Мабільнае злучэнне"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Хот-спот Bluetooth"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
@@ -315,15 +348,15 @@ msgstr "Калі вы выдаліце гэты элементы, яны буд�
 msgid "Delete"
 msgstr "Выдаліць"
 
-#: src/storage/storage-view.vala:77
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "Сховішча"
 
-#: src/storage/storage-view.vala:235
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "Аперацыйная сістэма"
 
-#: src/storage/storage-view.vala:263
+#: src/storage/storage-view.vala:276
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
