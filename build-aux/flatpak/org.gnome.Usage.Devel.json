@@ -21,6 +21,10 @@
         "--talk-name=org.freedesktop.background.Monitor",
         "--env=G_MESSAGES_DEBUG=gnome-usage"
     ],
+    "build-options" : {
+	"append-path": "/usr/lib/sdk/vala/bin",
+	"append-ld-library-path": "/usr/lib/sdk/vala/lib"
+    },
     "cleanup": ["/include", "/lib/pkgconfig",
                 "/share/pkgconfig", "/share/aclocal",
                 "/man", "/share/man", "/share/gtk-doc",
@@ -52,8 +56,6 @@
             "build-options" : {
                 "cflags" : "-ltinfo",
                 "cxxflags" : "-ltinfo",
-		"append-path": "/usr/lib/sdk/vala-nightly/bin",
-		"append-ld-library-path": "/usr/lib/sdk/vala-nightly/lib",
                 "env": {
                     "ACLOCAL_PATH": "/usr/lib/sdk/vala-nightly/share/aclocal"
                 }
@@ -106,8 +108,6 @@
             "name": "gee-0.8",
             "buildsystem": "autotools",
 	    "build-options" : {
-		"append-path": "/usr/lib/sdk/vala-nightly/bin",
-		"append-ld-library-path": "/usr/lib/sdk/vala-nightly/lib",
                 "env": {
                     "ACLOCAL_PATH": "/usr/lib/sdk/vala-nightly/share/aclocal"
                 }
@@ -136,10 +136,6 @@
             "config-opts": [
                 "-Dprofile=development"
             ],
-	    "build-options" : {
-		"append-path": "/usr/lib/sdk/vala-nightly/bin",
-		"append-ld-library-path": "/usr/lib/sdk/vala-nightly/lib"
-	    },
             "name": "gnome-usage",
             "sources": [
                 {
