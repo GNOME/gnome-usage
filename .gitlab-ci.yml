@@ -46,11 +46,11 @@ flatpak:
   stage: build
   extends: '.flatpak'
   variables:
-    MANIFEST_PATH: 'org.gnome.Usage.json'
+    MANIFEST_PATH: 'build-aux/flatpak/org.gnome.Usage.Devel.json'
     RUNTIME_REPO: 'https://nightly.gnome.org/gnome-nightly.flatpakrepo'
     FLATPAK_MODULE: 'gnome-usage'
-    BUNDLE: "org.gnome.UsageDevel.flatpak"
-    APP_ID: 'org.gnome.UsageDevel'
+    BUNDLE: "org.gnome.Usage.Devel.flatpak"
+    APP_ID: 'org.gnome.Usage.Devel'
 
 nightly:
   stage: deploy

@@ -54,7 +54,7 @@ else
 endif
 
 if profile != ''
-  application_id = '@0@@1@'.format(base_id, profile)
+  application_id = '@0@.@1@'.format(base_id, profile)
 else
   application_id = base_id
 endif

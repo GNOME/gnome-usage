@@ -1,5 +1,5 @@
 {
-    "app-id": "org.gnome.UsageDevel",
+    "app-id": "org.gnome.Usage.Devel",
     "runtime": "org.gnome.Sdk",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
