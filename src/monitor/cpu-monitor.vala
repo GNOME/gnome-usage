@@ -73,5 +73,26 @@ public class Usage.CpuMonitor : Monitor, Object {
         process.cpu_last_used = proc_time.rtime;
         process.x_cpu_last_used = proc_time.xcpu_utime[process.last_processor] + proc_time.xcpu_stime[process.last_processor];
         process.start_time = proc_time.start_time;
+
+        switch (proc_state.state) {
+            case GTop.PROCESS_RUNNING:
+            case GTop.PROCESS_UNINTERRUPTIBLE:
+                process.status = ProcessStatus.RUNNING;
+                break;
+            case GTop.PROCESS_SWAPPING:
+            case GTop.PROCESS_INTERRUPTIBLE:
+            case GTop.PROCESS_STOPPED:
+                process.status = ProcessStatus.SLEEPING;
+                break;
+            case GTop.PROCESS_DEAD:
+            case GTop.PROCESS_ZOMBIE:
+            default:
+                if (cpu_load > 0) {
+                    process.status = ProcessStatus.RUNNING;
+                } else {
+                    process.status = ProcessStatus.DEAD;
+                }
+                break;
+        }
     }
 }

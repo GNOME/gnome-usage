@@ -209,10 +209,4 @@ public class Usage.SystemMonitor : Object {
 
         return Source.CONTINUE;
     }
-
-    public void update_process (ref Process process) {
-        foreach (Monitor monitor in this.monitors) {
-            monitor.update_process (ref process);
-        }
-    }
 }

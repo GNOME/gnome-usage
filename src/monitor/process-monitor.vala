@@ -82,7 +82,7 @@ public class Usage.ProcessMonitor : Monitor, Object {
             } else if (n < o) {
                 /* new process */
                 Process p = new Process ((GLib.Pid) n);
-                p.update ();
+                this.update_process (ref p);
 
                 debug ("process added: %u\n", n);
 
@@ -107,7 +107,7 @@ public class Usage.ProcessMonitor : Monitor, Object {
                     this.process_added (p);
                 }
 
-                p.update ();
+                this.update_process (ref p);
 
                 i++; j++; /* both indices move */
             }
@@ -123,29 +123,12 @@ public class Usage.ProcessMonitor : Monitor, Object {
     }
 
     public void update_process (ref Process process) {
-        GTop.ProcState proc_state;
-        GTop.get_proc_state (out proc_state, process.pid);
-
-        switch (proc_state.state) {
-            case GTop.PROCESS_RUNNING:
-            case GTop.PROCESS_UNINTERRUPTIBLE:
-                process.status = ProcessStatus.RUNNING;
-                break;
-            case GTop.PROCESS_SWAPPING:
-            case GTop.PROCESS_INTERRUPTIBLE:
-            case GTop.PROCESS_STOPPED:
-                process.status = ProcessStatus.SLEEPING;
-                break;
-            case GTop.PROCESS_DEAD:
-            case GTop.PROCESS_ZOMBIE:
-            default:
-                if (process.cpu_load > 0) {
-                    process.status = ProcessStatus.RUNNING;
-                } else {
-                    process.status = ProcessStatus.DEAD;
-                }
-                break;
+        foreach (Monitor monitor in this.parent_monitor.monitors) {
+            if (monitor != this) {
+                monitor.update_process (ref process);
+            }
         }
+        process.mark_as_updated = true;
     }
 
     private void process_added (Process p) {

@@ -59,13 +59,6 @@ public class Usage.Process : Object {
         this.uid = _get_uid ();
     }
 
-    public void update () {
-        Process p = this;
-        SystemMonitor.get_default ().update_process (ref p);
-
-        this.mark_as_updated = true;
-    }
-
     private uint _get_uid () {
         GTop.ProcUid procUid;
         GTop.get_proc_uid (out procUid, pid);
