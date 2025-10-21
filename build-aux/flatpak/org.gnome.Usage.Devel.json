@@ -67,6 +67,7 @@
                 "-Diptables=/usr/bin/true",
                 "-Dlibpsl=false",
                 "-Dmodem_manager=false",
+                "-Dnbft=false",
                 "-Dnmtui=false",
                 "-Dnm_cloud_setup=false",
                 "-Dovs=false",
