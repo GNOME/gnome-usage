@@ -28,6 +28,7 @@ public enum Usage.EfficiencyState {
     POWER_SAVING;
 }
 
+[SingleInstance]
 public class Usage.Settings : Object {
     private GLib.Settings gsettings = new GLib.Settings (Config.APPLICATION_ID);
     private Gtk.Settings gtk_settings;
@@ -65,17 +66,7 @@ public class Usage.Settings : Object {
 
     private Gtk.Application? application;
 
-    private static Settings? SETTINGS;
-
-    public static Settings get_default () {
-        if (SETTINGS == null) {
-            SETTINGS = new Settings ();
-        }
-
-        return (!) SETTINGS;
-    }
-
-    public Settings () {
+    construct {
         Gtk.Settings? gtk_settings = Gtk.Settings.get_default ();
         assert (gtk_settings != null);
         this.gtk_settings = (!) gtk_settings;

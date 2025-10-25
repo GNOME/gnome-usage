@@ -128,7 +128,7 @@ public class Usage.AppDialog : Adw.Dialog {
                             this.close ();
                         }
                     });
-                    Timeout.add (2 * Settings.get_default ().data_update_interval, () => {
+                    Timeout.add (2 * new Settings ().data_update_interval, () => {
                         this.quit_button.visible = false;
                         this.force_quit_button.visible = true;
                         return false;

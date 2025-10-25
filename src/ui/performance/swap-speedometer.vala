@@ -37,7 +37,7 @@ public class Usage.SwapSpeedometer : Adw.Bin {
     private double swap_usage { get; set; }
 
     construct {
-        var monitor = SystemMonitor.get_default ();
+        SystemMonitor monitor = new SystemMonitor ();
         Timeout.add_seconds (1, () => {
             var available = (monitor.swap_total - monitor.swap_usage);
             var percentage = 0.0;

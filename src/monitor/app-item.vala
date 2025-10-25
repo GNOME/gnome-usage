@@ -235,7 +235,7 @@ public class Usage.AppItem : Object {
     }
 
     public bool is_killable () {
-        bool blocked = this.representative_cmdline in Settings.get_default ().unkillable_processes;
+        bool blocked = this.representative_cmdline in new Settings ().unkillable_processes;
         bool by_current_user = this.user?.uid == Posix.geteuid ();
         return !blocked && by_current_user;
     }

@@ -30,7 +30,7 @@ public class Usage.MemoryGraph : PerformanceGraphView {
     }
 
     protected override void update_graphs () {
-        SystemMonitor monitor = SystemMonitor.get_default ();
+        SystemMonitor monitor = new SystemMonitor ();
         int64 timestamp = get_monotonic_time ();
 
         double ram_usage = 0;

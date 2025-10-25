@@ -37,7 +37,7 @@ public class Usage.MemorySpeedometer : Adw.Bin {
     private double ram_usage { get; set; }
 
     construct {
-        var monitor = SystemMonitor.get_default ();
+        SystemMonitor monitor = new SystemMonitor ();
         Timeout.add_seconds (1, () => {
             var percentage = (((double) monitor.ram_usage / monitor.ram_total) * 100);
 

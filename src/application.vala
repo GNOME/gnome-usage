@@ -21,6 +21,9 @@
 using Gtk;
 
 public class Usage.Application : Adw.Application {
+    private Settings settings;
+    private SystemMonitor system_monitor;
+
     private Window window;
 
     private const GLib.ActionEntry app_entries[] = {
@@ -56,12 +59,15 @@ public class Usage.Application : Adw.Application {
     protected override void startup () {
         base.startup ();
 
+        this.settings = new Settings ();
+        this.system_monitor = new SystemMonitor ();
+
         add_action_entries (app_entries, this);
         set_accels_for_action ("app.search", {"<Control>f"});
         set_accels_for_action ("app.quit", {"<Control>q"});
         Gtk.Window.set_default_icon_name ("org.gnome.Usage");
 
-        Settings.get_default ().init_application (this);
+        this.settings.init_application (this);
     }
 
     private void on_about (GLib.SimpleAction action, GLib.Variant? parameter) {
@@ -99,7 +105,7 @@ public class Usage.Application : Adw.Application {
 
     private void change_filter_processes_state (GLib.SimpleAction action, GLib.Variant? state) {
         action.set_state (state);
-        SystemMonitor.get_default ().group_system_apps = state.get_string () == "group-system" ? true : false;
+        this.system_monitor.group_system_apps = state.get_string () == "group-system" ? true : false;
     }
 }
 

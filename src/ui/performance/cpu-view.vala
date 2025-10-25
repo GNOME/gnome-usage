@@ -47,7 +47,7 @@ public class Usage.CpuView : View {
                 return (int) ((uint64) (a.cpu_load < b.cpu_load) - (uint64) (a.cpu_load > b.cpu_load));
             },
             filter = (item) => {
-                return item.cpu_load > Settings.get_default ().app_minimum_load;
+                return item.cpu_load > new Settings ().app_minimum_load;
             },
             load_widget_factory = (item) => {
                 Gtk.Label load_label = new Gtk.Label ("%.1f %%".printf (item.cpu_load * 100));
@@ -70,7 +70,7 @@ public class Usage.CpuView : View {
         cpu_box.append (spinner);
         cpu_box.append (no_process_view);
 
-        var system_monitor = SystemMonitor.get_default ();
+        SystemMonitor system_monitor = new SystemMonitor ();
         system_monitor.notify["process-list-ready"].connect ((sender, property) => {
             if (system_monitor.process_list_ready) {
                 cpu_box.append (process_list_box);

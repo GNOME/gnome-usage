@@ -19,28 +19,29 @@
  */
 
 public abstract class Usage.PerformanceGraphView : GraphView {
-    private Settings settings = Settings.get_default ();
     private bool constant_redraw;
 
     construct {
+        Settings settings = new Settings ();
+
         this.range_y = 1;
         this.offset_y = 0;
-        this.range_x = 1000 * this.settings.graph_timespan;
+        this.range_x = 1000 * settings.graph_timespan;
         this.update_x_offset ();
 
         this.reevaluate_constant_redraw ();
-        this.settings.notify["enable-scrolling-graph"].connect (this.reevaluate_constant_redraw);
-        SystemMonitor.get_default ().updated.connect (this.update_graphs);
+        settings.notify["enable-scrolling-graph"].connect (this.reevaluate_constant_redraw);
+        new SystemMonitor ().updated.connect (this.update_graphs);
     }
 
     private void reevaluate_constant_redraw () {
-        this.constant_redraw = this.settings.enable_scrolling_graph;
+        this.constant_redraw = new Settings ().enable_scrolling_graph;
 
         if (this.constant_redraw) {
             this.add_tick_callback (this.queue_update);
-            SystemMonitor.get_default ().updated.disconnect (this.update_x_offset);
+            new SystemMonitor ().updated.disconnect (this.update_x_offset);
         } else {
-            SystemMonitor.get_default ().updated.connect (this.update_x_offset);
+            new SystemMonitor ().updated.connect (this.update_x_offset);
         }
     }
 
@@ -50,16 +51,18 @@ public abstract class Usage.PerformanceGraphView : GraphView {
     }
 
     public new void add_graph (Graph graph) {
-        float visible_points = (float) this.settings.graph_timespan / this.settings.data_update_interval + 1;
+        Settings settings = new Settings ();
+        float visible_points = (float) settings.graph_timespan / settings.data_update_interval + 1;
         graph.maximal_queue_length = (int) Math.ceilf (visible_points);
         base.add_graph (graph);
     }
 
     public void update_x_offset () {
+        Settings settings = new Settings ();
         int64 timestamp = get_monotonic_time ();
-        int64 offset = timestamp - 1000 * this.settings.graph_timespan;
+        int64 offset = timestamp - 1000 * settings.graph_timespan;
         if (constant_redraw) {
-            offset -= 1000 * this.settings.data_update_interval;
+            offset -= 1000 * settings.data_update_interval;
         }
         this.offset_x = offset;
     }

@@ -31,7 +31,7 @@ public class Usage.CpuGraphMostUsedCore : PerformanceGraphView {
     }
 
     protected override void update_graphs () {
-        SystemMonitor monitor = SystemMonitor.get_default ();
+        SystemMonitor monitor = new SystemMonitor ();
         int64 timestamp = get_monotonic_time ();
         double most_used_core = monitor.x_cpu_load[0];
 
@@ -59,7 +59,7 @@ public class Usage.CpuGraph : PerformanceGraphView {
     }
 
     protected override void update_graphs () {
-        SystemMonitor monitor = SystemMonitor.get_default ();
+        SystemMonitor monitor = new SystemMonitor ();
         int64 timestamp = get_monotonic_time ();
 
         for (int i = 0; i < get_num_processors (); i++) {

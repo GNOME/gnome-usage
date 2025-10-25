@@ -26,6 +26,7 @@ private enum MonitorState {
     PAUSED;
 }
 
+[SingleInstance]
 public class Usage.SystemMonitor : Object {
     public bool process_list_ready { get; private set; default = false; }
     public double cpu_load { get; private set; }
@@ -45,19 +46,10 @@ public class Usage.SystemMonitor : Object {
 
     public HashTable<string, AppItem> app_table { get; private set; }
 
-    private static SystemMonitor system_monitor;
-
     private uint update_source_id = 0;
     private MonitorState state = MonitorState.PAUSED;
     private uint active_users = 0;
     private uint update_cycle = 0;
-
-    public static SystemMonitor get_default () {
-        if (system_monitor == null)
-            system_monitor = new SystemMonitor ();
-
-        return system_monitor;
-    }
 
     public signal void updated (bool list_cycle);
 
@@ -69,7 +61,7 @@ public class Usage.SystemMonitor : Object {
         return app_table.@get (name);
     }
 
-    public SystemMonitor () {
+    construct {
         GTop.init ();
         AppItem.init ();
 
@@ -94,13 +86,13 @@ public class Usage.SystemMonitor : Object {
         });
 
         this.check_update ();
-        Settings.get_default ().notify["efficiency-state"].connect (this.check_update);
+        new Settings ().notify["efficiency-state"].connect (this.check_update);
         this.notify["process-list-ready"].connect (this.check_update);
     }
 
     private void check_update () {
         MonitorState state = this.state;
-        Settings settings = Settings.get_default ();
+        Settings settings = new Settings ();
 
         switch (settings.efficiency_state) {
             case EfficiencyState.SCREEN_OFF:
@@ -201,7 +193,7 @@ public class Usage.SystemMonitor : Object {
         swap_usage = memory_monitor.get_swap_usage ();
         swap_total = memory_monitor.get_swap_total ();
 
-        uint list_cycles = Settings.get_default ().list_update_multiple;
+        uint list_cycles = new Settings ().list_update_multiple;
         this.updated (this.update_cycle % list_cycles == 0);
         this.update_cycle = (this.update_cycle + 1) % list_cycles;
 

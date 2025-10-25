@@ -71,9 +71,9 @@ public class Usage.Window : Adw.ApplicationWindow {
     private void update_active_monitor () {
         debug (@"window state changed to suspended = $(this.suspended)");
         if (!this.suspended) {
-            SystemMonitor.get_default ().activate ();
+            new SystemMonitor ().activate ();
         } else {
-            SystemMonitor.get_default ().deactivate ();
+            new SystemMonitor ().deactivate ();
         }
     }
 

@@ -41,7 +41,7 @@ public class Usage.MemoryView : View {
                 return (int) ((uint64) (a.mem_usage < b.mem_usage) - (uint64) (a.mem_usage > b.mem_usage));
             },
             filter = (item) => {
-                return item.mem_usage > Settings.get_default ().app_minimum_memory;
+                return item.mem_usage > new Settings ().app_minimum_memory;
             },
             load_widget_factory = (item) => {
                 Gtk.Label load_label = new Gtk.Label (Utils.format_size_values (item.mem_usage));
@@ -75,7 +75,7 @@ public class Usage.MemoryView : View {
         memory_box.append (spinner);
         memory_box.append (no_process_view);
 
-        var system_monitor = SystemMonitor.get_default ();
+        SystemMonitor system_monitor = new SystemMonitor ();
         system_monitor.notify["process-list-ready"].connect ((sender, property) => {
             if (system_monitor.process_list_ready) {
                 memory_box.append (process_list_box);

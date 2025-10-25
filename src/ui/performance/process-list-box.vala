@@ -84,7 +84,7 @@ public class Usage.ProcessListBox : Adw.Bin {
 
         this.notify["search-text"].connect (this.update);
 
-        SystemMonitor.get_default ().updated.connect ((list_cycle) => {
+        new SystemMonitor ().updated.connect ((list_cycle) => {
             if (list_cycle) {
                 this.update ();
             }
@@ -94,7 +94,7 @@ public class Usage.ProcessListBox : Adw.Bin {
     }
 
     private void update () {
-        var system_monitor = SystemMonitor.get_default ();
+        SystemMonitor system_monitor = new SystemMonitor ();
         List<unowned AppItem> apps = system_monitor.get_apps ();
 
         uint inserted = 0;
