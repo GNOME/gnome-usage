@@ -14,6 +14,7 @@ vala_sources = [
   'monitor/sparql-controller.vala',
   'monitor/sparql-worker.vala',
   'monitor/system-monitor.vala',
+  'monitor/user.vala',
   'monitor/vnstat.vala',
   'ui/graph.vala',
   'ui/graph-box.vala',

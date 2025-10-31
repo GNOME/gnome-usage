@@ -84,7 +84,7 @@ public class Usage.AppDialog : Adw.Dialog {
 
         this.app.bind_property ("display_name", this, "title", BindingFlags.SYNC_CREATE);
         this.app.bind_property ("display_name", this.app_title, "label", BindingFlags.SYNC_CREATE);
-        this.app_user.label = this.app.user?.RealName ?? "";
+        this.app_user.label = this.app.user?.display_name ?? "";
         this.app.bind_property ("is_background", this.in_background_info, "visible", BindingFlags.SYNC_CREATE);
         this.app.bind_property ("icon", this.icon, "gicon", BindingFlags.SYNC_CREATE);
         this.quit_button.sensitive = this.app.is_killable ();

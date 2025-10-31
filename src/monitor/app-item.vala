@@ -29,7 +29,7 @@ public class Usage.AppItem : Object {
     public uint representative_uid { get; private set; }
     public double cpu_load { get; private set; }
     public uint64 mem_usage { get; private set; }
-    public Fdo.AccountsUser? user { get; private set; default = null; }
+    public User? user { get; private set; default = null; }
     public bool gamemode {get; private set; }
     public bool is_background { get; set; }
     public virtual bool running {
@@ -198,13 +198,13 @@ public class Usage.AppItem : Object {
     }
 
     public AppItem (Process process) {
-        app_info = app_info_for_process (process);
-        representative_cmdline = process.cmdline;
-        representative_uid = process.uid;
-        display_name = find_display_name ();
+        this.app_info = AppItem.app_info_for_process (process);
+        this.representative_cmdline = process.cmdline;
+        this.representative_uid = process.uid;
+        this.display_name = this.find_display_name ();
         this.insert_process (process);
-        load_user_account.begin ();
-        gamemode = process.gamemode;
+        this.user = new User.from_uid (this.representative_uid);
+        this.gamemode = process.gamemode;
     }
 
     public AppItem.system () {
@@ -236,7 +236,7 @@ public class Usage.AppItem : Object {
 
     public bool is_killable () {
         bool blocked = this.representative_cmdline in Settings.get_default ().unkillable_processes;
-        bool by_current_user = this.user?.Uid == Posix.geteuid ();
+        bool by_current_user = this.user?.uid == Posix.geteuid ();
         return !blocked && by_current_user;
     }
 
@@ -294,20 +294,6 @@ public class Usage.AppItem : Object {
             return app_info.get_display_name ();
         else
             return representative_cmdline;
-    }
-
-    private async void load_user_account () {
-        try {
-            Fdo.Accounts accounts = yield Bus.get_proxy (BusType.SYSTEM,
-                                                         "org.freedesktop.Accounts",
-                                                         "/org/freedesktop/Accounts");
-            var user_account_path = yield accounts.FindUserById ((int64) representative_uid);
-            user = yield Bus.get_proxy (BusType.SYSTEM,
-                                             "org.freedesktop.Accounts",
-                                             user_account_path);
-        } catch (Error e) {
-            warning ("Unable to obtain user account: %s", e.message);
-        }
     }
 
     private static void sanitize_cmd (ref string? commandline) {

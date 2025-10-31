@@ -29,43 +29,40 @@ public class Usage.ProcessRowItem : Object {
 
     public AppItem app { get; private set; }
 
-    public virtual Gtk.Widget load_widget {
+    public Gtk.Widget load_widget {
         owned get {
             return this.type.load_widget_factory (app);
         }
     }
 
-    public virtual string user {
+    public string user {
         owned get {
-            if (app.user != null) {
-                return app.user.UserName;
-            }
-            return "";
+            return this.app.user?.username ?? "";
         }
     }
-    public virtual bool not_current_user {
+    public bool not_current_user {
         get {
-            return app.user == null || app.user.UserName != GLib.Environment.get_user_name ();
+            return this.app.user?.username != Environment.get_user_name ();
         }
     }
-    public virtual string? user_type {
+    public string? user_type {
         get {
-            if (app.user == null) {
+            if (this.app.user == null) {
                 return null;
             }
 
-            if (app.user.LocalAccount) {
+            if (this.app.user?.is_local == true) {
                 return CSS_TAG_USER;
-            } else if (app.user.AccountType == UserAccountType.ADMINISTRATOR) {
+            } else if (this.app.user?.account_type == User.AccountType.ADMINISTRATOR) {
                 return CSS_TAG_ROOT;
-            } else if (app.user.SystemAccount) {
+            } else if (this.app.user?.is_system_user == true) {
                 return CSS_TAG_SYSTEM;
             }
 
             return null;
         }
     }
-    public virtual Icon? container_icon {
+    public Icon? container_icon {
         owned get {
             string? container = this.app.container;
             if (container == null) {
