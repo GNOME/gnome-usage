@@ -7,39 +7,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2019-09-09 06:48+0000\n"
-"PO-Revision-Date: 2019-09-09 12:36+0200\n"
-"Last-Translator: Gianvito Cavasoli <gianvito@gmx.it>\n"
+"POT-Creation-Date: 2025-10-27 00:26+0000\n"
+"PO-Revision-Date: 2025-11-12 12:23+0100\n"
+"Last-Translator: Salvatore Cocuzza <info@salvatorecocuzza.it>\n"
 "Language-Team: Italiano <gnome-it-list@gnome.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.32.1\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/org.gnome.Usage.appdata.xml.in:5
-msgid "GNOME Usage"
-msgstr "GNOME Usage"
-
-#: data/org.gnome.Usage.appdata.xml.in:6
-msgid "A nice way to view information about use of system resources"
-msgstr ""
-"Un buon modo per visualizzare informazioni sull'uso delle risorse di sistema"
-
-#: data/org.gnome.Usage.appdata.xml.in:8
-msgid ""
-"A simple GNOME 3 application to monitor and analyze system resources such as "
-"processing, memory, and storage."
-msgstr ""
-"Una semplice applicazione di GNOME 3 per monitorare e analizzare le risorse "
-"di sistema come l'elaborazione, la memoria e l'archiviazione."
-
-#: data/org.gnome.Usage.desktop.in:3 src/application.vala:79 src/window.vala:41
+#: data/org.gnome.Usage.desktop.in.in:2
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Utilizzo"
 
-#: data/org.gnome.Usage.desktop.in:4
+#: data/org.gnome.Usage.desktop.in.in:3
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -48,92 +33,255 @@ msgstr ""
 "sistema, come la memoria e lo spazio su disco"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in:13
-msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;"
-msgstr ""
-"Monitor;Sistema;Processo;CPU;Processore;Memoria;Rete;Cronologia;Utilizzo;Uso;"
-"Performance;Prestazione;Attività;Gestione;"
+#: data/org.gnome.Usage.desktop.in.in:12
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr "Monitor;Sistema;Processo;CPU;Processore;Memoria;Rete;Cronologia;Utilizzo;Uso;Performance;Prestazione;Attività;Gestione;"
 
-#: data/org.gnome.Usage.gschema.xml:5
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Gli sviluppatori di Utilizzo"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Analizzare il proprio sistema"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Utilizzo aiuta ad analizzare come il sistema utilizza le sue risorse con "
+"metodi semplici e comprensibili."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Accesso facile a quali applicazioni usano quanta potenza di elaborazione o "
+"memoria, aiuta a trovare problemi di prestazione."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"La vista di archiviazione fornisce informazioni per semplificare la pulizia "
+"di file residui non necessari."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Vedere dove va la potenza di elaborazione"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Capire quale applicazione sta consumando la memoria"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Trovare cosa riempie lo spazio di archiviazione"
+
+#: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
 msgstr "Un elenco di processi che non devono essere uccisi"
 
-#: data/org.gnome.Usage.gschema.xml:6
+#: data/org.gnome.Usage.gschema.xml.in:6
 msgid "This list is used for filtering which processes the user can’t stop."
 msgstr ""
 "Questo elenco è usato per filtrare quali processi l'utente non può terminare."
 
-#: data/ui/memory-speedometer.ui:38
-msgid "RAM"
-msgstr "RAM"
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "periodo di tempo (ms) dei grafici nella scheda delle prestazioni"
 
-#: data/ui/memory-speedometer.ui:53 data/ui/storage-view.ui:46
-#: data/ui/swap-speedometer.ui:51
-msgid "Used"
-msgstr "Usata"
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Il periodo di tempo, in millisecondi, fino al quale i grafici di CPU e memoria nella scheda "
+"delle prestazioni e nella sua barra laterale vanno indietro nel tempo."
 
-#: data/ui/memory-speedometer.ui:77 data/ui/storage-view.ui:53
-#: data/ui/swap-speedometer.ui:75
-msgid "Available"
-msgstr "Disponibile"
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "intervallo (ms) per l'aggiornamento dei dati di prestazione"
 
-#: data/ui/no-results-found-view.ui:23
-msgid "No results found"
-msgstr "Nessun risultato trovato"
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"L'intervallo, in millisecondi, con il quale i dati per la scheda delle "
+"prestazioni sono aggiornati e visualizzati periodicamente."
 
-#: data/ui/no-results-found-view.ui:32
-msgid "Try a different search"
-msgstr "Provare una differente ricerca"
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr ""
+"carico relativo minimo di un'applicazione per essere visualizzata nella scheda "
+"prestazione"
 
-#: data/ui/primary-menu.ui:14
-msgid "_About Usage"
-msgstr "I_nformazioni su Utilizzo"
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
+msgstr ""
+"Il carico che un'applicazione deve avere in totale, come somma su tutti i suoi "
+"processi, normalizzato a 1.00, per essere elencata nella scheda delle prestazioni. "
+"Con 0.00, vengono elencate tutte le applicazioni. Con 1.00, un'applicazione "
+"viene elencata solo se i suoi processi utilizzano completamente tutti i "
+"thread della CPU."
 
-#: data/ui/primary-menu.ui:29
-msgid "Group system processes"
-msgstr "Processi di sistema di gruppo"
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+"impronta di memoria minima di un'applicazione per essere visualizzata nella "
+"scheda delle prestazioni"
 
-#: data/ui/primary-menu.ui:37
-msgid "Show all processes"
-msgstr "Mostra tutti i processi"
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"La quantità minima di memoria che un'applicazione deve usare in totale per "
+"essere elencata nella scheda delle prestazioni, come somma su tutti i suoi "
+"processi, in byte."
 
-#. Translators: This sentence is later suffixed with an application name. Example: “Force Quit Videos?”
-#: data/ui/quit-process-dialog.ui:9
-msgid "Force Quit %s?"
-msgstr "Uscita forzata di %s?"
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Forza i grafici a non scorrere continuamente"
 
-#: data/ui/quit-process-dialog.ui:10
-msgid "Unsaved work might be lost."
-msgstr "Il lavoro non salvato potrebbe essere perso."
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Se abilitato, i grafici di prestazione saranno forzati a non scorrere "
+"continuamente, ma invece si aggiorneranno solo quando viene aggiunto un nuovo "
+"punto ai dati. Se disabilitato, i grafici decideranno come comportarsi "
+"basandosi sulla modalità di risparmio energetico e sulle impostazioni "
+"globali delle animazioni di GTK."
 
-#: data/ui/quit-process-dialog.ui:16
-msgid "Cancel"
-msgstr "Annulla"
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "L'applicazione è in esecuzione senza una finestra visibile"
 
-#: data/ui/quit-process-dialog.ui:24
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Esci dall'app"
+
+#: data/ui/app-dialog.ui:149
 msgid "Force Quit"
 msgstr "Uscita forzata"
 
-#: data/ui/storage-actionbar.ui:17
-#| msgid "Delete"
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "Usati"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Disponibili"
+
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Ultimi 30 giorni"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "Nessun risultato trovato"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Provare una differente ricerca"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "L'applicazione è in esecuzione in background"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "L'applicazione usa la modalità gioco ottimizzata"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "Uscire da %s?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Fermare le applicazioni potrebbe avere effetti collaterali, come la perdita "
+"di dati di lavoro non salvati."
+
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "Annulla"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Esci"
+
+#: data/ui/storage-actionbar.ui:15
 msgid "Delete…"
 msgstr "Elimina…"
 
-#: data/ui/storage-view.ui:37
+#: data/ui/storage-view.ui:44
 msgid "Home Partition"
 msgstr "Partizione home"
 
-#: data/ui/swap-speedometer.ui:36
+#: data/ui/swap-speedometer.ui:31
 msgid "Swap"
 msgstr "Swap"
 
-#: src/app-item.vala:71
+#: data/ui/window.ui:41 data/ui/window.ui:87
+msgid "Main Menu"
+msgstr "Menù principale"
+
+#: data/ui/window.ui:99
+msgid "Search"
+msgstr "Cerca"
+
+#: data/ui/window.ui:118
+msgid "Search Applications…"
+msgstr "Cerca applicazioni…"
+
+#: data/ui/window.ui:152
+msgid "_About Usage"
+msgstr "I_nformazioni su Utilizzo"
+
+#: data/ui/window.ui:158
+msgid "Group system processes"
+msgstr "Raggruppare i processi di sistema"
+
+#: data/ui/window.ui:164
+msgid "Show all processes"
+msgstr "Mostrare tutti i processi"
+
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "CPU"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Memoria"
+
+#: src/app-item.vala:211
 msgid "System"
 msgstr "Sistema"
 
-#: src/application.vala:80
+#: src/application.vala:76
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -141,60 +289,122 @@ msgstr ""
 "Un buon modo per visualizzare informazioni sull'uso delle risorse di "
 "sistema, come la memoria e lo spazio su disco."
 
-#: src/application.vala:83
+#: src/application.vala:79
 msgid "translator-credits"
 msgstr "Gianvito Cavasoli <gianvito@gmx.it>"
 
-#: src/application.vala:85
-msgid "Websites"
-msgstr "Siti web"
-
-#: src/cpu-sub-view.vala:32 src/graph-stack-switcher.vala:45
+#: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Processore"
 
-#: src/graph-stack-switcher.vala:46 src/memory-sub-view.vala:32
-msgid "Memory"
-msgstr "Memoria"
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e %b %Y"
 
-#: src/performance-view.vala:48
-msgid "Performance"
-msgstr "Prestazione"
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Rete"
 
-#: src/storage/storage-actionbar.vala:40
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Cablata"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "Wi-Fi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Wi-Fi (Peer to Peer)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Connessione mobile"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Hotspot Bluetooth"
+
+#: src/storage/storage-actionbar.vala:42
 #, c-format
-#| msgid "%u selected"
-#| msgid_plural "%u selected"
 msgid "%s selected"
-msgstr "%s selezionato"
+msgid_plural "%s selected"
+msgstr[0] "%s selezionato"
+msgstr[1] "%s selezionati"
 
-#: src/storage/storage-actionbar.vala:45
-#| msgid "Are you sure you want to permanently delete the %d selected item?"
-#| msgid_plural ""
-#| "Are you sure you want to permanently delete the %d selected items?"
+#: src/storage/storage-actionbar.vala:47
 msgid "Are you sure you want to permanently delete selected items?"
 msgstr "Eliminare definitivamente gli oggetti selezionati?"
 
-#: src/storage/storage-actionbar.vala:49
+#: src/storage/storage-actionbar.vala:48
 msgid "If you delete these items, they will be permanently lost."
-msgstr "Se si eliminano questi oggetti, saranno persi definitivamente?"
+msgstr "Se si eliminano questi oggetti, saranno persi definitivamente."
 
-#: src/storage/storage-row-popover.vala:32
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr ""
-"I file del sistema operativo sono una parte essenziale del sistema e non "
-"possono essere rimossi."
+#: src/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Elimina"
 
-#: src/storage/storage-view.vala:78
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "Archiviazione"
 
-#: src/storage/storage-view.vala:245
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "Sistema operativo"
 
-#: src/storage/storage-view.vala:271
-msgid "Scanning directories"
-msgstr "Scansione directory"
+#: src/storage/storage-view.vala:276
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s disponibile"
+msgstr[1] "%s disponibili"
+
+#: src/utils.vala:58
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:63
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:65
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
+
+#~ msgid "GNOME Usage"
+#~ msgstr "GNOME Usage"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Un buon modo per visualizzare informazioni sull'uso delle risorse di "
+#~ "sistema"
+
+#~ msgid ""
+#~ "A simple GNOME 3 application to monitor and analyze system resources such "
+#~ "as processing, memory, and storage."
+#~ msgstr ""
+#~ "Una semplice applicazione di GNOME 3 per monitorare e analizzare le "
+#~ "risorse di sistema come l'elaborazione, la memoria e l'archiviazione."
+
+#~ msgid "Unsaved work might be lost."
+#~ msgstr "Il lavoro non salvato potrebbe essere perso."
+
+#~ msgid "Websites"
+#~ msgstr "Siti web"
+
+#~ msgid "Performance"
+#~ msgstr "Prestazione"
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "I file del sistema operativo sono una parte essenziale del sistema e non "
+#~ "possono essere rimossi."
+
+#~ msgid "Scanning directories"
+#~ msgstr "Scansione directory"
