@@ -1,14 +1,14 @@
 # Basque translation for gnome-usage.
 # Copyright (C) 2019 gnome-usage's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-usage package.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2022, 2023, 2024.
+# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2019, 2022, 2023, 2024, 2025.
 #
 msgid ""
 msgstr "Project-Id-Version: gnome-usage gnome-3-30\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2024-08-24 13:09+0000\n"
-"PO-Revision-Date: 2024-09-14 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
+"POT-Creation-Date: 2025-12-10 18:39+0000\n"
+"PO-Revision-Date: 2025-12-18 10:00+0100\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -16,38 +16,60 @@ msgstr "Project-Id-Version: gnome-usage gnome-3-30\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:5
-#: data/org.gnome.Usage.desktop.in.in:3 data/ui/window.ui:18
+#: data/org.gnome.Usage.desktop.in.in:2
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
 #: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Erabilera"
 
-#: data/org.gnome.Usage.appdata.xml.in.in:6
-msgid "Usage developers"
-msgstr "Erabilera aplikazioaren garatzaileak"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:10
-msgid "A nice way to view information about use of system resources"
-msgstr "Sistema-baliabideen erabilerari buruzko informazioa ikusteko modu egokia"
-
-#: data/org.gnome.Usage.appdata.xml.in.in:12
-msgid ""
-"A simple application to monitor and analyze system resources such as CPU and "
-"memory usage of running apps, and storage usage."
-msgstr "Exekutatzen ari diren aplikazioan PUZ- eta memoria-erabilera eta biltegiratzea monitorizatu eta analizatzeko aplikazio sinplea."
-
-#: data/org.gnome.Usage.desktop.in.in:4
+#: data/org.gnome.Usage.desktop.in.in:3
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
 msgstr "Sistema-baliabideak, esaterako memoria eta diskoko espazioa, nola erabiltzen ari diren ezagutzeko modu egokia"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in.in:13
-msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;"
+#: data/org.gnome.Usage.desktop.in.in:12
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
 msgstr "Monitorea;Sistema;Prozesua;PUZ;Memoria;Sarea;Historia;Erabilera;Errendimendua;Zeregina;Kudeatzailea;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Erabilera aplikazioaren garatzaileak"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Analizatu zure sistema"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr "Erabilera izeneko aplikazioaren bidez, sistemak bere baliabideak nola erabiltzen dituen analizatzeko modu sinpleak eduki daitezke."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr "Aplikazioek zenbat prozesatze-indar edo zenbat memoria erabiltzen duten ikusteko modu erraza, errendimendu-arazoak aurkitzen laguntzen du."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr "Biltegiratze-ikuspegiak soberan geratzen diren eta behar ez diren fitxategiak garbitzeko prozesua sinplifikatzen du."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Ikusi prozesatze-indarra nora doan"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Ulertu zein aplikazio ari diren erabiltzen memoria"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Aurkitu zerk betetzen duen biltegia"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -78,17 +100,23 @@ msgid ""
 msgstr "Errendimendu-fitxaren datuak zenbatero eguneratzen eta erakusten diren, milisegundotan."
 
 #: data/org.gnome.Usage.gschema.xml.in:26
-msgid ""
-"minimum relative load (%) of an app to be displayed in the performance tab"
-msgstr "aplikazio bat errendimendu-fitxan bistaratua izan dadin izen behar duen gutxieneko karga erlatiboa /%)"
+#| msgid ""
+#| "minimum relative load (%) of an app to be displayed in the performance tab"
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr "aplikazio bat errendimendu-fitxan bistaratua izan dadin izan behar duen gutxieneko karga erlatiboa."
 
 #: data/org.gnome.Usage.gschema.xml.in:27
+#| msgid ""
+#| "The load an app has to have in total as the sum over all its processes, "
+#| "normalized to 100, to be listed in the performance tab. With 0, all apps "
+#| "are listed. With 100 an app is only listed if its processes fully utilise "
+#| "all CPU threads."
 msgid ""
 "The load an app has to have in total as the sum over all its processes, "
-"normalized to 100, to be listed in the performance tab. With 0, all apps are "
-"listed. With 100 an app is only listed if its processes fully utilise all "
-"CPU threads."
-msgstr "Aplikazio batek izan behar duen karga, bere prozesuen batuketaren ehuneko gisa, errendimendu-fitxan zerrendatua izan dadin. 0 bada, aplikazio guztiak zerrendatuko dira. 100 bada, aplikazio bat zerrendatzeko bere prozesuek osorik erabili behar dituzte PUZ hariak."
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
+msgstr "Aplikazio batek izan behar duen karga guztira, bere prozesu guztien batuketa gisa, errendimendu-fitxan zerrendatua izan dadin, 1.00 baliora normalizatuta. Balioa 0.00 bada, aplikazio guztiak zerrendatuko dira. Balioa 1.00 bada, aplikazio bat zerrendatzeko bere prozesuek osorik erabili behar dituzte PUZ hari guztiak."
 
 #: data/org.gnome.Usage.gschema.xml.in:36
 msgid ""
@@ -139,6 +167,10 @@ msgstr "Erabilita"
 msgid "Available"
 msgstr "Erabilgarri"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Azken 30 egunak"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Ez da emaitzarik aurkitu"
@@ -186,27 +218,27 @@ msgstr "Partizio nagusia"
 msgid "Swap"
 msgstr "Trukatze-espazioa"
 
-#: data/ui/window.ui:41 data/ui/window.ui:86
+#: data/ui/window.ui:41 data/ui/window.ui:87
 msgid "Main Menu"
 msgstr "Menu nagusia"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:99
 msgid "Search"
 msgstr "Bilatu"
 
-#: data/ui/window.ui:117
+#: data/ui/window.ui:118
 msgid "Search Applications…"
 msgstr "Bilatu aplikazioak…"
 
-#: data/ui/window.ui:151
+#: data/ui/window.ui:152
 msgid "_About Usage"
 msgstr "Erabilera aplikazioari _buruz"
 
-#: data/ui/window.ui:157
+#: data/ui/window.ui:158
 msgid "Group system processes"
 msgstr "Taldekatu sistema-prozesuak"
 
-#: data/ui/window.ui:163
+#: data/ui/window.ui:164
 msgid "Show all processes"
 msgstr "Erakutsi prozesu guztiak"
 
@@ -218,23 +250,52 @@ msgstr "PUZa"
 msgid "Memory"
 msgstr "Memoria"
 
-#: src/app-item.vala:214
+#: src/app-item.vala:211
 msgid "System"
 msgstr "Sistema"
 
-#: src/application.vala:73
+#: src/application.vala:71
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
 msgstr "Sistema-baliabideak, esaterako memoria eta diskoko espazioa, nola erabiltzen ari diren ezagutzeko modu egokia."
 
-#: src/application.vala:76
+#: src/application.vala:74
 msgid "translator-credits"
 msgstr "Asier Sarasua Garmendia <asiersarasua@ni.eus>"
 
 #: src/cpu-view.vala:33
 msgid "Processor"
 msgstr "Prozesadorea"
+
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%b %e, %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Sarea"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Hariduna"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "Wifia"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Wifia (P2P)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Konexio mugikorra"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Bluetooth wifigunea"
 
 #: src/storage/storage-actionbar.vala:42
 #, c-format
@@ -255,21 +316,15 @@ msgstr "Elementu horiek ezabatzen badituzu, betiko galduko dira."
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: src/storage/storage-row-popover.vala:42
-msgid ""
-"Operating system files are an essential part of your system and cannot be "
-"removed."
-msgstr "Sistema eragilearen fitxategiak zure sistemaren funtsezko atala dira eta ezin dira kendu."
-
-#: src/storage/storage-view.vala:80
+#: src/storage/storage-view.vala:76
 msgid "Storage"
 msgstr "Biltegiratzea"
 
-#: src/storage/storage-view.vala:240
+#: src/storage/storage-view.vala:248
 msgid "Operating System"
 msgstr "Sistema eragilea"
 
-#: src/storage/storage-view.vala:268
+#: src/storage/storage-view.vala:276
 #, c-format
 msgid "%s available"
 msgid_plural "%s available"
@@ -290,6 +345,24 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#~ msgid "A nice way to view information about use of system resources"
+#~ msgstr ""
+#~ "Sistema-baliabideen erabilerari buruzko informazioa ikusteko modu egokia"
+
+#~ msgid ""
+#~ "A simple application to monitor and analyze system resources such as CPU "
+#~ "and memory usage of running apps, and storage usage."
+#~ msgstr ""
+#~ "Exekutatzen ari diren aplikazioan PUZ- eta memoria-erabilera eta "
+#~ "biltegiratzea monitorizatu eta analizatzeko aplikazio sinplea."
+
+#~ msgid ""
+#~ "Operating system files are an essential part of your system and cannot be "
+#~ "removed."
+#~ msgstr ""
+#~ "Sistema eragilearen fitxategiak zure sistemaren funtsezko atala dira eta "
+#~ "ezin dira kendu."
 
 #~ msgid "Unsaved work might be lost."
 #~ msgstr "Gorde gabeko lana galdu egin daiteke."
