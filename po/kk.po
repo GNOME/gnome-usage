@@ -1,0 +1,371 @@
+# Kazakh translation for gnome-usage.
+# Copyright (C) 2026 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage gnome-48\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2025-10-25 18:56+0000\n"
+"PO-Revision-Date: 2026-03-14 23:55+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <Kazakh>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/org.gnome.Usage.desktop.in.in:2
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
+msgid "Usage"
+msgstr "Usage"
+
+#: data/org.gnome.Usage.desktop.in.in:3
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Жүйелік ресурстардың (мысалы, жады және диск орны) қолданылуы туралы "
+"ақпаратты қараудың ыңғайлы жолы"
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in.in:12
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr "Бақылау;Жүйе;Процесс;ОП;Жады;Желі;Тарих;Usage;Өнімділік;Тапсырма;Менеджер;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Usage әзірлеушілері"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Жүйеңізді талдау"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Usage жүйенің өз ресурстарын қалай қолданатынын талдаудың қарапайым әрі "
+"түсінікті жолдарын ұсынады."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Қай қолданбаның қаншалықты есептеу қуатын немесе жадыны қолданатынына оңай "
+"қол жеткізу өнімділік мәселелерін табуға көмектеседі."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Сақтау орнын қарау түрі қажетсіз қалдық файлдарды тазалауды жеңілдетуге "
+"мүмкіндік береді."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Есептеу қуатының қайда жұмсалып жатқанын көру"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Қай қолданба жадыны қолданып жатқанын түсіну"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Сақтау орнын не толтырып жатқанын табу"
+
+#: data/org.gnome.Usage.gschema.xml.in:5
+msgid "A list of processes which we don’t want killed"
+msgstr "Мәжбүрлі түрде аяқтағымыз келмейтін процестер тізімі"
+
+#: data/org.gnome.Usage.gschema.xml.in:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Бұл тізім пайдаланушы тоқтата алмайтын процестерді сүзгілеу үшін "
+"қолданылады."
+
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "өнімділік бетіндегі графиктердің уақыт аралығы (мс)"
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Өнімділік бетіндегі және оның бүйірлік панеліндегі ОП және жады "
+"графиктерінің миллисекундпен есептелген кері уақыт аралығы."
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "өнімділік деректерін жаңарту аралығы (мс)"
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"Өнімділік бетіндегі деректердің миллисекундпен мерзімді түрде жаңартылу "
+"және көрсетілу аралығы."
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr ""
+"өнімділік бетінде көрсетілетін қолданбаның минималды салыстырмалы жүктемесі"
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all "
+"apps are listed. With 1.00 an app is only listed if its processes fully "
+"utilise all CPU threads."
+msgstr ""
+"Өнімділік бетінде тізімделу үшін қолданбаның барлық процестерінің жиынтық "
+"жүктемесі (1.00-ге нормаланған) болуы тиіс. 0.00 болса, барлық қолданбалар "
+"тізімделеді. 1.00 болса, қолданба тек оның процестері барлық ОП ағындарын "
+"толық қолданған жағдайда ғана тізімделеді."
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr "өнімділік бетінде көрсетілетін қолданбаның минималды жады ізі"
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Өнімділік бетінде тізімделу үшін қолданбаның барлық процестерінің жиынтық "
+"қолданатын жадысының байтпен есептелген минималды мөлшері."
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Графиктерді үздіксіз айналдырмауға мәжбүрлеу"
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Егер іске қосылған болса, өнімділік графиктері үздіксіз айналудың орнына, "
+"тек жаңа дерек нүктесі қосылғанда ғана секіреді. Егер сөндірілген болса, "
+"графиктердің мінез-құлқы энергияны үнемдеу режимі мен GTK-ның глобалды "
+"анимация баптауларына байланысты болады."
+
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "Қолданба көрінетін терезесіз жұмыс істеп тұр"
+
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Қолданбадан шығу"
+
+#: data/ui/app-dialog.ui:149
+msgid "Force Quit"
+msgstr "Мәжбүрлі түрде шығу"
+
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "ЖЖҚ"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "Қолданылғаны"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Қолжетімді"
+
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Соңғы 30 күн"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "Нәтижелер табылмады"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Басқа іздеуді байқап көріңіз"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Қолданба фонда жұмыс істеп тұр"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "Қолданба оңтайландырылған ойын режимін қолданады"
+
+#. Translators: This sentence is later suffixed with an application name.
+#. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "%s жабу керек пе?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Қолданбаларды тоқтату сақталмаған жұмыстың жоғалуы сияқты жанама әсерлерге "
+"әкелуі мүмкін."
+
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "Бас тарту"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Шығу"
+
+#: data/ui/storage-actionbar.ui:15
+msgid "Delete…"
+msgstr "Өшіру…"
+
+#: data/ui/storage-view.ui:44
+msgid "Home Partition"
+msgstr "Үй бөлімі"
+
+#: data/ui/swap-speedometer.ui:31
+msgid "Swap"
+msgstr "Своп"
+
+#: data/ui/window.ui:41 data/ui/window.ui:87
+msgid "Main Menu"
+msgstr "Негізгі мәзір"
+
+#: data/ui/window.ui:99
+msgid "Search"
+msgstr "Іздеу"
+
+#: data/ui/window.ui:118
+msgid "Search Applications…"
+msgstr "Қолданбаларды іздеу…"
+
+#: data/ui/window.ui:152
+msgid "_About Usage"
+msgstr "Usage _туралы"
+
+#: data/ui/window.ui:158
+msgid "Group system processes"
+msgstr "Жүйелік процестерді топтастыру"
+
+#: data/ui/window.ui:164
+msgid "Show all processes"
+msgstr "Барлық процестерді көрсету"
+
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "ОП"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Жады"
+
+#: src/app-item.vala:211
+msgid "System"
+msgstr "Жүйе"
+
+#: src/application.vala:71
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Жүйелік ресурстардың (мысалы, жады және диск орны) қолданылуы туралы "
+"ақпаратты қараудың ыңғайлы жолы."
+
+#: src/application.vala:74
+msgid "translator-credits"
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
+
+#: src/cpu-view.vala:33
+msgid "Processor"
+msgstr "Процессор"
+
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%b %e, %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Желі"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Сымды"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "WiFi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "WiFi (тең дәрежелі)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Мобильді байланыс"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Bluetooth қатынау нүктесі"
+
+#: src/storage/storage-actionbar.vala:42
+#, c-format
+msgid "%s selected"
+msgid_plural "%s selected"
+msgstr[0] "%s таңдалды"
+
+#: src/storage/storage-actionbar.vala:47
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Таңдалған элементтерді біржола өшіруді қалайсыз ба?"
+
+#: src/storage/storage-actionbar.vala:48
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Егер бұл элементтерді өшірсеңіз, олар біржола жоғалады."
+
+#: src/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Өшіру"
+
+#: src/storage/storage-view.vala:76
+msgid "Storage"
+msgstr "Сақтау орны"
+
+#: src/storage/storage-view.vala:248
+msgid "Operating System"
+msgstr "Операциялық жүйе"
+
+#: src/storage/storage-view.vala:276
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s қолжетімді"
+
+#: src/utils.vala:58
+#, c-format
+msgid "%llu B"
+msgstr "%llu Б"
+
+#: src/utils.vala:63
+#, c-format
+msgid "%s/s"
+msgstr "%s/с"
+
+#: src/utils.vala:65
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu Б/с"
