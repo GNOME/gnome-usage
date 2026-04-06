@@ -1,0 +1,385 @@
+# Bulgarian translation for gnome-usage po-file.
+# Copyright (C) twlvnn kraftwerk <kraft_werk@tutanota.com>
+# This file is distributed under the same license as the gnome-usage package.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2025-10-27 00:23+0000\n"
+"PO-Revision-Date: 2026-04-02 13:22+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian <Bulgarian>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/org.gnome.Usage.desktop.in.in:2
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
+msgid "Usage"
+msgstr "Потребление на системата"
+
+#: data/org.gnome.Usage.desktop.in.in:3
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Удобен начин да видите информация за ползването на системните ресурси, като "
+"паметта и дисковото пространство"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in.in:12
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr "наблюдение;система;процес;цп;памет;мрежа;история;ползване;производителност;задача;мениджър;управление;monitor;system;process;cpu;memory;network;history;usage;performance;task;manager;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+msgid "Usage developers"
+msgstr "Разработчиците на „Потребление на системата“"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Анализирайте системата си"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"„Потребление на системата“ предоставя лесни за разбиране данни как системата "
+"използва ресурсите си."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Лесен достъп до ползваните от всяка програма процесорно време и памет за "
+"откриването на проблеми с производителността."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Изгледът за хранилището предоставя информация, която улеснява почистването "
+"на ненужни файлове."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Вижте къде се използва изчислителното време"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Разберете коя програма изразходва паметта"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Разберете какво заема пространството"
+
+#: data/org.gnome.Usage.gschema.xml.in:5
+msgid "A list of processes which we don’t want killed"
+msgstr "Списък с процеси, които не искаме да бъдат убити"
+
+#: data/org.gnome.Usage.gschema.xml.in:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Този списък служи за филтриране на процесите, които потребителят не може да "
+"спре."
+
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "интервал [милисекунди] за графиките в раздела за производителност"
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Минал период за включване в графиките на процесора и паметта в раздела за "
+"производителност и страничната [милисекунди]."
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "интервал [милисекунди] за опресняване на данните за производителността"
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr ""
+"Интервал за периодично показване и обновяване на данните в раздела за "
+"производителност [милисекунди]."
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr ""
+"минимално относително натоварване, при което дадена програма да се показва в "
+"раздела за производителност"
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
+msgstr ""
+"Натоварването, което дадена програма трябва общо да генерира като сума от "
+"всичките си процеси, нормализирано до 1,00, за да бъде включена в раздела за "
+"производителност. При стойност 0,00 се показват всички програми. При "
+"стойност 1,00 дадена програма се показва само ако нейните процеси използват "
+"напълно всички нишки на процесора."
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+"минимално потребление на памет, необходимо за показване на програмата в "
+"раздела за производителност"
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Минималният обем памет, който дадена програма трябва общо да ползва (като "
+"сума от всичките ѝ процеси [байтове]), за да бъде включена в раздела за "
+"производителност."
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Без непрекъснато придвижване на графиките"
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Когато е включено, графиките за производителността няма да се придвижват "
+"непрекъснато, а ще придвижват само при добавянето на нова точка от данните. "
+"Когато е изключено, графиките ще определят сами как да се държат в "
+"зависимост от режима за пестене на енергия и глобалните настройки за "
+"анимации на GTK."
+
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "Програмата работи без видим прозорец"
+
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Спиране на програмата"
+
+#: data/ui/app-dialog.ui:149
+msgid "Force Quit"
+msgstr "Принудително спиране"
+
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "Памет"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "Използвано"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Налично"
+
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Последните 30 дни"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "Няма намерени резултати"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Опитайте различно търсене"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Програмата работи във фонов режим"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "Програмата използва оптимизиран игрови режим"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "Спиране на %s?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr ""
+"Спирането на програми може да доведе до странични ефекти, като например "
+"загуба на данни от незапазена работа."
+
+#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "Отказване"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Спиране на програмата"
+
+#: data/ui/storage-actionbar.ui:15
+msgid "Delete…"
+msgstr "Изтриване…"
+
+#: data/ui/storage-view.ui:44
+msgid "Home Partition"
+msgstr "Домашен дял"
+
+#: data/ui/swap-speedometer.ui:31
+msgid "Swap"
+msgstr "Странициране"
+
+#: data/ui/window.ui:41 data/ui/window.ui:87
+msgid "Main Menu"
+msgstr "Основно меню"
+
+#: data/ui/window.ui:99
+msgid "Search"
+msgstr "Търсене"
+
+#: data/ui/window.ui:118
+msgid "Search Applications…"
+msgstr "Търсене на програми…"
+
+#: data/ui/window.ui:152
+msgid "_About Usage"
+msgstr "_Относно „Потребление на системата“"
+
+#: data/ui/window.ui:158
+msgid "Group system processes"
+msgstr "Групиране на системните процеси"
+
+#: data/ui/window.ui:164
+msgid "Show all processes"
+msgstr "Показване на всички процеси"
+
+#: src/app-dialog.vala:93
+msgid "CPU"
+msgstr "ЦП"
+
+#: src/app-dialog.vala:101 src/memory-view.vala:33
+msgid "Memory"
+msgstr "Памет"
+
+#: src/app-item.vala:211
+msgid "System"
+msgstr "Система"
+
+#: src/application.vala:76
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Удобен начин да видите информация за ползването на системните ресурси, като "
+"паметта и дисковото пространство."
+
+#: src/application.vala:79
+msgid "translator-credits"
+msgstr ""
+"twlvnn kraftwerk &lt;<a "
+"href='mailto:kraft_werk@tutanota.com'>kraft_werk@tutanota.com</a>&gt;\n"
+"\n"
+"Проектът за превод на GNOME има нужда от подкрепа.\n"
+"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
+"a> ни.\n"
+"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
+"newticket'>съответния раздел</a>."
+
+#: src/cpu-view.vala:33
+msgid "Processor"
+msgstr "Процесор"
+
+#: src/network/network-interface-graph.vala:92
+#: src/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%b %e, %Y"
+
+#: src/network/network-view.vala:30
+msgid "Network"
+msgstr "Мрежа"
+
+#: src/network/network-view.vala:76
+msgid "Wired"
+msgstr "Жична"
+
+#: src/network/network-view.vala:83
+msgid "WiFi"
+msgstr "WiFi"
+
+#: src/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "WiFi (равноправна връзка)"
+
+#: src/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Мобилна връзка"
+
+#: src/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Точка за достъп на Bluetooth"
+
+#: src/storage/storage-actionbar.vala:42
+#, c-format
+msgid "%s selected"
+msgid_plural "%s selected"
+msgstr[0] "Избран е %s"
+msgstr[1] "Избрани са %s"
+
+#: src/storage/storage-actionbar.vala:47
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Сигурен ли сте, че искате да изтриете избраните елементи завинаги?"
+
+#: src/storage/storage-actionbar.vala:48
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Ако изтриете тези елементи, те ще бъдат загубени завинаги."
+
+#: src/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Изтриване"
+
+#: src/storage/storage-view.vala:76
+msgid "Storage"
+msgstr "Пространство"
+
+#: src/storage/storage-view.vala:248
+msgid "Operating System"
+msgstr "Операционна система"
+
+#: src/storage/storage-view.vala:276
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "налично е %s"
+msgstr[1] "налични са %s"
+
+#: src/utils.vala:58
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:63
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:65
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
