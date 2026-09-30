@@ -1,0 +1,368 @@
+# Norwegian Nynorsk translation for gnome-usage.
+# Copyright (C) 2026 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Roy-Magne Mo <rmo@sunnmore.net>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2026-08-06 00:03+0000\n"
+"PO-Revision-Date: 2026-10-01 10:00+0200\n"
+"Last-Translator: Roy-Magne Mo <rmo@sunnmore.net>\n"
+"Language-Team: Norwegian Nynorsk <nn@li.org>\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/org.gnome.Usage.desktop.in.in:2
+#: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
+#: data/ui/window.ui:33
+msgid "Usage"
+msgstr "Bruk"
+
+#: data/org.gnome.Usage.desktop.in.in:3
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space"
+msgstr ""
+"Ein fin måte å få oversikt over bruk av systemressursar, som minne og "
+"diskplass"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in.in:12
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr ""
+"Overvaking;System;Prosess;Prosessor;Minne;Nettverk;Historikk;Bruk;Yting;Oppgåve;Handterar;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18
+#: data/org.gnome.Usage.metainfo.xml.in.in:20
+msgid "Usage developers"
+msgstr "Utviklarane av Bruk"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Analyser systemet ditt"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses "
+"its resources."
+msgstr ""
+"Bruk hjelper deg å analysere korleis systemet nyttar ressursane sine, på ein"
+" måte som er lett å forstå."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, "
+"helps find performance issues."
+msgstr ""
+"Enkel oversikt over kor mykje prosessorkraft eller minne kvart program "
+"brukar, hjelper deg å finne ytingsproblem."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary "
+"leftover files."
+msgstr ""
+"Lagringsvisinga gjev innsikt som gjer det enklare å rydde bort unødvendige "
+"filer som ligg att."
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Sjå kvar prosessorkrafta går"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Sjå kva program som brukar opp minnet"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Finn ut kva som fyller lagringsplassen"
+
+#: data/org.gnome.Usage.gschema.xml.in:5
+msgid "A list of processes which we don’t want killed"
+msgstr "Ei liste over prosessar som ikkje skal avsluttast"
+
+#: data/org.gnome.Usage.gschema.xml.in:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+"Denne lista vert brukt til å filtrere ut prosessar som brukaren ikkje kan "
+"stoppe."
+
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr "tidsrom (ms) for grafane i ytingsfana"
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance "
+"tab and its sidebar go back in time in milliseconds."
+msgstr ""
+"Kor langt tilbake i tid, i millisekund, grafane for prosessor og minne i "
+"ytingsfana og sidefeltet går."
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr "intervall (ms) for oppdatering av ytingsdata"
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and "
+"displayed periodically in milliseconds."
+msgstr "Kor ofte, i millisekund, data i ytingsfana vert oppdaterte og viste."
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr "minste relative last eit program må ha for å visast i ytingsfana"
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, "
+"normalized to 1.00, to be listed in the performance tab. With 0.00, all apps "
+"are listed. With 1.00 an app is only listed if its processes fully utilise "
+"all CPU threads."
+msgstr ""
+"Kor stor last eit program må ha totalt, som summen over alle prosessane, "
+"normalisert til 1,00, for å verte vist i ytingsfana. Med 0,00 vert alle "
+"program viste. Med 1,00 vert eit program berre vist viss prosessane brukar "
+"alle prosessortrådane fullt ut."
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid ""
+"minimum memory footprint of an app to be displayed in the performance tab"
+msgstr "minste minnebruk eit program må ha for å visast i ytingsfana"
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all "
+"its processes in bytes to be listed in the performance tab."
+msgstr ""
+"Kor mykje minne, i byte, eit program minst må bruke totalt, som summen over "
+"alle prosessane, for å verte vist i ytingsfana."
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr "Tving grafane til å ikkje rulle kontinuerleg"
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll "
+"continuously, but instead will only jump when a new data point is added. If "
+"disabled, the graphs will decide, based on power-saving mode and GTK's "
+"global animations settings, how to behave."
+msgstr ""
+"Viss dette er slått på, rullar ikkje ytingsgrafane kontinuerleg, men hoppar "
+"berre når eit nytt datapunkt kjem til. Viss det er slått av, avgjer grafane "
+"sjølve korleis dei skal oppføre seg ut frå straumsparingsmodus og dei "
+"globale animasjonsinnstillingane i GTK."
+
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "Programmet køyrer utan synleg vindauge"
+
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Avslutt programmet"
+
+#: data/ui/app-dialog.ui:149
+msgid "Force Quit"
+msgstr "Tving avslutning"
+
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "Brukt"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Tilgjengeleg"
+
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Siste 30 dagar"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "Ingen resultat funne"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Prøv eit anna søk"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Programmet køyrer i bakgrunnen"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "Programmet brukar optimalisert spelmodus"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "Avslutt %s?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of "
+"unsaved work."
+msgstr "Å stoppe program kan ha sideverknader, som at ulagra arbeid går tapt."
+
+#: data/ui/quit-process-dialog.ui:12 src/ui/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Avslutt"
+
+#: data/ui/storage-actionbar.ui:15
+msgid "Delete…"
+msgstr "Slett …"
+
+#: data/ui/storage-view.ui:44
+msgid "Home Partition"
+msgstr "Heimepartisjon"
+
+#: data/ui/swap-speedometer.ui:31
+msgid "Swap"
+msgstr "Swap"
+
+#: data/ui/window.ui:41 data/ui/window.ui:87
+msgid "Main Menu"
+msgstr "Hovudmeny"
+
+#: data/ui/window.ui:99
+msgid "Search"
+msgstr "Søk"
+
+#: data/ui/window.ui:118
+msgid "Search Applications…"
+msgstr "Søk i program …"
+
+#: data/ui/window.ui:152
+msgid "_About Usage"
+msgstr "_Om Bruk"
+
+#: data/ui/window.ui:158
+msgid "Group system processes"
+msgstr "Grupper systemprosessar"
+
+#: data/ui/window.ui:164
+msgid "Show all processes"
+msgstr "Vis alle prosessar"
+
+#: src/application.vala:87
+msgid ""
+"A nice way to view information about use of system resources, like memory "
+"and disk space."
+msgstr ""
+"Ein fin måte å få oversikt over bruken av systemressursar, som minne og "
+"diskplass."
+
+#: src/application.vala:90
+msgid "translator-credits"
+msgstr "Roy-Magne Mo <rmo@sunnmore.net>, 2026"
+
+#: src/utils.vala:58
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:63
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
+#: src/utils.vala:65
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/s"
+
+#: src/monitor/app-item.vala:211
+msgid "System"
+msgstr "System"
+
+#: src/ui/network/network-interface-graph.vala:92
+#: src/ui/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e. %b %Y"
+
+#: src/ui/network/network-view.vala:30
+msgid "Network"
+msgstr "Nettverk"
+
+#: src/ui/network/network-view.vala:76
+msgid "Wired"
+msgstr "Kabla"
+
+#: src/ui/network/network-view.vala:83
+msgid "WiFi"
+msgstr "Wi-Fi"
+
+#: src/ui/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Wi-Fi (direkte)"
+
+#: src/ui/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Mobil tilkopling"
+
+#: src/ui/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Blåtann-sone"
+
+#: src/ui/performance/app-dialog.vala:93
+msgid "CPU"
+msgstr "CPU"
+
+#: src/ui/performance/app-dialog.vala:101
+#: src/ui/performance/memory-view.vala:33
+msgid "Memory"
+msgstr "Minne"
+
+#: src/ui/performance/cpu-view.vala:33
+msgid "Processor"
+msgstr "Prosessor"
+
+#: src/ui/storage/storage-actionbar.vala:42
+#, c-format
+msgid "%s selected"
+msgid_plural "%s selected"
+msgstr[0] "%s vald"
+msgstr[1] "%s vald"
+
+#: src/ui/storage/storage-actionbar.vala:47
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Er du sikker på at du vil slette dei valde elementa permanent?"
+
+#: src/ui/storage/storage-actionbar.vala:48
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Dersom du slettar desse elementa, vert dei sletta for alltid."
+
+#: src/ui/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Slett"
+
+#: src/ui/storage/storage-view.vala:76
+msgid "Storage"
+msgstr "Lagring"
+
+#: src/ui/storage/storage-view.vala:248
+msgid "Operating System"
+msgstr "Operativsystem"
+
+#: src/ui/storage/storage-view.vala:276
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s tilgjengeleg"
+msgstr[1] "%s tilgjengeleg"
