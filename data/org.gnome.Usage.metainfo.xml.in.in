@@ -7,7 +7,7 @@
   <launchable type="desktop-id">@app-id@.desktop</launchable>
   <project_license>GPL-3.0-or-later</project_license>
   <!--url type="homepage">https://wiki.gnome.org/Apps/Usage</url-->
-  <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-usage/issues</url>
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-usage/-/work_items</url>
   <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-usage</url>
   <url type="donation">https://liberapay.com/camelCaseNick/</url>
   <!--url type="help">https://gitlab.gnome.org/GNOME/gnome-usage/wikis/home</url-->
