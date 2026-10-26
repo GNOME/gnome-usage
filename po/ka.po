@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
 "POT-Creation-Date: 2026-08-06 00:03+0000\n"
-"PO-Revision-Date: 2026-10-13 17:27+0200\n"
+"PO-Revision-Date: 2026-10-26 05:51+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #: data/org.gnome.Usage.desktop.in.in:2 data/org.gnome.Usage.metainfo.xml.in.in:17
 #: data/ui/window.ui:18 data/ui/window.ui:33
@@ -41,7 +41,7 @@ msgstr ""
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:22
 msgid "Analyse your system"
-msgstr ""
+msgstr "თქვენი სისტემის ანალიზი"
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:24
 msgid ""
@@ -69,7 +69,7 @@ msgstr ""
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:50
 msgid "Find what fills the storage"
-msgstr ""
+msgstr "იპოვეთ, რა ავსებს დისკს"
 
 #: data/org.gnome.Usage.gschema.xml.in:5
 msgid "A list of processes which we don’t want killed"
@@ -161,7 +161,7 @@ msgstr "ხელმისაწვდომია"
 
 #: data/ui/network-view.ui:28
 msgid "Last 30 Days"
-msgstr ""
+msgstr "ბოლო 30 დღე"
 
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
@@ -274,7 +274,6 @@ msgid "Network"
 msgstr "ქსელი"
 
 #: src/ui/network/network-view.vala:76
-#, fuzzy
 msgid "Wired"
 msgstr "მავთულიანი"
 
@@ -284,7 +283,7 @@ msgstr "WiFi"
 
 #: src/ui/network/network-view.vala:90
 msgid "WiFi (Peer to Peer)"
-msgstr ""
+msgstr "WiFi (გამჭოლი)"
 
 #: src/ui/network/network-view.vala:97
 msgid "Mobile Connection"
@@ -292,10 +291,9 @@ msgstr "მობილური ინტერნეტი"
 
 #: src/ui/network/network-view.vala:104
 msgid "Bluetooth Hotspot"
-msgstr ""
+msgstr "ბლუთუზის ჰოტსპოტი"
 
 #: src/ui/performance/app-dialog.vala:93
-#, fuzzy
 msgid "CPU"
 msgstr "პროცესორი"
 
