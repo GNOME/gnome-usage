@@ -3,29 +3,30 @@
 # This file is distributed under the same license as the gnome-usage package.
 # Zdeněk Hataš <zdenek.hatas@gmail.com>, 2017.
 # Marek Černocký <marek@manet.cz>, 2017, 2018, 2019, 2020, 2022.
+# Patrik Sivek <patriksivek@gnome.org>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-usage master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
-"POT-Creation-Date: 2025-02-13 01:09+0000\n"
-"PO-Revision-Date: 2025-02-21 00:14+0100\n"
-"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
-"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"POT-Creation-Date: 2026-08-06 00:03+0000\n"
+"PO-Revision-Date: 2026-10-27 22:37+0100\n"
+"Last-Translator: Patrik Sivek <patriksivek@gnome.org>\n"
+"Language-Team: Czech\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Gtranslator 51.0\n"
 
-#: data/org.gnome.Usage.desktop.in.in:3
+#: data/org.gnome.Usage.desktop.in.in:2
 #: data/org.gnome.Usage.metainfo.xml.in.in:17 data/ui/window.ui:18
 #: data/ui/window.ui:33
 msgid "Usage"
 msgstr "Využití"
 
-#: data/org.gnome.Usage.desktop.in.in:4
+#: data/org.gnome.Usage.desktop.in.in:3
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space"
@@ -34,15 +35,14 @@ msgstr ""
 "jako jsou operační paměť a místo na disku."
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Usage.desktop.in.in:13
-msgid ""
-"Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;"
-"Manager;"
+#: data/org.gnome.Usage.desktop.in.in:12
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
 msgstr ""
-"monitor;monitorovat;sledování;sledovat;systém;proces;CPU;procesor;paměť;"
-"operační paměť;síť;historie;využití;vytížení;výkon;úloha;správce;správa;"
+"monitor;monitorovat;sledování;sledovat;systém;proces;CPU;procesor;paměť;operační "
+"paměť;síť;historie;využití;vytížení;výkon;úloha;správce;správa;"
 
 #: data/org.gnome.Usage.metainfo.xml.in.in:18
+#: data/org.gnome.Usage.metainfo.xml.in.in:20
 msgid "Usage developers"
 msgstr "Vývojáři aplikace Využití"
 
@@ -193,6 +193,10 @@ msgstr "Použito"
 msgid "Available"
 msgstr "Dostupné"
 
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Posledních 30 dní"
+
 #: data/ui/no-results-found-view.ui:28
 msgid "No results found"
 msgstr "Nebylo nic nalezeno"
@@ -222,7 +226,7 @@ msgstr ""
 "Ukončení aplikací může mít nežádoucí účinky, například ztrátu dat neuložené "
 "práce."
 
-#: data/ui/quit-process-dialog.ui:12 src/storage/storage-actionbar.vala:52
+#: data/ui/quit-process-dialog.ui:12 src/ui/storage/storage-actionbar.vala:52
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -266,19 +270,7 @@ msgstr "Seskupovat systémové procesy"
 msgid "Show all processes"
 msgstr "Zobrazovat všechny procesy"
 
-#: src/app-dialog.vala:93
-msgid "CPU"
-msgstr "Procesor"
-
-#: src/app-dialog.vala:101 src/memory-view.vala:33
-msgid "Memory"
-msgstr "Paměť"
-
-#: src/app-item.vala:216
-msgid "System"
-msgstr "Systém"
-
-#: src/application.vala:74
+#: src/application.vala:87
 msgid ""
 "A nice way to view information about use of system resources, like memory "
 "and disk space."
@@ -286,50 +278,11 @@ msgstr ""
 "Elegantní způsob, jak zobrazit informace o využití systémových prostředků, "
 "jako jsou operační paměť a místo na disku."
 
-#: src/application.vala:77
+#: src/application.vala:90
 msgid "translator-credits"
-msgstr "Zdeněk Hataš <zdenek.hatas@gmail.com>"
-
-#: src/cpu-view.vala:33
-msgid "Processor"
-msgstr "Procesor"
-
-# c-format
-#: src/storage/storage-actionbar.vala:42
-#, c-format
-msgid "%s selected"
-msgid_plural "%s selected"
-msgstr[0] "Vybrali jste %s"
-msgstr[1] "Vybrali jste %s"
-msgstr[2] "Vybrali jste %s"
-
-#: src/storage/storage-actionbar.vala:47
-msgid "Are you sure you want to permanently delete selected items?"
-msgstr "Opravdu chcete trvale smazat vybrané položky?"
-
-#: src/storage/storage-actionbar.vala:48
-msgid "If you delete these items, they will be permanently lost."
-msgstr "Pokdu tyto položky smažete, budou nenávratně ztraceny."
-
-#: src/storage/storage-actionbar.vala:53
-msgid "Delete"
-msgstr "Smazat"
-
-#: src/storage/storage-view.vala:77
-msgid "Storage"
-msgstr "Úložiště"
-
-#: src/storage/storage-view.vala:235
-msgid "Operating System"
-msgstr "Operační systém"
-
-#: src/storage/storage-view.vala:263
-#, c-format
-msgid "%s available"
-msgid_plural "%s available"
-msgstr[0] "Dostupné %s"
-msgstr[1] "Dostupné %s"
-msgstr[2] "Dostupných %s"
+msgstr ""
+"Zdeněk Hataš <zdenek.hatas@gmail.com>\n"
+"Patrik Sivek <patriksivek@gnome.org>"
 
 #: src/utils.vala:58
 #, c-format
@@ -345,6 +298,89 @@ msgstr "%s/s"
 #, c-format
 msgid "%llu B/s"
 msgstr "%llu B/s"
+
+#: src/monitor/app-item.vala:211
+msgid "System"
+msgstr "Systém"
+
+#: src/ui/network/network-interface-graph.vala:92
+#: src/ui/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e. %B %Y"
+
+#: src/ui/network/network-view.vala:30
+msgid "Network"
+msgstr "Síť"
+
+#: src/ui/network/network-view.vala:76
+msgid "Wired"
+msgstr "Drátová"
+
+#: src/ui/network/network-view.vala:83
+msgid "WiFi"
+msgstr "Wi-Fi"
+
+#: src/ui/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr "Wi-Fi (Peer to peer)"
+
+#: src/ui/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Mobilní připojení"
+
+#: src/ui/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Přístupový bod Bluetooth"
+
+#: src/ui/performance/app-dialog.vala:93
+msgid "CPU"
+msgstr "Procesor"
+
+#: src/ui/performance/app-dialog.vala:101
+#: src/ui/performance/memory-view.vala:33
+msgid "Memory"
+msgstr "Paměť"
+
+#: src/ui/performance/cpu-view.vala:33
+msgid "Processor"
+msgstr "Procesor"
+
+# c-format
+#: src/ui/storage/storage-actionbar.vala:42
+#, c-format
+msgid "%s selected"
+msgid_plural "%s selected"
+msgstr[0] "Vybrali jste %s"
+msgstr[1] "Vybrali jste %s"
+msgstr[2] "Vybrali jste %s"
+
+#: src/ui/storage/storage-actionbar.vala:47
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Opravdu chcete trvale smazat vybrané položky?"
+
+#: src/ui/storage/storage-actionbar.vala:48
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Pokdu tyto položky smažete, budou nenávratně ztraceny."
+
+#: src/ui/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Smazat"
+
+#: src/ui/storage/storage-view.vala:76
+msgid "Storage"
+msgstr "Úložiště"
+
+#: src/ui/storage/storage-view.vala:248
+msgid "Operating System"
+msgstr "Operační systém"
+
+#: src/ui/storage/storage-view.vala:276
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "Dostupné %s"
+msgstr[1] "Dostupné %s"
+msgstr[2] "Dostupných %s"
 
 #~ msgid ""
 #~ "Operating system files are an essential part of your system and cannot be "
