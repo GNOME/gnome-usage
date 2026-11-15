@@ -1,0 +1,344 @@
+# Azerbaijani translation for gnome-usage.
+# Copyright (C) 2026 gnome-usage's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-usage package.
+# Nicat Xalid <nicat.m@pm.me>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-usage main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-usage/issues\n"
+"POT-Creation-Date: 2026-08-06 00:03+0000\n"
+"PO-Revision-Date: 2026-11-15 12:53+0400\n"
+"Last-Translator: \n"
+"Language-Team: Azerbaijani <Azerbaijani>\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.10\n"
+
+#: data/org.gnome.Usage.desktop.in.in:2 data/org.gnome.Usage.metainfo.xml.in.in:17
+#: data/ui/window.ui:18 data/ui/window.ui:33
+msgid "Usage"
+msgstr "İstifadə"
+
+#: data/org.gnome.Usage.desktop.in.in:3
+msgid ""
+"A nice way to view information about use of system resources, like memory and disk "
+"space"
+msgstr ""
+"Yaddaş və disk sahəsi kimi sistem resurslarının istifadəsi haqqında məlumata baxmaq "
+"üçün gözəl bir üsul"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Usage.desktop.in.in:12
+msgid "Monitor;System;Process;CPU;Memory;Network;History;Usage;Performance;Task;Manager;"
+msgstr "Monitor;Sistem;Proses;CPU;Yaddaş;Şəbəkə;Tarixçə;İstifadə;Performans;Tapşırıq;İdarəçi;;Task;Manager;CPU;"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:18 data/org.gnome.Usage.metainfo.xml.in.in:20
+msgid "Usage developers"
+msgstr "\"İstifadə\" tərtibatçıları"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:22
+msgid "Analyse your system"
+msgstr "Sisteminizi analiz edin"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:24
+msgid ""
+"Usage helps with simple to understand ways to analyze how the system uses its "
+"resources."
+msgstr ""
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:29
+msgid ""
+"Easy access to which app uses what amount of processing power or memory, helps find "
+"performance issues."
+msgstr ""
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:33
+msgid ""
+"The storage view provides insight to simplify cleaning up unnecessary leftover files."
+msgstr ""
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:42
+msgid "See where the processing power is going"
+msgstr "Emal gücünün hara getdiyini görün"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:46
+msgid "Understand which application is using up the memory"
+msgstr "Hansı tətbiqin yaddaşdan istifadə etdiyini anlayın"
+
+#: data/org.gnome.Usage.metainfo.xml.in.in:50
+msgid "Find what fills the storage"
+msgstr "Saxlancı dolduranları tap"
+
+#: data/org.gnome.Usage.gschema.xml.in:5
+msgid "A list of processes which we don’t want killed"
+msgstr "Dayandırmaq istəmədiyimiz proseslərin siyahısı"
+
+#: data/org.gnome.Usage.gschema.xml.in:6
+msgid "This list is used for filtering which processes the user can’t stop."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:10
+msgid "time span (ms) of the graphs in the performance tab"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:11
+msgid ""
+"The time span for up to which the CPU and memory graphs in the performance tab and its "
+"sidebar go back in time in milliseconds."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:18
+msgid "interval (ms) for the performance data refresh"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:19
+msgid ""
+"The interval at which the data for the performance tab are updated and displayed "
+"periodically in milliseconds."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:26
+msgid "minimum relative load of an app to be displayed in the performance tab"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:27
+msgid ""
+"The load an app has to have in total as the sum over all its processes, normalized to "
+"1.00, to be listed in the performance tab. With 0.00, all apps are listed. With 1.00 "
+"an app is only listed if its processes fully utilise all CPU threads."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:36
+msgid "minimum memory footprint of an app to be displayed in the performance tab"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:37
+msgid ""
+"The minimum amount of memory an app has to use in total as the sum over all its "
+"processes in bytes to be listed in the performance tab."
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:45
+msgid "Force graphs to not continuously scrolling"
+msgstr ""
+
+#: data/org.gnome.Usage.gschema.xml.in:46
+msgid ""
+"If enabled, the performance graphs will be forced to not scroll continuously, but "
+"instead will only jump when a new data point is added. If disabled, the graphs will "
+"decide, based on power-saving mode and GTK's global animations settings, how to behave."
+msgstr ""
+
+#: data/ui/app-dialog.ui:78
+msgid "Application is running with no visible window"
+msgstr "Tətbiq görünən pəncərə olmadan işləyir"
+
+#: data/ui/app-dialog.ui:138
+msgid "Quit App"
+msgstr "Tətbiqdən çıx"
+
+#: data/ui/app-dialog.ui:149
+msgid "Force Quit"
+msgstr "Çıxmağa məcbur et"
+
+#: data/ui/memory-speedometer.ui:33
+msgid "RAM"
+msgstr "RAM"
+
+#: data/ui/memory-speedometer.ui:47 data/ui/storage-view.ui:62
+#: data/ui/swap-speedometer.ui:45
+msgid "Used"
+msgstr "İstifadə olunub"
+
+#: data/ui/memory-speedometer.ui:69 data/ui/storage-view.ui:68
+#: data/ui/swap-speedometer.ui:67
+msgid "Available"
+msgstr "Əlçatan"
+
+#: data/ui/network-view.ui:28
+msgid "Last 30 Days"
+msgstr "Son 30 gün"
+
+#: data/ui/no-results-found-view.ui:28
+msgid "No results found"
+msgstr "Nəticə tapılmadı"
+
+#: data/ui/no-results-found-view.ui:40
+msgid "Try a different search"
+msgstr "Fərqli axtarış sınayın"
+
+#: data/ui/process-row.ui:49
+msgid "Application is running in background"
+msgstr "Tətbiq arxa planda çalışır"
+
+#: data/ui/process-row.ui:71
+msgid "Application uses optimised game mode"
+msgstr "Tətbiq optimallaşdırılmış oyun rejimindən istifadə edir"
+
+#. Translators: This sentence is later suffixed with an application name. Example: “Quit Tuba?”
+#: data/ui/quit-process-dialog.ui:6
+msgid "Quit %s?"
+msgstr "%s tətbiqindən çıxılsın?"
+
+#: data/ui/quit-process-dialog.ui:7
+msgid ""
+"Stopping applications might come with side effects, such as data loss of unsaved work."
+msgstr ""
+"Tətbiqlərin dayandırılması məlumat itkisi və ya yadda saxlanılmamış iş kimi yan "
+"təsirlərlə nəticələnə bilər."
+
+#: data/ui/quit-process-dialog.ui:12 src/ui/storage/storage-actionbar.vala:52
+msgid "Cancel"
+msgstr "İmtina"
+
+#: data/ui/quit-process-dialog.ui:13
+msgid "Quit"
+msgstr "Çıx"
+
+#: data/ui/storage-actionbar.ui:15
+msgid "Delete…"
+msgstr "Sil…"
+
+#: data/ui/storage-view.ui:44
+msgid "Home Partition"
+msgstr "Ev bölgüsü"
+
+#: data/ui/swap-speedometer.ui:31
+msgid "Swap"
+msgstr "Mübadilə"
+
+#: data/ui/window.ui:41 data/ui/window.ui:87
+msgid "Main Menu"
+msgstr "Əsas menyu"
+
+#: data/ui/window.ui:99
+msgid "Search"
+msgstr "Axtar"
+
+#: data/ui/window.ui:118
+msgid "Search Applications…"
+msgstr "Tətbiqetmə axtar…"
+
+#: data/ui/window.ui:152
+msgid "_About Usage"
+msgstr "\"İstifadə\" _haqqında"
+
+#: data/ui/window.ui:158
+msgid "Group system processes"
+msgstr "Sistem proseslərini qruplaşdır"
+
+#: data/ui/window.ui:164
+msgid "Show all processes"
+msgstr "Bütün prosesləri göstər"
+
+#: src/application.vala:87
+msgid ""
+"A nice way to view information about use of system resources, like memory and disk "
+"space."
+msgstr ""
+"Yaddaş və disk sahəsi kimi sistem resurslarının istifadəsi haqqında məlumata baxmaq "
+"üçün gözəl bir üsul."
+
+#: src/application.vala:90
+msgid "translator-credits"
+msgstr ""
+"translator-credits\n"
+"Nicat Xalid <nicat.m@pm.me>"
+
+#: src/utils.vala:58
+#, c-format
+msgid "%llu B"
+msgstr "%llu B"
+
+#: src/utils.vala:63
+#, c-format
+msgid "%s/s"
+msgstr "%s/san"
+
+#: src/utils.vala:65
+#, c-format
+msgid "%llu B/s"
+msgstr "%llu B/san"
+
+#: src/monitor/app-item.vala:211
+msgid "System"
+msgstr "Sistem"
+
+#: src/ui/network/network-interface-graph.vala:92
+#: src/ui/network/network-interface-graph.vala:93
+msgid "%b %e, %Y"
+msgstr "%e %b %Y"
+
+#: src/ui/network/network-view.vala:30
+msgid "Network"
+msgstr "Şəbəkə"
+
+#: src/ui/network/network-view.vala:76
+msgid "Wired"
+msgstr "Simli"
+
+#: src/ui/network/network-view.vala:83
+msgid "WiFi"
+msgstr "WiFi"
+
+#: src/ui/network/network-view.vala:90
+msgid "WiFi (Peer to Peer)"
+msgstr ""
+
+#: src/ui/network/network-view.vala:97
+msgid "Mobile Connection"
+msgstr "Mobil bağlantı"
+
+#: src/ui/network/network-view.vala:104
+msgid "Bluetooth Hotspot"
+msgstr "Bluetooth giriş nöqtəsi"
+
+#: src/ui/performance/app-dialog.vala:93
+msgid "CPU"
+msgstr "Mərkəzi prosessor (CPU)"
+
+#: src/ui/performance/app-dialog.vala:101 src/ui/performance/memory-view.vala:33
+msgid "Memory"
+msgstr "Yaddaş"
+
+#: src/ui/performance/cpu-view.vala:33
+msgid "Processor"
+msgstr "Prosessor"
+
+#: src/ui/storage/storage-actionbar.vala:42
+#, c-format
+msgid "%s selected"
+msgid_plural "%s selected"
+msgstr[0] "%s seçilib"
+msgstr[1] "%s seçilib"
+
+#: src/ui/storage/storage-actionbar.vala:47
+msgid "Are you sure you want to permanently delete selected items?"
+msgstr "Seçilmiş elementləri birdəfəlik silmək istədiyinizə əminsiniz?"
+
+#: src/ui/storage/storage-actionbar.vala:48
+msgid "If you delete these items, they will be permanently lost."
+msgstr "Bu elementləri silsəniz, onlar həmişəlik itəcək."
+
+#: src/ui/storage/storage-actionbar.vala:53
+msgid "Delete"
+msgstr "Sil"
+
+#: src/ui/storage/storage-view.vala:76
+msgid "Storage"
+msgstr "Saxlanc"
+
+#: src/ui/storage/storage-view.vala:248
+msgid "Operating System"
+msgstr "Əməliyyat sistemi"
+
+#: src/ui/storage/storage-view.vala:276
+#, c-format
+msgid "%s available"
+msgid_plural "%s available"
+msgstr[0] "%s əlçatan"
+msgstr[1] "%s əlçatan"
